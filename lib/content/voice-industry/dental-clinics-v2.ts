@@ -1,5 +1,7 @@
 // Generated from the standalone design file dental-clinics-industry-v2.html,
 // without its stand-in header and footer. Registered in ./index.ts.
+import { pricingSection } from "@/lib/content/voice-pricing";
+
 export const meta = {
   "title": "AI Receptionist for Dental Practices | UK Dental Clinics | OMH",
   "description": "An AI voice agent for UK dental practices. Answers patient calls 24/7, books check-ups, fills cancellations and routes urgent calls. Never gives clinical advice. Built and managed by OMH.",
@@ -167,7 +169,7 @@ export const schema = [
         "name": "Is there a minimum contract?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra."
+          "text": "We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra. Billed monthly, 30 days notice."
         }
       }
     ]
@@ -1210,57 +1212,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: PricingBySize ===== -->
-<section id="pricing" data-component="PricingBySize" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28">
-    <div class="mx-auto max-w-[44rem] text-center">
-      <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
-      <h2>Priced by <span class="hl">the size of your practice</span></h2>
-      <p class="mt-5 text-muted">One monthly price, setup support included. Prices exclude VAT. <span class="flag">[PLACEHOLDER example pricing]</span></p>
-    </div>
-    <ul class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <li class="flex flex-col rounded-[22px] border border-line bg-paper p-6">
-        <p class="flex items-center justify-between gap-2"><span class="flex items-center gap-1" aria-hidden="true"><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg></span></p>
-        <h3 class="mt-4 !text-[22px]">1 surgery</h3>
-        <p class="text-[15px] text-muted">A single-chair or small practice</p>
-        <p class="mt-5 flex items-baseline gap-1.5"><span class="font-display text-[40px] font-semibold leading-none tracking-tight tnum">£249</span><span class="text-[15px] text-muted">a month + VAT</span></p>
-        <p class="mt-1 text-[14.5px] font-semibold text-hl">Starter plan</p>
-        <p class="mt-4 rounded-[10px] bg-mint px-3 py-2 text-[14.5px]"><strong class="font-semibold tnum">300</strong> minutes included, then 35p a minute</p>
-        <ul class="mt-4 flex-1 space-y-2 text-[15px]"><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Inbound call answering, day and night</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Appointment booking into one calendar</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Your greeting, voice and opening hours</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call summaries by email</span></li></ul>
-        <a href="#book-demo" class="btn btn-secondary mt-6" data-track="dental2_size_plan" data-track-name="1 surgery">Book a demo</a>
-      </li>
-      <li class="flex flex-col rounded-[22px] border border-2 border-gold bg-paper p-6">
-        <p class="flex items-center justify-between gap-2"><span class="flex items-center gap-1" aria-hidden="true"><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg></span><span class="rounded-full bg-gold px-2.5 py-0.5 text-[12.5px] font-semibold text-navy">Most practices</span></p>
-        <h3 class="mt-4 !text-[22px]">2 to 3 surgeries</h3>
-        <p class="text-[15px] text-muted">Most independent practices</p>
-        <p class="mt-5 flex items-baseline gap-1.5"><span class="font-display text-[40px] font-semibold leading-none tracking-tight tnum">£449</span><span class="text-[15px] text-muted">a month + VAT</span></p>
-        <p class="mt-1 text-[14.5px] font-semibold text-hl">Growth plan</p>
-        <p class="mt-4 rounded-[10px] bg-mint px-3 py-2 text-[14.5px]"><strong class="font-semibold tnum">800</strong> minutes included, then 30p a minute</p>
-        <ul class="mt-4 flex-1 space-y-2 text-[15px]"><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Everything in Starter</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call transfer rules and out-of-hours routing</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Connection to your CRM or practice system</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Outbound follow-up to consented contacts</span></li></ul>
-        <a href="#book-demo" class="btn btn-primary mt-6" data-track="dental2_size_plan" data-track-name="2 to 3 surgeries">Book a demo</a>
-      </li>
-      <li class="flex flex-col rounded-[22px] border border-line bg-paper p-6">
-        <p class="flex items-center justify-between gap-2"><span class="flex items-center gap-1" aria-hidden="true"><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg></span></p>
-        <h3 class="mt-4 !text-[22px]">4 or more surgeries</h3>
-        <p class="text-[15px] text-muted">Busy practices with several clinicians</p>
-        <p class="mt-5 flex items-baseline gap-1.5"><span class="font-display text-[40px] font-semibold leading-none tracking-tight tnum">£849</span><span class="text-[15px] text-muted">a month + VAT</span></p>
-        <p class="mt-1 text-[14.5px] font-semibold text-hl">Scale plan</p>
-        <p class="mt-4 rounded-[10px] bg-mint px-3 py-2 text-[14.5px]"><strong class="font-semibold tnum">2,000</strong> minutes included, then 25p a minute</p>
-        <ul class="mt-4 flex-1 space-y-2 text-[15px]"><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Everything in Growth</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Multiple locations, departments or agents</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call outcomes reported with your ads and website</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Priority script and knowledge changes</span></li></ul>
-        <a href="#book-demo" class="btn btn-secondary mt-6" data-track="dental2_size_plan" data-track-name="4 or more surgeries">Book a demo</a>
-      </li>
-      <li class="flex flex-col rounded-[22px] border border-line bg-paper p-6">
-        <p class="flex items-center justify-between gap-2"><span class="flex items-center gap-1" aria-hidden="true"><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg><svg class="h-5 w-5 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg><span class="font-display text-[15px] font-semibold text-hl">+ sites</span></span></p>
-        <h3 class="mt-4 !text-[22px]">A group of practices</h3>
-        <p class="text-[15px] text-muted">Several sites under one owner</p>
-        <p class="mt-5 font-display text-[30px] font-semibold leading-tight">Tailored</p>
-        <p class="mt-1 text-[14.5px] font-semibold text-hl">Scale plan for each site</p>
-        <ul class="mt-4 flex-1 space-y-2 text-[15px]"><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Separate greetings and diaries per site</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>One morning summary across the group</span></li><li class="flex gap-2"><svg class="icon mt-[3px] !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Group reporting and a quarterly review</span></li></ul>
-        <a href="#book-demo" class="btn btn-secondary mt-6" data-track="dental2_size_plan" data-track-name="A group of practices">Talk to us</a>
-      </li>
-    </ul>
-    <p class="mx-auto mt-6 max-w-[48rem] text-center text-[14.5px] text-muted">Minutes are counted on answered calls and consented outbound calls. Unused minutes don't roll over. Connections to practice systems depend on the software you use.</p>
-  </div>
-</section>
+${pricingSection("bg-surface")}
 
 
 <!-- ===== COMPONENT: PracticeStories ===== -->
@@ -1530,7 +1482,7 @@ export const markup = String.raw`
         </summary>
         <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra.</p>
-          <p class="mt-3"><span class="flag flag-wrap">[PLACEHOLDER] contract length and notice period</span></p>
+          <p class="mt-3">Billed monthly, 30 days notice.</p>
         </div>
       </details>
       </div>

@@ -1,5 +1,7 @@
 // Generated from the standalone design file dental-clinics-industry.html,
 // without its stand-in header and footer. Registered in ./index.ts.
+import { pricingSection } from "@/lib/content/voice-pricing";
+
 export const meta = {
   "title": "AI Receptionist for Dental Practices | UK Dental Clinics | OMH",
   "description": "An AI voice agent for UK dental practices. Answers patient calls 24/7, books check-ups, fills cancellations and routes urgent calls. Never gives clinical advice. Built and managed by OMH.",
@@ -167,7 +169,7 @@ export const schema = [
         "name": "Is there a minimum contract?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra."
+          "text": "We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra. Billed monthly, 30 days notice."
         }
       }
     ]
@@ -1837,102 +1839,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: Pricing ===== -->
-<section id="pricing" data-component="Pricing" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28" data-pricing data-billing="monthly">
-    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-      <div class="max-w-[44rem]">
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
-        <h2>Three plans, priced <span class="hl">by the month</span></h2>
-        <p class="mt-5 text-muted">Every plan includes setup support, a managed agent and a monthly report. The figures below are examples while we finalise pricing. <span class="flag">[PLACEHOLDER]</span></p>
-      </div>
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[17px] font-semibold">
-        <span id="bill-monthly" data-billing-label="monthly">Monthly</span>
-        <button type="button" role="switch" aria-checked="false" aria-label="Bill annually" class="group flex h-11 w-[72px] shrink-0 items-center rounded-full border-[1.5px] border-[var(--line-strong)] bg-surface p-[4px] transition-colors aria-checked:border-gold-deep aria-checked:bg-gold" data-billing-toggle data-track="pricing_billing_toggle">
-          <span class="block h-8 w-8 rounded-full bg-ink shadow-[0_1px_3px_rgb(16_24_40/0.3)] transition-transform duration-200 group-aria-checked:translate-x-[29px] group-aria-checked:bg-navy" aria-hidden="true" data-billing-knob></span>
-        </button>
-        <span data-billing-label="annual" class="text-muted">Annual</span>
-        <span class="chip max-sm:order-last">Save 15% <span class="flag">[PLACEHOLDER]</span></span>
-      </div>
-    </div>
-
-    <div class="mt-12 grid gap-6 lg:grid-cols-3 lg:items-stretch">
-      <article class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 border-line bg-surface" data-tier="starter">
-        <div class="flex items-center justify-between gap-3">
-          <h3>Starter</h3>
-          
-        </div>
-        <p class="mt-2 min-h-[3.2em] text-[17px] leading-snug text-muted">One agent answering and booking for a single location.</p>
-        <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£<span data-price data-monthly="249" data-annual="212">249</span></span>
-          <span class="text-[16px] text-muted">a month + VAT</span>
-          <span class="flag">[PLACEHOLDER]</span>
-        </p>
-        <p class="mt-2 min-h-[1.6em] text-[15.5px] text-muted" data-billing-note data-monthly-text="Billed monthly" data-annual-text="Billed annually in advance">Billed monthly</p>
-        <p class="mt-5 rounded-[10px] bg-sand px-4 py-3 text-[16.5px] leading-snug"><strong class="font-semibold tnum">300 minutes</strong> included, then <span class="tnum">35p</span> a minute <span class="flag">[PLACEHOLDER]</span></p>
-        <ul class="mb-8 mt-6 space-y-2.5 text-[17px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Inbound call answering, day and night</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Appointment booking into one calendar</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Your greeting, voice and opening hours</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call summaries by email</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Monthly usage report</span></li>
-        </ul>
-        <a href="/contact?service=ai-voice-agents&amp;plan=starter" class="btn btn-secondary mt-auto" data-track="pricing_book_demo" data-track-name="Starter">Book a demo<span class="sr-only"> for the Starter plan</span></a>
-      </article>
-      <article class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 border-ink bg-surface shadow-[0_24px_60px_-32px_rgb(16_24_40/0.4)] dark:border-gold" data-tier="growth">
-        <div class="flex items-center justify-between gap-3">
-          <h3>Growth</h3>
-          <span class="rounded-full bg-gold px-3 py-1 text-[13.5px] font-semibold text-navy">Most common starting point</span>
-        </div>
-        <p class="mt-2 min-h-[3.2em] text-[17px] leading-snug text-muted">For busy phones that need transfers, follow-up and regular tuning.</p>
-        <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£<span data-price data-monthly="449" data-annual="382">449</span></span>
-          <span class="text-[16px] text-muted">a month + VAT</span>
-          <span class="flag">[PLACEHOLDER]</span>
-        </p>
-        <p class="mt-2 min-h-[1.6em] text-[15.5px] text-muted" data-billing-note data-monthly-text="Billed monthly" data-annual-text="Billed annually in advance">Billed monthly</p>
-        <p class="mt-5 rounded-[10px] bg-sand px-4 py-3 text-[16.5px] leading-snug"><strong class="font-semibold tnum">800 minutes</strong> included, then <span class="tnum">30p</span> a minute <span class="flag">[PLACEHOLDER]</span></p>
-        <ul class="mb-8 mt-6 space-y-2.5 text-[17px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Everything in Starter</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call transfer rules and out-of-hours routing</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Connection to your CRM or practice system</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Outbound follow-up to consented contacts</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Monthly optimisation call with your OMH lead</span></li>
-        </ul>
-        <a href="/contact?service=ai-voice-agents&amp;plan=growth" class="btn btn-primary mt-auto" data-track="pricing_book_demo" data-track-name="Growth">Book a demo<span class="sr-only"> for the Growth plan</span></a>
-      </article>
-      <article class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 border-line bg-surface" data-tier="scale">
-        <div class="flex items-center justify-between gap-3">
-          <h3>Scale</h3>
-          
-        </div>
-        <p class="mt-2 min-h-[3.2em] text-[17px] leading-snug text-muted">Several locations or departments on one managed service.</p>
-        <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£<span data-price data-monthly="849" data-annual="722">849</span></span>
-          <span class="text-[16px] text-muted">a month + VAT</span>
-          <span class="flag">[PLACEHOLDER]</span>
-        </p>
-        <p class="mt-2 min-h-[1.6em] text-[15.5px] text-muted" data-billing-note data-monthly-text="Billed monthly" data-annual-text="Billed annually in advance">Billed monthly</p>
-        <p class="mt-5 rounded-[10px] bg-sand px-4 py-3 text-[16.5px] leading-snug"><strong class="font-semibold tnum">2,000 minutes</strong> included, then <span class="tnum">25p</span> a minute <span class="flag">[PLACEHOLDER]</span></p>
-        <ul class="mb-8 mt-6 space-y-2.5 text-[17px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Everything in Growth</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Multiple locations, departments or agents</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call outcomes reported with your ads and website</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Priority script and knowledge changes</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Quarterly review with a senior strategist</span></li>
-        </ul>
-        <a href="/contact?service=ai-voice-agents&amp;plan=scale" class="btn btn-secondary mt-auto" data-track="pricing_book_demo" data-track-name="Scale">Book a demo<span class="sr-only"> for the Scale plan</span></a>
-      </article>
-    </div>
-
-    <ol class="mt-8 max-w-[58rem] list-decimal space-y-1.5 pl-5 text-[15.5px] text-muted">
-      <li>All prices exclude VAT at the current rate.</li>
-      <li>Plan prices, included minutes and per-minute rates are example figures and will be confirmed before launch. <span class="flag">[PLACEHOLDER]</span></li>
-      <li>Any one-off setup fee is agreed in writing before work starts. <span class="flag">[PLACEHOLDER]</span></li>
-      <li>Minutes are counted on answered inbound calls and connected outbound calls. Unused minutes don't roll over. <span class="flag">[CONFIRM]</span></li>
-      <li>Connections to calendars, CRMs and practice systems depend on the software you use. <span class="flag">[CONFIRM]</span></li>
-    </ol>
-  </div>
-</section>
+${pricingSection("bg-surface")}
 
 
 <!-- ===== COMPONENT: FAQ ===== -->
@@ -2080,7 +1987,7 @@ export const markup = String.raw`
         </summary>
         <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra.</p>
-          <p class="mt-3"><span class="flag flag-wrap">[PLACEHOLDER] contract length and notice period</span></p>
+          <p class="mt-3">Billed monthly, 30 days notice.</p>
         </div>
       </details>
       </div>

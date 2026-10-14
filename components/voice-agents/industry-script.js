@@ -1480,7 +1480,7 @@ export function runIndustryScript({ setTimeout, setInterval, requestAnimationFra
       set('lost', gbp.format(lost)); set('year', gbp.format(lost * 12));
       // About three minutes a call, for the calls the agent would pick up.
       var minutes = missed * 3;
-      var plan = minutes <= 300 ? 'Starter' : minutes <= 800 ? 'Growth' : 'Scale';
+      var plan = minutes <= 300 ? 'Starter' : minutes <= 500 ? 'Growth' : 'Scale';
       set('plan', 'About ' + num.format(minutes) + ' minutes a month. The ' + plan + ' plan would cover these calls.');
     }
     $$('[data-dc]', root).forEach(function (el) { el.addEventListener('input', update); });

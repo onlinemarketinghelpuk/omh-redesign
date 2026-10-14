@@ -818,7 +818,7 @@ export const markup = String.raw`
           <div>
             <p class="flex items-baseline justify-between gap-3"><span class="text-[15.5px] font-semibold">AI agent, Growth plan</span><span class="font-display text-[26px] font-semibold tnum">£5,388</span></p>
             <div class="mt-2 h-4 rounded-full bg-sand"><div class="cmp-bar cmp-bar-ai h-4 rounded-full" style="width:3.7%"></div></div>
-            <p class="mt-1.5 text-[14px] text-muted">All 168 hours, 800 minutes a month included, plus VAT <span class="flag">[PLACEHOLDER example pricing]</span></p>
+            <p class="mt-1.5 text-[14px] text-muted">All 168 hours, 500 minutes a month included, plus VAT and £1,295 one-off setup</p>
           </div>
         </div>
         <p class="mt-6 rounded-[14px] bg-sand px-4 py-3 text-[15.5px] leading-snug" data-cmp-note>The agent covers the <strong class="font-semibold tnum" data-cmp-gap>128</strong> hours a week your staff aren't on the phones, for less than one receptionist.</p>
@@ -898,7 +898,7 @@ export const markup = String.raw`
               <th scope="row" class="p-4 align-top font-semibold">Cost a year</th>
               <td class="p-4 align-top text-muted"><span data-cmp-staff>£34,652</span> for the hours you picked</td>
               <td class="p-4 align-top text-muted">Varies by provider and call volume</td>
-              <td class="cmp-ai-col p-4 align-top">£5,388 + VAT on the Growth plan</td>
+              <td class="cmp-ai-col p-4 align-top">£5,388 + VAT on the Growth plan, plus £1,295 one-off setup</td>
             </tr>
           </tbody>
         </table>

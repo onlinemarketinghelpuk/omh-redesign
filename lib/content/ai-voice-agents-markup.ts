@@ -4,6 +4,7 @@
 // components/voice-agents/VoiceAgentsScript.tsx, which finds them by data-*.
 // Styles: app/ai-voice-agents/voice-agents.css (everything under .va-page).
 // [CONFIRM] / [PLACEHOLDER] chips mark copy the client still has to confirm.
+import { pricingSection } from "@/lib/content/voice-pricing";
 export const voiceAgentsMarkup = String.raw`
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -649,7 +650,7 @@ export const voiceAgentsMarkup = String.raw`
     <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>How it works</p>
       <h2>Four steps from first call <span class="hl">to live agent</span></h2>
-      <p class="mt-5 text-muted">You stay in control at every step. Typical time from discovery to launch <span class="flag">[PLACEHOLDER]</span> We confirm your timeline after the first call.</p>
+      <p class="mt-5 text-muted">You stay in control at every step. Starter is live in 3 working days, Growth in 5 to 7, Scale in 12 to 15. We confirm your timeline after the first call.</p>
     </div>
 
     <ol class="relative mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -845,7 +846,7 @@ export const voiceAgentsMarkup = String.raw`
               <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Reschedules and cancels as well as books</span></li>
               <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sends confirmations and reminders by text</span></li>
             </ul>
-            <p class="mt-6 border-t border-line pt-4 text-[15.5px] text-muted">Diary and calendar connections <span class="flag">[CONFIRM]</span></p>
+            <p class="mt-6 border-t border-line pt-4 text-[15.5px] text-muted">Connections to calendars, CRMs and practice systems depend on the software you use. We confirm what connects on the discovery call.</p>
           </div>
           <div>
             <div class="card overflow-hidden">
@@ -1076,7 +1077,7 @@ export const voiceAgentsMarkup = String.raw`
 
 <section id="billing" data-component="Billing" class="relative overflow-hidden bg-surface">
   <div class="pointer-events-none absolute -left-40 top-24 h-[560px] w-[560px] rounded-full bg-gold/10 blur-3xl" aria-hidden="true"></div>
-  <div class="container-omh relative py-20 lg:py-28" data-bill data-bill-price="449" data-bill-included="800" data-bill-rate="0.3" data-bill-max="1200">
+  <div class="container-omh relative py-20 lg:py-28" data-bill data-bill-price="449" data-bill-included="500" data-bill-rate="0.6" data-bill-max="1200">
     <div class="grid items-center gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:grid-rows-[auto_auto]">
 
             <div class="relative order-2 mx-auto w-full max-w-[560px] lg:order-none lg:row-span-2 lg:min-h-[580px]" aria-label="Example invoice and usage report" role="group">
@@ -1085,7 +1086,7 @@ export const voiceAgentsMarkup = String.raw`
             <p class="font-display text-[17px] font-semibold">Usage report, October<span class="block font-body text-[13.5px] font-normal text-muted">Weekly call minutes</span></p>
           </div>
           <div class="mt-4 grid grid-cols-4 items-end gap-3 border-b border-[var(--va-line-strong)]" aria-hidden="true">
-            <div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">186</span><span class="w-full rounded-t-[6px] bg-ink/20" style="height:72px"></span></div><div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">241</span><span class="w-full rounded-t-[6px] bg-gold" style="height:93px"></span></div><div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">213</span><span class="w-full rounded-t-[6px] bg-ink/20" style="height:82px"></span></div><div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">234</span><span class="w-full rounded-t-[6px] bg-ink/20" style="height:90px"></span></div>
+            <div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">119</span><span class="w-full rounded-t-[6px] bg-ink/20" style="height:72px"></span></div><div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">155</span><span class="w-full rounded-t-[6px] bg-gold" style="height:93px"></span></div><div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">136</span><span class="w-full rounded-t-[6px] bg-ink/20" style="height:82px"></span></div><div class="flex flex-col items-center gap-1"><span class="text-[13px] font-semibold tnum">150</span><span class="w-full rounded-t-[6px] bg-ink/20" style="height:90px"></span></div>
           </div>
           <div class="mt-1.5 grid grid-cols-4 gap-3 text-center text-[13px] text-muted" aria-hidden="true"><span>Wk 1</span><span>Wk 2</span><span>Wk 3</span><span>Wk 4</span></div>
         </div>
@@ -1096,28 +1097,28 @@ export const voiceAgentsMarkup = String.raw`
               <p class="font-display text-body font-semibold leading-tight">Invoice OMH-VA-0042</p>
               <p class="mt-1 text-[14.5px] text-muted">Severn Plumbing Ltd, Bristol</p>
             </div>
-            <span class="flag">[PLACEHOLDER] figures</span>
+            <span class="chip">Example</span>
           </div>
 
           <div class="mt-5">
             <div class="flex items-baseline justify-between gap-3 text-[14.5px]">
-              <span class="font-semibold"><span class="tnum" data-bill-used>870</span> minutes used</span>
-              <span class="text-muted"><span class="tnum">800</span> included</span>
+              <span class="font-semibold"><span class="tnum" data-bill-used>560</span> minutes used</span>
+              <span class="text-muted"><span class="tnum">500</span> included</span>
             </div>
             <div class="relative mt-2 h-3 rounded-full bg-ink/10" aria-hidden="true">
               <span class="absolute inset-y-0 left-0 rounded-full bg-ink/45" data-bill-bar-in></span>
               <span class="absolute inset-y-0 rounded-r-full bg-gold" data-bill-bar-over></span>
-              <span class="absolute -top-1 bottom-[-4px] w-[2px] rounded bg-ink" style="left:66.66666666666666%"></span>
+              <span class="absolute -top-1 bottom-[-4px] w-[2px] rounded bg-ink" style="left:41.666666666666664%"></span>
             </div>
           </div>
 
           <table class="mt-5 w-full text-[15.5px] leading-snug">
             <caption class="sr-only">Example monthly invoice in pounds</caption>
             <tbody class="tnum">
-              <tr class="border-b border-line"><th scope="row" class="py-2.5 text-left font-normal">Growth plan<span class="block text-[13.5px] text-muted">Includes 800 minutes</span></th><td class="py-2.5 text-right align-top">£449.00</td></tr>
-              <tr class="border-b border-line"><th scope="row" class="py-2.5 text-left font-normal">Extra minutes<span class="block text-[13.5px] text-muted"><span data-bill-extra>74</span> at 30p</span></th><td class="py-2.5 text-right align-top" data-bill-extra-cost>£22.20</td></tr>
-              <tr class="border-b border-[var(--va-line-strong)]"><th scope="row" class="py-2.5 text-left font-normal text-muted">VAT at 20%</th><td class="py-2.5 text-right" data-bill-vat>£94.24</td></tr>
-              <tr class="font-display text-[19px] font-semibold"><th scope="row" class="pt-3 text-left">Total due</th><td class="pt-3 text-right" data-bill-total>£565.44</td></tr>
+              <tr class="border-b border-line"><th scope="row" class="py-2.5 text-left font-normal">Growth plan<span class="block text-[13.5px] text-muted">Includes 500 minutes</span></th><td class="py-2.5 text-right align-top">£449.00</td></tr>
+              <tr class="border-b border-line"><th scope="row" class="py-2.5 text-left font-normal">Extra minutes<span class="block text-[13.5px] text-muted"><span data-bill-extra>60</span> at 60p</span></th><td class="py-2.5 text-right align-top" data-bill-extra-cost>£36.00</td></tr>
+              <tr class="border-b border-[var(--va-line-strong)]"><th scope="row" class="py-2.5 text-left font-normal text-muted">VAT at 20%</th><td class="py-2.5 text-right" data-bill-vat>£97.00</td></tr>
+              <tr class="font-display text-[19px] font-semibold"><th scope="row" class="pt-3 text-left">Total due</th><td class="pt-3 text-right" data-bill-total>£582.00</td></tr>
             </tbody>
           </table>
         </div>
@@ -1141,9 +1142,9 @@ export const voiceAgentsMarkup = String.raw`
         <div class="rounded-[14px] border border-line bg-sand p-5">
           <div class="flex items-baseline justify-between gap-4">
             <label for="bill-minutes" class="font-display text-[17px] font-semibold">Try a busier or quieter month</label>
-            <output for="bill-minutes" class="shrink-0 whitespace-nowrap font-display text-[18px] font-semibold tnum" data-bill-output>870 min</output>
+            <output for="bill-minutes" class="shrink-0 whitespace-nowrap font-display text-[18px] font-semibold tnum" data-bill-output>560 min</output>
           </div>
-          <input id="bill-minutes" type="range" min="200" max="1200" step="10" value="870" class="mt-1" data-bill-input data-track="billing_minutes_slider" aria-describedby="bill-summary">
+          <input id="bill-minutes" type="range" min="200" max="1200" step="10" value="560" class="mt-1" data-bill-input data-track="billing_minutes_slider" aria-describedby="bill-summary">
           <p id="bill-summary" class="text-[15.5px] leading-snug" aria-live="polite" data-bill-summary></p>
         </div>
 
@@ -1514,195 +1515,7 @@ export const voiceAgentsMarkup = String.raw`
   </div>
 </dialog>
 
-<section id="white-label" data-component="WhiteLabel" class="relative overflow-hidden bg-sand">
-  <div class="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
-  <div class="container-omh relative py-20 lg:py-28" data-wl data-wl-monthly="349" data-wl-annual="291" data-wl-year="3490">
-    <div class="mx-auto text-center">
-      <span class="inline-flex rounded-full border border-gold bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl">For agencies and resellers</span>
-      <h2 class="mt-5">Sell AI voice agents under <span class="hl">your own brand</span></h2>
-      <p class="mx-auto mt-5 text-muted">For marketing agencies, web studios and IT providers who want to offer voice agents to their clients. We build and run the agents behind the scenes. Your clients only ever see your name.</p>
-    </div>
-
-    <fieldset class="mx-auto mt-9 w-fit">
-      <legend class="sr-only">Billing period</legend>
-      <div class="inline-grid grid-cols-2 gap-1 rounded-[12px] border border-line bg-surface p-1 text-[15.5px] font-semibold">
-        <label class="relative">
-          <input type="radio" name="wl-billing" value="monthly" class="peer sr-only" checked data-wl-period data-track="white_label_billing" data-track-name="monthly">
-          <span class="flex min-h-[44px] items-center justify-center rounded-[9px] px-4 text-muted peer-checked:bg-gold peer-checked:text-navy peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Monthly</span>
-        </label><label class="relative">
-          <input type="radio" name="wl-billing" value="annual" class="peer sr-only"  data-wl-period data-track="white_label_billing" data-track-name="annual">
-          <span class="flex min-h-[44px] items-center justify-center rounded-[9px] px-4 text-muted peer-checked:bg-gold peer-checked:text-navy peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yearly (2 months free)</span>
-        </label>
-      </div>
-    </fieldset>
-
-    <article class="mx-auto mt-8 grid max-w-[1100px] gap-10 rounded-[20px] border border-line bg-surface p-6 shadow-[0_40px_80px_-50px_rgb(16_24_40/0.45)] sm:p-9 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-12">
-      <div class="flex flex-col">
-        <span class="w-fit rounded-full bg-gold/20 px-3 py-1 text-[13.5px] font-semibold text-hl">Partner programme</span>
-        <h3 class="mt-4 !text-[clamp(30px,26px+1vw,40px)] !leading-[1.1]">White-label voice agents</h3>
-        <p class="mt-3 text-[17px] text-muted">Everything you need to offer AI receptionists to your clients, with a UK team doing the build, testing and monthly tuning.</p>
-        <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-display text-[clamp(3rem,2.5rem+1.6vw,4rem)] font-semibold leading-none tracking-tight text-hl tnum">£<span data-wl-price>349</span></span>
-          <span class="text-[17px] text-muted">a month + VAT</span> <span class="flag">[PLACEHOLDER]</span>
-        </p>
-        <p class="mt-2 text-[16px] text-muted" data-wl-note>Billed monthly. Then 8p a minute after 3,000 included minutes.</p>
-        <p class="mt-3 flex items-start gap-2 text-[15.5px] font-semibold text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>30 days' notice, no long contract <span class="flag">[CONFIRM]</span></span></p>
-        <div class="mt-auto pt-7">
-          <a href="/contact?service=ai-voice-agents&amp;type=white-label" class="btn btn-primary w-full" data-track="white_label_apply">Become a partner<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <a href="/contact?service=ai-voice-agents&amp;type=white-label-call" class="text-link mx-auto mt-2 flex w-fit !no-underline hover:!underline" data-track="white_label_book_call"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg>Book a call with our team</a>
-        </div>
-      </div>
-
-      <div>
-        <ul class="grid gap-x-6 gap-y-4 sm:grid-cols-2">
-          <li class="flex gap-3 text-[16.5px] leading-snug"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-3.5 !w-3.5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>3,000 minutes included, then 8p a minute <span class="flag">[PLACEHOLDER]</span></span></li>
-          <li class="flex gap-3 text-[16.5px] leading-snug"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-3.5 !w-3.5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Unlimited client sub-accounts <span class="flag">[CONFIRM]</span></span></li>
-          <li class="flex gap-3 text-[16.5px] leading-snug"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-3.5 !w-3.5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Your logo, colours and domain on the dashboard <span class="flag">[CONFIRM]</span></span></li>
-          <li class="flex gap-3 text-[16.5px] leading-snug"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-3.5 !w-3.5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Agents scripted, built and tested by OMH </span></li>
-          <li class="flex gap-3 text-[16.5px] leading-snug"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-3.5 !w-3.5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Outbound follow-up to consented contacts </span></li>
-          <li class="flex gap-3 text-[16.5px] leading-snug"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-3.5 !w-3.5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Monthly client reports in your branding </span></li>
-        </ul>
-        <div class="mt-7 rounded-[14px] bg-gold/15 p-5 sm:p-6">
-          <p class="font-display text-[18px] font-semibold">Every partnership includes</p>
-          <ul class="mt-3 space-y-2.5 text-[16px] leading-snug">
-            <li class="flex gap-3"><span class="mt-[3px] text-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>A named UK partner manager on email, phone and WhatsApp</span></li>
-            <li class="flex gap-3"><span class="mt-[3px] text-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>No OMH branding anywhere your clients look</span></li>
-            <li class="flex gap-3"><span class="mt-[3px] text-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>A demo agent set up for your sales pitches</span></li>
-            <li class="flex gap-3"><span class="mt-[3px] text-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>You set your own client prices and keep the margin</span></li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-        <div class="mx-auto mt-6 grid max-w-[1100px] gap-6 rounded-[20px] border border-line bg-surface p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
-      <div>
-        <h3 class="!text-[24px]">What could you earn?</h3>
-        <p class="mt-1 text-[16px] text-muted">Move the sliders to see a rough monthly margin.</p>
-        <div class="mt-5">
-          <div class="flex items-baseline justify-between gap-4"><label for="wl-clients" class="font-semibold">Clients on a voice agent</label><output for="wl-clients" class="font-display text-[19px] font-semibold tnum" data-wl-out="clients">8</output></div>
-          <input id="wl-clients" type="range" min="1" max="30" step="1" value="8" data-wl-input="clients" data-track="white_label_clients">
-        </div>
-        <div class="mt-3">
-          <div class="flex items-baseline justify-between gap-4"><label for="wl-charge" class="font-semibold">You charge each client a month</label><output for="wl-charge" class="font-display text-[19px] font-semibold tnum" data-wl-out="charge">£199</output></div>
-          <input id="wl-charge" type="range" min="49" max="499" step="10" value="199" data-wl-input="charge" data-track="white_label_charge">
-        </div>
-      </div>
-      <div class="on-band flex flex-col justify-center rounded-[14px] bg-band p-6 text-band-ink" aria-live="polite">
-        <p class="text-[15.5px] text-band-muted">Your estimated monthly margin</p>
-        <p class="mt-1 font-display text-[clamp(2.5rem,2rem+2vw,3.5rem)] font-semibold leading-none tracking-tight text-band-hl tnum" data-wl-margin>£1,243</p>
-        <dl class="mt-5 grid grid-cols-2 gap-4 border-t border-band-line pt-4 text-[15px]">
-          <div><dt class="text-band-muted">You bill clients</dt><dd class="font-display text-[20px] font-semibold tnum" data-wl-revenue>£1,592</dd></div>
-          <div><dt class="text-band-muted">Your OMH plan</dt><dd class="font-display text-[20px] font-semibold tnum" data-wl-cost>£349</dd></div>
-        </dl>
-        <p class="mt-4 text-[14px] leading-snug text-band-muted">Illustrative only, before VAT. Assumes your clients' calls fit within the included minutes. Not a forecast or a guarantee.</p>
-      </div>
-    </div>
-
-    <dl class="mx-auto mt-10 grid max-w-[1100px] grid-cols-2 gap-y-6 text-center md:grid-cols-4">
-      <div class="  px-3"><dd class="font-display text-[clamp(1.75rem,1.4rem+1.2vw,2.5rem)] font-semibold leading-none text-hl tnum">100%</dd><dt class="mt-2 text-[15.5px] text-muted">your branding</dt></div>
-      <div class="md:border-l md:border-[var(--va-line-strong)] max-md:border-l max-md:border-[var(--va-line-strong)] px-3"><dd class="font-display text-[clamp(1.75rem,1.4rem+1.2vw,2.5rem)] font-semibold leading-none text-hl tnum">1-to-1</dd><dt class="mt-2 text-[15.5px] text-muted">partner manager</dt></div>
-      <div class="md:border-l md:border-[var(--va-line-strong)]  px-3"><dd class="font-display text-[clamp(1.75rem,1.4rem+1.2vw,2.5rem)] font-semibold leading-none text-hl tnum">£0</dd><dt class="mt-2 text-[15.5px] text-muted">setup fee <span class="flag">[PLACEHOLDER]</span></dt></div>
-      <div class="md:border-l md:border-[var(--va-line-strong)] max-md:border-l max-md:border-[var(--va-line-strong)] px-3"><dd class="font-display text-[clamp(1.75rem,1.4rem+1.2vw,2.5rem)] font-semibold leading-none text-hl tnum">UK</dd><dt class="mt-2 text-[15.5px] text-muted">team, based in Essex</dt></div>
-    </dl>
-  </div>
-</section>
-
-<section id="pricing" data-component="Pricing">
-  <div class="container-omh py-20 lg:py-28" data-pricing data-billing="monthly">
-    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-      <div class="">
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
-        <h2>Three plans, priced <span class="hl">by the month</span></h2>
-        <p class="mt-5 text-muted">Every plan includes setup support, a managed agent and a monthly report. The figures below are examples while we finalise pricing. <span class="flag">[PLACEHOLDER]</span></p>
-      </div>
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[17px] font-semibold">
-        <span id="bill-monthly" data-billing-label="monthly">Monthly</span>
-        <button type="button" role="switch" aria-checked="false" aria-label="Bill annually" class="group flex h-11 w-[72px] shrink-0 items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] bg-surface p-[4px] transition-colors aria-checked:border-gold-deep aria-checked:bg-gold" data-billing-toggle data-track="pricing_billing_toggle">
-          <span class="block h-8 w-8 rounded-full bg-ink shadow-[0_1px_3px_rgb(16_24_40/0.3)] transition-transform duration-200 group-aria-checked:translate-x-[29px] group-aria-checked:bg-navy" aria-hidden="true" data-billing-knob></span>
-        </button>
-        <span data-billing-label="annual" class="text-muted">Annual</span>
-        <span class="chip max-sm:order-last">Save 15% <span class="flag">[PLACEHOLDER]</span></span>
-      </div>
-    </div>
-
-    <div class="mt-12 grid gap-6 lg:grid-cols-3 lg:items-stretch">
-      <article class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 border-line bg-surface" data-tier="starter">
-        <div class="flex items-center justify-between gap-3">
-          <h3>Starter</h3>
-          
-        </div>
-        <p class="mt-2 min-h-[3.2em] text-[17px] leading-snug text-muted">One agent answering and booking for a single location.</p>
-        <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£<span data-price data-monthly="249" data-annual="212">249</span></span>
-          <span class="text-[16px] text-muted">a month + VAT</span>
-          <span class="flag">[PLACEHOLDER]</span>
-        </p>
-        <p class="mt-2 min-h-[1.6em] text-[15.5px] text-muted" data-billing-note data-monthly-text="Billed monthly" data-annual-text="Billed annually in advance">Billed monthly</p>
-        <p class="mt-5 rounded-[10px] bg-sand px-4 py-3 text-[16.5px] leading-snug"><strong class="font-semibold tnum">300 minutes</strong> included, then <span class="tnum">35p</span> a minute <span class="flag">[PLACEHOLDER]</span></p>
-        <ul class="mb-8 mt-6 space-y-2.5 text-[17px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Inbound call answering, day and night</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Appointment booking into one calendar</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Your greeting, voice and opening hours</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call summaries by email</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Monthly usage report</span></li>
-        </ul>
-        <a href="/contact?service=ai-voice-agents&amp;plan=starter" class="btn btn-secondary mt-auto" data-track="pricing_book_demo" data-track-name="Starter">Book a demo<span class="sr-only"> for the Starter plan</span></a>
-      </article>
-      <article class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 border-ink bg-surface shadow-[0_24px_60px_-32px_rgb(16_24_40/0.4)] dark:border-gold" data-tier="growth">
-        <div class="flex items-center justify-between gap-3">
-          <h3>Growth</h3>
-          <span class="rounded-full bg-gold px-3 py-1 text-[13.5px] font-semibold text-navy">Most common starting point</span>
-        </div>
-        <p class="mt-2 min-h-[3.2em] text-[17px] leading-snug text-muted">For busy phones that need transfers, follow-up and regular tuning.</p>
-        <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£<span data-price data-monthly="449" data-annual="382">449</span></span>
-          <span class="text-[16px] text-muted">a month + VAT</span>
-          <span class="flag">[PLACEHOLDER]</span>
-        </p>
-        <p class="mt-2 min-h-[1.6em] text-[15.5px] text-muted" data-billing-note data-monthly-text="Billed monthly" data-annual-text="Billed annually in advance">Billed monthly</p>
-        <p class="mt-5 rounded-[10px] bg-sand px-4 py-3 text-[16.5px] leading-snug"><strong class="font-semibold tnum">800 minutes</strong> included, then <span class="tnum">30p</span> a minute <span class="flag">[PLACEHOLDER]</span></p>
-        <ul class="mb-8 mt-6 space-y-2.5 text-[17px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Everything in Starter</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call transfer rules and out-of-hours routing</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Connection to your CRM or practice system</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Outbound follow-up to consented contacts</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Monthly optimisation call with your OMH lead</span></li>
-        </ul>
-        <a href="/contact?service=ai-voice-agents&amp;plan=growth" class="btn btn-primary mt-auto" data-track="pricing_book_demo" data-track-name="Growth">Book a demo<span class="sr-only"> for the Growth plan</span></a>
-      </article>
-      <article class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 border-line bg-surface" data-tier="scale">
-        <div class="flex items-center justify-between gap-3">
-          <h3>Scale</h3>
-          
-        </div>
-        <p class="mt-2 min-h-[3.2em] text-[17px] leading-snug text-muted">Several locations or departments on one managed service.</p>
-        <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£<span data-price data-monthly="849" data-annual="722">849</span></span>
-          <span class="text-[16px] text-muted">a month + VAT</span>
-          <span class="flag">[PLACEHOLDER]</span>
-        </p>
-        <p class="mt-2 min-h-[1.6em] text-[15.5px] text-muted" data-billing-note data-monthly-text="Billed monthly" data-annual-text="Billed annually in advance">Billed monthly</p>
-        <p class="mt-5 rounded-[10px] bg-sand px-4 py-3 text-[16.5px] leading-snug"><strong class="font-semibold tnum">2,000 minutes</strong> included, then <span class="tnum">25p</span> a minute <span class="flag">[PLACEHOLDER]</span></p>
-        <ul class="mb-8 mt-6 space-y-2.5 text-[17px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Everything in Growth</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Multiple locations, departments or agents</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Call outcomes reported with your ads and website</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Priority script and knowledge changes</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Quarterly review with a senior strategist</span></li>
-        </ul>
-        <a href="/contact?service=ai-voice-agents&amp;plan=scale" class="btn btn-secondary mt-auto" data-track="pricing_book_demo" data-track-name="Scale">Book a demo<span class="sr-only"> for the Scale plan</span></a>
-      </article>
-    </div>
-
-    <ol class="mt-8 list-decimal space-y-1.5 pl-5 text-[15.5px] text-muted">
-      <li>All prices exclude VAT at the current rate.</li>
-      <li>Plan prices, included minutes and per-minute rates are example figures and will be confirmed before launch. <span class="flag">[PLACEHOLDER]</span></li>
-      <li>One-off setup fee <span class="flag">[PLACEHOLDER]</span> Agreed in writing before work starts.</li>
-      <li>Minutes are counted on answered inbound calls and connected outbound calls. Unused minutes don't roll over. <span class="flag">[CONFIRM]</span></li>
-      <li>Connections to calendars, CRMs and practice systems depend on the software you use. <span class="flag">[CONFIRM]</span></li>
-    </ol>
-  </div>
-</section>
+${pricingSection()}
 
 <section id="calculator" data-component="MissedCallCalculator" class="bg-sand">
   <div class="container-omh py-20 lg:py-28">
@@ -1807,7 +1620,7 @@ export const voiceAgentsMarkup = String.raw`
         <tbody>
           <tr>
             <th scope="row" class="border-t border-line px-5 py-4 align-top font-display text-[16px] font-semibold">Typical monthly cost</th>
-            <td class="cmp-omh font-semibold border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span><span class="sr-only">Yes: </span>From £249 + VAT <span class="flag">[PLACEHOLDER]</span></span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span><span class="sr-only">Yes: </span>Free</span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-hl"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-minus"/></svg></span><span><span class="sr-only">Partly: </span>Around £50 to £400, often per call <span class="flag">[CONFIRM]</span></span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-miss"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span><span><span class="sr-only">No: </span>Around £2,000+ with employer costs <span class="flag">[CONFIRM]</span></span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-hl"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-minus"/></svg></span><span><span class="sr-only">Partly: </span>Around £30 to £300 plus usage <span class="flag">[CONFIRM]</span></span></span></td>
+            <td class="cmp-omh font-semibold border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span><span class="sr-only">Yes: </span>From £249 + VAT</span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span><span class="sr-only">Yes: </span>Free</span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-hl"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-minus"/></svg></span><span><span class="sr-only">Partly: </span>Around £50 to £400, often per call <span class="flag">[CONFIRM]</span></span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-miss"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span><span><span class="sr-only">No: </span>Around £2,000+ with employer costs <span class="flag">[CONFIRM]</span></span></span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="flex gap-2"><span class="text-hl"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-minus"/></svg></span><span><span class="sr-only">Partly: </span>Around £30 to £300 plus usage <span class="flag">[CONFIRM]</span></span></span></td>
           </tr>
           <tr>
             <th scope="row" class="border-t border-line px-5 py-4 align-top font-display text-[16px] font-semibold">Answers out of hours</th>
@@ -1854,7 +1667,7 @@ export const voiceAgentsMarkup = String.raw`
           <div class="border-b border-line last:border-0">
             <dt class="px-4 pt-3 text-[14px] font-semibold text-muted">Typical monthly cost</dt>
             <dd class="grid grid-cols-2 text-[15px] leading-snug">
-              <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold"><span class="flex gap-2"><span class="text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span><span class="sr-only">Yes: </span>From £249 + VAT <span class="flag">[PLACEHOLDER]</span></span></span></span>
+              <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold"><span class="flex gap-2"><span class="text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span><span class="sr-only">Yes: </span>From £249 + VAT</span></span></span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1"><span class="flex gap-2"><span class="text-ok"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span><span class="sr-only">Yes: </span>Free</span></span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden><span class="flex gap-2"><span class="text-hl"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-minus"/></svg></span><span><span class="sr-only">Partly: </span>Around £50 to £400, often per call <span class="flag">[CONFIRM]</span></span></span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden><span class="flex gap-2"><span class="text-miss"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span><span><span class="sr-only">No: </span>Around £2,000+ with employer costs <span class="flag">[CONFIRM]</span></span></span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden><span class="flex gap-2"><span class="text-hl"><svg class="icon mt-[3px]" aria-hidden="true" focusable="false"><use href="#i-minus"/></svg></span><span><span class="sr-only">Partly: </span>Around £30 to £300 plus usage <span class="flag">[CONFIRM]</span></span></span></span>
             </dd>
           </div>
@@ -1994,7 +1807,6 @@ export const voiceAgentsMarkup = String.raw`
         </summary>
         <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>The agent needs somewhere to put bookings and call notes, usually your calendar and your CRM or practice system. We check your exact tools during discovery and tell you plainly what connects directly, what needs a workaround and what is not possible yet.</p>
-          <p class="mt-3"><span class="flag flag-wrap">[CONFIRM] list of supported calendar and CRM integrations</span></p>
         </div>
       </details>
       <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="setup" data-track-name="Can we keep our existing phone number, or get a local one?">
@@ -2092,7 +1904,7 @@ export const voiceAgentsMarkup = String.raw`
         </summary>
         <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>It depends on how many types of call you have and what the agent needs to connect to. A simple booking agent is quicker than one covering several departments. We give you a realistic timeline after the discovery call, before you commit to anything.</p>
-          <p class="mt-3"><span class="flag flag-wrap">[PLACEHOLDER] typical setup time</span></p>
+          <p class="mt-3">Starter is live in 3 working days, Growth in 5 to 7, Scale in 12 to 15. The clock starts when we have your content and your diary access.</p>
         </div>
       </details>
       <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="callers" data-track-name="What happens when the agent does not know the answer?">
@@ -2120,7 +1932,7 @@ export const voiceAgentsMarkup = String.raw`
         </summary>
         <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>We set out the terms in writing before you start, including the notice period, what is included each month and what counts as extra. There are no hidden usage fees. Every invoice shows your included minutes and any overage.</p>
-          <p class="mt-3"><span class="flag flag-wrap">[PLACEHOLDER] contract length and notice period</span></p>
+          <p class="mt-3">Billed monthly, 30 days notice.</p>
         </div>
       </details>
       </div>

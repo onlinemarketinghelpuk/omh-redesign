@@ -516,22 +516,6 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     });
   }
 
-  /* ----------------------------------------------------- Pricing toggle */
-  function initPricingToggle() {
-    const root = $("[data-pricing]");
-    if (!root) return;
-    const toggle = $("[data-billing-toggle]", root);
-    function set(annual: boolean) {
-      const mode = annual ? "annual" : "monthly";
-      root.dataset.billing = mode;
-      toggle.setAttribute("aria-checked", String(annual));
-      $$("[data-price]", root).forEach((el) => (el.textContent = el.dataset[mode] ?? ""));
-      $$("[data-billing-note]", root).forEach((el) => (el.textContent = el.dataset[mode + "Text"] ?? ""));
-      $$("[data-billing-label]", root).forEach((el) => el.classList.toggle("text-muted", el.dataset.billingLabel !== mode));
-    }
-    on(toggle, "click", () => set(toggle.getAttribute("aria-checked") !== "true"));
-  }
-
   /* --------------------------------------------------------- Calculator */
   function initCalculator() {
     const root = $("[data-calc]");
@@ -845,42 +829,6 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     update();
   }
 
-  /* ---------------------------------------------------------- White label */
-  function initWhiteLabel() {
-    const root = $("[data-wl]");
-    if (!root) return;
-    const gbp0 = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
-    let period = "monthly";
-    const planCost = () => Number(root.dataset[period === "annual" ? "wlAnnual" : "wlMonthly"]);
-    function update() {
-      const cost = planCost();
-      $("[data-wl-price]", root).textContent = String(cost);
-      $("[data-wl-note]", root).textContent =
-        period === "annual"
-          ? "Billed " + gbp0.format(Number(root.dataset.wlYear)) + " a year. Then 8p a minute after 3,000 included minutes."
-          : "Billed monthly. Then 8p a minute after 3,000 included minutes.";
-      const clients = Number($<HTMLInputElement>('[data-wl-input="clients"]', root).value);
-      const charge = Number($<HTMLInputElement>('[data-wl-input="charge"]', root).value);
-      const revenue = clients * charge;
-      const margin = revenue - cost;
-      $('[data-wl-out="clients"]', root).textContent = String(clients);
-      $('[data-wl-out="charge"]', root).textContent = gbp0.format(charge);
-      $("[data-wl-revenue]", root).textContent = gbp0.format(revenue);
-      $("[data-wl-cost]", root).textContent = gbp0.format(cost);
-      $("[data-wl-margin]", root).textContent = (margin < 0 ? "−" : "") + gbp0.format(Math.abs(margin));
-    }
-    $$<HTMLInputElement>("[data-wl-period]", root).forEach((r) => {
-      on(r, "change", () => {
-        if (r.checked) {
-          period = r.value;
-          update();
-        }
-      });
-    });
-    $$("[data-wl-input]", root).forEach((el) => on(el, "input", update));
-    update();
-  }
-
   /* ------------------------------------------------------------ Compare */
   function initCompare() {
     const root = $("[data-cmp]");
@@ -1155,11 +1103,9 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   initFlows();
   initToneSwitch();
   initBrandBuilder();
-  initPricingToggle();
   initCalculator();
   initBilling();
   initFitCheck();
-  initWhiteLabel();
   initCompare();
   initFaq();
   initRelated();
