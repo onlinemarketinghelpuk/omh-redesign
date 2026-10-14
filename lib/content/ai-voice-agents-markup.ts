@@ -281,148 +281,140 @@ export const voiceAgentsMarkup = String.raw`
     <p class="sr-only" aria-live="polite" data-industry-count></p>
 
     <div class="mt-8 grid gap-5 lg:grid-cols-2" data-industry-list>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="property">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="property">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Estate &amp; Letting Agents</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Estate &amp; Letting Agents</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book viewings and valuations</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Qualify buyers and tenants</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Log tenant maintenance calls</span></li>
         </ul>
         
-                <div class="pt-5">
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents" data-future-href="/ai-voice-agents/estate-letting-agents" class="text-link" data-track="industry_click" data-track-name="Estate &amp; Letting Agents">Learn more<span class="sr-only"> about voice agents for estate &amp; letting agents</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="health">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Dental Clinics</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">An AI receptionist for dentists that keeps the front desk free for the patients in the room.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Dental Clinics</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">An AI receptionist for dentists that keeps the front desk free for the patients in the room.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book check-ups and hygiene visits</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Move and cancel appointments</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route urgent calls to your emergency line</span></li>
         </ul>
-        <p class="mt-4 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2.5 text-[15px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-                <div class="pt-5">
+        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[14.5px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics" data-future-href="/ai-voice-agents/dental-clinics" class="text-link" data-track="industry_click" data-track-name="Dental Clinics">Learn more<span class="sr-only"> about voice agents for dental clinics</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="health">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-stethoscope"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-stethoscope"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Clinics &amp; Healthcare</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">Takes booking and admin calls so reception can focus on the patients in front of them.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Clinics &amp; Healthcare</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes booking and admin calls so reception can focus on the patients in front of them.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book across practitioners</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Opening hours and directions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Confirmation calls to cut no-shows</span></li>
         </ul>
-        <p class="mt-4 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2.5 text-[15px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-                <div class="pt-5">
+        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[14.5px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=clinics-healthcare" data-future-href="/ai-voice-agents/clinics-healthcare" class="text-link" data-track="industry_click" data-track-name="Clinics &amp; Healthcare">Learn more<span class="sr-only"> about voice agents for clinics &amp; healthcare</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="trades">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-wrench"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-wrench"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Plumbers</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">An answering service for plumbers that picks up while your hands are full.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Plumbers</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">An answering service for plumbers that picks up while your hands are full.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture call-outs while you are on a job</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put emergencies through to the plumber on call</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book quote visits</span></li>
         </ul>
         
-                <div class="pt-5">
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=plumbers" data-future-href="/ai-voice-agents/plumbers" class="text-link" data-track="industry_click" data-track-name="Plumbers">Learn more<span class="sr-only"> about voice agents for plumbers</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="trades">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Heating &amp; HVAC</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">Answers breakdown and service calls through the winter rush, day and night.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Heating &amp; HVAC</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers breakdown and service calls through the winter rush, day and night.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book annual services and repairs</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Record make, model and fault code</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put no-heating calls first</span></li>
         </ul>
         
-                <div class="pt-5">
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=heating-hvac" data-future-href="/ai-voice-agents/heating-hvac" class="text-link" data-track="industry_click" data-track-name="Heating &amp; HVAC">Learn more<span class="sr-only"> about voice agents for heating &amp; hvac</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="trades">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-hard-hat"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-hard-hat"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Contractors &amp; Builders</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">Takes project enquiries properly while the team is on site.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Contractors &amp; Builders</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes project enquiries properly while the team is on site.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Take the brief: type, size, budget, timing</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book site visits and quotes</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their site manager</span></li>
         </ul>
         
-                <div class="pt-5">
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=contractors-builders" data-future-href="/ai-voice-agents/contractors-builders" class="text-link" data-track="industry_click" data-track-name="Contractors &amp; Builders">Learn more<span class="sr-only"> about voice agents for contractors &amp; builders</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="professional">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Law Firms</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">Takes new enquiries and routes existing clients while fee earners are in court or meetings.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Law Firms</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes new enquiries and routes existing clients while fee earners are in court or meetings.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture new enquiries and area of law</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book initial consultations</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their named solicitor</span></li>
         </ul>
-        <p class="mt-4 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2.5 text-[15px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
-                <div class="pt-5">
+        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[14.5px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=law-firms" data-future-href="/ai-voice-agents/law-firms" class="text-link" data-track="industry_click" data-track-name="Law Firms">Learn more<span class="sr-only"> about voice agents for law firms</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-      <article class="grid items-center gap-4 rounded-[18px] border border-line bg-surface p-4 sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5" data-industry data-group="professional">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-paper sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold/20 text-hl"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span></span>
+      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-paper sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold/20 text-hl"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span></span>
         <div class="min-w-0">
-        <h3 class="!text-[24px]">Car Dealerships</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-muted">Answers sales and service calls so nobody rings off while the desk is busy.</p>
-        <ul class="mt-5 space-y-2 text-[16.5px] leading-snug">
+        <h3 class="!text-[21px]">Car Dealerships</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers sales and service calls so nobody rings off while the desk is busy.</p>
+        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book test drives and services</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Stock and opening-hours questions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Collect part-exchange details</span></li>
         </ul>
         
-                <div class="pt-5">
+                <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=car-dealerships" data-future-href="/ai-voice-agents/car-dealerships" class="text-link" data-track="industry_click" data-track-name="Car Dealerships">Learn more<span class="sr-only"> about voice agents for car dealerships</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-          <span class="mt-1 block"><span class="flag">[PLACEHOLDER] industry page</span></span>
         </div>
         </div>
       </article>
-            <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-4 text-band-ink sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-6 sm:p-5 lg:col-span-2" aria-labelledby="industries-cta-title">
-        <span class="grid h-[150px] place-items-center rounded-[12px] bg-white/5 sm:h-auto sm:self-stretch" aria-hidden="true"><span class="grid h-20 w-20 place-items-center rounded-[18px] bg-gold text-navy"><svg class="icon !h-10 !w-10" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span></span>
+            <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 lg:col-span-2" aria-labelledby="industries-cta-title">
+        <span class="grid size-[88px] place-items-center rounded-[12px] bg-white/5 sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold text-navy"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span></span>
         <div class="min-w-0">
-        <h3 id="industries-cta-title" class="!text-[24px]">Not sure how your calls would fit?</h3>
-        <p class="mt-3 text-[17px] leading-[1.5] text-band-muted">Tell us who rings you and why. We'll map your calls and show you what an agent would handle and what it would pass to your team.</p>
-        <div class="pt-5">
+        <h3 id="industries-cta-title" class="!text-[21px]">Not sure how your calls would fit?</h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-band-muted">Tell us who rings you and why. We'll map your calls and show you what an agent would handle and what it would pass to your team.</p>
+        <div class="pt-4">
           <a href="/contact?service=ai-voice-agents" class="btn btn-primary" data-track="industries_cta_book_demo">Book a Voice Agent Demo</a>
         </div>
         </div>
