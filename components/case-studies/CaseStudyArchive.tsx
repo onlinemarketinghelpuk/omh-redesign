@@ -83,13 +83,16 @@ export function CaseStudyArchive() {
       </header>
 
       <section aria-label="Featured case study" className="container-omh pt-[clamp(56px,6vw,88px)]">
-        <div className="dark-grid grid overflow-hidden rounded-card bg-inverse text-oninverse shadow-[0_36px_90px_-48px_rgb(16_24_40/0.6)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+        <div className="dark-grid grid grid-cols-1 overflow-hidden rounded-card bg-inverse text-oninverse shadow-[0_36px_90px_-48px_rgb(16_24_40/0.6)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <Link
             href={`/case-studies/${featured.slug}`}
             aria-label={`Read the ${featured.client} case study`}
             className="block min-h-[300px] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-amber"
           >
-            <CaseStudyVisual study={featured} ratio="4/3" priority className="h-full" frameClassName="h-full rounded-none" />
+            {/* Side by side, the text sets the row height; a fixed 4/3 at that height made the photo
+                ~1.5x its column wide and it ran under the text. So from lg the photo just fills its cell;
+                stacked, it is a plain 4/3 at the card's width. */}
+            <CaseStudyVisual study={featured} ratio="4/3" priority className="lg:h-full" frameClassName="rounded-none lg:h-full lg:aspect-auto!" />
           </Link>
           <div className="flex flex-col justify-center p-[clamp(28px,4vw,56px)]">
             <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-amber">

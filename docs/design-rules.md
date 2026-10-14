@@ -35,7 +35,11 @@ omh-redesign.vercel.app.
    use equal ratios. The solution pages pair `5/4` with `16/9` the same way.
 6. **`fill` images with an aspect ratio go in `minmax(0, Nfr)` columns.** A
    plain `1.1fr 1fr` grid let the image column swallow the row (968px image,
-   376px text on the case-studies featured card).
+   376px text on the case-studies featured card). And never combine a fixed
+   aspect ratio with `h-full` beside a taller column: the height comes from the
+   other column, so the width follows the ratio and spills past the cell (958px
+   photo in a 622px column under the featured card's text, 14 Oct 2026). Drop the
+   ratio where the image is stretched (`lg:aspect-auto!`).
 
 ## 2. Type
 
