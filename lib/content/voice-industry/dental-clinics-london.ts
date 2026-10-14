@@ -203,10 +203,10 @@ export const markup = String.raw`
       <div>
         <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(16_24_40/0.5)]"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London · 020</p>
         <h1 class="mt-5">AI Voice Agents for Dental Clinics <span class="hl">in London</span></h1>
-        <p class="mt-6 max-w-[36rem] text-[19px] text-muted">An AI receptionist for London dental practices. It answers every call on the first ring, books check-ups and new patients, and sends urgent calls to your team, day and night. It never gives clinical advice.</p>
+        <p class="mt-6 text-body text-muted">An AI receptionist for London dental practices. It answers every call on the first ring, books check-ups and new patients, and sends urgent calls to your team, day and night. It never gives clinical advice.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="london_dental_hero_book">Book a demo for your London practice</a>
-          <a href="#call" class="btn btn-secondary !bg-surface" data-track="london_dental_hero_hear"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a London call</a>
+          <a href="#call" class="btn btn-secondary !bg-surface" data-track="london_dental_hero_hear"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a London call</a>
         </div>
         <p class="mt-6 text-[15px] text-muted">Built and managed by OMH, a UK team based in Hullbridge, Essex. Set-up is by video call and phone.</p>
       </div>
@@ -246,24 +246,12 @@ export const markup = String.raw`
 </section>
 
 
-<!-- ===== COMPONENT: SectionNav ===== -->
-<nav aria-label="On this page" data-component="SectionNav" data-section-nav class="sticky top-[69px] z-30 border-b border-line bg-paper/95 backdrop-blur-[2px]">
-  <div class="container-omh flex items-center gap-4">
-    <ul class="no-scrollbar -mx-2 flex flex-1 items-center gap-1 overflow-x-auto py-2">
-      <li class="shrink-0"><a href="#london" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="London">London</a></li><li class="shrink-0"><a href="#areas" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Areas">Areas</a></li><li class="shrink-0"><a href="#routing" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Several practices">Several practices</a></li><li class="shrink-0"><a href="#benefits" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Benefits">Benefits</a></li><li class="shrink-0"><a href="#call" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Hear a call">Hear a call</a></li><li class="shrink-0"><a href="#clients" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Case studies">Case studies</a></li><li class="shrink-0"><a href="#calendar" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Dental year">Dental year</a></li><li class="shrink-0"><a href="#rules" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="NHS changes">NHS changes</a></li><li class="shrink-0"><a href="#compare" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Compare">Compare</a></li><li class="shrink-0"><a href="#faq" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="FAQs">FAQs</a></li>
-    </ul>
-    <a href="#book-demo" class="btn btn-primary !min-h-[40px] shrink-0 !px-4 !text-[15px] max-md:hidden" data-track="section_nav_book_demo">Book a demo</a>
-  </div>
-  <span class="absolute inset-x-0 bottom-[-1px] h-[2px] bg-gold" data-section-progress aria-hidden="true"></span>
-</nav>
-
-
 <!-- ===== COMPONENT: LondonAtAGlance ===== -->
 <section id="london" data-component="LondonAtAGlance" class="bg-surface">
   <div class="container-omh py-20 lg:py-24">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>London at a glance</p><h2>A city where <span class="hl">every call is worth answering</span></h2></div>
-      <p class="text-muted lg:pt-10">Access to NHS dentistry varies a lot across London, and patients looking for an appointment often ring more than one practice. The practice that answers first usually books them.</p>
+      <p class="mt-5 text-muted">Access to NHS dentistry varies a lot across London, and patients looking for an appointment often ring more than one practice. The practice that answers first usually books them.</p>
     </div>
     <dl class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <div class="flex flex-col rounded-[20px] border border-line bg-paper p-5">
@@ -322,9 +310,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonAreas ===== -->
 <section id="areas" data-component="LondonAreas" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-lm>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Across London</p><h2>Every part of London <span class="hl">rings differently</span></h2></div>
-      <p class="text-muted lg:pt-10">Pick an area to see the calls practices there tend to get, and how we set the agent up for them. It works the same for any London postcode.</p>
+      <p class="mt-5 text-muted">Pick an area to see the calls practices there tend to get, and how we set the agent up for them. It works the same for any London postcode.</p>
     </div>
     <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)]">
       <figure class="rounded-[22px] border border-line bg-surface p-3 sm:p-4">
@@ -427,9 +415,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonRouting ===== -->
 <section id="routing" data-component="LondonRouting" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-rt data-unit="practice">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Several London practices?</p><h2>One number, <span class="hl">the right practice every time</span></h2></div>
-      <p class="text-muted lg:pt-10">Your agent asks for the postcode and the reason for the call, then sends it to the practice and team that cover it. You set the rules. Try a postcode to see where a call would go.</p>
+      <p class="mt-5 text-muted">Your agent asks for the postcode and the reason for the call, then sends it to the practice and team that cover it. You set the rules. Try a postcode to see where a call would go.</p>
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,.75fr)_minmax(0,1.25fr)]">
@@ -511,7 +499,7 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonBenefits ===== -->
 <section id="benefits" data-component="LondonBenefits" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Why London practices use it</p>
       <h2>What a voice agent <span class="hl">does for a London practice</span></h2>
     </div>
@@ -554,9 +542,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: ModernisePractice ===== -->
 <section id="modernise" data-component="ModernisePractice" class="bg-sand">
   <div class="container-omh py-20 lg:py-28" data-mb>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Modernise your practice</p><h2>The same Monday morning, <span class="hl">two ways</span></h2></div>
-      <div class="lg:pt-10">
+      <div class="mt-5">
         <p class="text-muted">A busy Hackney practice after the weekend. Switch between the two to see the difference.</p>
         <div class="mt-4 inline-grid grid-cols-2 gap-1 rounded-[12px] border border-line bg-surface p-1 text-[15px] font-semibold" role="group" aria-label="Show Monday morning">
           <button type="button" class="min-h-[44px] rounded-[9px] px-4 aria-pressed:bg-ink aria-pressed:text-paper" aria-pressed="true" data-mb-mode="before" data-track="london_dental_modernise" data-track-name="before">Without an agent</button>
@@ -593,17 +581,17 @@ export const markup = String.raw`
         <li class="flex gap-3"><svg class="icon mt-1 text-band-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Your qualifying questions, asked your way</span></li>
         <li class="flex gap-3"><svg class="icon mt-1 text-band-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Appointment in the diary, forms sent by text</span></li>
       </ul>
-      <button type="button" class="btn btn-primary mt-8" data-lc-play data-track="london_dental_call_play"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Play the call</button>
+      <button type="button" class="btn btn-primary mt-8" data-lc-play data-track="london_dental_call_play"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Play the call</button>
     </div>
     <div class="rounded-[24px] border border-band-line bg-band-surface p-4 sm:p-6" data-lc-card>
       <div class="flex items-center gap-3 border-b border-band-line pb-4">
-        <span class="grid h-11 w-11 place-items-center rounded-full bg-gold text-navy"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg></span>
+        <span class="grid h-11 w-11 place-items-center rounded-full bg-gold text-navy"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg></span>
         <div class="flex-1"><p class="font-display text-[17px] font-semibold">Halden Dental, Islington</p><p class="text-[14px] text-band-muted"><span class="tnum">020 7946 0321</span> · Tue 19:42</p></div>
         <span class="text-[14px] font-semibold text-band-hl tnum" data-lc-timer>00:42</span>
       </div>
       <ol class="mt-4 space-y-3" aria-label="Call transcript">
-        <li class="lc-line " data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Good evening, Halden Dental. I'm Amy, the practice's AI assistant. How can I help?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Hi, I've just moved to Islington. Can I register as a new patient?</p></li><li class="lc-line " data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Of course. Are you looking for NHS or private care?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Private is fine.</p></li><li class="lc-line " data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Lovely. I have Thursday at 9:10 or Friday at 2:30 with Dr Patel. Which suits you?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Thursday, please.</p></li><li class="lc-line " data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Booked: Thursday at 9:10 with Dr Patel. I'll text you the new patient forms and directions now.</p></li>
-        <li class="lc-line" data-lc-line><p class="flex items-center gap-2 rounded-[12px] bg-[rgb(142_211_174/0.12)] px-4 py-3 text-[15px] font-semibold text-band-ok"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg>New patient visit booked: Thu 09:10 with Dr Patel. Forms sent.</p></li>
+        <li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Good evening, Halden Dental. I'm Amy, the practice's AI assistant. How can I help?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Hi, I've just moved to Islington. Can I register as a new patient?</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Of course. Are you looking for NHS or private care?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Private is fine.</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Lovely. I have Thursday at 9:10 or Friday at 2:30 with Dr Patel. Which suits you?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Thursday, please.</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Booked: Thursday at 9:10 with Dr Patel. I'll text you the new patient forms and directions now.</p></li>
+        <li class="lc-line" data-lc-line><p class="flex items-center gap-2 rounded-[12px] bg-[rgb(142_211_174/0.12)] px-4 py-3 text-[15px] font-semibold text-band-ok"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>New patient visit booked: Thu 09:10 with Dr Patel. Forms sent.</p></li>
       </ol>
       <p class="mt-4 text-[13px] text-band-muted">A fictional example. The practice and caller are made up.</p>
     </div>
@@ -614,9 +602,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonClients ===== -->
 <section id="clients" data-component="LondonClients" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>London practices</p><h2>Practices across London <span class="hl">already using it</span></h2></div>
-      <p class="text-muted lg:pt-10">How three London practices use their agent. <span class="flag">[PLACEHOLDER: example clients, replace with real case studies before launch]</span></p>
+      <p class="mt-5 text-muted">How three London practices use their agent. <span class="flag">[PLACEHOLDER: example clients, replace with real case studies before launch]</span></p>
     </div>
     <ul class="mt-10 grid gap-5 lg:grid-cols-3">
       <li class="flex flex-col rounded-[22px] border border-line bg-paper p-6">
@@ -657,9 +645,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonCalendar ===== -->
 <section id="calendar" data-component="LondonCalendar" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-cal>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>The London dental year</p><h2>Busy months, <span class="hl">covered</span></h2></div>
-      <p class="text-muted lg:pt-10">Calls rise and fall through the year. The agent scales with the busy months, so you don't hire for the peak and sit idle in the lull.</p>
+      <p class="mt-5 text-muted">Calls rise and fall through the year. The agent scales with the busy months, so you don't hire for the peak and sit idle in the lull.</p>
     </div>
     <figure class="mt-10 rounded-[22px] border border-line bg-surface p-5 sm:p-6">
       <figcaption class="flex flex-wrap items-baseline justify-between gap-2"><span class="font-display text-[17px] font-semibold">How busy the phones get, month by month</span><span class="text-[13.5px] text-muted">Illustrative, relative to the busiest month</span></figcaption>
@@ -678,9 +666,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonRules ===== -->
 <section id="rules" data-component="LondonRules" class="bg-sand">
   <div class="container-omh py-20 lg:py-28" data-lr>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What is changing</p><h2>New rules mean <span class="hl">more calls to answer</span></h2></div>
-      <p class="text-muted lg:pt-10">NHS practices have new targets and patients have new questions. Pick a topic to see what has changed and how your agent handles those calls.</p>
+      <p class="mt-5 text-muted">NHS practices have new targets and patients have new questions. Pick a topic to see what has changed and how your agent handles those calls.</p>
     </div>
     <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)]">
       <div class="flex flex-col gap-2" role="tablist" aria-label="Rule changes" aria-orientation="vertical">
@@ -771,9 +759,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonNumbers ===== -->
 <section id="numbers" data-component="LondonNumbers" class="bg-surface">
   <div class="container-omh py-20 lg:py-24">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local numbers</p><h2>Keep your number, <span class="hl">or get an 020 one</span></h2></div>
-      <p class="text-muted lg:pt-10">Londoners trust an 020 number. Your agent can answer on the line patients already know, or on a new London number for a new practice or campaign. <span class="flag">[CONFIRM] number provisioning</span></p>
+      <p class="mt-5 text-muted">Londoners trust an 020 number. Your agent can answer on the line patients already know, or on a new London number for a new practice or campaign. <span class="flag">[CONFIRM] number provisioning</span></p>
     </div>
     <ul class="mt-10 grid gap-4 md:grid-cols-3">
       <li class="rounded-[20px] border border-line bg-paper p-6"><span class="grid h-12 w-12 place-items-center rounded-[14px] bg-gold/20 text-hl"><svg class="icon !h-6 !w-6" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><h3 class="mt-4 !text-[21px]">Keep your number</h3><p class="mt-2 text-[16px] text-muted">Divert your practice line so the agent answers. Your number stays on your website, Google listing and NHS profile.</p></li>
@@ -787,9 +775,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonCompare ===== -->
 <section id="compare" data-component="LondonCompare" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-cmp data-ai-year="5388">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Compared with the alternatives</p><h2>Another receptionist, an answering service <span class="hl">or an AI agent?</span></h2></div>
-      <p class="text-muted lg:pt-10">Each one has its place. Pick the hours you want the phones covered to see what staff would cost in London, then compare the three side by side.</p>
+      <p class="mt-5 text-muted">Each one has its place. Pick the hours you want the phones covered to see what staff would cost in London, then compare the three side by side.</p>
     </div>
 
     <!-- Cost of cover -->
@@ -923,7 +911,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>London questions</p>
       <h2>What London practices <span class="hl">ask us first</span></h2>
       <p class="mt-5 text-muted">Anything else, ring us and talk to a person.</p>
-      <a href="tel:+442034893934" class="text-link mt-4" data-track="london_dental_faq_phone"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span class="tnum">020 3489 3934</span></a>
+      <a href="tel:+442034893934" class="text-link mt-4" data-track="london_dental_faq_phone"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span class="tnum">020 3489 3934</span></a>
     </div>
     <div class="space-y-3">
       <details class="group rounded-[14px] border border-line bg-surface open:border-[var(--line-strong)]" data-faq-item data-track-name="Do you have an office in London?" open>
@@ -971,13 +959,13 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 <section id="book-demo" data-component="FinalCTA" class="on-band relative overflow-hidden bg-band text-band-ink">
   <div class="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
   <div class="container-omh relative py-20 lg:py-28" data-bk>
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center eyebrow-band"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Get started</p>
       <h2>See it working <span class="hl">for your London practice</span></h2>
-      <p class="mx-auto mt-5 max-w-[36rem] text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your practice, we'll tell you.</p>
+      <p class="mx-auto mt-5 text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your practice, we'll tell you.</p>
     </div>
 
-    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid max-w-[1040px] gap-3 md:grid-cols-3">
+    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid gap-3 md:grid-cols-3">
       <button type="button" role="tab" id="bk-tab-call" aria-controls="bk-panel-call" aria-selected="true" tabindex="0" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_#d79a37] sm:p-5" data-bk-path="call" data-track="booking_path" data-track-name="Book a 30-minute demo">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-band-hl group-aria-selected:bg-gold group-aria-selected:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span>
           <span class="min-w-0">
@@ -1004,7 +992,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
         </button>
     </div>
 
-    <div class="mx-auto mt-5 max-w-[1040px]">
+    <div class="mx-auto mt-5">
       <!-- Path 1: book a demo -->
       <div role="tabpanel" id="bk-panel-call" aria-labelledby="bk-tab-call" data-bk-panel="call" class="grid overflow-hidden rounded-[20px] bg-surface text-ink shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] dark:border dark:border-[var(--line-strong)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,.7fr)]">
         <form class="p-6 sm:p-8" novalidate data-bk-form>
@@ -1024,7 +1012,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
               <button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="09:30" data-track="booking_time" data-track-name="09:30">09:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="10:30" data-track="booking_time" data-track-name="10:30">10:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="11:30" data-track="booking_time" data-track-name="11:30">11:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="14:00" data-track="booking_time" data-track-name="14:00">14:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="15:00" data-track="booking_time" data-track-name="15:00">15:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="16:00" data-track="booking_time" data-track-name="16:00">16:00</button>
             </div>
             <p class="mt-3 text-[14px] font-semibold text-miss" data-bk-slot-err hidden>Pick a day and a time to carry on.</p>
-            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
           </fieldset>
 
           <fieldset class="mt-6" data-bk-step="2" hidden>
@@ -1086,7 +1074,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
           <div class="py-6 text-center" data-bk-done hidden tabindex="-1">
             <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-8 !w-8" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
             <h3 class="mt-5 !text-[26px]" data-bk-done-title>Request sent</h3>
-            <p class="mx-auto mt-2 max-w-[26rem] text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
+            <p class="mx-auto mt-2 text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
           </div>
         </form>
 
@@ -1112,7 +1100,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
           <div>
             <h3 class="!text-[clamp(24px,21px+1vw,32px)]">Ring it from any phone</h3>
             <p class="mt-2 text-muted">It's set up as a fictional dental practice and answers day and night. Standard call rates apply.</p>
-            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
+            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
           </div>
           <div class="rounded-[16px] bg-sand p-5">
             <p class="font-display text-[17px] font-semibold">Three things to try</p>
@@ -1185,7 +1173,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
         <h2 id="video-modal-title" class="mt-0.5 !text-[clamp(19px,17px+.6vw,24px)] !leading-tight" data-video-modal-title></h2>
         <p class="mt-1 text-[15px] text-band-muted" data-video-modal-meta></p>
       </div>
-      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
     <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
   </div>
@@ -1199,7 +1187,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 <div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a London demo</a>
-    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
+    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
   </div>
 </div>
 `;

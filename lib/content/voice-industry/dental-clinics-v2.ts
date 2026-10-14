@@ -252,10 +252,10 @@ export const markup = String.raw`
       <div>
         <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(16_24_40/0.5)]"><svg class="h-4 w-4 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg>AI receptionist for dental practices</p>
         <h1 class="mt-5">From the first ring <span class="hl">to the dentist's chair</span></h1>
-        <p class="mt-6 max-w-[34rem] text-[19px] text-muted">It answers every patient call, books check-ups and fills cancellations, and leaves anything clinical to your team. Built and managed for your practice by OMH.</p>
+        <p class="mt-6 text-body text-muted">It answers every patient call, books check-ups and fills cancellations, and leaves anything clinical to your team. Built and managed for your practice by OMH.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="dental2_hero_book">Book a practice demo</a>
-          <a href="#amy" class="btn btn-secondary !bg-surface" data-track="dental2_hero_amy"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Meet Amy, your AI receptionist</a>
+          <a href="#amy" class="btn btn-secondary !bg-surface" data-track="dental2_hero_amy"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Meet Amy, your AI receptionist</a>
         </div>
       </div>
       <figure class="relative mx-auto w-full max-w-[560px]">
@@ -304,18 +304,6 @@ export const markup = String.raw`
 </section>
 
 
-<!-- ===== COMPONENT: SectionNav ===== -->
-<nav aria-label="On this page" data-component="SectionNav" data-section-nav class="sticky top-[69px] z-30 border-b border-line bg-paper/95 backdrop-blur-[2px]">
-  <div class="container-omh flex items-center gap-4">
-    <ul class="no-scrollbar -mx-2 flex flex-1 items-center gap-1 overflow-x-auto py-2">
-      <li class="shrink-0"><a href="#familiar" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Sound familiar?">Sound familiar?</a></li><li class="shrink-0"><a href="#amy" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Meet Amy">Meet Amy</a></li><li class="shrink-0"><a href="#journey" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Patient journey">Patient journey</a></li><li class="shrink-0"><a href="#treatments" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Treatments">Treatments</a></li><li class="shrink-0"><a href="#diary" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Diary">Diary</a></li><li class="shrink-0"><a href="#calculator" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Calculator">Calculator</a></li><li class="shrink-0"><a href="#areas" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Areas">Areas</a></li><li class="shrink-0"><a href="#pricing" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Pricing">Pricing</a></li><li class="shrink-0"><a href="#faq" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="FAQ">FAQ</a></li>
-    </ul>
-    <a href="#book-demo" class="btn btn-primary !min-h-[40px] shrink-0 !px-4 !text-[15px] max-md:hidden" data-track="section_nav_book_demo">Book a demo</a>
-  </div>
-  <span class="absolute inset-x-0 bottom-[-1px] h-[2px] bg-gold" data-section-progress aria-hidden="true"></span>
-</nav>
-
-
 <!-- ===== COMPONENT: TrustStrip ===== -->
 <section aria-label="Built for dental practices" data-component="TrustStrip" class="bg-surface">
   <ul class="container-omh grid grid-cols-2 gap-x-6 gap-y-4 py-8 md:grid-cols-5">
@@ -331,7 +319,7 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: SoundFamiliar ===== -->
 <section id="familiar" data-component="SoundFamiliar" class="bg-surface">
   <div class="container-omh pb-20 pt-10 lg:pb-28">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Sound familiar?</p>
       <h2>Your front desk, <span class="hl">on a busy day</span></h2>
       <p class="mt-5 text-muted">Four moments every practice knows. They are when patients ring, and when nobody is free to answer.</p>
@@ -479,7 +467,7 @@ export const markup = String.raw`
         </details>
         <p class="mt-2 text-[13.5px] text-muted">Illustrative figures, not data from a real practice. Your phone provider's call log shows your own pattern.</p>
       </figure></div>
-    <p class="mt-6 text-center"><a href="#calculator" class="text-link" data-track="dental2_familiar_calc">Work out what it costs your practice<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a></p>
+    <p class="mt-6 text-center"><a href="#calculator" class="text-link" data-track="dental2_familiar_calc">Work out what it costs your practice<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a></p>
   </div>
 </section>
 
@@ -496,11 +484,11 @@ export const markup = String.raw`
         <label for="hear-name" class="font-display text-[16.5px] font-semibold">Put your practice name on her badge</label>
         <div class="mt-2 flex flex-col gap-2 sm:flex-row">
           <input id="hear-name" type="text" maxlength="40" autocomplete="organization" placeholder="For example, Albion Square Dental" class="field !bg-surface" data-hear-name data-track="dental2_amy_name">
-          <button type="submit" class="btn btn-primary shrink-0" data-track="dental2_amy_play"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear her greeting</button>
+          <button type="submit" class="btn btn-primary shrink-0" data-track="dental2_amy_play"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear her greeting</button>
         </div>
         <p class="mt-2 text-[14px] text-muted">Stays on your screen. Nothing is sent anywhere.</p>
       </form>
-      <p class="mt-6 flex flex-wrap items-center gap-x-3 text-[16px]">Or ring our demo practice: <a href="tel:" class="text-link tnum" data-demo-number data-track="dental2_ring_demo"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a></p>
+      <p class="mt-6 flex flex-wrap items-center gap-x-3 text-[16px]">Or ring our demo practice: <a href="tel:" class="text-link tnum" data-demo-number data-track="dental2_ring_demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a></p>
     </div>
 
     <div class="relative mx-auto w-full max-w-[380px] pt-10" aria-live="polite">
@@ -532,9 +520,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: PatientJourney ===== -->
 <section id="journey" data-component="PatientJourney" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-journey>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>The patient journey</p><h2>One patient, <span class="hl">start to finish</span></h2></div>
-      <p class="text-muted lg:pt-10">Follow a new patient from their first call to their next check-up. Amy handles the phone. Your team handles the patient.</p>
+      <p class="mt-5 text-muted">Follow a new patient from their first call to their next check-up. Amy handles the phone. Your team handles the patient.</p>
     </div>
     <ol class="journey relative mt-14 grid gap-8 lg:grid-cols-6 lg:gap-4">
       <li class="journey-track pointer-events-none absolute hidden lg:block" aria-hidden="true"><span class="journey-fill" data-journey-fill></span></li>
@@ -565,7 +553,7 @@ export const markup = String.raw`
         <p class="text-[13.5px] font-semibold text-hl tnum lg:mt-4">Thu 09:05</p>
         <h3 class="mt-1 !text-[19px] !leading-snug">Patient arrives</h3>
         <p class="mt-1.5 text-[15px] leading-snug text-muted">Your team takes it from here. Notes are already in the diary.</p>
-        <p class="mt-3"><span class="chip ">Your team</span></p>
+        <p class="mt-3"><span class="chip">Your team</span></p>
       </li>
       <li class="journey-stop relative pl-16 lg:pl-0 lg:text-center" data-journey-stop>
         <span class="journey-node absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full border-2 lg:relative lg:mx-auto"><svg class="h-6 w-6 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg></span>
@@ -589,7 +577,7 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: TreatmentMenu ===== -->
 <section id="treatments" data-component="TreatmentMenu" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Your treatment menu</p>
       <h2>Every kind of patient call, <span class="hl">handled your way</span></h2>
       <p class="mt-5 text-muted">Tap a treatment to see what Amy does when a patient rings about it.</p>
@@ -693,11 +681,11 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: SurgeryDiary ===== -->
 <section id="diary" data-component="SurgeryDiary" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-diary>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>The diary, from reception's side</p><h2>Thursday morning, <span class="hl">already full</span></h2></div>
-      <div class="lg:pt-10">
+      <div class="mt-5">
         <p class="text-muted">This is what reception sees on arrival. Bookings Amy made overnight are marked, and last night's cancellation has already been offered to the waitlist.</p>
-        <button type="button" class="btn btn-secondary mt-4 !min-h-[44px]" data-diary-play data-track="dental2_diary_play"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Replay last night</button>
+        <button type="button" class="btn btn-secondary mt-4 !min-h-[44px]" data-diary-play data-track="dental2_diary_play"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Replay last night</button>
       </div>
     </div>
     <div class="mt-10 overflow-x-auto rounded-[22px] border border-line bg-surface" tabindex="0" role="region" aria-label="Thursday diary, three surgeries">
@@ -711,37 +699,37 @@ export const markup = String.raw`
           <p class="pb-3 text-[14px] font-semibold">Surgery 1 · Dr Patel</p><p class="pb-3 text-[14px] font-semibold">Surgery 2 · Dr Shah</p><p class="pb-3 text-[14px] font-semibold">Surgery 3 · Hygienist Kerr</p>
           <div class="relative" style="grid-row:2;grid-column:1"><p class="h-[54px] text-[12.5px] font-semibold text-muted tnum">08:30</p><p class="h-[54px] text-[12.5px] font-semibold text-muted tnum">09:00</p><p class="h-[54px] text-[12.5px] font-semibold text-muted tnum">09:30</p><p class="h-[54px] text-[12.5px] font-semibold text-muted tnum">10:00</p><p class="h-[54px] text-[12.5px] font-semibold text-muted tnum">10:30</p><p class="h-[54px] text-[12.5px] font-semibold text-muted tnum">11:00</p><p class="h-[54px] text-[12.5px] font-semibold text-muted tnum">11:30</p></div>
           <div class="relative rounded-[12px] bg-paper" style="grid-row:2;grid-column:2;height:378px">
-            <div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:3px;height:48px">
+            <div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:3px;height:48px">
               <span class="font-semibold">Check-up, Mr Ali</span>
             </div><div class="dslot is-ai absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:57px;height:48px">
               <span class="font-semibold">Chipped tooth, Ms Hughes</span><span class="mt-0.5 flex items-center gap-1 text-[12px] font-semibold"><svg class="icon !h-3 !w-3" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>Amy</span>
-            </div><div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:111px;height:102px">
+            </div><div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:111px;height:102px">
               <span class="font-semibold">Crown fit, Mrs Kerr</span>
             </div><div class="dslot is-ai absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:273px;height:48px">
               <span class="font-semibold">Emergency, Mr Grant</span><span class="mt-0.5 flex items-center gap-1 text-[12px] font-semibold"><svg class="icon !h-3 !w-3" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>Amy</span>
-            </div><div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:327px;height:48px">
+            </div><div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:327px;height:48px">
               <span class="font-semibold">Check-up, Mrs Bell</span>
             </div>
           </div>
           <div class="relative rounded-[12px] bg-paper" style="grid-row:2;grid-column:3;height:378px">
-            <div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:3px;height:102px">
+            <div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:3px;height:102px">
               <span class="font-semibold">Root canal, Mr Doyle</span>
             </div><div class="dslot is-cancel absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:165px;height:48px" data-diary-gap>
               <span class="dgap-before"><span class="font-semibold">Cancelled at 18:31</span><span class="block text-[12px]">Offered to 3 waitlist patients</span></span><span class="dgap-after"><span class="font-semibold">Check-up, Mr Evans</span><span class="block text-[12px]">From the waitlist at 18:47</span></span>
             </div><div class="dslot is-ai absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:219px;height:48px">
               <span class="font-semibold">Implant consult, Ms Rowe</span><span class="mt-0.5 flex items-center gap-1 text-[12px] font-semibold"><svg class="icon !h-3 !w-3" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>Amy</span>
-            </div><div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:273px;height:102px">
+            </div><div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:273px;height:102px">
               <span class="font-semibold">Filling, Mr Shah</span>
             </div>
           </div>
           <div class="relative rounded-[12px] bg-paper" style="grid-row:2;grid-column:4;height:378px">
-            <div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:3px;height:48px">
+            <div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:3px;height:48px">
               <span class="font-semibold">Hygiene, Mrs Price</span>
             </div><div class="dslot is-ai absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:57px;height:48px">
               <span class="font-semibold">Hygiene, Mr Cole</span><span class="mt-0.5 flex items-center gap-1 text-[12px] font-semibold"><svg class="icon !h-3 !w-3" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>Amy</span>
-            </div><div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:111px;height:48px">
+            </div><div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:111px;height:48px">
               <span class="font-semibold">Hygiene, Ms Ford</span>
-            </div><div class="dslot  absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:219px;height:102px">
+            </div><div class="dslot absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:219px;height:102px">
               <span class="font-semibold">Hygiene, Mrs Ward</span>
             </div><div class="dslot is-ai absolute inset-x-1.5 rounded-[10px] px-2.5 py-1.5 text-[13px] leading-tight" style="top:327px;height:48px">
               <span class="font-semibold">Hygiene, Mr Hart</span><span class="mt-0.5 flex items-center gap-1 text-[12px] font-semibold"><svg class="icon !h-3 !w-3" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>Amy</span>
@@ -759,12 +747,12 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: ChairTimeCalculator ===== -->
 <section id="calculator" data-component="ChairTimeCalculator" class="bg-mint">
   <div class="container-omh py-20 lg:py-28">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Chair-time calculator</p>
       <h2>What are missed calls <span class="hl">costing your chairs?</span></h2>
       <p class="mt-5 text-muted">Two leaks most practices have: calls nobody answers, and appointments that never happen. Set the sliders to match your practice.</p>
     </div>
-    <div class="mx-auto mt-10 grid max-w-[1100px] gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" data-cc-root>
+    <div class="mx-auto mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" data-cc-root>
       <div class="space-y-5 rounded-[22px] border border-line bg-surface p-6 sm:p-8">
         <p class="text-[13.5px] font-semibold uppercase tracking-wide text-hl">Calls</p>
         <div>
@@ -821,9 +809,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: ClinicalLines ===== -->
 <section id="safety" data-component="ClinicalLines" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Clinical safety</p><h2>The clinical lines <span class="hl">it never crosses</span></h2></div>
-      <p class="text-muted lg:pt-10">You set the rules before Amy answers a single call. Anything clinical goes to a person, every time.</p>
+      <p class="mt-5 text-muted">You set the rules before Amy answers a single call. Anything clinical goes to a person, every time.</p>
     </div>
     <div class="mt-10 grid gap-5 lg:grid-cols-3">
       <div class="rounded-[22px] border border-line bg-paper p-6"><p class="flex items-center gap-2.5 font-display text-[19px] font-semibold"><span class="grid h-9 w-9 place-items-center rounded-full bg-mint text-hl"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>Amy handles</p>
@@ -847,9 +835,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: DentalAreas ===== -->
 <section id="areas" data-component="DentalAreas" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-areas>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Areas we cover</p><h2>Dental practices in <span class="hl">ten UK cities</span></h2></div>
-      <div class="space-y-3 text-muted lg:pt-10">
+      <div class="mt-5 space-y-3 text-muted">
         <p>Patients trust a local number. Your agent can answer on your existing line or on a new number with your city's area code.</p>
         <p class="text-[16px]">Our team is in Hullbridge, Essex. We don't have offices in these cities. Set-up and reviews happen by video call and phone. <span class="flag">[CONFIRM] local number availability</span></p>
       </div>
@@ -907,7 +895,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=london" class="btn btn-primary" data-track="dental_city_click" data-track-name="London">Talk to us about London</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=london" data-future-href="/ai-voice-agents/dental-clinics/london" class="text-link" data-track="dental_city_page" data-track-name="London">Dental AI receptionist in London<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=london" data-future-href="/ai-voice-agents/dental-clinics/london" class="text-link" data-track="dental_city_page" data-track-name="London">Dental AI receptionist in London<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-birmingham" data-area-panel="birmingham" hidden role="tabpanel" aria-labelledby="area-tab-birmingham" tabindex="0">
@@ -927,7 +915,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=birmingham" class="btn btn-primary" data-track="dental_city_click" data-track-name="Birmingham">Talk to us about Birmingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=birmingham" data-future-href="/ai-voice-agents/dental-clinics/birmingham" class="text-link" data-track="dental_city_page" data-track-name="Birmingham">Dental AI receptionist in Birmingham<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=birmingham" data-future-href="/ai-voice-agents/dental-clinics/birmingham" class="text-link" data-track="dental_city_page" data-track-name="Birmingham">Dental AI receptionist in Birmingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-manchester" data-area-panel="manchester" hidden role="tabpanel" aria-labelledby="area-tab-manchester" tabindex="0">
@@ -947,7 +935,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=manchester" class="btn btn-primary" data-track="dental_city_click" data-track-name="Manchester">Talk to us about Manchester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=manchester" data-future-href="/ai-voice-agents/dental-clinics/manchester" class="text-link" data-track="dental_city_page" data-track-name="Manchester">Dental AI receptionist in Manchester<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=manchester" data-future-href="/ai-voice-agents/dental-clinics/manchester" class="text-link" data-track="dental_city_page" data-track-name="Manchester">Dental AI receptionist in Manchester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leeds" data-area-panel="leeds" hidden role="tabpanel" aria-labelledby="area-tab-leeds" tabindex="0">
@@ -967,7 +955,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leeds" class="btn btn-primary" data-track="dental_city_click" data-track-name="Leeds">Talk to us about Leeds</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leeds" data-future-href="/ai-voice-agents/dental-clinics/leeds" class="text-link" data-track="dental_city_page" data-track-name="Leeds">Dental AI receptionist in Leeds<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leeds" data-future-href="/ai-voice-agents/dental-clinics/leeds" class="text-link" data-track="dental_city_page" data-track-name="Leeds">Dental AI receptionist in Leeds<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-liverpool" data-area-panel="liverpool" hidden role="tabpanel" aria-labelledby="area-tab-liverpool" tabindex="0">
@@ -987,7 +975,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=liverpool" class="btn btn-primary" data-track="dental_city_click" data-track-name="Liverpool">Talk to us about Liverpool</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=liverpool" data-future-href="/ai-voice-agents/dental-clinics/liverpool" class="text-link" data-track="dental_city_page" data-track-name="Liverpool">Dental AI receptionist in Liverpool<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=liverpool" data-future-href="/ai-voice-agents/dental-clinics/liverpool" class="text-link" data-track="dental_city_page" data-track-name="Liverpool">Dental AI receptionist in Liverpool<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-bristol" data-area-panel="bristol" hidden role="tabpanel" aria-labelledby="area-tab-bristol" tabindex="0">
@@ -1007,7 +995,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=bristol" class="btn btn-primary" data-track="dental_city_click" data-track-name="Bristol">Talk to us about Bristol</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=bristol" data-future-href="/ai-voice-agents/dental-clinics/bristol" class="text-link" data-track="dental_city_page" data-track-name="Bristol">Dental AI receptionist in Bristol<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=bristol" data-future-href="/ai-voice-agents/dental-clinics/bristol" class="text-link" data-track="dental_city_page" data-track-name="Bristol">Dental AI receptionist in Bristol<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-sheffield" data-area-panel="sheffield" hidden role="tabpanel" aria-labelledby="area-tab-sheffield" tabindex="0">
@@ -1027,7 +1015,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=sheffield" class="btn btn-primary" data-track="dental_city_click" data-track-name="Sheffield">Talk to us about Sheffield</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=sheffield" data-future-href="/ai-voice-agents/dental-clinics/sheffield" class="text-link" data-track="dental_city_page" data-track-name="Sheffield">Dental AI receptionist in Sheffield<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=sheffield" data-future-href="/ai-voice-agents/dental-clinics/sheffield" class="text-link" data-track="dental_city_page" data-track-name="Sheffield">Dental AI receptionist in Sheffield<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-nottingham" data-area-panel="nottingham" hidden role="tabpanel" aria-labelledby="area-tab-nottingham" tabindex="0">
@@ -1047,7 +1035,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=nottingham" class="btn btn-primary" data-track="dental_city_click" data-track-name="Nottingham">Talk to us about Nottingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=nottingham" data-future-href="/ai-voice-agents/dental-clinics/nottingham" class="text-link" data-track="dental_city_page" data-track-name="Nottingham">Dental AI receptionist in Nottingham<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=nottingham" data-future-href="/ai-voice-agents/dental-clinics/nottingham" class="text-link" data-track="dental_city_page" data-track-name="Nottingham">Dental AI receptionist in Nottingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leicester" data-area-panel="leicester" hidden role="tabpanel" aria-labelledby="area-tab-leicester" tabindex="0">
@@ -1067,7 +1055,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leicester" class="btn btn-primary" data-track="dental_city_click" data-track-name="Leicester">Talk to us about Leicester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leicester" data-future-href="/ai-voice-agents/dental-clinics/leicester" class="text-link" data-track="dental_city_page" data-track-name="Leicester">Dental AI receptionist in Leicester<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leicester" data-future-href="/ai-voice-agents/dental-clinics/leicester" class="text-link" data-track="dental_city_page" data-track-name="Leicester">Dental AI receptionist in Leicester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-newcastle" data-area-panel="newcastle" hidden role="tabpanel" aria-labelledby="area-tab-newcastle" tabindex="0">
@@ -1087,7 +1075,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=newcastle" class="btn btn-primary" data-track="dental_city_click" data-track-name="Newcastle">Talk to us about Newcastle</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=newcastle" data-future-href="/ai-voice-agents/dental-clinics/newcastle" class="text-link" data-track="dental_city_page" data-track-name="Newcastle">Dental AI receptionist in Newcastle<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=newcastle" data-future-href="/ai-voice-agents/dental-clinics/newcastle" class="text-link" data-track="dental_city_page" data-track-name="Newcastle">Dental AI receptionist in Newcastle<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
       </div>
@@ -1154,9 +1142,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: GettingStarted ===== -->
 <section id="getting-started" data-component="GettingStarted" class="bg-mint">
   <div class="container-omh py-20 lg:py-28">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Getting started</p><h2>From first call <span class="hl">to go-live</span></h2></div>
-      <p class="text-muted lg:pt-10">We do the building. Most of your time goes on two short calls. <span class="flag">[PLACEHOLDER typical go-live time]</span></p>
+      <p class="mt-5 text-muted">We do the building. Most of your time goes on two short calls. <span class="flag">[PLACEHOLDER typical go-live time]</span></p>
     </div>
     <ol class="relative mt-12 grid gap-4 md:grid-cols-4">
       <li class="pointer-events-none absolute left-[12.5%] right-[12.5%] top-[27px] hidden h-[2px] bg-[var(--line-strong)] md:block" aria-hidden="true"></li>
@@ -1222,9 +1210,9 @@ ${pricingSection("bg-surface")}
 <!-- ===== COMPONENT: PracticeStories ===== -->
 <section id="stories" data-component="PracticeStories" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-fb>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Practice stories</p><h2>Hear it from <span class="hl">dental teams</span></h2></div>
-      <p class="text-muted lg:pt-10">Short videos from practice managers and dentists. Each story stays marked as pending until we have checked the results.</p>
+      <p class="mt-5 text-muted">Short videos from practice managers and dentists. Each story stays marked as pending until we have checked the results.</p>
     </div>
     <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-fb-list>
       <li class="flex">
@@ -1238,7 +1226,7 @@ ${pricingSection("bg-surface")}
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Manchester</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Manchester</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Evening calls at a Manchester practice</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering evening new-patient calls and how many became bookings.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Practice manager</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1256,7 +1244,7 @@ ${pricingSection("bg-surface")}
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Lunchtime cover at a London practice</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering calls answered while reception was at lunch.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Principal dentist</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1274,7 +1262,7 @@ ${pricingSection("bg-surface")}
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Leeds</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Leeds</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Aligner enquiries at a Leeds clinic</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering weekend treatment enquiries and consultations booked.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Treatment coordinator</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1292,7 +1280,7 @@ ${pricingSection("bg-surface")}
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Birmingham</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Birmingham</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Filling cancellations in Birmingham</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering short-notice gaps filled from the waitlist.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Practice owner</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1310,7 +1298,7 @@ ${pricingSection("bg-surface")}
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Bristol</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Bristol</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Monday mornings at a Bristol practice</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering the 8am rush and urgent calls routed.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Reception lead</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1328,7 +1316,7 @@ ${pricingSection("bg-surface")}
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Newcastle</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Dental practice</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Newcastle</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Recalls that booked in Newcastle</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering recall reminders and hygiene visits booked.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Practice manager</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1336,7 +1324,7 @@ ${pricingSection("bg-surface")}
         </article>
       </li>
     </ul>
-    <div class="mt-8 flex justify-center"><button type="button" class="btn btn-secondary" data-fb-more data-track="dental_stories_more"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg>Show 3 more stories</button></div>
+    <div class="mt-8 flex justify-center"><button type="button" class="btn btn-secondary" data-fb-more data-track="dental_stories_more"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg>Show 3 more stories</button></div>
   </div>
 </section>
 
@@ -1344,12 +1332,12 @@ ${pricingSection("bg-surface")}
 <!-- ===== COMPONENT: FAQ ===== -->
 <section id="faq" data-component="FAQ" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
       <h2>What practices <span class="hl">ask us first</span></h2>
       <p class="mt-5 text-muted">Search for a word, or pick a topic.</p>
     </div>
-    <div class="mx-auto mt-10 max-w-[880px]" data-faq>
+    <div class="mx-auto mt-10" data-faq>
       <div class="relative">
         <label for="faq-search" class="sr-only">Search the questions</label>
         <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
@@ -1374,7 +1362,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Will patients know they are talking to an AI?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Patients and AI</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>Yes. Every agent says it is an AI assistant at the start of the call. Patients deserve to know, and anyone who would rather speak to a person can ask.</p>
           
         </div>
@@ -1385,7 +1373,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it give clinical or medical advice?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Clinical safety</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>No. The agent never assesses symptoms, suggests treatment or gives medical advice. It books, answers practical questions from information you approve and passes anything clinical to your team.</p>
           
         </div>
@@ -1396,7 +1384,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">What happens with dental emergencies out of hours?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Clinical safety</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>It follows the route you set. That could be your on-call dentist, your emergency line, or giving NHS 111 details. Every urgent call is flagged at the top of the morning summary.</p>
           
         </div>
@@ -1407,7 +1395,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it work for NHS and private patients?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Patients and AI</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>Yes. It follows your rules for each: NHS availability and waiting lists, private fees from your price list, and any plan or membership details you approve.</p>
           
         </div>
@@ -1418,7 +1406,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it work with our practice management software?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Setup and systems</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>It works with most diaries and practice systems. We check yours on the first call and tell you plainly what connects directly and what needs a workaround.</p>
           <p class="mt-3"><span class="flag flag-wrap">[CONFIRM] supported practice management systems</span></p>
         </div>
@@ -1429,7 +1417,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">How does it handle elderly or anxious patients?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Patients and AI</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>It speaks clearly, takes its time and repeats details when asked. Anyone who wants a person is put through in your opening hours, or a message is taken for a call back.</p>
           
         </div>
@@ -1440,7 +1428,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Can it fill last-minute cancellations?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Setup and systems</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>Yes. When a patient cancels, it offers to rebook them, then offers the free slot to waitlist patients who agreed to short-notice offers.</p>
           
         </div>
@@ -1451,7 +1439,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Is patient data kept safe?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Data and rules</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>You remain the data controller and OMH acts as your processor under a written data processing agreement, in line with UK GDPR. We agree what is stored, where and for how long before go-live.</p>
           <p class="mt-3"><span class="flag flag-wrap">[CONFIRM] storage region and retention options</span></p>
         </div>
@@ -1462,7 +1450,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Are calls recorded?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Data and rules</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>Only if you want them to be. Patients are told at the start of the call, and recordings are deleted on the schedule you set.</p>
           
         </div>
@@ -1473,7 +1461,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Will it replace our receptionists?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Working with us</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>No. It takes the overflow and the routine calls, so your team can look after the patients in front of them. You choose when it answers: only when the lines are busy, only out of hours, or first on every call. Anything clinical, sensitive or complicated still goes to your team.</p>
           
         </div>
@@ -1484,7 +1472,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Is there a minimum contract?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Working with us</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra.</p>
           <p class="mt-3">Billed monthly, 30 days notice.</p>
         </div>
@@ -1504,13 +1492,13 @@ ${pricingSection("bg-surface")}
 <section id="book-demo" data-component="FinalCTA" class="on-band relative overflow-hidden bg-band text-band-ink">
   <div class="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
   <div class="container-omh relative py-20 lg:py-28" data-bk>
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center eyebrow-band"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Get started</p>
       <h2>See it working <span class="hl">for your practice</span></h2>
-      <p class="mx-auto mt-5 max-w-[36rem] text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your practice, we'll tell you.</p>
+      <p class="mx-auto mt-5 text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your practice, we'll tell you.</p>
     </div>
 
-    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid max-w-[1040px] gap-3 md:grid-cols-3">
+    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid gap-3 md:grid-cols-3">
       <button type="button" role="tab" id="bk-tab-call" aria-controls="bk-panel-call" aria-selected="true" tabindex="0" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_#d79a37] sm:p-5" data-bk-path="call" data-track="booking_path" data-track-name="Book a 30-minute demo">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-band-hl group-aria-selected:bg-gold group-aria-selected:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span>
           <span class="min-w-0">
@@ -1537,7 +1525,7 @@ ${pricingSection("bg-surface")}
         </button>
     </div>
 
-    <div class="mx-auto mt-5 max-w-[1040px]">
+    <div class="mx-auto mt-5">
       <!-- Path 1: book a demo -->
       <div role="tabpanel" id="bk-panel-call" aria-labelledby="bk-tab-call" data-bk-panel="call" class="grid overflow-hidden rounded-[20px] bg-surface text-ink shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] dark:border dark:border-[var(--line-strong)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,.7fr)]">
         <form class="p-6 sm:p-8" novalidate data-bk-form>
@@ -1557,7 +1545,7 @@ ${pricingSection("bg-surface")}
               <button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="09:30" data-track="booking_time" data-track-name="09:30">09:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="10:30" data-track="booking_time" data-track-name="10:30">10:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="11:30" data-track="booking_time" data-track-name="11:30">11:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="14:00" data-track="booking_time" data-track-name="14:00">14:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="15:00" data-track="booking_time" data-track-name="15:00">15:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="16:00" data-track="booking_time" data-track-name="16:00">16:00</button>
             </div>
             <p class="mt-3 text-[14px] font-semibold text-miss" data-bk-slot-err hidden>Pick a day and a time to carry on.</p>
-            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
           </fieldset>
 
           <fieldset class="mt-6" data-bk-step="2" hidden>
@@ -1619,7 +1607,7 @@ ${pricingSection("bg-surface")}
           <div class="py-6 text-center" data-bk-done hidden tabindex="-1">
             <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-8 !w-8" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
             <h3 class="mt-5 !text-[26px]" data-bk-done-title>Request sent</h3>
-            <p class="mx-auto mt-2 max-w-[26rem] text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
+            <p class="mx-auto mt-2 text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
           </div>
         </form>
 
@@ -1645,7 +1633,7 @@ ${pricingSection("bg-surface")}
           <div>
             <h3 class="!text-[clamp(24px,21px+1vw,32px)]">Ring it from any phone</h3>
             <p class="mt-2 text-muted">It's set up as a fictional dental practice and answers day and night. Standard call rates apply.</p>
-            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
+            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
           </div>
           <div class="rounded-[16px] bg-sand p-5">
             <p class="font-display text-[17px] font-semibold">Three things to try</p>
@@ -1693,7 +1681,7 @@ ${pricingSection("bg-surface")}
   <div class="container-omh py-14 lg:py-16">
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 class="!text-[clamp(1.5rem,1.3rem+.8vw,2rem)]">AI voice agents for other industries</h2>
-      <a href="/ai-voice-agents" class="text-link" data-track="dental_all_industries">All AI voice agents<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+      <a href="/ai-voice-agents" class="text-link" data-track="dental_all_industries">All AI voice agents<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
     </div>
     <ul class="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
       <li><a href="/ai-voice-agents/clinics-healthcare" class="flex h-full min-h-[64px] items-center gap-3 rounded-[14px] border border-line bg-surface px-4 py-3 font-display text-[15.5px] font-semibold leading-snug hover:border-gold" data-track="dental_other_industry" data-track-name="Clinics & Healthcare"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-stethoscope"/></svg>Clinics &amp; Healthcare</a></li>
@@ -1716,7 +1704,7 @@ ${pricingSection("bg-surface")}
         <h2 id="video-modal-title" class="mt-0.5 !text-[clamp(19px,17px+.6vw,24px)] !leading-tight" data-video-modal-title></h2>
         <p class="mt-1 text-[15px] text-band-muted" data-video-modal-meta></p>
       </div>
-      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
     <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
   </div>
@@ -1730,7 +1718,7 @@ ${pricingSection("bg-surface")}
 <div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a practice demo</a>
-    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
+    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
   </div>
 </div>
 `;

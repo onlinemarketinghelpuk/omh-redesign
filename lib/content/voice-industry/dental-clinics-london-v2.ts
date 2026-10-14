@@ -219,10 +219,10 @@ export const markup = String.raw`
       <div>
         <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(16_24_40/0.5)]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg>London dental practices · 020</p>
         <h1 class="mt-5">AI Voice Agents for Dental Clinics <span class="hl">in London</span></h1>
-        <p class="mt-6 max-w-[34rem] text-[19px] text-muted">Your practice closes at six. London keeps ringing. Your AI receptionist answers every call, books patients in and sends urgent calls to your team. It never gives clinical advice.</p>
+        <p class="mt-6 text-body text-muted">Your practice closes at six. London keeps ringing. Your AI receptionist answers every call, books patients in and sends urgent calls to your team. It never gives clinical advice.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="dlv2_hero_book">Book a London demo</a>
-          <a href="#try" class="btn btn-secondary !bg-surface" data-track="dlv2_hero_try"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Try a call</a>
+          <a href="#try" class="btn btn-secondary !bg-surface" data-track="dlv2_hero_try"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Try a call</a>
         </div>
         <p class="mt-6 text-[15px] text-muted">Built and managed by OMH, a UK team based in Hullbridge, Essex.</p>
       </div>
@@ -257,24 +257,12 @@ export const markup = String.raw`
 </section>
 
 
-<!-- ===== COMPONENT: SectionNav ===== -->
-<nav aria-label="On this page" data-component="SectionNav" data-section-nav class="sticky top-[69px] z-30 border-b border-line bg-paper/95 backdrop-blur-[2px]">
-  <div class="container-omh flex items-center gap-4">
-    <ul class="no-scrollbar -mx-2 flex flex-1 items-center gap-1 overflow-x-auto py-2">
-      <li class="shrink-0"><a href="#how" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="How it works">How it works</a></li><li class="shrink-0"><a href="#london" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="NHS map">NHS map</a></li><li class="shrink-0"><a href="#try" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Try a call">Try a call</a></li><li class="shrink-0"><a href="#hours" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Opening hours">Opening hours</a></li><li class="shrink-0"><a href="#routing" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Several practices">Several practices</a></li><li class="shrink-0"><a href="#monday" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Before and after">Before and after</a></li><li class="shrink-0"><a href="#nhs" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="NHS changes">NHS changes</a></li><li class="shrink-0"><a href="#cost" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Cost">Cost</a></li><li class="shrink-0"><a href="#cases" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Case studies">Case studies</a></li><li class="shrink-0"><a href="#faq" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="FAQs">FAQs</a></li>
-    </ul>
-    <a href="#book-demo" class="btn btn-primary !min-h-[40px] shrink-0 !px-4 !text-[15px] max-md:hidden" data-track="section_nav_book_demo">Book a demo</a>
-  </div>
-  <span class="absolute inset-x-0 bottom-[-1px] h-[2px] bg-gold" data-section-progress aria-hidden="true"></span>
-</nav>
-
-
 <!-- ===== COMPONENT: HowItWorksV2 ===== -->
 <section id="how" data-component="HowItWorksV2" class="bg-surface">
   <div class="container-omh py-20 lg:py-24" data-hw>
     <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>How it works</p><h2>Three steps, <span class="hl">every call</span></h2></div>
-      <button type="button" class="btn btn-secondary !min-h-[44px] self-start sm:self-auto" data-hw-play data-track="dlv2_how_play"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Play the steps</button>
+      <button type="button" class="btn btn-secondary !min-h-[44px] self-start sm:self-auto" data-hw-play data-track="dlv2_how_play"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Play the steps</button>
     </div>
     <ol class="relative mt-10 grid gap-4 md:grid-cols-3">
       <span class="hw-track pointer-events-none absolute left-[16.667%] right-[16.667%] top-[26px] hidden h-[3px] rounded-full bg-sand md:block" aria-hidden="true"><span class="hw-fill block h-full rounded-full bg-gold" data-hw-fill></span></span>
@@ -316,9 +304,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: NhsDentalMap ===== -->
 <section id="london" data-component="NhsDentalMap" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-nm>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>NHS dentistry in London</p><h2>Access depends on <span class="hl">where your patients live</span></h2></div>
-      <p class="text-muted lg:pt-10">London has five NHS areas, and the share of people seeing an NHS dentist differs between them. Pick an area, or switch what the map shows.</p>
+      <p class="mt-5 text-muted">London has five NHS areas, and the share of people seeing an NHS dentist differs between them. Pick an area, or switch what the map shows.</p>
     </div>
     <dl class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       <div class="flex flex-col-reverse rounded-[14px] border border-line bg-paper p-4"><dt class="mt-1 text-[14px] text-muted">London adults seen by an NHS dentist in 24 months</dt><dd class="font-display text-[clamp(1.6rem,1.4rem+.8vw,2.1rem)] font-semibold leading-none tracking-tight text-hl tnum">2.8m</dd></div>
@@ -453,9 +441,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: TryACall ===== -->
 <section id="try" data-component="TryACall" class="bg-sand">
   <div class="container-omh py-20 lg:py-28" data-tc>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Try a call</p><h2>Pick a caller and a time. <span class="hl">See what happens.</span></h2></div>
-      <p class="text-muted lg:pt-10">Choose who is ringing and when. The path shows each step of the call, and the summary shows what your team finds afterwards.</p>
+      <p class="mt-5 text-muted">Choose who is ringing and when. The path shows each step of the call, and the summary shows what your team finds afterwards.</p>
     </div>
     <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)]">
       <div class="rounded-[22px] border border-line bg-surface p-5 sm:p-6">
@@ -467,7 +455,7 @@ export const markup = String.raw`
         <div class="mt-3 grid gap-2" role="radiogroup" aria-labelledby="tc-when">
           <button type="button" role="radio" aria-checked="false" tabindex="-1" class="tc-opt flex min-h-[52px] items-center justify-between gap-3 rounded-[14px] border border-line bg-paper px-3.5 text-left" data-tc-when="busy" data-track="dlv2_try_when" data-track-name="Tue 11:00"><span class="font-display text-[16px] font-semibold tnum">Tue 11:00</span><span class="text-[14px] text-muted">Reception is with a patient</span></button><button type="button" role="radio" aria-checked="true" tabindex="0" class="tc-opt flex min-h-[52px] items-center justify-between gap-3 rounded-[14px] border border-line bg-paper px-3.5 text-left" data-tc-when="evening" data-track="dlv2_try_when" data-track-name="Tue 19:30"><span class="font-display text-[16px] font-semibold tnum">Tue 19:30</span><span class="text-[14px] text-muted">The practice has closed</span></button><button type="button" role="radio" aria-checked="false" tabindex="-1" class="tc-opt flex min-h-[52px] items-center justify-between gap-3 rounded-[14px] border border-line bg-paper px-3.5 text-left" data-tc-when="sunday" data-track="dlv2_try_when" data-track-name="Sun 10:00"><span class="font-display text-[16px] font-semibold tnum">Sun 10:00</span><span class="text-[14px] text-muted">The weekend</span></button>
         </div>
-        <button type="button" class="btn btn-primary mt-6 w-full" data-tc-go data-track="dlv2_try_play"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Play this call</button>
+        <button type="button" class="btn btn-primary mt-6 w-full" data-tc-go data-track="dlv2_try_play"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Play this call</button>
       </div>
 
       <div class="flex flex-col gap-4">
@@ -504,9 +492,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: WhenPatientsRing ===== -->
 <section id="hours" data-component="WhenPatientsRing" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-clk>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>When London patients ring</p><h2>Your hours, <span class="hl">and everything outside them</span></h2></div>
-      <p class="text-muted lg:pt-10">Set your opening hours. The outer ring shows who answers each hour. The inner bars show roughly when calls come in.</p>
+      <p class="mt-5 text-muted">Set your opening hours. The outer ring shows who answers each hour. The inner bars show roughly when calls come in.</p>
     </div>
     <div class="mt-10 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <figure class="rounded-[22px] border border-line bg-paper p-5 sm:p-6">
@@ -545,9 +533,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: LondonRouting ===== -->
 <section id="routing" data-component="LondonRouting" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-rt data-unit="practice">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Several London practices?</p><h2>One number, <span class="hl">the right practice every time</span></h2></div>
-      <p class="text-muted lg:pt-10">Your agent asks for the postcode and the reason for the call, then sends it to the practice and team that cover it. You set the rules. Try a postcode to see where a call would go.</p>
+      <p class="mt-5 text-muted">Your agent asks for the postcode and the reason for the call, then sends it to the practice and team that cover it. You set the rules. Try a postcode to see where a call would go.</p>
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,.75fr)_minmax(0,1.25fr)]">
@@ -629,22 +617,22 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: MondayBeforeAfter ===== -->
 <section id="monday" data-component="MondayBeforeAfter" class="bg-sand">
   <div class="container-omh py-20 lg:py-28" data-ba>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Monday at 8am</p><h2>Drag to see <span class="hl">the same morning, two ways</span></h2></div>
-      <p class="text-muted lg:pt-10">A busy Hackney practice after the weekend. Drag the handle to compare the front desk with and without an agent.</p>
+      <p class="mt-5 text-muted">A busy Hackney practice after the weekend. Drag the handle to compare the front desk with and without an agent.</p>
     </div>
-    <div class="mx-auto mt-10 max-w-[900px]">
+    <div class="mx-auto mt-10">
       <div class="ba-stage relative flex overflow-hidden rounded-[24px] border border-line" style="--ba:50%">
         <div class="ba-side ba-before bg-surface">
           <div class="ba-inner p-5 sm:p-7">
-            <p class="flex items-center gap-2 font-display text-[19px] font-semibold text-miss"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-missed"/></svg>Without an agent</p>
+            <p class="flex items-center gap-2 font-display text-[19px] font-semibold text-miss"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone-missed"/></svg>Without an agent</p>
             <p class="mt-3 font-display text-[44px] font-semibold leading-none text-miss tnum">11</p><p class="text-[15px] text-muted">missed calls since Friday</p>
             <ul class="mt-4 space-y-2"><li class="flex gap-3 rounded-[12px] border border-line bg-paper p-3"><span class="w-12 shrink-0 font-display text-[14px] font-semibold tnum">08:00</span><span class="text-[15px] leading-snug">7 voicemails to listen to</span></li><li class="flex gap-3 rounded-[12px] border border-line bg-paper p-3"><span class="w-12 shrink-0 font-display text-[14px] font-semibold tnum">08:30</span><span class="text-[15px] leading-snug">Callers on hold while reception checks patients in</span></li><li class="flex gap-3 rounded-[12px] border border-line bg-paper p-3"><span class="w-12 shrink-0 font-display text-[14px] font-semibold tnum">09:15</span><span class="text-[15px] leading-snug">Two patients with toothache booked elsewhere</span></li></ul>
           </div>
         </div>
         <div class="ba-side ba-after bg-[color-mix(in_srgb,#d79a37_12%,var(--surface))]">
           <div class="ba-inner p-5 sm:p-7">
-            <p class="flex items-center gap-2 font-display text-[19px] font-semibold text-ok"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg>With an AI agent</p>
+            <p class="flex items-center gap-2 font-display text-[19px] font-semibold text-ok"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>With an AI agent</p>
             <p class="mt-3 font-display text-[44px] font-semibold leading-none text-ok tnum">19</p><p class="text-[15px] text-muted">calls answered, none to voicemail</p>
             <ul class="mt-4 space-y-2"><li class="flex gap-3 rounded-[12px] border border-gold/60 bg-surface p-3"><span class="w-12 shrink-0 font-display text-[14px] font-semibold">Booked</span><span class="text-[15px] leading-snug">6 check-ups and 3 new patients</span></li><li class="flex gap-3 rounded-[12px] border border-gold/60 bg-surface p-3"><span class="w-12 shrink-0 font-display text-[14px] font-semibold">Urgent</span><span class="text-[15px] leading-snug">2 patients in the first urgent slots</span></li><li class="flex gap-3 rounded-[12px] border border-gold/60 bg-surface p-3"><span class="w-12 shrink-0 font-display text-[14px] font-semibold">To do</span><span class="text-[15px] leading-snug">1 call back: a question for Dr Patel</span></li></ul>
           </div>
@@ -666,9 +654,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: NhsChangesCalculator ===== -->
 <section id="nhs" data-component="NhsChangesCalculator" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-uc>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>April 2026 NHS changes</p><h2>How many urgent patients <span class="hl">do you need to see?</span></h2></div>
-      <p class="text-muted lg:pt-10">Under the 2026/27 rules, NHS practices deliver a set amount of urgent care. Enter your NHS contract value to see your indicative target, then see how the agent helps.</p>
+      <p class="mt-5 text-muted">Under the 2026/27 rules, NHS practices deliver a set amount of urgent care. Enter your NHS contract value to see your indicative target, then see how the agent helps.</p>
     </div>
     <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,.85fr)]">
       <div class="rounded-[22px] border border-line bg-paper p-5 sm:p-6">
@@ -726,9 +714,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: CostOfCover ===== -->
 <section id="cost" data-component="CostOfCover" class="bg-paper">
   <div class="container-omh py-20 lg:py-28" data-cv data-ai-year="5388">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Cost of cover</p><h2>What would it cost to <span class="hl">staff the phones?</span></h2></div>
-      <p class="text-muted lg:pt-10">Move the slider to the hours you want covered. Staff cost uses the London Living Wage, so it is the lowest you could pay.</p>
+      <p class="mt-5 text-muted">Move the slider to the hours you want covered. Staff cost uses the London Living Wage, so it is the lowest you could pay.</p>
     </div>
     <div class="mt-10 rounded-[22px] border border-line bg-surface p-5 sm:p-8">
       <label for="cv-range" class="flex flex-wrap items-baseline justify-between gap-2"><span class="font-display text-[18px] font-semibold" data-cv-label>Office hours</span><span class="text-[15px] text-muted"><span data-cv-sub>Mon to Fri, 9:00 to 17:00</span> · <span class="tnum" data-cv-hours>40</span> hours a week</span></label>
@@ -765,9 +753,9 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 <!-- ===== COMPONENT: CaseFlips ===== -->
 <section id="cases" data-component="CaseFlips" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>London practices</p><h2>The problem, <span class="hl">then the result</span></h2></div>
-      <p class="text-muted lg:pt-10">Flip each card to see what changed. <span class="flag">[PLACEHOLDER: example practices, replace with real case studies before launch]</span></p>
+      <p class="mt-5 text-muted">Flip each card to see what changed. <span class="flag">[PLACEHOLDER: example practices, replace with real case studies before launch]</span></p>
     </div>
     <ul class="mt-10 grid gap-5 lg:grid-cols-3">
       <li class="cf" data-cf>
@@ -835,7 +823,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
         <button type="button" class="fq-cat min-h-[40px] rounded-full border border-[var(--line-strong)] bg-surface px-3.5 text-[14.5px] font-semibold" aria-pressed="true" data-fq-cat="all" data-track="dlv2_faq_topic" data-track-name="All">All</button><button type="button" class="fq-cat min-h-[40px] rounded-full border border-[var(--line-strong)] bg-surface px-3.5 text-[14.5px] font-semibold" aria-pressed="false" data-fq-cat="nhs" data-track="dlv2_faq_topic" data-track-name="NHS">NHS</button><button type="button" class="fq-cat min-h-[40px] rounded-full border border-[var(--line-strong)] bg-surface px-3.5 text-[14.5px] font-semibold" aria-pressed="false" data-fq-cat="clinical" data-track="dlv2_faq_topic" data-track-name="Clinical">Clinical</button><button type="button" class="fq-cat min-h-[40px] rounded-full border border-[var(--line-strong)] bg-surface px-3.5 text-[14.5px] font-semibold" aria-pressed="false" data-fq-cat="data" data-track="dlv2_faq_topic" data-track-name="Data">Data</button><button type="button" class="fq-cat min-h-[40px] rounded-full border border-[var(--line-strong)] bg-surface px-3.5 text-[14.5px] font-semibold" aria-pressed="false" data-fq-cat="setup" data-track="dlv2_faq_topic" data-track-name="Set-up">Set-up</button>
       </div>
       <p class="mt-4 text-[15px] text-muted" aria-live="polite" data-fq-count>Showing all 11 questions</p>
-      <a href="tel:+442034893934" class="text-link mt-4" data-track="dlv2_faq_phone"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span class="tnum">020 3489 3934</span></a>
+      <a href="tel:+442034893934" class="text-link mt-4" data-track="dlv2_faq_phone"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span class="tnum">020 3489 3934</span></a>
     </div>
     <div class="space-y-3">
       <details class="group rounded-[14px] border border-line bg-surface open:border-[var(--line-strong)]" data-faq-item data-fq-item data-cat="setup" data-track-name="Do you have an office in London?" open>
@@ -892,10 +880,10 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 <section id="book-demo" data-component="FinalCTA" class="on-band relative overflow-hidden bg-band text-band-ink">
   <div class="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
   <div class="container-omh relative py-20 lg:py-28" data-bk>
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center eyebrow-band"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Get started</p>
       <h2>See it working <span class="hl">for your London practice</span></h2>
-      <p class="mx-auto mt-5 max-w-[36rem] text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your practice, we'll tell you.</p>
+      <p class="mx-auto mt-5 text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your practice, we'll tell you.</p>
       <div class="mx-auto mt-6 max-w-[36rem] rounded-[16px] border border-band-line bg-band-surface p-4 text-left" data-su hidden>
         <p class="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-wide text-band-hl"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Your London set-up so far</p>
         <ul class="mt-2 space-y-1 text-[15px]" data-su-list></ul>
@@ -903,7 +891,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
       </div>
     </div>
 
-    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid max-w-[1040px] gap-3 md:grid-cols-3">
+    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid gap-3 md:grid-cols-3">
       <button type="button" role="tab" id="bk-tab-call" aria-controls="bk-panel-call" aria-selected="true" tabindex="0" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_#d79a37] sm:p-5" data-bk-path="call" data-track="booking_path" data-track-name="Book a 30-minute demo">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-band-hl group-aria-selected:bg-gold group-aria-selected:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span>
           <span class="min-w-0">
@@ -930,7 +918,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
         </button>
     </div>
 
-    <div class="mx-auto mt-5 max-w-[1040px]">
+    <div class="mx-auto mt-5">
       <!-- Path 1: book a demo -->
       <div role="tabpanel" id="bk-panel-call" aria-labelledby="bk-tab-call" data-bk-panel="call" class="grid overflow-hidden rounded-[20px] bg-surface text-ink shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] dark:border dark:border-[var(--line-strong)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,.7fr)]">
         <form class="p-6 sm:p-8" novalidate data-bk-form>
@@ -950,7 +938,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
               <button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="09:30" data-track="booking_time" data-track-name="09:30">09:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="10:30" data-track="booking_time" data-track-name="10:30">10:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="11:30" data-track="booking_time" data-track-name="11:30">11:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="14:00" data-track="booking_time" data-track-name="14:00">14:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="15:00" data-track="booking_time" data-track-name="15:00">15:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="16:00" data-track="booking_time" data-track-name="16:00">16:00</button>
             </div>
             <p class="mt-3 text-[14px] font-semibold text-miss" data-bk-slot-err hidden>Pick a day and a time to carry on.</p>
-            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
           </fieldset>
 
           <fieldset class="mt-6" data-bk-step="2" hidden>
@@ -1012,7 +1000,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
           <div class="py-6 text-center" data-bk-done hidden tabindex="-1">
             <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-8 !w-8" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
             <h3 class="mt-5 !text-[26px]" data-bk-done-title>Request sent</h3>
-            <p class="mx-auto mt-2 max-w-[26rem] text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
+            <p class="mx-auto mt-2 text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
           </div>
         </form>
 
@@ -1038,7 +1026,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
           <div>
             <h3 class="!text-[clamp(24px,21px+1vw,32px)]">Ring it from any phone</h3>
             <p class="mt-2 text-muted">It's set up as a fictional dental practice and answers day and night. Standard call rates apply.</p>
-            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
+            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
           </div>
           <div class="rounded-[16px] bg-sand p-5">
             <p class="font-display text-[17px] font-semibold">Three things to try</p>
@@ -1111,7 +1099,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
         <h2 id="video-modal-title" class="mt-0.5 !text-[clamp(19px,17px+.6vw,24px)] !leading-tight" data-video-modal-title></h2>
         <p class="mt-1 text-[15px] text-band-muted" data-video-modal-meta></p>
       </div>
-      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
     <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
   </div>
@@ -1125,7 +1113,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 <div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a London demo</a>
-    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
+    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
   </div>
 </div>
 

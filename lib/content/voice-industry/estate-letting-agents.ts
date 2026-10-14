@@ -255,10 +255,10 @@ export const markup = String.raw`
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI receptionist for UK estate and letting agents</p>
         <h1>Every property enquiry answered, <span class="hl">even when the team is out on viewings</span></h1>
-        <p class="mt-6 max-w-[36rem] text-[19px] text-muted">Your AI voice agent books viewings and valuations, qualifies buyers and tenants, and puts urgent calls through, day and night. Built, tested and managed for your agency by OMH.</p>
+        <p class="mt-6 text-body text-muted">Your AI voice agent books viewings and valuations, qualifies buyers and tenants, and puts urgent calls through, day and night. Built, tested and managed for your agency by OMH.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="estate_hero_book_demo">Book a free agency demo</a>
-          <a href="#hear" class="btn btn-secondary" data-track="estate_hero_hear"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a viewing call</a>
+          <a href="#hear" class="btn btn-secondary" data-track="estate_hero_hear"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a viewing call</a>
         </div>
         <ul class="mt-7 flex flex-wrap gap-2" aria-label="How it works for agencies">
           <li class="chip !text-[14px]"><svg class="icon !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Says it is an AI on every call</li><li class="chip !text-[14px]"><svg class="icon !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Never agrees prices or offers</li><li class="chip !text-[14px]"><svg class="icon !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Sales and lettings</li><li class="chip !text-[14px]"><svg class="icon !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>UK GDPR</li>
@@ -307,24 +307,12 @@ export const markup = String.raw`
 </section>
 
 
-<!-- ===== COMPONENT: SectionNav ===== -->
-<nav aria-label="On this page" data-component="SectionNav" data-section-nav class="sticky top-[69px] z-30 border-b border-line bg-paper/95 backdrop-blur-[2px]">
-  <div class="container-omh flex items-center gap-4">
-    <ul class="no-scrollbar -mx-2 flex flex-1 items-center gap-1 overflow-x-auto py-2">
-      <li class="shrink-0"><a href="#problem" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="The problem">The problem</a></li><li class="shrink-0"><a href="#hear" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Hear it">Hear it</a></li><li class="shrink-0"><a href="#how-it-works" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="How it works">How it works</a></li><li class="shrink-0"><a href="#workflows" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Workflows">Workflows</a></li><li class="shrink-0"><a href="#features" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Features">Features</a></li><li class="shrink-0"><a href="#areas" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Areas">Areas</a></li><li class="shrink-0"><a href="#getting-started" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Getting started">Getting started</a></li><li class="shrink-0"><a href="#pricing" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="Pricing">Pricing</a></li><li class="shrink-0"><a href="#faq" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3.5 text-[15px] font-semibold text-muted hover:text-ink" data-section-link data-track="section_nav_click" data-track-name="FAQ">FAQ</a></li>
-    </ul>
-    <a href="#book-demo" class="btn btn-primary !min-h-[40px] shrink-0 !px-4 !text-[15px] max-md:hidden" data-track="section_nav_book_demo">Book a demo</a>
-  </div>
-  <span class="absolute inset-x-0 bottom-[-1px] h-[2px] bg-gold" data-section-progress aria-hidden="true"></span>
-</nav>
-
-
 <!-- ===== COMPONENT: FrontDeskDay ===== -->
 <section id="problem" data-component="FrontDeskDay" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>A day at your front desk</p><h2>Calls don't arrive evenly. <span class="hl">Neither do the misses.</span></h2></div>
-      <p class="text-muted lg:pt-10">An illustrative weekday at a busy sales and lettings branch. Missed calls pile up while negotiators are out on viewings, over lunch and after work, exactly when buyers and tenants ring.</p>
+      <p class="mt-5 text-muted">An illustrative weekday at a busy sales and lettings branch. Missed calls pile up while negotiators are out on viewings, over lunch and after work, exactly when buyers and tenants ring.</p>
     </div>
     <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
       <figure class="rounded-[20px] border border-line bg-paper p-4 sm:p-6" data-pd data-mode="today">
@@ -453,7 +441,7 @@ export const markup = String.raw`
         <div class="rounded-[18px] border border-line bg-paper p-5"><p class="flex items-center gap-3"><span class="rounded-full bg-ink px-2.5 py-0.5 text-[13.5px] font-semibold text-paper tnum">10:30</span><span class="font-display text-[18px] font-semibold">Out on viewings</span></p><p class="mt-2 text-[16px] leading-snug text-muted">Negotiators are at properties. The office phone rings to an empty desk.</p></div>
         <div class="rounded-[18px] border border-line bg-paper p-5"><p class="flex items-center gap-3"><span class="rounded-full bg-ink px-2.5 py-0.5 text-[13.5px] font-semibold text-paper tnum">12:30</span><span class="font-display text-[18px] font-semibold">Lunchtime enquiries</span></p><p class="mt-2 text-[16px] leading-snug text-muted">Buyers ring on their lunch break, just as the team grabs theirs.</p></div>
         <div class="rounded-[18px] border border-line bg-paper p-5"><p class="flex items-center gap-3"><span class="rounded-full bg-ink px-2.5 py-0.5 text-[13.5px] font-semibold text-paper tnum">18:00</span><span class="font-display text-[18px] font-semibold">After work</span></p><p class="mt-2 text-[16px] leading-snug text-muted">Buyers and tenants ring after work. Voicemail picks up, and they ring the next agent on the portal.</p></div>
-        <a href="#calculator" class="text-link mt-1" data-track="estate_problem_calc">Work out what it costs your agency<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+        <a href="#calculator" class="text-link mt-1" data-track="estate_problem_calc">Work out what it costs your agency<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
       </div>
     </div>
   </div>
@@ -472,11 +460,11 @@ export const markup = String.raw`
           <label for="hear-name" class="font-display text-[16.5px] font-semibold">Your agency name</label>
           <div class="mt-2 flex flex-col gap-2 sm:flex-row">
             <input id="hear-name" type="text" maxlength="48" autocomplete="organization" placeholder="For example, Wren &amp; Marlow" class="field" data-hear-name data-track="estate_hear_name">
-            <button type="submit" class="btn btn-primary shrink-0" data-track="estate_hear_play"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear the greeting</button>
+            <button type="submit" class="btn btn-primary shrink-0" data-track="estate_hear_play"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear the greeting</button>
           </div>
           <p class="mt-2 text-[14px] text-muted">Stays on your screen. Nothing is sent anywhere.</p>
         </form>
-        <p class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[16px]">Or ring our demo agency: <a href="tel:" class="text-link tnum" data-demo-number data-track="estate_ring_demo"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a></p>
+        <p class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[16px]">Or ring our demo agency: <a href="tel:" class="text-link tnum" data-demo-number data-track="estate_ring_demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a></p>
         <p class="mt-1 text-[14px] text-muted">2-minute call. It tells you it is an AI. Nothing to sign up for.</p>
       </div>
 
@@ -502,12 +490,12 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: EstateCalculator ===== -->
 <section id="calculator" data-component="EstateCalculator" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Missed calls calculator</p>
       <h2>What do missed calls <span class="hl">cost your agency?</span></h2>
       <p class="mt-5 text-muted">Move the sliders to match your branch. We've started with typical figures for a busy sales and lettings branch.</p>
     </div>
-    <div class="mx-auto mt-10 grid max-w-[1100px] gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" data-dc-root>
+    <div class="mx-auto mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" data-dc-root>
       <div class="space-y-6 rounded-[20px] border border-line bg-paper p-6 sm:p-8">
         <div>
             <div class="flex items-baseline justify-between gap-3"><label for="dc-calls" class="font-display text-[16.5px] font-semibold">Calls a month</label><span class="font-display text-[17px] font-semibold text-hl tnum"><span data-dc-out="calls">800</span></span></div>
@@ -557,11 +545,11 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: EstateVideo ===== -->
 <section id="video" data-component="EstateVideo" class="bg-sand">
   <div class="container-omh py-20 lg:py-24">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Demo video</p>
       <h2>Watch it handle <span class="hl">a viewing request</span></h2>
     </div>
-    <div class="mx-auto mt-10 max-w-[960px] rounded-[24px] border border-line bg-surface p-3 sm:p-4">
+    <div class="mx-auto mt-10 rounded-[24px] border border-line bg-surface p-3 sm:p-4">
       <button type="button" class="group relative block aspect-video w-full overflow-hidden rounded-[18px] bg-[linear-gradient(135deg,#1a2437,#101828_60%,#3a2f1a)] text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="[PLACEHOLDER]" data-video-title="A viewing request, start to finish" data-video-meta="Wren &amp; Marlow, London (fictional demo agency)" data-track="estate_video_open" aria-label="Play video: a viewing request, start to finish (opens in a pop-up)">
         <span class="absolute -right-10 -top-6 text-white/5" aria-hidden="true"><svg class="icon !h-[300px] !w-[300px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
         <span class="absolute left-[8%] top-[18%] w-[min(300px,46%)] rounded-[16px] bg-cream p-4 text-navy shadow-[0_30px_50px_-30px_rgb(0_0_0/0.8)]" aria-hidden="true">
@@ -587,13 +575,13 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: HowItWorks ===== -->
 <section id="how-it-works" data-component="HowItWorks" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-hw3>
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>How it works</p>
       <h2>Three steps, <span class="hl">on every call</span></h2>
       <p class="mt-5 text-muted">From the first ring to a note your team can act on. Pick a step, or watch one call go through.</p>
     </div>
 
-    <div class="relative mx-auto mt-10 max-w-[760px]">
+    <div class="relative mx-auto mt-10">
       <div class="hw3-track absolute left-[16.667%] right-[16.667%] top-[22.5px] h-[3px] rounded-full bg-line" aria-hidden="true"><span class="hw3-fill block h-full rounded-full bg-gold" data-hw3-fill></span><span class="hw3-dot" data-hw3-dot></span></div>
       <div class="relative grid grid-cols-3" role="group" aria-label="Steps">
         <button type="button" class="hw3-pick mx-auto flex flex-col items-center gap-1.5" aria-pressed="true" data-hw3-pick="0" data-track="estate_how_step" data-track-name="Answers every enquiry"><span class="hw3-num grid h-12 w-12 place-items-center rounded-full border-2 font-display text-[17px] font-semibold"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg></span><span class="text-[13.5px] font-semibold">Step 1</span></button><button type="button" class="hw3-pick mx-auto flex flex-col items-center gap-1.5" aria-pressed="false" data-hw3-pick="1" data-track="estate_how_step" data-track-name="Books it or routes it"><span class="hw3-num grid h-12 w-12 place-items-center rounded-full border-2 font-display text-[17px] font-semibold"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span><span class="text-[13.5px] font-semibold">Step 2</span></button><button type="button" class="hw3-pick mx-auto flex flex-col items-center gap-1.5" aria-pressed="false" data-hw3-pick="2" data-track="estate_how_step" data-track-name="Hands your team a summary"><span class="hw3-num grid h-12 w-12 place-items-center rounded-full border-2 font-display text-[17px] font-semibold"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></span><span class="text-[13.5px] font-semibold">Step 3</span></button>
@@ -639,7 +627,7 @@ export const markup = String.raw`
       </li>
     </ol>
     <div class="mt-8 flex justify-center">
-      <button type="button" class="btn btn-secondary !min-h-[44px]" data-hw3-replay data-track="estate_how_replay"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Watch a call go through</button>
+      <button type="button" class="btn btn-secondary !min-h-[44px]" data-hw3-replay data-track="estate_how_replay"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Watch a call go through</button>
     </div>
   </div>
 </section>
@@ -648,7 +636,7 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: EstateWorkflows ===== -->
 <section id="workflows" data-component="EstateWorkflows">
   <div class="container-omh py-20 lg:py-28" data-wf-root>
-    <div class="mx-auto max-w-[46rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Agency workflows</p>
       <h2>Built around <span class="hl">sales and lettings</span></h2>
       <p class="mt-5 text-muted">Six jobs your agent can take on. Pick one to see how the call flows and what your team sees afterwards.</p>
@@ -685,7 +673,7 @@ export const markup = String.raw`
 
     <div id="wf-panel" class="mt-6 rounded-[22px] border border-line bg-surface p-5 sm:p-8" aria-live="polite">
       <div data-wf-panel="viewing">
-        <div class="max-w-[44rem]"><h3>Viewings booked while the buyer is still on the phone</h3><p class="mt-2 text-muted">The agent checks your viewing diary, asks your qualifying questions and books the slot. The buyer gets the address and a reminder by text.</p></div>
+        <div class=""><h3>Viewings booked while the buyer is still on the phone</h3><p class="mt-2 text-muted">The agent checks your viewing diary, asks your qualifying questions and books the slot. The buyer gets the address and a reminder by text.</p></div>
         <div class="mt-7 rounded-[14px] border border-line bg-paper p-4 sm:p-6" data-flow-wrap>
           <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 px-1 pb-4">
             <p class="flex items-center gap-2 font-display text-[18px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>How the call flows</p>
@@ -769,7 +757,7 @@ export const markup = String.raw`
         </div>
       </div>
       <div data-wf-panel="valuation" hidden>
-        <div class="max-w-[44rem]"><h3>Valuation requests that turn into appointments</h3><p class="mt-2 text-muted">Homeowners and landlords who ring about selling or letting are booked straight in with a valuer, with the details your team needs before they arrive.</p></div>
+        <div class=""><h3>Valuation requests that turn into appointments</h3><p class="mt-2 text-muted">Homeowners and landlords who ring about selling or letting are booked straight in with a valuer, with the details your team needs before they arrive.</p></div>
         <div class="mt-7 rounded-[14px] border border-line bg-paper p-4 sm:p-6" data-flow-wrap>
           <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 px-1 pb-4">
             <p class="flex items-center gap-2 font-display text-[18px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>How the call flows</p>
@@ -853,7 +841,7 @@ export const markup = String.raw`
         </div>
       </div>
       <div data-wf-panel="rental" hidden>
-        <div class="max-w-[44rem]"><h3>Rental applicants qualified before anyone rings back</h3><p class="mt-2 text-muted">The agent answers questions from your approved listing details, asks your qualifying questions and books viewings for applicants who meet your criteria.</p></div>
+        <div class=""><h3>Rental applicants qualified before anyone rings back</h3><p class="mt-2 text-muted">The agent answers questions from your approved listing details, asks your qualifying questions and books viewings for applicants who meet your criteria.</p></div>
         <div class="mt-7 rounded-[14px] border border-line bg-paper p-4 sm:p-6" data-flow-wrap>
           <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 px-1 pb-4">
             <p class="flex items-center gap-2 font-display text-[18px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>How the call flows</p>
@@ -937,7 +925,7 @@ export const markup = String.raw`
         </div>
       </div>
       <div data-wf-panel="maintenance" hidden>
-        <div class="max-w-[44rem]"><h3>Maintenance reports logged, emergencies routed</h3><p class="mt-2 text-muted">Tenants can report a repair any time. The agent logs the details and photos request, and anything urgent follows your out-of-hours route.</p></div>
+        <div class=""><h3>Maintenance reports logged, emergencies routed</h3><p class="mt-2 text-muted">Tenants can report a repair any time. The agent logs the details and photos request, and anything urgent follows your out-of-hours route.</p></div>
         <div class="mt-7 rounded-[14px] border border-line bg-paper p-4 sm:p-6" data-flow-wrap>
           <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 px-1 pb-4">
             <p class="flex items-center gap-2 font-display text-[18px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>How the call flows</p>
@@ -1021,7 +1009,7 @@ export const markup = String.raw`
         </div>
       </div>
       <div data-wf-panel="offers" hidden>
-        <div class="max-w-[44rem]"><h3>Offers and sales calls reach the right person</h3><p class="mt-2 text-muted">The agent never discusses or agrees offers. It takes the details, puts the call through to the negotiator or sales progressor, or books an urgent call back.</p></div>
+        <div class=""><h3>Offers and sales calls reach the right person</h3><p class="mt-2 text-muted">The agent never discusses or agrees offers. It takes the details, puts the call through to the negotiator or sales progressor, or books an urgent call back.</p></div>
         <div class="mt-7 rounded-[14px] border border-line bg-paper p-4 sm:p-6" data-flow-wrap>
           <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 px-1 pb-4">
             <p class="flex items-center gap-2 font-display text-[18px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>How the call flows</p>
@@ -1105,7 +1093,7 @@ export const markup = String.raw`
         </div>
       </div>
       <div data-wf-panel="questions" hidden>
-        <div class="max-w-[44rem]"><h3>Everyday questions off your team’s plate</h3><p class="mt-2 text-muted">Opening hours, fees for landlords, whether a property is still available and directions to the office. The agent answers from information you approve and hands over anything else.</p></div>
+        <div class=""><h3>Everyday questions off your team’s plate</h3><p class="mt-2 text-muted">Opening hours, fees for landlords, whether a property is still available and directions to the office. The agent answers from information you approve and hands over anything else.</p></div>
         <div class="mt-7 rounded-[14px] border border-line bg-paper p-4 sm:p-6" data-flow-wrap>
           <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 px-1 pb-4">
             <p class="flex items-center gap-2 font-display text-[18px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>How the call flows</p>
@@ -1196,9 +1184,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: EstateFeatures ===== -->
 <section id="features" data-component="EstateFeatures" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-ft>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Features</p><h2>Everything your branch <span class="hl">needs from a phone</span></h2></div>
-      <p class="text-muted">Set up, tested and looked after by OMH. Pick who it's for to see what matters to them.</p>
+      <p class="mt-5 text-muted">Set up, tested and looked after by OMH. Pick who it's for to see what matters to them.</p>
     </div>
     <div class="mt-9 flex flex-wrap gap-2" role="group" aria-label="Show features for">
       <button type="button" class="min-h-[44px] rounded-full border border-[var(--line-strong)] bg-surface px-4 text-[15.5px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" aria-pressed="true" data-ft-filter="all" data-track="estate_features_filter" data-track-name="Everything">Everything</button>
@@ -1212,31 +1200,31 @@ export const markup = String.raw`
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">Answers on the first ring</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">Evenings, weekends and bank holidays, when buyers and tenants actually ring.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="patients">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-message"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">Your agency name and voice</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">A clear British voice with your greeting, your branch hours and your way of talking.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="patients">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">No engaged tone</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">Several callers can ring at once after a new listing goes live and every one gets answered.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span><span class="flag">[CONFIRM]</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span><span class="flag">[CONFIRM]</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="patients">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">Text confirmations</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">Viewing address, time and a reminder by text, with an easy way to cancel.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span><span class="flag">[CONFIRM]</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span><span class="flag">[CONFIRM]</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="reception">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">Books viewings and valuations</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">Works from real availability, by negotiator, valuer and appointment type.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="reception">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-phone-forwarded"/></svg></span>
@@ -1248,7 +1236,7 @@ export const markup = String.raw`
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">Call notes in plain English</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">A short summary of every call, with the recording and transcript if you want them.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="reception">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg></span>
@@ -1260,7 +1248,7 @@ export const markup = String.raw`
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">Morning summary</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">Before the team is in: who rang overnight, what was booked and what needs a person.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="owners">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-plus-star"/></svg></span>
@@ -1272,7 +1260,7 @@ export const markup = String.raw`
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg></span>
         <h3 class="mt-4 !text-[19px] !leading-snug">Local number or keep yours</h3>
         <p class="mt-1.5 flex-1 text-[15.5px] leading-snug text-muted">Divert your branch line, or get a number with your city’s area code.</p>
-        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip ">All plans</span><span class="flag">[CONFIRM]</span></p>
+        <p class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip">All plans</span><span class="flag">[CONFIRM]</span></p>
       </li>
       <li class="ft-card group flex flex-col rounded-[18px] border border-line bg-paper p-5" data-ft-who="owners">
         <span class="grid h-11 w-11 place-items-center rounded-[12px] bg-gold/20 text-hl transition-colors group-hover:bg-gold group-hover:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
@@ -1346,9 +1334,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: Boundaries ===== -->
 <section id="boundaries" data-component="Boundaries" class="bg-sand">
   <div class="container-omh py-20 lg:py-24">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Clear boundaries</p><h2>What it handles, <span class="hl">and what it doesn't</span></h2></div>
-      <p class="text-muted lg:pt-10">You decide the rules before it answers a single call. Out of hours, tenant emergencies go to your on-call property manager or approved contractor.</p>
+      <p class="mt-5 text-muted">You decide the rules before it answers a single call. Out of hours, tenant emergencies go to your on-call property manager or approved contractor.</p>
     </div>
     <div class="mt-10 grid gap-4 md:grid-cols-3">
       <div class="rounded-[20px] border border-line bg-surface p-6">
@@ -1371,9 +1359,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: EstateAreas ===== -->
 <section id="areas" data-component="EstateAreas" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-areas>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Areas we cover</p><h2>Estate and letting agents in <span class="hl">ten UK cities</span></h2></div>
-      <div class="space-y-3 text-muted lg:pt-10">
+      <div class="mt-5 space-y-3 text-muted">
         <p>Buyers and tenants trust a local number. Your agent can answer on your existing line or on a new number with your city's area code.</p>
         <p class="text-[16px]">Our team is in Hullbridge, Essex. We don't have offices in these cities. Set-up and reviews happen by video call and phone. <span class="flag">[CONFIRM] local number availability</span></p>
       </div>
@@ -1431,7 +1419,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=london" class="btn btn-primary" data-track="estate_city_click" data-track-name="London">Talk to us about London</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=london" data-future-href="/ai-voice-agents/estate-letting-agents/london" class="text-link" data-track="estate_city_page" data-track-name="London">AI receptionist for estate agents in London<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=london" data-future-href="/ai-voice-agents/estate-letting-agents/london" class="text-link" data-track="estate_city_page" data-track-name="London">AI receptionist for estate agents in London<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-birmingham" data-area-panel="birmingham" hidden role="tabpanel" aria-labelledby="area-tab-birmingham" tabindex="0">
@@ -1451,7 +1439,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=birmingham" class="btn btn-primary" data-track="estate_city_click" data-track-name="Birmingham">Talk to us about Birmingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=birmingham" data-future-href="/ai-voice-agents/estate-letting-agents/birmingham" class="text-link" data-track="estate_city_page" data-track-name="Birmingham">AI receptionist for estate agents in Birmingham<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=birmingham" data-future-href="/ai-voice-agents/estate-letting-agents/birmingham" class="text-link" data-track="estate_city_page" data-track-name="Birmingham">AI receptionist for estate agents in Birmingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-manchester" data-area-panel="manchester" hidden role="tabpanel" aria-labelledby="area-tab-manchester" tabindex="0">
@@ -1471,7 +1459,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=manchester" class="btn btn-primary" data-track="estate_city_click" data-track-name="Manchester">Talk to us about Manchester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=manchester" data-future-href="/ai-voice-agents/estate-letting-agents/manchester" class="text-link" data-track="estate_city_page" data-track-name="Manchester">AI receptionist for estate agents in Manchester<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=manchester" data-future-href="/ai-voice-agents/estate-letting-agents/manchester" class="text-link" data-track="estate_city_page" data-track-name="Manchester">AI receptionist for estate agents in Manchester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leeds" data-area-panel="leeds" hidden role="tabpanel" aria-labelledby="area-tab-leeds" tabindex="0">
@@ -1491,7 +1479,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leeds" class="btn btn-primary" data-track="estate_city_click" data-track-name="Leeds">Talk to us about Leeds</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leeds" data-future-href="/ai-voice-agents/estate-letting-agents/leeds" class="text-link" data-track="estate_city_page" data-track-name="Leeds">AI receptionist for estate agents in Leeds<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leeds" data-future-href="/ai-voice-agents/estate-letting-agents/leeds" class="text-link" data-track="estate_city_page" data-track-name="Leeds">AI receptionist for estate agents in Leeds<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-liverpool" data-area-panel="liverpool" hidden role="tabpanel" aria-labelledby="area-tab-liverpool" tabindex="0">
@@ -1511,7 +1499,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=liverpool" class="btn btn-primary" data-track="estate_city_click" data-track-name="Liverpool">Talk to us about Liverpool</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=liverpool" data-future-href="/ai-voice-agents/estate-letting-agents/liverpool" class="text-link" data-track="estate_city_page" data-track-name="Liverpool">AI receptionist for estate agents in Liverpool<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=liverpool" data-future-href="/ai-voice-agents/estate-letting-agents/liverpool" class="text-link" data-track="estate_city_page" data-track-name="Liverpool">AI receptionist for estate agents in Liverpool<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-bristol" data-area-panel="bristol" hidden role="tabpanel" aria-labelledby="area-tab-bristol" tabindex="0">
@@ -1531,7 +1519,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=bristol" class="btn btn-primary" data-track="estate_city_click" data-track-name="Bristol">Talk to us about Bristol</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=bristol" data-future-href="/ai-voice-agents/estate-letting-agents/bristol" class="text-link" data-track="estate_city_page" data-track-name="Bristol">AI receptionist for estate agents in Bristol<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=bristol" data-future-href="/ai-voice-agents/estate-letting-agents/bristol" class="text-link" data-track="estate_city_page" data-track-name="Bristol">AI receptionist for estate agents in Bristol<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-sheffield" data-area-panel="sheffield" hidden role="tabpanel" aria-labelledby="area-tab-sheffield" tabindex="0">
@@ -1551,7 +1539,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=sheffield" class="btn btn-primary" data-track="estate_city_click" data-track-name="Sheffield">Talk to us about Sheffield</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=sheffield" data-future-href="/ai-voice-agents/estate-letting-agents/sheffield" class="text-link" data-track="estate_city_page" data-track-name="Sheffield">AI receptionist for estate agents in Sheffield<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=sheffield" data-future-href="/ai-voice-agents/estate-letting-agents/sheffield" class="text-link" data-track="estate_city_page" data-track-name="Sheffield">AI receptionist for estate agents in Sheffield<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-nottingham" data-area-panel="nottingham" hidden role="tabpanel" aria-labelledby="area-tab-nottingham" tabindex="0">
@@ -1571,7 +1559,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=nottingham" class="btn btn-primary" data-track="estate_city_click" data-track-name="Nottingham">Talk to us about Nottingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=nottingham" data-future-href="/ai-voice-agents/estate-letting-agents/nottingham" class="text-link" data-track="estate_city_page" data-track-name="Nottingham">AI receptionist for estate agents in Nottingham<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=nottingham" data-future-href="/ai-voice-agents/estate-letting-agents/nottingham" class="text-link" data-track="estate_city_page" data-track-name="Nottingham">AI receptionist for estate agents in Nottingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leicester" data-area-panel="leicester" hidden role="tabpanel" aria-labelledby="area-tab-leicester" tabindex="0">
@@ -1591,7 +1579,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leicester" class="btn btn-primary" data-track="estate_city_click" data-track-name="Leicester">Talk to us about Leicester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leicester" data-future-href="/ai-voice-agents/estate-letting-agents/leicester" class="text-link" data-track="estate_city_page" data-track-name="Leicester">AI receptionist for estate agents in Leicester<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leicester" data-future-href="/ai-voice-agents/estate-letting-agents/leicester" class="text-link" data-track="estate_city_page" data-track-name="Leicester">AI receptionist for estate agents in Leicester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-newcastle" data-area-panel="newcastle" hidden role="tabpanel" aria-labelledby="area-tab-newcastle" tabindex="0">
@@ -1611,7 +1599,7 @@ export const markup = String.raw`
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=newcastle" class="btn btn-primary" data-track="estate_city_click" data-track-name="Newcastle">Talk to us about Newcastle</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=newcastle" data-future-href="/ai-voice-agents/estate-letting-agents/newcastle" class="text-link" data-track="estate_city_page" data-track-name="Newcastle">AI receptionist for estate agents in Newcastle<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=newcastle" data-future-href="/ai-voice-agents/estate-letting-agents/newcastle" class="text-link" data-track="estate_city_page" data-track-name="Newcastle">AI receptionist for estate agents in Newcastle<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
       </div>
@@ -1649,9 +1637,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: AgencyStories ===== -->
 <section id="stories" data-component="AgencyStories" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-fb>
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Agency stories</p><h2>Hear it from <span class="hl">estate and letting agents</span></h2></div>
-      <p class="text-muted lg:pt-10">Short videos from branch managers, negotiators and lettings teams. Each story stays marked as pending until we have checked the results.</p>
+      <p class="mt-5 text-muted">Short videos from branch managers, negotiators and lettings teams. Each story stays marked as pending until we have checked the results.</p>
     </div>
     <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-fb-list>
       <li class="flex">
@@ -1665,7 +1653,7 @@ export const markup = String.raw`
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Weekend viewings at a London branch</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering Saturday viewing requests booked while the team was out.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Branch manager</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1683,7 +1671,7 @@ export const markup = String.raw`
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Manchester</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Manchester</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Rental enquiries in Manchester</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering applicants qualified and viewings booked out of hours.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Lettings manager</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1701,7 +1689,7 @@ export const markup = String.raw`
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Leeds</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Leeds</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Valuation leads at a Leeds agency</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering evening valuation requests and instructions won.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Director</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1719,7 +1707,7 @@ export const markup = String.raw`
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Birmingham</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Birmingham</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">A fuller valuation diary in Birmingham</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering valuations booked from calls that used to ring out.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Valuer</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1737,7 +1725,7 @@ export const markup = String.raw`
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Bristol</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Bristol</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Out-of-hours repairs in Bristol</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering tenant emergencies routed to the on-call manager.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Property manager</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1755,7 +1743,7 @@ export const markup = String.raw`
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
-            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Newcastle</span></p>
+            <p class="flex flex-wrap items-center gap-2"><span class="chip">Estate agency</span><span class="chip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Newcastle</span></p>
             <h3 class="mt-3 !text-[20px] !leading-[1.3]">Lunchtime calls in Newcastle</h3>
             <blockquote class="mt-2.5 border-l-[3px] border-gold pl-3.5 text-[15.5px] leading-[1.5] text-muted"><p><span class="flag">[PLACEHOLDER]</span> Quote to follow, covering calls answered while the team was out on viewings.</p></blockquote>
             <div class="mt-auto flex items-center justify-between gap-3 pt-4 text-[14.5px]"><span><span class="font-semibold">[Name]</span>, Senior negotiator</span><span class="chip chip-pending">Result: pending</span></div>
@@ -1763,7 +1751,7 @@ export const markup = String.raw`
         </article>
       </li>
     </ul>
-    <div class="mt-8 flex justify-center"><button type="button" class="btn btn-secondary" data-fb-more data-track="estate_stories_more"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg>Show 3 more stories</button></div>
+    <div class="mt-8 flex justify-center"><button type="button" class="btn btn-secondary" data-fb-more data-track="estate_stories_more"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg>Show 3 more stories</button></div>
   </div>
 </section>
 
@@ -1771,9 +1759,9 @@ export const markup = String.raw`
 <!-- ===== COMPONENT: GettingStarted ===== -->
 <section id="getting-started" data-component="GettingStarted" class="bg-sand">
   <div class="container-omh py-20 lg:py-28">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+    <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Getting started</p><h2>From first call <span class="hl">to go-live</span></h2></div>
-      <p class="text-muted lg:pt-10">We do the building. Most of your time goes on two short calls. <span class="flag">[PLACEHOLDER typical go-live time]</span></p>
+      <p class="mt-5 text-muted">We do the building. Most of your time goes on two short calls. <span class="flag">[PLACEHOLDER typical go-live time]</span></p>
     </div>
     <ol class="relative mt-12 grid gap-4 md:grid-cols-4">
       <li class="pointer-events-none absolute left-[12.5%] right-[12.5%] top-[27px] hidden h-[2px] bg-[var(--line-strong)] md:block" aria-hidden="true"></li>
@@ -1839,12 +1827,12 @@ ${pricingSection("bg-surface")}
 <!-- ===== COMPONENT: FAQ ===== -->
 <section id="faq" data-component="FAQ" class="bg-paper">
   <div class="container-omh py-20 lg:py-28">
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
       <h2>What agents <span class="hl">ask us first</span></h2>
       <p class="mt-5 text-muted">Search for a word, or pick a topic.</p>
     </div>
-    <div class="mx-auto mt-10 max-w-[880px]" data-faq>
+    <div class="mx-auto mt-10" data-faq>
       <div class="relative">
         <label for="faq-search" class="sr-only">Search the questions</label>
         <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
@@ -1869,7 +1857,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Will callers know they are talking to an AI?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Callers and AI</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>Yes. Every agent says it is an AI assistant at the start of the call. Callers deserve to know, and anyone who would rather speak to a person can ask.</p>
           
         </div>
@@ -1880,7 +1868,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Can it book viewings into our diary?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Viewings and offers</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>Yes. It checks real availability, follows your viewing rules, such as notice needed and accompanied viewings, and books the slot while the buyer is on the line.</p>
           
         </div>
@@ -1891,7 +1879,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it qualify buyers and tenants?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Viewings and offers</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>It asks the questions you set, such as position, mortgage in principle, move date or pets, and records the answers. It never gives mortgage or financial advice.</p>
           
         </div>
@@ -1902,7 +1890,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Can it discuss or accept offers?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Viewings and offers</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>No. It never discusses, accepts or agrees offers, prices or terms, and never shares other buyers’ details. It takes the details and puts the caller through to your negotiator, or books an urgent call back.</p>
           
         </div>
@@ -1913,7 +1901,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">What happens with tenant emergencies out of hours?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Viewings and offers</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>It follows the route you set. Urgent problems such as leaks or no heating go to your on-call property manager or approved contractor, and every report is logged for the morning.</p>
           
         </div>
@@ -1924,7 +1912,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it work with our property software?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Setup and systems</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>It works with most diaries and property software. We check yours on the first call and tell you plainly what connects directly and what needs a workaround.</p>
           <p class="mt-3"><span class="flag flag-wrap">[CONFIRM] supported property software</span></p>
         </div>
@@ -1935,7 +1923,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Can we keep our phone number, or get a local one?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Setup and systems</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>You can keep your number and divert calls to the agent, either all of them or only the ones your team misses. If you want a local number for a new branch, we can set one up.</p>
           
         </div>
@@ -1946,7 +1934,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Is client data kept safe?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Data and rules</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>You remain the data controller and OMH acts as your processor under a written data processing agreement, in line with UK GDPR. We agree what is stored, where and for how long before go-live.</p>
           <p class="mt-3"><span class="flag flag-wrap">[CONFIRM] storage region and retention options</span></p>
         </div>
@@ -1957,7 +1945,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Are calls recorded?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Data and rules</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>Only if you want them to be. Callers are told at the start of the call, and recordings are deleted on the schedule you set.</p>
           
         </div>
@@ -1968,7 +1956,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Will it replace our negotiators?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Working with us</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>No. It takes the overflow and the routine calls, so your team can focus on viewings, valuations and closing sales. You choose when it answers: only when the lines are busy, only out of hours, or first on every call.</p>
           
         </div>
@@ -1979,7 +1967,7 @@ ${pricingSection("bg-surface")}
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Is there a minimum contract?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Working with us</span></span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="max-w-[46rem] px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[17px] text-muted sm:pl-[4.25rem]">
           <p>We set out the terms in writing before you start, including notice period and what is included each month. Every invoice shows minutes used and any extra.</p>
           <p class="mt-3">Billed monthly, 30 days notice.</p>
         </div>
@@ -1999,13 +1987,13 @@ ${pricingSection("bg-surface")}
 <section id="book-demo" data-component="FinalCTA" class="on-band relative overflow-hidden bg-band text-band-ink">
   <div class="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
   <div class="container-omh relative py-20 lg:py-28" data-bk>
-    <div class="mx-auto max-w-[44rem] text-center">
+    <div class="mx-auto text-center">
       <p class="eyebrow justify-center eyebrow-band"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Get started</p>
       <h2>See it working <span class="hl">for your agency</span></h2>
-      <p class="mx-auto mt-5 max-w-[36rem] text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your agency, we'll tell you.</p>
+      <p class="mx-auto mt-5 text-band-muted">Pick how you'd like to start. No obligation, and if an AI receptionist isn't right for your agency, we'll tell you.</p>
     </div>
 
-    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid max-w-[1040px] gap-3 md:grid-cols-3">
+    <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid gap-3 md:grid-cols-3">
       <button type="button" role="tab" id="bk-tab-call" aria-controls="bk-panel-call" aria-selected="true" tabindex="0" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_#d79a37] sm:p-5" data-bk-path="call" data-track="booking_path" data-track-name="Book a 30-minute demo">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-band-hl group-aria-selected:bg-gold group-aria-selected:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span>
           <span class="min-w-0">
@@ -2032,7 +2020,7 @@ ${pricingSection("bg-surface")}
         </button>
     </div>
 
-    <div class="mx-auto mt-5 max-w-[1040px]">
+    <div class="mx-auto mt-5">
       <!-- Path 1: book a demo -->
       <div role="tabpanel" id="bk-panel-call" aria-labelledby="bk-tab-call" data-bk-panel="call" class="grid overflow-hidden rounded-[20px] bg-surface text-ink shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] dark:border dark:border-[var(--line-strong)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,.7fr)]">
         <form class="p-6 sm:p-8" novalidate data-bk-form>
@@ -2052,7 +2040,7 @@ ${pricingSection("bg-surface")}
               <button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="09:30" data-track="booking_time" data-track-name="09:30">09:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="10:30" data-track="booking_time" data-track-name="10:30">10:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="11:30" data-track="booking_time" data-track-name="11:30">11:30</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="14:00" data-track="booking_time" data-track-name="14:00">14:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="15:00" data-track="booking_time" data-track-name="15:00">15:00</button><button type="button" role="radio" aria-checked="false" class="bk-slot min-h-[48px] rounded-[10px] border border-[var(--line-strong)] text-[15.5px] font-semibold tnum aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-bk-time="16:00" data-track="booking_time" data-track-name="16:00">16:00</button>
             </div>
             <p class="mt-3 text-[14px] font-semibold text-miss" data-bk-slot-err hidden>Pick a day and a time to carry on.</p>
-            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+            <button type="button" class="btn btn-primary mt-7 w-full sm:w-auto" data-bk-next data-track="booking_next">Next: your details<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
           </fieldset>
 
           <fieldset class="mt-6" data-bk-step="2" hidden>
@@ -2114,7 +2102,7 @@ ${pricingSection("bg-surface")}
           <div class="py-6 text-center" data-bk-done hidden tabindex="-1">
             <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ok text-surface" aria-hidden="true"><svg class="icon !h-8 !w-8" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
             <h3 class="mt-5 !text-[26px]" data-bk-done-title>Request sent</h3>
-            <p class="mx-auto mt-2 max-w-[26rem] text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
+            <p class="mx-auto mt-2 text-[16.5px] text-muted">We'll email to confirm <strong class="font-semibold text-ink" data-bk-done-slot></strong> within one working day. <span class="flag">[CONFIRM]</span></p>
           </div>
         </form>
 
@@ -2140,7 +2128,7 @@ ${pricingSection("bg-surface")}
           <div>
             <h3 class="!text-[clamp(24px,21px+1vw,32px)]">Ring it from any phone</h3>
             <p class="mt-2 text-muted">It's set up as a fictional estate agency and answers day and night. Standard call rates apply.</p>
-            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
+            <a href="tel:" class="mt-6 flex min-h-[64px] items-center justify-center gap-3 rounded-[14px] bg-gold px-5 font-display text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-navy tnum" data-demo-number data-track="booking_ring_demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a>
           </div>
           <div class="rounded-[16px] bg-sand p-5">
             <p class="font-display text-[17px] font-semibold">Three things to try</p>
@@ -2188,7 +2176,7 @@ ${pricingSection("bg-surface")}
   <div class="container-omh py-14 lg:py-16">
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 class="!text-[clamp(1.5rem,1.3rem+.8vw,2rem)]">AI voice agents for other industries</h2>
-      <a href="/ai-voice-agents" class="text-link" data-track="estate_all_industries">All AI voice agents<svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+      <a href="/ai-voice-agents" class="text-link" data-track="estate_all_industries">All AI voice agents<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
     </div>
     <ul class="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
       <li><a href="/ai-voice-agents/dental-clinics" class="flex h-full min-h-[64px] items-center gap-3 rounded-[14px] border border-line bg-surface px-4 py-3 font-display text-[15.5px] font-semibold leading-snug hover:border-gold" data-track="estate_other_industry" data-track-name="Dental Clinics"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg>Dental Clinics</a></li>
@@ -2211,7 +2199,7 @@ ${pricingSection("bg-surface")}
         <h2 id="video-modal-title" class="mt-0.5 !text-[clamp(19px,17px+.6vw,24px)] !leading-tight" data-video-modal-title></h2>
         <p class="mt-1 text-[15px] text-band-muted" data-video-modal-meta></p>
       </div>
-      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
     <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
   </div>
@@ -2225,7 +2213,7 @@ ${pricingSection("bg-surface")}
 <div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book an agency demo</a>
-    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
+    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
   </div>
 </div>
 `;
