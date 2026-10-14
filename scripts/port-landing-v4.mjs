@@ -35,10 +35,11 @@ let html = kept.join("\n\n");
 html = classTokens(html, (t) => t.map((x) => (x === "wrap" ? "container-omh" : x)).filter((x) => !DROP.has(x)));
 html = html
   .replace('id="industries"', 'id="industries-strip"') // the page already has a #industries section
-  .replaceAll('href="#hear-it"', 'href="#video"') // "Hear it first" is left out; #video holds the sample call
-  // The design's pop-up forms are dummies, so its buttons go to the page's working demo form.
+  // "Hear it first" is left out; the booking tabs (BookDemo, #book-demo-form) hold "Ring our demo agent now".
+  .replaceAll('href="#hear-it"', 'href="#book-demo-form"')
+  // The design's pop-up forms are dummies, so its buttons go to the page's working booking tabs.
   .replace(/<button type="button" class="([^"]*)" data-open="(?:callback|demo)"(?: aria-label="[^"]*")?>([\s\S]*?)<\/button>/g,
-    '<a href="#book-demo" class="$1">$2</a>')
+    '<a href="#book-demo-form" class="$1">$2</a>')
   .replace(/href="#i-/g, 'href="#v4-i-'); // own sprite ids, so the page's existing icons are untouched
 const left = html.match(/.{0,80}(?:data-open=|max-w-\[\d+(?:rem|ch)\]|class="(?:[^"]* )?wrap[ "]).{0,40}/g);
 if (left) throw new Error("unconverted markup left:\n" + left.join("\n"));

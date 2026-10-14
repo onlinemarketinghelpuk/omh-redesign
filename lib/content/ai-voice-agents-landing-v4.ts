@@ -54,8 +54,8 @@ export const landingV4Markup = String.raw`
     <h1 class="h1-c mx-auto mt-6" id="hero-title">Answer every call. Book every lead. <span class="hl">Even at 2am</span></h1>
     <p class="lead mx-auto mt-6">An AI voice agent that answers on the first ring, qualifies the caller and books them into your calendar. Set up for you in 48 hours.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
-      <a href="#book-demo" class="btn btn-primary w-full sm:w-auto">Call Me Now</a>
-      <a href="#book-demo" class="btn btn-secondary w-full sm:w-auto">Book a Demo</a>
+      <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto">Call Me Now</a>
+      <a href="#book-demo-form" class="btn btn-secondary w-full sm:w-auto">Book a Demo</a>
     </div>
     <p class="t-small mt-4 text-muted">14-day pilot · No setup fee · Keep your number</p>
   </div>
@@ -235,7 +235,7 @@ export const landingV4Markup = String.raw`
       </li>
     </ul>
     <div class="mt-10 flex justify-center">
-      <a href="#book-demo" class="btn btn-secondary">Book a Demo</a>
+      <a href="#book-demo-form" class="btn btn-secondary">Book a Demo</a>
     </div>
   </div>
 </section>
@@ -267,8 +267,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Books viewings and valuations into your calendar</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -291,8 +291,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Handles reschedules and cancellations</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -315,8 +315,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Passes anything clinical to your team with a summary</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -339,8 +339,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Books routine jobs and quotes into your diary</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -363,8 +363,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Fills cancellations from your waiting list</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -387,8 +387,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Books site visits with your estimators</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -411,8 +411,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Books paid or free consultations</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -435,8 +435,8 @@ export const landingV4Markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon s-ok mt-0.5" aria-hidden="true"><use href="#v4-i-check"/></svg>Books MOTs and services into the workshop</li>
           </ul>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-            <a class="link link-tap" href="#video">Hear sample calls</a>
+            <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+            <a class="link link-tap" href="#book-demo-form">Hear sample calls</a>
           </div>
         </div>
       </article>
@@ -520,8 +520,8 @@ export const landingV4Markup = String.raw`
       </li>
     </ul>
     <div class="mt-10 flex flex-col items-center gap-3 text-center">
-      <a href="#book-demo" class="btn btn-primary">Call Me Now</a>
-      <p class="t-small text-muted">Somewhere else? We cover towns and cities across the UK. <a href="#book-demo" class="link link-tap text-[15px]">Ask us about your area</a></p>
+      <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
+      <p class="t-small text-muted">Somewhere else? We cover towns and cities across the UK. <a href="#book-demo-form" class="link link-tap text-[15px]">Ask us about your area</a></p>
     </div>
   </div>
 </section>

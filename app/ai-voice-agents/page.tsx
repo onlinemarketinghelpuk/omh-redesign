@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookDemo } from "@/components/BookDemo";
 import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
 import { landingV4Markup } from "@/lib/content/ai-voice-agents-landing-v4";
@@ -70,6 +71,8 @@ export default function AiVoiceAgentsPage() {
       <div id="v4l" className="v4l" dangerouslySetInnerHTML={{ __html: landingV4Markup }} />
       <LandingV4Script />
       <div id="va-page" className="va-page" dangerouslySetInnerHTML={{ __html: voiceAgentsMarkup }} />
+      {/* The booking tabs every "Book a Demo" / "Call Me Now" button on the page points at. */}
+      <BookDemo id="book-demo-form" />
       <VoiceAgentsScript />
     </>
   );

@@ -1049,7 +1049,8 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   /* --------------------------------------------------------- Sticky bar */
   function initStickyBar() {
     const bar = $("[data-sticky-bar]");
-    const hero = $("#hero");
+    // The AI voice agents page now opens with the v4 landing hero (#top, outside #va-page).
+    const hero = $("#hero") ?? document.getElementById("top");
     const end = $("#book-demo");
     if (!bar || !hero || !end) return;
     let pastHero = false,

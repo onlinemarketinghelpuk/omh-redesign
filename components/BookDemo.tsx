@@ -163,7 +163,8 @@ function Radio({ checked, first, index, onPick, className, children }: { checked
   );
 }
 
-export function BookDemo() {
+/** `id`: an anchor for in-page "Book a demo" links (the AI voice agents page uses "book-demo-form"). */
+export function BookDemo({ id }: { id?: string } = {}) {
   const uid = useId();
   const [tab, setTab] = useState(0);
 
@@ -245,7 +246,7 @@ export function BookDemo() {
     `grid size-7 place-items-center rounded-full ${on ? "bg-amber text-inverse" : "border-[1.5px] border-line"}`;
 
   return (
-    <section aria-label="Book a demo" className="bg-inverse text-oninverse">
+    <section id={id} aria-label="Book a demo" className="scroll-mt-[85px] bg-inverse text-oninverse">
       <div className="container-omh">
         <div className="section-sm border-y border-oninverse/12">
           <div role="tablist" aria-label="How would you like to start?" className="grid gap-3 md:grid-cols-3">
