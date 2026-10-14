@@ -3,6 +3,7 @@ import { Instrument_Sans, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollTop } from "@/components/layout/ScrollTop";
+import { SiteAssistant } from "@/components/layout/SiteAssistant";
 import { getSearchIndex } from "@/lib/content/search-index";
 import { JsonLd, SITE, organisation, website } from "@/lib/schema";
 import "./globals.css";
@@ -69,6 +70,7 @@ export default async function RootLayout({
         </main>
         <Footer />
         <ScrollTop />
+        <SiteAssistant />
       </body>
     </html>
   );

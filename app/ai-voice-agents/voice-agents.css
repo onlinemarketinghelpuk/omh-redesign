@@ -85,10 +85,13 @@ html:has(.va-page) {
 html:has(.va-page dialog[open]) {
   overflow: hidden;
 }
-/* The mobile booking bar sits where the back-to-top button does. */
+/* The mobile booking bar takes the bottom of the screen: lift the site
+   assistant's pill (components/layout/SiteAssistant.tsx) above it, and the
+   back-to-top button above that. */
 @media (max-width: 767px) {
-  body:has(.va-page [data-sticky-bar].is-visible) .scroll-top {
-    bottom: 92px;
+  body:has(.va-page [data-sticky-bar].is-visible) {
+    #ohm-assistant-root { --omh-fab-lift: 76px; }
+    .scroll-top { bottom: 156px; }
   }
 }
 @media (prefers-reduced-motion: reduce) {
