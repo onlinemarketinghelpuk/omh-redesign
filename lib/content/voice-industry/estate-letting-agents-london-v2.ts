@@ -1,5 +1,7 @@
 // Generated from the standalone design file AI voice agents for real estate in london v2.html,
 // without its stand-in header and footer. Registered in ./index.ts.
+import { roiCalculator } from "@/lib/content/roi-calculator";
+
 export const meta = {
   "title": "AI Voice Agents for Real Estate in London | OMH",
   "description": "AI voice agents for London estate and letting agents. Answer every enquiry on the first ring, book viewings and valuations day and night, and route offers and tenant emergencies. Built and managed by OMH.",
@@ -818,6 +820,8 @@ export const markup = String.raw`
     </div>
   </div>
 </section>
+
+${roiCalculator("real-estate", "bg-paper border-t border-line")}
 
 
 <!-- ===== COMPONENT: CaseFlips ===== -->

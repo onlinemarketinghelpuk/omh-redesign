@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { fitRoiFrames } from "./fitRoiFrames";
 import { runIndustryScript } from "./industry-script";
 
 export type IndustryCopy = {
@@ -62,6 +63,7 @@ export function IndustryScript({ copy, blocks }: { copy: IndustryCopy; blocks: s
     } finally {
       EventTarget.prototype.addEventListener = add;
     }
+    if (page) undo.push(fitRoiFrames(page));
 
     return () => {
       // ponytail: undo grows by one entry per timer for the page's lifetime; fine for one page view.

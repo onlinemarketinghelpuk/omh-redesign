@@ -4,6 +4,7 @@
 // components/voice-agents/VoiceAgentsScript.tsx, which finds them by data-*.
 // Styles: app/ai-voice-agents/voice-agents.css (everything under .va-page).
 // [CONFIRM] / [PLACEHOLDER] chips mark copy the client still has to confirm.
+import { roiCalculator } from "@/lib/content/roi-calculator";
 import { pricingSection } from "@/lib/content/voice-pricing";
 export const voiceAgentsMarkup = String.raw`
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
@@ -44,7 +45,7 @@ export const voiceAgentsMarkup = String.raw`
   <div class="container-omh grid items-center gap-12 pb-16 pt-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,.92fr)] lg:gap-14 lg:pb-24 lg:pt-20">
     <div>
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents for UK service businesses</p>
-      <h1>An AI receptionist that answers, books and follows up, <span class="hl">day and night</span></h1>
+      <h2 class="va-h1">An AI receptionist that answers, books and follows up, <span class="hl">day and night</span></h2>
       <p class="mt-6 text-body leading-[1.55] text-muted">When your team can't get to the phone, your voice agent picks up in your business's name, books the appointment into your diary and passes anything complicated to a person. OMH builds it, tests it and manages it for you.</p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <a href="/contact?service=ai-voice-agents" class="btn btn-primary" data-track="hero_book_demo">Book a Voice Agent Demo</a>
@@ -1515,7 +1516,9 @@ export const voiceAgentsMarkup = String.raw`
   </div>
 </dialog>
 
-${pricingSection()}
+${roiCalculator("any-business")}
+
+${pricingSection("bg-surface")}
 
 <section id="calculator" data-component="MissedCallCalculator" class="bg-sand">
   <div class="container-omh py-20 lg:py-28">

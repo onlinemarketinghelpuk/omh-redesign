@@ -1,5 +1,7 @@
 // Generated from the standalone design file AI Voice Agents for Dental Clinics in London-v2.html,
 // without its stand-in header and footer. Registered in ./index.ts.
+import { roiCalculator } from "@/lib/content/roi-calculator";
+
 export const meta = {
   "title": "AI Voice Agents for Dental Clinics in London | OMH",
   "description": "AI voice agents for London dental practices. Answer every call on the first ring, book check-ups and new patients day and night, and route urgent calls to your team. No clinical advice. Built and managed by OMH.",
@@ -756,6 +758,8 @@ export const markup = String.raw`
     </div>
   </div>
 </section>
+
+${roiCalculator("dental", "bg-paper border-t border-line")}
 
 
 <!-- ===== COMPONENT: CaseFlips ===== -->

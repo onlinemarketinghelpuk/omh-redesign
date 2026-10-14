@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
+import { landingV4Markup } from "@/lib/content/ai-voice-agents-landing-v4";
 import { voiceAgentsMarkup } from "@/lib/content/ai-voice-agents-markup";
 import { JsonLd, SITE, faqSchema } from "@/lib/schema";
 
@@ -64,6 +66,9 @@ export default function AiVoiceAgentsPage() {
   return (
     <>
       <JsonLd data={[service, faqSchema(faqs)]} />
+      {/* Sections from the v4 landing-page design, on top while the client decides the order. */}
+      <div id="v4l" className="v4l" dangerouslySetInnerHTML={{ __html: landingV4Markup }} />
+      <LandingV4Script />
       <div id="va-page" className="va-page" dangerouslySetInnerHTML={{ __html: voiceAgentsMarkup }} />
       <VoiceAgentsScript />
     </>

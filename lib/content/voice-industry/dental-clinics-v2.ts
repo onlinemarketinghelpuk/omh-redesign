@@ -2,6 +2,8 @@
 // without its stand-in header and footer. Registered in ./index.ts.
 import { pricingSection } from "@/lib/content/voice-pricing";
 
+import { roiCalculator } from "@/lib/content/roi-calculator";
+
 export const meta = {
   "title": "AI Receptionist for Dental Practices | UK Dental Clinics | OMH",
   "description": "An AI voice agent for UK dental practices. Answers patient calls 24/7, books check-ups, fills cancellations and routes urgent calls. Never gives clinical advice. Built and managed by OMH.",
@@ -1212,6 +1214,8 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: PricingBySize ===== -->
+${roiCalculator("dental")}
+
 ${pricingSection("bg-surface")}
 
 

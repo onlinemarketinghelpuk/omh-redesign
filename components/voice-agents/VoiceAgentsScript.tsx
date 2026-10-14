@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { fitRoiFrames } from "./fitRoiFrames";
 
 /*
   Behaviour for the AI voice agents page, also used by the AI services page,
@@ -23,7 +24,9 @@ export function VoiceAgentsScript() {
   useEffect(() => {
     const page = document.getElementById("va-page");
     if (!page) return;
-    return init(page, (href) => router.push(href));
+    const stop = init(page, (href) => router.push(href));
+    const unfit = fitRoiFrames(page);
+    return () => { stop(); unfit(); };
   }, [router]);
 
   return null;

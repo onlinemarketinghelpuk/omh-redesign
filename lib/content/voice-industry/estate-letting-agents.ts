@@ -2,6 +2,8 @@
 // without its stand-in header and footer. Registered in ./index.ts.
 import { pricingSection } from "@/lib/content/voice-pricing";
 
+import { roiCalculator } from "@/lib/content/roi-calculator";
+
 export const meta = {
   "title": "AI Receptionist for Estate & Letting Agents | UK | OMH",
   "description": "An AI voice agent for UK estate and letting agents. Answers every enquiry 24/7, books viewings and valuations, qualifies buyers and tenants and routes tenant emergencies. Built and managed by OMH.",
@@ -1829,6 +1831,8 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: Pricing ===== -->
+${roiCalculator("real-estate")}
+
 ${pricingSection("bg-surface")}
 
 
