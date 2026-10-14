@@ -1,0 +1,210 @@
+/* OMH ROI calculator. Tokens match the brand used across the voice agent work,
+   with hard fallbacks so this file stands alone in any page it is pasted into. */
+
+:root{
+  --ink:#101828; --muted:#667085; --line:#d9ddd8; --warm:#f7f6f2; --surface:#fff;
+  --amber:#d79a37; --amber-deep:#8f5a0e; --good:#067647; --bad:#b42318;
+  --radius:14px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--warm);color:var(--ink);
+  font:400 16px/1.6 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--amber-deep)}
+.wrap{max-width:1060px;margin:0 auto;padding:48px 20px 90px}
+
+/* ---------------------------------------------------------------- header */
+header.top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:28px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;letter-spacing:-.02em;margin:0 0 8px;max-width:17ch}
+.lede{color:var(--muted);margin:0;max-width:56ch}
+.pick{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--muted)}
+select,.btn{font:inherit;color:var(--ink);background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer}
+select:focus,.btn:focus{outline:2px solid var(--amber);outline-offset:1px}
+
+/* ----------------------------------------------------------------- grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px}
+.card h2{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;font-weight:600}
+
+/* --------------------------------------------------------------- fields */
+.field{margin-bottom:20px}
+.field-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:7px}
+.field label{font-size:15px}
+.field output{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--amber);height:22px}
+.help{font-size:13px;line-height:1.45;color:var(--muted);margin:6px 0 0}
+.help.src{background:var(--warm);border-radius:8px;padding:9px 11px}
+.grade{display:inline-block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+  font-weight:600;padding:2px 7px;border-radius:999px;vertical-align:1px}
+.src.study .grade{background:#e7f4ed;color:var(--good)}
+.src.vendor .grade{background:#fdf2e3;color:var(--amber-deep)}
+.src.ours .grade{background:#eef0ee;color:var(--muted)}
+
+/* ---------------------------------------------------------------- chain */
+#chain{list-style:none;margin:0 0 20px;padding:0}
+#chain li{padding:7px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--muted)}
+#chain li:last-child{border-bottom:none;color:var(--ink);font-size:16px}
+#chain b{color:var(--ink);font-size:19px;font-variant-numeric:tabular-nums;margin-right:6px}
+#chain li.sub{padding-left:14px}
+
+/* -------------------------------------------------------------- results */
+.figures{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.fig{background:var(--warm);border-radius:10px;padding:13px 15px}
+.fig span{display:block;font-size:12.5px;color:var(--muted);margin-bottom:3px}
+.fig b{font-size:22px;font-variant-numeric:tabular-nums}
+.big{font-size:34px!important;letter-spacing:-.02em}
+.good{color:var(--good)}
+.bad{color:var(--bad)}
+.rule{border:none;border-top:1px solid var(--line);margin:18px 0}
+.line{display:flex;justify-content:space-between;gap:14px;font-size:15px;padding:5px 0}
+.line span{color:var(--muted)}
+.line b{font-variant-numeric:tabular-nums}
+
+/* ----------------------------------------------------------------- plan */
+.planbox{background:var(--ink);color:#fff;border-radius:var(--radius);padding:20px 22px;margin-top:4px}
+.planbox h3{margin:0 0 2px;font-size:21px}
+.planbox .price{font-size:15px;opacity:.9}
+.planbox .meta{font-size:13.5px;opacity:.72;margin:6px 0 14px}
+.planbox p.blurb{font-size:14px;opacity:.85;margin:0 0 16px}
+.meter{height:8px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--amber);border-radius:999px;transition:width .18s}
+.meter i.over{background:var(--bad)}
+.mins{display:flex;justify-content:space-between;font-size:13px;opacity:.8;margin-top:7px}
+
+/* ---------------------------------------------------------------- modes */
+.modes{display:inline-flex;background:var(--warm);border:1px solid var(--line);
+  border-radius:999px;padding:3px;gap:3px;margin-bottom:6px}
+.modes button{border:none;background:none;border-radius:999px;padding:7px 14px;
+  font:inherit;font-size:14px;color:var(--muted);cursor:pointer}
+.modes button.on{background:var(--ink);color:#fff}
+
+/* ---------------------------------------------------------------- notes */
+.notes{margin-top:20px}
+.notes ul{margin:0;padding-left:19px}
+.notes li{font-size:14px;color:var(--muted);margin:7px 0}
+footer{margin-top:34px;font-size:13.5px;color:var(--muted);line-height:1.6}
+footer strong{color:var(--ink)}
+.cta{display:inline-block;margin-top:16px;background:var(--ink);color:#fff;text-decoration:none;
+  border-radius:999px;padding:13px 26px;font-weight:600}
+
+@media print{
+  body{background:#fff}
+  input[type=range],.modes,#reset,select{display:none}
+  .card{break-inside:avoid}
+}
+
+/* ===================================================================
+   Layout: a centred hero, then one panel with the dials on the left
+   and the answer on the right. Our own palette, cream and ink and
+   amber, rather than the dark purple it is modelled on.
+   =================================================================== */
+
+.wrap{max-width:1140px;padding-top:40px}
+.back{margin:0 0 26px;font-size:14px}
+.back a{color:var(--muted);text-decoration:none}
+.back a:hover{color:var(--ink)}
+
+/* ----------------------------------------------------------- the hero */
+.hero{text-align:center;margin:0 auto 34px;max-width:720px}
+.badge{display:inline-flex;align-items:center;gap:7px;background:#e7f4ed;color:var(--good);
+  border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:18px}
+.hero h1{max-width:none;margin:0 auto 10px;font-size:clamp(32px,5.4vw,52px);line-height:1.05}
+.hero .lede{margin:0 auto;max-width:52ch;font-size:17px}
+
+/* ---------------------------------------------------------- the panel */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;
+  padding:6px;box-shadow:0 24px 60px -34px rgba(16,24,40,.3)}
+.panel-in{display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  background:linear-gradient(180deg,#fdfcfa,var(--surface));border-radius:18px;padding:26px}
+@media (max-width:900px){.panel-in{grid-template-columns:1fr;padding:18px}}
+.col-controls{padding:6px 18px 0 6px}
+@media (max-width:900px){.col-controls{padding:0}}
+
+/* --------------------------------------------------------- the dials */
+.ask{padding:0 0 26px}
+.ask:last-child{padding-bottom:18px}
+.ask-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:12px}
+.ask .q{font-size:16px;font-weight:500;color:var(--muted);margin:0;line-height:1.35}
+.ask .answer{font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--ink);
+  font-variant-numeric:tabular-nums;white-space:nowrap;margin:0}
+.scale{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);
+  margin-top:5px;font-variant-numeric:tabular-nums}
+.ask .hint{font-size:13px;margin-top:9px}
+.ask .hint.src{background:var(--warm);border-radius:9px;padding:9px 11px;margin-top:10px}
+input[type=range]{height:26px}
+
+/* ---------------------------------------------------------- segments */
+.planpick{margin-top:4px}
+.pp-label{display:block;font-size:16px;color:var(--muted);margin-bottom:10px}
+.segments{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.segments button{font:inherit;font-weight:600;font-size:15px;cursor:pointer;
+  padding:13px 8px;border-radius:12px;border:1px solid var(--line);
+  background:var(--warm);color:var(--muted)}
+.segments button:hover{border-color:var(--amber);color:var(--ink)}
+.segments button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pp-note{font-size:13.5px;color:var(--muted);margin:12px 0 0;line-height:1.5}
+
+/* ---------------------------------------------------------- results */
+.col-results{display:flex;flex-direction:column;gap:12px}
+.cap{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--muted)}
+.hero-fig{background:var(--warm);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.hero-fig b{display:block;font-size:clamp(38px,5.6vw,54px);line-height:1.05;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;margin:8px 0 6px}
+.hero-fig em{font-style:normal;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+.stat{background:var(--warm);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat b{display:block;font-size:26px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:6px 0 3px}
+.stat em{font-style:normal;font-size:12.5px;color:var(--muted)}
+.highlight{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+  background:#fdf6ea;border:1px solid var(--amber);border-radius:16px;padding:18px 20px}
+.highlight b{display:block;font-size:30px;letter-spacing:-.02em;margin-top:5px;
+  font-variant-numeric:tabular-nums}
+.highlight .right{text-align:right}
+.highlight .right b{font-size:25px;color:var(--amber-deep)}
+.highlight em{font-style:normal;font-size:12.5px;color:var(--muted)}
+.lines{padding:2px 4px}
+.line{display:flex;justify-content:space-between;gap:14px;font-size:14.5px;padding:7px 0}
+.line span{color:var(--muted)}
+.line b{font-variant-numeric:tabular-nums}
+
+/* --------------------------------------------------- chooser + rest */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.tile{display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px 22px;text-decoration:none;color:inherit}
+.tile:hover{border-color:var(--amber);transform:translateY(-1px)}
+.tile b{display:block;font-size:17px;margin-bottom:5px}
+.tile span{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+
+.middle{text-align:center;margin:22px 0}
+#workings{max-width:1140px}
+#workings .card h2{margin-top:0}
+#chain{margin-bottom:16px}
+
+.capture{margin-top:18px;border-color:var(--amber);max-width:760px;margin-left:auto;margin-right:auto}
+.capture h2{color:var(--ink);font-size:19px;text-transform:none;letter-spacing:0;margin-bottom:8px}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+@media (max-width:560px){.rows{grid-template-columns:1fr}}
+.rows label{display:flex;flex-direction:column;gap:5px;font-size:14px;color:var(--muted)}
+.rows input{font:inherit;font-size:15.5px;color:var(--ink);background:var(--surface);
+  border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
+.rows input:focus{outline:none;border-color:var(--amber)}
+.consent{font-size:13px;color:var(--muted);margin:14px 0 16px}
+button.cta{border:none;cursor:pointer;font:inherit;font-weight:600;font-size:16px}
+.formnote{font-size:14.5px;margin:14px 0 0;line-height:1.5}
+.formnote.bad{color:var(--bad)}
+.formnote.good{color:var(--good)}
+.or{font-size:14px;color:var(--muted);margin:16px 0 0}
+
+/* The highlight line varies in length ("1.3x back" against "1.1 new patients a
+   month"), so it has to wrap without shoving the price column into two lines. */
+.highlight{align-items:center}
+.highlight>div:first-child{min-width:0}
+.highlight b{font-size:clamp(21px,2.3vw,28px);line-height:1.18}
+.highlight .right{flex:0 0 auto;white-space:nowrap}
+.highlight .right b{font-size:24px}

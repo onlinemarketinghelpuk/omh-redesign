@@ -1839,6 +1839,17 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: Pricing ===== -->
+<!-- ROI calculator from github.com/online-marketing-help/ohm-roi-calculators, served from public/roi-calculator/.
+     onload grows the frame to its content (2,058px desktop, 3,505px mobile) so the lead form is never
+     behind an inner scrollbar; 1400px is only the starting height. Same origin, so contentDocument is readable.
+     Sized once on load, then by the frame's own ResizeObserver (a parent-window one never fires for elements in the
+     frame, and it only fires while the frame is on screen). body.offsetHeight, not scrollHeight, so it can shrink. -->
+<section id="roi-calculator" data-component="RoiCalculator" class="bg-paper">
+  <iframe src="/roi-calculator/dental.html" title="ROI calculator"
+        style="width:100%;height:1400px;border:0"
+        onload="var f=this,d=f.contentDocument;if(!d)return;var fit=function(){f.style.height=d.body.offsetHeight+'px'};fit();new f.contentWindow.ResizeObserver(fit).observe(d.body)"></iframe>
+</section>
+
 ${pricingSection("bg-surface")}
 
 
