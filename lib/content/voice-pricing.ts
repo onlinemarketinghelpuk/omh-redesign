@@ -80,19 +80,19 @@ const card = (p: (typeof plans)[number]) => `      <article id="plan-${p.id}" cl
           <h3>${p.name}</h3>
           ${p.popular ? '<span class="rounded-full bg-gold px-3 py-1 text-[13.5px] font-semibold text-navy">Most popular</span>' : ""}
         </div>
-        <p class="mt-2 min-h-[3.2em] text-[17px] leading-snug text-muted">${p.strap}</p>
+        <p class="mt-2 min-h-[3.2em] text-body leading-snug text-muted">${p.strap}</p>
         <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£${p.price}</span>
-          <span class="text-[16px] text-muted">a month + VAT</span>
+          <span class="text-body text-muted">a month + VAT</span>
         </p>
         <p class="mt-2 text-[15.5px] text-muted">Billed monthly</p>
-        <ul class="mt-5 space-y-1.5 rounded-[10px] bg-sand px-4 py-3 text-[16.5px] leading-snug tnum">
+        <ul class="mt-5 space-y-1.5 rounded-[10px] bg-sand px-4 py-3 text-body leading-snug tnum">
           <li><strong class="font-semibold">${p.minutes}</strong> included, then 60p a minute</li>
           <li><strong class="font-semibold">${p.setup}</strong> one-off setup</li>
           <li>${p.delivery}</li>
         </ul>
-        <p class="mt-5 text-[16px] leading-snug"><span class="font-semibold">Who it is for:</span> <span class="text-muted">${p.who}</span></p>
-        <ul class="mt-6 space-y-2.5 text-[17px] leading-snug">
+        <p class="mt-5 text-body leading-snug"><span class="font-semibold">Who it is for:</span> <span class="text-muted">${p.who}</span></p>
+        <ul class="mt-6 space-y-2.5 text-body leading-snug">
 ${p.features.map((f) => `          <li class="flex gap-2.5">${icon("check", "text-hl")}<span>${f}</span></li>`).join("\n")}
         </ul>
         <p class="mt-6 text-[15.5px] font-semibold">Not included</p>
@@ -113,8 +113,8 @@ export const pricingSection = (bg = "") => `<section id="pricing" data-component
 ${plans.map(card).join("\n")}
     </div>
 
-    <dl class="mt-10 grid gap-x-8 gap-y-6 border-t border-line pt-8 text-[15.5px] leading-snug sm:grid-cols-2 lg:grid-cols-4">
-${notes.map(([k, v]) => `      <div><dt class="font-semibold">${k}</dt><dd class="mt-1 text-muted">${v}</dd></div>`).join("\n")}
+    <dl class="mt-12 border-t border-line">
+${notes.map(([k, v]) => `      <div class="grid gap-1 border-b border-line py-4 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-8"><dt class="pt-0.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt><dd class="text-[18px] leading-[1.556]">${v}</dd></div>`).join("\n")}
     </dl>
   </div>
 </section>`;

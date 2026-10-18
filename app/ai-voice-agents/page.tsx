@@ -63,16 +63,58 @@ const service = {
   url: `${SITE}${path}/`,
 };
 
+// Splits a markup string at each top-level <section>, keyed by its id (or aria-labelledby).
+// `head` is whatever comes before the first section (the icon sprite).
+function sectionsOf(html: string, className: string) {
+  const [head, ...parts] = html.split(/(?=<section[\s>])/);
+  const byKey = new Map(parts.map((p) => [p.match(/^<section[^>]*?\s(?:id|aria-labelledby)="([^"]+)"/)![1], p]));
+  return { head, byKey, className };
+}
+
+const v4 = sectionsOf(landingV4Markup, "v4l");
+const va = sectionsOf(voiceAgentsMarkup, "va-page");
+
+// The client's running order. The two designs are styled by their own wrapper class, so each run of
+// one design's sections gets its own wrapper.
+const runs: [typeof v4, string[]][] = [
+  [v4, ["top", "benefits-title", "features-title", "use-cases"]],
+  [va, ["industries", "feedback"]],
+  [v4, ["how", "cities"]],
+  [va, ["why-omh", "branding", "right-fit", "roi-calculator", "pricing", "compare", "faq", "related"]],
+];
+const placed = runs.flatMap(([, keys]) => keys);
+for (const src of [v4, va])
+  for (const key of src.byKey.keys()) if (!placed.includes(key)) throw new Error(`/ai-voice-agents: section "${key}" has no place in runs`);
+const runHtml = runs.map(([src, keys], i) => {
+  const html = keys.map((k) => {
+    const part = src.byKey.get(k);
+    if (!part) throw new Error(`/ai-voice-agents: no section "${k}"`);
+    return part;
+  });
+  // The icon sprite goes in the first wrapper of its design.
+  return (runs.findIndex(([s]) => s === src) === i ? src.head : "") + html.join("");
+});
+
 export default function AiVoiceAgentsPage() {
   return (
     <>
       <JsonLd data={[service, faqSchema(faqs)]} />
-      {/* Sections from the v4 landing-page design, on top while the client decides the order. */}
-      <div id="v4l" className="v4l" dangerouslySetInnerHTML={{ __html: landingV4Markup }} />
+      {/* One root for both page scripts; they find their widgets by data-* hooks inside it. */}
+      <div id="va-page">
+        {runs.map(([src], i) => (
+          <div key={i} className={src.className} dangerouslySetInnerHTML={{ __html: runHtml[i] }} />
+        ))}
+      </div>
       <LandingV4Script />
-      <div id="va-page" className="va-page" dangerouslySetInnerHTML={{ __html: voiceAgentsMarkup }} />
       {/* The booking tabs every "Book a Demo" / "Call Me Now" button on the page points at. */}
-      <BookDemo id="book-demo-form" />
+      <BookDemo
+        id="book-demo-form"
+        heading={
+          <>
+            Hear a voice agent answer <span className="text-[#f2c675]">as your business</span>
+          </>
+        }
+      />
       <VoiceAgentsScript />
     </>
   );

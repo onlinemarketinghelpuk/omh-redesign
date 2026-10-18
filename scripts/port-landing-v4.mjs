@@ -40,7 +40,11 @@ html = html
   // The design's pop-up forms are dummies, so its buttons go to the page's working booking tabs.
   .replace(/<button type="button" class="([^"]*)" data-open="(?:callback|demo)"(?: aria-label="[^"]*")?>([\s\S]*?)<\/button>/g,
     '<a href="#book-demo-form" class="$1">$2</a>')
-  .replace(/href="#i-/g, 'href="#v4-i-'); // own sprite ids, so the page's existing icons are untouched
+  .replace(/href="#i-/g, 'href="#v4-i-') // own sprite ids, so the page's existing icons are untouched
+  .replace(/ ?<span class="ph">[^<]*<\/span>/g, "") // the design's review chips ("Dummy figures" …) are not for visitors
+  // page.tsx puts How it works after Client feedback (no band) and before Local cover, so they swap bands.
+  .replace('<section class="section border-y border-line bg-surface" id="cities"', '<section class="section" id="cities"')
+  .replace('<section id="how" class="section"', '<section id="how" class="section border-y border-line bg-surface"');
 const left = html.match(/.{0,80}(?:data-open=|max-w-\[\d+(?:rem|ch)\]|class="(?:[^"]* )?wrap[ "]).{0,40}/g);
 if (left) throw new Error("unconverted markup left:\n" + left.join("\n"));
 

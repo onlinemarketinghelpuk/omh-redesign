@@ -165,7 +165,7 @@ export const landingV4Markup = String.raw`
       <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><div><h3 class="h4">Books into your calendar</h3><p class="t-card mt-1 text-muted">Real appointments in open slots, with the details your team needs.</p></div></li>
       <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><div><h3 class="h4">Warm transfer to you</h3><p class="t-card mt-1 text-muted">Urgent or ready-to-buy callers come through to you, with a quick briefing first.</p></div></li>
       <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><div><h3 class="h4">Every call logged to your CRM</h3><p class="t-card mt-1 text-muted">A summary, tags and next steps for every conversation.</p></div></li>
-      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-languages"/></svg></span><div><h3 class="h4">English and other languages</h3><p class="t-card mt-1 text-muted">It switches language when the caller does. <span class="ph">Confirm languages</span></p></div></li>
+      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-languages"/></svg></span><div><h3 class="h4">English and other languages</h3><p class="t-card mt-1 text-muted">It switches language when the caller does.</p></div></li>
     </ul>
   </div>
 </section>
@@ -219,7 +219,7 @@ export const landingV4Markup = String.raw`
           <div class="mini justify-between"><span><b>Interested again</b></span><span class="num text-[18px]">31</span></div>
           <div class="mini justify-between"><span><b>Appointments booked</b></span><span class="num text-[18px] s-ok">12</span></div>
         </div>
-        <div class="fcard-body"><h3 class="h4">Calls old leads back</h3><p class="t-card mt-2 text-muted">It works through enquiries that went quiet and books the ones who are ready now. <span class="ph">Dummy figures</span></p></div>
+        <div class="fcard-body"><h3 class="h4">Calls old leads back</h3><p class="t-card mt-2 text-muted">It works through enquiries that went quiet and books the ones who are ready now.</p></div>
       </li>
       <li class="fcard">
         <div class="fcard-vis" aria-hidden="true">
@@ -231,7 +231,7 @@ export const landingV4Markup = String.raw`
           </div>
           <div class="mini"><svg class="icon text-hl"><use href="#v4-i-shield"/></svg><span>Checks run before every outbound call</span></div>
         </div>
-        <div class="fcard-body"><h3 class="h4">Consent and TPS checks built in</h3><p class="t-card mt-2 text-muted">It only calls people who opted in, checks the TPS register and says it's an AI at the start of each call. <span class="ph">Needs legal review</span></p></div>
+        <div class="fcard-body"><h3 class="h4">Consent and TPS checks built in</h3><p class="t-card mt-2 text-muted">It only calls people who opted in, checks the TPS register and says it's an AI at the start of each call.</p></div>
       </li>
     </ul>
     <div class="mt-10 flex justify-center">
@@ -444,7 +444,7 @@ export const landingV4Markup = String.raw`
   </div>
 </section>
 
-<section class="section border-y border-line bg-surface" id="cities" aria-labelledby="city-title">
+<section class="section" id="cities" aria-labelledby="city-title">
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
@@ -526,7 +526,7 @@ export const landingV4Markup = String.raw`
   </div>
 </section>
 
-<section id="how" class="section" aria-labelledby="how-title">
+<section id="how" class="section border-y border-line bg-surface" aria-labelledby="how-title">
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>How it works</p>

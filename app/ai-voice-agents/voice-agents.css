@@ -379,3 +379,16 @@ html:has(.va-page dialog[open]) {
 @keyframes va-brand-wave { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
 @keyframes va-il-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
 @keyframes va-pin-pulse { from { opacity: .7; transform: scale(1); } to { opacity: 0; transform: scale(2.6); } }
+
+/* Homepage type on both voice-agent designs (.v4l is the generated landing-v4.css, so it is
+   overridden here, unlayered, rather than edited): headings without negative tracking, and the
+   homepage section label, 18px caps with an amber dash, amber text on dark bands. */
+:is(.v4l, .va-page) :is(h1, h2, h3, h4, .h1, .h1-c, .h2, .h3, .h3-card, .h4) { letter-spacing: 0; }
+:is(.v4l, .va-page) .eyebrow {
+  gap: 12px; font-size: 18px; line-height: 1.556; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted);
+}
+:is(.v4l, .va-page) .eyebrow :is(.eyebrow-mark, .voice-mark) { width: 20px; height: 2px; background: var(--color-amber); }
+:is(.v4l, .va-page) .eyebrow :is(.eyebrow-mark, .voice-mark) i { display: none; }
+:is(.v4l, .va-page) :is(.eyebrow-band, .on-band .eyebrow) { color: var(--color-amber); }
+:is(.v4l, .va-page) :is(.eyebrow-band, .on-band .eyebrow) :is(.eyebrow-mark, .voice-mark) { display: none; }
+.v4l .t-card { font-size: 18px; line-height: 1.556; }

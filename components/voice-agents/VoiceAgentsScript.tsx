@@ -377,7 +377,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         note.className = "absolute inset-0 grid place-items-center p-6 text-center";
         note.innerHTML =
           '<div><p class="font-display text-[22px] font-semibold">This video is on its way</p>' +
-          '<p class="mx-auto mt-2 text-[16.5px] text-band-muted">It will go live once we have verified this client\'s results. Until then, ring our demo agent to hear one for yourself.</p></div>';
+          '<p class="mx-auto mt-2 text-[16.5px] text-band-muted">It will go live once we have verified this client\'s results. Until then, book a demo to hear one for yourself.</p></div>';
         player.appendChild(note);
       }
       dialog.showModal();
@@ -1051,7 +1051,8 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     const bar = $("[data-sticky-bar]");
     // The AI voice agents page now opens with the v4 landing hero (#top, outside #va-page).
     const hero = $("#hero") ?? document.getElementById("top");
-    const end = $("#book-demo");
+    // /ai-voice-agents closes on the BookDemo band (#book-demo-form, outside #va-page) instead.
+    const end = $("#book-demo") ?? document.getElementById("book-demo-form");
     if (!bar || !hero || !end) return;
     let pastHero = false,
       nearEnd = false;
@@ -1078,8 +1079,10 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   function initReveal() {
     const groups = $$("[data-reveal-group]");
     if (!groups.length || reduceMotion.matches) return;
-    page.classList.add("js-reveal");
-    cleanups.push(() => page.classList.remove("js-reveal"));
+    // The reveal CSS keys off .va-page.js-reveal; /ai-voice-agents splits its sections over several .va-page wrappers.
+    const shells = page.matches(".va-page") ? [page] : $$(".va-page");
+    shells.forEach((s) => s.classList.add("js-reveal"));
+    cleanups.push(() => shells.forEach((s) => s.classList.remove("js-reveal")));
     const io = observe(
       (entries) => {
         entries.forEach((entry) => {

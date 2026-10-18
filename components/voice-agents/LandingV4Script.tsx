@@ -16,7 +16,8 @@ function track(event: string, data: Record<string, unknown> = {}) {
 
 export function LandingV4Script() {
   useEffect(() => {
-    const root = document.getElementById("v4l");
+    // The page root, which also holds the old page's sections; the v4 hooks only exist in the v4 ones.
+    const root = document.getElementById("va-page");
     if (!root) return;
     const undo: (() => void)[] = [];
     const $ = <T extends HTMLElement = HTMLElement>(s: string, r: ParentNode = root) => r.querySelector<T>(s);
