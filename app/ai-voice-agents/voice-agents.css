@@ -391,4 +391,6 @@ html:has(.va-page dialog[open]) {
 :is(.v4l, .va-page) .eyebrow :is(.eyebrow-mark, .voice-mark) i { display: none; }
 :is(.v4l, .va-page) :is(.eyebrow-band, .on-band .eyebrow) { color: var(--color-amber); }
 :is(.v4l, .va-page) :is(.eyebrow-band, .on-band .eyebrow) :is(.eyebrow-mark, .voice-mark) { display: none; }
-.v4l .t-card { font-size: 18px; line-height: 1.556; }
+.v4l .t-card { font-size: 16px; line-height: 1.5; }
+.v4l .t-small, .v4l .city-body q { font-size: 16px; }
+.v4l :is(h3.smallcaps, .kstats span, .lf-status) { font-size: 16px; }

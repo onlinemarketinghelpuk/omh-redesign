@@ -78,8 +78,8 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Estate &amp; Letting Agents</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book viewings and valuations</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Qualify buyers and tenants</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Log tenant maintenance calls</span></li>
@@ -110,13 +110,13 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Dental Clinics</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">An AI receptionist for dentists that keeps the front desk free for the patients in the room.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">An AI receptionist for dentists that keeps the front desk free for the patients in the room.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book check-ups and hygiene visits</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Move and cancel appointments</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route urgent calls to your emergency line</span></li>
         </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[14.5px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
+        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
                 <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics" data-future-href="/ai-voice-agents/dental-clinics" class="text-link" data-track="industry_click" data-track-name="Dental Clinics">Learn more<span class="sr-only"> about voice agents for dental clinics</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
         </div>
@@ -142,13 +142,13 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Clinics &amp; Healthcare</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">Takes booking and admin calls so reception can focus on the patients in front of them.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes booking and admin calls so reception can focus on the patients in front of them.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book across practitioners</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Opening hours and directions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Confirmation calls to cut no-shows</span></li>
         </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[14.5px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
+        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
                 <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=clinics-healthcare" data-future-href="/ai-voice-agents/clinics-healthcare" class="text-link" data-track="industry_click" data-track-name="Clinics &amp; Healthcare">Learn more<span class="sr-only"> about voice agents for clinics &amp; healthcare</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
         </div>
@@ -177,8 +177,8 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Plumbers</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">An answering service for plumbers that picks up while your hands are full.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">An answering service for plumbers that picks up while your hands are full.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture call-outs while you are on a job</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put emergencies through to the plumber on call</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book quote visits</span></li>
@@ -212,8 +212,8 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Heating &amp; HVAC</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">Answers breakdown and service calls through the winter rush, day and night.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers breakdown and service calls through the winter rush, day and night.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book annual services and repairs</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Record make, model and fault code</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put no-heating calls first</span></li>
@@ -241,8 +241,8 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Contractors &amp; Builders</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">Takes project enquiries properly while the team is on site.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes project enquiries properly while the team is on site.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Take the brief: type, size, budget, timing</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book site visits and quotes</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their site manager</span></li>
@@ -268,13 +268,13 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Law Firms</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">Takes new enquiries and routes existing clients while fee earners are in court or meetings.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes new enquiries and routes existing clients while fee earners are in court or meetings.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture new enquiries and area of law</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book initial consultations</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their named solicitor</span></li>
         </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[14.5px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
+        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
                 <div class="pt-4">
           <a href="/contact?service=ai-voice-agents&amp;industry=law-firms" data-future-href="/ai-voice-agents/law-firms" class="text-link" data-track="industry_click" data-track-name="Law Firms">Learn more<span class="sr-only"> about voice agents for law firms</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
         </div>
@@ -295,8 +295,8 @@ export const voiceAgentsMarkup = String.raw`
   </svg></span>
         <div class="min-w-0">
         <h3 class="!text-[21px]">Car Dealerships</h3>
-        <p class="mt-2 text-body leading-[1.5] text-muted">Answers sales and service calls so nobody rings off while the desk is busy.</p>
-        <ul class="mt-4 space-y-1.5 text-[15.5px] leading-snug">
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers sales and service calls so nobody rings off while the desk is busy.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book test drives and services</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Stock and opening-hours questions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Collect part-exchange details</span></li>
@@ -311,7 +311,7 @@ export const voiceAgentsMarkup = String.raw`
         <span class="grid size-[88px] place-items-center rounded-[12px] bg-white/5 sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold text-navy"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span></span>
         <div class="min-w-0">
         <h3 id="industries-cta-title" class="!text-[21px]">Not sure how your calls would fit?</h3>
-        <p class="mt-2 text-body leading-[1.5] text-band-muted">Tell us who rings you and why. We'll map your calls and show you what an agent would handle and what it would pass to your team.</p>
+        <p class="mt-2 text-[16px] leading-[1.5] text-band-muted">Tell us who rings you and why. We'll map your calls and show you what an agent would handle and what it would pass to your team.</p>
         <div class="pt-4">
           <a href="/contact?service=ai-voice-agents" class="btn btn-primary" data-track="industries_cta_book_demo">Book a Voice Agent Demo</a>
         </div>
@@ -331,7 +331,7 @@ export const voiceAgentsMarkup = String.raw`
       <p class="mt-5 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and somebody keeping an eye on it every month. That's the part we do.</p>
     </div>
 
-        <p class="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-[15px] font-semibold md:hidden" aria-hidden="true"><span class="flex items-center gap-2"><span class="block h-3.5 w-3.5 rounded-[4px] bg-band"></span>Managed by OMH</span><span class="flex items-center gap-2 text-muted"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg>DIY or generic tool</span></p>
+        <p class="mt-12 flex flex-wrap gap-x-5 gap-y-2 text-[16px] font-semibold md:hidden" aria-hidden="true"><span class="flex items-center gap-2"><span class="block h-3.5 w-3.5 rounded-[4px] bg-band"></span>Managed by OMH</span><span class="flex items-center gap-2 text-muted"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg>DIY or generic tool</span></p>
     <table class="why-table mt-4 w-full md:mt-14 border-separate border-spacing-0 text-left text-[17px] leading-snug">
       <caption class="sr-only">A voice agent managed by OMH compared with a do-it-yourself or generic tool</caption>
       <thead class="max-md:sr-only">
@@ -395,7 +395,7 @@ export const voiceAgentsMarkup = String.raw`
         <div class="px-3 pb-4 pt-6">
           <p class="num text-[15px]">01</p>
           <h3 class="mt-2 !text-[25px]">Built around your industry's calls</h3>
-          <p class="mt-3 text-body text-muted">We start from the real reasons people ring you: the boiler fault, the viewing request, the cancelled appointment. The script, questions and handover rules follow from those.</p>
+          <p class="mt-3 text-[16px] text-muted">We start from the real reasons people ring you: the boiler fault, the viewing request, the cancelled appointment. The script, questions and handover rules follow from those.</p>
         </div>
       </article>
       <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
@@ -411,7 +411,7 @@ export const voiceAgentsMarkup = String.raw`
         <div class="px-3 pb-4 pt-6">
           <p class="num text-[15px]">02</p>
           <h3 class="mt-2 !text-[25px]">Outcomes in your reporting</h3>
-          <p class="mt-3 text-body text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p>
+          <p class="mt-3 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p>
         </div>
       </article>
       <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
@@ -426,7 +426,7 @@ export const voiceAgentsMarkup = String.raw`
         <div class="px-3 pb-4 pt-6">
           <p class="num text-[15px]">03</p>
           <h3 class="mt-2 !text-[25px]">A UK team optimising monthly</h3>
-          <p class="mt-3 text-body text-muted">Every month we listen to a sample of calls, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p>
+          <p class="mt-3 text-[16px] text-muted">Every month we listen to a sample of calls, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p>
         </div>
       </article>
     </div>
@@ -444,15 +444,15 @@ export const voiceAgentsMarkup = String.raw`
       <p class="mt-5 text-band-muted">Callers hear your name, your greeting and your way of doing things. OMH is never mentioned on a call.</p>
 
       <ul class="mt-7 grid gap-x-6 gap-y-5 sm:grid-cols-2">
-        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Voice and accent</span><span class="block text-[15.5px] leading-snug text-band-muted">A voice that suits your business and your callers.</span></span></li>
-        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-message"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Name and greeting</span><span class="block text-[15.5px] leading-snug text-band-muted">Your agent answers with your business name and your greeting. </span></span></li>
-        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Tone and policies</span><span class="block text-[15.5px] leading-snug text-band-muted">Formal or relaxed, and it follows your rules on what it must never say. </span></span></li>
-        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-forwarded"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Transfer rules</span><span class="block text-[15.5px] leading-snug text-band-muted">You decide which calls go to a person, who to, and when. </span></span></li>
+        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Voice and accent</span><span class="block text-[16px] leading-snug text-band-muted">A voice that suits your business and your callers.</span></span></li>
+        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-message"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Name and greeting</span><span class="block text-[16px] leading-snug text-band-muted">Your agent answers with your business name and your greeting. </span></span></li>
+        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Tone and policies</span><span class="block text-[16px] leading-snug text-band-muted">Formal or relaxed, and it follows your rules on what it must never say. </span></span></li>
+        <li class="flex gap-3.5"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-gold/20 text-band-hl" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-forwarded"/></svg></span><span><span class="block font-display text-[17.5px] font-semibold leading-snug">Transfer rules</span><span class="block text-[16px] leading-snug text-band-muted">You decide which calls go to a person, who to, and when. </span></span></li>
       </ul>
 
       <div class="mt-9 rounded-[14px] border border-band-line bg-band-surface p-5 sm:p-6">
         <p class="font-display text-[18px] font-semibold">Try it: build a greeting</p>
-        <p class="mt-1 text-[15px] text-band-muted">Pick a business and a tone. The phone shows what callers would hear.</p>
+        <p class="mt-1 text-[16px] text-band-muted">Pick a business and a tone. The phone shows what callers would hear.</p>
         <p class="mt-4 text-[14.5px] font-semibold text-band-muted" id="brand-biz-label">Business</p>
         <div class="mt-2">
           <div role="radiogroup" aria-label="Business" class="flex flex-wrap gap-2" data-brand-group="biz">
@@ -526,21 +526,21 @@ export const voiceAgentsMarkup = String.raw`
       <div class="rounded-[16px] border border-[color-mix(in_srgb,var(--va-ok)_35%,transparent)] bg-[color-mix(in_srgb,var(--va-ok)_7%,var(--va-surface))] p-6 sm:p-8">
         <h3 class="flex items-center gap-3 !text-[24px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-ok text-surface"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>A good fit if</h3>
         <ul class="mt-6 space-y-4">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-missed"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You miss calls</strong><span class="text-muted">while your team is with customers, on site or closed for the day.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-message"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Calls repeat themselves</strong><span class="text-muted">Bookings, opening hours, prices and availability make up most of them.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Each customer is worth real money</strong><span class="text-muted">so one missed call can cost more than the agent.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You have a diary or system</strong><span class="text-muted">that bookings can go into.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You are happy to be open about AI</strong><span class="text-muted">Callers are told they are speaking to an AI assistant.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-missed"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You miss calls</strong><span class="text-muted">while your team is with customers, on site or closed for the day.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-message"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Calls repeat themselves</strong><span class="text-muted">Bookings, opening hours, prices and availability make up most of them.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Each customer is worth real money</strong><span class="text-muted">so one missed call can cost more than the agent.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You have a diary or system</strong><span class="text-muted">that bookings can go into.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You are happy to be open about AI</strong><span class="text-muted">Callers are told they are speaking to an AI assistant.</span></span></li>
         </ul>
       </div>
       <div class="rounded-[16px] border border-line bg-surface p-6 sm:p-8">
         <h3 class="flex items-center gap-3 !text-[24px]"><span class="grid h-10 w-10 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span>Not the right fit if</h3>
         <ul class="mt-6 space-y-4">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Your phone is quiet</strong><span class="text-muted">A handful of calls a week, and you already answer them all.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Every call needs expert judgement</strong><span class="text-muted">from the very first sentence.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want callers to think it is a person</strong><span class="text-muted">We won't build that.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-forwarded"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want to cold call</strong><span class="text-muted">lists of people who haven't agreed to hear from you.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-clock"/></svg></span><span class="text-body leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want to set it and forget it</strong><span class="text-muted">An agent needs a regular review to stay good.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Your phone is quiet</strong><span class="text-muted">A handful of calls a week, and you already answer them all.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Every call needs expert judgement</strong><span class="text-muted">from the very first sentence.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want callers to think it is a person</strong><span class="text-muted">We won't build that.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-forwarded"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want to cold call</strong><span class="text-muted">lists of people who haven't agreed to hear from you.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-clock"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want to set it and forget it</strong><span class="text-muted">An agent needs a regular review to stay good.</span></span></li>
         </ul>
       </div>
     </div>
@@ -548,7 +548,7 @@ export const voiceAgentsMarkup = String.raw`
         <div class="mt-6 grid overflow-hidden rounded-[16px] border border-line bg-surface lg:grid-cols-[minmax(0,1.25fr)_minmax(0,.75fr)]" data-fit>
       <form class="p-6 sm:p-8" data-fit-form>
         <h3 class="!text-[24px]">Quick fit check</h3>
-        <p class="mt-1 text-body text-muted">Five questions, about 20 seconds.</p>
+        <p class="mt-1 text-[16px] text-muted">Five questions, about 20 seconds.</p>
         <ol class="mt-6 divide-y divide-line border-y border-line">
           <li>
             <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -633,7 +633,7 @@ export const voiceAgentsMarkup = String.raw`
           <text x="180" y="116" class="fit-tick" text-anchor="middle">5</text>
         </svg>
         <p class="mt-3 font-display text-[26px] font-semibold leading-tight" data-fit-title>Answer to see your fit</p>
-        <p class="mt-2 text-body leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
+        <p class="mt-2 text-[16px] leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
         <p class="mt-1 text-[14.5px] text-muted tnum" data-fit-count>0 of 5 answered</p>
         <a href="/contact?service=ai-voice-agents" class="btn btn-primary mt-5" data-fit-cta data-track="fit_check_book_demo" hidden>Book a Voice Agent Demo</a>
       </div>
@@ -671,7 +671,7 @@ export const voiceAgentsMarkup = String.raw`
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
           <h3 class="!text-[20px] !leading-[1.3]">Evening calls at a Manchester dental practice</h3>
-          <blockquote class="mt-2 text-body leading-[1.5] text-muted"><p>Quote to follow once this practice has run its voice agent long enough for us to verify the results.</p></blockquote>
+          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow once this practice has run its voice agent long enough for us to verify the results.</p></blockquote>
           <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Dental clinic</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Manchester</span><span class="chip chip-pending">Voice agent result: pending</span></span>
         </figcaption>
       </figure>
@@ -688,7 +688,7 @@ export const voiceAgentsMarkup = String.raw`
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
           <h3 class="!text-[20px] !leading-[1.3]">A first winter of breakdown calls in Leeds</h3>
-          <blockquote class="mt-2 text-body leading-[1.5] text-muted"><p>Quote to follow, covering out-of-hours breakdown calls and how many became booked repairs.</p></blockquote>
+          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering out-of-hours breakdown calls and how many became booked repairs.</p></blockquote>
           <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Heating engineers</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Leeds</span><span class="chip chip-pending">Voice agent result: pending</span></span>
         </figcaption>
       </figure>
@@ -705,7 +705,7 @@ export const voiceAgentsMarkup = String.raw`
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
           <h3 class="!text-[20px] !leading-[1.3]">Saturday viewing requests at a London branch</h3>
-          <blockquote class="mt-2 text-body leading-[1.5] text-muted"><p>Quote to follow, covering viewing requests taken while every negotiator was out.</p></blockquote>
+          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering viewing requests taken while every negotiator was out.</p></blockquote>
           <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Estate agents</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London</span><span class="chip chip-pending">Voice agent result: pending</span></span>
         </figcaption>
       </figure>
@@ -722,7 +722,7 @@ export const voiceAgentsMarkup = String.raw`
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
           <h3 class="!text-[20px] !leading-[1.3]">New enquiries while fee earners are in court</h3>
-          <blockquote class="mt-2 text-body leading-[1.5] text-muted"><p>Quote to follow, covering new enquiries taken while the team was in court or meetings.</p></blockquote>
+          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering new enquiries taken while the team was in court or meetings.</p></blockquote>
           <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Law firm</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Birmingham</span><span class="chip chip-pending">Voice agent result: pending</span></span>
         </figcaption>
       </figure>
@@ -739,7 +739,7 @@ export const voiceAgentsMarkup = String.raw`
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
           <h3 class="!text-[20px] !leading-[1.3]">The morning service rush in Liverpool</h3>
-          <blockquote class="mt-2 text-body leading-[1.5] text-muted"><p>Quote to follow, covering service bookings taken when the desk used to let the phone ring out.</p></blockquote>
+          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering service bookings taken when the desk used to let the phone ring out.</p></blockquote>
           <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Car dealership</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Liverpool</span><span class="chip chip-pending">Voice agent result: pending</span></span>
         </figcaption>
       </figure>
@@ -756,12 +756,12 @@ export const voiceAgentsMarkup = String.raw`
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
           <h3 class="!text-[20px] !leading-[1.3]">Quote requests captured from site in Bristol</h3>
-          <blockquote class="mt-2 text-body leading-[1.5] text-muted"><p>Quote to follow, covering project enquiries captured while the team was on site.</p></blockquote>
+          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering project enquiries captured while the team was on site.</p></blockquote>
           <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Building contractor</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Bristol</span><span class="chip chip-pending">Voice agent result: pending</span></span>
         </figcaption>
       </figure>
     </div>
-    <p class="mt-6 text-[15px] text-muted">Each video opens in a pop-up and loads from YouTube's privacy-enhanced player only when you press play.</p>
+    <p class="mt-6 text-[16px] text-muted">Each video opens in a pop-up and loads from YouTube's privacy-enhanced player only when you press play.</p>
   </div>
 </section>
 
@@ -771,7 +771,7 @@ export const voiceAgentsMarkup = String.raw`
       <div class="min-w-0">
         <p class="text-[14px] font-semibold text-band-hl">Video testimonial</p>
         <h2 id="video-modal-title" class="mt-0.5 !text-[clamp(19px,17px+.6vw,24px)] !leading-tight" data-video-modal-title></h2>
-        <p class="mt-1 text-[15px] text-band-muted" data-video-modal-meta></p>
+        <p class="mt-1 text-[16px] text-band-muted" data-video-modal-meta></p>
       </div>
       <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
@@ -798,14 +798,14 @@ ${pricingSection("bg-surface")}
         <caption class="sr-only">OMH managed voice agent compared with voicemail, an answering service, an in-house receptionist and a DIY voice AI platform</caption>
         <thead>
           <tr>
-            <th scope="col" class="w-[16%] px-5 pb-4 pt-5 align-bottom text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">What matters</th>
-            <th scope="col" class="cmp-omh w-[16.8%] px-5 pb-4 pt-5 align-bottom text-ink"><span class="mb-2 inline-flex rounded-full bg-gold px-2.5 py-0.5 text-[14px] font-semibold text-navy">Managed for you</span><span class="block font-display text-[18px] font-semibold">OMH voice agent</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">Voicemail</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">Answering service</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">In-house receptionist</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">DIY voice AI platform</span></th>
+            <th scope="col" class="w-[16%] px-5 pb-4 pt-5 align-bottom text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">What matters</th>
+            <th scope="col" class="cmp-omh w-[16.8%] px-5 pb-4 pt-5 align-bottom text-ink"><span class="mb-2 inline-flex rounded-full bg-gold px-2.5 py-0.5 text-[16px] font-semibold text-navy">Managed for you</span><span class="block font-display text-[18px] font-semibold">OMH voice agent</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">Voicemail</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">Answering service</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">In-house receptionist</span></th><th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">DIY voice AI platform</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row" class="border-t border-line px-5 py-4 align-top font-display text-[16px] font-semibold">Typical monthly cost</th>
-            <td class="cmp-omh font-semibold border-t border-line px-5 py-4 align-top"><span class="block">From £249 + VAT</span><span class="mt-1 block text-[15px] font-normal text-muted">300 minutes included, £795 setup</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">Free</span><span class="mt-1 block text-[15px] font-normal text-muted">Already part of your phone system</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">£54.99 to £220</span><span class="mt-1 block text-[15px] font-normal text-muted">then £2.10 a call over the bundle</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">About £2,432</span><span class="mt-1 block text-[15px] font-normal text-muted">£29,185 a year, salary plus employer costs</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">£30 to £72</span><span class="mt-1 block text-[15px] font-normal text-muted">usage only, plus your own time</span></td>
+            <td class="cmp-omh font-semibold border-t border-line px-5 py-4 align-top"><span class="block">From £249 + VAT</span><span class="mt-1 block text-[16px] font-normal text-muted">300 minutes included, £795 setup</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">Free</span><span class="mt-1 block text-[16px] font-normal text-muted">Already part of your phone system</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">£54.99 to £220</span><span class="mt-1 block text-[16px] font-normal text-muted">then £2.10 a call over the bundle</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">About £2,432</span><span class="mt-1 block text-[16px] font-normal text-muted">£29,185 a year, salary plus employer costs</span></td><td class="text-muted border-t border-line px-5 py-4 align-top"><span class="block">£30 to £72</span><span class="mt-1 block text-[16px] font-normal text-muted">usage only, plus your own time</span></td>
           </tr>
           <tr>
             <th scope="row" class="border-t border-line px-5 py-4 align-top font-display text-[16px] font-semibold">What that buys</th>
@@ -852,69 +852,69 @@ ${pricingSection("bg-surface")}
         <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[16px] font-semibold aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-cmp-opt="4" data-track="compare_option" data-track-name="DIY voice AI platform">DIY platform</button>
       </div>
       <div class="mt-5 overflow-hidden rounded-[16px] border border-line bg-surface" aria-live="polite">
-        <div class="grid grid-cols-2 border-b border-line text-body font-semibold">
+        <div class="grid grid-cols-2 border-b border-line text-[16px] font-semibold">
           <p class="cmp-omh px-4 py-3">OMH voice agent</p>
           <p class="px-4 py-3" data-cmp-name>Voicemail</p>
         </div>
         <dl>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Typical monthly cost</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Typical monthly cost</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
-              <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold"><span class="block">From £249 + VAT</span><span class="mt-1 block text-[15px] font-normal text-muted">300 minutes included, £795 setup</span></span>
-              <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1"><span class="block">Free</span><span class="mt-1 block text-[15px] font-normal text-muted">Already part of your phone system</span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden><span class="block">£54.99 to £220</span><span class="mt-1 block text-[15px] font-normal text-muted">then £2.10 a call over the bundle</span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden><span class="block">About £2,432</span><span class="mt-1 block text-[15px] font-normal text-muted">£29,185 a year, salary plus employer costs</span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden><span class="block">£30 to £72</span><span class="mt-1 block text-[15px] font-normal text-muted">usage only, plus your own time</span></span>
+              <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold"><span class="block">From £249 + VAT</span><span class="mt-1 block text-[16px] font-normal text-muted">300 minutes included, £795 setup</span></span>
+              <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1"><span class="block">Free</span><span class="mt-1 block text-[16px] font-normal text-muted">Already part of your phone system</span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden><span class="block">£54.99 to £220</span><span class="mt-1 block text-[16px] font-normal text-muted">then £2.10 a call over the bundle</span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden><span class="block">About £2,432</span><span class="mt-1 block text-[16px] font-normal text-muted">£29,185 a year, salary plus employer costs</span></span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden><span class="block">£30 to £72</span><span class="mt-1 block text-[16px] font-normal text-muted">usage only, plus your own time</span></span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">What that buys</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">What that buys</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">300 minutes, then 60p a minute</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">Nothing. A message, if they leave one</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>100 calls or 200 minutes a month</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>One person, one call at a time, office hours</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>300 minutes of calls at 13c to 31c a minute</span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Answers out of hours</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Answers out of hours</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">Yes, day and night</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">Records a message, if callers leave one</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>Depends on the plan, 24/7 usually costs more</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>Office hours only</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>Yes, once you have built it</span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Books into your diary</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Books into your diary</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">Yes, while the caller is on the line</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">No</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>Sometimes, by hand, after the call</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>Yes</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>Only if you connect it yourself</span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Calls at the same time</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Calls at the same time</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">Many at once</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">One message at a time</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>Depends on their staffing</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>One at a time</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>Many at once</span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Knows your business</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Knows your business</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">Built from your real calls and your own pages</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">No</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>A short script they read</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>Best of all</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>As well as you set it up</span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Setup and upkeep</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Setup and upkeep</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">We build it, test it and tune it every month</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">None</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>Low, they onboard you</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>Recruiting, training, holiday and sick cover</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>About 20 hours to build (£800 of your time) and 2 hours a month after</span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Results in your reporting</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Results in your reporting</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">Beside your ads and website numbers</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">No</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>Call logs only</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>Kept by hand, if at all</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>A separate dashboard to check</span>
             </dd>
           </div>
           <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Where it wins</dt>
+            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">Where it wins</dt>
             <dd class="grid grid-cols-2 text-[16px] leading-snug">
               <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">Volume, nights and weekends, and never losing a caller</span>
               <span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="1">Costs nothing if calls do not matter to you</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="2" hidden>A real person, and good for complex or sensitive calls</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="3" hidden>Judgement, warmth and knowing regulars by name</span><span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="4" hidden>Cheapest per minute if you have the time to build it</span>
@@ -924,13 +924,13 @@ ${pricingSection("bg-surface")}
       </div>
     </div>
 
-    <p class="mt-4 text-[14.5px] text-muted">Costs are rough UK guides for a small business, not quotes. Answering service and platform prices vary widely by provider and usage.</p>
+    <p class="mt-4 text-[16px] text-muted">Costs are rough UK guides for a small business, not quotes. Answering service and platform prices vary widely by provider and usage.</p>
 
     <h3 class="mt-16 !text-[clamp(24px,21px+.8vw,30px)]">When something else suits you better</h3>
     <ul class="mt-6 grid gap-5 md:grid-cols-3">
-      <li class="rounded-[14px] border border-line bg-surface p-6"><p class="font-display text-[18px] font-semibold">Every call needs a person</p><p class="mt-2 text-body leading-[1.5] text-muted">If each conversation needs judgement or a personal touch from the first word, a good receptionist or answering service will serve you better.</p></li>
-      <li class="rounded-[14px] border border-line bg-surface p-6"><p class="font-display text-[18px] font-semibold">You want to build it yourself</p><p class="mt-2 text-body leading-[1.5] text-muted">If you have the technical time to script, connect and maintain an agent, a DIY platform costs less than a managed service.</p></li>
-      <li class="rounded-[14px] border border-line bg-surface p-6"><p class="font-display text-[18px] font-semibold">Emergency or life-critical lines</p><p class="mt-2 text-body leading-[1.5] text-muted">Where a missed or misunderstood call is a safety risk, an AI agent should never be the only route. We don't position it for those lines.</p></li>
+      <li class="rounded-[14px] border border-line bg-surface p-6"><p class="font-display text-[18px] font-semibold">Every call needs a person</p><p class="mt-2 text-[16px] leading-[1.5] text-muted">If each conversation needs judgement or a personal touch from the first word, a good receptionist or answering service will serve you better.</p></li>
+      <li class="rounded-[14px] border border-line bg-surface p-6"><p class="font-display text-[18px] font-semibold">You want to build it yourself</p><p class="mt-2 text-[16px] leading-[1.5] text-muted">If you have the technical time to script, connect and maintain an agent, a DIY platform costs less than a managed service.</p></li>
+      <li class="rounded-[14px] border border-line bg-surface p-6"><p class="font-display text-[18px] font-semibold">Emergency or life-critical lines</p><p class="mt-2 text-[16px] leading-[1.5] text-muted">Where a missed or misunderstood call is a safety risk, an AI agent should never be the only route. We don't position it for those lines.</p></li>
     </ul>
   </div>
 </section>
@@ -946,8 +946,8 @@ ${pricingSection("bg-surface")}
     <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2 lg:sticky lg:top-28 lg:self-start">
       <div class="rounded-[16px] bg-band p-6 text-band-ink on-band">
         <p class="font-display text-body font-semibold">Still have a question?</p>
-        <p class="mt-1.5 text-body leading-snug text-band-muted">Talk to a person on our UK team. No sales script.</p>
-        <ul class="mt-4 space-y-1 text-body">
+        <p class="mt-1.5 text-[16px] leading-snug text-band-muted">Talk to a person on our UK team. No sales script.</p>
+        <ul class="mt-4 space-y-1 text-[16px]">
           <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>020 3489 3934</a></li>
           <li><a href="mailto:support@onlinemarketinghelp.co.uk" class="text-link [overflow-wrap:anywhere] max-sm:text-[15px]" data-track="faq_email_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>support@onlinemarketinghelp.co.uk</a></li>
         </ul>
@@ -984,7 +984,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>Yes. We set every agent up to say it is an AI assistant at the start of the call. Callers deserve to know, and it avoids awkward moments later in the conversation.</p>
           
         </div>
@@ -998,7 +998,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>Yes. You set the rules. Emergencies, existing clients, complaints and anyone who asks for a person can be put through to the right phone. Outside your opening hours the agent takes a detailed message and sends it to your team.</p>
           
         </div>
@@ -1012,7 +1012,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>The agent needs somewhere to put bookings and call notes, usually your calendar and your CRM or practice system. We check your exact tools during discovery and tell you plainly what connects directly, what needs a workaround and what is not possible yet.</p>
         </div>
       </details>
@@ -1025,7 +1025,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>In most cases you keep your number and divert calls to the agent, either all of them or only the ones your team cannot answer. If you want a new local number, for example an 0161 number for Manchester, we can arrange one as part of setup.</p>
         </div>
       </details>
@@ -1038,7 +1038,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>Calls can be recorded and transcribed so you can review them, and callers are told at the start of the call. You remain the data controller and OMH acts as your processor under a written agreement. We agree retention periods with you and delete recordings on that schedule.</p>
         </div>
       </details>
@@ -1051,7 +1051,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>The agent only calls people who have given appropriate consent, such as customers who asked for a reminder or a call back. We follow the UK PECR rules, screen lists against the Telephone Preference Service where required and act on opt-outs straight away. We do not run cold calling campaigns to bought or non-consented lists.</p>
           
         </div>
@@ -1065,7 +1065,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>Yes, for bookings, routing and practical questions such as opening hours, fees and directions. The agent never gives clinical or medical advice. Anything clinical goes to your team, and urgent calls follow the emergency route you set.</p>
           
         </div>
@@ -1079,7 +1079,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>Yes, for taking new enquiries, booking consultations and routing existing clients. The agent never gives legal advice and does not comment on the merits of a matter. It collects the details and gets the caller to the right person.</p>
           
         </div>
@@ -1093,7 +1093,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>Yes. We are based in Hullbridge, Essex and work with businesses across the UK remotely. London, Birmingham, Manchester, Leeds, Liverpool and Bristol are where we focus our voice agent work at the moment.</p>
           
         </div>
@@ -1107,7 +1107,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>It depends on how many types of call you have and what the agent needs to connect to. A simple booking agent is quicker than one covering several departments. We give you a realistic timeline after the discovery call, before you commit to anything.</p>
           <p class="mt-3">Starter is live in 3 working days, Growth in 5 to 7, Scale in 12 to 15. The clock starts when we have your content and your diary access.</p>
         </div>
@@ -1121,7 +1121,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>It says so. The agent answers only from information you have approved, so when a question falls outside that, it offers to take a message or transfer the call. We review those moments every month and add the answers worth adding.</p>
           
         </div>
@@ -1135,7 +1135,7 @@ ${pricingSection("bg-surface")}
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-body text-muted sm:pl-[4.25rem]">
+        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
           <p data-faq-answer>We set out the terms in writing before you start, including the notice period, what is included each month and what counts as extra. There are no hidden usage fees. Every invoice shows your included minutes and any overage.</p>
           <p class="mt-3">Billed monthly, 30 days notice.</p>
         </div>
@@ -1143,7 +1143,7 @@ ${pricingSection("bg-surface")}
       </div>
       <div class="mt-3 rounded-[14px] border border-dashed border-[var(--va-line-strong)] p-6 text-center" data-faq-empty hidden>
         <p class="font-display text-[18px] font-semibold">No questions match that</p>
-        <p class="mt-1 text-body text-muted">Try another word, or ring us on <a href="tel:+442034893934" class="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4 tnum">020 3489 3934</a> and ask a person.</p>
+        <p class="mt-1 text-[16px] text-muted">Try another word, or ring us on <a href="tel:+442034893934" class="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4 tnum">020 3489 3934</a> and ask a person.</p>
       </div>
     </div>
   </div>
@@ -1168,7 +1168,7 @@ ${pricingSection("bg-surface")}
         </div></div>
           <div class="flex flex-1 flex-col px-3 pb-3 pt-5">
             <h3 class="!text-[24px] group-hover:text-hl">Google Ads</h3>
-            <p class="mt-2 text-body leading-[1.5] text-muted">Paid search that puts your number in front of people ready to buy.</p>
+            <p class="mt-2 text-[16px] leading-[1.5] text-muted">Paid search that puts your number in front of people ready to buy.</p>
             <span class="mt-auto inline-flex items-center gap-2 pt-5 font-display text-[16.5px] font-semibold">Explore Google Ads<span class="grid h-8 w-8 place-items-center rounded-full border border-[var(--va-line-strong)] transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-navy"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span></span>
           </div>
         </a>
@@ -1183,7 +1183,7 @@ ${pricingSection("bg-surface")}
         </div></div>
           <div class="flex flex-1 flex-col px-3 pb-3 pt-5">
             <h3 class="!text-[24px] group-hover:text-hl">Local SEO</h3>
-            <p class="mt-2 text-body leading-[1.5] text-muted">Show up in the map results when people nearby search for what you do.</p>
+            <p class="mt-2 text-[16px] leading-[1.5] text-muted">Show up in the map results when people nearby search for what you do.</p>
             <span class="mt-auto inline-flex items-center gap-2 pt-5 font-display text-[16.5px] font-semibold">Explore Local SEO<span class="grid h-8 w-8 place-items-center rounded-full border border-[var(--va-line-strong)] transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-navy"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span></span>
           </div>
         </a>
@@ -1201,7 +1201,7 @@ ${pricingSection("bg-surface")}
         </div></div>
           <div class="flex flex-1 flex-col px-3 pb-3 pt-5">
             <h3 class="!text-[24px] group-hover:text-hl">Website Design</h3>
-            <p class="mt-2 text-body leading-[1.5] text-muted">A site that turns visitors into calls and bookings, with your number where people expect it.</p>
+            <p class="mt-2 text-[16px] leading-[1.5] text-muted">A site that turns visitors into calls and bookings, with your number where people expect it.</p>
             <span class="mt-auto inline-flex items-center gap-2 pt-5 font-display text-[16.5px] font-semibold">Explore Website Design<span class="grid h-8 w-8 place-items-center rounded-full border border-[var(--va-line-strong)] transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-navy"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span></span>
           </div>
         </a>
@@ -1220,7 +1220,7 @@ ${pricingSection("bg-surface")}
       <div class="flex-1">
         <p class="text-[14px] font-semibold text-band-hl">You are here</p>
         <p class="font-display text-[22px] font-semibold leading-tight">AI voice agent: every one of those calls answered</p>
-        <p class="mt-1 text-[15.5px] text-band-muted">Calls, bookings and transfers reported beside your ads, search and website results.</p>
+        <p class="mt-1 text-[16px] text-band-muted">Calls, bookings and transfers reported beside your ads, search and website results.</p>
       </div>
       <a href="/contact?service=ai-voice-agents&amp;bundle=1" class="btn btn-primary shrink-0" data-track="related_bundle">Ask about a joined-up plan</a>
     </div>

@@ -80,23 +80,23 @@ const card = (p: (typeof plans)[number]) => `      <article id="plan-${p.id}" cl
           <h3>${p.name}</h3>
           ${p.popular ? '<span class="rounded-full bg-gold px-3 py-1 text-[13.5px] font-semibold text-navy">Most popular</span>' : ""}
         </div>
-        <p class="mt-2 min-h-[3.2em] text-body leading-snug text-muted">${p.strap}</p>
+        <p class="mt-2 min-h-[3.2em] text-[16px] leading-snug text-muted">${p.strap}</p>
         <p class="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tracking-tight tnum">£${p.price}</span>
-          <span class="text-body text-muted">a month + VAT</span>
+          <span class="text-[16px] text-muted">a month + VAT</span>
         </p>
-        <p class="mt-2 text-[15.5px] text-muted">Billed monthly</p>
-        <ul class="mt-5 space-y-1.5 rounded-[10px] bg-sand px-4 py-3 text-body leading-snug tnum">
+        <p class="mt-2 text-[16px] text-muted">Billed monthly</p>
+        <ul class="mt-5 space-y-1.5 rounded-[10px] bg-sand px-4 py-3 text-[16px] leading-snug tnum">
           <li><strong class="font-semibold">${p.minutes}</strong> included, then 60p a minute</li>
           <li><strong class="font-semibold">${p.setup}</strong> one-off setup</li>
           <li>${p.delivery}</li>
         </ul>
-        <p class="mt-5 text-body leading-snug"><span class="font-semibold">Who it is for:</span> <span class="text-muted">${p.who}</span></p>
-        <ul class="mt-6 space-y-2.5 text-body leading-snug">
+        <p class="mt-5 text-[16px] leading-snug"><span class="font-semibold">Who it is for:</span> <span class="text-muted">${p.who}</span></p>
+        <ul class="mt-6 space-y-2.5 text-[16px] leading-snug">
 ${p.features.map((f) => `          <li class="flex gap-2.5">${icon("check", "text-hl")}<span>${f}</span></li>`).join("\n")}
         </ul>
-        <p class="mt-6 text-[15.5px] font-semibold">Not included</p>
-        <ul class="mb-8 mt-2 space-y-2 text-[15.5px] leading-snug text-muted">
+        <p class="mt-6 text-[16px] font-semibold">Not included</p>
+        <ul class="mb-8 mt-2 space-y-2 text-[16px] leading-snug text-muted">
 ${p.excluded.map((f) => `          <li class="flex gap-2.5">${icon("x")}<span>${f}</span></li>`).join("\n")}
         </ul>
         <a href="/contact?service=ai-voice-agents&amp;plan=${p.id}" class="btn ${p.popular ? "btn-primary" : "btn-secondary"} mt-auto" data-track="pricing_book_demo" data-track-name="${p.name}">Book a demo for the ${p.name} plan</a>
@@ -114,7 +114,7 @@ ${plans.map(card).join("\n")}
     </div>
 
     <dl class="mt-12 border-t border-line">
-${notes.map(([k, v]) => `      <div class="grid gap-1 border-b border-line py-4 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-8"><dt class="pt-0.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt><dd class="text-[18px] leading-[1.556]">${v}</dd></div>`).join("\n")}
+${notes.map(([k, v]) => `      <div class="grid gap-1 border-b border-line py-4 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-8"><dt class="text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt><dd class="text-[16px] leading-[1.5]">${v}</dd></div>`).join("\n")}
     </dl>
   </div>
 </section>`;

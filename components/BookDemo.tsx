@@ -10,22 +10,22 @@ import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
 
 /*
   The three ways to start from the AI voice agents page (ai-voice-agents-v5.html
-  #book-demo): the tabs and their forms only, on the ink ground, with an optional
-  heading, so it can sit under any page's closing CTA. Drop <BookDemo /> into a page.
+  #book-demo): the tabs and their forms only, on the ink ground, with no heading,
+  so it can sit under any page's closing CTA. Drop <BookDemo /> into a page.
 
   Book a demo: posts to /api/enquiry (stored + emailed, with the page it came
   from) and to /api/book-demo, which adds the slot to OMH's Google Calendar.
-  Ring now: hidden until the demo line exists. Call back: posts to /api/enquiry.
+  Ring now: static until the demo line exists. Call back: posts to /api/enquiry.
 */
 
-// ponytail: no demo line yet, so the Ring tab is hidden. Set { display: "0161 …", href: "tel:+44…" } to show it.
-const demoLine = null as { display: string; href: string } | null;
+// ponytail: placeholder until the demo line exists; set both and the tab works.
+const demoLine = { display: "[DEMO NUMBER]", href: "tel:" };
 
 const paths = [
   { id: "call", icon: Calendar, badge: "Most popular", title: "Book a 30-minute demo", body: "Pick a time. We show you an agent set up for your calls." },
   { id: "ring", icon: PhoneIncoming, title: "Ring our demo agent now", body: "Hear one in action straight away, any time of day." },
   { id: "back", icon: PhoneForwarded, title: "Ask for a call back", body: "Leave your number and a good time. Takes 20 seconds." },
-].filter((p) => p.id !== "ring" || demoLine);
+];
 const industries = ["Estate & Letting Agents", "Dental Clinics", "Clinics & Healthcare", "Plumbers", "Heating & HVAC", "Contractors & Builders", "Law Firms", "Car Dealerships"];
 const cities = ["London", "Birmingham", "Manchester", "Leeds", "Liverpool", "Bristol", "Elsewhere in the UK"];
 const onTheCall = ["Ask who rings you and what gets missed", "Play you an agent set up for your type of business", "Follow up with a clear price in writing"];
@@ -250,7 +250,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
       <div className="container-omh">
         <div className="section-sm border-y border-oninverse/12">
           {heading && <h2 className="mb-10 font-sans text-h2 font-semibold">{heading}</h2>}
-          <div role="tablist" aria-label="How would you like to start?" className={`grid gap-3 ${paths.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+          <div role="tablist" aria-label="How would you like to start?" className="grid gap-3 md:grid-cols-3">
             {paths.map((p, i) => (
               <button
                 key={p.id}
@@ -290,7 +290,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
               role="tabpanel"
               id={`${uid}-panel-call`}
               aria-labelledby={`${uid}-tab-call`}
-              hidden={paths[tab].id !== "call"}
+              hidden={tab !== 0}
               className={`${panelCls} grid overflow-hidden shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,.7fr)]`}
             >
               <form
@@ -468,8 +468,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
             </div>
 
             {/* Ring the demo agent */}
-            {demoLine && (
-            <div role="tabpanel" id={`${uid}-panel-ring`} aria-labelledby={`${uid}-tab-ring`} hidden={paths[tab].id !== "ring"} className={`${panelCls} p-6 sm:p-10`}>
+            <div role="tabpanel" id={`${uid}-panel-ring`} aria-labelledby={`${uid}-tab-ring`} hidden={tab !== 1} className={`${panelCls} p-6 sm:p-10`}>
               <div className="grid items-center gap-8 md:grid-cols-2">
                 <div>
                   <h3 className="font-sans text-h3 font-semibold">Ring it from any phone</h3>
@@ -498,10 +497,9 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                 </div>
               </div>
             </div>
-            )}
 
             {/* Call back */}
-            <div role="tabpanel" id={`${uid}-panel-back`} aria-labelledby={`${uid}-tab-back`} hidden={paths[tab].id !== "back"} className={`${panelCls} p-6 sm:p-10`}>
+            <div role="tabpanel" id={`${uid}-panel-back`} aria-labelledby={`${uid}-tab-back`} hidden={tab !== 2} className={`${panelCls} p-6 sm:p-10`}>
               <div className="grid items-start gap-8 md:grid-cols-2">
                 <div>
                   <h3 className="font-sans text-h3 font-semibold">We&apos;ll ring you</h3>
