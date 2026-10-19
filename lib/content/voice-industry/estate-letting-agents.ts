@@ -450,42 +450,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: HearIt ===== -->
-<section id="hear" data-component="HearIt" class="bg-paper">
-  <div class="container-omh py-20 lg:py-24">
-    <div class="grid items-center gap-10 rounded-[24px] border border-line bg-surface p-6 sm:p-10 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-14" data-hear>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Live demo</p>
-        <h2>Hear it <span class="hl">before you buy it</span></h2>
-        <p class="mt-5 text-muted">Type your agency name and hear how your agent would answer. Or ring our demo agency and try to trip it up.</p>
-        <form class="mt-7" data-hear-form>
-          <label for="hear-name" class="font-display text-[16.5px] font-semibold">Your agency name</label>
-          <div class="mt-2 flex flex-col gap-2 sm:flex-row">
-            <input id="hear-name" type="text" maxlength="48" autocomplete="organization" placeholder="For example, Wren &amp; Marlow" class="field" data-hear-name data-track="estate_hear_name">
-            <button type="submit" class="btn btn-primary shrink-0" data-track="estate_hear_play"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear the greeting</button>
-          </div>
-          <p class="mt-2 text-[14px] text-muted">Stays on your screen. Nothing is sent anywhere.</p>
-        </form>
-        <p class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[16px]">Or ring our demo agency: <a href="tel:" class="text-link tnum" data-demo-number data-track="estate_ring_demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>[DEMO NUMBER]</a></p>
-        <p class="mt-1 text-[14px] text-muted">2-minute call. It tells you it is an AI. Nothing to sign up for.</p>
-      </div>
-
-      <div class="mx-auto w-full max-w-[400px] rounded-[38px] border-[10px] border-navy bg-surface p-5 shadow-[0_50px_90px_-50px_rgb(16_24_40/0.6)] dark:border-black" aria-live="polite">
-        <p class="flex items-center justify-between text-[13px] font-semibold text-muted"><span class="tnum">09:41</span><span class="flex items-center gap-1.5"><span class="fd-live" aria-hidden="true"></span>Call answered</span></p>
-        <div class="mt-6 text-center">
-          <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-gold font-display text-[22px] font-semibold text-navy" data-hear-initials>WM</span>
-          <p class="mt-3 font-display text-[21px] font-semibold leading-tight" data-hear-practice>Wren &amp; Marlow</p>
-          <p class="text-[14.5px] text-muted">Ella, AI assistant</p>
-        </div>
-        <div class="hear-wave mx-auto mt-5 flex h-8 items-center justify-center gap-1" aria-hidden="true"><i style="--h:30%;--d:0s"></i><i style="--h:55%;--d:0.07s"></i><i style="--h:80%;--d:0.14s"></i><i style="--h:45%;--d:0.21000000000000002s"></i><i style="--h:95%;--d:0.28s"></i><i style="--h:60%;--d:0.35000000000000003s"></i><i style="--h:35%;--d:0.42000000000000004s"></i><i style="--h:70%;--d:0.49000000000000005s"></i><i style="--h:90%;--d:0.56s"></i><i style="--h:50%;--d:0.6300000000000001s"></i><i style="--h:30%;--d:0.7000000000000001s"></i><i style="--h:65%;--d:0.77s"></i><i style="--h:85%;--d:0.8400000000000001s"></i><i style="--h:40%;--d:0.9100000000000001s"></i></div>
-        <p class="mt-5 min-h-[96px] rounded-[16px_16px_16px_4px] bg-sand p-4 text-[16px] leading-snug" data-hear-text>&ldquo;Good evening, Wren &amp; Marlow. I'm Ella, the branch's AI assistant. Are you calling about a property, a valuation or a rental?&rdquo;</p>
-        <ul class="mt-4 space-y-1.5 text-[14px] text-muted">
-          <li class="flex gap-2"><svg class="icon mt-0.5 !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>British English voice, calm and clear</li>
-          <li class="flex gap-2"><svg class="icon mt-0.5 !h-4 !w-4 text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Never agrees prices or offers</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+${leadDemo("real-estate")}
 
 
 <!-- ===== COMPONENT: EstateCalculator ===== -->
@@ -1818,9 +1783,6 @@ export const markup = String.raw`
   </div>
 </section>
 
-
-<!-- ===== COMPONENT: LeadDemo ===== -->
-${leadDemo("real-estate")}
 
 <!-- ===== COMPONENT: Pricing ===== -->
 ${roiCalculator("real-estate")}

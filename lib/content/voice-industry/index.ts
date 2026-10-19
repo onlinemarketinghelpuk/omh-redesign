@@ -1,4 +1,5 @@
 import type { IndustryCopy } from "@/components/voice-agents/IndustryScript";
+import * as clinics from "./clinics-healthcare";
 import * as dental from "./dental-clinics";
 import * as dentalLondon from "./dental-clinics-london";
 import * as dentalLondonV2 from "./dental-clinics-london-v2";
@@ -24,6 +25,13 @@ const estateCopy: IndustryCopy = {
   greeting: "I'm Ella, the branch's AI assistant. Are you calling about a property, a valuation or a rental?",
 };
 
+const clinicCopy: IndustryCopy = {
+  org: "clinic",
+  units: "consulting rooms",
+  demoName: "Brookfield Clinic",
+  greeting: "I'm Ruth, the clinic's AI assistant. Are you calling to book, or about an existing appointment?",
+};
+
 const dentalCopy: IndustryCopy = {
   org: "practice",
   units: "surgeries",
@@ -40,6 +48,7 @@ export const industryPages = {
     blocks: ["london", "estate-london-v2"],
     classes: "vi-london vi-london-v2",
   },
+  "clinics-healthcare": { ...clinics, copy: clinicCopy, blocks: [], classes: "" },
   "dental-clinics": { ...dental, copy: dentalCopy, blocks: [], classes: "" },
   "dental-clinics-v2": { ...dentalV2, copy: dentalCopy, blocks: ["dental-v2"], classes: "vi-dental-v2" },
   "dental-clinics/london": { ...dentalLondon, copy: dentalCopy, blocks: ["london"], classes: "vi-london" },

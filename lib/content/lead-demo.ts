@@ -1,4 +1,11 @@
-// The "be your own lead" section on the AI voice agent industry pages.
+// The "hear it before you buy it" section on the AI voice agent industry pages.
+//
+// It used to type a greeting into a phone mock and read it with the browser's
+// speechSynthesis. That proved the voice existed and nothing else: a visitor
+// could not ask it anything, and "ring our demo agency" was still [DEMO NUMBER].
+// This replaces it with an assistant the visitor talks to as their own lead.
+//
+// The id stays `hear`: both hero buttons and the video section link to #hear.
 //
 // It embeds a working assistant for a fictional business in that trade, so a
 // visitor can type their name, then chat or talk to it exactly as one of their
@@ -63,22 +70,22 @@ export const leadDemos = {
  * `key` picks the demo, `cls` the section background so it can alternate with
  * the band above it.
  */
-export const leadDemo = (key: keyof typeof leadDemos, cls = "bg-surface") => {
+export const leadDemo = (key: keyof typeof leadDemos, cls = "bg-paper") => {
   const d = leadDemos[key];
   const tries = d.tries
     .map(
       (t) =>
-        `<li class="rounded-[12px] border border-line bg-paper px-4 py-3 text-body">&ldquo;${t}&rdquo;</li>`,
+        `<li class="rounded-[12px] border border-line bg-surface px-4 py-3 text-body">&ldquo;${t}&rdquo;</li>`,
     )
     .join("");
 
-  return `<section id="lead-demo" data-component="LeadDemo" class="${cls}">
+  return `<section id="hear" data-component="HearIt" class="${cls}">
   <div class="container-omh py-20 lg:py-24">
     <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-14">
 
       <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Try it yourself</p>
-        <h2>Be your own lead and <span class="hl">see how it answers</span></h2>
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Live demo</p>
+        <h2>Hear it <span class="hl">before you buy it</span></h2>
         <p class="mt-5 text-body text-muted">
           This is a real agent, not a recording. Give it your name, then ask it
           what one of your own leads would ask, by typing or out loud. It answers

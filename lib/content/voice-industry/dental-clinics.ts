@@ -2,7 +2,6 @@
 // without its stand-in header and footer. Registered in ./index.ts.
 import { pricingSection } from "@/lib/content/voice-pricing";
 
-import { leadDemo } from "@/lib/content/lead-demo";
 import { roiCalculator } from "@/lib/content/roi-calculator";
 
 export const meta = {
@@ -1828,9 +1827,6 @@ export const markup = String.raw`
   </div>
 </section>
 
-
-<!-- ===== COMPONENT: LeadDemo ===== -->
-${leadDemo("healthcare")}
 
 <!-- ===== COMPONENT: Pricing ===== -->
 ${roiCalculator("dental")}
