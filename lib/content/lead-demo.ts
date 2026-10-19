@@ -67,56 +67,68 @@ export const leadDemos = {
 } satisfies Record<string, Demo>;
 
 /**
- * `key` picks the demo, `cls` the section background so it can alternate with
- * the band above it.
+ * The section. It sits on the dark band, the same treatment FinalCTA uses, so
+ * the assistant reads as the object of the page rather than a widget bolted
+ * into a column of text. The suggested questions are buttons: clicking one
+ * posts it into the frame and the agent answers, which is the difference
+ * between a demo and a list of things you could have typed.
  */
-export const leadDemo = (key: keyof typeof leadDemos, cls = "bg-paper") => {
+export const leadDemo = (key: keyof typeof leadDemos) => {
   const d = leadDemos[key];
-  const tries = d.tries
+  const asks = d.tries
     .map(
-      (t) =>
-        `<li class="rounded-[12px] border border-line bg-surface px-4 py-3 text-body">&ldquo;${t}&rdquo;</li>`,
+      (t, i) =>
+        `<button type="button" class="ld-ask${i === 1 ? " ld-ask-key" : ""}" data-ld-ask="${t.replace(/"/g, "&quot;")}" data-track="${key}_demo_ask">
+          <span>${t}</span>
+        </button>`,
     )
     .join("");
 
-  return `<section id="hear" data-component="HearIt" class="${cls}">
-  <div class="container-omh py-20 lg:py-24">
-    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-14">
+  return `<section id="hear" data-component="HearIt" class="on-band relative overflow-hidden bg-band text-band-ink">
+  <div class="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[980px] -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
 
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Live demo</p>
-        <h2>Hear it <span class="hl">before you buy it</span></h2>
-        <p class="mt-5 text-body text-muted">
-          This is a real agent, not a recording. Give it your name, then ask it
-          what one of your own leads would ask, by typing or out loud. It answers
-          as <strong>${d.business}</strong>, ${d.what} we invented for this, so
-          you can push it as hard as you like.
+  <div class="container-omh relative py-20 lg:py-28">
+    <div class="mx-auto text-center">
+      <p class="eyebrow justify-center eyebrow-band"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Live demo</p>
+      <h2>Be the caller. <span class="hl">Hear it answer.</span></h2>
+      <p class="mx-auto mt-5 text-band-muted">
+        A working agent, not a recording. Give it your name and ask it what one
+        of your own leads would ask, by typing or out loud. It answers as
+        ${d.business}, ${d.what} we invented so you can push it as hard as you like.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-start lg:gap-14">
+
+      <div class="lg:pt-2">
+        <p class="font-display text-[17px] font-semibold">Try one of these, as a ${d.role}</p>
+        <div class="mt-4 grid gap-2.5" data-ld-asks>${asks}</div>
+        <p class="mt-5 text-[15px] leading-relaxed text-band-muted">
+          The middle one is the one to watch. ${d.refusal}, which is what you
+          actually want an agent on your phone to do.
         </p>
 
-        <p class="mt-7 font-display text-[16.5px] font-semibold">Worth trying, as a ${d.role}</p>
-        <ul class="mt-3 grid gap-2">${tries}</ul>
-
-        <p class="mt-6 text-body text-muted">
-          The second one is the one to watch. ${d.refusal}, which is the thing
-          you actually want an agent on your phone to do.
-        </p>
-
-        <p class="mt-7 text-[14px] text-muted">
-          ${d.business} is not a real business, and the number it gives out cannot
-          ring anybody. Your own agent would be built from your information, your
-          prices and your diary.
-        </p>
+        <dl class="mt-9 grid gap-x-6 gap-y-5 border-t border-white/15 pt-7 sm:grid-cols-2">
+          <div><dt class="font-display text-[16px] font-semibold">Answers in two rings</dt><dd class="mt-1 text-[14.5px] text-band-muted">Any hour, many calls at once.</dd></div>
+          <div><dt class="font-display text-[16px] font-semibold">Books while you talk</dt><dd class="mt-1 text-[14.5px] text-band-muted">Into the diary, not a message.</dd></div>
+          <div><dt class="font-display text-[16px] font-semibold">Says when it cannot</dt><dd class="mt-1 text-[14.5px] text-band-muted">It hands over rather than guessing.</dd></div>
+          <div><dt class="font-display text-[16px] font-semibold">Says it is an AI</dt><dd class="mt-1 text-[14.5px] text-band-muted">Asked outright, every time.</dd></div>
+        </dl>
       </div>
 
-      <div class="lg:sticky lg:top-24">
-        <iframe
-          src="${d.host}/embed.html"
-          title="Talk to the ${d.business} assistant"
-          loading="lazy"
-          allow="microphone"
-          class="h-[680px] w-full rounded-[18px] border border-line bg-surface sm:h-[720px]"
-        ></iframe>
-        <p class="mt-3 text-center text-[14px] text-muted">
+      <div class="ld-stage">
+        <div class="ld-frame">
+          <iframe
+            src="${d.host}/embed.html"
+            title="Talk to the ${d.business} assistant"
+            loading="lazy"
+            allow="microphone"
+            data-ld-frame
+            class="h-[640px] w-full sm:h-[700px]"
+          ></iframe>
+        </div>
+        <p class="mt-4 text-center text-[14px] text-band-muted">
+          ${d.business} is not a real business and its number cannot ring anybody.
           Voice needs the microphone. Nothing is recorded.
         </p>
       </div>

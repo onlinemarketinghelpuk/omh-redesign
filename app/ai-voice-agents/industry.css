@@ -492,3 +492,45 @@ html:has(.vi-page) {
 @keyframes vi-rt-flow { to { stroke-dashoffset: -18; } }
 @keyframes vi-hv-ping { 0% { opacity: .9; r: 8; } 100% { opacity: 0; r: 30; } }
 @keyframes vi-hv-pop { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------------------------------------------------------------- live demo
+   The "hear it" section (lib/content/lead-demo.ts). The assistant sits on the
+   dark band as the object of the section, so the frame gets a single edge and
+   a soft lift rather than a border inside a border. */
+.ld-stage { position: relative; }
+.ld-frame {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--color-surface, #fff);
+  border: 1px solid rgb(255 255 255 / .14);
+  box-shadow: 0 50px 90px -40px rgb(0 0 0 / .65), 0 0 0 1px rgb(0 0 0 / .18);
+}
+.ld-frame iframe { display: block; border: 0; }
+
+/* The suggested questions are buttons, not decoration: one click asks it. */
+.ld-ask {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / .16);
+  background: rgb(255 255 255 / .05);
+  padding: 14px 18px;
+  font: 400 16px/1.45 var(--font-body);
+  color: var(--va-band-ink, #f7f6f2);
+  cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.ld-ask:hover { background: rgb(255 255 255 / .1); border-color: rgb(215 154 55 / .55); }
+.ld-ask:active { transform: translateY(1px); }
+.ld-ask span { display: block; }
+.ld-ask span::before { content: "\201C"; }
+.ld-ask span::after { content: "\201D"; }
+/* The refusal is the one worth trying, so it is marked. */
+.ld-ask-key { border-color: rgb(215 154 55 / .5); background: rgb(215 154 55 / .12); }
+.ld-ask-key:hover { background: rgb(215 154 55 / .2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ld-ask { transition: none; }
+}
