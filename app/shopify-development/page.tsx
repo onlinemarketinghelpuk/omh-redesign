@@ -20,7 +20,7 @@ import { SiteTestimonials } from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: "Shopify Development for UK Businesses",
-  alternates: { canonical: "https://onlinemarketinghelp.co.uk/shopify-development/" },
+  alternates: { canonical: "https://onlinemarketinghelp.co.uk/shopify-development" },
   description:
     "Shopify stores, redesigns, migrations and integrations for UK businesses that need a clearer buying journey and a more reliable ecommerce setup.",
 };

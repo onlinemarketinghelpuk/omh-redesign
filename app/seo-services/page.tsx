@@ -22,7 +22,7 @@ const meta = bestSeoServices.meta!;
 export const metadata: Metadata = {
   title: meta.title,
   description: meta.description,
-  alternates: { canonical: `https://onlinemarketinghelp.co.uk${meta.path}/` },
+  alternates: { canonical: `https://onlinemarketinghelp.co.uk${meta.path}` },
 };
 
 export default function SeoServicesPage() {

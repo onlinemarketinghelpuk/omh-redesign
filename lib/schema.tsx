@@ -198,7 +198,7 @@ const services: Record<string, { name: string; description: string; faqs: Faqs; 
 /** Service + FAQPage markup for a service route. FAQs are the ones the page renders. */
 export function ServiceJsonLd({ path }: { path: keyof typeof services }) {
   const s = services[path];
-  return <JsonLd data={[serviceSchema(s.name, s.description, `${path}/`, s.offers), faqSchema(s.faqs)]} />;
+  return <JsonLd data={[serviceSchema(s.name, s.description, path, s.offers), faqSchema(s.faqs)]} />;
 }
 
 export function JsonLd({ data }: { data: object | object[] }) {

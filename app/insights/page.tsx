@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Digital Marketing Insights",
   description:
     "Practical guidance on SEO, paid advertising, websites, ecommerce, content and digital strategy from Online Marketing Help.",
-  alternates: { canonical: "https://onlinemarketinghelp.co.uk/insights/" },
+  alternates: { canonical: "https://onlinemarketinghelp.co.uk/insights" },
 };
 
 type SearchParams = Promise<{

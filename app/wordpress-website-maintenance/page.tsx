@@ -20,7 +20,7 @@ import { SiteTestimonials } from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: { absolute: "WordPress Website Maintenance Packages for UK Businesses | OMH" },
-  alternates: { canonical: "https://onlinemarketinghelp.co.uk/wordpress-website-maintenance/" },
+  alternates: { canonical: "https://onlinemarketinghelp.co.uk/wordpress-website-maintenance" },
   description:
     "WordPress website maintenance packages for UK businesses. Updates, backups, monitoring and technical support from £300. Three clear plans with published allowances.",
 };

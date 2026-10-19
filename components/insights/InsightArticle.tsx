@@ -19,7 +19,7 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
   const wasUpdated = post.modifiedAt.slice(0, 10) !== post.publishedAt.slice(0, 10);
   const { html, items } = withContents(post.contentHtml);
   const [head, tail] = splitAtMiddle(html, items);
-  const url = `${SITE}${insightHref(post)}/`;
+  const url = `${SITE}${insightHref(post)}`;
 
   return (
     <article>

@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: {
-    canonical: "https://onlinemarketinghelp.co.uk/case-studies/",
+    canonical: "https://onlinemarketinghelp.co.uk/case-studies",
   },
   openGraph: {
     title,
     description,
-    url: "https://onlinemarketinghelp.co.uk/case-studies/",
+    url: "https://onlinemarketinghelp.co.uk/case-studies",
     type: "website",
     locale: "en_GB",
     images: defaultOgImages,

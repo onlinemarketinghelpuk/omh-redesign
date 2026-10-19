@@ -13,14 +13,14 @@ export function industryMetadata(path: string): Metadata {
   return {
     title: { absolute: meta.title },
     description: meta.description,
-    alternates: { canonical: `${SITE}${meta.canonical}/` },
+    alternates: { canonical: `${SITE}${meta.canonical}` },
     openGraph: {
       type: "website",
       locale: "en_GB",
       siteName: "Online Marketing Help",
       title: meta.ogTitle,
       description: meta.ogDescription,
-      url: `${SITE}${meta.canonical}/`,
+      url: `${SITE}${meta.canonical}`,
     },
   };
 }
