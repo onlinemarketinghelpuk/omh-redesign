@@ -7,7 +7,9 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export const dynamicParams = false;
+// Not `dynamicParams = false`: once revalidateTag("posts") expires this page, Next 16
+// treats the path as unknown and app/[...slug] caches "Coming soon" in its place.
+// Unknown slugs still 404 through notFound() below.
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
