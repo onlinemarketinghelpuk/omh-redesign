@@ -588,8 +588,8 @@ ${voiceFaqs.map(faqItem).join("\n")}
 
 <div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
-    <a href="/contact?service=ai-voice-agents" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a Demo</a>
-    <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>
+    <a href="/contact?service=ai-voice-agents" class="btn btn-primary flex-1 whitespace-nowrap !px-3" data-track="sticky_book_demo">Book a Demo</a>
+    <a href="tel:+442034893934" class="btn btn-secondary shrink-0 whitespace-nowrap !px-3 tnum" data-track="sticky_phone_click">Call 020 3489 3934</a>
   </div>
 </div>
 `;

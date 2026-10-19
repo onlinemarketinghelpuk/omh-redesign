@@ -30,7 +30,7 @@ export const localSeo = {
   benefits: [
     ["More relevant local visits", "Service and location relevance can help the right nearby searchers reach the most useful page, rather than sending every visitor to the homepage."],
     ["A clearer route to enquiry", "Accurate profile details, useful service information and obvious contact options make it easier to call, request directions or enquire."],
-    ["Better map visibility", "A complete, accurate and actively maintained Google Business Profile gives Google and customers clearer information about the business."],
+    ["Better map visibility", "A complete, accurate and actively maintained Google Business Profile gives Google and customers clearer information about the business. More map views mean more calls. An [AI voice agent](/ai-voice-agents) answers them while your team is busy."],
     ["Stronger local trust", "Recent reviews, responsible owner responses and consistent business information help customers judge whether to contact you."],
     ["Clearer service-area coverage", "Local research shows how people describe services in the areas you genuinely cover and where the website needs better information."],
     ["More useful reporting", "Profile actions, local landing pages and enquiries provide better context than a ranking report on its own."],

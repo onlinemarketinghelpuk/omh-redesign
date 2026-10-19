@@ -544,7 +544,7 @@ export const landingV4Markup = String.raw`
       <p class="lf-status" aria-hidden="true" data-lf-status>Follow a lead through it. Hover or tap an outcome to trace its route.</p>
       <dl class="kstats mt-10">
         <div><dt class="sr-only">Answer speed</dt><dd><b>1st ring</b><span>answer speed</span></dd></div>
-        <div><dt class="sr-only">New lead call time</dt><dd><b>60 sec</b><span>to call new web leads</span></dd></div>
+        <div><dt class="sr-only">New lead call time</dt><dd><b>60 sec</b><span>to call new web leads</span><small>(Growth and Scale)</small></dd></div>
         <div><dt class="sr-only">Hours</dt><dd><b>24/7</b><span>bank holidays included</span></dd></div>
         <div><dt class="sr-only">Calls summarised</dt><dd><b>100%</b><span>of calls summarised for you</span></dd></div>
       </dl>

@@ -394,3 +394,4 @@ html:has(.va-page dialog[open]) {
 .v4l .t-card { font-size: 16px; line-height: 1.5; }
 .v4l .t-small, .v4l .city-body q { font-size: 16px; }
 .v4l :is(h3.smallcaps, .kstats span, .lf-status) { font-size: 16px; }
+.v4l .kstats small { display: block; margin-top: .15rem; font-size: 14px; color: var(--muted); }

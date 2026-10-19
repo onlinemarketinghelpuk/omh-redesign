@@ -391,7 +391,8 @@ export default async function Home() {
               </h2>
               <p className="mt-5 text-body leading-relaxed text-ink/75">
                 Use one specialist service or combine several around a single commercial goal. The
-                same team delivers all of them, so your campaigns, website and reporting stay joined up.
+                same team delivers all of them, so your campaigns, website and reporting stay joined up.{" "}
+                {withLinks("Never miss a call again with an [AI voice agent](/ai-voice-agents) that answers, books and follows up for you.")}
               </p>
               <div className="mt-8">
                 <Button href="/services" variant="secondary" arrow>

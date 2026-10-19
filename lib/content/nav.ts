@@ -186,6 +186,7 @@ export const footerCols: NavColumn[] = [
       { label: "Increase Ecommerce Sales", href: "/solutions/increase-ecommerce-sales" },
       { label: "Improve Website Conversion", href: "/solutions/improve-website-conversion" },
       { label: "Generate More Qualified Leads", href: "/solutions/generate-qualified-leads" },
+      { label: "AI Voice Agents", href: "/ai-voice-agents" },
     ],
   },
   {

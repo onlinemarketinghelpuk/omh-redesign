@@ -103,6 +103,7 @@ export const mainPagePricing = {
         "Live transfer to a person, with everything the caller already said passed across",
         "Out-of-hours and overflow rules you set",
         "Writes each enquiry into your CRM or practice system",
+        "Calls new web leads within 60 seconds",
         "Routes enquiries at the first question, for example sales, service or accounts",
         "Missed-call recovery: an automatic text to the caller and a callback task for your team",
         "Outbound follow-up to contacts who have consented, for quotes, reminders and no-shows",

@@ -7,6 +7,7 @@ import { Accordion } from "@/components/ui/Accordion";
 import { ArrowRight, Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Proof";
 import { SolutionLeadForm } from "@/components/solutions/SolutionLeadForm";
+import { withLinks } from "@/components/services/ServicePrimitives";
 import { navLabels } from "@/lib/content/nav";
 import { solutionOrder, solutions, type SolutionPageContent } from "@/lib/content/solutions";
 
@@ -309,7 +310,7 @@ function ServicesSection({ content }: { content: SolutionPageContent }) {
               <Eyebrow>Connected services</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">{content.services.title}</h2>
             </div>
-            <p className="mt-5 text-body leading-relaxed text-ink/68">{content.services.intro}</p>
+            <p className="mt-5 text-body leading-relaxed text-ink/68">{withLinks(content.services.intro)}</p>
           </div>
           <div className="mt-12 grid grid-cols-2 border-l border-t border-line max-md:grid-cols-1">
             {content.services.items.map((item, index) => (

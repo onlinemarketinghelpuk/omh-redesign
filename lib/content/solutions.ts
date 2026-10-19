@@ -160,7 +160,7 @@ export const solutions: Record<string, SolutionPageContent> = {
     },
     services: {
       title: "Services That Support Qualified Lead Generation",
-      intro: "The right service depends on where lead quality is breaking down. One business may need a stronger acquisition channel; another may need better landing pages, organic visibility, or measurement. We recommend only the work with a clear role in improving the journey.",
+      intro: "The right service depends on where lead quality is breaking down. One business may need a stronger acquisition channel; another may need better landing pages, organic visibility, or measurement. We recommend only the work with a clear role in improving the journey. Call new web leads back within 60 seconds with an [AI voice agent](/ai-voice-agents).",
       items: [
         { title: "Google Ads Management", href: "/google-adwords-ppc", cta: "Explore Google Ads Management", body: "Capture high-intent demand, filter irrelevant searches, and align campaigns with the enquiries your business actually wants." },
         { title: "Paid Social Advertising", href: "/social-media-paid-advertising", cta: "Explore Paid Social Advertising", body: "Reach and retarget defined audiences with creative and offers designed around the right customer profile rather than broad lead volume." },
