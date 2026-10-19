@@ -137,7 +137,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className={headingClass}>Our location</h2>
+              <p className={headingClass}>Our location</p>
               <address className="not-italic text-body leading-relaxed text-oninverse/62">
                 {company.address}
               </address>
@@ -147,7 +147,7 @@ export function Footer() {
           <div className="mt-12 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-x-8 gap-y-10 xl:flex xl:justify-between">
             {footerCols.map((col) => (
               <nav key={col.heading} aria-label={col.heading}>
-                <h2 className={headingClass}>{col.heading}</h2>
+                <p className={headingClass}>{col.heading}</p>
                 {col.links.map((link) => (
                   <Link key={link.href} href={link.href} className={linkClass}>
                     {link.label}
