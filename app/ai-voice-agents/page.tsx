@@ -83,7 +83,7 @@ const runs: [typeof fresh, string[]][] = [
   [fresh, ["what-is", "features"]],
   [v4, ["how"]],
   [fresh, ["use-cases"]],
-  [legacy, ["industries", "feedback", "why-omh", "compare", "right-fit", "roi-calculator"]],
+  [legacy, ["industries", "feedback", "compare", "right-fit", "roi-calculator"]],
   [fresh, ["pricing"]],
   [v4, ["cities"]],
   [legacy, ["faq"]],

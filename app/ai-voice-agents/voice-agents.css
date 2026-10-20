@@ -478,3 +478,9 @@ html:has(.va-page dialog[open]) {
     [data-brand] :is([data-brand-line], [data-brand-outcome]) { display: block !important; animation: none; }
   }
 }
+
+/* Capability explorer (20 Oct 2026): the tab list beside its panel. */
+.va-page .cap-tab { display: flex; align-items: center; gap: .85rem; width: 100%; min-height: 64px; padding: .8rem 1rem; border-radius: 14px; border: 1px solid var(--va-line); background: transparent; text-align: left; color: var(--va-ink); transition: background-color .15s ease, border-color .15s ease; }
+.va-page .cap-tab:hover { border-color: var(--va-line-strong); }
+.va-page .cap-tab[aria-selected="true"] { background: var(--va-surface); border-color: var(--va-ink); box-shadow: 0 18px 40px -30px rgb(16 24 40 / .45); }
+.va-page .cap-tab[aria-selected="true"] .icon-tile { background: #d79a37; color: #101828; }

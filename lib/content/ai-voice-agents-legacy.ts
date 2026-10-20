@@ -1,5 +1,5 @@
 // Sections of /ai-voice-agents kept from the previous page on the client's instruction (20 Oct 2026, after the CRO
-// rebuild): Industries, Client feedback and its video dialog, Why choose OMH, Is it the right fit (with the fit
+// rebuild): Industries, Client feedback and its video dialog, Is it the right fit (with the fit
 // checker), the ROI calculator, the comparison table, the FAQ layout with search and filters, and the mobile
 // sticky bar. Markup is verbatim from lib/content/ai-voice-agents-oldv2/markup.ts except that the demo CTAs now
 // point at #book-demo-form. page.tsx places these between the rebuilt sections in ai-voice-agents-markup.ts.
@@ -454,86 +454,6 @@ export const legacyMarkup = String.raw`
     <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
   </div>
 </dialog>
-
-<section id="why-omh" data-component="WhyChooseOMH" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28">
-    <div>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Why choose OMH</p>
-        <h2>The software is the easy part. <span class="hl">Running it well</span> is the job.</h2>
-      </div>
-      <p class="mt-5 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
-    </div>
-
-    <div class="mt-14 grid gap-6 md:grid-cols-2">
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>Call map, Aire Valley Heating</span><span class="font-normal text-muted">Leeds</span></p>
-          <ul class="mt-4 space-y-2.5 text-[14.5px]">
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Boiler breakdown</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-gold" style="width:91.2%"></span></span><span class="text-right text-muted tnum">38%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Annual service</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:57.599999999999994%"></span></span><span class="text-right text-muted tnum">24%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Quote request</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:43.199999999999996%"></span></span><span class="text-right text-muted tnum">18%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Existing job</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:28.799999999999997%"></span></span><span class="text-right text-muted tnum">12%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Other</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:19.2%"></span></span><span class="text-right text-muted tnum">8%</span></li>
-          </ul>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="num text-[15px]">01</p>
-          <h3 class="mt-2 !text-[25px]">Built around your industry's calls</h3>
-          <p class="mt-3 text-[16px] text-muted">We start from the real reasons people ring you: the boiler fault, the viewing request, the cancelled appointment. The script, questions and handover rules follow from those.</p>
-        </div>
-      </article>
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>Test calls before go-live</span><span class="font-normal text-muted">Bristol</span></p>
-          <ul class="mt-4 space-y-2 text-[14.5px]">
-            <li class="flex items-center justify-between gap-3 rounded-[8px] bg-surface px-3 py-2"><span>Burst pipe at 11pm</span><span class="font-semibold text-ok">Passed</span></li>
-            <li class="flex items-center justify-between gap-3 rounded-[8px] bg-surface px-3 py-2"><span>Quote for a new boiler</span><span class="font-semibold text-ok">Passed</span></li>
-            <li class="flex items-center justify-between gap-3 rounded-[8px] bg-surface px-3 py-2"><span>Asks for the owner</span><span class="font-semibold text-ok">Transferred</span></li>
-          </ul>
-          <p class="mt-3 rounded-[8px] bg-gold px-3 py-2 text-center text-[13.5px] font-semibold text-navy">Signed off by you</p>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="num text-[15px]">02</p>
-          <h3 class="mt-2 !text-[25px]">Tested before your customers hear it</h3>
-          <p class="mt-3 text-[16px] text-muted">You make test calls and sign off the agent before it goes live. After that you deal with our UK team, not a ticket queue, and Scale clients get a named account manager.</p>
-        </div>
-      </article>
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>What we changed in October</span><span class="font-normal text-muted">Manchester</span></p>
-          <ul class="mt-4 space-y-2.5 text-[14.5px] leading-snug">
-            <li class="flex gap-2.5"><span class="mt-[5px] block h-2 w-2 shrink-0 rounded-full bg-gold"></span><span>Added an answer on Saturday opening hours, asked 31 times</span></li>
-            <li class="flex gap-2.5"><span class="mt-[5px] block h-2 w-2 shrink-0 rounded-full bg-gold"></span><span>Shortened the greeting by four seconds</span></li>
-            <li class="flex gap-2.5"><span class="mt-[5px] block h-2 w-2 shrink-0 rounded-full bg-gold"></span><span>New rule: broken braces go straight to reception</span></li>
-          </ul>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="flex items-center gap-3"><span class="num text-[15px]">03</span><span class="rounded-full bg-gold/20 px-2.5 py-0.5 text-[13.5px] font-semibold">Growth and Scale</span></p>
-          <h3 class="mt-2 !text-[25px]">Improved every month</h3>
-          <p class="mt-3 text-[16px] text-muted">Every month we read a sample of transcripts, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p>
-        </div>
-      </article>
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>Monthly report, October</span><span class="font-normal text-muted">Bristol</span></p>
-          <ol class="mt-4 grid grid-cols-3 gap-2 text-center">
-            <li class="rounded-[10px] bg-surface px-2 py-3"><span class="block font-display text-[24px] font-semibold leading-none tnum">212</span><span class="mt-1.5 block text-[13px] leading-tight text-muted">Ad clicks to call</span></li>
-            <li class="rounded-[10px] bg-surface px-2 py-3"><span class="block font-display text-[24px] font-semibold leading-none tnum">209</span><span class="mt-1.5 block text-[13px] leading-tight text-muted">Calls answered</span></li>
-            <li class="rounded-[10px] bg-gold px-2 py-3 text-navy"><span class="block font-display text-[24px] font-semibold leading-none tnum">74</span><span class="mt-1.5 block text-[13px] font-semibold leading-tight">Jobs booked</span></li>
-          </ol>
-          <p class="mt-3 text-[13.5px] text-muted">Google Ads, website and voice agent in one view</p>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="flex items-center gap-3"><span class="num text-[15px]">04</span><span class="rounded-full bg-gold/20 px-2.5 py-0.5 text-[13.5px] font-semibold">Scale</span></p>
-          <h3 class="mt-2 !text-[25px]">Call results beside your marketing figures</h3>
-          <p class="mt-3 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p>
-        </div>
-      </article>
-    </div>
-    <p class="mt-4 text-[14.5px] text-muted">Panels show illustrative examples with fictional businesses.</p>
-  </div>
-</section>
 
 <section id="right-fit" data-component="RightFit" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">

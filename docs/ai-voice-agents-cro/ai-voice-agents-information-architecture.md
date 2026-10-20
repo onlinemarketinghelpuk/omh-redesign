@@ -105,3 +105,9 @@ greeting" were four sections in a row; the client found them confusing. They are
   walkthrough cards.
 - **What your AI voice agent does** (sand): "A day on your phones", a without/with switch over four
   illustrative calls (absorbs "Why it matters"), followed by the six capabilities as compact rows.
+
+**Later still:** "What's included" and "Why choose OMH" became one section, "What your AI voice
+agent does, and what we do for you": a capability explorer (six selectable capabilities, each panel
+showing the mock-up, what the agent does and what OMH does) followed by the four "running it well"
+points from the old Why choose OMH, without the fictional dashboards. The without/with day switch
+was dropped. The "In plain English" eyebrow was removed.

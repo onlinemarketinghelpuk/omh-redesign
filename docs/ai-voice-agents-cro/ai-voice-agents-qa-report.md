@@ -223,3 +223,7 @@ booking → summary over about eight seconds, the four steps mark themselves don
 switching business restarts it with that business's lines; under reduced motion the whole call shows
 at once. The without/with switch is CSS-only (radio inputs) and fires `day_toggle`. On small screens
 the phone sits between the definition and the steps. `tsc`/`eslint` clean; captures retaken.
+Later still: the capability explorer replaces the capability rows and the Why choose OMH section.
+Verified in headless Chrome: click and arrow keys select tabs and show the matching panel, no
+console errors, the "In plain English" eyebrow and `#why-omh` are gone; 13 sections, 21,723px at
+1440 and 40,218px at 390; `tsc`/`eslint` clean; captures retaken.

@@ -156,6 +156,58 @@ ${p.excluded.map(cross).join("\n")}
       </article>`;
 };
 
+/* ------------------------------------------------------ Capabilities */
+// The six capabilities, each with the mock-up from the previous card, what the agent does and what OMH does.
+const capabilities = [
+  { id: "answer", icon: "phone", title: "First-ring answering, 24/7",
+    vis: `<div class="mini"><span class="icon-tile">${icon("phone")}</span><span class="min-w-0"><b class="block">Call · 02:14</b><span class="text-[14px] font-semibold text-ok">Answered on the first ring</span></span></div>
+          <div class="mini">${icon("users", "text-ok")}<span>3 more callers answered at the same time</span></div>`,
+    agent: "Every call answered straight away, including nights, weekends and bank holidays. It handles many calls at once, so nobody hears an engaged tone.",
+    omh: "We forward your number, set your opening hours and agree the rules for what it picks up and when. Nothing goes live without your sign-off." },
+  { id: "voice", icon: "mic", title: "Sounds like your front desk",
+    vis: `<div class="mini"><span class="icon-tile">${icon("mic")}</span><span class="min-w-0"><b class="block">Ava · Your assistant</b><span class="text-[14px] text-muted">Your name, greeting and voice</span></span></div>
+          <div class="mini justify-center py-3"><span class="mini-wave"><i></i><i></i><i></i><i></i><i></i></span><span class="ml-2 text-[14px] font-semibold">"Thanks for calling, how can I help?"</span></div>`,
+    agent: "Your business name, your greeting and a British voice that suits your callers. Callers can interrupt, change their mind or ask for a person, and OMH is never mentioned on a call.",
+    omh: "We write the script around the real reasons people ring you, then you make test calls and adjust it with us until it sounds like your business." },
+  { id: "knows", icon: "book", title: "Knows your services and prices",
+    vis: `<div class="flex flex-wrap justify-center gap-2"><span class="mini-chip">${icon("check", "text-ok")}Services</span><span class="mini-chip">${icon("check", "text-ok")}Prices</span><span class="mini-chip">${icon("check", "text-ok")}Opening hours</span><span class="mini-chip">${icon("check", "text-ok")}Service area</span><span class="mini-chip">${icon("check", "text-ok")}FAQs</span></div>
+          <div class="mini">${icon("book", "text-hl")}<span>Trained on <b>your</b> business, not the internet</span></div>`,
+    agent: "It answers only from information you approve: services, prices, opening hours, service areas and FAQs. If a question falls outside that, it says so and takes a message.",
+    omh: "We load that information for you, and on Growth and Scale we read a sample of transcripts every month, see what it couldn't answer and add the answers worth adding." },
+  { id: "books", icon: "calendar", title: "Books into your calendar without clashes",
+    vis: `<div class="vcal-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
+          <div class="vcal"><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span class="new"></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span></span><span class="busy"></span><span></span></div>
+          <div class="mini">${icon("calendar", "text-ok")}<span><b>Booked:</b> Wed 11:00, no clash</span></div>`,
+    agent: "It checks your live calendar, respects buffers, travel time and blocked hours, and texts the caller a confirmation.",
+    omh: "We connect your calendar, plus your CRM or practice system on Growth and Scale, and tell you on the discovery call what connects directly and what needs a workaround." },
+  { id: "transfer", icon: "transfer", title: "Warm transfer to a person", plan: "Growth and Scale",
+    vis: `<div class="mini"><span class="icon-tile">${icon("user")}</span><span class="min-w-0"><b class="block">Caller asks for a person</b><span class="text-[14px] text-muted">"Can I speak to Sam?"</span></span></div>
+          <div class="mini">${icon("transfer", "text-hl")}<span><b>Transferring to Sam</b> with a quick briefing</span></div>`,
+    agent: "The caller is put through to the right person with a quick briefing first, so they never have to repeat themselves. Outside your hours it takes a detailed message instead.",
+    omh: "You choose who gets put through and when: emergencies, existing clients, complaints, anyone who asks for a person. We set those rules and test them with you." },
+  { id: "leads", icon: "timer", title: "Calls web leads back and follows up", plan: "Growth and Scale",
+    vis: `<div class="mini"><span class="icon-tile">${icon("globe")}</span><span class="min-w-0"><b class="block">New web form · 14:02</b><span class="text-[14px] text-muted">Boiler quote request</span></span></div>
+          <div class="mini">${icon("timer", "text-ok")}<span><b>Called back</b> in 42 seconds</span></div>
+          <div class="mini justify-between"><span><b>Quote sent, no reply</b></span><span class="text-[14px] font-semibold text-ok">Visit booked</span></div>`,
+    agent: "Form fills and ad leads get a call within 60 seconds, while they're still on your website. It also calls people who have agreed to hear from you about quotes, reminders and missed appointments.",
+    omh: "Every call is summarised and emailed to you; on Growth and Scale the details go into your CRM, and on Scale calls answered, bookings made and transfers are reported beside your Google Ads and website figures." },
+];
+
+const capTab = (c: (typeof capabilities)[number], i: number) =>
+  `        <button type="button" role="tab" id="cap-tab-${c.id}" aria-controls="cap-${c.id}" aria-selected="${i === 0}" tabindex="${i ? -1 : 0}" class="cap-tab" data-tab data-track="capability_select" data-track-name="${c.title}"><span class="icon-tile">${icon(c.icon)}</span><span class="min-w-0"><span class="block font-display text-[17px] font-semibold leading-tight">${c.title}</span>${c.plan ? `<span class="mt-1 block">${tag(c.plan)}</span>` : ""}</span>${icon("arrow-right", "ml-auto hidden shrink-0 text-hl lg:block")}</button>`;
+
+const capPanel = (c: (typeof capabilities)[number], i: number) => `
+      <div role="tabpanel" id="cap-${c.id}" aria-labelledby="cap-tab-${c.id}"${i ? " hidden" : ""} class="rounded-[22px] border border-line bg-surface p-5 sm:p-7" data-tab-panel>
+        <div class="fcard-vis" aria-hidden="true">
+          ${c.vis}
+        </div>
+        <h3 class="mt-5 !text-[clamp(22px,20px+.5vw,26px)]">${c.title}${c.plan ? ` ${tag(c.plan)}` : ""}</h3>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-muted">${icon("phone", "text-hl")}The agent</p><p class="mt-2 text-[16px]">${c.agent}</p></div>
+          <div class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-muted">${icon("users", "text-hl")}OMH, for you</p><p class="mt-2 text-[16px]">${c.omh}</p></div>
+        </div>
+      </div>`;
+
 /* ------------------------------------------------------------------ Page */
 export const voiceAgentsMarkup = String.raw`
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
@@ -197,7 +249,6 @@ export const voiceAgentsMarkup = String.raw`
   <div class="container-omh relative grid items-start gap-10 py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-24" data-brand
     data-brand-biz='[{"id":"law","label":"Law firm","name":"Hartwell Reeve Solicitors","city":"Birmingham","num":"0121 496 0147","agent":"Grace","kind":"firm&#39;s","initials":"HR","voice":"British English, calm and measured","never":"Gives legal advice","transfer":"Existing clients go to their named solicitor","caller":"I need advice about a tenancy dispute.","reply":"I can book you a consultation with our property team on Monday at 11.","booked":"Consultation booked: Mon 11:00","summary":"Summary sent to the property team: new enquiry, tenancy dispute"},{"id":"dental","label":"Dental clinic","name":"Albion Square Dental","city":"Manchester","num":"0161 496 0123","agent":"Amy","kind":"practice&#39;s","initials":"AS","voice":"British English, warm and friendly","never":"Gives clinical advice","transfer":"Dental emergencies go to the on-call line","caller":"I&#39;ve cracked a tooth. Can I be seen today?","reply":"Sorry to hear that. I have an emergency slot at 9:15 this morning.","booked":"Emergency slot booked: 09:15","summary":"Summary emailed to reception: emergency appointment, 9:15"},{"id":"plumber","label":"Plumber","name":"Severn Plumbing","city":"Bristol","num":"0117 496 0135","agent":"Sam","kind":"team&#39;s","initials":"SP","voice":"British English, relaxed","never":"Quotes a price it has not been given","transfer":"Burst pipes go straight to the plumber on call","caller":"There&#39;s water coming through my kitchen ceiling.","reply":"Turn off the stopcock under the sink. Sam can be with you in 40 minutes.","booked":"Engineer dispatched: ETA 40 min","summary":"Summary texted to Sam: address, fault and access details"}]'>
     <div class="lg:col-start-1 lg:row-start-1">
-      <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>In plain English</p>
       <h2>What is an <span class="hl">AI voice agent?</span></h2>
       <p class="mt-5 text-band-muted">An AI voice agent is software that answers and makes phone calls for your business in natural, spoken conversation. It understands what the caller wants, answers from information you have approved, books appointments into your calendar and passes anything it can't handle to a person on your team, with a summary of the call.</p>
       <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and systems, and keep improving it.</p>
@@ -269,50 +320,24 @@ export const voiceAgentsMarkup = String.raw`
 <section id="features" data-component="Features" class="border-y border-line bg-sand">
   <div class="container-omh py-16 lg:py-24">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What's included</p>
-    <h2>What your <span class="hl">AI voice agent does</span></h2>
-    <p class="mt-5 text-muted">Everything a good front desk does on the phone, without adding to the payroll. Flip the switch to see the same four calls with and without an agent.</p>
+    <h2>What your AI voice agent does, <span class="hl">and what we do for you</span></h2>
+    <p class="mt-5 text-muted">Everything a good front desk does on the phone, without adding to the payroll. Pick a capability to see it in action and how OMH runs it for you. Features marked Growth and Scale aren't on the Starter plan.</p>
 
-    <div class="mt-10 overflow-hidden rounded-[22px] border border-line bg-surface" data-day>
-      <div class="flex flex-col gap-4 border-b border-line p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-        <p class="font-display text-[20px] font-semibold">A day on your phones</p>
-        <div role="radiogroup" aria-label="Show the day with or without an AI voice agent" class="flex flex-wrap gap-2">
-          <label class="day-seg"><input type="radio" name="day" value="without" class="sr-only" checked data-track="day_toggle" data-track-name="Without">${icon("phone-missed", "!h-4 !w-4")}Without an agent</label>
-          <label class="day-seg"><input type="radio" name="day" value="with" class="sr-only" data-track="day_toggle" data-track-name="With">${icon("phone", "!h-4 !w-4")}With an OMH AI voice agent</label>
-        </div>
+    <div class="mt-10 grid gap-5 lg:grid-cols-[minmax(0,.4fr)_minmax(0,.6fr)] lg:items-start" data-tabs>
+      <div role="tablist" aria-label="Capabilities" aria-orientation="vertical" class="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+${capabilities.map(capTab).join("\n")}
       </div>
-      <ol class="divide-y divide-line">
-        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
-          <span class="font-display text-[16px] font-semibold"><span class="tnum">08:31</span><span class="block text-[14px] font-normal text-muted">Monday, busy clinic</span></span>
-          <span class="text-[16px]">Six patients ring at once to book.<span class="day-without block text-muted">Engaged tone. Three of them ring the next clinic.</span><span class="day-with block text-muted">All six answered. Appointments booked across practitioners.</span></span>
-          <span class="day-without day-miss">${icon("x")}3 callers lost</span><span class="day-with day-ok">${icon("check")}6 bookings made</span>
-        </li>
-        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
-          <span class="font-display text-[16px] font-semibold"><span class="tnum">14:02</span><span class="block text-[14px] font-normal text-muted">Web form arrives</span></span>
-          <span class="text-[16px]">A boiler quote request from your Google ad.<span class="day-without block text-muted">Sits in the inbox until someone is back at a desk.</span><span class="day-with block text-muted">Called back within 60 seconds and a visit booked. Growth and Scale.</span></span>
-          <span class="day-without day-miss">${icon("clock")}Waits hours</span><span class="day-with day-ok">${icon("check")}Visit booked</span>
-        </li>
-        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
-          <span class="font-display text-[16px] font-semibold"><span class="tnum">22:14</span><span class="block text-[14px] font-normal text-muted">Burst pipe</span></span>
-          <span class="text-[16px]">Water through a kitchen ceiling, and you're off the clock.<span class="day-without block text-muted">Voicemail. The caller rings another plumber.</span><span class="day-with block text-muted">Address and fault taken, the engineer on call is told straight away.</span></span>
-          <span class="day-without day-miss">${icon("phone-missed")}Job lost</span><span class="day-with day-ok">${icon("check")}Engineer dispatched</span>
-        </li>
-        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
-          <span class="font-display text-[16px] font-semibold"><span class="tnum">Sun 16:10</span><span class="block text-[14px] font-normal text-muted">Showroom closed</span></span>
-          <span class="text-[16px]">"Is the blue hybrid SUV still in stock?"<span class="day-without block text-muted">Rings out. They try the dealership down the road.</span><span class="day-with block text-muted">Stock question answered and a test drive booked for Saturday.</span></span>
-          <span class="day-without day-miss">${icon("x")}No answer</span><span class="day-with day-ok">${icon("check")}Test drive booked</span>
-        </li>
-      </ol>
-      <p class="border-t border-line px-5 py-3 text-[14px] text-muted sm:px-6">Illustrative calls. Every call is summarised and emailed to you; on Growth and Scale the details go straight into your CRM or practice system.</p>
+${capabilities.map(capPanel).join("\n")}
     </div>
 
-    <ul class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("phone")}</span><span class="min-w-0"><h3 class="!text-[19px]">First-ring answering, 24/7</h3><p class="mt-1.5 text-[16px] text-muted">Every call answered straight away, including nights, weekends and bank holidays. It handles many calls at once, so nobody hears an engaged tone.</p></span></li>
-      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("mic")}</span><span class="min-w-0"><h3 class="!text-[19px]">Sounds like your front desk</h3><p class="mt-1.5 text-[16px] text-muted">Your business name, your greeting and a British voice that suits your callers. Callers can interrupt, change their mind or ask for a person, and OMH is never mentioned on a call.</p></span></li>
-      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("book")}</span><span class="min-w-0"><h3 class="!text-[19px]">Knows your services and prices</h3><p class="mt-1.5 text-[16px] text-muted">It answers only from information you approve: services, prices, opening hours, service areas and FAQs. If a question falls outside that, it says so and takes a message.</p></span></li>
-      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("calendar")}</span><span class="min-w-0"><h3 class="!text-[19px]">Books into your calendar without clashes</h3><p class="mt-1.5 text-[16px] text-muted">It checks your live calendar, respects buffers, travel time and blocked hours, and texts the caller a confirmation.</p></span></li>
-      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("transfer")}</span><span class="min-w-0"><h3 class="!text-[19px]">Warm transfer to a person ${tag("Growth and Scale")}</h3><p class="mt-1.5 text-[16px] text-muted">You choose who gets put through and when. Your team gets a quick briefing first, so the caller never has to repeat themselves.</p></span></li>
-      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("timer")}</span><span class="min-w-0"><h3 class="!text-[19px]">Calls web leads back and follows up ${tag("Growth and Scale")}</h3><p class="mt-1.5 text-[16px] text-muted">Form fills and ad leads get a call within 60 seconds, while they're still on your website. It also calls people who have agreed to hear from you about quotes, reminders and missed appointments.</p></span></li>
-    </ul>
+    <h3 class="mt-14 !text-[24px]">The software is the easy part. <span class="hl">Running it well</span> is the job.</h3>
+    <p class="mt-3 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
+    <ol class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="num text-[15px]">01</p><h4 class="mt-2 !text-[19px]">Built around your industry's calls</h4><p class="mt-2 text-[16px] text-muted">We start from the real reasons people ring you: the boiler fault, the viewing request, the cancelled appointment. The script, questions and handover rules follow from those.</p></li>
+      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="num text-[15px]">02</p><h4 class="mt-2 !text-[19px]">Tested before your customers hear it</h4><p class="mt-2 text-[16px] text-muted">You make test calls and sign off the agent before it goes live. After that you deal with our UK team, not a ticket queue, and Scale clients get a named account manager.</p></li>
+      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="flex items-center gap-3"><span class="num text-[15px]">03</span>${tag("Growth and Scale")}</p><h4 class="mt-2 !text-[19px]">Improved every month</h4><p class="mt-2 text-[16px] text-muted">Every month we read a sample of transcripts, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p></li>
+      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="flex items-center gap-3"><span class="num text-[15px]">04</span>${tag("Scale")}</p><h4 class="mt-2 !text-[19px]">Call results beside your marketing figures</h4><p class="mt-2 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p></li>
+    </ol>
   </div>
 </section>
 
