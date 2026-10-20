@@ -280,13 +280,13 @@ export const landingV4Markup = String.raw`
       <h3 class="smallcaps text-muted">Part 2: What happens to a new web lead (Growth and Scale)</h3>
       <p class="h3 mt-3">From ad click to a call back in under a minute.</p>
     <div class="lf mt-8" data-lf-flow role="group" aria-label="How a lead moves from your ad to your calendar">
-      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-megaphone"/></svg></span><span><span class="sr-only">Step 1: </span>Someone clicks your Google or Facebook ad</span></div>
+      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-megaphone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>Someone clicks your ad</b><small>Google or Facebook</small></span></div>
       <span class="lf-arrow" data-lf="a1" aria-hidden="true"></span>
-      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span><span class="sr-only">Step 2: </span>They fill in your website form, or call you</span></div>
+      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>They enquire</b><small>Your website form, or a call</small></span></div>
       <span class="lf-arrow" data-lf="a2" aria-hidden="true"></span>
-      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span><span class="sr-only">Step 3: </span>The lead lands in your CRM</span></div>
+      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands</b><small>Straight into your CRM</small></span></div>
       <span class="lf-arrow" data-lf="a3" aria-hidden="true"></span>
-      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span><span class="sr-only">Step 4: </span>Your AI voice agent calls them within 60 seconds</span></div>
+      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them</b><small>Within 60 seconds</small></span></div>
       <div class="lf-split" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="s1" d="M0 150 C50 150 50 50 100 50"/><path data-lf="s2" d="M0 150 L100 150"/><path data-lf="s3" d="M0 150 C50 150 50 250 100 250"/></svg>
         <span class="lf-arrow" data-lf="sm"></span>
@@ -294,16 +294,16 @@ export const landingV4Markup = String.raw`
       <div class="lf-branches">
         <p class="lf-then"><span class="sr-only">Step 5: </span>Then one of three things happens:</p>
         <ul aria-label="Step 5: the outcome">
-          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span>An appointment booked on your calendar</span></div></li>
-          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span>A warm transfer to you</span></div></li>
-          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span>A follow-up if they're not ready yet</span></div></li>
+          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>An appointment booked</b><small>On your calendar</small></span></div></li>
+          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer</b><small>Put straight through to you</small></span></div></li>
+          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up</b><small>If they are not ready yet</small></span></div></li>
         </ul>
       </div>
       <div class="lf-merge" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="m1" d="M0 50 C50 50 50 150 100 150"/><path data-lf="m2" d="M0 150 L100 150"/><path data-lf="m3" d="M0 250 C50 250 50 150 100 150"/></svg>
         <span class="lf-arrow" data-lf="mm"></span>
       </div>
-      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span><span class="sr-only">Step 6: </span>A summary and tags go to your CRM</span></div>
+      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags</b><small>Written back to your CRM</small></span></div>
     </div>
       <p class="lf-status" aria-hidden="true" data-lf-status>Follow a lead through it. Hover or tap an outcome to trace its route.</p>
       <dl class="kstats mt-10">
