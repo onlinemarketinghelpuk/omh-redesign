@@ -350,8 +350,8 @@ export const estateMarkup = String.raw`
 <section id="features" data-component="Features" class="border-y border-line bg-sand">
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What's included</p>
-    <h2>What your AI voice agent does, <span class="hl">and what we do for you</span></h2>
-    <p class="mt-5 text-muted">Everything a good branch receptionist does on the phone, without adding to the payroll. Pick a capability to see it in action and how OMH runs it for you. Features marked Growth and Scale aren't on the Starter plan.</p>
+    <h2>What it does for your branch,<br class="max-sm:hidden"> <span class="hl">and what we run for you</span></h2>
+    <p class="mt-5 text-muted">Viewings, valuations, applicants, repairs and the questions in between, handled the way a good branch receptionist would. Pick a capability to see it in action. Features marked Growth and Scale aren't on Starter.</p>
 
     <div class="mt-10 grid gap-5 lg:grid-cols-[minmax(0,.4fr)_minmax(0,.6fr)] lg:items-start" data-tabs>
       <div role="tablist" aria-label="Capabilities" aria-orientation="vertical" class="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
@@ -360,14 +360,46 @@ ${capabilities.map(capTab).join("\n")}
 ${capabilities.map(capPanel).join("\n")}
     </div>
 
-    <h3 class="mt-14 !text-[24px]">The software is the easy part. <span class="hl">Running it well</span> is the job.</h3>
-    <p class="mt-3 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your agency depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
-    <ol class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="num text-[15px]">01</p><h4 class="mt-2 !text-[19px]">Built around your branch's calls</h4><p class="mt-2 text-[16px] text-muted">We start from the real reasons people ring an agency: the viewing request, the valuation, the tenant with a leak. The script, questions and handover rules follow from those.</p></li>
-      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="num text-[15px]">02</p><h4 class="mt-2 !text-[19px]">Tested before buyers hear it</h4><p class="mt-2 text-[16px] text-muted">You and your negotiators make test calls and sign off the agent before it goes live. After that you deal with our UK team, not a ticket queue, and Scale clients get a named account manager.</p></li>
-      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="flex items-center gap-3"><span class="num text-[15px]">03</span>${tag("Growth and Scale")}</p><h4 class="mt-2 !text-[19px]">Improved every month</h4><p class="mt-2 text-[16px] text-muted">Every month we read a sample of transcripts, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p></li>
-      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="flex items-center gap-3"><span class="num text-[15px]">04</span>${tag("Scale")}</p><h4 class="mt-2 !text-[19px]">Call results beside your marketing figures</h4><p class="mt-2 text-[16px] text-muted">Calls answered, viewings booked and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from listing to viewing.</p></li>
-    </ol>
+    <h3 class="mt-14 !text-[24px]">Your negotiators stay <span class="hl">in charge</span></h3>
+    <p class="mt-3 text-muted">You decide the rules before it answers a single call. Out of hours, tenant emergencies go to your on-call property manager or approved contractor, never to a voicemail.</p>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+      <div class="hover-card rounded-[16px] border border-line bg-surface p-5 sm:p-6">
+        <p class="flex items-center gap-3 font-display text-[19px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ok text-surface">${icon("check")}</span>It handles</p>
+        <ul class="mt-4 space-y-2 text-[16px] leading-snug text-muted">
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Viewing and valuation bookings</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Buyer and tenant qualifying questions</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Branch hours and directions</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Listing details and fees you approve</span></li>
+        </ul>
+      </div>
+      <div class="hover-card rounded-[16px] border border-line bg-surface p-5 sm:p-6">
+        <p class="flex items-center gap-3 font-display text-[19px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-navy">${icon("transfer")}</span>It hands to your team</p>
+        <ul class="mt-4 space-y-2 text-[16px] leading-snug text-muted">
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Offers and negotiations</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Complaints and sensitive calls</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Anyone who asks for a person</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Questions it has no approved answer for</span></li>
+        </ul>
+      </div>
+      <div class="hover-card rounded-[16px] border border-line bg-surface p-5 sm:p-6">
+        <p class="flex items-center gap-3 font-display text-[19px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted">${icon("x")}</span>It never</p>
+        <ul class="mt-4 space-y-2 text-[16px] leading-snug text-muted">
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Agrees prices, offers or terms</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Shares other buyers' offers or details</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Gives legal, mortgage or financial advice</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Calls people who have not agreed to it</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-5 flex flex-col gap-4 rounded-[16px] border border-line bg-surface p-5 sm:p-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+      <div class="min-w-0">
+        <p class="font-display text-[18px] font-semibold">Works alongside your property software</p>
+        <p class="mt-1 text-[16px] text-muted">Viewings, valuations and notes go where your team already looks. We check your setup on the first call and tell you plainly what connects directly and what needs a workaround.</p>
+      </div>
+      <ul class="flex shrink-0 flex-wrap gap-2 lg:max-w-[420px] lg:justify-end" aria-label="Property software agencies use">
+        <li class="rounded-full border border-line bg-paper px-3.5 py-1.5 text-[15px] font-semibold">Reapit</li><li class="rounded-full border border-line bg-paper px-3.5 py-1.5 text-[15px] font-semibold">Alto</li><li class="rounded-full border border-line bg-paper px-3.5 py-1.5 text-[15px] font-semibold">Jupix</li><li class="rounded-full border border-line bg-paper px-3.5 py-1.5 text-[15px] font-semibold">Street</li><li class="rounded-full border border-line bg-paper px-3.5 py-1.5 text-[15px] font-semibold">Loop</li><li class="rounded-full border border-line bg-paper px-3.5 py-1.5 text-[15px] font-semibold">Google Calendar</li>
+      </ul>
+    </div>
   </div>
 </section>
 

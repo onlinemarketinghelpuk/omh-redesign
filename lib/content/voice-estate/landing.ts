@@ -167,8 +167,8 @@ export const estateLandingMarkup = String.raw`
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
-      <h2 class="h2 mt-3" id="city-title">Local to every branch. <span class="hl">Answering across the UK.</span></h2>
-      <p class="lead mt-4">A local number for each branch, your viewing hours and an agent that knows which areas each branch covers.</p>
+      <h2 class="h2 mt-3" id="city-title">Estate agents across the UK.<br class="hidden md:block"> <span class="hl">A local number for each branch.</span></h2>
+      <p class="lead mt-4">Buyers and tenants trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set branches up by video call and phone from Hullbridge, Essex.</p>
     </div>
     <div class="va-car mt-12" data-carousel data-autoplay>
     <ul class="cities va-car-track" style="--car-w:360px" tabindex="0" aria-label="Local cover, scroll sideways">
@@ -239,11 +239,55 @@ export const estateLandingMarkup = String.raw`
           <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Bristol and the South West</p>
         </div>
       </li>
+      <li class="city" style="--tint:var(--tint-2)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M110 128 V40 H150 V128 M118 52 H142 M118 64 H142 M118 76 H142 M118 88 H142 M118 100 H142 M160 128 V96 H230 V128 M170 106 H220 M170 116 H220"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0114 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Sheffield</h3>
+          <q>Hello, you're through to the branch. Are you calling to book a viewing or a valuation?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Sheffield and South Yorkshire</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-4)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M110 128 V84 H210 V128 M140 84 V64 H180 V84 M140 64 C140 44 180 44 180 64 M160 50 V36 M122 98 V128 M134 98 V128 M186 98 V128 M198 98 V128"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0115 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Nottingham</h3>
+          <q>Thanks for calling. Are you a buyer, a tenant or a landlord?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Nottingham and Nottinghamshire</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-1)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M150 128 V70 H170 V128 M146 70 L160 44 L174 70 M160 44 V36 M154 86 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0 M112 128 V96 H140 V128 M180 128 V100 H214 V128"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0116 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Leicester</h3>
+          <q>Good afternoon. I can tell you about our listings or book you a viewing. Which would help?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Leicester and Leicestershire</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-3)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M86 118 H234 M96 118 C110 40 210 40 224 118 M112 118 V80 M128 118 V63 M144 118 V54 M160 118 V51 M176 118 V54 M192 118 V63 M208 118 V80"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0191 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Newcastle</h3>
+          <q>Hello, you're through to the lettings team. Are you calling about a property or a repair?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Newcastle and Tyneside</p>
+        </div>
+      </li>
     </ul>
     <div class="va-car-ui">
       <button type="button" class="va-car-btn" data-car-prev aria-label="Previous city"><svg class="icon" aria-hidden="true" focusable="false"><use href="#v4-i-arrow-left"/></svg></button>
       <div class="va-car-wave" aria-hidden="true" data-car-wave><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:45%"></i><i style="--h:75%"></i></div>
-      <span class="va-car-status" data-car-status aria-live="polite">1 / 6</span>
+      <span class="va-car-status" data-car-status aria-live="polite">1 / 10</span>
       <button type="button" class="va-car-btn" data-car-next aria-label="Next city"><svg class="icon" aria-hidden="true" focusable="false"><use href="#v4-i-arrow-right"/></svg></button>
     </div>
     </div>

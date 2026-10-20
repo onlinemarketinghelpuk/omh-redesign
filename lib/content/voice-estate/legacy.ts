@@ -220,15 +220,15 @@ export const estateLegacyMarkup = String.raw`
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Client feedback</p>
-        <h2>Proof goes here <span class="hl">when it's real</span></h2>
+        <h2>Hear it take <span class="hl">a real estate call</span></h2>
       </div>
-      <p class="mt-5 text-muted">Voice agents are a new service for us, so we haven't filled this wall with invented praise. The first recording is a real estate call; the others are reserved for agencies and stay pending until we have checked their results.</p>
+      <p class="mt-5 text-muted">Press play on a recorded call with our AI voice agent, set up for an estate agency. Recordings for lettings, valuations, property management, new homes and multi-branch agencies are being prepared and stay marked as coming soon until they're checked.</p>
     </div>
 
     <dl class="mt-12 grid border-y border-[var(--va-line-strong)] sm:grid-cols-3">
-      <div class="py-5 sm:pr-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">1,284</dd><dt class="mt-1.5 text-[16px] text-muted">calls answered</dt></div>
-      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:px-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">317</dd><dt class="mt-1.5 text-[16px] text-muted">bookings made</dt></div>
-      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:pl-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">38%</dd><dt class="mt-1.5 text-[16px] text-muted">answered out of hours</dt></div>
+      <div class="py-5 sm:pr-6"><dd class="font-display text-[30px] font-semibold leading-none">2:21</dd><dt class="mt-1.5 text-[16px] text-muted">real estate call you can play below</dt></div>
+      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:px-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">8</dd><dt class="mt-1.5 text-[16px] text-muted">kinds of agency call it's scripted for</dt></div>
+      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:pl-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">10</dd><dt class="mt-1.5 text-[16px] text-muted">UK cities with local numbers</dt></div>
     </dl>
 
     <div class="va-car mt-10" data-carousel data-autoplay>
@@ -482,14 +482,20 @@ ${cmpRows.map(([k, omh, ...v]) => `        <div class="rounded-[14px] border bor
   <div class="container-omh grid gap-10 py-20 lg:grid-cols-[minmax(0,.72fr)_minmax(0,1.28fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-8 lg:py-28">
     <div>
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
-      <h2>Real estate AI voice agent <span class="hl">FAQs</span></h2>
-      <p class="mt-5 text-muted">Straight answers to the questions branch managers and agency directors ask us most.</p>
+      <h2>What estate agents<br class="max-sm:hidden"> <span class="hl">ask us first</span></h2>
+      <p class="mt-5 text-muted">Straight answers on viewings, offers, tenant emergencies, property software and client data.</p>
     </div>
 
     <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2 lg:sticky lg:top-28 lg:self-start">
       <div class="rounded-[16px] bg-band p-6 text-band-ink on-band">
-        <p class="font-display text-body font-semibold">Still have a question?</p>
-        <p class="mt-1.5 text-[16px] leading-snug text-band-muted">Talk to a person on our UK team. No sales script.</p>
+        <p class="font-display text-body font-semibold">Ask us about your branch</p>
+        <p class="mt-1.5 text-[16px] leading-snug text-band-muted">Talk to a person on our UK team about your viewings, valuations and lettings calls. No sales script.</p>
+        <p class="mt-4 text-[15px] font-semibold uppercase tracking-[0.12em] text-band-muted">On the demo, try</p>
+        <ol class="mt-2 space-y-1.5 text-[16px] leading-snug">
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">1</span><span>Book a viewing for the flat on Halden Road</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">2</span><span>Report a leak as a tenant and hear how it routes you</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">3</span><span>Ask something it can't know, and hear what it does</span></li>
+        </ol>
         <ul class="mt-4 space-y-1 text-[16px]">
           <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>020 3489 3934</a></li>
           <li><a href="mailto:support@onlinemarketinghelp.co.uk" class="text-link [overflow-wrap:anywhere] max-sm:text-[15px]" data-track="faq_email_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>support@onlinemarketinghelp.co.uk</a></li>
