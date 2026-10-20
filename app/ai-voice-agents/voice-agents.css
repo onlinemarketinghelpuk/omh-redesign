@@ -654,7 +654,7 @@ html:has(.va-page dialog[open]) {
 .v4l .flow-panel .lf { margin-top: 1.75rem; }
 .v4l .lf-status { margin-top: 1.1rem; }
 
-@media (max-width: 1100px) {
+@media (max-width: 1279.98px) {
   /* Stacked, where the second line would double the height of every node for
      no gain: the titles stand on their own once they are read one at a time. */
   .v4l .lf .lf-node { min-height: 0; }
@@ -665,7 +665,7 @@ html:has(.va-page dialog[open]) {
    icon sitting beside the words takes 90 of them, which is what pushed every
    title onto three ragged lines. Stacked, the words get the full width of the
    box and the row reads at a glance. */
-@media (min-width: 1101px) {
+@media (min-width: 1280px) {
   .v4l .lf {
     grid-template-columns:
       minmax(0, 1fr) 1.75rem minmax(0, 1fr) 1.75rem minmax(0, 1fr) 1.75rem
@@ -870,3 +870,43 @@ html:has(.va-page dialog[open]) {
    widened the page on phones and showed a sideways scrollbar. Clip sideways overflow at the page root.
    clip, not hidden, so sticky elements (the FAQ side panel) keep working. */
 #va-page { overflow-x: clip; }
+
+/* Lead flow below 1280px, where it is stacked. The row layout starts at 1280px in the base styles; the
+   override used to start its row grid at 1101px, which squashed 1101 to 1279px into eleven thin columns.
+   Stacked, it was capped at 30rem and left half the dark panel empty. Now: beside the heading from 1024px,
+   the full panel width below that, and every step keeps its short second line. */
+@media (max-width: 1279.98px) {
+  .v4l .lf .lf-txt small { display: block; }
+  .v4l .flow-panel .lf { max-width: 40rem; }
+}
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .v4l .flow-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 28rem); column-gap: 3rem; align-content: start; }
+  .v4l .flow-panel > :not(.lf):not(.kstats) { grid-column: 1; }
+  .v4l .flow-panel > .lf { grid-column: 2; grid-row: 1 / span 4; margin-top: 0; max-width: none; }
+  .v4l .flow-panel > .kstats { grid-column: 1 / -1; }
+  .v4l .flow-panel > .lf-status { margin-top: 1.5rem; }
+}
+
+/* Lead flow, 1024 to 1279px: the four stats fill the column under the heading instead of a strip below. */
+#va-page .flow-panel > .h3 { text-wrap: balance; }
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .v4l .flow-panel { grid-template-rows: auto auto auto 1fr; }
+  .v4l .flow-panel > .lf { grid-row: 1 / -1; }
+  .v4l .flow-panel > .kstats { grid-column: 1; grid-row: 4; align-self: end; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Hero heading: each half on its own line(s) at every width, never "Businesses Answer" sharing a line; from 768px
+   sized to the screen so it stays on two lines. */
+#va-page .hero4 h1 .hl { display: block; }
+#va-page .hero4 h1 br { display: none; }
+@media (min-width: 768px) { #va-page .hero4 h1 { font-size: min(4.5rem, 5.3vw); } }
+
+/* Fit result: gauge beside the words only when there is room for both. */
+#right-fit form { container-type: inline-size; }
+@container (max-width: 600px) { #right-fit [data-fit-result] { flex-direction: column; align-items: flex-start; } }
+
+/* Compare table: the badge over the OMH column stays on one line in the narrower table. */
+@media (max-width: 1279.98px) { #compare .cmp-omh > span:first-child { white-space: nowrap; font-size: 13px; } }
+
+/* Pricing: no lone "isn't" on the summary's second line. */
+#pricing summary { text-wrap: balance; }

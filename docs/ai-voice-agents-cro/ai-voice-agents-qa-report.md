@@ -345,3 +345,14 @@ drop `data-audio-pending`. The hero now uses the site's `hero-grid` backdrop lik
 slide-in entrance, which widened the page by 76px on phones and showed a horizontal scrollbar.
 `#va-page { overflow-x: clip; }` clips it at the page root. Verified page width equals the viewport at
 320, 360, 375, 390, 414 and 768px; carousels still reveal and step; the FAQ side panel still sticks.
+
+**Responsive 581 to 1279px (fixed).** Lead flow: the row grid started at 1101px but the row styles at 1280px,
+so 1101 to 1279px showed eleven squashed columns; both now switch at 1280px. Below that the stacked flow keeps
+its second lines, sits beside the heading with the stats under it from 1024px, and fills the panel below.
+Also: hero heading stays two lines from 768px and never runs "Businesses Answer" together; the fit result
+stacks its gauge when narrow; the compare badge stays on one line; no lone "isn't" in the pricing summaries.
+
+**Stale pages on phones (fixed).** HTML went out with `stale-while-revalidate` for a year (Next's default
+expire), which Chrome honours, so phones showed pre-deploy HTML whose CSS was gone: an unstyled page.
+`expireTime: 3600` in next.config.ts drops it (header is now `s-maxage=3600`). The VPS also keeps old
+builds' static files in the `omh-static` volume, so restored tabs and back navigation still find their CSS.

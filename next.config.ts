@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Self-hosted on the VPS: bundle a minimal server into .next/standalone.
   output: "standalone",
+  // Pages revalidate hourly (the Sanity fetches). Next's default expire of a year made every HTML response say
+  // "stale-while-revalidate" for a year, and Chrome honours that: it showed a saved page from before the last
+  // deploy, whose CSS no longer exists, so the page loaded unstyled. Expiring with the revalidate drops it.
+  expireTime: 3600,
   images: {
     remotePatterns: [
       {
