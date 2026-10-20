@@ -1143,6 +1143,58 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
       on(next, "click", () => go(1));
       on(track, "scroll", () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
       on(window, "resize", sync);
+
+      // Drag with a mouse or pen (touch already scrolls natively). A real drag swallows the click that follows.
+      let dragX = 0, dragLeft = 0, dragging = false, moved = false;
+      on(track, "pointerdown", (e: PointerEvent) => {
+        if (e.pointerType === "touch" || e.button !== 0) return;
+        dragging = true; moved = false; dragX = e.clientX; dragLeft = track.scrollLeft;
+        track.setPointerCapture(e.pointerId);
+      });
+      on(track, "pointermove", (e: PointerEvent) => {
+        if (!dragging) return;
+        const dx = e.clientX - dragX;
+        if (!moved && Math.abs(dx) < 6) return;
+        moved = true;
+        track.classList.add("is-dragging");
+        track.scrollLeft = dragLeft - dx;
+      });
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        if (!moved) return;
+        track.classList.remove("is-dragging");
+        track.scrollTo({ left: Math.round(track.scrollLeft / stepWidth()) * stepWidth(), behavior: reduceMotion.matches ? "auto" : "smooth" });
+      };
+      on(track, "pointerup", endDrag);
+      on(track, "pointercancel", endDrag);
+      on(track, "click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+
+      // Autoplay: one card every few seconds while in view, paused on hover, focus or after any interaction.
+      if (root.hasAttribute("data-autoplay") && !reduceMotion.matches) {
+        let inView = false, hold = false, idle = 0, tick = 0;
+        const stop = () => { clearInterval(tick); tick = 0; };
+        const play = () => {
+          if (tick || !inView || hold) return;
+          tick = every(() => {
+            if (dragging) return;
+            const list = cards();
+            const i = Math.round(track.scrollLeft / stepWidth());
+            if (i >= list.length - 1 || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) track.scrollTo({ left: 0, behavior: "smooth" });
+            else go(1);
+          }, 4500);
+        };
+        const pause = (ms: number) => { hold = true; stop(); clearTimeout(idle); idle = later(() => { hold = false; play(); }, ms); };
+        on(root, "pointerenter", () => { hold = true; stop(); });
+        on(root, "pointerleave", () => { hold = false; play(); });
+        on(root, "focusin", () => { hold = true; stop(); });
+        on(root, "focusout", () => { hold = false; play(); });
+        on(root, "pointerdown", () => pause(8000));
+        on(root, "touchstart", () => pause(8000), { passive: true });
+        on(prev, "click", () => pause(8000));
+        on(next, "click", () => pause(8000));
+        observe((entries) => { inView = entries[0].isIntersecting; if (inView) play(); else stop(); }, { threshold: 0.4 }).observe(root);
+      }
       // The industry filter chips (outside the carousel) hide cards; re-sync after any click.
       on(page, "click", () => later(sync, 60));
       sync();

@@ -117,3 +117,8 @@ was dropped. The "In plain English" eyebrow was removed.
 progress indicator and a running "n / total" count. No library: native scrolling, scroll-driven
 entrance animation where the browser supports it, static under reduced motion. Keyboard: the track
 is focusable and scrolls with the arrow keys; the buttons are ordinary buttons.
+
+**Revision:** Industries is a grid again (the client wants variety, not three carousels in a row).
+Client feedback and Local cover stay carousels, now draggable with a mouse and auto-advancing every
+4.5 seconds while in view; autoplay pauses on hover or focus and for eight seconds after any
+interaction, and is off under reduced motion. The control row is compact: arrow, waveform, count, arrow.

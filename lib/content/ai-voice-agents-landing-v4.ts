@@ -166,7 +166,7 @@ export const landingV4Markup = String.raw`
       <h2 class="h2 mt-3" id="city-title">Local to you. <span class="hl">Answering calls across the UK.</span></h2>
       <p class="lead mt-4">A local number, your opening hours and an agent that knows the areas you cover.</p>
     </div>
-    <div class="va-car mt-12" data-carousel>
+    <div class="va-car mt-12" data-carousel data-autoplay>
     <ul class="cities va-car-track" style="--car-w:360px" tabindex="0" aria-label="Local cover, scroll sideways">
       <li class="city" style="--tint:var(--tint-1)">
         <div class="city-top">

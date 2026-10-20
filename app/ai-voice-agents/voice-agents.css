@@ -500,20 +500,23 @@ html:has(.va-page dialog[open]) {
 #va-page .va-car-track:focus-visible { outline: 2px solid var(--va-hl); outline-offset: 4px; border-radius: 12px; }
 #va-page .va-car-track > * { flex: 0 0 min(100%, var(--car-w, 400px)); width: min(100%, var(--car-w, 400px)); scroll-snap-align: start; margin: 0; }
 #va-page .va-car-track > [hidden] { display: none; }
-#va-page .va-car-ui { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+#va-page .va-car-ui { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
 #va-page .va-car-btn {
   display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 999px;
-  border: 1.5px solid var(--va-line-strong); color: var(--va-ink); background: var(--va-surface);
+  border: 1.5px solid var(--va-line-strong, rgb(16 24 40 / .45)); color: var(--va-ink, #101828); background: var(--va-surface, #fff);
   transition: background-color .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease;
 }
 #va-page .va-car-btn:hover:not(:disabled) { background: #d79a37; border-color: #d79a37; color: #101828; }
 #va-page .va-car-btn:disabled { opacity: .35; cursor: default; }
 #va-page .va-car-btn .icon { width: 1.25rem; height: 1.25rem; }
-#va-page .va-car-wave { display: flex; align-items: center; gap: 4px; height: 28px; flex: 1; min-width: 0; max-width: 320px; }
-#va-page .va-car-wave i { display: block; flex: 1; max-width: 10px; height: var(--h, 40%); border-radius: 3px; background: var(--va-line-strong); opacity: .45; transition: background-color .25s ease, opacity .25s ease, height .25s ease; }
+#va-page .va-car-wave { display: flex; align-items: center; gap: 4px; height: 28px; flex: none; }
+#va-page .va-car-wave i { display: block; width: 8px; height: var(--h, 40%); border-radius: 3px; background: var(--va-line-strong, rgb(16 24 40 / .45)); opacity: .45; transition: background-color .25s ease, opacity .25s ease, height .25s ease; }
 #va-page .va-car-wave i.is-on { background: #d79a37; opacity: 1; }
 #va-page .va-car-wave i.is-now { height: 100%; }
-#va-page .va-car-status { font-family: var(--font-display); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--va-muted); white-space: nowrap; }
+#va-page .va-car-status { font-family: var(--font-display); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--va-muted, #667085); white-space: nowrap; }
+#va-page .va-car-track { cursor: grab; }
+#va-page .va-car-track.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; user-select: none; }
+#va-page .va-car-track.is-dragging > * { pointer-events: none; }
 #va-page .on-band .va-car-btn { border-color: var(--va-band-line); color: var(--va-band-ink); background: transparent; }
 #va-page .on-band .va-car-wave i { background: var(--va-band-line); }
 #va-page .on-band .va-car-status { color: var(--va-band-muted); }
