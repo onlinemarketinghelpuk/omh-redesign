@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BookDemo } from "@/components/BookDemo";
 import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
+import { VoiceMotion } from "@/components/voice-agents/VoiceMotion";
 import { landingV4Markup } from "@/lib/content/ai-voice-agents-landing-v4";
 import { legacyMarkup } from "@/lib/content/ai-voice-agents-legacy";
 import { voiceAgentsMarkup, voiceFaqs } from "@/lib/content/ai-voice-agents-markup";
@@ -122,6 +123,7 @@ export default function AiVoiceAgentsPage() {
         }
       />
       <VoiceAgentsScript />
+      <VoiceMotion />
     </>
   );
 }

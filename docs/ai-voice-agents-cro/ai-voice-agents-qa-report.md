@@ -243,3 +243,14 @@ five "yes" answers in the fit check give "Strong fit", "5 of 5 answered" and sho
 caption and comparison note are gone; no console errors. Page: 13 sections, 19,586px at 1440 and
 35,194px at 390. The capture script now emulates reduced motion so the scroll-driven reveals do not
 hide below-the-fold content in full-page captures.
+Round five: the CSS scroll-driven reveals never ran in production builds (the bundler kept the
+`@supports` test but dropped the `animation-timeline` declarations), so they were replaced by
+`components/voice-agents/VoiceMotion.tsx`: word-by-word heading reveals, staggered fade-ups, clip
+reveals on media, the hero video scaling from 0.9 to 1 on scroll, a gold scroll-progress line,
+counters on the feedback figures, magnetic primary buttons and a cursor glow on cards (pointer
+devices only). Content is only hidden while the script runs in a visible tab, anything already in
+view shows at once, and a 4s failsafe shows the rest. Verified in headless Chrome at 1440 with
+motion on: 11 headings split with an `aria-label` keeping the full text, cards revealed on scroll,
+counters end on 1,284 / 317 / 38%, no console errors. The call player now cycles through the three
+businesses while on screen. Carousels count snap stops: 1–4 of 4 at 1440 (three cards visible), 1–6
+of 6 at 390, looping. The fit gauge is 168px with a 24px result title.

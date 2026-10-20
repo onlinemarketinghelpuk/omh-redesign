@@ -488,8 +488,8 @@ export const legacyMarkup = String.raw`
             </fieldset>
           </li>
           </ol>
-          <div class="mt-5 flex flex-wrap items-center gap-4 rounded-[14px] bg-sand p-4" aria-live="polite" data-fit-result data-state="empty">
-            <svg viewBox="0 0 200 118" class="w-[112px] shrink-0" role="img" aria-label="Fit gauge" data-fit-gauge>
+          <div class="mt-5 flex flex-wrap items-center gap-5 rounded-[14px] bg-sand p-5" aria-live="polite" data-fit-result data-state="empty">
+            <svg viewBox="0 0 200 122" class="shrink-0" role="img" aria-label="Fit gauge" data-fit-gauge>
               <path d="M20 100 A80 80 0 0 1 180 100" class="fit-track"/>
               <path d="M20 100 A80 80 0 0 1 180 100" class="fit-fill" style="stroke-dasharray:251.3;stroke-dashoffset:251.3" data-fit-arc data-arc="251.3"/>
               <g class="fit-needle" style="transform:rotate(-90deg)" data-fit-needle><line x1="100" y1="100" x2="100" y2="34"/><circle cx="100" cy="100" r="7"/></g>
@@ -497,9 +497,9 @@ export const legacyMarkup = String.raw`
               <text x="180" y="116" class="fit-tick" text-anchor="middle">5</text>
             </svg>
             <div class="min-w-0 flex-1">
-              <p class="font-display text-[20px] font-semibold leading-tight" data-fit-title>Answer to see your fit</p>
-              <p class="mt-1 text-[15px] leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
-              <p class="mt-1 text-[14px] text-muted tnum" data-fit-count>0 of 5 answered</p>
+              <p class="font-display text-[24px] font-semibold leading-tight" data-fit-title>Answer to see your fit</p>
+              <p class="mt-1.5 text-[16px] leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
+              <p class="mt-1.5 text-[15px] font-semibold text-muted tnum" data-fit-count>0 of 5 answered</p>
               <a href="#book-demo-form" class="btn btn-primary mt-3" data-fit-cta data-track="fit_check_book_demo" hidden>Book a 30-Minute Demo</a>
             </div>
             <button type="reset" class="inline-flex min-h-[44px] items-center gap-1.5 self-start text-[15px] font-semibold text-muted hover:text-ink" data-track="fit_check_reset"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Start again</button>

@@ -700,6 +700,19 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     const lines = $$("[data-brand-line], [data-brand-outcome]", root);
     const steps = $$("[data-brand-step]", root);
     let callTimers: number[] = [];
+    // After a call ends, the next business takes the next call, round and round while the phone is on screen.
+    let inView = false,
+      waiting = false;
+    const choosers: Record<string, (btn: HTMLElement, focus: boolean) => void> = {};
+    function loopNext() {
+      if (!inView) {
+        waiting = true;
+        return;
+      }
+      const opts = $$('[data-brand-group="biz"] [data-brand-opt]', root);
+      const i = opts.findIndex((o) => o.getAttribute("aria-checked") === "true");
+      choosers.biz?.(opts[(i + 1) % opts.length], false);
+    }
     const lineStep: Record<string, number> = { caller: 1, agent: 3, summary: 4 };
     function light(n: number) {
       steps.forEach((el) => {
@@ -736,6 +749,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         clearInterval(clock);
         light(5);
       });
+      queue(3800, loopNext);
     }
     function greet(b: Biz, t: string) {
       if (t === "brisk") return b.name + ", " + b.agent + " speaking. I'm the " + b.kind + " AI assistant. What can I do for you?";
@@ -816,6 +830,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         if (focus) btn.focus();
         render(true);
       }
+      choosers[group.dataset.brandGroup!] = choose;
       opts.forEach((btn, i) => {
         on(btn, "click", () => choose(btn, false));
         on(btn, "keydown", (e) => {
@@ -829,16 +844,20 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     on($("[data-brand-replay]", root), "click", () => render(true));
     // Play the greeting once when the phone first scrolls into view.
     if (!reduceMotion.matches) {
-      const io = observe(
+      let first = true;
+      observe(
         (entries) => {
-          if (entries[0].isIntersecting) {
-            io.disconnect();
+          inView = entries[0].isIntersecting;
+          if (inView && first) {
+            first = false;
             render(true);
+          } else if (inView && waiting) {
+            waiting = false;
+            loopNext();
           }
         },
-        { threshold: 0.5 },
-      );
-      io.observe($(".brand-phone", root));
+        { threshold: 0.35 },
+      ).observe($(".brand-phone", root));
     }
   }
 
@@ -1115,7 +1134,6 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
       const track = $(".va-car-track", root);
       const prev = $<HTMLButtonElement>("[data-car-prev]", root);
       const next = $<HTMLButtonElement>("[data-car-next]", root);
-      const bars = $$("[data-car-wave] i", root);
       const status = $("[data-car-status]", root);
       if (!track || !prev || !next) return;
       const cards = () => Array.from(track.children).filter((c) => !(c as HTMLElement).hidden) as HTMLElement[];
@@ -1131,18 +1149,28 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         return !last || last.getBoundingClientRect().right <= track.getBoundingClientRect().right + 24;
       };
       let raf = 0;
+      // Count snap positions, not cards: with three cards on screen, six cards are four stops.
+      const wave = $("[data-car-wave]", root);
+      const heights = [40, 70, 55, 90, 45, 75, 60, 85, 50, 65, 80, 35];
+      let bars = $$("i", wave);
       function sync() {
         raf = 0;
         const list = cards();
         const end = atEnd();
         track.classList.toggle("is-end", end);
-        // At the end the last card is on screen, so the count and the wave read as complete.
-        const i = end ? list.length - 1 : Math.min(list.length - 1, Math.max(0, Math.round(track.scrollLeft / stepWidth())));
-        if (status) status.textContent = (i + 1) + " / " + list.length;
-        const per = bars.length / Math.max(1, list.length);
+        const max = track.scrollWidth - track.clientWidth;
+        const base = list[0]?.offsetLeft ?? 0;
+        const stops = Math.max(1, list.filter((c) => c.offsetLeft - base < max - 24).length + (max > 24 ? 1 : 0));
+        if (bars.length !== stops) {
+          wave.innerHTML = Array.from({ length: stops }, (_, k) => '<i style="--h:' + heights[k % heights.length] + '%"></i>').join("");
+          bars = $$("i", wave);
+        }
+        const i = end ? stops - 1 : Math.min(stops - 2 >= 0 ? stops - 2 : 0, Math.max(0, Math.round(track.scrollLeft / stepWidth())));
+        const list_ = { length: stops };
+        if (status) status.textContent = (i + 1) + " / " + list_.length;
         bars.forEach((bar, k) => {
-          bar.classList.toggle("is-on", k < Math.ceil((i + 1) * per));
-          bar.classList.toggle("is-now", k === Math.min(bars.length - 1, Math.floor(i * per)));
+          bar.classList.toggle("is-on", k <= i);
+          bar.classList.toggle("is-now", k === i);
         });
       }
       // Loops: next at the end returns to the start, previous at the start jumps to the end.
