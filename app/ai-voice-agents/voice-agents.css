@@ -450,3 +450,10 @@ html:has(.va-page dialog[open]) {
     .tl::before { content: ""; position: absolute; top: 1.375rem; left: 1.375rem; right: calc(25% - 2rem); border-top: 2px dashed #d79a37; }
   }
 }
+
+/* Pricing facts (20 Oct 2026): the figure leads, the label follows. */
+.va-page .plan-facts > div { padding: .7rem .5rem .75rem; border-radius: 12px; border: 1px solid color-mix(in srgb, #d79a37 45%, transparent); background: color-mix(in srgb, #d79a37 9%, var(--va-surface)); text-align: center; }
+.va-page .plan-facts dt { display: flex; align-items: center; justify-content: center; gap: .3rem; font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--va-muted); }
+.va-page .plan-facts dt .icon { width: .95rem; height: .95rem; color: var(--va-hl); }
+.va-page .plan-facts dd { margin-top: .3rem; font-family: var(--font-display); font-size: clamp(19px, 17px + .4vw, 22px); font-weight: 600; line-height: 1.1; color: var(--va-ink); }
+.va-page .plan-facts dd span { display: block; margin-top: .2rem; font-family: var(--font-body); font-size: 13px; font-weight: 400; line-height: 1.3; color: var(--va-muted); }

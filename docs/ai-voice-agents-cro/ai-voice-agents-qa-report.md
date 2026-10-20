@@ -205,3 +205,12 @@ Run one at a time, at least two weeks or 100 conversions per arm, whichever is l
 - Form submission end-to-end and production performance were not tested here (reasons above).
 - GTM triggers, GA4 key events and Consent Mode need configuring in GTM.
 - Automated accessibility scan not run.
+
+## 11. Revision, 20 Oct 2026 (sections restored at the client's request)
+
+Re-tested after restoring the previous sections (see the IA document). At 1440px the page is
+23,081px tall with 16 sections; `tsc` and `eslint` clean; no console errors on a fresh load.
+Checked working: industry filter chips (Health shows 2 cards), fit checker ("1 of 5 answered" after
+one answer), FAQ search ("Showing 2 of 15 questions" for "GDPR"), lead-flow diagram present, ROI
+iframe fitted to 2,012px, pricing badge and facts tiles, demo CTAs → `#book-demo-form`, Related
+services gone. The `after/` captures were retaken.

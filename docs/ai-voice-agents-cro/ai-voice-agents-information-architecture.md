@@ -64,3 +64,28 @@ links, related services. Mobile: sticky bar.
 - H2 AI voice agent FAQs — H3 × 15
 - H2 Related services (component)
 - H2 Book a 30-minute demo (booking band)
+
+## Revision, 20 Oct 2026 (client feedback on the first rebuild)
+
+The client asked for the removed sections back. The page now runs:
+
+1. Hero (rebuilt: greeting builder as the demonstration, one primary CTA)
+2. Without / with an AI voice agent (new)
+3. What is an AI voice agent? (rebuilt: definition + call walkthrough)
+4. What your AI voice agent does (rebuilt: 6 cards)
+5. How it works (previous: 4 steps, lead-flow diagram, stats)
+6. Use cases by industry (rebuilt: tabs; kept at the client's request)
+7. Industries (previous: 8 cards with illustrations and filters)
+8. Client feedback (previous)
+9. Why choose OMH (previous)
+10. Compare your options (previous)
+11. Is it the right fit? (previous, with the fit checker)
+12. ROI calculator (previous, inline)
+13. Pricing (rebuilt cards with a stronger facts box and badge; previous notes layout)
+14. Local cover (previous city cards; "Call Me Now" renamed to the primary wording)
+15. FAQs (previous layout with search, filters and the side card)
+16. Booking band
+
+Removed: Related services. Demo CTAs in the restored sections point at `#book-demo-form` instead of
+`/contact`. The restored markup is verbatim in `lib/content/ai-voice-agents-legacy.ts` (old body
+sections) and `lib/content/ai-voice-agents-landing-v4.ts` (how it works, local cover).

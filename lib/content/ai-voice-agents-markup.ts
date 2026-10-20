@@ -2,25 +2,11 @@
 // by app/ai-voice-agents/page.tsx; the interactive parts (greeting builder, industry tabs, comparison
 // selector, sticky bar, lazy ROI frame, tracking) are wired by components/voice-agents/VoiceAgentsScript.tsx,
 // which finds them by data-* hooks. Styles: app/ai-voice-agents/voice-agents.css (everything under .va-page).
+// The sections kept from the previous page are in ai-voice-agents-legacy.ts and ai-voice-agents-landing-v4.ts.
 // The page as it was before this rebuild is frozen in lib/content/ai-voice-agents-oldv2/ (git tag `oldv2`).
-import { roiCalculator } from "@/lib/content/roi-calculator";
 import { mainPagePricing } from "@/lib/content/voice-pricing";
 
-// Comparison table from the SEO brief (19 Oct 2026). Guide figures: Connect Communications call answering
-// from £14.99 + VAT; UK receptionist base pay about £19k to £24k a year (Payscale) before employer costs;
-// RingCentral AI Receptionist from £32 a month. Recheck every six months.
-const cmpCols = ["OMH AI voice agent", "Voicemail", "Answering service", "Receptionist", "DIY platform"];
-const cmpRows = [
-  ["Typical monthly cost", "From £249 + VAT", "Free", "From about £15, rising with call volume", "Around £2,000+ with employer costs", "From about £30, plus usage"],
-  ["Answers out of hours", "Yes, day and night", "Records a message, if callers leave one", "Depends on the plan", "Office hours only", "Yes"],
-  ["Books into your diary", "Yes, while the caller is on the line", "No", "Sometimes, by hand", "Yes", "If you connect it yourself"],
-  ["Calls at the same time", "Many at once", "One message at a time", "Depends on staffing", "One at a time", "Many at once"],
-  ["Knows your business", "Built from your real calls", "No", "A short script", "Best of all", "As well as you set it up"],
-  ["Testing before customers hear it", "Test calls and your sign-off", "Not needed", "Varies by provider", "Training on the job", "Often tested on live callers"],
-  ["Setup and upkeep", "We build, test and tune it", "None", "Low", "Recruiting, training and holiday cover", "You build and maintain it"],
-  ["Results in your marketing report", "Beside your ads and website (Scale)", "No", "Call logs only", "Kept by hand", "A separate dashboard"],
-];
-const faqTopics = { callers: "Callers and AI", setup: "Setup and systems", data: "Data and rules", sectors: "Health and legal", working: "Working with us" };
+export const faqTopics = { callers: "Callers and AI", setup: "Setup and systems", data: "Data and rules", sectors: "Health and legal", working: "Working with us" };
 
 /** The FAQ section, word for word from the SEO brief (19 Oct 2026). page.tsx builds the FAQPage JSON-LD from this list. */
 export const voiceFaqs: { q: string; a: string; cat: keyof typeof faqTopics }[] = [
@@ -55,24 +41,6 @@ export const voiceFaqs: { q: string; a: string; cat: keyof typeof faqTopics }[] 
   { cat: "working", q: "We're not in one of your six cities. Can we still work with you?",
     a: "Yes. We're based in Hullbridge, Essex and work with businesses across the UK remotely. London, Birmingham, Manchester, Leeds, Liverpool and Bristol are where we focus our voice agent work at the moment." },
 ];
-
-// The eight purchase objections shown first (indexes into voiceFaqs); the rest sit behind "Show more".
-const faqFirst = [1, 12, 7, 6, 4, 3, 8, 13];
-const faqMore = voiceFaqs.map((_, i) => i).filter((i) => !faqFirst.includes(i));
-
-const faqItem = (i: number, open = false) => {
-  const { q, a, cat } = voiceFaqs[i];
-  return `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface" data-faq-item${open ? " open" : ""} data-track-name="${q}">
-        <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
-          <span class="min-w-0 flex-1">
-            <h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">${q}</h3>
-            <span class="mt-1 block text-[14px] font-semibold text-muted">${faqTopics[cat]}</span>
-          </span>
-          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
-        </summary>
-        <div class="px-5 pb-6 text-[16px] text-muted"><p>${a}</p></div>
-      </details>`;
-};
 
 const icon = (name: string, cls = "") => `<svg class="icon${cls && " " + cls}" aria-hidden="true" focusable="false"><use href="#i-${name}"/></svg>`;
 const tick = (text: string) => `<li class="flex gap-2.5">${icon("check", "mt-[3px] text-hl")}<span>${text}</span></li>`;
@@ -156,22 +124,20 @@ ${x.note ? `          <p class="mt-4 inline-flex items-center gap-2 self-start r
 const plan = (p: (typeof mainPagePricing.plans)[number]) => {
   const shown = p.features.slice(0, 4);
   const rest = p.features.slice(4);
-  return `      <article id="plan-${p.id}" class="relative flex flex-col rounded-[16px] border bg-surface p-6 sm:p-7 ${p.popular ? "border-ink shadow-[0_24px_60px_-32px_rgb(16_24_40/0.4)] dark:border-gold" : "border-line"}" data-tier="${p.id}">
-        <div class="flex items-center justify-between gap-3">
-          <h3 class="!text-[26px]">${p.name}</h3>
-          ${p.popular ? '<span class="rounded-full bg-gold px-3 py-1 text-[14px] font-semibold text-navy">Where most clients start</span>' : ""}
-        </div>
+  return `      <article id="plan-${p.id}" class="relative flex flex-col rounded-[16px] border bg-surface p-6 sm:p-7 ${p.popular ? "border-gold shadow-[0_0_0_1px_#d79a37,0_28px_60px_-32px_rgb(215_154_55/0.6)] lg:-mt-3 lg:mb-3" : "border-line"}" data-tier="${p.id}">
+        ${p.popular ? '<span class="absolute -top-4 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-gold px-4 py-1.5 font-display text-[15px] font-semibold text-navy shadow-[0_10px_24px_-10px_rgb(215_154_55/0.9)]">' + icon("plus-star", "!h-3.5 !w-3.5") + 'Where most clients start</span>' : ""}
+        <h3 class="!text-[26px]">${p.name}</h3>
         <p class="mt-2 min-h-[3.2em] text-[16px] leading-snug text-muted">${p.strap}</p>
         <p class="mt-5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tnum">£${p.price}</span>
           <span class="text-[16px] text-muted">a month + VAT, billed monthly</span>
         </p>
-        <dl class="mt-5 grid grid-cols-3 gap-2 rounded-[12px] bg-sand p-3 text-[15px] leading-tight tnum">
-          <div><dt class="text-muted">Included</dt><dd class="mt-0.5 font-semibold">${p.minutes}</dd></div>
-          <div><dt class="text-muted">Setup</dt><dd class="mt-0.5 font-semibold">${p.setup} one-off</dd></div>
-          <div><dt class="text-muted">Live in</dt><dd class="mt-0.5 font-semibold">${p.delivery.replace("Live in ", "")}</dd></div>
+        <dl class="plan-facts mt-5 grid grid-cols-3 gap-2 tnum">
+          <div><dt>${icon("clock")}Included</dt><dd>${p.minutes.replace(" minutes", "")}<span>minutes a month</span></dd></div>
+          <div><dt>${icon("calendar")}Setup</dt><dd>${p.setup}<span>one-off fee</span></dd></div>
+          <div><dt>${icon("timer")}Live in</dt><dd>${p.delivery.replace("Live in ", "").replace(" working days", "")}<span>working days</span></dd></div>
         </dl>
-        <p class="mt-1 text-[14px] text-muted">Then 60p a minute past your allowance.</p>
+        <p class="mt-2 text-[14px] text-muted">Then 60p a minute past your allowance.</p>
         <ul class="mt-5 space-y-2 text-[16px] leading-snug">
 ${shown.map(tick).join("\n")}
         </ul>
@@ -429,114 +395,6 @@ ${industries.map(industryPanel).join("\n")}
   </div>
 </section>
 
-<section id="how" data-component="HowItWorks" class="border-y border-line bg-surface">
-  <div class="container-omh py-16 lg:py-24">
-    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>How it works</p>
-    <h2>Live in 3 to 15 working days. <span class="hl">Working on every call after that.</span></h2>
-    <p class="mt-5 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
-
-    <h3 class="mt-12 text-[14px] font-semibold uppercase tracking-[0.14em] !text-muted">Part 1: Setup, done for you</h3>
-    <ol class="tl mt-6">
-      <li class="tl-step"><span class="tl-num" aria-hidden="true">01</span><div class="tl-card"><h4>Connect</h4><p>You forward your number. We link your calendar, plus your CRM on Growth and Scale.</p><p class="tl-proof"><span class="dot" aria-hidden="true"></span>Call forwarding on</p></div></li>
-      <li class="tl-step"><span class="tl-num" aria-hidden="true">02</span><div class="tl-card"><h4>Train</h4><p>We load your services, prices, FAQs and booking rules, scripted around the real reasons people ring you.</p><p class="tl-proof"><span class="dot" aria-hidden="true"></span>Greeting and rules set</p></div></li>
-      <li class="tl-step"><span class="tl-num" aria-hidden="true">03</span><div class="tl-card"><h4>Test together</h4><p>You call it, and we adjust it until it sounds like your business. Nothing goes live without your sign-off.</p><p class="tl-proof"><span class="dot" aria-hidden="true"></span>Test calls passed</p></div></li>
-      <li class="tl-step"><span class="tl-num" aria-hidden="true">04</span><div class="tl-card"><h4>Go live</h4><p>It answers on the first ring, day and night. We check and tune the first two weeks of live calls at no extra cost.</p><p class="tl-proof live"><span class="dot" aria-hidden="true"></span>Live and answering</p></div></li>
-    </ol>
-    <p class="mt-5 text-[16px] text-muted">Starter goes live in 3 working days, Growth in 5 to 7 and Scale in 12 to 15. The clock starts once we have your content and diary access.</p>
-
-    <h3 class="mt-12 text-[14px] font-semibold uppercase tracking-[0.14em] !text-muted">Part 2: After go-live</h3>
-    <div class="mt-6 grid gap-5 md:grid-cols-3">
-      <div class="rounded-[14px] border border-line bg-paper p-6"><p class="flex items-center gap-3"><span class="num text-[15px]">05</span></p><h4 class="mt-2 !text-[20px]">A UK team, not a ticket queue</h4><p class="mt-2 text-[16px] text-muted">After go-live you deal with our UK team directly, and Scale clients get a named account manager.</p></div>
-      <div class="rounded-[14px] border border-line bg-paper p-6"><p class="flex items-center gap-3"><span class="num text-[15px]">06</span>${tag("Growth and Scale")}</p><h4 class="mt-2 !text-[20px]">Improved every month</h4><p class="mt-2 text-[16px] text-muted">Every month we read a sample of transcripts, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p></div>
-      <div class="rounded-[14px] border border-line bg-paper p-6"><p class="flex items-center gap-3"><span class="num text-[15px]">07</span>${tag("Scale")}</p><h4 class="mt-2 !text-[20px]">Call results beside your marketing figures</h4><p class="mt-2 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="right-fit" data-component="RightFit">
-  <div class="container-omh py-16 lg:py-24">
-    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Is it the right fit?</p>
-    <h2>A voice agent <span class="hl">isn't for everyone</span></h2>
-    <p class="mt-5 text-muted">We'd rather tell you now than three months in. Here's where it earns its keep and where it doesn't.</p>
-
-    <div class="mt-10 grid gap-5 md:grid-cols-2">
-      <div class="rounded-[16px] border border-[color-mix(in_srgb,var(--va-ok)_35%,transparent)] bg-[color-mix(in_srgb,var(--va-ok)_7%,var(--va-surface))] p-6 sm:p-7">
-        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-ok text-surface">${icon("check")}</span>A good fit if</h3>
-        <ul class="mt-5 space-y-3.5">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("phone-missed")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">You miss calls</strong><span class="text-muted">while your team is with customers, on site or closed for the day.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("message")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Most calls repeat themselves:</strong><span class="text-muted">bookings, opening hours, prices and availability.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("arrow-right")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Each customer is worth real money,</strong><span class="text-muted">so one missed call can cost more than the agent.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("calendar")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">You have a diary or booking system</strong><span class="text-muted">the agent can book into.</span></span></li>
-        </ul>
-      </div>
-      <div class="rounded-[16px] border border-line bg-paper p-6 sm:p-7">
-        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted">${icon("x")}</span>Not the right fit if</h3>
-        <ul class="mt-5 space-y-3.5">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("phone")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Your phone is quiet</strong><span class="text-muted">and you already answer every call.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("scale")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Every call needs expert judgement from the first sentence.</strong><span class="text-muted">A good receptionist or answering service will serve you better.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("shield")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">The line handles emergencies or life-critical calls.</strong><span class="text-muted">An AI agent should never be the only route there.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("x")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">You want callers to think it's a person, or you want to cold call people who haven't agreed to hear from you.</strong><span class="text-muted">We won't build either.</span></span></li>
-        </ul>
-      </div>
-    </div>
-
-    <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Safeguards on every agent">
-      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">Callers are told it's an AI</strong> assistant at the start of every call.</span></li>
-      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">UK GDPR and recording notice.</strong> You stay the data controller; OMH is your processor under a written agreement.</span></li>
-      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">Outbound calls only with consent,</strong> screened against the Telephone Preference Service.</span></li>
-      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">No clinical or legal advice.</strong> Those calls go to your team, and emergencies follow the route you set.</span></li>
-    </ul>
-
-    <details class="group mt-6 rounded-[16px] border border-line bg-surface" data-track="compare_open">
-      <summary class="flex min-h-[64px] items-center justify-between gap-4 px-5 py-4 sm:px-6">
-        <span><span class="block font-display text-[20px] font-semibold">How it compares with voicemail, an answering service, a receptionist and a DIY platform</span><span class="mt-1 block text-[16px] text-muted">An honest side-by-side, including where each option wins.</span></span>
-        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy">${icon("chevron-down", "faq-chevron")}</span>
-      </summary>
-      <div class="border-t border-line px-5 pb-6 pt-5 sm:px-6">
-        <div class="hidden overflow-hidden rounded-[14px] border border-line lg:block">
-          <table class="cmp-table w-full border-separate border-spacing-0 text-left text-[16px] leading-snug">
-            <caption class="sr-only">OMH AI voice agent compared with voicemail, an answering service, a receptionist and a DIY platform</caption>
-            <thead>
-              <tr>
-                <th scope="col" class="w-[16%] px-4 pb-3 pt-4 align-bottom text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">What matters</th>
-                <th scope="col" class="cmp-omh w-[16.8%] px-4 pb-3 pt-4 align-bottom text-ink"><span class="mb-1.5 inline-flex rounded-full bg-gold px-2.5 py-0.5 text-[14px] font-semibold text-navy">Managed for you</span><span class="block font-display text-[17px] font-semibold">OMH AI voice agent</span></th>${cmpCols.slice(1).map((c) => `<th scope="col" class="w-[16.8%] px-4 pb-3 pt-4 align-bottom"><span class="font-display text-[17px] font-semibold text-ink">${c}</span></th>`).join("")}
-              </tr>
-            </thead>
-            <tbody>
-${cmpRows.map(([k, ...v]) => `              <tr>
-                <th scope="row" class="border-t border-line px-4 py-3 align-top font-display text-[16px] font-semibold">${k}</th>
-                ${v.map((t, i) => `<td class="${i ? "text-muted" : "cmp-omh font-semibold"} border-t border-line px-4 py-3 align-top">${t}</td>`).join("")}
-              </tr>`).join("\n")}
-            </tbody>
-          </table>
-        </div>
-        <div class="lg:hidden" data-cmp>
-          <p class="font-semibold" id="cmp-pick-label">Compare OMH with</p>
-          <div role="radiogroup" aria-labelledby="cmp-pick-label" class="mt-3 flex flex-wrap gap-2" data-cmp-group>
-${cmpCols.slice(1).map((c, i) => `            <button type="button" role="radio" aria-checked="${!i}" tabindex="${i ? -1 : 0}" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[16px] font-semibold aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-cmp-opt="${i + 1}" data-track="compare_option" data-track-name="${c}">${c}</button>`).join("\n")}
-          </div>
-          <div class="mt-5 overflow-hidden rounded-[14px] border border-line" aria-live="polite">
-            <div class="grid grid-cols-2 border-b border-line text-[16px] font-semibold">
-              <p class="cmp-omh px-4 py-3">OMH AI voice agent</p>
-              <p class="px-4 py-3" data-cmp-name>${cmpCols[1]}</p>
-            </div>
-            <dl>
-${cmpRows.map(([k, omh, ...v]) => `              <div class="border-b border-line last:border-0">
-                <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt>
-                <dd class="grid grid-cols-2 text-[16px] leading-snug">
-                  <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">${omh}</span>
-                  ${v.map((t, i) => `<span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="${i + 1}"${i ? " hidden" : ""}>${t}</span>`).join("")}
-                </dd>
-              </div>`).join("\n")}
-            </dl>
-          </div>
-        </div>
-        <p class="mt-4 text-[15px] text-muted">Costs are rough UK guides for a small business, checked in October 2026, not quotes. Answering service and platform prices vary widely by provider and usage.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
 <section id="pricing" data-component="Pricing" class="border-y border-line bg-surface">
   <div class="container-omh py-16 lg:py-24">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
@@ -547,53 +405,10 @@ ${cmpRows.map(([k, omh, ...v]) => `              <div class="border-b border-lin
 ${mainPagePricing.plans.map(plan).join("\n")}
     </div>
 
-    <dl class="mt-8 grid gap-x-10 gap-y-3 text-[15px] leading-snug md:grid-cols-2">
-${mainPagePricing.notes.map(([k, v]) => `      <div class="flex gap-2"><dt class="shrink-0 font-semibold">${k}:</dt><dd class="text-muted">${v}</dd></div>`).join("\n")}
+    <dl class="mt-12 border-t border-line">
+${mainPagePricing.notes.map(([k, v]) => `      <div class="grid gap-1 border-b border-line py-4 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-8"><dt class="text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt><dd class="text-[16px] leading-[1.5]">${v}</dd></div>`).join("\n")}
     </dl>
-
-    <details id="roi-calculator" class="group mt-8 rounded-[16px] border border-line bg-paper" data-lazy-frame data-track="roi_calculator_open">
-      <summary class="flex min-h-[64px] items-center justify-between gap-4 px-5 py-4 sm:px-6">
-        <span><span class="block font-display text-[20px] font-semibold">Work out what missed calls cost you</span><span class="mt-1 block text-[16px] text-muted">A two-minute calculator: your call volume, your average job value, your missed-call rate.</span></span>
-        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy">${icon("chevron-down", "faq-chevron")}</span>
-      </summary>
-      <div class="border-t border-line">${roiCalculator("any-business").replace(/^<section[^>]*>|<\/section>$/g, "").replace(' src="', ' loading="lazy" data-src="')}</div>
-    </details>
-
-    <p class="mt-8 flex gap-3 text-[16px] text-muted">${icon("map-pin", "mt-1 shrink-0 text-hl")}<span><strong class="font-semibold text-ink">UK-wide, run remotely from Essex.</strong> We focus our voice agent work on London, Birmingham, Manchester, Leeds, Liverpool and Bristol, and can arrange a local number (020, 0121, 0161, 0113, 0151 or 0117) as part of setup. Somewhere else in the UK? We work with you the same way.</span></p>
   </div>
 </section>
 
-<section id="faq" data-component="FAQ">
-  <div class="container-omh grid gap-10 py-16 lg:grid-cols-[minmax(0,.7fr)_minmax(0,1.3fr)] lg:gap-x-14 lg:py-24">
-    <div class="lg:sticky lg:top-28 lg:self-start">
-      <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
-      <h2>AI voice agent <span class="hl">FAQs</span></h2>
-      <p class="mt-5 text-muted">Straight answers to the questions owners and practice managers ask us most.</p>
-      <div class="mt-8 rounded-[16px] border border-line bg-surface p-6">
-        <p class="font-display text-[18px] font-semibold">Still have a question?</p>
-        <p class="mt-1 text-[16px] text-muted">Talk to a person on our UK team. No sales script.</p>
-        <ul class="mt-3 space-y-1 text-[16px]">
-          <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click">${icon("phone")}020 3489 3934</a></li>
-          <li><a href="mailto:support@onlinemarketinghelp.co.uk" class="text-link [overflow-wrap:anywhere] max-sm:text-[15px]" data-track="faq_email_click">${icon("mail")}support@onlinemarketinghelp.co.uk</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="space-y-3">
-${faqFirst.map((i, n) => faqItem(i, n === 0)).join("\n")}
-      <details class="group rounded-[14px] border border-dashed border-[var(--va-line-strong)]" data-track="faq_show_more">
-        <summary class="flex min-h-[64px] items-center justify-center gap-2 px-5 py-4 font-display text-[17px] font-semibold">Show ${faqMore.length} more questions${icon("chevron-down", "faq-chevron")}</summary>
-        <div class="space-y-3 px-3 pb-3">
-${faqMore.map((i) => faqItem(i)).join("\n")}
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
-  <div class="flex items-center gap-3">
-    <a href="#book-demo-form" class="btn btn-primary flex-1 whitespace-nowrap !px-3" data-track="sticky_book_demo">Book a Demo</a>
-    <a href="tel:+442034893934" class="btn btn-secondary shrink-0 whitespace-nowrap !px-3 tnum" data-track="sticky_phone_click">Call 020 3489 3934</a>
-  </div>
-</div>
 `;
