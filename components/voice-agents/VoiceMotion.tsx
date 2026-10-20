@@ -5,7 +5,7 @@ import { useEffect } from "react";
 /*
   Page motion for /ai-voice-agents, after kirki.com, sparktech.agency and musemind.agency (20 Oct 2026):
   headings that rise word by word out of a mask, staggered fade-ups for cards, media that unclips and
-  scales as it enters, a scroll progress line, magnetic primary buttons and a cursor glow on cards.
+  scales as it enters, a scroll progress line, a slight magnetic pull on buttons and a cursor glow on cards.
 
   No library. Elements are tagged here by selector, so the markup files stay as they are. Content is only
   hidden once this script is running in a visible tab with IntersectionObserver available, anything
@@ -189,11 +189,14 @@ export function VoiceMotion() {
 
     /* -------- Pointer only: magnetic primary buttons, cursor glow on cards */
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      root.querySelectorAll<HTMLElement>(".btn-primary").forEach((b) => {
+      // A slight pull toward the cursor, a few pixels at most, on every button.
+      document.querySelectorAll<HTMLElement>("#va-page .btn, #va-page .va-car-btn, #book-demo-form button[type=submit], #book-demo-form [data-next]").forEach((b) => {
         const move = (e: Event) => {
           const { clientX, clientY } = e as PointerEvent;
           const r = b.getBoundingClientRect();
-          b.style.translate = `${(clientX - r.left - r.width / 2) * 0.18}px ${(clientY - r.top - r.height / 2) * 0.28}px`;
+          const x = Math.max(-4, Math.min(4, (clientX - r.left - r.width / 2) * 0.06));
+          const y = Math.max(-3, Math.min(3, (clientY - r.top - r.height / 2) * 0.1));
+          b.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
         };
         const leave = () => (b.style.translate = "");
         on(b, "pointermove", move);

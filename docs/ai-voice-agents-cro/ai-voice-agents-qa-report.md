@@ -254,3 +254,10 @@ motion on: 11 headings split with an `aria-label` keeping the full text, cards r
 counters end on 1,284 / 317 / 38%, no console errors. The call player now cycles through the three
 businesses while on screen. Carousels count snap stops: 1–4 of 4 at 1440 (three cards visible), 1–6
 of 6 at 390, looping. The fit gauge is 168px with a 24px result title.
+Buttons and cursors: primary buttons now match the header's button (white text on #d79a37, #b97822
+on hover). Every button gets the same subtle motion: a 1px lift with a soft shadow and a pull toward
+the cursor capped at 4px (was up to about 18px on primary buttons only). Pointer cursor on every
+link, button, tab, chip, radio label, summary and the video poster, here and in the booking band.
+Verified in headless Chrome with a real mouse hover. Note: white on #d79a37 is about 2.4:1 contrast,
+below WCAG AA for normal text; it matches the site-wide header button, so changing it is a
+site-level decision.

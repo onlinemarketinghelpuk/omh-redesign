@@ -508,7 +508,7 @@ html:has(.va-page dialog[open]) {
   border: 1.5px solid var(--va-line-strong, rgb(16 24 40 / .45)); color: var(--va-ink, #101828); background: var(--va-surface, #fff);
   transition: background-color .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease;
 }
-#va-page .va-car-btn:hover:not(:disabled) { background: #d79a37; border-color: #d79a37; color: #101828; }
+#va-page .va-car-btn:hover:not(:disabled) { background: #d79a37; border-color: #d79a37; color: #fff; }
 #va-page .va-car-btn:disabled { opacity: .35; cursor: default; }
 #va-page .va-car-btn .icon { width: 1.25rem; height: 1.25rem; }
 #va-page .va-car-wave { display: flex; align-items: center; gap: 4px; height: 28px; flex: none; }
@@ -542,8 +542,16 @@ html:has(.va-page dialog[open]) {
   transform: translateY(-4px); box-shadow: 0 24px 50px -34px rgb(16 24 40 / .45); border-color: #d79a37;
 }
 #va-page [data-industry]:hover .il-bubble { animation: va-il-float 1.6s ease-in-out infinite; }
-#va-page .btn { transition: background-color .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease; }
-#va-page .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -14px rgb(215 154 55 / .9); }
+/* Buttons match the header's "Book a Growth Consultation": gold with white text, darker gold on hover. One subtle
+   motion for every button: a 1px lift with a soft shadow, plus a slight pull toward the cursor (VoiceMotion.tsx). */
+#va-page .btn-primary, #va-page .on-band .btn-primary { background: #d79a37; border-color: #d79a37; color: #fff; }
+#va-page .btn-primary:hover, #va-page .on-band .btn-primary:hover { background: #b97822; border-color: #b97822; color: #fff; }
+#va-page :is(.btn, .va-car-btn, .cap-tab, .brand-chip, .day-seg, .filter-btn, [data-faq-filter], [data-cmp-opt], [data-brand-opt], [data-tab]) {
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .3s ease, transform .3s cubic-bezier(.2, .8, .2, 1), translate .45s cubic-bezier(.2, .8, .2, 1);
+}
+#va-page :is(.btn, .va-car-btn):hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 22px -16px rgb(16 24 40 / .55); }
+#va-page :is(.btn, .va-car-btn):active:not(:disabled) { transform: translateY(0); box-shadow: none; }
+#va-page .va-car-btn:hover:not(:disabled) { color: #fff; }
 #va-page .icon-tile { transition: background-color .2s ease, color .2s ease, transform .2s ease; }
 #va-page li:hover > .icon-tile, #va-page .cap-tab:hover .icon-tile { transform: translateY(-2px); }
 #va-page details > summary { transition: background-color .15s ease; }
@@ -565,7 +573,6 @@ html:has(.va-page dialog[open]) {
 #va-page .m-instant, #va-page .m-instant .mw > span { transition: none !important; }
 .m-progress { position: fixed; inset: 0 0 auto; z-index: 60; height: 3px; background: linear-gradient(90deg, #d79a37, #f2c675); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
 #va-page .hero-video .video-frame { transform-origin: 50% 0; will-change: transform; transition: border-radius .2s ease; }
-#va-page .btn-primary { transition: background-color .18s ease, box-shadow .18s ease, translate .35s cubic-bezier(.16, 1, .3, 1); }
 #va-page :is(.hover-card, [data-industry], #pricing article, .city, #feedback figure, .tl-card, #features ol > li, [data-tab-panel]):hover {
   background-image: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(215 154 55 / .12), transparent 45%);
 }
@@ -574,3 +581,11 @@ html:has(.va-page dialog[open]) {
 /* Fit gauge and result, larger (20 Oct 2026). */
 #va-page [data-fit-gauge] { width: 168px; }
 #va-page .fit-tick { font-size: 20px; font-weight: 600; }
+
+/* Pointer cursor on everything clickable (Tailwind's reset leaves buttons on the default arrow). */
+:is(#va-page, #book-demo-form) :is(a[href], button:not(:disabled), [role="tab"], [role="radio"], summary, label:has(> input), select, input[type="checkbox"], input[type="radio"]) { cursor: pointer; }
+:is(#va-page, #book-demo-form) button:disabled { cursor: not-allowed; }
+#va-page .video-poster, #va-page [data-video-modal-open] { cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  #va-page :is(.btn, .va-car-btn):hover:not(:disabled) { transform: none; }
+}
