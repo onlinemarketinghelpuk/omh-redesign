@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { BookDemo } from "@/components/BookDemo";
-import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
-import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
-import { VoiceMotion } from "@/components/voice-agents/VoiceMotion";
+import { type Runs, VoiceLanding, sectionsOf } from "@/components/voice-agents/VoiceLanding";
 import { landingV4Markup } from "@/lib/content/ai-voice-agents-landing-v4";
 import { legacyMarkup } from "@/lib/content/ai-voice-agents-legacy";
 import { voiceAgentsMarkup, voiceFaqs } from "@/lib/content/ai-voice-agents-markup";
-import { JsonLd, SITE, faqSchema } from "@/lib/schema";
+import { SITE, faqSchema } from "@/lib/schema";
 
 const path = "/ai-voice-agents";
 // No trailing slash: /ai-voice-agents/ redirects here, and a canonical must name the final URL (SEO brief §2.3).
@@ -60,15 +57,6 @@ const graph = {
   ],
 };
 
-// Splits a markup string at each top-level <section>, keyed by its id (or aria-labelledby). Whatever follows a
-// section's closing tag (the feedback video dialog, the sticky bar) travels with that section. `head` is what
-// comes before the first section (an icon sprite).
-function sectionsOf(html: string, className: string) {
-  const [head, ...parts] = html.split(/(?=<section[\s>])/);
-  const byKey = new Map(parts.map((p) => [p.match(/^<section[^>]*?\s(?:id|aria-labelledby)="([^"]+)"/)![1], p]));
-  return { head, byKey, className };
-}
-
 const fresh = sectionsOf(voiceAgentsMarkup, "va-page"); // rebuilt 20 Oct 2026
 const legacy = sectionsOf(legacyMarkup, "va-page"); // kept from the previous page
 const v4 = sectionsOf(landingV4Markup, "v4l"); // how it works, local cover
@@ -79,7 +67,7 @@ const v4 = sectionsOf(landingV4Markup, "v4l"); // how it works, local cover
   page's other sections back (20 Oct 2026), so they follow in their old order. The previous page is frozen as
   git tag `oldv2` and route /ai-voice-agents-oldv2.
 */
-const runs: [typeof fresh, string[]][] = [
+const runs: Runs = [
   [v4, ["top"]],
   [fresh, ["what-is", "features"]],
   [v4, ["how"]],
@@ -89,41 +77,17 @@ const runs: [typeof fresh, string[]][] = [
   [v4, ["cities"]],
   [legacy, ["faq"]],
 ];
-const placed = runs.flatMap(([, keys]) => keys);
-for (const src of [fresh, legacy, v4])
-  for (const key of src.byKey.keys()) if (!placed.includes(key)) throw new Error(`/ai-voice-agents: section "${key}" has no place in runs`);
-const runHtml = runs.map(([src, keys], i) => {
-  const html = keys.map((k) => {
-    const part = src.byKey.get(k);
-    if (!part) throw new Error(`/ai-voice-agents: no section "${k}"`);
-    return part;
-  });
-  // The icon sprite goes in the first wrapper of its source.
-  return (runs.findIndex(([s]) => s === src) === i ? src.head : "") + html.join("");
-});
-
 export default function AiVoiceAgentsPage() {
   return (
-    <>
-      <JsonLd data={graph} />
-      {/* One root for both page scripts; they find their widgets by data-* hooks inside it. */}
-      <div id="va-page">
-        {runs.map(([src], i) => (
-          <div key={i} className={src.className} dangerouslySetInnerHTML={{ __html: runHtml[i] }} />
-        ))}
-      </div>
-      <LandingV4Script />
-      {/* The booking band every "Book a 30-Minute Demo" button on the page points at. */}
-      <BookDemo
-        id="book-demo-form"
-        heading={
-          <>
-            Book a 30-minute demo, <span className="text-[#f2c675]">by video or phone</span>
-          </>
-        }
-      />
-      <VoiceAgentsScript />
-      <VoiceMotion />
-    </>
+    <VoiceLanding
+      runs={runs}
+      graph={graph}
+      page="/ai-voice-agents"
+      demoHeading={
+        <>
+          Book a 30-minute demo, <span className="text-[#f2c675]">by video or phone</span>
+        </>
+      }
+    />
   );
 }

@@ -356,3 +356,12 @@ stacks its gauge when narrow; the compare badge stays on one line; no lone "isn'
 expire), which Chrome honours, so phones showed pre-deploy HTML whose CSS was gone: an unstyled page.
 `expireTime: 3600` in next.config.ts drops it (header is now `s-maxage=3600`). The VPS also keeps old
 builds' static files in the `omh-static` volume, so restored tabs and back navigation still find their CSS.
+
+**Real estate page on the main layout (21 Oct 2026).** /ai-voice-agents/real-estate-letting-agents now uses the
+/ai-voice-agents layout section for section (shared frame: components/voice-agents/VoiceLanding.tsx), with content
+for estate and letting agents in lib/content/voice-estate/: call-type strip, three agency call scenarios, eight
+use-case tabs by type of call, agency-type grid, real estate recording plus five pending audio cards, branch fit
+checker, the real estate ROI calculator, estate comparison rows, pricing worded for branches, six-city cover with
+a link to the London page, 17 estate FAQs (FAQPage JSON-LD). The previous page is git tag `estate-oldv1` and the
+noindex route /ai-voice-agents/real-estate-letting-agents-oldv1. Checked at 1440, 1157, 860 and 390px, light and
+dark, with no sideways scroll, no console errors and all widgets working.

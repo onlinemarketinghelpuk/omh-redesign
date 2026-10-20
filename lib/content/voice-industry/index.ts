@@ -40,7 +40,17 @@ const dentalCopy: IndustryCopy = {
 };
 
 export const industryPages = {
-  "real-estate-letting-agents": { ...estate, copy: estateCopy, blocks: [], classes: "" },
+  // Frozen backup of the estate page before it moved onto the /ai-voice-agents layout (21 Oct 2026, git tag
+  // estate-oldv1). Hidden from search, no JSON-LD. The live page is app/ai-voice-agents/[industry]/page.tsx →
+  // components/voice-agents/EstatePage.tsx. Do not edit ./estate-letting-agents.ts.
+  "real-estate-letting-agents-oldv1": {
+    ...estate,
+    meta: { ...estate.meta, title: "AI Receptionist for Real Estate (oldv1 backup) | OMH", noindex: true },
+    schema: [],
+    copy: estateCopy,
+    blocks: [],
+    classes: "",
+  },
   "real-estate-letting-agents/london": { ...estateLondon, copy: estateCopy, blocks: ["london"], classes: "vi-london" },
   "real-estate-letting-agents/london-v2": {
     ...estateLondonV2,

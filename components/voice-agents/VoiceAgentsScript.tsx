@@ -415,7 +415,9 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         card.hidden = !match;
         if (match) shown += 1;
       });
-      if (count) count.textContent = "Showing " + shown + (shown === 1 ? " industry" : " industries");
+      // An industry page names its own cards: data-nouns="agency type,agency types" on the filter bar.
+      const [one, many] = (bar.dataset.nouns ?? "industry,industries").split(",");
+      if (count) count.textContent = "Showing " + shown + " " + (shown === 1 ? one : many);
     });
   }
 
