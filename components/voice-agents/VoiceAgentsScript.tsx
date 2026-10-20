@@ -1228,12 +1228,13 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
       on(track, "pointerdown", (e: PointerEvent) => {
         if (e.pointerType === "touch" || e.button !== 0) return;
         dragging = true; moved = false; dragX = e.clientX; dragLeft = track.scrollLeft;
-        track.setPointerCapture(e.pointerId);
       });
       on(track, "pointermove", (e: PointerEvent) => {
         if (!dragging) return;
         const dx = e.clientX - dragX;
         if (!moved && Math.abs(dx) < 6) return;
+        // Capture only once it is really a drag: capturing on press sends the click to the track, not the button.
+        if (!moved) track.setPointerCapture(e.pointerId);
         moved = true;
         track.classList.add("is-dragging");
         track.scrollLeft = dragLeft - dx;
@@ -1256,7 +1257,8 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         const play = () => {
           if (tick || !inView || hold) return;
           tick = every(() => {
-            if (dragging) return;
+            // Hold still while dragging or while a recording in this carousel is playing.
+            if (dragging || $$<HTMLAudioElement>("audio", root).some((a) => !a.paused)) return;
             go(1);
           }, 4500);
         };
@@ -1272,6 +1274,67 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         observe((entries) => { inView = entries[0].isIntersecting; if (inView) play(); else stop(); }, { threshold: 0.4 }).observe(root);
       }
       sync();
+    });
+  }
+
+  /* ---------------------------------------------------------- Audio cards */
+  // A recording in a card: play/pause, a waveform that fills as it plays and can be clicked or arrow-keyed to seek,
+  // and the time. Only one recording plays at a time. The file loads when someone presses play (preload="none").
+  function initAudioCards() {
+    const audios: HTMLAudioElement[] = [];
+    $$("[data-audio-card]").forEach((card) => {
+      const audio = $<HTMLAudioElement>("audio[data-audio]", card);
+      const btn = $("[data-audio-toggle]", card);
+      const wave = $("[data-audio-wave]", card);
+      const time = $("[data-audio-time]", card);
+      if (!audio || !btn || !wave) return;
+      audios.push(audio);
+      const bars = $$("i", wave);
+      const fallback = Number(wave.getAttribute("aria-valuemax")) || 0;
+      const fmt = (s: number) => Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+      const dur = () => (Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : fallback);
+      function paint() {
+        const d = dur();
+        const t = audio.currentTime;
+        const k = d ? Math.floor((t / d) * bars.length) : 0;
+        bars.forEach((b, i) => {
+          b.classList.toggle("is-played", i < k);
+          b.classList.toggle("is-now", i === k && !audio.paused);
+        });
+        if (time) time.textContent = fmt(t) + " / " + fmt(d);
+        wave.setAttribute("aria-valuenow", String(Math.round(t)));
+        wave.setAttribute("aria-valuetext", fmt(t) + " of " + fmt(d));
+      }
+      const setPlaying = (isOn: boolean) => {
+        card.classList.toggle("is-playing", isOn);
+        btn.setAttribute("aria-label", isOn ? "Pause the recording" : "Play the recording");
+      };
+      on(btn, "click", () => {
+        if (audio.paused) {
+          audios.forEach((a) => a !== audio && a.pause());
+          void audio.play();
+        } else audio.pause();
+      });
+      on(audio, "play", () => { setPlaying(true); paint(); });
+      on(audio, "pause", () => { setPlaying(false); paint(); });
+      on(audio, "ended", () => { audio.currentTime = 0; setPlaying(false); paint(); });
+      on(audio, "timeupdate", paint);
+      on(audio, "loadedmetadata", paint);
+      on(wave, "click", (e: MouseEvent) => {
+        const r = wave.getBoundingClientRect();
+        audio.currentTime = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * dur();
+        paint();
+      });
+      on(wave, "keydown", (e: KeyboardEvent) => {
+        const step = ({ ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5 } as Record<string, number>)[e.key];
+        if (e.key === "Home") audio.currentTime = 0;
+        else if (e.key === "End") audio.currentTime = dur();
+        else if (step === undefined) return;
+        else audio.currentTime = Math.min(dur(), Math.max(0, audio.currentTime + step));
+        e.preventDefault();
+        paint();
+      });
+      cleanups.push(() => audio.pause());
     });
   }
 
@@ -1344,6 +1407,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   initLedger();
   initVideoFacade();
   initCarousels();
+  initAudioCards();
   initVideoModal();
   initIndustryFilter();
   initTabs();

@@ -831,3 +831,30 @@ html:has(.va-page dialog[open]) {
 #va-page #industries h2 { max-width: 20ch; text-wrap: balance; }
 /* The fit intro sits in a half-width column, so balancing it does not make it look narrow. */
 #va-page #right-fit h2 + p { text-wrap: balance; }
+
+/* Audio card in Client feedback (20 Oct 2026). */
+#va-page .audio-toggle {
+  position: absolute; left: 50%; top: 42%; translate: -50% -50%; display: grid; place-items: center; width: 64px; height: 64px;
+  border-radius: 999px; background: #d79a37; color: #fff; box-shadow: 0 10px 24px -8px rgb(16 24 40 / .55); transition: transform .2s ease, background-color .2s ease;
+}
+#va-page .audio-toggle:hover { transform: scale(1.06); background: #b97822; }
+#va-page .audio-toggle .icon { width: 1.5rem; height: 1.5rem; }
+#va-page .audio-toggle .i-play { translate: 2px 0; }
+#va-page .audio-toggle .i-pause, #va-page [data-audio-card].is-playing .audio-toggle .i-play { display: none; }
+#va-page [data-audio-card].is-playing .audio-toggle .i-pause { display: block; }
+#va-page [data-audio-card].is-playing .audio-toggle::after {
+  content: ""; position: absolute; inset: -6px; border-radius: inherit; border: 2px solid rgb(215 154 55 / .55); animation: va-audio-ring 1.6s ease-out infinite;
+}
+@keyframes va-audio-ring { from { opacity: 1; transform: scale(.92); } to { opacity: 0; transform: scale(1.25); } }
+#va-page .audio-wave { display: flex; flex: 1; align-items: center; gap: 3px; height: 34px; min-width: 0; cursor: pointer; border-radius: 6px; }
+#va-page .audio-wave i { display: block; flex: 1; height: var(--h); border-radius: 2px; background: rgb(16 24 40 / .22); transition: background-color .2s ease; }
+#va-page .audio-wave:hover i:not(.is-played) { background: rgb(16 24 40 / .32); }
+#va-page .audio-wave i.is-played { background: #d79a37; }
+#va-page [data-audio-card].is-playing .audio-wave i.is-now { background: #b97822; animation: va-audio-now .6s ease-in-out infinite alternate; }
+@keyframes va-audio-now { from { transform: scaleY(.6); } to { transform: scaleY(1.1); } }
+#va-page .audio-time { flex: none; border-radius: 5px; background: rgb(16 24 40 / .85); padding: 2px 6px; font-size: 13px; font-weight: 600; color: #fff; }
+[data-theme="dark"] #va-page .audio-wave i { background: rgb(233 235 240 / .25); }
+[data-theme="dark"] #va-page .audio-wave i.is-played { background: #d79a37; }
+@media (prefers-reduced-motion: reduce) {
+  #va-page [data-audio-card].is-playing .audio-toggle::after, #va-page [data-audio-card].is-playing .audio-wave i.is-now { animation: none; }
+}

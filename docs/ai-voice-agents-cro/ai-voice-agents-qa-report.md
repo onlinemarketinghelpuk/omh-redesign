@@ -326,3 +326,11 @@ Round nine:
   jump by one set when scrolling settles in an outer copy. Verified: next and previous run 1 to 6 and
   wrap both ways, dragging forward goes 1 to 6 and on to 1, copies are aria-hidden and out of the tab
   order, a copy's play button opens its video. Each carousel now reveals as a whole.
+Audio card: the first Client feedback card plays `public/audio/Realest voice agent.m4a` (AAC, 2:21).
+It shows a title, one line of description, a play/pause button, a waveform that fills as it plays
+and can be clicked or arrow-keyed to seek, and the time; the badges, role and chips are gone. The file
+loads only when someone presses play; one recording plays at a time; the carousel's autoplay holds
+while it plays. Verified: real mouse click plays and pauses (app browser: 141.4s loaded, time
+advancing), waveform click seeks to 1:10, ArrowRight adds 5s, copies made by the infinite loop work.
+Also fixed: the carousel drag captured the pointer on press, which could send mouse clicks on buttons
+inside a carousel to the track; it now captures only once a drag starts.

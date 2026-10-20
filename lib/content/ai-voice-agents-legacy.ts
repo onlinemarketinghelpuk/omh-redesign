@@ -305,22 +305,20 @@ export const legacyMarkup = String.raw`
 
     <div class="va-car mt-10" data-carousel data-autoplay>
     <div class="va-car-track" style="--car-w:380px" tabindex="0" aria-label="Client feedback, scroll sideways">
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
-        <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
-          <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="Evening calls at a Manchester dental practice" data-video-meta="Practice manager. Dental clinic, Manchester" data-track="testimonial_video_open" data-track-name="Dental clinic, Manchester" aria-label="Play video testimonial: Evening calls at a Manchester dental practice (opens in a pop-up)">
-            <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
-            <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
-            <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Practice manager</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>1:12</span>
-          </button>
+      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card>
+        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
+          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
+          <button type="button" class="audio-toggle" data-audio-toggle aria-label="Play the recording" data-track="feedback_audio_play" data-track-name="Real estate call"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
+          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
+            <div class="audio-wave" data-audio-wave role="slider" tabindex="0" aria-label="Recording position" aria-valuemin="0" aria-valuemax="141" aria-valuenow="0" aria-valuetext="0:00 of 2:21"><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i></div>
+            <span class="audio-time tnum" data-audio-time>0:00 / 2:21</span>
+          </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Evening calls at a Manchester dental practice</h3>
-          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow once this practice has run its voice agent long enough for us to verify the results.</p></blockquote>
-          <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Dental clinic</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Manchester</span><span class="chip chip-pending">Voice agent result: pending</span></span>
+          <h3 class="!text-[20px] !leading-[1.3]">Hear it answer a real estate enquiry</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">A recorded call with our AI voice agent, set up for a real estate and letting agency.</p>
         </figcaption>
+        <audio preload="none" src="/audio/Realest%20voice%20agent.m4a" data-audio></audio>
       </figure>
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
         <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-4)]">
