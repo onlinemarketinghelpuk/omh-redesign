@@ -73,13 +73,15 @@ const legacy = sectionsOf(legacyMarkup, "va-page"); // kept from the previous pa
 const v4 = sectionsOf(landingV4Markup, "v4l"); // how it works, local cover
 
 /*
-  Running order. The rebuild (docs/ai-voice-agents-cro/) supplies the hero, the problem/solution pair, the
-  definition, the capability cards, the industry tabs and the pricing cards; the client asked for the previous
+  Running order. The rebuild (docs/ai-voice-agents-cro/) supplies the problem/solution pair, the definition,
+  the capability cards, the industry tabs and the pricing cards; the hero is the previous one (client's call); the client asked for the previous
   page's other sections back (20 Oct 2026), so they follow in their old order. The previous page is frozen as
   git tag `oldv2` and route /ai-voice-agents-oldv2.
 */
 const runs: [typeof fresh, string[]][] = [
-  [fresh, ["hero", "why", "what-is", "features"]],
+  [v4, ["top"]],
+  [fresh, ["why", "what-is", "features"]],
+  [legacy, ["branding"]],
   [v4, ["how"]],
   [fresh, ["use-cases"]],
   [legacy, ["industries", "feedback", "why-omh", "compare", "right-fit", "roi-calculator"]],

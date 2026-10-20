@@ -89,3 +89,9 @@ The client asked for the removed sections back. The page now runs:
 Removed: Related services. Demo CTAs in the restored sections point at `#book-demo-form` instead of
 `/contact`. The restored markup is verbatim in `lib/content/ai-voice-agents-legacy.ts` (old body
 sections) and `lib/content/ai-voice-agents-landing-v4.ts` (how it works, local cover).
+
+**Later the same day:** the previous hero (industry strip and video) is back as section 1 on the
+client's instruction, with its two buttons relabelled "Book a 30-Minute Demo" and "Watch the demo"
+(the second scrolls to the video). The greeting-builder band returned to its old slot after the
+capability cards. "What is an AI voice agent?" keeps the rebuilt definition-plus-walkthrough layout,
+now with numbered gold steps on a sand panel.

@@ -214,3 +214,6 @@ Checked working: industry filter chips (Health shows 2 cards), fit checker ("1 o
 one answer), FAQ search ("Showing 2 of 15 questions" for "GDPR"), lead-flow diagram present, ROI
 iframe fitted to 2,012px, pricing badge and facts tiles, demo CTAs → `#book-demo-form`, Related
 services gone. The `after/` captures were retaken.
+Later: the previous hero and the greeting-builder band were restored; 17 sections, 24,645px at
+1440 and 45,517px at 390; marquee, video facade and greeting builder initialise; `tsc`/`eslint`
+clean; captures retaken. The hero video still uses the placeholder YouTube id (see §10).
