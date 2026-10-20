@@ -334,3 +334,9 @@ while it plays. Verified: real mouse click plays and pauses (app browser: 141.4s
 advancing), waveform click seeks to 1:10, ArrowRight adds 5s, copies made by the infinite loop work.
 Also fixed: the carousel drag captured the pointer on press, which could send mouse clicks on buttons
 inside a carousel to the track; it now captures only once a drag starts.
+All six Client feedback cards now use the audio-card design (title, one line, play/pause, waveform,
+time); the video pop-up was removed. Five have no recording yet: they carry `data-audio-pending`, an
+inactive play button labelled "Recording coming soon" and "0:00 / --:--". To switch one on, copy the
+live first card's controls into it (`data-audio-toggle`, `data-audio-wave` with `aria-valuemax` set to
+the length in seconds, `data-audio-time`), add `<audio preload="none" src="/audio/…" data-audio>`, and
+drop `data-audio-pending`. The hero now uses the site's `hero-grid` backdrop like the other pages.

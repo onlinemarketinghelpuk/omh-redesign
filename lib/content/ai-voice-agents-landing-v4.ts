@@ -53,7 +53,7 @@ export const landingV4Markup = String.raw`
   </defs>
 </svg>
 
-<section id="top" class="hero4" aria-labelledby="hero-title">
+<section id="top" class="hero4 hero-grid" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
     <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · 24/7</span>
     <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for UK Businesses <br class="max-md:hidden"><span class="hl">Answer Every Call, Even at 2am</span></h1>
