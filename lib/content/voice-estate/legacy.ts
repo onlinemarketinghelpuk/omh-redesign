@@ -208,7 +208,7 @@ export const estateLegacyMarkup = String.raw`
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Client feedback</p>
         <h2>Hear it take <span class="hl">a real estate call</span></h2>
       </div>
-      <p class="mt-5 text-muted">Press play on a recorded call with our AI voice agent, set up for an real estate agency. Recordings for lettings, valuations, property management, new homes and multi-branch agencies are being prepared and stay marked as coming soon until they're checked.</p>
+      <p class="mt-5 text-muted">Press play on a recorded call with our AI voice agent, set up for a real estate agency. Recordings for lettings, valuations, property management, new homes and multi-branch agencies are being prepared and stay marked as coming soon until they're checked.</p>
     </div>
 
     <dl class="mt-12 grid border-y border-[var(--va-line-strong)] sm:grid-cols-3">

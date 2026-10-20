@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DentalPage, dentalMetadata } from "@/components/voice-agents/DentalPage";
 import { EstatePage, estateMetadata } from "@/components/voice-agents/EstatePage";
 import { IndustryPage, industryMetadata } from "@/components/voice-agents/IndustryPage";
 import { industryPaths } from "@/lib/content/voice-industry";
@@ -9,19 +10,24 @@ type Props = { params: Promise<{ industry: string }> };
 // treats the path as unknown and app/[...slug] caches "Coming soon" in its place.
 // Unknown industries still 404 through notFound() in IndustryPage.
 
-// Real estate uses the /ai-voice-agents layout with its own content (21 Oct 2026); the others use IndustryPage.
-const ESTATE = "real-estate-letting-agents";
+// Industries rebuilt on the /ai-voice-agents layout with their own content (21 Oct 2026); the others use IndustryPage.
+const LANDINGS = {
+  "real-estate-letting-agents": { Page: EstatePage, metadata: estateMetadata },
+  "dental-clinics": { Page: DentalPage, metadata: dentalMetadata },
+} as const;
+const landing = (industry: string) => LANDINGS[industry as keyof typeof LANDINGS];
 
 export function generateStaticParams() {
-  return [...industryPaths.filter((p) => !p.includes("/")), ESTATE].map((industry) => ({ industry }));
+  return [...industryPaths.filter((p) => !p.includes("/")), ...Object.keys(LANDINGS)].map((industry) => ({ industry }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { industry } = await params;
-  return industry === ESTATE ? estateMetadata : industryMetadata(industry);
+  return landing(industry)?.metadata ?? industryMetadata(industry);
 }
 
 export default async function Page({ params }: Props) {
   const { industry } = await params;
-  return industry === ESTATE ? <EstatePage /> : <IndustryPage path={industry} />;
+  const own = landing(industry);
+  return own ? <own.Page /> : <IndustryPage path={industry} />;
 }

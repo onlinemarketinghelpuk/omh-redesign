@@ -365,3 +365,10 @@ checker, the real estate ROI calculator, estate comparison rows, pricing worded 
 a link to the London page, 17 estate FAQs (FAQPage JSON-LD). The previous page is git tag `estate-oldv1` and the
 noindex route /ai-voice-agents/real-estate-letting-agents-oldv1. Checked at 1440, 1157, 860 and 390px, light and
 dark, with no sideways scroll, no console errors and all widgets working.
+
+**Dental page on the main layout (21 Oct 2026).** /ai-voice-agents/dental-clinics now follows the real estate page:
+the /ai-voice-agents sections written for dental practices (lib/content/voice-dental/), with the practice's day of
+calls, when it answers and what we need from a practice in place of the comparison and fit checker (shared template
+lib/content/voice-extras.ts). No dental recording exists yet, so all six feedback cards are pending. The previous
+page is git tag `dental-oldv1` and the noindex route /ai-voice-agents/dental-clinics-oldv1. Checked at 1440, 1024,
+768 and 390px with no sideways scroll, no console errors and every widget working; production build passes.

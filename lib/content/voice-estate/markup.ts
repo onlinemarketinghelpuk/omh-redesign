@@ -39,7 +39,7 @@ export const estateFaqs: { q: string; a: string; cat: keyof typeof estateFaqTopi
     a: "Only people who have given appropriate consent, such as buyers who asked for viewing feedback or a call back. We follow the UK PECR rules, screen lists against the Telephone Preference Service where required and act on opt-outs straight away. We don't run cold calling campaigns." },
   { cat: "working", q: "Will it replace our negotiators?",
     a: "No. It takes the overflow and the routine calls, so your team can focus on viewings, valuations and closing sales. You choose when it answers: only when the lines are busy, only out of hours, or first on every call." },
-  { cat: "working", q: "How much does an AI voice agent cost for an real estate agency?",
+  { cat: "working", q: "How much does an AI voice agent cost for a real estate agency?",
     a: "Our managed AI voice agent starts at £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for several branches, is £849 a month. Extra minutes cost 60p each on every plan." },
   { cat: "working", q: "Is there a minimum contract?",
     a: "Plans are billed monthly with 30 days' notice. We set out the terms in writing before you start, including what's included each month and what counts as extra. Every invoice shows your included minutes and any overage." },

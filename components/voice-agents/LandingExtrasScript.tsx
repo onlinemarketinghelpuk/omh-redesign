@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 
-// The two real estate widgets with no counterpart on /ai-voice-agents (lib/content/voice-estate/extras.ts):
-// the day chart's "today / with an AI agent" switch and the "what we'll ask you for" tick count.
-export function EstateScript() {
+// The widgets of the industry-only sections (lib/content/voice-extras.ts): the day chart's "today / with an
+// AI agent" switch (summaries come from the chart's data-sum-today / data-sum-ai) and the checklist count.
+export function LandingExtrasScript() {
   useEffect(() => {
     const off: (() => void)[] = [];
     const on = (el: EventTarget, type: string, fn: EventListener) => {
@@ -17,8 +17,8 @@ export function EstateScript() {
     const key = document.querySelector<HTMLElement>("[data-day-key]");
     const radios = Array.from(document.querySelectorAll<HTMLElement>("[data-day-mode]"));
     const text = {
-      today: ["221 calls, 89 missed (40%). Hover or tap a bar for the hour.", "Missed"],
-      ai: ["221 calls, 0 missed. Your AI agent picks up the 89 your team couldn't get to.", "Answered by your AI agent"],
+      today: [chart?.dataset.sumToday ?? "", "Missed"],
+      ai: [chart?.dataset.sumAi ?? "", "Answered by your AI agent"],
     };
     const setMode = (i: number, focus = false) => {
       const mode = radios[i].dataset.dayMode as keyof typeof text;

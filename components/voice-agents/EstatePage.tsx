@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { type Runs, VoiceLanding, sectionsOf } from "@/components/voice-agents/VoiceLanding";
-import { EstateScript } from "@/components/voice-agents/EstateScript";
+import { LandingExtrasScript } from "@/components/voice-agents/LandingExtrasScript";
 import { estateExtrasMarkup } from "@/lib/content/voice-estate/extras";
 import { estateLandingMarkup } from "@/lib/content/voice-estate/landing";
 import { estateLegacyMarkup } from "@/lib/content/voice-estate/legacy";
@@ -100,7 +100,7 @@ export function EstatePage() {
         </>
       }
     >
-      <EstateScript />
+      <LandingExtrasScript />
     </VoiceLanding>
   );
 }
