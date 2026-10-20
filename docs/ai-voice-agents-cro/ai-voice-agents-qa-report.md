@@ -293,3 +293,18 @@ Round six:
   overflow and no element past the edge at any width (fixed: the "What is" column at 375 and below,
   the sticky bar's phone button at 320), no real text under 13px, no tap target under 40px (fixed:
   "Ask us about your area"). Pricing facts switch to rows when a card is narrower than 380px.
+Round seven:
+- Dark mode: measured contrast of every text element in dark mode; nothing fails other than the
+  chosen white-on-gold. Visual fixes: cards lifted off their bands (#1c232d, borders #343d4a), the
+  sand bands separated, industry illustrations re-coloured for dark, the Local cover carousel
+  controls given the page's colour variables, and the ROI calculator given a dark palette at runtime
+  (fitRoiFrames.ts adds a style element to the same-origin frame and follows the theme toggle; the
+  generated calculator files are untouched). This also applies on the industry pages that embed it.
+- "Everything included and what isn't": the grey hover box is gone; the words turn gold and an
+  underline draws.
+- Header dropdown (site-wide): the current page is gold text with a small gold bar and no background;
+  only the hovered item gets the background, so two items no longer look selected.
+- Lead-flow diagram: the cursor spotlight is off its boxes; on the final box it replaced the
+  arrowhead (the diagram uses ::before for those) and drew a ghost rectangle.
+- Comparison: the whole rounded box rises in as one piece (the table used to scale inside its
+  clipped frame) and rows get a soft gold highlight on hover instead of a spotlight.

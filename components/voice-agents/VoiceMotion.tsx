@@ -22,7 +22,8 @@ const REVEAL = [
   [".cap-tab, [data-brand-step], [data-fit-form]", "left"],
   ["#right-fit .hover-card, [data-faq-item], #faq .rounded-\\[16px\\]", "right"],
   ["#feedback figure, .city", "slide"],
-  ["#pricing article, #compare .cmp-table, #compare [data-cmp] dl > div, #feedback dl, .kstats > div", "scale"],
+  ["#pricing article, #compare [data-cmp] dl > div, #feedback dl, .kstats > div", "scale"],
+  ["#compare .lg\\:block", "up"],
   [".tl-num", "pop"],
   [".brand-phone, #use-cases [data-tab-panel]:not([hidden]), .flow-panel, #industries aside", "clip"],
 ] as const;
@@ -252,9 +253,9 @@ export function VoiceMotion() {
         undo.push(leave);
       });
       const glowSel = [
-        ".hover-card", "[data-industry]", "#industries aside", "#pricing article", ".city", "#feedback figure", ".tl-card", ".lf-node",
+        ".hover-card", "[data-industry]", "#industries aside", "#pricing article", ".city", "#feedback figure", ".tl-card",
         "#features ol > li", "[data-tab-panel]", ".cap-tab", "[data-brand-step]", "#use-cases .bg-sand", "[data-faq-item]",
-        "#faq .rounded-\\[16px\\]", "#compare [data-cmp] dl > div", "#compare .lg\\:block", "#what-is .bg-band-surface",
+        "#faq .rounded-\\[16px\\]", "#compare [data-cmp] dl > div", "#what-is .bg-band-surface",
       ].map((s) => "#va-page " + s).concat("#book-demo-form [role=tab]").join(", ");
       const glowing = Array.from(document.querySelectorAll<HTMLElement>(glowSel));
       glowing.forEach((el) => {

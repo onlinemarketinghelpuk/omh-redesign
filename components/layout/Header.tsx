@@ -18,8 +18,8 @@ function Chevron({ className = "" }: { className?: string }) {
   );
 }
 
-// The current page's link wears the hover treatment permanently, so an open
-// menu shows where you already are.
+// The current page's link is marked with gold text and a short gold bar; hover alone gets the soft background,
+// so an open menu never shows two items that look selected.
 function MenuLink({ link, onClick }: { link: NavLink; onClick?: () => void }) {
   const current = usePathname() === link.href;
   return (
@@ -27,8 +27,10 @@ function MenuLink({ link, onClick }: { link: NavLink; onClick?: () => void }) {
       href={link.href}
       onClick={onClick}
       aria-current={current ? "page" : undefined}
-      className={`block rounded-button px-2.5 py-2.5 text-[16px] font-medium transition-colors hover:bg-warm hover:text-amber-deep ${
-        current ? "bg-warm text-amber-deep" : "text-ink"
+      className={`relative block rounded-button px-2.5 py-2.5 text-[16px] font-medium transition-colors hover:bg-warm ${
+        current
+          ? "pl-4 font-semibold text-amber-deep before:absolute before:left-1 before:top-1/2 before:h-4 before:w-[3px] before:-translate-y-1/2 before:rounded-full before:bg-amber before:content-['']"
+          : "text-ink hover:text-amber-deep"
       }`}
     >
       {link.label}

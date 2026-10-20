@@ -554,8 +554,6 @@ html:has(.va-page dialog[open]) {
 #va-page .va-car-btn:hover:not(:disabled) { color: #fff; }
 #va-page .icon-tile { transition: background-color .2s ease, color .2s ease, transform .2s ease; }
 #va-page li:hover > .icon-tile, #va-page .cap-tab:hover .icon-tile { transform: translateY(-2px); }
-#va-page details > summary { transition: background-color .15s ease; }
-#va-page details > summary:hover { background: color-mix(in srgb, var(--va-ink, #101828) 3%, transparent); }
 @media (prefers-reduced-motion: reduce) {
   #va-page .hover-card:hover, #va-page [data-industry]:hover, #va-page #pricing article:hover, #va-page .fcard:hover, #va-page .city:hover, #va-page .btn-primary:hover { transform: none; }
 }
@@ -760,3 +758,58 @@ html:has(.va-page dialog[open]) {
 }
 #va-page .plan-facts dt { font-size: 13px; }
 #va-page #cities .link-tap { display: inline-flex; min-height: 44px; align-items: center; }
+
+/* ================= Dark mode and disclosure hover (20 Oct 2026) ================= */
+
+/* "Everything included and what isn't": the words turn gold, an underline draws, the chevron nudges down. */
+#va-page #pricing details > summary { position: relative; color: var(--va-ink); transition: color .2s ease; }
+#va-page #pricing details > summary::after { content: ""; position: absolute; left: 1.4rem; right: 2rem; bottom: 8px; height: 2px; border-radius: 2px; background: #d79a37; transform: scaleX(0); transform-origin: 0 50%; transition: transform .35s cubic-bezier(.16, 1, .3, 1); }
+#va-page #pricing details > summary:hover { color: var(--va-hl); }
+#va-page #pricing details > summary:hover::after { transform: scaleX(1); }
+#va-page #pricing details > summary .faq-chevron { transition: transform .25s ease; }
+#va-page #pricing details:not([open]) > summary:hover .faq-chevron { transform: translateY(2px); }
+
+/* The v4 sections (hero, how it works, local cover) sit outside .va-page, so the page's variables are restated
+   for them; without this the Local cover carousel controls fell back to white circles in dark mode. */
+#va-page .v4l {
+  --va-paper: var(--color-warm); --va-surface: var(--color-surface); --va-ink: var(--color-ink); --va-muted: var(--color-muted);
+  --va-line: var(--color-line); --va-line-strong: rgb(16 24 40 / 0.45); --va-hl: var(--color-amber-deep); --va-sand: #efece2;
+}
+[data-theme="dark"] #va-page .v4l { --va-line-strong: rgb(233 235 240 / 0.45); --va-sand: #171d26; }
+
+/* Dark: lift cards off their bands, strengthen borders, and separate the bands themselves. */
+[data-theme="dark"] .va-page { --va-sand: #171d26; --va-line-strong: rgb(233 235 240 / 0.5); }
+[data-theme="dark"] #va-page :is(section.bg-sand, .bg-sand > section) { background-color: #141a22; }
+[data-theme="dark"] #va-page :is(
+  [data-industry], #pricing article, #feedback figure, .city, .tl-card, .cap-tab, #features [data-tab-panel], #use-cases [data-tab-panel],
+  #features ol > li, [data-faq-item], #compare [data-cmp] dl > div, #compare .lg\:block, #use-cases .bg-sand, #faq .rounded-\[16px\],
+  [data-fit-form], #right-fit .hover-card:not([class*="color-mix"])
+) { background-color: #1c232d; border-color: #343d4a; }
+[data-theme="dark"] #va-page .cap-tab[aria-selected="true"] { background-color: #242c38; border-color: #d79a37; }
+[data-theme="dark"] #va-page #plan-growth { background-color: #1f2631; }
+[data-theme="dark"] #va-page :is(.mini, .mini-chip, .chat, .tl-proof, [data-fit-result], .plan-facts > div) { border-color: #343d4a; }
+[data-theme="dark"] #va-page [data-fit-result] { background-color: #232b36; }
+[data-theme="dark"] #va-page .chat { background-color: #232b36; }
+[data-theme="dark"] #va-page .fcard-vis { background: color-mix(in srgb, #d79a37 9%, #1c232d); }
+
+/* Dark: the industry illustrations were dark grey on near-black. */
+[data-theme="dark"] #va-page [data-industry] > span:first-child { background-color: #262f3b; }
+[data-theme="dark"] #va-page .il-wall { fill: #3b4655; stroke: #566273; }
+[data-theme="dark"] #va-page .il-ink { fill: #121820; }
+[data-theme="dark"] #va-page .il-win { fill: #7d9cc0; }
+[data-theme="dark"] #va-page .il-card { fill: #e9ebf0; }
+[data-theme="dark"] #va-page .il-line { stroke: #6b7686; }
+[data-theme="dark"] #va-page .il-stroke { stroke: #101828; }
+[data-theme="dark"] #va-page .il-shadow { fill: rgb(0 0 0 / .35); }
+[data-theme="dark"] #va-page .il-tooth { fill: #e9ebf0; stroke: #101828; }
+[data-theme="dark"] #va-page .il-scaffold { stroke: #8b96a6; }
+[data-theme="dark"] #va-page .il-ladder { stroke: #6b7686; }
+[data-theme="dark"] #va-page :is(.il-num, .il-small) { fill: #101828; }
+
+/* Dark: the calculator frame sits in a band that matches its own dark background. */
+[data-theme="dark"] #va-page #roi-calculator { background-color: #0f1319; }
+
+/* Comparison table: a soft row highlight on hover, the OMH cell a touch stronger. */
+#va-page .cmp-table tbody tr > * { transition: background-color .2s ease; }
+#va-page .cmp-table tbody tr:hover > * { background-image: none; background-color: color-mix(in srgb, #d79a37 6%, var(--va-surface)); }
+#va-page .cmp-table tbody tr:hover > .cmp-omh { background-color: color-mix(in srgb, #d79a37 18%, var(--va-surface)); }
