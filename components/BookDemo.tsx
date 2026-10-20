@@ -18,8 +18,16 @@ import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
   Ring now: static until the demo line exists. Call back: posts to /api/enquiry.
 */
 
-// ponytail: placeholder until the demo line exists; set both and the tab works.
+// ponytail: placeholder until the demo line exists; set both and the tab works. While href is a bare
+// "tel:" the Ring tab says the line is coming rather than showing a dead link (CRO audit, 20 Oct 2026).
 const demoLine = { display: "[DEMO NUMBER]", href: "tel:" };
+const demoLineLive = demoLine.href.length > "tel:".length;
+
+// GTM reads these from the dataLayer; each fires once per outcome, never per click.
+function track(event: string, data: Record<string, unknown> = {}) {
+  const w = window as Window & { dataLayer?: unknown[] };
+  (w.dataLayer ||= []).push({ event, page: window.location.pathname, ...data });
+}
 
 const paths = [
   { id: "call", icon: Calendar, badge: "Most popular", title: "Book a 30-minute demo", body: "Pick a time. We show you an agent set up for your calls." },
@@ -181,6 +189,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
   const [doneName, setDoneName] = useState<string | null>(null);
+  const [started, setStarted] = useState(false);
   const booking = useChecks();
 
   // Call back
@@ -197,7 +206,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
   async function submitBooking(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    if (!day || !time || !booking.validate(form)) return;
+    if (!day || !time || !booking.validate(form)) return track("demo_form_error", { form: "Demo booking", step: !day || !time ? "slot" : "details" });
     setSending(true);
     setSendError(null);
     const data = new FormData(form);
@@ -226,19 +235,27 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
     ]);
     setSending(false);
     // Either one landing means OMH has the request.
-    if (!lead.ok && !calendar) return setSendError(lead.message);
+    if (!lead.ok && !calendar) {
+      track("demo_form_send_error", { form: "Demo booking" });
+      return setSendError(lead.message);
+    }
+    track("demo_request_submitted", { industry: field("Industry"), city: field("Where you're based"), plan: field("Plan interest"), slot: `${day.iso} ${time}` });
     setDoneName(field("Your name").split(" ")[0]);
   }
 
   async function submitCallback(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    if (!callback.validate(form)) return;
+    if (!callback.validate(form)) return track("demo_form_error", { form: "Call back request" });
     setCbSending(true);
     setCbError(null);
     const result = await sendEnquiry(form, "Call back request");
     setCbSending(false);
-    if (!result.ok) return setCbError(result.message);
+    if (!result.ok) {
+      track("demo_form_send_error", { form: "Call back request" });
+      return setCbError(result.message);
+    }
+    track("callback_request_submitted", { when });
     setCbDone(true);
   }
 
@@ -297,6 +314,10 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                 noValidate
                 onSubmit={submitBooking}
                 onChange={(e) => {
+                  if (!started) {
+                    setStarted(true);
+                    track("demo_form_start", { form: "Demo booking" });
+                  }
                   booking.recheck(e);
                   const f = e.currentTarget.elements;
                   const biz = (f.namedItem("Business name") as HTMLInputElement).value.trim();
@@ -400,6 +421,8 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                   )}
                   {/* What the enquiry email shows as the requested slot. */}
                   <input type="hidden" name="Demo time" value={slot ? `${slot} (UK time)` : ""} />
+                  {/* Filled by the page when a pricing button was the way in (components/voice-agents/VoiceAgentsScript.tsx). */}
+                  <input type="hidden" name="Plan interest" defaultValue="" data-plan-field />
                   <Honeypot />
                   {sendError && (
                     <p role="alert" className="mt-5 text-bsm font-semibold text-error">
@@ -475,14 +498,24 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                   <p className="mt-2 text-body text-muted">
                     It&apos;s set up as a fictional heating company in Leeds and answers day and night. Standard call rates apply.
                   </p>
-                  <a
-                    href={demoLine.href}
-                    data-event="book_demo_ring_click"
-                    className="mt-6 flex min-h-16 items-center justify-center gap-3 rounded-[14px] bg-amber px-5 font-sans text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-inverse tabular-nums"
-                  >
-                    <Phone aria-hidden className="size-6" />
-                    {demoLine.display}
-                  </a>
+                  {demoLineLive ? (
+                    <a
+                      href={demoLine.href}
+                      data-event="book_demo_ring_click"
+                      onClick={() => track("demo_line_click")}
+                      className="mt-6 flex min-h-16 items-center justify-center gap-3 rounded-[14px] bg-amber px-5 font-sans text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-inverse tabular-nums"
+                    >
+                      <Phone aria-hidden className="size-6" />
+                      {demoLine.display}
+                    </a>
+                  ) : (
+                    <p className="mt-6 flex min-h-16 items-center gap-3 rounded-[14px] border-[1.5px] border-dashed border-line px-5 py-4 text-body">
+                      <Phone aria-hidden className="size-6 shrink-0 text-amber-deep" />
+                      <span>
+                        <strong className="font-semibold">The demo line is being set up.</strong> Book a demo or ask for a call back and we&apos;ll play you one on the call.
+                      </span>
+                    </p>
+                  )}
                 </div>
                 <div className="rounded-[16px] bg-warm p-5">
                   <p className="font-sans text-[18px] font-semibold">Three things to try</p>

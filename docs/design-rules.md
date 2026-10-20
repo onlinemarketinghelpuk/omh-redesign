@@ -153,3 +153,7 @@ Accepted exceptions (do not "fix" without asking):
 Flagged for the client, not changed: the `/ai-voice-agents` heading "Proof
 goes here when it's real" (placeholder wording visible to visitors) and the
 Google Ads graphic with "from the original service page" baked in.
+
+**20 Oct 2026, /ai-voice-agents CRO rebuild.** The "Proof goes here when it's real" heading no longer
+ships: the pending-testimonial wall is parked in the `oldv2` backup (`/ai-voice-agents-oldv2`, tag
+`oldv2`) until a verified result exists. Rebuild notes: `docs/ai-voice-agents-cro/`.

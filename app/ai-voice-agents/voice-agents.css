@@ -395,3 +395,58 @@ html:has(.va-page dialog[open]) {
 .v4l .t-small, .v4l .city-body q { font-size: 16px; }
 .v4l :is(h3.smallcaps, .kstats span, .lf-status) { font-size: 16px; }
 .v4l .kstats small { display: block; margin-top: .15rem; font-size: 14px; color: var(--muted); }
+
+/* ---------- /ai-voice-agents rebuild (20 Oct 2026) ----------
+   The hero, call visuals, feature cards and setup timeline reuse the look of the previous landing-v4
+   sections, restated here under .va-page so the page no longer needs the generated .v4l layer. */
+.va-page {
+  .hero-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(45% 55% at 70% 40%, rgb(215 154 55 / .16), transparent 70%), radial-gradient(30% 40% at 15% 70%, var(--va-tint-2), transparent 70%); }
+  .brand-chip { min-height: 44px; padding-inline: 1rem; border-radius: 999px; border: 1px solid var(--va-line-strong); font-family: var(--font-display); font-weight: 600; font-size: 15.5px; color: var(--va-ink); transition: background-color .15s ease, border-color .15s ease; }
+  .brand-chip[aria-checked="true"] { background: var(--va-ink); border-color: var(--va-ink); color: var(--va-paper); }
+  .brand-chip:hover { border-color: var(--va-ink); }
+
+  .mini { display: flex; align-items: center; gap: .6rem; padding: .6rem .8rem; border-radius: 12px; background: var(--va-surface); border: 1px solid var(--va-line); font-size: 15px; line-height: 1.35; }
+  .mini > .icon { flex: none; }
+  .mini-chip { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .65rem; border-radius: 999px; background: var(--va-surface); border: 1px solid var(--va-line); font-size: 13.5px; font-weight: 600; }
+  .mini-chip .icon { width: .95rem; height: .95rem; }
+  .icon-tile { display: inline-grid; place-items: center; flex-shrink: 0; width: 2.25rem; height: 2.25rem; border-radius: 10px; color: var(--va-hl); background: rgb(215 154 55 / .2); }
+  .mini-wave { display: flex; align-items: center; gap: 3px; height: 22px; }
+  .mini-wave > i { display: block; width: 3px; height: 30%; border-radius: 3px; background: var(--va-hl); }
+  .mini-wave > i:nth-child(2n) { height: 70%; }
+  .mini-wave > i:nth-child(3n) { height: 100%; }
+  .chat { display: grid; gap: .6rem; padding: 1rem; border-radius: 14px; background: var(--va-surface); border: 1px solid var(--va-line); box-shadow: 0 10px 24px -18px rgb(16 24 40 / .5); }
+  .chat p { font-size: 15px; line-height: 1.45; }
+  .chat .who { display: block; font-size: 12.5px; font-weight: 600; color: var(--va-muted); }
+  .chat .ai { font-weight: 600; }
+  .booked { display: inline-flex; align-items: center; gap: .45rem; justify-self: start; padding: .5rem .85rem; border-radius: 10px; background: #d79a37; color: #101828; font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+  .booked .icon { width: 1.05rem; height: 1.05rem; }
+  .vcal-head { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .35rem; text-align: center; font-size: 12.5px; font-weight: 600; color: var(--va-muted); }
+  .vcal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .35rem; }
+  .vcal > span { height: 1.6rem; border-radius: 6px; background: var(--va-surface); border: 1px solid var(--va-line); }
+  .vcal > span.busy { background: color-mix(in srgb, var(--va-ink) 10%, var(--va-surface)); border-color: transparent; }
+  .vcal > span.new { background: #d79a37; border-color: #b97822; }
+  .tag { display: inline-flex; align-items: center; gap: .35rem; padding: .15rem .6rem; border-radius: 999px; background: rgb(215 154 55 / .25); color: var(--va-ink); font-family: var(--font-body); font-size: 13px; font-weight: 600; line-height: 1.45; white-space: nowrap; vertical-align: middle; }
+
+  .call-vis { display: grid; align-content: center; gap: .85rem; padding: 2rem max(1.25rem, 50% - 12.5rem); background: var(--tint, var(--va-tint-1)); }
+  .fcard { display: flex; flex-direction: column; padding: 1rem; border-radius: 18px; background: var(--va-surface); border: 1px solid var(--va-line); }
+  .fcard-vis { display: grid; align-content: center; gap: .5rem; min-height: 10.5rem; padding: 1.1rem; border-radius: 12px; background: color-mix(in srgb, #d79a37 11%, var(--va-paper)); }
+  .fcard-body { padding: 1.25rem .5rem .5rem; }
+  .fcard-body h3 { font-size: 20px; line-height: 1.3; }
+  .fcard-body p { margin-top: .5rem; font-size: 16px; line-height: 1.5; color: var(--va-muted); }
+
+  .tl { display: grid; gap: 1.25rem; counter-reset: tl; }
+  .tl-step { position: relative; display: flex; flex-direction: column; }
+  .tl-num { position: relative; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; border: 2px solid #d79a37; background: var(--va-paper); color: var(--va-hl); font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+  .tl-card { display: flex; flex: 1; flex-direction: column; margin-top: 1.25rem; padding: 1.4rem; border-radius: 14px; background: var(--va-surface); border: 1px solid var(--va-line); }
+  .tl-card h4 { font-size: 20px; }
+  .tl-card p { margin-top: .5rem; font-size: 16px; line-height: 1.5; color: var(--va-muted); }
+  .tl-proof { display: flex; align-items: center; gap: .55rem; margin-top: 1.25rem; padding: .7rem .85rem; border-radius: 10px; background: var(--va-sand); font-size: 14.5px; font-weight: 600; color: var(--va-ink); }
+  .tl-proof .dot { flex-shrink: 0; width: .55rem; height: .55rem; border-radius: 999px; background: #d79a37; }
+  .tl-proof.live { background: color-mix(in srgb, var(--va-ok) 10%, transparent); }
+  .tl-proof.live .dot { background: var(--va-ok); }
+  @media (min-width: 768px) { .tl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) {
+    .tl { position: relative; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .tl::before { content: ""; position: absolute; top: 1.375rem; left: 1.375rem; right: calc(25% - 2rem); border-top: 2px dashed #d79a37; }
+  }
+}

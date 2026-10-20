@@ -1046,6 +1046,30 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     });
   }
 
+  /* ------------------------------------------ Disclosures with lazy frames */
+  // An iframe inside a closed <details> would still load; data-src defers it until the first open.
+  function initLazyFrames() {
+    $$<HTMLDetailsElement>("details[data-lazy-frame]").forEach((d) =>
+      on(d, "toggle", () => {
+        if (!d.open) return;
+        $$<HTMLIFrameElement>("iframe[data-src]", d).forEach((f) => {
+          f.src = f.dataset.src!;
+          delete f.dataset.src;
+        });
+      }),
+    );
+  }
+
+  /* ----------------------------------------- Plan interest for the form */
+  // A pricing button carries data-plan; the booking form's hidden "Plan interest" field picks it up.
+  function initPlanInterest() {
+    on(page, "click", (e) => {
+      const a = (e.target as Element).closest<HTMLElement>("[data-plan]");
+      const field = a && document.querySelector<HTMLInputElement>("[data-plan-field]");
+      if (field) field.value = a.dataset.plan!;
+    });
+  }
+
   /* --------------------------------------------------------- Sticky bar */
   function initStickyBar() {
     const bar = $("[data-sticky-bar]");
@@ -1118,6 +1142,8 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   initRelated();
   initDemoForm();
   initAreaMap();
+  initLazyFrames();
+  initPlanInterest();
   initStickyBar();
   initReveal();
 

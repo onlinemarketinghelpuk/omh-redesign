@@ -1,10 +1,11 @@
-// Body of the AI voice agents page, ported from the standalone design file
-// (ai-voice-agents-v4.html) without its stand-in header and footer. Rendered as
-// HTML by app/ai-voice-agents/page.tsx; the interactive parts are wired up by
-// components/voice-agents/VoiceAgentsScript.tsx, which finds them by data-*.
-// Styles: app/ai-voice-agents/voice-agents.css (everything under .va-page).
+// Body of /ai-voice-agents, rebuilt 20 Oct 2026 for conversion (docs/ai-voice-agents-cro/). Rendered as HTML
+// by app/ai-voice-agents/page.tsx; the interactive parts (greeting builder, industry tabs, comparison
+// selector, sticky bar, lazy ROI frame, tracking) are wired by components/voice-agents/VoiceAgentsScript.tsx,
+// which finds them by data-* hooks. Styles: app/ai-voice-agents/voice-agents.css (everything under .va-page).
+// The page as it was before this rebuild is frozen in lib/content/ai-voice-agents-oldv2/ (git tag `oldv2`).
 import { roiCalculator } from "@/lib/content/roi-calculator";
-import { mainPagePricing, pricingSection } from "@/lib/content/voice-pricing";
+import { mainPagePricing } from "@/lib/content/voice-pricing";
+
 // Comparison table from the SEO brief (19 Oct 2026). Guide figures: Connect Communications call answering
 // from £14.99 + VAT; UK receptionist base pay about £19k to £24k a year (Payscale) before employer costs;
 // RingCentral AI Receptionist from £32 a month. Recheck every six months.
@@ -55,37 +56,150 @@ export const voiceFaqs: { q: string; a: string; cat: keyof typeof faqTopics }[] 
     a: "Yes. We're based in Hullbridge, Essex and work with businesses across the UK remotely. London, Birmingham, Manchester, Leeds, Liverpool and Bristol are where we focus our voice agent work at the moment." },
 ];
 
-const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="${cat}"${i ? "" : " open"} data-track-name="${q}">
+// The eight purchase objections shown first (indexes into voiceFaqs); the rest sit behind "Show more".
+const faqFirst = [1, 12, 7, 6, 4, 3, 8, 13];
+const faqMore = voiceFaqs.map((_, i) => i).filter((i) => !faqFirst.includes(i));
+
+const faqItem = (i: number, open = false) => {
+  const { q, a, cat } = voiceFaqs[i];
+  return `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface" data-faq-item${open ? " open" : ""} data-track-name="${q}">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
-          <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
           <span class="min-w-0 flex-1">
             <h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">${q}</h3>
-            <span class="mt-1 block text-[13.5px] font-semibold text-muted">${faqTopics[cat]}</span>
+            <span class="mt-1 block text-[14px] font-semibold text-muted">${faqTopics[cat]}</span>
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
-        <div class="px-5 pb-6 text-[16px] text-muted sm:pl-[4.25rem]">
-          <p data-faq-answer>${a}</p>
-        </div>
+        <div class="px-5 pb-6 text-[16px] text-muted"><p>${a}</p></div>
       </details>`;
+};
 
+const icon = (name: string, cls = "") => `<svg class="icon${cls && " " + cls}" aria-hidden="true" focusable="false"><use href="#i-${name}"/></svg>`;
+const tick = (text: string) => `<li class="flex gap-2.5">${icon("check", "mt-[3px] text-hl")}<span>${text}</span></li>`;
+const cross = (text: string) => `<li class="flex gap-2.5">${icon("x", "mt-[3px]")}<span>${text}</span></li>`;
+const tag = (text: string) => `<span class="tag">${text}</span>`;
+const primaryCta = (track: string, cls = "") =>
+  `<a href="#book-demo-form" class="btn btn-primary${cls && " " + cls}" data-track="${track}">Book a 30-Minute Demo</a>`;
+
+/* ----------------------------------------------------------- Industries */
+// Every H3, intro, bullet, safeguard and link from the two industry sections of the previous page, in one panel.
+const industries = [
+  { id: "estate", icon: "home", label: "Estate & Letting", full: "Estate & Letting Agents", tint: 1, href: "/ai-voice-agents/estate-letting-agents", slug: "estate-letting-agents",
+    time: "Missed call · 23:40", status: "Answered by your AI agent", caller: "Is the house on Willow Creek still available?", agent: "It is. Would Saturday at 10am work for a viewing?", booked: "Viewing booked: Sat 10:00",
+    h3: "Estate and letting agents: book viewings day or night",
+    p: "Buyers, sellers and tenants call when they see a board or a listing, often while your team is out on appointments. The agent answers from your live listings and books the viewing.",
+    bullets: ["Answers questions on price, rooms and availability", "Qualifies buyers, sellers and tenants", "Books viewings and valuations, and logs tenant maintenance calls"] },
+  { id: "dental", icon: "tooth", label: "Dental", full: "Dental Clinics", tint: 3, href: "/ai-voice-agents/dental-clinics", slug: "dental-clinics",
+    time: "Call · 07:05", status: "Before the practice opens", caller: "I've cracked a tooth. Can I be seen today?", agent: "Sorry to hear that. I have an emergency slot at 9:15 this morning.", booked: "Emergency slot booked: 09:15",
+    h3: "Dental clinics: fill the diary when reception is closed",
+    p: "New patients ring around until someone answers. Your AI receptionist books check-ups, moves appointments and sends emergencies to the right person, without putting anyone on hold.",
+    bullets: ["Books new patients, check-ups and hygiene visits", "Routes dental emergencies to your on-call dentist or emergency line", "Handles reschedules and cancellations"], note: "No clinical or medical advice given." },
+  { id: "clinics", icon: "stethoscope", label: "Clinics", full: "Clinics & Healthcare", tint: 2, href: "/ai-voice-agents/clinics-healthcare", slug: "clinics-healthcare",
+    time: "Call · 08:31", status: "6 other calls answered at the same time", caller: "Do you have a physio appointment this week?", agent: "Yes, Tuesday at 2:30pm with Dr Patel. Shall I book it?", booked: "Appointment booked: Tue 14:30",
+    h3: "Clinics and healthcare: book appointments without a queue on the line",
+    p: "Busy mornings mean engaged tones and lost patients. The agent answers many calls at once, books the right practitioner and sends the details to your team.",
+    bullets: ["Books, moves and cancels appointments across practitioners", "Answers questions on services, prices, opening hours and directions", "Passes anything clinical to your team with a summary"], note: "No clinical or medical advice given." },
+  { id: "plumbers", icon: "drop", label: "Plumbers", full: "Plumbers", tint: 4, slug: "plumbers",
+    time: "Call · 22:14", status: "Urgent: water leak", caller: "There's water coming through my kitchen ceiling.", agent: "Turn off the stopcock under the sink. Sam can be with you in 40 minutes.", booked: "Engineer dispatched: ETA 40 min",
+    h3: "Plumbers: catch every emergency call, day or night",
+    p: "A burst pipe at 10pm goes to whoever answers first. The agent takes the address and the problem, then gets the job to your on-call engineer straight away.",
+    bullets: ["Takes the address, issue and access details", "Sends urgent jobs to whoever is on call", "Books routine jobs and quote visits into your diary"] },
+  { id: "hvac", icon: "flame", label: "Heating", full: "Heating & HVAC", tint: 1, slug: "heating-hvac",
+    time: "Call · 18:48", status: "Peak season", caller: "My heating stopped working this evening.", agent: "I can get an engineer to you tomorrow at 8am. Does that work?", booked: "Service call booked: Tomorrow 08:00",
+    h3: "Heating engineers: book service calls through the winter rush",
+    p: "When the first cold snap hits, the phone never stops. The agent books services, repairs and quotes, so your engineers spend the day on jobs instead of on the phone.",
+    bullets: ["Books boiler services, repairs and installs", "Records make, model and fault code", "Puts no-heating calls first, and tells anyone who smells gas to call the gas emergency line on 0800 111 999"] },
+  { id: "builders", icon: "hard-hat", label: "Builders", full: "Contractors & Builders", tint: 3, slug: "contractors-builders",
+    time: "Missed call · 14:20", status: "You were on site", caller: "We're looking for a quote on a kitchen extension.", agent: "Great. I can book a free site visit on Thursday at 4pm.", booked: "Site visit booked: Thu 16:00",
+    h3: "Builders and contractors: turn quote requests into site visits",
+    p: "You can't answer the phone from a roof. The agent asks about the job, budget and timing, then books a site visit with the right estimator.",
+    bullets: ["Takes the brief: type, size, budget and start date", "Filters out jobs you don't take on", "Books site visits and routes existing clients to their site manager"] },
+  { id: "law", icon: "scale", label: "Law firms", full: "Law Firms", tint: 2, slug: "law-firms",
+    time: "Call · 20:52", status: "After office hours", caller: "I need advice about a tenancy dispute.", agent: "I can book you a consultation with our property team on Monday at 11.", booked: "Consultation booked: Mon 11:00",
+    h3: "Law firms: take intake calls and book consultations",
+    p: "People call a few firms and go with the first one that listens. The agent takes the details, checks the area of law and books a consultation while fee earners are in court or meetings.",
+    bullets: ["Takes intake details for each practice area", "Collects names for your conflict check", "Books consultations and routes existing clients to their named solicitor"], note: "No legal advice given." },
+  { id: "cars", icon: "car", label: "Car dealers", full: "Car Dealerships", tint: 4, slug: "car-dealerships",
+    time: "Call · Sunday 16:10", status: "Showroom closed", caller: "Is the blue hybrid SUV still in stock?", agent: "It is. Would you like a test drive on Saturday at 10?", booked: "Test drive booked: Sat 10:00",
+    h3: "Car dealerships: book test drives and service slots",
+    p: "Buyers enquire on several forecourts at once. The agent answers stock questions, books test drives and fills the service bay.",
+    bullets: ["Answers questions on stock, part-exchange and opening hours", "Books test drives with your sales team", "Books MOTs and services into the workshop"] },
+];
+
+const callVis = (x: { time: string; status: string; caller: string; agent: string; booked: string; tint: number }) => `
+          <div class="mini"><span class="icon-tile">${icon("phone-missed")}</span><span class="min-w-0"><b class="block">${x.time}</b><span class="text-[14px] font-semibold text-ok">${x.status}</span></span></div>
+          <div class="chat">
+            <p><span class="who">Caller</span>${x.caller}</p>
+            <p class="ai"><span class="who">Your AI agent</span>${x.agent}</p>
+          </div>
+          <span class="booked">${icon("check")}${x.booked}</span>`;
+
+const industryTab = (x: (typeof industries)[number], i: number) =>
+  `        <button type="button" role="tab" id="tab-${x.id}" aria-controls="uc-${x.id}" aria-selected="${i === 0}" tabindex="${i ? -1 : 0}" class="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[var(--va-line-strong)] px-4 text-[16px] font-semibold aria-selected:border-ink aria-selected:bg-ink aria-selected:text-paper" data-tab data-track="industry_select" data-track-name="${x.full}">${icon(x.icon)}${x.label}</button>`;
+
+const industryPanel = (x: (typeof industries)[number], i: number) => `
+      <div role="tabpanel" id="uc-${x.id}" aria-labelledby="tab-${x.id}"${i ? " hidden" : ""} class="mt-6 grid overflow-hidden rounded-[22px] border border-line bg-surface lg:grid-cols-2" data-tab-panel>
+        <div class="call-vis" style="--tint:var(--va-tint-${x.tint})" aria-hidden="true">${callVis(x)}
+        </div>
+        <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+          <p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${icon(x.icon, "text-hl")}${x.full}<span class="ml-1 tnum">${String(i + 1).padStart(2, "0")} / 08</span></p>
+          <h3 class="mt-3 !text-[clamp(23px,21px+.5vw,28px)]">${x.h3}</h3>
+          <p class="mt-3 text-[16px] text-muted">${x.p}</p>
+          <ul class="mt-5 space-y-2 text-[16px] leading-snug">
+${x.bullets.map(tick).join("\n")}
+          </ul>
+${x.note ? `          <p class="mt-4 inline-flex items-center gap-2 self-start rounded-[10px] border border-line bg-paper px-3 py-2 text-[15px] font-semibold">${icon("shield", "text-hl")}${x.note}</p>\n` : ""}          <p class="mt-6"><a href="${x.href ?? `/contact?service=ai-voice-agents&amp;industry=${x.slug}`}" class="text-link" data-track="industry_click" data-track-name="${x.full}">More about voice agents for ${x.full.toLowerCase().replace("&amp;", "and")}${icon("arrow-right")}</a></p>
+        </div>
+      </div>`;
+
+/* --------------------------------------------------------------- Pricing */
+const plan = (p: (typeof mainPagePricing.plans)[number]) => {
+  const shown = p.features.slice(0, 4);
+  const rest = p.features.slice(4);
+  return `      <article id="plan-${p.id}" class="relative flex flex-col rounded-[16px] border bg-surface p-6 sm:p-7 ${p.popular ? "border-ink shadow-[0_24px_60px_-32px_rgb(16_24_40/0.4)] dark:border-gold" : "border-line"}" data-tier="${p.id}">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="!text-[26px]">${p.name}</h3>
+          ${p.popular ? '<span class="rounded-full bg-gold px-3 py-1 text-[14px] font-semibold text-navy">Where most clients start</span>' : ""}
+        </div>
+        <p class="mt-2 min-h-[3.2em] text-[16px] leading-snug text-muted">${p.strap}</p>
+        <p class="mt-5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          <span class="font-display text-[clamp(2.5rem,2.1rem+1.4vw,3.25rem)] font-semibold leading-none tnum">£${p.price}</span>
+          <span class="text-[16px] text-muted">a month + VAT, billed monthly</span>
+        </p>
+        <dl class="mt-5 grid grid-cols-3 gap-2 rounded-[12px] bg-sand p-3 text-[15px] leading-tight tnum">
+          <div><dt class="text-muted">Included</dt><dd class="mt-0.5 font-semibold">${p.minutes}</dd></div>
+          <div><dt class="text-muted">Setup</dt><dd class="mt-0.5 font-semibold">${p.setup} one-off</dd></div>
+          <div><dt class="text-muted">Live in</dt><dd class="mt-0.5 font-semibold">${p.delivery.replace("Live in ", "")}</dd></div>
+        </dl>
+        <p class="mt-1 text-[14px] text-muted">Then 60p a minute past your allowance.</p>
+        <ul class="mt-5 space-y-2 text-[16px] leading-snug">
+${shown.map(tick).join("\n")}
+        </ul>
+        <details class="group mt-3 text-[16px]" data-track="pricing_details" data-track-name="${p.name}">
+          <summary class="inline-flex min-h-[44px] items-center gap-1.5 font-semibold text-ink hover:text-hl">${icon("plus-star", "!h-3 !w-3 text-hl")}Everything included and what isn't<svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></summary>
+          <ul class="mt-2 space-y-2 leading-snug">
+${rest.map(tick).join("\n")}
+          </ul>
+          <p class="mt-4 font-semibold">Not included</p>
+          <ul class="mt-2 space-y-2 leading-snug text-muted">
+${p.excluded.map(cross).join("\n")}
+          </ul>
+        </details>
+        <div class="mt-auto"></div>
+        <a href="#book-demo-form" class="btn ${p.popular ? "btn-primary" : "btn-secondary"} mt-6 w-full" data-plan="${p.name}" data-track="pricing_book_demo" data-track-name="${p.name}" aria-label="Book a 30-minute demo for the ${p.name} plan">Book a 30-Minute Demo</a>
+      </article>`;
+};
+
+/* ------------------------------------------------------------------ Page */
 export const voiceAgentsMarkup = String.raw`
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
   <symbol id="i-phone-missed" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="m16 2 6 6M22 2l-6 6"/></symbol>
-  <symbol id="i-phone-incoming" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M16 2v6h6M22 2l-6 6"/></symbol>
-  <symbol id="i-phone-forwarded" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14 6h8M18 2l4 4-4 4"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
-  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></symbol>
   <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
-  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
   <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
-  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></symbol>
   <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
@@ -96,918 +210,389 @@ export const voiceAgentsMarkup = String.raw`
   <symbol id="i-tooth" viewBox="0 0 24 24"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></symbol>
   <symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></symbol>
   <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.7S5 10.2 5 14.6A7 7 0 0 0 19 14.6C19 10.2 12 2.7 12 2.7z"/></symbol>
   <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
   <symbol id="i-hard-hat" viewBox="0 0 24 24"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v3"/></symbol>
   <symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
   <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
   <symbol id="i-plus-star" viewBox="0 0 24 24"><path d="M12 2 C12.6 8 16 11.4 22 12 C16 12.6 12.6 16 12 22 C11.4 16 8 12.6 2 12 C8 11.4 11.4 8 12 2 Z" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+  <symbol id="i-transfer" viewBox="0 0 24 24"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2h4"/></symbol>
 </svg>
 
-<section id="what-is" data-component="WhatIs" class="border-y border-line bg-surface">
-  <div class="container-omh grid gap-10 py-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)] lg:items-center lg:gap-16 lg:py-28">
-    <div>
-      <h2>What is an <span class="hl">AI voice agent?</span></h2>
-      <p class="mt-5 text-muted">An AI voice agent is software that answers and makes phone calls for your business in natural, spoken conversation. It understands what the caller wants, answers from information you have approved, books appointments into your calendar and passes anything it can't handle to a person on your team, with a summary of the call.</p>
-      <p class="mt-4 text-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and systems, and keep improving it.</p>
-    </div>
-    <div class="rounded-[16px] border border-line bg-paper p-6 sm:p-8">
-      <h3 class="!text-[24px]">How does an AI voice agent work?</h3>
-      <ol class="mt-6 space-y-5">
-        <li class="flex gap-4"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold font-display text-[16px] font-semibold text-navy" aria-hidden="true">1</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It listens.</strong><span class="text-muted">Speech recognition turns what the caller says into text as they speak.</span></span></li>
-        <li class="flex gap-4"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold font-display text-[16px] font-semibold text-navy" aria-hidden="true">2</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It works out the answer.</strong><span class="text-muted">The AI matches the request to your approved information and booking rules.</span></span></li>
-        <li class="flex gap-4"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold font-display text-[16px] font-semibold text-navy" aria-hidden="true">3</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It replies and acts.</strong><span class="text-muted">It answers in a natural voice, books the slot or transfers the call, then sends you a summary.</span></span></li>
-      </ol>
-      <p class="mt-6 border-t border-line pt-5 text-[16px] text-muted">This happens fast enough for a normal back-and-forth conversation, and callers can interrupt or change their mind at any point.</p>
-    </div>
-  </div>
-</section>
-
-<section id="industries" data-component="Industries" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28">
-    <div>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Industries</p>
-        <h2>Built for businesses that live on <span class="hl">the phone</span></h2>
-      </div>
-      <p class="mt-5 text-muted">We set up AI voice agents for estate and letting agents, dental clinics, healthcare clinics, plumbers, heating engineers, builders, law firms and car dealerships. Each agent is scripted around the calls your sector actually gets.</p>
-    </div>
-
-    <div role="group" aria-label="Filter industries by group" class="mt-10 flex flex-wrap gap-2" data-industry-filters>
-      <button type="button" class="filter-btn min-h-[48px] rounded-full border border-[var(--va-line-strong)] px-5 text-[16.5px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-filter="all" aria-pressed="true" data-track="industry_filter" data-track-name="all">All industries</button>
-      <button type="button" class="filter-btn min-h-[48px] rounded-full border border-[var(--va-line-strong)] px-5 text-[16.5px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-filter="property" aria-pressed="false" data-track="industry_filter" data-track-name="property">Property</button>
-      <button type="button" class="filter-btn min-h-[48px] rounded-full border border-[var(--va-line-strong)] px-5 text-[16.5px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-filter="health" aria-pressed="false" data-track="industry_filter" data-track-name="health">Health</button>
-      <button type="button" class="filter-btn min-h-[48px] rounded-full border border-[var(--va-line-strong)] px-5 text-[16.5px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-filter="trades" aria-pressed="false" data-track="industry_filter" data-track-name="trades">Trades</button>
-      <button type="button" class="filter-btn min-h-[48px] rounded-full border border-[var(--va-line-strong)] px-5 text-[16.5px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-filter="professional" aria-pressed="false" data-track="industry_filter" data-track-name="professional">Professional &amp; Motor</button>
-    </div>
-    <p class="sr-only" aria-live="polite" data-industry-count></p>
-
-    <div class="mt-8 grid gap-5 lg:grid-cols-2" data-industry-list>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="property">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="100" cy="132" rx="78" ry="14.04" class="il-shadow"/>
-    <rect x="38" y="64" width="86" height="64" rx="3" class="il-wall"/>
-    <path d="M30 68 L81 26 L132 68 Z" class="il-roof"/>
-    <rect x="70" y="92" width="22" height="36" rx="2" class="il-ink"/>
-    <rect x="48" y="78" width="16" height="14" rx="2" class="il-win"/><rect x="98" y="78" width="16" height="14" rx="2" class="il-win"/>
-    <rect x="140" y="78" width="4" height="52" class="il-ink"/>
-    <rect x="132" y="70" width="44" height="26" rx="3" class="il-gold"/>
-    <text x="154" y="87" text-anchor="middle" class="il-label">FOR SALE</text>
-    <g class="il-bubble" transform="translate(128 14)">
-    <rect x="0" y="0" width="54" height="38" rx="10" class="il-card"/>
-    <path d="M14 38 L10 48 L24 38 Z" class="il-card"/>
-    <rect x="10" y="9" width="22" height="20" rx="3" class="il-line"/><path d="M10 15 H32" class="il-stroke"/><circle cx="40" cy="19" r="9" class="il-ok"/><path d="M36 19 l3 3 l5 -6" class="il-tick"/>
-  </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Estate &amp; Letting Agents</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book viewings and valuations</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Qualify buyers and tenants</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Log tenant maintenance calls</span></li>
-        </ul>
-        
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents" data-future-href="/ai-voice-agents/estate-letting-agents" class="text-link" data-track="industry_click" data-track-name="Estate &amp; Letting Agents">Learn more<span class="sr-only"> about voice agents for estate &amp; letting agents</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="160" cy="196" rx="130" ry="23.4" class="il-shadow"/>
-    <rect x="44" y="70" width="150" height="120" rx="6" class="il-wall"/>
-    <rect x="44" y="70" width="150" height="22" rx="6" class="il-ink"/>
-    <rect x="104" y="40" width="30" height="30" rx="5" class="il-card"/><path d="M119 46 V64 M110 55 H128" class="il-crossline"/>
-    <rect x="60" y="104" width="22" height="20" rx="3" class="il-win"/><rect x="92" y="104" width="22" height="20" rx="3" class="il-win"/><rect x="156" y="104" width="22" height="20" rx="3" class="il-win"/>
-    <rect x="60" y="136" width="22" height="20" rx="3" class="il-win"/><rect x="156" y="136" width="22" height="20" rx="3" class="il-win"/>
-    <rect x="96" y="140" width="46" height="50" rx="3" class="il-ink"/>
-    <path d="M232 92 c10-10 28-12 36 0 c8 12 2 26-2 40 c-3 12-4 24-10 30 c-4 4-8 0-9-6 l-3-14 c-1-6-9-6-10 0 l-3 14 c-1 6-5 10-9 6 c-6-6-7-18-10-30 c-4-14-10-28-2-40 c8-12 26-10 22 0" class="il-tooth"/>
-    <g class="il-bubble" transform="translate(206 20)">
-      <rect x="0" y="0" width="96" height="58" rx="12" class="il-card"/>
-      <path d="M22 58 L16 70 L34 58 Z" class="il-card"/>
-      <rect x="12" y="12" width="34" height="34" rx="5" class="il-line"/><path d="M12 22 H46" class="il-stroke"/>
-      <text x="29" y="40" text-anchor="middle" class="il-num">9:10</text>
-      <circle cx="70" cy="29" r="9" class="il-ok"/><path d="M66 29 l3 3 l5 -6" class="il-tick"/>
-    </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Dental Clinics</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">An AI receptionist for dentists that keeps the front desk free for the patients in the room.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book check-ups and hygiene visits</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Move and cancel appointments</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route urgent calls to your emergency line</span></li>
-        </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics" data-future-href="/ai-voice-agents/dental-clinics" class="text-link" data-track="industry_click" data-track-name="Dental Clinics">Learn more<span class="sr-only"> about voice agents for dental clinics</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="160" cy="196" rx="130" ry="23.4" class="il-shadow"/>
-    <rect x="44" y="70" width="150" height="120" rx="6" class="il-wall"/>
-    <rect x="44" y="70" width="150" height="22" rx="6" class="il-ink"/>
-    <rect x="104" y="40" width="30" height="30" rx="5" class="il-card"/><path d="M119 46 V64 M110 55 H128" class="il-crossline"/>
-    <rect x="60" y="104" width="22" height="20" rx="3" class="il-win"/><rect x="92" y="104" width="22" height="20" rx="3" class="il-win"/><rect x="156" y="104" width="22" height="20" rx="3" class="il-win"/>
-    <rect x="60" y="136" width="22" height="20" rx="3" class="il-win"/><rect x="156" y="136" width="22" height="20" rx="3" class="il-win"/>
-    <rect x="96" y="140" width="46" height="50" rx="3" class="il-ink"/>
-    <path d="M232 92 c10-10 28-12 36 0 c8 12 2 26-2 40 c-3 12-4 24-10 30 c-4 4-8 0-9-6 l-3-14 c-1-6-9-6-10 0 l-3 14 c-1 6-5 10-9 6 c-6-6-7-18-10-30 c-4-14-10-28-2-40 c8-12 26-10 22 0" class="il-tooth"/>
-    <g class="il-bubble" transform="translate(206 20)">
-      <rect x="0" y="0" width="96" height="58" rx="12" class="il-card"/>
-      <path d="M22 58 L16 70 L34 58 Z" class="il-card"/>
-      <rect x="12" y="12" width="34" height="34" rx="5" class="il-line"/><path d="M12 22 H46" class="il-stroke"/>
-      <text x="29" y="40" text-anchor="middle" class="il-num">9:10</text>
-      <circle cx="70" cy="29" r="9" class="il-ok"/><path d="M66 29 l3 3 l5 -6" class="il-tick"/>
-    </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Clinics &amp; Healthcare</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes booking and admin calls so reception can focus on the patients in front of them.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book across practitioners</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Opening hours and directions</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Confirmation calls to cut no-shows</span></li>
-        </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=clinics-healthcare" data-future-href="/ai-voice-agents/clinics-healthcare" class="text-link" data-track="industry_click" data-track-name="Clinics &amp; Healthcare">Learn more<span class="sr-only"> about voice agents for clinics &amp; healthcare</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="160" cy="196" rx="140" ry="25.2" class="il-shadow"/>
-    <rect x="164" y="88" width="120" height="96" rx="4" class="il-wall"/>
-    <path d="M154 92 L224 46 L294 92 Z" class="il-roof"/>
-    <rect x="182" y="110" width="22" height="20" rx="3" class="il-win"/><rect x="244" y="110" width="22" height="20" rx="3" class="il-win"/>
-    <rect x="212" y="140" width="24" height="44" rx="2" class="il-ink"/>
-    <path d="M40 176 V128 Q40 120 48 120 H118 L138 140 Q142 144 142 150 V176 Z" class="il-gold"/>
-    <path d="M118 124 L134 140 H112 V124 Z" class="il-win"/>
-    <path d="M44 114 H120 M52 108 V114 M112 108 V114" class="il-ladder"/>
-    <circle cx="66" cy="178" r="13" class="il-ink"/><circle cx="66" cy="178" r="5" class="il-card"/>
-    <circle cx="120" cy="178" r="13" class="il-ink"/><circle cx="120" cy="178" r="5" class="il-card"/>
-    <text x="80" y="156" text-anchor="middle" class="il-van">ON CALL</text>
-    <g class="il-bubble" transform="translate(28 18)">
-      <rect x="0" y="0" width="118" height="52" rx="12" class="il-card"/>
-      <path d="M30 52 L24 64 L42 52 Z" class="il-card"/>
-      <path d="M22 16 c4 6 10 10 10 18 a10 10 0 0 1-20 0 c0-5 4-8 6-12 c1 4 2 6 4 6 c0-4-2-8 0-12" class="il-flame"/>
-      <text x="44" y="24" class="il-small">Burst pipe</text>
-      <text x="44" y="40" class="il-smallok">Engineer called</text>
-    </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Plumbers</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">An answering service for plumbers that picks up while your hands are full.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture call-outs while you are on a job</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put emergencies through to the plumber on call</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book quote visits</span></li>
-        </ul>
-        
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=plumbers" data-future-href="/ai-voice-agents/plumbers" class="text-link" data-track="industry_click" data-track-name="Plumbers">Learn more<span class="sr-only"> about voice agents for plumbers</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="160" cy="196" rx="140" ry="25.2" class="il-shadow"/>
-    <rect x="164" y="88" width="120" height="96" rx="4" class="il-wall"/>
-    <path d="M154 92 L224 46 L294 92 Z" class="il-roof"/>
-    <rect x="182" y="110" width="22" height="20" rx="3" class="il-win"/><rect x="244" y="110" width="22" height="20" rx="3" class="il-win"/>
-    <rect x="212" y="140" width="24" height="44" rx="2" class="il-ink"/>
-    <path d="M40 176 V128 Q40 120 48 120 H118 L138 140 Q142 144 142 150 V176 Z" class="il-gold"/>
-    <path d="M118 124 L134 140 H112 V124 Z" class="il-win"/>
-    <path d="M44 114 H120 M52 108 V114 M112 108 V114" class="il-ladder"/>
-    <circle cx="66" cy="178" r="13" class="il-ink"/><circle cx="66" cy="178" r="5" class="il-card"/>
-    <circle cx="120" cy="178" r="13" class="il-ink"/><circle cx="120" cy="178" r="5" class="il-card"/>
-    <text x="80" y="156" text-anchor="middle" class="il-van">ON CALL</text>
-    <g class="il-bubble" transform="translate(28 18)">
-      <rect x="0" y="0" width="118" height="52" rx="12" class="il-card"/>
-      <path d="M30 52 L24 64 L42 52 Z" class="il-card"/>
-      <path d="M22 16 c4 6 10 10 10 18 a10 10 0 0 1-20 0 c0-5 4-8 6-12 c1 4 2 6 4 6 c0-4-2-8 0-12" class="il-flame"/>
-      <text x="44" y="24" class="il-small">Burst pipe</text>
-      <text x="44" y="40" class="il-smallok">Engineer called</text>
-    </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Heating &amp; HVAC</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers breakdown and service calls through the winter rush, day and night.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book annual services and repairs</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Record make, model and fault code</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put no-heating calls first</span></li>
-        </ul>
-        
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=heating-hvac" data-future-href="/ai-voice-agents/heating-hvac" class="text-link" data-track="industry_click" data-track-name="Heating &amp; HVAC">Learn more<span class="sr-only"> about voice agents for heating &amp; hvac</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="100" cy="132" rx="80" ry="14.399999999999999" class="il-shadow"/>
-    <path d="M150 128 V22 M150 26 H58 M150 26 L134 42 M62 26 V48" class="il-ladder"/>
-    <rect x="54" y="48" width="16" height="12" rx="2" class="il-gold"/>
-    <rect x="36" y="78" width="96" height="50" class="il-wall"/>
-    <rect x="40" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="63" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="86" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="109" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="51" y="97" width="20" height="11" rx="1.5" class="il-brick"/><rect x="74" y="97" width="20" height="11" rx="1.5" class="il-brick"/><rect x="97" y="97" width="20" height="11" rx="1.5" class="il-brick"/><rect x="120" y="97" width="10" height="11" rx="1.5" class="il-brick"/><rect x="40" y="112" width="20" height="11" rx="1.5" class="il-brick"/><rect x="63" y="112" width="20" height="11" rx="1.5" class="il-brick"/><rect x="86" y="112" width="20" height="11" rx="1.5" class="il-brick"/><rect x="109" y="112" width="20" height="11" rx="1.5" class="il-brick"/>
-    <path d="M30 128 V70 M138 128 V70 M30 70 H138 M30 100 H138" class="il-scaffold"/>
-    <path d="M8 128 h22 v-14 a11 11 0 0 1 22 0 v14" class="il-gold"/>
-    <g class="il-bubble" transform="translate(140 52)">
-    <rect x="0" y="0" width="54" height="38" rx="10" class="il-card"/>
-    <path d="M14 38 L10 48 L24 38 Z" class="il-card"/>
-    <rect x="10" y="9" width="22" height="20" rx="3" class="il-line"/><path d="M10 15 H32" class="il-stroke"/><circle cx="40" cy="19" r="9" class="il-ok"/><path d="M36 19 l3 3 l5 -6" class="il-tick"/>
-  </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Contractors &amp; Builders</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes project enquiries properly while the team is on site.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Take the brief: type, size, budget, timing</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book site visits and quotes</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their site manager</span></li>
-        </ul>
-        
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=contractors-builders" data-future-href="/ai-voice-agents/contractors-builders" class="text-link" data-track="industry_click" data-track-name="Contractors &amp; Builders">Learn more<span class="sr-only"> about voice agents for contractors &amp; builders</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="92" cy="132" rx="74" ry="13.32" class="il-shadow"/>
-    <path d="M28 52 L92 22 L156 52 Z" class="il-roof"/>
-    <rect x="34" y="52" width="116" height="8" class="il-ink"/>
-    <rect x="44" y="62" width="14" height="56" rx="2" class="il-wall"/><rect x="70" y="62" width="14" height="56" rx="2" class="il-wall"/><rect x="96" y="62" width="14" height="56" rx="2" class="il-wall"/><rect x="122" y="62" width="14" height="56" rx="2" class="il-wall"/>
-    <rect x="28" y="118" width="128" height="10" rx="2" class="il-ink"/>
-    <g class="il-bubble" transform="translate(132 12)">
-    <rect x="0" y="0" width="54" height="38" rx="10" class="il-card"/>
-    <path d="M14 38 L10 48 L24 38 Z" class="il-card"/>
-    <path d="M27 8 V30 M17 30 H37 M13 14 H41" class="il-stroke"/><path d="M13 14 L8 24 H18 Z M41 14 L36 24 H46 Z" class="il-goldline"/>
-  </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Law Firms</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes new enquiries and routes existing clients while fee earners are in court or meetings.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture new enquiries and area of law</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book initial consultations</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their named solicitor</span></li>
-        </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=law-firms" data-future-href="/ai-voice-agents/law-firms" class="text-link" data-track="industry_click" data-track-name="Law Firms">Learn more<span class="sr-only"> about voice agents for law firms</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
-        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
-    <ellipse cx="96" cy="128" rx="80" ry="14.399999999999999" class="il-shadow"/>
-    <path d="M22 108 V92 Q22 84 30 82 L52 78 L72 60 Q78 55 88 55 H128 Q138 55 144 62 L160 80 L172 84 Q178 86 178 94 V108 Z" class="il-gold"/>
-    <path d="M78 64 H104 V80 H62 Z M110 64 H130 Q134 64 137 68 L146 80 H110 Z" class="il-win"/>
-    <circle cx="58" cy="110" r="15" class="il-ink"/><circle cx="58" cy="110" r="6" class="il-card"/>
-    <circle cx="144" cy="110" r="15" class="il-ink"/><circle cx="144" cy="110" r="6" class="il-card"/>
-    <g class="il-bubble" transform="translate(12 8)">
-    <rect x="0" y="0" width="54" height="38" rx="10" class="il-card"/>
-    <path d="M14 38 L10 48 L24 38 Z" class="il-card"/>
-    <circle cx="20" cy="19" r="7" class="il-goldline"/><path d="M27 19 H44 M38 19 V25 M43 19 V24" class="il-stroke"/>
-  </g>
-  </svg></span>
-        <div class="min-w-0">
-        <h3 class="!text-[21px]">Car Dealerships</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers sales and service calls so nobody rings off while the desk is busy.</p>
-        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book test drives and services</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Stock and opening-hours questions</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Collect part-exchange details</span></li>
-        </ul>
-        
-                <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents&amp;industry=car-dealerships" data-future-href="/ai-voice-agents/car-dealerships" class="text-link" data-track="industry_click" data-track-name="Car Dealerships">Learn more<span class="sr-only"> about voice agents for car dealerships</span><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        </div>
-      </article>
-            <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 lg:col-span-2" aria-labelledby="industries-cta-title">
-        <span class="grid size-[88px] place-items-center rounded-[12px] bg-white/5 sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold text-navy"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span></span>
-        <div class="min-w-0">
-        <h3 id="industries-cta-title" class="!text-[21px]">Not sure how your calls would fit?</h3>
-        <p class="mt-2 text-[16px] leading-[1.5] text-band-muted">Tell us who rings you and why. We'll map your calls and show you what an agent would handle and what it would pass to your team.</p>
-        <div class="pt-4">
-          <a href="/contact?service=ai-voice-agents" class="btn btn-primary" data-track="industries_cta_book_demo">Book a Voice Agent Demo</a>
-        </div>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<section id="feedback" data-component="ClientFeedback">
-  <div class="container-omh py-20 lg:py-28">
-    <div>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Client feedback</p>
-        <h2>Proof goes here <span class="hl">when it's real</span></h2>
-      </div>
-      <p class="mt-5 text-muted">Voice agents are a new service for us, so we haven't filled this wall with invented praise. Each video below is reserved for a client and stays marked as pending until we have checked their results.</p>
-    </div>
-
-    <dl class="mt-12 grid border-y border-[var(--va-line-strong)] sm:grid-cols-3">
-      <div class="py-5 sm:pr-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">1,284</dd><dt class="mt-1.5 text-[16px] text-muted">calls answered</dt></div>
-      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:px-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">317</dd><dt class="mt-1.5 text-[16px] text-muted">bookings made</dt></div>
-      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:pl-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">38%</dd><dt class="mt-1.5 text-[16px] text-muted">answered out of hours</dt></div>
-    </dl>
-
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
-      <figure data-reveal class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
-        <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
-          <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="Evening calls at a Manchester dental practice" data-video-meta="Practice manager. Dental clinic, Manchester" data-track="testimonial_video_open" data-track-name="Dental clinic, Manchester" aria-label="Play video testimonial: Evening calls at a Manchester dental practice (opens in a pop-up)">
-            <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
-            <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
-            <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Practice manager</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>1:12</span>
-          </button>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Evening calls at a Manchester dental practice</h3>
-          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow once this practice has run its voice agent long enough for us to verify the results.</p></blockquote>
-          <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Dental clinic</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Manchester</span><span class="chip chip-pending">Voice agent result: pending</span></span>
-        </figcaption>
-      </figure>
-      <figure data-reveal class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
-        <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-4)]">
-          <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="A first winter of breakdown calls in Leeds" data-video-meta="Director. Heating engineers, Leeds" data-track="testimonial_video_open" data-track-name="Heating engineers, Leeds" aria-label="Play video testimonial: A first winter of breakdown calls in Leeds (opens in a pop-up)">
-            <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg></span>
-            <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:45%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:75%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:55%"></i><i style="height:30%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:65%"></i></span>
-            <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Director</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:58</span>
-          </button>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">A first winter of breakdown calls in Leeds</h3>
-          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering out-of-hours breakdown calls and how many became booked repairs.</p></blockquote>
-          <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Heating engineers</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Leeds</span><span class="chip chip-pending">Voice agent result: pending</span></span>
-        </figcaption>
-      </figure>
-      <figure data-reveal class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
-        <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-2)]">
-          <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="Saturday viewing requests at a London branch" data-video-meta="Branch manager. Estate agents, London" data-track="testimonial_video_open" data-track-name="Estate agents, London" aria-label="Play video testimonial: Saturday viewing requests at a London branch (opens in a pop-up)">
-            <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
-            <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:80%"></i><i style="height:30%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i></span>
-            <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Branch manager</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>1:04</span>
-          </button>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Saturday viewing requests at a London branch</h3>
-          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering viewing requests taken while every negotiator was out.</p></blockquote>
-          <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Estate agents</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London</span><span class="chip chip-pending">Voice agent result: pending</span></span>
-        </figcaption>
-      </figure>
-      <figure data-reveal class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
-        <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-2)]">
-          <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="New enquiries while fee earners are in court" data-video-meta="Partner. Law firm, Birmingham" data-track="testimonial_video_open" data-track-name="Law firm, Birmingham" aria-label="Play video testimonial: New enquiries while fee earners are in court (opens in a pop-up)">
-            <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span>
-            <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:35%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:85%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i></span>
-            <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Partner</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:47</span>
-          </button>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">New enquiries while fee earners are in court</h3>
-          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering new enquiries taken while the team was in court or meetings.</p></blockquote>
-          <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Law firm</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Birmingham</span><span class="chip chip-pending">Voice agent result: pending</span></span>
-        </figcaption>
-      </figure>
-      <figure data-reveal class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
-        <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-3)]">
-          <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="The morning service rush in Liverpool" data-video-meta="Service manager. Car dealership, Liverpool" data-track="testimonial_video_open" data-track-name="Car dealership, Liverpool" aria-label="Play video testimonial: The morning service rush in Liverpool (opens in a pop-up)">
-            <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span>
-            <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i></span>
-            <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Service manager</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:52</span>
-          </button>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">The morning service rush in Liverpool</h3>
-          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering service bookings taken when the desk used to let the phone ring out.</p></blockquote>
-          <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Car dealership</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Liverpool</span><span class="chip chip-pending">Voice agent result: pending</span></span>
-        </figcaption>
-      </figure>
-      <figure data-reveal class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
-        <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
-          <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="Quote requests captured from site in Bristol" data-video-meta="Owner. Building contractor, Bristol" data-track="testimonial_video_open" data-track-name="Building contractor, Bristol" aria-label="Play video testimonial: Quote requests captured from site in Bristol (opens in a pop-up)">
-            <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-hard-hat"/></svg></span>
-            <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
-            <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Owner</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:39</span>
-          </button>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Quote requests captured from site in Bristol</h3>
-          <blockquote class="mt-2 text-[16px] leading-[1.5] text-muted"><p>Quote to follow, covering project enquiries captured while the team was on site.</p></blockquote>
-          <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Building contractor</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Bristol</span><span class="chip chip-pending">Voice agent result: pending</span></span>
-        </figcaption>
-      </figure>
-    </div>
-    <p class="mt-6 text-[16px] text-muted">Each video opens in a pop-up and loads from YouTube's privacy-enhanced player only when you press play.</p>
-  </div>
-</section>
-
-<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#0b0f19]/80">
-  <div class="on-band overflow-hidden rounded-[16px] bg-band shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]">
-    <div class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
-      <div class="min-w-0">
-        <p class="text-[14px] font-semibold text-band-hl">Video testimonial</p>
-        <h2 id="video-modal-title" class="mt-0.5 !text-[clamp(19px,17px+.6vw,24px)] !leading-tight" data-video-modal-title></h2>
-        <p class="mt-1 text-[16px] text-band-muted" data-video-modal-meta></p>
-      </div>
-      <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
-    </div>
-    <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
-  </div>
-</dialog>
-
-<section id="why-omh" data-component="WhyChooseOMH" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28">
-    <div>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Why choose OMH</p>
-        <h2>The software is the easy part. <span class="hl">Running it well</span> is the job.</h2>
-      </div>
-      <p class="mt-5 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
-    </div>
-
-    <div class="mt-14 grid gap-6 md:grid-cols-2">
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>Call map, Aire Valley Heating</span><span class="font-normal text-muted">Leeds</span></p>
-          <ul class="mt-4 space-y-2.5 text-[14.5px]">
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Boiler breakdown</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-gold" style="width:91.2%"></span></span><span class="text-right text-muted tnum">38%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Annual service</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:57.599999999999994%"></span></span><span class="text-right text-muted tnum">24%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Quote request</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:43.199999999999996%"></span></span><span class="text-right text-muted tnum">18%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Existing job</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:28.799999999999997%"></span></span><span class="text-right text-muted tnum">12%</span></li>
-            <li class="grid grid-cols-[7.5rem_minmax(0,1fr)_2.4rem] items-center gap-3"><span class="truncate">Other</span><span class="block h-2.5 rounded-full bg-ink/10"><span class="block h-full rounded-full bg-ink/35" style="width:19.2%"></span></span><span class="text-right text-muted tnum">8%</span></li>
-          </ul>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="num text-[15px]">01</p>
-          <h3 class="mt-2 !text-[25px]">Built around your industry's calls</h3>
-          <p class="mt-3 text-[16px] text-muted">We start from the real reasons people ring you: the boiler fault, the viewing request, the cancelled appointment. The script, questions and handover rules follow from those.</p>
-        </div>
-      </article>
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>Test calls before go-live</span><span class="font-normal text-muted">Bristol</span></p>
-          <ul class="mt-4 space-y-2 text-[14.5px]">
-            <li class="flex items-center justify-between gap-3 rounded-[8px] bg-surface px-3 py-2"><span>Burst pipe at 11pm</span><span class="font-semibold text-ok">Passed</span></li>
-            <li class="flex items-center justify-between gap-3 rounded-[8px] bg-surface px-3 py-2"><span>Quote for a new boiler</span><span class="font-semibold text-ok">Passed</span></li>
-            <li class="flex items-center justify-between gap-3 rounded-[8px] bg-surface px-3 py-2"><span>Asks for the owner</span><span class="font-semibold text-ok">Transferred</span></li>
-          </ul>
-          <p class="mt-3 rounded-[8px] bg-gold px-3 py-2 text-center text-[13.5px] font-semibold text-navy">Signed off by you</p>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="num text-[15px]">02</p>
-          <h3 class="mt-2 !text-[25px]">Tested before your customers hear it</h3>
-          <p class="mt-3 text-[16px] text-muted">You make test calls and sign off the agent before it goes live. After that you deal with our UK team, not a ticket queue, and Scale clients get a named account manager.</p>
-        </div>
-      </article>
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>What we changed in October</span><span class="font-normal text-muted">Manchester</span></p>
-          <ul class="mt-4 space-y-2.5 text-[14.5px] leading-snug">
-            <li class="flex gap-2.5"><span class="mt-[5px] block h-2 w-2 shrink-0 rounded-full bg-gold"></span><span>Added an answer on Saturday opening hours, asked 31 times</span></li>
-            <li class="flex gap-2.5"><span class="mt-[5px] block h-2 w-2 shrink-0 rounded-full bg-gold"></span><span>Shortened the greeting by four seconds</span></li>
-            <li class="flex gap-2.5"><span class="mt-[5px] block h-2 w-2 shrink-0 rounded-full bg-gold"></span><span>New rule: broken braces go straight to reception</span></li>
-          </ul>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="flex items-center gap-3"><span class="num text-[15px]">03</span><span class="rounded-full bg-gold/20 px-2.5 py-0.5 text-[13.5px] font-semibold">Growth and Scale</span></p>
-          <h3 class="mt-2 !text-[25px]">Improved every month</h3>
-          <p class="mt-3 text-[16px] text-muted">Every month we read a sample of transcripts, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p>
-        </div>
-      </article>
-      <article class="flex flex-col rounded-[14px] border border-line bg-paper p-3">
-        <div class="rounded-[10px] bg-sand p-5 md:min-h-[236px]" aria-hidden="true">
-          <p class="flex items-center justify-between gap-3 text-[14.5px] font-semibold"><span>Monthly report, October</span><span class="font-normal text-muted">Bristol</span></p>
-          <ol class="mt-4 grid grid-cols-3 gap-2 text-center">
-            <li class="rounded-[10px] bg-surface px-2 py-3"><span class="block font-display text-[24px] font-semibold leading-none tnum">212</span><span class="mt-1.5 block text-[13px] leading-tight text-muted">Ad clicks to call</span></li>
-            <li class="rounded-[10px] bg-surface px-2 py-3"><span class="block font-display text-[24px] font-semibold leading-none tnum">209</span><span class="mt-1.5 block text-[13px] leading-tight text-muted">Calls answered</span></li>
-            <li class="rounded-[10px] bg-gold px-2 py-3 text-navy"><span class="block font-display text-[24px] font-semibold leading-none tnum">74</span><span class="mt-1.5 block text-[13px] font-semibold leading-tight">Jobs booked</span></li>
-          </ol>
-          <p class="mt-3 text-[13.5px] text-muted">Google Ads, website and voice agent in one view</p>
-        </div>
-        <div class="px-3 pb-4 pt-6">
-          <p class="flex items-center gap-3"><span class="num text-[15px]">04</span><span class="rounded-full bg-gold/20 px-2.5 py-0.5 text-[13.5px] font-semibold">Scale</span></p>
-          <h3 class="mt-2 !text-[25px]">Call results beside your marketing figures</h3>
-          <p class="mt-3 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p>
-        </div>
-      </article>
-    </div>
-    <p class="mt-4 text-[14.5px] text-muted">Panels show illustrative examples with fictional businesses.</p>
-  </div>
-</section>
-
-<section id="branding" data-component="Branding" class="on-band relative overflow-hidden bg-band text-band-ink">
-  <div class="pointer-events-none absolute right-[-10%] top-1/2 h-[620px] w-[620px] -translate-y-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
-  <div class="container-omh relative grid items-center gap-14 py-20 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,.65fr)] lg:gap-16 lg:py-28" data-brand
+<section id="hero" data-component="Hero" class="relative overflow-hidden">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container-omh relative grid items-center gap-10 pb-14 pt-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)] lg:gap-14 lg:pb-20 lg:pt-14" data-brand
     data-brand-biz='[{"id":"law","label":"Law firm","name":"Hartwell Reeve Solicitors","city":"Birmingham","num":"0121 496 0147","agent":"Grace","kind":"firm&#39;s","initials":"HR","voice":"British English, calm and measured","never":"Gives legal advice","transfer":"Existing clients go to their named solicitor"},{"id":"dental","label":"Dental clinic","name":"Albion Square Dental","city":"Manchester","num":"0161 496 0123","agent":"Amy","kind":"practice&#39;s","initials":"AS","voice":"British English, warm and friendly","never":"Gives clinical advice","transfer":"Dental emergencies go to the on-call line"},{"id":"plumber","label":"Plumber","name":"Severn Plumbing","city":"Bristol","num":"0117 496 0135","agent":"Sam","kind":"team&#39;s","initials":"SP","voice":"British English, relaxed","never":"Quotes a price it has not been given","transfer":"Burst pipes go straight to the plumber on call"}]'>
     <div>
-      <div class="rounded-[14px] border border-band-line bg-band-surface p-5 sm:p-6">
-        <h3 class="!text-[clamp(22px,20px+.6vw,26px)]">Try it: build a greeting</h3>
-        <p class="mt-1 text-[16px] text-band-muted">Pick a business and a tone. The phone shows what callers would hear.</p>
-        <p class="mt-4 text-[14.5px] font-semibold text-band-muted" id="brand-biz-label">Business</p>
-        <div class="mt-2">
-          <div role="radiogroup" aria-label="Business" class="flex flex-wrap gap-2" data-brand-group="biz">
-            <button type="button" role="radio" aria-checked="true" tabindex="0" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="law" data-track="branding_biz" data-track-name="Law firm">Law firm</button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="dental" data-track="branding_biz" data-track-name="Dental clinic">Dental clinic</button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="plumber" data-track="branding_biz" data-track-name="Plumber">Plumber</button>
-          </div>
-        </div>
-        <p class="mt-4 text-[14.5px] font-semibold text-band-muted">Tone</p>
-        <div class="mt-2">
-          <div role="radiogroup" aria-label="Tone" class="flex flex-wrap gap-2" data-brand-group="tone">
-            <button type="button" role="radio" aria-checked="true" tabindex="0" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="warm" data-track="branding_tone" data-track-name="Warm">Warm</button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="brisk" data-track="branding_tone" data-track-name="Brisk">Brisk</button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="formal" data-track="branding_tone" data-track-name="Formal">Formal</button>
-          </div>
-        </div>
+      <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · 24/7</p>
+      <h1 class="!text-[clamp(2.375rem,1.81rem+2.43vw,3.75rem)] !leading-[1.06]">AI Voice Agent for UK Businesses: <span class="hl">Answer Every Call, Even at 2am</span></h1>
+      <p class="mt-5 text-muted">Our AI voice agent answers on the first ring, qualifies the caller and books them into your calendar, day or night. We build it around your business, test it with you and manage it every month, so you never have to learn the software.</p>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+        ${primaryCta("hero_book_demo", "w-full sm:w-auto")}
+        <a href="#what-is" class="text-link justify-center" data-track="hero_see_how">See how a call goes${icon("arrow-down")}</a>
       </div>
+      <p class="mt-5 text-[16px] text-muted">Live in as little as 3 working days · Keep your number · Billed monthly, 30 days' notice</p>
     </div>
 
-        <div class="relative mx-auto w-full max-w-[380px] [perspective:1400px]">
-      <div class="brand-phone relative rounded-[44px] border border-[rgb(247_246_242/.18)] bg-[#0b0f19] p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.8)] lg:[transform:rotateY(-10deg)_rotateX(4deg)]">
+    <div class="mx-auto w-full max-w-[400px]">
+      <div class="brand-phone relative rounded-[44px] border border-ink/10 bg-[#0b0f19] p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.6)]">
         <div class="relative overflow-hidden rounded-[34px] bg-[#f7f6f2] px-5 pb-6 pt-4 text-[#101828]">
           <div class="flex items-center justify-between text-[13px] font-semibold" aria-hidden="true"><span class="tnum">9:41</span><span class="h-[22px] w-[90px] rounded-full bg-[#0b0f19]"></span><span class="flex gap-1"><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]/40"></i></span></div>
-
-          <div class="mt-6 text-center">
+          <div class="mt-5 text-center">
             <p class="text-[13.5px] font-semibold text-[#1c6446]"><span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-[#1c6446] align-middle"></span>Call answered <span class="tnum" data-brand-timer>00:03</span></p>
-            <span class="mx-auto mt-4 grid h-[72px] w-[72px] place-items-center rounded-full bg-[#d79a37] font-display text-[24px] font-semibold text-[#101828]" aria-hidden="true" data-brand-initials>HR</span>
-            <p class="mt-3 font-display text-[21px] font-semibold leading-tight" data-brand-name>Hartwell Reeve Solicitors</p>
+            <span class="mx-auto mt-3 grid h-[64px] w-[64px] place-items-center rounded-full bg-[#d79a37] font-display text-[22px] font-semibold text-[#101828]" aria-hidden="true" data-brand-initials>HR</span>
+            <p class="mt-3 font-display text-[20px] font-semibold leading-tight" data-brand-name>Hartwell Reeve Solicitors</p>
             <p class="mt-0.5 text-[14.5px] text-[rgb(16_24_40/0.68)]"><span class="tnum" data-brand-num>0121 496 0147</span>, <span data-brand-city>Birmingham</span></p>
           </div>
-
-          <div class="mt-5 rounded-[18px] bg-white p-4 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]">
+          <div class="mt-4 rounded-[18px] bg-white p-4 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]">
             <div class="flex items-center gap-3">
               <span class="text-[13px] font-semibold text-[#8f5a0e]"><span data-brand-agent>Grace</span>, AI assistant</span>
               <svg viewBox="0 0 168 40" class="brand-wave h-7 flex-1" aria-hidden="true" data-brand-wave>
-                <rect x="1" y="13" width="3" height="14" rx="1.5" style="--d:0s"/><rect x="7" y="3" width="3" height="34" rx="1.5" style="--d:0.09s"/><rect x="13" y="15.5" width="3" height="9" rx="1.5" style="--d:0.18s"/><rect x="19" y="6" width="3" height="28" rx="1.5" style="--d:0.27s"/><rect x="25" y="14.5" width="3" height="11" rx="1.5" style="--d:0.36s"/><rect x="31" y="12" width="3" height="16" rx="1.5" style="--d:0.44999999999999996s"/><rect x="37" y="5.5" width="3" height="29" rx="1.5" style="--d:0.54s"/><rect x="43" y="8" width="3" height="24" rx="1.5" style="--d:0s"/><rect x="49" y="7" width="3" height="26" rx="1.5" style="--d:0.09s"/><rect x="55" y="10" width="3" height="20" rx="1.5" style="--d:0.18s"/><rect x="61" y="10.5" width="3" height="19" rx="1.5" style="--d:0.27s"/><rect x="67" y="15" width="3" height="10" rx="1.5" style="--d:0.36s"/><rect x="73" y="3.5" width="3" height="33" rx="1.5" style="--d:0.44999999999999996s"/><rect x="79" y="16" width="3" height="8" rx="1.5" style="--d:0.54s"/><rect x="85" y="4" width="3" height="32" rx="1.5" style="--d:0s"/><rect x="91" y="16.5" width="3" height="7" rx="1.5" style="--d:0.09s"/><rect x="97" y="11.5" width="3" height="17" rx="1.5" style="--d:0.18s"/><rect x="103" y="7.5" width="3" height="25" rx="1.5" style="--d:0.27s"/><rect x="109" y="8" width="3" height="24" rx="1.5" style="--d:0.36s"/><rect x="115" y="7" width="3" height="26" rx="1.5" style="--d:0.44999999999999996s"/><rect x="121" y="8" width="3" height="24" rx="1.5" style="--d:0.54s"/><rect x="127" y="11" width="3" height="18" rx="1.5" style="--d:0s"/><rect x="133" y="17" width="3" height="6" rx="1.5" style="--d:0.09s"/><rect x="139" y="5" width="3" height="30" rx="1.5" style="--d:0.18s"/><rect x="145" y="16.5" width="3" height="7" rx="1.5" style="--d:0.27s"/><rect x="151" y="3" width="3" height="34" rx="1.5" style="--d:0.36s"/><rect x="157" y="15.5" width="3" height="9" rx="1.5" style="--d:0.44999999999999996s"/><rect x="163" y="10" width="3" height="20" rx="1.5" style="--d:0.54s"/>
+                <rect x="1" y="13" width="3" height="14" rx="1.5" style="--d:0s"/><rect x="7" y="3" width="3" height="34" rx="1.5" style="--d:0.09s"/><rect x="13" y="15.5" width="3" height="9" rx="1.5" style="--d:0.18s"/><rect x="19" y="6" width="3" height="28" rx="1.5" style="--d:0.27s"/><rect x="25" y="14.5" width="3" height="11" rx="1.5" style="--d:0.36s"/><rect x="31" y="12" width="3" height="16" rx="1.5" style="--d:0.45s"/><rect x="37" y="5.5" width="3" height="29" rx="1.5" style="--d:0.54s"/><rect x="43" y="8" width="3" height="24" rx="1.5" style="--d:0s"/><rect x="49" y="7" width="3" height="26" rx="1.5" style="--d:0.09s"/><rect x="55" y="10" width="3" height="20" rx="1.5" style="--d:0.18s"/><rect x="61" y="10.5" width="3" height="19" rx="1.5" style="--d:0.27s"/><rect x="67" y="15" width="3" height="10" rx="1.5" style="--d:0.36s"/><rect x="73" y="3.5" width="3" height="33" rx="1.5" style="--d:0.45s"/><rect x="79" y="16" width="3" height="8" rx="1.5" style="--d:0.54s"/><rect x="85" y="4" width="3" height="32" rx="1.5" style="--d:0s"/><rect x="91" y="16.5" width="3" height="7" rx="1.5" style="--d:0.09s"/><rect x="97" y="11.5" width="3" height="17" rx="1.5" style="--d:0.18s"/><rect x="103" y="7.5" width="3" height="25" rx="1.5" style="--d:0.27s"/><rect x="109" y="8" width="3" height="24" rx="1.5" style="--d:0.36s"/><rect x="115" y="7" width="3" height="26" rx="1.5" style="--d:0.45s"/><rect x="121" y="8" width="3" height="24" rx="1.5" style="--d:0.54s"/><rect x="127" y="11" width="3" height="18" rx="1.5" style="--d:0s"/><rect x="133" y="17" width="3" height="6" rx="1.5" style="--d:0.09s"/><rect x="139" y="5" width="3" height="30" rx="1.5" style="--d:0.18s"/><rect x="145" y="16.5" width="3" height="7" rx="1.5" style="--d:0.27s"/><rect x="151" y="3" width="3" height="34" rx="1.5" style="--d:0.36s"/><rect x="157" y="15.5" width="3" height="9" rx="1.5" style="--d:0.45s"/><rect x="163" y="10" width="3" height="20" rx="1.5" style="--d:0.54s"/>
               </svg>
             </div>
             <p class="mt-3 min-h-[96px] rounded-[4px_14px_14px_14px] bg-[#efece2] px-3.5 py-3 text-[15.5px] leading-[1.45]" aria-hidden="true">&ldquo;<span data-brand-greeting>Good morning, Hartwell Reeve Solicitors. I'm Grace, the firm's AI assistant. How can I help you today?</span><span class="brand-caret" data-brand-caret></span>&rdquo;</p>
             <p class="sr-only" aria-live="polite" data-brand-live></p>
           </div>
-
-          <dl class="mt-4 space-y-2 text-[13.5px] leading-snug">
+          <dl class="mt-3 space-y-1.5 text-[13.5px] leading-snug">
             <div class="flex gap-2 rounded-[10px] bg-white/70 px-3 py-2"><dt class="font-semibold">Voice:</dt><dd data-brand-voice>British English, calm and measured</dd></div>
             <div class="flex gap-2 rounded-[10px] bg-white/70 px-3 py-2"><dt class="font-semibold">Never:</dt><dd data-brand-never>Gives legal advice</dd></div>
             <div class="flex gap-2 rounded-[10px] bg-white/70 px-3 py-2"><dt class="font-semibold">Transfers:</dt><dd data-brand-transfer>Existing clients go to their named solicitor</dd></div>
           </dl>
-
-          <div class="mt-5 flex items-center justify-center gap-6">
-            <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-[#101828] text-[#f7f6f2] hover:bg-[#1a2437]" data-brand-replay data-track="branding_replay" aria-label="Replay the greeting"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-replay"/></svg></button>
-            <span class="grid h-12 w-12 place-items-center rounded-full bg-[#a3352b] text-white" aria-hidden="true"><svg class="icon rotate-[135deg]" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span>
+          <div class="mt-4 flex items-center justify-center gap-6">
+            <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-[#101828] text-[#f7f6f2] hover:bg-[#1a2437]" data-brand-replay data-track="branding_replay" aria-label="Replay the greeting">${icon("replay")}</button>
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-[#a3352b] text-white" aria-hidden="true">${icon("phone", "rotate-[135deg]")}</span>
           </div>
         </div>
       </div>
-      <p class="mt-5 text-center text-[14px] text-band-muted">Illustrative example. The businesses shown are fictional.</p>
-    </div>
-  </div>
-</section>
-
-<section id="right-fit" data-component="RightFit" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28">
-    <div>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Is it the right fit?</p>
-        <h2>A voice agent <span class="hl">isn't for everyone</span></h2>
-      </div>
-      <p class="mt-5 text-muted">We'd rather tell you now than three months in. Here's where it earns its keep and where it doesn't. Or answer five quick questions and see for yourself.</p>
-    </div>
-
-    <div class="mt-12 grid gap-5 md:grid-cols-2">
-      <div class="rounded-[16px] border border-[color-mix(in_srgb,var(--va-ok)_35%,transparent)] bg-[color-mix(in_srgb,var(--va-ok)_7%,var(--va-surface))] p-6 sm:p-8">
-        <h3 class="flex items-center gap-3 !text-[24px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-ok text-surface"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>A good fit if</h3>
-        <ul class="mt-6 space-y-4">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-missed"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You miss calls</strong><span class="text-muted">while your team is with customers, on site or closed for the day.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-message"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Most calls repeat themselves:</strong><span class="text-muted">bookings, opening hours, prices and availability.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Each customer is worth real money,</strong><span class="text-muted">so one missed call can cost more than the agent.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You have a diary or booking system</strong><span class="text-muted">the agent can book into.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You're happy to be open about AI,</strong><span class="text-muted">because callers are told they're speaking to an AI assistant.</span></span></li>
-        </ul>
-      </div>
-      <div class="rounded-[16px] border border-line bg-paper p-6 sm:p-8">
-        <h3 class="flex items-center gap-3 !text-[24px]"><span class="grid h-10 w-10 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span>Not the right fit if</h3>
-        <ul class="mt-6 space-y-4">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Your phone is quiet</strong><span class="text-muted">and you already answer every call.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Every call needs expert judgement or a personal touch from the first sentence.</strong><span class="text-muted">A good receptionist or answering service will serve you better.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-wrench"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You have the technical time to build and maintain an agent yourself.</strong><span class="text-muted">A DIY platform will cost you less.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">The line handles emergencies or life-critical calls.</strong><span class="text-muted">An AI agent should never be the only route there.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want callers to think it's a person, or you want to cold call people who haven't agreed to hear from you.</strong><span class="text-muted">We won't build either.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-clock"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want to set it and forget it.</strong><span class="text-muted">An agent needs a regular review to stay good.</span></span></li>
-        </ul>
-      </div>
-    </div>
-
-        <div class="mt-6 grid overflow-hidden rounded-[16px] border border-line bg-paper lg:grid-cols-[minmax(0,1.25fr)_minmax(0,.75fr)]" data-fit>
-      <form class="p-6 sm:p-8" data-fit-form>
-        <h3 class="!text-[24px]">Quick fit check</h3>
-        <p class="mt-1 text-[16px] text-muted">Five questions, about 20 seconds.</p>
-        <ol class="mt-6 divide-y divide-line border-y border-line">
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">01</span><span>Do you miss calls when your team is busy, on site or closed?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q0" value="yes" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q0" value="no" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">02</span><span>Are most of your calls the same few requests?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q1" value="yes" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q1" value="no" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">03</span><span>Could one missed call cost you a customer worth real money?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q2" value="yes" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q2" value="no" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">04</span><span>Do you have a diary or system bookings can go into?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q3" value="yes" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q3" value="no" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">05</span><span>Are you happy for callers to be told they are speaking to an AI?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q4" value="yes" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q4" value="no" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-        </ol>
-        <button type="reset" class="mt-4 inline-flex min-h-[44px] items-center gap-2 text-[15.5px] font-semibold text-muted hover:text-ink" data-track="fit_check_reset"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Start again</button>
-      </form>
-
-      <div class="flex flex-col items-center justify-center bg-sand p-6 text-center sm:p-8" aria-live="polite" data-fit-result data-state="empty">
-        <svg viewBox="0 0 200 118" class="w-full max-w-[260px]" role="img" aria-label="Fit gauge" data-fit-gauge>
-          <path d="M20 100 A80 80 0 0 1 180 100" class="fit-track"/>
-          <path d="M20 100 A80 80 0 0 1 180 100" class="fit-fill" style="stroke-dasharray:251.3;stroke-dashoffset:251.3" data-fit-arc data-arc="251.3"/>
-          <g class="fit-needle" style="transform:rotate(-90deg)" data-fit-needle><line x1="100" y1="100" x2="100" y2="34"/><circle cx="100" cy="100" r="7"/></g>
-          <text x="20" y="116" class="fit-tick" text-anchor="middle">0</text>
-          <text x="180" y="116" class="fit-tick" text-anchor="middle">5</text>
-        </svg>
-        <p class="mt-3 font-display text-[26px] font-semibold leading-tight" data-fit-title>Answer to see your fit</p>
-        <p class="mt-2 text-[16px] leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
-        <p class="mt-1 text-[14.5px] text-muted tnum" data-fit-count>0 of 5 answered</p>
-        <a href="/contact?service=ai-voice-agents" class="btn btn-primary mt-5" data-fit-cta data-track="fit_check_book_demo" hidden>Book a Voice Agent Demo</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-${roiCalculator("any-business")}
-
-${pricingSection("bg-surface", mainPagePricing)}
-
-<section id="compare" data-component="Compare">
-  <div class="container-omh py-20 lg:py-28">
-    <div>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Compare your options</p>
-        <h2>How an AI voice agent compares with <span class="hl">the usual answers</span></h2>
-      </div>
-      <p class="mt-5 text-muted">Most businesses handle missed calls with voicemail, an answering service, more reception staff or a DIY tool. Here's an honest side-by-side, including where each option wins.</p>
-    </div>
-
-    <div class="mt-12 hidden overflow-hidden rounded-[18px] border border-line bg-surface shadow-[0_30px_60px_-45px_rgb(16_24_40/0.45)] lg:block">
-      <table class="cmp-table w-full border-separate border-spacing-0 text-left text-[16px] leading-snug">
-        <caption class="sr-only">OMH AI voice agent compared with voicemail, an answering service, a receptionist and a DIY platform</caption>
-        <thead>
-          <tr>
-            <th scope="col" class="w-[16%] px-5 pb-4 pt-5 align-bottom text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">What matters</th>
-            <th scope="col" class="cmp-omh w-[16.8%] px-5 pb-4 pt-5 align-bottom text-ink"><span class="mb-2 inline-flex rounded-full bg-gold px-2.5 py-0.5 text-[16px] font-semibold text-navy">Managed for you</span><span class="block font-display text-[18px] font-semibold">OMH AI voice agent</span></th>${cmpCols.slice(1).map((c) => `<th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">${c}</span></th>`).join("")}
-          </tr>
-        </thead>
-        <tbody>
-${cmpRows.map(([k, ...v]) => `          <tr>
-            <th scope="row" class="border-t border-line px-5 py-4 align-top font-display text-[16px] font-semibold">${k}</th>
-            ${v.map((t, i) => `<td class="${i ? "text-muted" : "cmp-omh font-semibold"} border-t border-line px-5 py-4 align-top">${t}</td>`).join("")}
-          </tr>`).join("\n")}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="mt-10 lg:hidden" data-cmp>
-      <p class="font-semibold" id="cmp-pick-label">Compare OMH with</p>
-      <div role="radiogroup" aria-labelledby="cmp-pick-label" class="mt-3 flex flex-wrap gap-2" data-cmp-group>
-${cmpCols.slice(1).map((c, i) => `        <button type="button" role="radio" aria-checked="${!i}" tabindex="${i ? -1 : 0}" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[16px] font-semibold aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-cmp-opt="${i + 1}" data-track="compare_option" data-track-name="${c}">${c}</button>`).join("\n")}
-      </div>
-      <div class="mt-5 overflow-hidden rounded-[16px] border border-line bg-surface" aria-live="polite">
-        <div class="grid grid-cols-2 border-b border-line text-[16px] font-semibold">
-          <p class="cmp-omh px-4 py-3">OMH AI voice agent</p>
-          <p class="px-4 py-3" data-cmp-name>${cmpCols[1]}</p>
+      <div class="mt-5">
+        <p class="text-[15px] font-semibold">Try it: pick a business and a tone to hear the greeting change.</p>
+        <div class="mt-2 flex flex-wrap items-center gap-2">
+          <div role="radiogroup" aria-label="Business" class="flex flex-wrap gap-2" data-brand-group="biz">
+            <button type="button" role="radio" aria-checked="true" tabindex="0" class="brand-chip" data-brand-opt="law" data-track="branding_biz" data-track-name="Law firm">Law firm</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="brand-chip" data-brand-opt="dental" data-track="branding_biz" data-track-name="Dental clinic">Dental clinic</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="brand-chip" data-brand-opt="plumber" data-track="branding_biz" data-track-name="Plumber">Plumber</button>
+          </div>
+          <span class="hidden h-6 w-px bg-line sm:block" aria-hidden="true"></span>
+          <div role="radiogroup" aria-label="Tone" class="flex flex-wrap gap-2" data-brand-group="tone">
+            <button type="button" role="radio" aria-checked="true" tabindex="0" class="brand-chip" data-brand-opt="warm" data-track="branding_tone" data-track-name="Warm">Warm</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="brand-chip" data-brand-opt="brisk" data-track="branding_tone" data-track-name="Brisk">Brisk</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="brand-chip" data-brand-opt="formal" data-track="branding_tone" data-track-name="Formal">Formal</button>
+          </div>
         </div>
-        <dl>
-${cmpRows.map(([k, omh, ...v]) => `          <div class="border-b border-line last:border-0">
-            <dt class="px-4 pt-3 text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt>
-            <dd class="grid grid-cols-2 text-[16px] leading-snug">
-              <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">${omh}</span>
-              ${v.map((t, i) => `<span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="${i + 1}"${i ? " hidden" : ""}>${t}</span>`).join("")}
-            </dd>
-          </div>`).join("\n")}
-        </dl>
+        <p class="mt-2 text-[14px] text-muted">Illustrative example. The businesses shown are fictional.</p>
       </div>
     </div>
-
-    <p class="mt-4 text-[16px] text-muted">Costs are rough UK guides for a small business, checked in October 2026, not quotes. Answering service and platform prices vary widely by provider and usage.</p>
   </div>
 </section>
 
-<section id="faq" data-component="FAQ" class="bg-surface">
-  <div class="container-omh grid gap-10 py-20 lg:grid-cols-[minmax(0,.72fr)_minmax(0,1.28fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-8 lg:py-28">
+<section id="why" data-component="Problem" class="border-y border-line bg-surface">
+  <div class="container-omh py-14 lg:py-20">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Why it matters</p>
+    <h2>Every missed call is a customer <span class="hl">who rang someone else</span></h2>
+    <div class="mt-8 grid gap-5 md:grid-cols-2">
+      <div class="rounded-[16px] border border-line bg-paper p-6 sm:p-7">
+        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-sand text-muted">${icon("phone-missed")}</span>Without an AI voice agent</h3>
+        <ul class="mt-5 space-y-3 text-[16px] leading-snug text-muted">
+          ${cross("Calls ring out while the team is with customers, on site or closed for the day")}
+          ${cross("Callers reach voicemail, or ring the next business on the list")}
+          ${cross("Enquiries from your ads and website wait until someone is free")}
+          ${cross("Engaged tones at the busiest times, when every call is a job")}
+        </ul>
+      </div>
+      <div class="rounded-[16px] border border-gold/60 bg-[color-mix(in_srgb,#d79a37_10%,var(--va-surface))] p-6 sm:p-7">
+        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-gold text-navy">${icon("phone")}</span>With an OMH AI voice agent</h3>
+        <ul class="mt-5 space-y-3 text-[16px] leading-snug">
+          ${tick("Every call answered on the first ring, day and night, many at once")}
+          ${tick("Enquiries captured with name, number and reason, then emailed to you")}
+          ${tick("Appointments booked straight into your diary while the caller is on the line")}
+          ${tick("Urgent or complicated calls handed to your team with a summary")}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="what-is" data-component="WhatIs">
+  <div class="container-omh grid gap-10 py-16 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16 lg:py-24">
     <div>
+      <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>In plain English</p>
+      <h2>What is an <span class="hl">AI voice agent?</span></h2>
+      <p class="mt-5 text-muted">An AI voice agent is software that answers and makes phone calls for your business in natural, spoken conversation. It understands what the caller wants, answers from information you have approved, books appointments into your calendar and passes anything it can't handle to a person on your team, with a summary of the call.</p>
+      <p class="mt-4 text-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and systems, and keep improving it.</p>
+    </div>
+    <div class="rounded-[22px] border border-line bg-surface p-5 sm:p-7">
+      <h3 class="!text-[22px]">How a call goes</h3>
+      <ol class="mt-5 grid gap-4 sm:grid-cols-2">
+        <li class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted"><span class="num text-[15px]">01</span>It listens</p>
+          <div class="mini mt-3"><span class="icon-tile">${icon("phone-missed")}</span><span class="min-w-0"><b class="block">Call · 22:14</b><span class="text-[14px] font-semibold text-ok">Answered on the first ring</span></span></div>
+          <div class="chat mt-2"><p><span class="who">Caller</span>There's water coming through my kitchen ceiling.</p></div>
+          <p class="mt-3 text-[15px] text-muted">Speech recognition turns what the caller says into text as they speak.</p></li>
+        <li class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted"><span class="num text-[15px]">02</span>It works out the answer</p>
+          <div class="mt-3 flex flex-wrap gap-2"><span class="mini-chip">${icon("check", "text-ok")}Your services</span><span class="mini-chip">${icon("check", "text-ok")}Your rules</span><span class="mini-chip">${icon("check", "text-ok")}Your diary</span></div>
+          <div class="mini mt-2">${icon("book", "text-hl")}<span>Trained on <b>your</b> business, not the internet</span></div>
+          <p class="mt-3 text-[15px] text-muted">The AI matches the request to your approved information and booking rules.</p></li>
+        <li class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted"><span class="num text-[15px]">03</span>It replies and acts</p>
+          <div class="chat mt-3"><p class="ai"><span class="who">Your AI agent</span>Turn off the stopcock under the sink. Sam can be with you in 40 minutes.</p></div>
+          <span class="booked mt-2">${icon("check")}Engineer dispatched: ETA 40 min</span>
+          <p class="mt-3 text-[15px] text-muted">It answers in a natural voice, books the slot or transfers the call.</p></li>
+        <li class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted"><span class="num text-[15px]">04</span>It reports back</p>
+          <div class="mini mt-3">${icon("mail", "text-hl")}<span><b>Call summary</b> sent to your inbox</span></div>
+          <div class="mt-2 flex flex-wrap gap-2"><span class="mini-chip">${icon("check", "text-ok")}Caller</span><span class="mini-chip">${icon("check", "text-ok")}Reason</span><span class="mini-chip">${icon("check", "text-ok")}Next step</span></div>
+          <p class="mt-3 text-[15px] text-muted">Every call is summarised for you. Callers can interrupt or change their mind at any point.</p></li>
+      </ol>
+      <p class="mt-4 text-[14px] text-muted">Illustrative call. The agent only answers from information you have approved.</p>
+    </div>
+  </div>
+</section>
+
+<section id="features" data-component="Features" class="border-y border-line bg-sand">
+  <div class="container-omh py-16 lg:py-24">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What's included</p>
+    <h2>What your <span class="hl">AI voice agent does</span></h2>
+    <p class="mt-5 text-muted">Everything a good front desk does on the phone, without adding to the payroll. Features marked Growth and Scale aren't on the Starter plan.</p>
+    <ul class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <li class="fcard">
+        <div class="fcard-vis" aria-hidden="true">
+          <div class="mini"><span class="icon-tile">${icon("phone")}</span><span class="min-w-0"><b class="block">Call · 02:14</b><span class="text-[14px] font-semibold text-ok">Answered on the first ring</span></span></div>
+          <div class="mini">${icon("users", "text-ok")}<span>3 more callers answered at the same time</span></div>
+        </div>
+        <div class="fcard-body"><h3>First-ring answering, 24/7</h3><p>Every call answered straight away, including nights, weekends and bank holidays. It handles many calls at once, so nobody hears an engaged tone.</p></div>
+      </li>
+      <li class="fcard">
+        <div class="fcard-vis" aria-hidden="true">
+          <div class="mini"><span class="icon-tile">${icon("mic")}</span><span class="min-w-0"><b class="block">Ava · Your assistant</b><span class="text-[14px] text-muted">Your name, greeting and voice</span></span></div>
+          <div class="mini justify-center py-3"><span class="mini-wave"><i></i><i></i><i></i><i></i><i></i></span><span class="ml-2 text-[14px] font-semibold">"Thanks for calling, how can I help?"</span></div>
+        </div>
+        <div class="fcard-body"><h3>Sounds like your front desk</h3><p>Your business name, your greeting and a British voice that suits your callers. Callers can interrupt, change their mind or ask for a person, and OMH is never mentioned on a call.</p></div>
+      </li>
+      <li class="fcard">
+        <div class="fcard-vis" aria-hidden="true">
+          <div class="flex flex-wrap justify-center gap-2"><span class="mini-chip">${icon("check", "text-ok")}Services</span><span class="mini-chip">${icon("check", "text-ok")}Prices</span><span class="mini-chip">${icon("check", "text-ok")}Opening hours</span><span class="mini-chip">${icon("check", "text-ok")}Service area</span><span class="mini-chip">${icon("check", "text-ok")}FAQs</span></div>
+          <div class="mini">${icon("book", "text-hl")}<span>Trained on <b>your</b> business, not the internet</span></div>
+        </div>
+        <div class="fcard-body"><h3>Knows your services and prices</h3><p>It answers only from information you approve: services, prices, opening hours, service areas and FAQs. If a question falls outside that, it says so and takes a message.</p></div>
+      </li>
+      <li class="fcard">
+        <div class="fcard-vis" aria-hidden="true">
+          <div class="vcal-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
+          <div class="vcal"><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span class="new"></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span></span><span class="busy"></span><span></span></div>
+          <div class="mini">${icon("calendar", "text-ok")}<span><b>Booked:</b> Wed 11:00, no clash</span></div>
+        </div>
+        <div class="fcard-body"><h3>Books into your calendar without clashes</h3><p>It checks your live calendar, respects buffers, travel time and blocked hours, and texts the caller a confirmation.</p></div>
+      </li>
+      <li class="fcard">
+        <div class="fcard-vis" aria-hidden="true">
+          <div class="mini"><span class="icon-tile">${icon("user")}</span><span class="min-w-0"><b class="block">Caller asks for a person</b><span class="text-[14px] text-muted">"Can I speak to Sam?"</span></span></div>
+          <div class="mini">${icon("transfer", "text-hl")}<span><b>Transferring to Sam</b> with a quick briefing</span></div>
+        </div>
+        <div class="fcard-body"><h3>Warm transfer to a person ${tag("Growth and Scale")}</h3><p>You choose who gets put through and when. Your team gets a quick briefing first, so the caller never has to repeat themselves.</p></div>
+      </li>
+      <li class="fcard">
+        <div class="fcard-vis" aria-hidden="true">
+          <div class="mini"><span class="icon-tile">${icon("globe")}</span><span class="min-w-0"><b class="block">New web form · 14:02</b><span class="text-[14px] text-muted">Boiler quote request</span></span></div>
+          <div class="mini">${icon("timer", "text-ok")}<span><b>Called back</b> in 42 seconds</span></div>
+          <div class="mini justify-between"><span><b>Quote sent, no reply</b></span><span class="text-[14px] font-semibold text-ok">Visit booked</span></div>
+        </div>
+        <div class="fcard-body"><h3>Calls web leads back and follows up ${tag("Growth and Scale")}</h3><p>Form fills and ad leads get a call within 60 seconds, while they're still on your website. It also calls people who have agreed to hear from you about quotes, reminders and missed appointments.</p></div>
+      </li>
+    </ul>
+    <p class="mt-6 text-[16px] text-muted">Every call is summarised and emailed to you. On Growth and Scale, the details, tags and next steps go straight into your CRM or practice system.</p>
+  </div>
+</section>
+
+<section id="use-cases" data-component="Industries">
+  <div class="container-omh py-16 lg:py-24">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Use cases</p>
+    <h2>AI voice agent use cases <span class="hl">by industry</span></h2>
+    <p class="mt-5 text-muted">We set up AI voice agents for eight types of business that live on the phone. Each agent is scripted around the calls your sector actually gets. Pick yours to see what it handles.</p>
+    <div class="mt-8" data-tabs>
+      <div role="tablist" aria-label="Choose an industry" class="flex flex-wrap gap-2">
+${industries.map(industryTab).join("\n")}
+      </div>
+${industries.map(industryPanel).join("\n")}
+    </div>
+    <div class="mt-8 flex flex-col gap-4 rounded-[16px] bg-sand p-6 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="font-display text-[18px] font-semibold">Not sure how your calls would fit?</p>
+        <p class="mt-1 text-[16px] text-muted">Tell us who rings you and why. We'll map your calls and show you what the agent would handle and what it would pass to your team.</p>
+      </div>
+      ${primaryCta("industries_book_demo", "shrink-0")}
+    </div>
+  </div>
+</section>
+
+<section id="how" data-component="HowItWorks" class="border-y border-line bg-surface">
+  <div class="container-omh py-16 lg:py-24">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>How it works</p>
+    <h2>Live in 3 to 15 working days. <span class="hl">Working on every call after that.</span></h2>
+    <p class="mt-5 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
+
+    <h3 class="mt-12 text-[14px] font-semibold uppercase tracking-[0.14em] !text-muted">Part 1: Setup, done for you</h3>
+    <ol class="tl mt-6">
+      <li class="tl-step"><span class="tl-num" aria-hidden="true">01</span><div class="tl-card"><h4>Connect</h4><p>You forward your number. We link your calendar, plus your CRM on Growth and Scale.</p><p class="tl-proof"><span class="dot" aria-hidden="true"></span>Call forwarding on</p></div></li>
+      <li class="tl-step"><span class="tl-num" aria-hidden="true">02</span><div class="tl-card"><h4>Train</h4><p>We load your services, prices, FAQs and booking rules, scripted around the real reasons people ring you.</p><p class="tl-proof"><span class="dot" aria-hidden="true"></span>Greeting and rules set</p></div></li>
+      <li class="tl-step"><span class="tl-num" aria-hidden="true">03</span><div class="tl-card"><h4>Test together</h4><p>You call it, and we adjust it until it sounds like your business. Nothing goes live without your sign-off.</p><p class="tl-proof"><span class="dot" aria-hidden="true"></span>Test calls passed</p></div></li>
+      <li class="tl-step"><span class="tl-num" aria-hidden="true">04</span><div class="tl-card"><h4>Go live</h4><p>It answers on the first ring, day and night. We check and tune the first two weeks of live calls at no extra cost.</p><p class="tl-proof live"><span class="dot" aria-hidden="true"></span>Live and answering</p></div></li>
+    </ol>
+    <p class="mt-5 text-[16px] text-muted">Starter goes live in 3 working days, Growth in 5 to 7 and Scale in 12 to 15. The clock starts once we have your content and diary access.</p>
+
+    <h3 class="mt-12 text-[14px] font-semibold uppercase tracking-[0.14em] !text-muted">Part 2: After go-live</h3>
+    <div class="mt-6 grid gap-5 md:grid-cols-3">
+      <div class="rounded-[14px] border border-line bg-paper p-6"><p class="flex items-center gap-3"><span class="num text-[15px]">05</span></p><h4 class="mt-2 !text-[20px]">A UK team, not a ticket queue</h4><p class="mt-2 text-[16px] text-muted">After go-live you deal with our UK team directly, and Scale clients get a named account manager.</p></div>
+      <div class="rounded-[14px] border border-line bg-paper p-6"><p class="flex items-center gap-3"><span class="num text-[15px]">06</span>${tag("Growth and Scale")}</p><h4 class="mt-2 !text-[20px]">Improved every month</h4><p class="mt-2 text-[16px] text-muted">Every month we read a sample of transcripts, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p></div>
+      <div class="rounded-[14px] border border-line bg-paper p-6"><p class="flex items-center gap-3"><span class="num text-[15px]">07</span>${tag("Scale")}</p><h4 class="mt-2 !text-[20px]">Call results beside your marketing figures</h4><p class="mt-2 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="right-fit" data-component="RightFit">
+  <div class="container-omh py-16 lg:py-24">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Is it the right fit?</p>
+    <h2>A voice agent <span class="hl">isn't for everyone</span></h2>
+    <p class="mt-5 text-muted">We'd rather tell you now than three months in. Here's where it earns its keep and where it doesn't.</p>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2">
+      <div class="rounded-[16px] border border-[color-mix(in_srgb,var(--va-ok)_35%,transparent)] bg-[color-mix(in_srgb,var(--va-ok)_7%,var(--va-surface))] p-6 sm:p-7">
+        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-ok text-surface">${icon("check")}</span>A good fit if</h3>
+        <ul class="mt-5 space-y-3.5">
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("phone-missed")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">You miss calls</strong><span class="text-muted">while your team is with customers, on site or closed for the day.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("message")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Most calls repeat themselves:</strong><span class="text-muted">bookings, opening hours, prices and availability.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("arrow-right")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Each customer is worth real money,</strong><span class="text-muted">so one missed call can cost more than the agent.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true">${icon("calendar")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">You have a diary or booking system</strong><span class="text-muted">the agent can book into.</span></span></li>
+        </ul>
+      </div>
+      <div class="rounded-[16px] border border-line bg-paper p-6 sm:p-7">
+        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted">${icon("x")}</span>Not the right fit if</h3>
+        <ul class="mt-5 space-y-3.5">
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("phone")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Your phone is quiet</strong><span class="text-muted">and you already answer every call.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("scale")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">Every call needs expert judgement from the first sentence.</strong><span class="text-muted">A good receptionist or answering service will serve you better.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("shield")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">The line handles emergencies or life-critical calls.</strong><span class="text-muted">An AI agent should never be the only route there.</span></span></li>
+          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true">${icon("x")}</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17px] font-semibold">You want callers to think it's a person, or you want to cold call people who haven't agreed to hear from you.</strong><span class="text-muted">We won't build either.</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Safeguards on every agent">
+      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">Callers are told it's an AI</strong> assistant at the start of every call.</span></li>
+      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">UK GDPR and recording notice.</strong> You stay the data controller; OMH is your processor under a written agreement.</span></li>
+      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">Outbound calls only with consent,</strong> screened against the Telephone Preference Service.</span></li>
+      <li class="flex gap-3 rounded-[12px] border border-line bg-surface p-4 text-[15px] leading-snug">${icon("shield", "mt-0.5 shrink-0 text-hl")}<span><strong class="font-semibold">No clinical or legal advice.</strong> Those calls go to your team, and emergencies follow the route you set.</span></li>
+    </ul>
+
+    <details class="group mt-6 rounded-[16px] border border-line bg-surface" data-track="compare_open">
+      <summary class="flex min-h-[64px] items-center justify-between gap-4 px-5 py-4 sm:px-6">
+        <span><span class="block font-display text-[20px] font-semibold">How it compares with voicemail, an answering service, a receptionist and a DIY platform</span><span class="mt-1 block text-[16px] text-muted">An honest side-by-side, including where each option wins.</span></span>
+        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy">${icon("chevron-down", "faq-chevron")}</span>
+      </summary>
+      <div class="border-t border-line px-5 pb-6 pt-5 sm:px-6">
+        <div class="hidden overflow-hidden rounded-[14px] border border-line lg:block">
+          <table class="cmp-table w-full border-separate border-spacing-0 text-left text-[16px] leading-snug">
+            <caption class="sr-only">OMH AI voice agent compared with voicemail, an answering service, a receptionist and a DIY platform</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="w-[16%] px-4 pb-3 pt-4 align-bottom text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">What matters</th>
+                <th scope="col" class="cmp-omh w-[16.8%] px-4 pb-3 pt-4 align-bottom text-ink"><span class="mb-1.5 inline-flex rounded-full bg-gold px-2.5 py-0.5 text-[14px] font-semibold text-navy">Managed for you</span><span class="block font-display text-[17px] font-semibold">OMH AI voice agent</span></th>${cmpCols.slice(1).map((c) => `<th scope="col" class="w-[16.8%] px-4 pb-3 pt-4 align-bottom"><span class="font-display text-[17px] font-semibold text-ink">${c}</span></th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+${cmpRows.map(([k, ...v]) => `              <tr>
+                <th scope="row" class="border-t border-line px-4 py-3 align-top font-display text-[16px] font-semibold">${k}</th>
+                ${v.map((t, i) => `<td class="${i ? "text-muted" : "cmp-omh font-semibold"} border-t border-line px-4 py-3 align-top">${t}</td>`).join("")}
+              </tr>`).join("\n")}
+            </tbody>
+          </table>
+        </div>
+        <div class="lg:hidden" data-cmp>
+          <p class="font-semibold" id="cmp-pick-label">Compare OMH with</p>
+          <div role="radiogroup" aria-labelledby="cmp-pick-label" class="mt-3 flex flex-wrap gap-2" data-cmp-group>
+${cmpCols.slice(1).map((c, i) => `            <button type="button" role="radio" aria-checked="${!i}" tabindex="${i ? -1 : 0}" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[16px] font-semibold aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-cmp-opt="${i + 1}" data-track="compare_option" data-track-name="${c}">${c}</button>`).join("\n")}
+          </div>
+          <div class="mt-5 overflow-hidden rounded-[14px] border border-line" aria-live="polite">
+            <div class="grid grid-cols-2 border-b border-line text-[16px] font-semibold">
+              <p class="cmp-omh px-4 py-3">OMH AI voice agent</p>
+              <p class="px-4 py-3" data-cmp-name>${cmpCols[1]}</p>
+            </div>
+            <dl>
+${cmpRows.map(([k, omh, ...v]) => `              <div class="border-b border-line last:border-0">
+                <dt class="px-4 pt-3 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt>
+                <dd class="grid grid-cols-2 text-[16px] leading-snug">
+                  <span class="cmp-omh px-4 pb-3 pt-1.5 font-semibold">${omh}</span>
+                  ${v.map((t, i) => `<span class="px-4 pb-3 pt-1.5 text-muted" data-cmp-cell="${i + 1}"${i ? " hidden" : ""}>${t}</span>`).join("")}
+                </dd>
+              </div>`).join("\n")}
+            </dl>
+          </div>
+        </div>
+        <p class="mt-4 text-[15px] text-muted">Costs are rough UK guides for a small business, checked in October 2026, not quotes. Answering service and platform prices vary widely by provider and usage.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="pricing" data-component="Pricing" class="border-y border-line bg-surface">
+  <div class="container-omh py-16 lg:py-24">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
+    <h2>${mainPagePricing.heading}</h2>
+    <p class="mt-5 text-muted">Three plans, billed monthly, no minimum contract. Every plan includes a managed agent, a British voice, a summary of every call and a monthly report. Prices exclude VAT.</p>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-3 lg:items-stretch">
+${mainPagePricing.plans.map(plan).join("\n")}
+    </div>
+
+    <dl class="mt-8 grid gap-x-10 gap-y-3 text-[15px] leading-snug md:grid-cols-2">
+${mainPagePricing.notes.map(([k, v]) => `      <div class="flex gap-2"><dt class="shrink-0 font-semibold">${k}:</dt><dd class="text-muted">${v}</dd></div>`).join("\n")}
+    </dl>
+
+    <details id="roi-calculator" class="group mt-8 rounded-[16px] border border-line bg-paper" data-lazy-frame data-track="roi_calculator_open">
+      <summary class="flex min-h-[64px] items-center justify-between gap-4 px-5 py-4 sm:px-6">
+        <span><span class="block font-display text-[20px] font-semibold">Work out what missed calls cost you</span><span class="mt-1 block text-[16px] text-muted">A two-minute calculator: your call volume, your average job value, your missed-call rate.</span></span>
+        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy">${icon("chevron-down", "faq-chevron")}</span>
+      </summary>
+      <div class="border-t border-line">${roiCalculator("any-business").replace(/^<section[^>]*>|<\/section>$/g, "").replace(' src="', ' loading="lazy" data-src="')}</div>
+    </details>
+
+    <p class="mt-8 flex gap-3 text-[16px] text-muted">${icon("map-pin", "mt-1 shrink-0 text-hl")}<span><strong class="font-semibold text-ink">UK-wide, run remotely from Essex.</strong> We focus our voice agent work on London, Birmingham, Manchester, Leeds, Liverpool and Bristol, and can arrange a local number (020, 0121, 0161, 0113, 0151 or 0117) as part of setup. Somewhere else in the UK? We work with you the same way.</span></p>
+  </div>
+</section>
+
+<section id="faq" data-component="FAQ">
+  <div class="container-omh grid gap-10 py-16 lg:grid-cols-[minmax(0,.7fr)_minmax(0,1.3fr)] lg:gap-x-14 lg:py-24">
+    <div class="lg:sticky lg:top-28 lg:self-start">
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
       <h2>AI voice agent <span class="hl">FAQs</span></h2>
       <p class="mt-5 text-muted">Straight answers to the questions owners and practice managers ask us most.</p>
-    </div>
-
-    <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2 lg:sticky lg:top-28 lg:self-start">
-      <div class="rounded-[16px] bg-band p-6 text-band-ink on-band">
-        <p class="font-display text-body font-semibold">Still have a question?</p>
-        <p class="mt-1.5 text-[16px] leading-snug text-band-muted">Talk to a person on our UK team. No sales script.</p>
-        <ul class="mt-4 space-y-1 text-[16px]">
-          <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>020 3489 3934</a></li>
-          <li><a href="mailto:support@onlinemarketinghelp.co.uk" class="text-link [overflow-wrap:anywhere] max-sm:text-[15px]" data-track="faq_email_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>support@onlinemarketinghelp.co.uk</a></li>
+      <div class="mt-8 rounded-[16px] border border-line bg-surface p-6">
+        <p class="font-display text-[18px] font-semibold">Still have a question?</p>
+        <p class="mt-1 text-[16px] text-muted">Talk to a person on our UK team. No sales script.</p>
+        <ul class="mt-3 space-y-1 text-[16px]">
+          <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click">${icon("phone")}020 3489 3934</a></li>
+          <li><a href="mailto:support@onlinemarketinghelp.co.uk" class="text-link [overflow-wrap:anywhere] max-sm:text-[15px]" data-track="faq_email_click">${icon("mail")}support@onlinemarketinghelp.co.uk</a></li>
         </ul>
-        <a href="/contact?service=ai-voice-agents" class="btn btn-primary mt-5 w-full" data-track="faq_book_demo">Book a Voice Agent Demo</a>
       </div>
     </div>
-
-    <div class="lg:col-start-2 lg:row-span-2 lg:row-start-1" data-faq>
-      <div class="relative">
-        <label for="faq-search" class="sr-only">Search the questions</label>
-        <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
-        <input id="faq-search" type="search" placeholder="Search, for example GDPR, transfer or contract" autocomplete="off" class="field !min-h-[54px] !rounded-[12px] !pl-12" data-faq-search data-track="faq_search">
-      </div>
-      <div role="group" aria-label="Filter questions by topic" class="mt-4 flex flex-wrap gap-2" data-faq-filters>
-        <button type="button" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[15px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-faq-filter="all" aria-pressed="true" data-track="faq_filter" data-track-name="All questions">All questions <span class="ml-1 opacity-70 tnum" data-faq-count="all"></span></button>
-        <button type="button" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[15px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-faq-filter="callers" aria-pressed="false" data-track="faq_filter" data-track-name="Callers and AI">Callers and AI <span class="ml-1 opacity-70 tnum" data-faq-count="callers"></span></button>
-        <button type="button" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[15px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-faq-filter="setup" aria-pressed="false" data-track="faq_filter" data-track-name="Setup and systems">Setup and systems <span class="ml-1 opacity-70 tnum" data-faq-count="setup"></span></button>
-        <button type="button" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[15px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-faq-filter="data" aria-pressed="false" data-track="faq_filter" data-track-name="Data and rules">Data and rules <span class="ml-1 opacity-70 tnum" data-faq-count="data"></span></button>
-        <button type="button" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[15px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-faq-filter="sectors" aria-pressed="false" data-track="faq_filter" data-track-name="Health and legal">Health and legal <span class="ml-1 opacity-70 tnum" data-faq-count="sectors"></span></button>
-        <button type="button" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[15px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper" data-faq-filter="working" aria-pressed="false" data-track="faq_filter" data-track-name="Working with us">Working with us <span class="ml-1 opacity-70 tnum" data-faq-count="working"></span></button>
-      </div>
-      <div class="mt-5 flex items-center justify-between gap-4 text-[15px] text-muted">
-        <p aria-live="polite" data-faq-status>Showing all ${voiceFaqs.length} questions</p>
-        <button type="button" class="inline-flex min-h-[44px] items-center gap-1.5 font-semibold text-ink hover:text-hl" data-faq-expand data-track="faq_expand_all">Open all</button>
-      </div>
-
-      <div class="mt-2 space-y-3" data-faq-list>
-${voiceFaqs.map(faqItem).join("\n")}
-      </div>
-      <div class="mt-3 rounded-[14px] border border-dashed border-[var(--va-line-strong)] p-6 text-center" data-faq-empty hidden>
-        <p class="font-display text-[18px] font-semibold">No questions match that</p>
-        <p class="mt-1 text-[16px] text-muted">Try another word, or ring us on <a href="tel:+442034893934" class="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4 tnum">020 3489 3934</a> and ask a person.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="related" data-component="RelatedServices">
-  <div class="container-omh py-20 lg:py-28" data-related>
-    <div class="mx-auto text-center">
-      <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Related services</p>
-      <h2>What makes the phone ring <span class="hl">in the first place</span></h2>
-      <p class="mt-5 text-muted">Ads, local search and your website bring in the calls. Your AI voice agent makes sure every one of them is answered. We run all four, so the numbers join up in one report.</p>
-    </div>
-
-    <ul class="mt-12 grid gap-5 md:grid-cols-3">
-      <li>
-        <a href="/google-adwords-ppc" class="group flex h-full flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-gold focus-visible:border-gold" data-related-card="ads" data-track="related_service_click" data-track-name="Google Ads">
-          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="rounded-[10px] bg-surface p-3.5 text-left shadow-[0_10px_24px_-18px_rgb(16_24_40/0.5)]">
-          <p class="text-[12px] font-semibold">Sponsored</p>
-          <p class="mt-0.5 text-[14.5px] font-semibold leading-snug text-[#1a4fb5] dark:text-[#9bbcff]">Emergency Plumber in Bristol, Call Now</p>
-          <p class="mt-0.5 text-[12.5px] leading-snug text-muted">Burst pipes, leaks and boiler faults. Same-day call-outs.</p>
-          <span class="mt-2 inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1 text-[12.5px] font-semibold"><svg class="icon !h-3.5 !w-3.5 text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Call <span class="tnum">0117 496 0135</span></span>
-        </div></div>
-          <div class="flex flex-1 flex-col px-3 pb-3 pt-5">
-            <h3 class="!text-[24px] group-hover:text-hl">Google Ads</h3>
-            <p class="mt-2 text-[16px] leading-[1.5] text-muted">Paid search that puts your number in front of people ready to buy.</p>
-            <span class="mt-auto inline-flex items-center gap-2 pt-5 font-display text-[16.5px] font-semibold">Explore Google Ads<span class="grid h-8 w-8 place-items-center rounded-full border border-[var(--va-line-strong)] transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-navy"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span></span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="/local-seo" class="group flex h-full flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-gold focus-visible:border-gold" data-related-card="seo" data-track="related_service_click" data-track-name="Local SEO">
-          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="rounded-[10px] bg-surface p-3.5 text-left shadow-[0_10px_24px_-18px_rgb(16_24_40/0.5)]">
-          <div class="flex h-14 items-center justify-center rounded-[8px] bg-[var(--va-sea)]"><svg class="icon !h-7 !w-7 text-hl" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg></div>
-          <p class="mt-2.5 text-[14.5px] font-semibold leading-snug">Severn Plumbing</p>
-          <p class="text-[12.5px] text-muted">Plumber in Bristol. <span class="font-semibold text-ok">Open 24 hours</span></p>
-          <span class="mt-2 inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1 text-[12.5px] font-semibold"><svg class="icon !h-3.5 !w-3.5 text-hl" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Call</span>
-        </div></div>
-          <div class="flex flex-1 flex-col px-3 pb-3 pt-5">
-            <h3 class="!text-[24px] group-hover:text-hl">Local SEO</h3>
-            <p class="mt-2 text-[16px] leading-[1.5] text-muted">Show up in the map results when people nearby search for what you do.</p>
-            <span class="mt-auto inline-flex items-center gap-2 pt-5 font-display text-[16.5px] font-semibold">Explore Local SEO<span class="grid h-8 w-8 place-items-center rounded-full border border-[var(--va-line-strong)] transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-navy"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span></span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="/website-designs" class="group flex h-full flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-gold focus-visible:border-gold" data-related-card="web" data-track="related_service_click" data-track-name="Website Design">
-          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="overflow-hidden rounded-[10px] bg-surface text-left shadow-[0_10px_24px_-18px_rgb(16_24_40/0.5)]">
-          <div class="flex gap-1 border-b border-line px-3 py-2"><i class="block h-2 w-2 rounded-full bg-ink/20"></i><i class="block h-2 w-2 rounded-full bg-ink/20"></i><i class="block h-2 w-2 rounded-full bg-ink/20"></i></div>
-          <div class="p-3.5">
-            <p class="text-[14.5px] font-semibold leading-snug">Leak? Call us now, day or night.</p>
-            <span class="mt-1.5 block h-1.5 w-4/5 rounded-full bg-ink/10"></span>
-            <span class="mt-1.5 block h-1.5 w-3/5 rounded-full bg-ink/10"></span>
-            <span class="mt-3 flex items-center justify-center gap-1.5 rounded-[8px] bg-gold py-1.5 text-[12.5px] font-semibold text-navy"><svg class="icon !h-3.5 !w-3.5" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Tap to call</span>
-          </div>
-        </div></div>
-          <div class="flex flex-1 flex-col px-3 pb-3 pt-5">
-            <h3 class="!text-[24px] group-hover:text-hl">Website Design</h3>
-            <p class="mt-2 text-[16px] leading-[1.5] text-muted">A site that turns visitors into calls and bookings, with your number where people expect it.</p>
-            <span class="mt-auto inline-flex items-center gap-2 pt-5 font-display text-[16.5px] font-semibold">Explore Website Design<span class="grid h-8 w-8 place-items-center rounded-full border border-[var(--va-line-strong)] transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-navy"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span></span>
-          </div>
-        </a>
-      </li>
-    </ul>
-
-        <svg viewBox="0 0 1200 110" preserveAspectRatio="none" class="hidden h-[90px] w-full md:block" aria-hidden="true" data-related-lines>
-      <path class="rel-line" data-related-line="ads" d="M200 0 C200 60 600 40 600 104"/>
-      <path class="rel-line" data-related-line="seo" d="M600 0 V104"/>
-      <path class="rel-line" data-related-line="web" d="M1000 0 C1000 60 600 40 600 104"/>
-    </svg>
-    <div class="flex justify-center py-3 text-hl md:hidden" aria-hidden="true"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></div>
-
-    <div class="on-band relative mx-auto flex max-w-[860px] flex-col items-center gap-5 rounded-[18px] bg-band p-6 text-center text-band-ink sm:flex-row sm:p-7 sm:text-left">
-      <span class="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gold text-navy" aria-hidden="true"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg></span>
-      <div class="flex-1">
-        <p class="text-[14px] font-semibold text-band-hl">You are here</p>
-        <p class="font-display text-[22px] font-semibold leading-tight">AI voice agent: every one of those calls answered.</p>
-        <p class="mt-1 text-[16px] text-band-muted">Calls, bookings and transfers reported beside your ads, search and website results.</p>
-      </div>
-      <a href="/contact?service=ai-voice-agents&amp;bundle=1" class="btn btn-primary shrink-0" data-track="related_bundle">Ask about a joined-up plan</a>
+    <div class="space-y-3">
+${faqFirst.map((i, n) => faqItem(i, n === 0)).join("\n")}
+      <details class="group rounded-[14px] border border-dashed border-[var(--va-line-strong)]" data-track="faq_show_more">
+        <summary class="flex min-h-[64px] items-center justify-center gap-2 px-5 py-4 font-display text-[17px] font-semibold">Show ${faqMore.length} more questions${icon("chevron-down", "faq-chevron")}</summary>
+        <div class="space-y-3 px-3 pb-3">
+${faqMore.map((i) => faqItem(i)).join("\n")}
+        </div>
+      </details>
     </div>
   </div>
 </section>
 
 <div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
-    <a href="/contact?service=ai-voice-agents" class="btn btn-primary flex-1 whitespace-nowrap !px-3" data-track="sticky_book_demo">Book a Demo</a>
+    <a href="#book-demo-form" class="btn btn-primary flex-1 whitespace-nowrap !px-3" data-track="sticky_book_demo">Book a Demo</a>
     <a href="tel:+442034893934" class="btn btn-secondary shrink-0 whitespace-nowrap !px-3 tnum" data-track="sticky_phone_click">Call 020 3489 3934</a>
   </div>
 </div>

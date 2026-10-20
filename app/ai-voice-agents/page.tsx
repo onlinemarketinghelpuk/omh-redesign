@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { BookDemo } from "@/components/BookDemo";
-import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
+import { RelatedServices } from "@/components/RelatedServices";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
-import { landingV4Markup } from "@/lib/content/ai-voice-agents-landing-v4";
 import { voiceAgentsMarkup, voiceFaqs } from "@/lib/content/ai-voice-agents-markup";
 import { JsonLd, SITE, faqSchema } from "@/lib/schema";
 
@@ -58,60 +57,37 @@ const graph = {
   ],
 };
 
-// Splits a markup string at each top-level <section>, keyed by its id (or aria-labelledby).
-// `head` is whatever comes before the first section (the icon sprite).
-function sectionsOf(html: string, className: string) {
-  const [head, ...parts] = html.split(/(?=<section[\s>])/);
-  const byKey = new Map(parts.map((p) => [p.match(/^<section[^>]*?\s(?:id|aria-labelledby)="([^"]+)"/)![1], p]));
-  return { head, byKey, className };
-}
-
-const v4 = sectionsOf(landingV4Markup, "v4l");
-const va = sectionsOf(voiceAgentsMarkup, "va-page");
-
-// The running order from the SEO brief (Part 3). The two designs are styled by their own wrapper class, so each
-// run of one design's sections gets its own wrapper.
-const runs: [typeof v4, string[]][] = [
-  [v4, ["top"]],
-  [va, ["what-is"]],
-  [v4, ["features-title"]],
-  [va, ["branding"]],
-  [v4, ["how", "use-cases"]],
-  // Industries, Client feedback and the six Local cover cards came back from /ai-voice-agents-old on 20 Oct 2026 (client's call).
-  [va, ["industries", "feedback", "why-omh", "compare", "right-fit", "roi-calculator", "pricing"]],
-  [v4, ["cities"]],
-  [va, ["faq", "related"]],
+// The three services that make the phone ring, kept as plain internal links (the previous mock-up cards and
+// "joined-up plan" CTA competed with the booking band).
+const related = [
+  { title: "Google Ads", href: "/google-adwords-ppc", body: "Paid search that puts your number in front of people ready to buy." },
+  { title: "Local SEO", href: "/local-seo", body: "Show up in the map results when people nearby search for what you do." },
+  { title: "Website Design", href: "/website-designs", body: "A site that turns visitors into calls and bookings, with your number where people expect it." },
 ];
-const placed = runs.flatMap(([, keys]) => keys);
-for (const src of [v4, va])
-  for (const key of src.byKey.keys()) if (!placed.includes(key)) throw new Error(`/ai-voice-agents: section "${key}" has no place in runs`);
-const runHtml = runs.map(([src, keys], i) => {
-  const html = keys.map((k) => {
-    const part = src.byKey.get(k);
-    if (!part) throw new Error(`/ai-voice-agents: no section "${k}"`);
-    return part;
-  });
-  // The icon sprite goes in the first wrapper of its design.
-  return (runs.findIndex(([s]) => s === src) === i ? src.head : "") + html.join("");
-});
 
+/*
+  Rebuilt 20 Oct 2026 for conversion: 10 sections plus the booking band, one primary CTA wording, one industry
+  panel. Audit, section map and QA: docs/ai-voice-agents-cro/. The previous page is frozen as git tag `oldv2`
+  and route /ai-voice-agents-oldv2 (noindex).
+*/
 export default function AiVoiceAgentsPage() {
   return (
     <>
       <JsonLd data={graph} />
-      {/* One root for both page scripts; they find their widgets by data-* hooks inside it. */}
-      <div id="va-page">
-        {runs.map(([src], i) => (
-          <div key={i} className={src.className} dangerouslySetInnerHTML={{ __html: runHtml[i] }} />
-        ))}
-      </div>
-      <LandingV4Script />
-      {/* The booking tabs every "Book a Demo" / "Call Me Now" button on the page points at. */}
+      {/* One root; the page script finds its widgets by data-* hooks inside it. */}
+      <div id="va-page" className="va-page" dangerouslySetInnerHTML={{ __html: voiceAgentsMarkup }} />
+      <RelatedServices
+        title="What makes the phone ring in the first place"
+        body="Ads, local search and your website bring in the calls. Your AI voice agent makes sure every one of them is answered. We run all four, so the numbers join up in one report."
+        links={related}
+        eventPrefix="voice"
+      />
+      {/* The booking band every "Book a 30-Minute Demo" button on the page points at. */}
       <BookDemo
         id="book-demo-form"
         heading={
           <>
-            Hear an AI voice agent answer <span className="text-[#f2c675]">as your business</span>
+            Book a 30-minute demo, <span className="text-[#f2c675]">by video or phone</span>
           </>
         }
       />
