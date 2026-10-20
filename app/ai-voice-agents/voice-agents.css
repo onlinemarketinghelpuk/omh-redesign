@@ -475,7 +475,7 @@ html:has(.va-page dialog[open]) {
   .day-miss { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .7rem; border-radius: 8px; background: color-mix(in srgb, var(--va-miss) 12%, var(--va-surface)); color: var(--va-miss); font-size: 14px; font-weight: 600; }
   .day-ok { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .7rem; border-radius: 8px; background: color-mix(in srgb, var(--va-ok) 12%, var(--va-surface)); color: var(--va-ok); font-size: 14px; font-weight: 600; }
   @media (prefers-reduced-motion: reduce) {
-    [data-brand] :is([data-brand-line], [data-brand-outcome]) { display: block !important; animation: none; }
+    [data-brand] :is([data-brand-line], [data-brand-outcome]) { animation: none; }
   }
 }
 
@@ -573,9 +573,6 @@ html:has(.va-page dialog[open]) {
 #va-page .m-instant, #va-page .m-instant .mw > span { transition: none !important; }
 .m-progress { position: fixed; inset: 0 0 auto; z-index: 60; height: 3px; background: linear-gradient(90deg, #d79a37, #f2c675); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
 #va-page .hero-video .video-frame { transform-origin: 50% 0; will-change: transform; transition: border-radius .2s ease; }
-#va-page :is(.hover-card, [data-industry], #pricing article, .city, #feedback figure, .tl-card, #features ol > li, [data-tab-panel]):hover {
-  background-image: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(215 154 55 / .12), transparent 45%);
-}
 @media (prefers-reduced-motion: reduce) { .m-progress { display: none; } }
 
 /* Fit gauge and result, larger (20 Oct 2026). */
@@ -689,3 +686,77 @@ html:has(.va-page dialog[open]) {
   .v4l .lf .lf-txt b { font-size: 15.5px; }
   .v4l .lf .lf-txt small { font-size: 13px; }
 }
+
+/* ================= Round six (20 Oct 2026) ================= */
+
+/* 1. Hero: hidden from the first paint while the script is on its way, so a reload no longer shows it and then
+   replays it. Lets go when the motion layer starts (motion-ready), when it decides not to run (motion-skip),
+   and after 2.5s regardless. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-js]:not(.motion-ready):not(.motion-skip) #va-page #top :is(.badge, h1, .lead, #hero-form, #hero-form + p, #industries-strip, .hero-video) {
+    opacity: 0; animation: va-failsafe 0s linear 2.5s forwards;
+  }
+}
+@keyframes va-failsafe { to { opacity: 1; } }
+
+/* 2. Cursor spotlight: a soft fill and a lit edge that follow the pointer, gold on light cards, pale gold on dark. */
+#va-page .m-glow, #book-demo-form .m-glow { position: relative; isolation: isolate; --glow-fill: rgb(215 154 55 / .13); --glow-edge: rgb(215 154 55 / .9); }
+#va-page .m-glow-dark, #book-demo-form .m-glow-dark { --glow-fill: rgb(242 198 117 / .11); --glow-edge: rgb(242 198 117 / .75); }
+:is(#va-page, #book-demo-form) .m-glow::before, :is(#va-page, #book-demo-form) .m-glow::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+}
+:is(#va-page, #book-demo-form) .m-glow::after { background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), var(--glow-fill), transparent 45%); }
+:is(#va-page, #book-demo-form) .m-glow::before {
+  z-index: 1; padding: 1px;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), var(--glow-edge), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+}
+:is(#va-page, #book-demo-form) .m-glow:hover::before, :is(#va-page, #book-demo-form) .m-glow:hover::after { opacity: 1; }
+
+/* 4. Entrance variants. Hidden states apply only under html.motion-ready; .m-done drops the entrance timing. */
+.motion-ready #va-page :is(.m-up, .m-left, .m-right, .m-slide, .m-scale, .m-blur, .m-pop, .m-eyebrow) {
+  transition: opacity .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms), transform 1s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms), filter .9s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms);
+}
+.motion-ready #va-page .m-left:not(.is-in) { opacity: 0; transform: translateX(-44px); }
+.motion-ready #va-page .m-right:not(.is-in) { opacity: 0; transform: translateX(44px); }
+.motion-ready #va-page .m-slide:not(.is-in) { opacity: 0; transform: translateX(90px); }
+.motion-ready #va-page .m-scale:not(.is-in) { opacity: 0; transform: translateY(34px) scale(.94); }
+.motion-ready #va-page #plan-growth.m-scale:not(.is-in) { transform: translateY(70px) scale(.92); }
+.motion-ready #va-page .m-blur:not(.is-in) { opacity: 0; filter: blur(10px); transform: translateY(10px); }
+.motion-ready #va-page .m-pop:not(.is-in) { opacity: 0; transform: scale(.4); }
+.motion-ready #va-page .m-pop { transition-timing-function: cubic-bezier(.34, 1.56, .64, 1); }
+.motion-ready #va-page .m-eyebrow:not(.is-in) { opacity: 0; transform: translateX(-16px); }
+.motion-ready #va-page .m-eyebrow :is(.eyebrow-mark, .voice-mark) { transform-origin: 0 50%; transition: transform .8s cubic-bezier(.16, 1, .3, 1) calc(var(--d, 0ms) + 150ms); }
+.motion-ready #va-page .m-eyebrow:not(.is-in) :is(.eyebrow-mark, .voice-mark) { transform: scaleX(0); }
+.motion-ready #va-page .tl::before { transform-origin: 0 50%; transition: transform 1.4s cubic-bezier(.16, 1, .3, 1) .2s; }
+.motion-ready #va-page .tl:not(.is-in)::before { transform: scaleX(0); }
+.motion-ready #va-page .m-done { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease, background-color .3s ease, opacity .3s ease, filter .3s ease !important; }
+
+/* 3. Fit check, guided: the next question lights up and its buttons breathe; a dot fills per answer. */
+#va-page [data-fit-form] ol > li { margin-inline: -.75rem; padding-inline: .75rem; border-radius: 12px; transition: background-color .3s ease, box-shadow .3s ease; }
+#va-page [data-fit-form] ol > li.is-next { background: color-mix(in srgb, #d79a37 10%, transparent); box-shadow: inset 3px 0 0 #d79a37; }
+#va-page [data-fit-form] li.is-next label > span { border-color: #d79a37; }
+@media (prefers-reduced-motion: no-preference) {
+  #va-page [data-fit-form] li.is-next label > span { animation: va-fit-breathe 2s ease-in-out infinite; }
+  #va-page [data-fit-form] li.is-next label + label > span { animation-delay: .25s; }
+}
+@keyframes va-fit-breathe { 0%, 100% { box-shadow: 0 0 0 0 rgb(215 154 55 / .45); } 50% { box-shadow: 0 0 0 6px rgb(215 154 55 / 0); } }
+#va-page .fit-dots { display: flex; gap: 6px; }
+#va-page .fit-dots i { display: block; width: 26px; height: 6px; border-radius: 999px; background: var(--va-line-strong); opacity: .35; transition: background-color .3s ease, opacity .3s ease, transform .3s ease; }
+#va-page .fit-dots i.is-yes { background: #d79a37; opacity: 1; transform: scaleY(1.3); }
+#va-page .fit-dots i.is-no { background: var(--va-ink); opacity: .55; }
+#va-page .fit-tick { font-size: 19px; font-weight: 600; fill: var(--va-muted); }
+#va-page [data-fit-gauge] { width: 176px; }
+
+/* 5. Responsive. */
+#va-page #pricing article { container-type: inline-size; }
+@container (max-width: 380px) {
+  #va-page .plan-facts { grid-template-columns: 1fr; gap: 6px; }
+  #va-page .plan-facts > div { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; padding: .55rem .8rem; text-align: left; }
+  #va-page .plan-facts dt { justify-content: flex-start; }
+  #va-page .plan-facts dd { margin-top: 0; font-size: 18px; text-align: right; white-space: nowrap; }
+  #va-page .plan-facts dd span { display: inline; margin: 0 0 0 .3rem; }
+}
+#va-page .plan-facts dt { font-size: 13px; }
+#va-page #cities .link-tap { display: inline-flex; min-height: 44px; align-items: center; }

@@ -275,3 +275,21 @@ transitioned in, so elements on screen never visibly started hidden; hidden stat
 transitions off (`html.m-setup`) and the animation runs after a paint. Probed in headless Chrome:
 at +137ms the hero parts read opacity 0, at +600ms the badge is in and the first word is rising, at
 +1.7s everything is at 1.
+Round six:
+- Hero flash on reload fixed: the hero is hidden from the first paint (CSS keyed to the `data-js`
+  flag the layout sets before paint) until the motion layer takes over, or tells the page to skip
+  (reduced motion, background tab), or 2.5s pass. Probed from the earliest frames: opacity 0 until
+  the script runs, then a single play-in.
+- Cursor spotlight on 97 cards and panels across every section and the booking band: a soft fill and
+  a lit edge that follow the pointer, pale gold on the dark bands.
+- Fit check is guided: the next unanswered question is highlighted with gently pulsing buttons, a dot
+  fills per answer (gold for yes), the empty state says "Start with question 1", the 0 and 5 labels
+  sit clear of the arc, and on phones the questions and the result stack.
+- Entrance variety: headings rise word by word, eyebrows draw their dash, intro paragraphs sharpen
+  from a blur, step lists slide from the left, side panels and FAQs from the right, carousel cards
+  slide in, pricing and comparison scale up (the recommended plan from further), timeline numbers
+  pop and its dashed line draws, dark panels unclip.
+- Responsive audit at 320, 360, 375, 390, 414, 768, 834, 1024, 1280, 1440 and 1920: no page
+  overflow and no element past the edge at any width (fixed: the "What is" column at 375 and below,
+  the sticky bar's phone button at 320), no real text under 13px, no tap target under 40px (fixed:
+  "Ask us about your area"). Pricing facts switch to rows when a card is narrower than 380px.

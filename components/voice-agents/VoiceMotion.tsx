@@ -13,21 +13,27 @@ import { useEffect } from "react";
   stalled observer can never leave a section blank. Reduced motion turns all of it off.
 */
 
+// Each kind has its own entrance (voice-agents.css): rise, slide in from either side, scale up, sharpen from a
+// blur, pop, or unclip. Kept to one kind per group so a section reads as one gesture, not a medley.
 const REVEAL = [
-  // [selector, kind]
-  ["section .eyebrow", "up"],
-  ["section > .container-omh > p.text-muted, section > .container-omh > p.text-band-muted, section .head-c > p, #what-is p.text-band-muted, #right-fit p.text-muted", "up"],
-  ["[data-industry], #feedback figure, #pricing article, .tl-step, .cap-tab, [data-faq-item], [data-brand-step], #right-fit .hover-card, #features ol > li, .city, #compare .cmp-table, #compare [data-cmp] dl > div, #faq .rounded-\\[16px\\]", "up"],
-  [".brand-phone, #use-cases [data-tab-panel]:not([hidden]), [data-fit-form]", "clip"],
-  ["#feedback dl, .ucard-vis", "up"],
+  ["section .eyebrow", "eyebrow"],
+  ["section > .container-omh > p.text-muted, section > .container-omh > p.text-band-muted, section .head-c > p, #what-is p.text-band-muted, #right-fit p.text-muted, #features > .container-omh > p", "blur"],
+  ["[data-industry], #features ol > li, .tl-card", "up"],
+  [".cap-tab, [data-brand-step], [data-fit-form]", "left"],
+  ["#right-fit .hover-card, [data-faq-item], #faq .rounded-\\[16px\\]", "right"],
+  ["#feedback figure, .city", "slide"],
+  ["#pricing article, #compare .cmp-table, #compare [data-cmp] dl > div, #feedback dl, .kstats > div", "scale"],
+  [".tl-num", "pop"],
+  [".brand-phone, #use-cases [data-tab-panel]:not([hidden]), .flow-panel, #industries aside", "clip"],
 ] as const;
 
 export function VoiceMotion() {
   useEffect(() => {
     const root = document.getElementById("va-page");
     if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (document.visibilityState !== "visible" || !("IntersectionObserver" in window)) return;
+    const skip = () => document.documentElement.classList.add("motion-skip");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return skip();
+    if (document.visibilityState !== "visible" || !("IntersectionObserver" in window)) return skip();
 
     const undo: (() => void)[] = [];
     const on = (t: EventTarget, type: string, fn: EventListener, opts?: AddEventListenerOptions) => {
@@ -78,7 +84,7 @@ export function VoiceMotion() {
       root.querySelectorAll<HTMLElement>(sel).forEach((el) => {
         if (tagged.has(el)) return;
         tagged.add(el);
-        el.classList.add(kind === "clip" ? "m-clip" : "m-up");
+        el.classList.add("m-" + kind);
       }),
     );
     // Siblings that enter together get a small delay each, so a row of cards ripples in.
@@ -88,7 +94,14 @@ export function VoiceMotion() {
       el.style.setProperty("--d", `${Math.min(sibs.indexOf(el), 5) * 90}ms`);
     });
 
-    const show = (el: Element) => el.classList.add("is-in");
+    // Once an element has arrived, drop the entrance timing so hover effects respond at their own speed.
+    const show = (el: Element) => {
+      el.classList.add("is-in");
+      const d = parseFloat((el as HTMLElement).style.getPropertyValue("--d")) || 0;
+      window.setTimeout(() => el.classList.add("m-done"), d + 1300);
+      const tl = el.closest(".tl");
+      if (tl) tl.classList.add("is-in");
+    };
     const io = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
@@ -139,7 +152,7 @@ export function VoiceMotion() {
       clearTimeout(failsafe);
       document.documentElement.classList.remove("motion-ready");
       tagged.forEach((el) => {
-        el.classList.remove("m-up", "m-clip", "is-in", "m-instant");
+        el.classList.remove(...REVEAL.map(([, k]) => "m-" + k), "is-in", "m-instant", "m-done");
         el.style.removeProperty("--d");
       });
     });
@@ -238,9 +251,19 @@ export function VoiceMotion() {
         on(b, "pointerleave", leave);
         undo.push(leave);
       });
-      const glowSel = ".hover-card, [data-industry], #pricing article, .city, #feedback figure, .tl-card, #features ol > li, [data-tab-panel]";
-      on(root, "pointermove", (e) => {
-        const card = (e.target as Element).closest<HTMLElement>(glowSel);
+      const glowSel = [
+        ".hover-card", "[data-industry]", "#industries aside", "#pricing article", ".city", "#feedback figure", ".tl-card", ".lf-node",
+        "#features ol > li", "[data-tab-panel]", ".cap-tab", "[data-brand-step]", "#use-cases .bg-sand", "[data-faq-item]",
+        "#faq .rounded-\\[16px\\]", "#compare [data-cmp] dl > div", "#compare .lg\\:block", "#what-is .bg-band-surface",
+      ].map((s) => "#va-page " + s).concat("#book-demo-form [role=tab]").join(", ");
+      const glowing = Array.from(document.querySelectorAll<HTMLElement>(glowSel));
+      glowing.forEach((el) => {
+        el.classList.add("m-glow");
+        if (el.closest(".on-band, #book-demo-form, .flow-panel")) el.classList.add("m-glow-dark");
+      });
+      undo.push(() => glowing.forEach((el) => el.classList.remove("m-glow", "m-glow-dark")));
+      on(document, "pointermove", (e) => {
+        const card = (e.target as Element).closest<HTMLElement>(".m-glow");
         if (!card) return;
         const r = card.getBoundingClientRect();
         card.style.setProperty("--mx", `${(e as PointerEvent).clientX - r.left}px`);

@@ -443,7 +443,7 @@ export const legacyMarkup = String.raw`
         <form class="hover-card mt-8 rounded-[18px] border border-line bg-paper p-5 sm:p-6" data-fit-form>
           <ol class="divide-y divide-line">
           <li>
-            <fieldset class="flex items-center justify-between gap-4 py-3">
+            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">01</span>Do you miss calls when your team is busy, on site or closed?</legend>
               <span class="flex shrink-0 gap-1.5">
                 <label class="relative"><input type="radio" name="fit-q0" value="yes" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
@@ -452,7 +452,7 @@ export const legacyMarkup = String.raw`
             </fieldset>
           </li>
           <li>
-            <fieldset class="flex items-center justify-between gap-4 py-3">
+            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">02</span>Are most of your calls the same few requests?</legend>
               <span class="flex shrink-0 gap-1.5">
                 <label class="relative"><input type="radio" name="fit-q1" value="yes" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
@@ -461,7 +461,7 @@ export const legacyMarkup = String.raw`
             </fieldset>
           </li>
           <li>
-            <fieldset class="flex items-center justify-between gap-4 py-3">
+            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">03</span>Could one missed call cost you a customer worth real money?</legend>
               <span class="flex shrink-0 gap-1.5">
                 <label class="relative"><input type="radio" name="fit-q2" value="yes" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
@@ -470,7 +470,7 @@ export const legacyMarkup = String.raw`
             </fieldset>
           </li>
           <li>
-            <fieldset class="flex items-center justify-between gap-4 py-3">
+            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">04</span>Do you have a diary or system bookings can go into?</legend>
               <span class="flex shrink-0 gap-1.5">
                 <label class="relative"><input type="radio" name="fit-q3" value="yes" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
@@ -479,7 +479,7 @@ export const legacyMarkup = String.raw`
             </fieldset>
           </li>
           <li>
-            <fieldset class="flex items-center justify-between gap-4 py-3">
+            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">05</span>Are you happy for callers to be told they are speaking to an AI?</legend>
               <span class="flex shrink-0 gap-1.5">
                 <label class="relative"><input type="radio" name="fit-q4" value="yes" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
@@ -488,17 +488,18 @@ export const legacyMarkup = String.raw`
             </fieldset>
           </li>
           </ol>
-          <div class="mt-5 flex flex-wrap items-center gap-5 rounded-[14px] bg-sand p-5" aria-live="polite" data-fit-result data-state="empty">
-            <svg viewBox="0 0 200 122" class="shrink-0" role="img" aria-label="Fit gauge" data-fit-gauge>
+          <div class="mt-5 flex flex-col items-start gap-4 rounded-[14px] bg-sand p-5 sm:flex-row sm:items-center sm:gap-5" aria-live="polite" data-fit-result data-state="empty">
+            <svg viewBox="-6 0 212 136" class="shrink-0" role="img" aria-label="Fit gauge" data-fit-gauge>
               <path d="M20 100 A80 80 0 0 1 180 100" class="fit-track"/>
               <path d="M20 100 A80 80 0 0 1 180 100" class="fit-fill" style="stroke-dasharray:251.3;stroke-dashoffset:251.3" data-fit-arc data-arc="251.3"/>
               <g class="fit-needle" style="transform:rotate(-90deg)" data-fit-needle><line x1="100" y1="100" x2="100" y2="34"/><circle cx="100" cy="100" r="7"/></g>
-              <text x="20" y="116" class="fit-tick" text-anchor="middle">0</text>
-              <text x="180" y="116" class="fit-tick" text-anchor="middle">5</text>
+              <text x="20" y="132" class="fit-tick" text-anchor="middle">0</text>
+              <text x="180" y="132" class="fit-tick" text-anchor="middle">5</text>
             </svg>
             <div class="min-w-0 flex-1">
-              <p class="font-display text-[24px] font-semibold leading-tight" data-fit-title>Answer to see your fit</p>
-              <p class="mt-1.5 text-[16px] leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
+              <p class="font-display text-[24px] font-semibold leading-tight" data-fit-title>Start with question 1</p>
+              <p class="mt-1.5 text-[16px] leading-snug text-muted" data-fit-text>Tap Yes or No on each question. Your fit builds here as you answer.</p>
+              <div class="fit-dots mt-3" aria-hidden="true" data-fit-dots><i></i><i></i><i></i><i></i><i></i></div>
               <p class="mt-1.5 text-[15px] font-semibold text-muted tnum" data-fit-count>0 of 5 answered</p>
               <a href="#book-demo-form" class="btn btn-primary mt-3" data-fit-cta data-track="fit_check_book_demo" hidden>Book a 30-Minute Demo</a>
             </div>
@@ -570,8 +571,8 @@ ${cmpCols.slice(1).map((c, i) => `        <button type="button" role="radio" ari
 ${cmpRows.map(([k, omh, ...v]) => `        <div class="rounded-[14px] border border-line bg-surface p-4">
           <dt class="text-[16px] font-semibold">${k}</dt>
           <dd class="mt-3 grid grid-cols-2 gap-2 text-[15px] leading-snug">
-            <span class="cmp-omh rounded-[10px] p-3"><span class="block text-[12.5px] font-semibold uppercase tracking-[0.1em] text-hl">OMH</span><span class="mt-1 block font-semibold">${omh}</span></span>
-            ${v.map((t, i) => `<span class="rounded-[10px] bg-paper p-3" data-cmp-cell="${i + 1}"${i ? " hidden" : ""}><span class="block text-[12.5px] font-semibold uppercase tracking-[0.1em] text-muted">${cmpCols[i + 1]}</span><span class="mt-1 block text-muted">${t}</span></span>`).join("\n")}
+            <span class="cmp-omh rounded-[10px] p-3"><span class="block text-[13px] font-semibold uppercase tracking-[0.1em] text-hl">OMH</span><span class="mt-1 block font-semibold">${omh}</span></span>
+            ${v.map((t, i) => `<span class="rounded-[10px] bg-paper p-3" data-cmp-cell="${i + 1}"${i ? " hidden" : ""}><span class="block text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">${cmpCols[i + 1]}</span><span class="mt-1 block text-muted">${t}</span></span>`).join("\n")}
           </dd>
         </div>`).join("\n")}
       </dl>
@@ -633,7 +634,7 @@ ${voiceFaqs.map(faqItem).join("\n")}
 <div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo-form" class="btn btn-primary flex-1 whitespace-nowrap !px-3" data-track="sticky_book_demo">Book a Demo</a>
-    <a href="tel:+442034893934" class="btn btn-secondary shrink-0 whitespace-nowrap !px-3 tnum" data-track="sticky_phone_click">Call 020 3489 3934</a>
+    <a href="tel:+442034893934" class="btn btn-secondary shrink-0 whitespace-nowrap !px-3 tnum" data-track="sticky_phone_click" aria-label="Call 020 3489 3934"><span class="max-[374px]:hidden">Call&nbsp;</span>020 3489 3934</a>
   </div>
 </div>
 `;

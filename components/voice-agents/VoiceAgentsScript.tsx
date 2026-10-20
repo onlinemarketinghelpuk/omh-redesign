@@ -872,7 +872,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     const total = 5,
       len = Number(arc.dataset.arc);
     const copy: Record<string, [string, string]> = {
-      empty: ["Answer to see your fit", "Your result appears here as you go. Nothing is sent anywhere."],
+      empty: ["Start with question 1", "Tap Yes or No on each question. Your fit builds here as you answer."],
       strong: ["Strong fit", "A voice agent is likely to earn its keep. Book a demo and hear one set up for your calls."],
       maybe: ["Worth a chat", "Some of your calls could suit an agent. A 30-minute call will tell us which ones."],
       low: ["Probably not yet", "On these answers an agent may not pay for itself. We would rather tell you that now."],
@@ -901,6 +901,17 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
       $("[data-fit-text]", result).textContent = copy[state][1];
       $("[data-fit-count]", result).textContent = answered + " of " + total + " answered";
       $("[data-fit-cta]", result).hidden = !(state === "strong" || state === "maybe") || answered < total;
+      // Guide the visitor: light up the next unanswered question and fill a dot per answer.
+      const rows = Array.from(form.querySelectorAll<HTMLElement>("ol > li"));
+      const dots = $$("[data-fit-dots] i", result);
+      let nextSet = false;
+      for (let i = 0; i < total; i++) {
+        const picked = form.querySelector<HTMLInputElement>('input[data-fit-q="' + i + '"]:checked');
+        if (dots[i]) dots[i].className = picked ? (picked.value === "yes" ? "is-yes" : "is-no") : "";
+        const isNext = !picked && !nextSet && !aiNo;
+        if (isNext) nextSet = true;
+        rows[i]?.classList.toggle("is-next", isNext);
+      }
       const share = yes / total;
       arc.style.strokeDashoffset = String(len * (1 - share));
       needle.style.transform = "rotate(" + (-90 + share * 180) + "deg)";
