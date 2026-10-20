@@ -261,3 +261,9 @@ link, button, tab, chip, radio label, summary and the video poster, here and in 
 Verified in headless Chrome with a real mouse hover. Note: white on #d79a37 is about 2.4:1 contrast,
 below WCAG AA for normal text; it matches the site-wide header button, so changing it is a
 site-level decision.
+White on gold: every solid-gold surface now carries white text and icons (pricing badge, "Managed
+for you", selected capability icon, selected business/tone chips, hero video play button, marquee
+industry on hover, booking chips, the lit call step, the phone avatar, open FAQ chevron, feedback
+play buttons, the industries CTA tile, and the booking band's badge, step dots and selected tab icon).
+One unlayered CSS rule in voice-agents.css, scoped to this page and its booking band; verified by
+computed colour on all fourteen in headless Chrome.

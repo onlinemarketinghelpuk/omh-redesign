@@ -589,3 +589,14 @@ html:has(.va-page dialog[open]) {
 @media (prefers-reduced-motion: reduce) {
   #va-page :is(.btn, .va-car-btn):hover:not(:disabled) { transform: none; }
 }
+
+/* White on gold everywhere (20 Oct 2026): every solid-gold surface carries white text and icons, matching the
+   header button. Unlayered, so it outranks the text-navy / text-inverse utilities and the generated v4 rules. */
+:is(#va-page, #book-demo-form) :is(
+  .bg-gold, .bg-amber, [class~="bg-[#d79a37]"],
+  [aria-checked="true"][class*="aria-checked:bg-gold"],
+  [aria-selected="true"] [class*="group-aria-selected:bg-amber"],
+  details[open] > summary [class*="group-open:bg-gold"],
+  .booked, .vp-play, .lf-gold, .ind:hover .ind-ico, .ind:focus-visible .ind-ico, .ind[aria-current="true"] .ind-ico,
+  [data-brand-step].is-on .step-num, .cap-tab[aria-selected="true"] .icon-tile
+) { color: #fff; }
