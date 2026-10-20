@@ -227,3 +227,9 @@ Later still: the capability explorer replaces the capability rows and the Why ch
 Verified in headless Chrome: click and arrow keys select tabs and show the matching panel, no
 console errors, the "In plain English" eyebrow and `#why-omh` are gone; 13 sections, 21,723px at
 1440 and 40,218px at 390; `tsc`/`eslint` clean; captures retaken.
+Client fixes, same evening: the Never/Transfers tiles and the caption under the call-player phone
+were removed; the Industries grid's "Learn more" links are hidden until those pages exist (the
+industry tabs keep links only for the three pages that do); the Client feedback cards no longer
+wait for a scroll-reveal (they rendered blank after a reload until the observer fired) and the
+YouTube note under them is gone; the mobile comparison is now one card per criterion with a
+labelled OMH cell and a labelled alternative cell, driven by the same chip selector.

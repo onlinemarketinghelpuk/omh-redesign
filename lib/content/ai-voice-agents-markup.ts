@@ -116,7 +116,7 @@ const industryPanel = (x: (typeof industries)[number], i: number) => `
           <ul class="mt-5 space-y-2 text-[16px] leading-snug">
 ${x.bullets.map(tick).join("\n")}
           </ul>
-${x.note ? `          <p class="mt-4 inline-flex items-center gap-2 self-start rounded-[10px] border border-line bg-paper px-3 py-2 text-[15px] font-semibold">${icon("shield", "text-hl")}${x.note}</p>\n` : ""}          <p class="mt-6"><a href="${x.href ?? `/contact?service=ai-voice-agents&amp;industry=${x.slug}`}" class="text-link" data-track="industry_click" data-track-name="${x.full}">More about voice agents for ${x.full.toLowerCase().replace("&amp;", "and")}${icon("arrow-right")}</a></p>
+${x.note ? `          <p class="mt-4 inline-flex items-center gap-2 self-start rounded-[10px] border border-line bg-paper px-3 py-2 text-[15px] font-semibold">${icon("shield", "text-hl")}${x.note}</p>\n` : ""}          ${x.href ? `<p class="mt-6"><a href="${x.href}" class="text-link" data-track="industry_click" data-track-name="${x.full}">More about voice agents for ${x.full.toLowerCase().replace("&amp;", "and")}${icon("arrow-right")}</a></p>` : ""}
         </div>
       </div>`;
 
@@ -308,11 +308,6 @@ export const voiceAgentsMarkup = String.raw`
           </div>
         </div>
       </div>
-      <dl class="mt-4 grid gap-2 text-[14px] leading-snug sm:grid-cols-2">
-        <div class="flex gap-2 rounded-[10px] border border-band-line px-3 py-2"><dt class="font-semibold">Never:</dt><dd class="text-band-muted" data-brand-never>Gives legal advice</dd></div>
-        <div class="flex gap-2 rounded-[10px] border border-band-line px-3 py-2"><dt class="font-semibold">Transfers:</dt><dd class="text-band-muted" data-brand-transfer>Existing clients go to their named solicitor</dd></div>
-      </dl>
-      <p class="mt-3 text-center text-[14px] text-band-muted">Illustrative call. The businesses shown are fictional, and the agent only answers from information you have approved.</p>
     </div>
   </div>
 </section>
