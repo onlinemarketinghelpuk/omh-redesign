@@ -77,7 +77,8 @@ const runs: [typeof v4, string[]][] = [
   [v4, ["features-title"]],
   [va, ["branding"]],
   [v4, ["how", "use-cases"]],
-  [va, ["why-omh", "compare", "right-fit", "roi-calculator", "pricing"]],
+  // Industries, Client feedback and the six Local cover cards came back from /ai-voice-agents-old on 20 Oct 2026 (client's call).
+  [va, ["industries", "feedback", "why-omh", "compare", "right-fit", "roi-calculator", "pricing"]],
   [v4, ["cities"]],
   [va, ["faq", "related"]],
 ];

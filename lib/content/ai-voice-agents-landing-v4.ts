@@ -466,20 +466,80 @@ export const landingV4Markup = String.raw`
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
-      <h2 class="h2 mt-3" id="city-title">Answering calls for businesses <span class="hl">across the UK</span></h2>
-      <p class="lead mt-4">Your agent can answer on a local number with your opening hours and the areas you cover. We focus our voice agent work on six cities and work with businesses anywhere in the UK.</p>
+      <h2 class="h2 mt-3" id="city-title">Local to you. <span class="hl">Answering calls across the UK.</span></h2>
+      <p class="lead mt-4">A local number, your opening hours and an agent that knows the areas you cover.</p>
     </div>
-    <ul class="benefits mx-auto mt-12">
-      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><div><p class="h4">London <span class="tnum text-muted">(020)</span></p><p class="t-card mt-1 text-muted">Greater London</p></div></li>
-      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><div><p class="h4">Birmingham <span class="tnum text-muted">(0121)</span></p><p class="t-card mt-1 text-muted">Birmingham and the West Midlands</p></div></li>
-      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><div><p class="h4">Manchester <span class="tnum text-muted">(0161)</span></p><p class="t-card mt-1 text-muted">Greater Manchester</p></div></li>
-      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><div><p class="h4">Leeds <span class="tnum text-muted">(0113)</span></p><p class="t-card mt-1 text-muted">Leeds and West Yorkshire</p></div></li>
-      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><div><p class="h4">Liverpool <span class="tnum text-muted">(0151)</span></p><p class="t-card mt-1 text-muted">Liverpool and Merseyside</p></div></li>
-      <li class="benefit"><span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><div><p class="h4">Bristol <span class="tnum text-muted">(0117)</span></p><p class="t-card mt-1 text-muted">Bristol and the South West</p></div></li>
+    <ul class="cities mx-auto mt-12">
+      <li class="city" style="--tint:var(--tint-1)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M96 128 V60 L104 46 L112 60 V128 M96 74 H112 M156 128 L176 70 L196 128 M134 70 a42 42 0 1 0 84 0 a42 42 0 1 0 -84 0 M134 70 H218 M176 28 V112 M146 40 L206 100 M146 100 L206 40 M224 128 V84 H242 V128"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 020 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">London</h3>
+          <q>Thanks for calling, you're through to our London team. How can I help?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Greater London</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-3)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M100 128 V58 H130 V128 M100 58 a15 6 0 0 1 30 0 M100 72 H130 M100 86 H130 M100 100 H130 M100 114 H130 M146 128 C146 92 168 76 190 80 C214 84 226 100 226 128 M160 110 a3 3 0 1 0 0.01 0 M176 98 a3 3 0 1 0 0.01 0 M194 104 a3 3 0 1 0 0.01 0 M210 114 a3 3 0 1 0 0.01 0"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0121 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Birmingham</h3>
+          <q>Thanks for calling, you're through to our Birmingham team. How can I help?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Birmingham and the West Midlands</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-2)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M96 128 V62 L110 52 L124 62 V128 M168 128 V30 H186 V128 M164 70 H190 V128 M168 50 H186 M200 128 V74 H228 V128 M208 84 V96 M220 84 V96"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0161 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Manchester</h3>
+          <q>Thanks for calling, you're through to our Manchester team. How can I help?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Greater Manchester</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-4)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M118 128 V92 H210 V128 M126 128 V100 M140 128 V100 M154 128 V100 M174 128 V100 M188 128 V100 M202 128 V100 M146 92 V64 H182 V92 M152 64 V48 H176 V64 M152 48 C152 32 176 32 176 48 M164 36 V26 M164 56 a4 4 0 1 0 0.01 0"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0113 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Leeds</h3>
+          <q>Thanks for calling, you're through to our Leeds team. How can I help?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Leeds and West Yorkshire</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-1)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M144 128 V62 H196 V128 M152 62 V44 H164 V62 M176 62 V44 H188 V62 M152 44 C152 34 164 34 164 44 M176 44 C176 34 188 34 188 44 M158 36 V30 M182 36 V30 M206 128 V84 H236 V128 M0 120 C20 116 40 124 60 120 S100 116 120 120"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0151 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Liverpool</h3>
+          <q>Thanks for calling, you're through to our Liverpool team. How can I help?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Liverpool and Merseyside</p>
+        </div>
+      </li>
+      <li class="city" style="--tint:var(--tint-3)">
+        <div class="city-top">
+          <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M0 128 C40 128 60 108 80 108 V128 M240 108 C260 108 280 128 320 128 M80 108 H240 M96 108 V46 H108 V108 M212 108 V46 H224 V108 M96 46 L102 38 L108 46 M212 46 L218 38 L224 46 M102 50 C130 96 190 96 218 50 M118 76 V108 M134 86 V108 M150 90 V108 M166 90 V108 M182 86 V108 M198 76 V108 M18 128 V100 H40 V128 M282 128 V96 H304 V128"/></svg>
+          <span class="city-code"><svg class="icon" aria-hidden="true"><use href="#v4-i-phone"/></svg>Local 0117 number</span>
+        </div>
+        <div class="city-body">
+          <h3 class="h3-card">Bristol</h3>
+          <q>Thanks for calling, you're through to our Bristol team. How can I help?</q>
+          <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Bristol and the South West</p>
+        </div>
+      </li>
     </ul>
     <div class="mt-10 flex flex-col items-center gap-3 text-center">
       <a href="#book-demo-form" class="btn btn-primary">Call Me Now</a>
-      <p class="t-small text-muted">Somewhere else? <a href="#book-demo-form" class="link link-tap text-[15px]">Ask us about your area</a>.</p>
+      <p class="t-small text-muted">Somewhere else? We cover towns and cities across the UK. <a href="#book-demo-form" class="link link-tap text-[15px]">Ask us about your area</a></p>
     </div>
   </div>
 </section>
