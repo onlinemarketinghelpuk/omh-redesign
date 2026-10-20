@@ -4,7 +4,7 @@
 // sticky bar. Markup is verbatim from lib/content/ai-voice-agents-oldv2/markup.ts except that the demo CTAs now
 // point at #book-demo-form. page.tsx places these between the rebuilt sections in ai-voice-agents-markup.ts.
 import { roiCalculator } from "@/lib/content/roi-calculator";
-import { faqTopics, voiceFaqs } from "@/lib/content/ai-voice-agents-markup";
+import { voiceFaqs } from "@/lib/content/ai-voice-agents-markup";
 
 // Comparison table from the SEO brief (19 Oct 2026). Guide figures: Connect Communications call answering
 // from £14.99 + VAT; UK receptionist base pay about £19k to £24k a year (Payscale) before employer costs;
