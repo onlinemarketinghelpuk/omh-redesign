@@ -308,3 +308,8 @@ Round seven:
   arrowhead (the diagram uses ::before for those) and drew a ghost rectangle.
 - Comparison: the whole rounded box rises in as one piece (the table used to scale inside its
   clipped frame) and rows get a soft gold highlight on hover instead of a spotlight.
+Round eight: section descriptions capped at 850px like the homepage (measured: every intro on the
+page is 850px or narrower, titles 894px or narrower). "Ask for a call back" removed from the shared
+booking band on every page that uses it (verified on /ai-voice-agents and /google-adwords-ppc), so the
+`callback_request_submitted` event no longer exists; `demo_request_submitted` is the only conversion
+event.

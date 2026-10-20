@@ -157,3 +157,12 @@ Google Ads graphic with "from the original service page" baked in.
 **20 Oct 2026, /ai-voice-agents CRO rebuild.** The "Proof goes here when it's real" heading no longer
 ships: the pending-testimonial wall is parked in the `oldv2` backup (`/ai-voice-agents-oldv2`, tag
 `oldv2`) until a verified result exists. Rebuild notes: `docs/ai-voice-agents-cro/`.
+
+**20 Oct 2026, client:** section descriptions on `/ai-voice-agents` stop at 850px, the same measure
+as the homepage's section intros (`max-w-[850px]`), instead of running the full container (rule 9
+said full width). Titles keep the global 30ch cap. Apply the 850px measure to other pages only if the
+client asks.
+
+**20 Oct 2026, client:** the shared booking band (`components/BookDemo.tsx`) no longer has the "Ask
+for a call back" tab, on every page that uses it. It offers "Book a 30-minute demo" and "Ring our demo
+agent now".

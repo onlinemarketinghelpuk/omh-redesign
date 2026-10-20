@@ -813,3 +813,10 @@ html:has(.va-page dialog[open]) {
 #va-page .cmp-table tbody tr > * { transition: background-color .2s ease; }
 #va-page .cmp-table tbody tr:hover > * { background-image: none; background-color: color-mix(in srgb, #d79a37 6%, var(--va-surface)); }
 #va-page .cmp-table tbody tr:hover > .cmp-omh { background-color: color-mix(in srgb, #d79a37 18%, var(--va-surface)); }
+
+/* Section intros at the homepage's measure (20 Oct 2026, client): the description under a section title stops at
+   850px, as on the homepage, instead of running the full container. Titles already stop at about two lines
+   (globals.css caps h2 at 30ch). Left-aligned headers stay left; centred ones stay centred. */
+#va-page :is(h2 + p, div:has(> h2) + p, h3 + p.text-muted, .head-c .lead, .hero4 .lead) { max-width: 850px; }
+#va-page :is(.head-c .lead, .hero4 .lead) { margin-inline: auto; }
+#va-page .hero4 .h1-c { max-width: 1120px; }

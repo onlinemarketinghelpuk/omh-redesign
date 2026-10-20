@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useId, useMemo, useState, useSyncExternalStore, type ComponentProps, type FormEvent, type KeyboardEvent, type ReactNode } from "react";
 import { flushSync } from "react-dom";
-import { Calendar, Check, Clock, MapPin, Phone, PhoneForwarded, PhoneIncoming } from "lucide-react";
+import { Calendar, Check, Clock, MapPin, Phone, PhoneIncoming } from "lucide-react";
 import { ArrowRight } from "@/components/ui/Button";
 import { demoTimes } from "@/lib/book-demo";
 import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
@@ -15,7 +15,8 @@ import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
 
   Book a demo: posts to /api/enquiry (stored + emailed, with the page it came
   from) and to /api/book-demo, which adds the slot to OMH's Google Calendar.
-  Ring now: static until the demo line exists. Call back: posts to /api/enquiry.
+  Ring now: static until the demo line exists. (The "Ask for a call back" tab was removed on 20 Oct 2026 at the
+  client's request, on every page that uses this band.)
 */
 
 // ponytail: placeholder until the demo line exists; set both and the tab works. While href is a bare
@@ -32,13 +33,11 @@ function track(event: string, data: Record<string, unknown> = {}) {
 const paths = [
   { id: "call", icon: Calendar, badge: "Most popular", title: "Book a 30-minute demo", body: "Pick a time. We show you an agent set up for your calls." },
   { id: "ring", icon: PhoneIncoming, title: "Ring our demo agent now", body: "Hear one in action straight away, any time of day." },
-  { id: "back", icon: PhoneForwarded, title: "Ask for a call back", body: "Leave your number and a good time. Takes 20 seconds." },
 ];
 const industries = ["Estate & Letting Agents", "Dental Clinics", "Clinics & Healthcare", "Plumbers", "Heating & HVAC", "Contractors & Builders", "Law Firms", "Car Dealerships"];
 const cities = ["London", "Birmingham", "Manchester", "Leeds", "Liverpool", "Bristol", "Elsewhere in the UK"];
 const onTheCall = ["Ask who rings you and what gets missed", "Play you an agent set up for your type of business", "Follow up with a clear price in writing"];
 const thingsToTry = ["Book a boiler service for next week.", "Ask to speak to a person.", "Ask something it can't know, and hear how it handles it."];
-const ringTimes = ["Morning", "Afternoon", "Evening"];
 
 const messages: Record<string, string> = {
   "Your name": "Enter your name.",
@@ -192,12 +191,6 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
   const [started, setStarted] = useState(false);
   const booking = useChecks();
 
-  // Call back
-  const [when, setWhen] = useState(ringTimes[0]);
-  const [cbSending, setCbSending] = useState(false);
-  const [cbError, setCbError] = useState<string | null>(null);
-  const [cbDone, setCbDone] = useState(false);
-  const callback = useChecks();
 
   const slot = day && time ? `${day.long} at ${time}` : null;
   const summary = slot ?? (day ? `${day.long}, pick a time` : time ? `${time}, pick a day` : "Pick a day and time");
@@ -243,22 +236,6 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
     setDoneName(field("Your name").split(" ")[0]);
   }
 
-  async function submitCallback(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (!callback.validate(form)) return track("demo_form_error", { form: "Call back request" });
-    setCbSending(true);
-    setCbError(null);
-    const result = await sendEnquiry(form, "Call back request");
-    setCbSending(false);
-    if (!result.ok) {
-      track("demo_form_send_error", { form: "Call back request" });
-      return setCbError(result.message);
-    }
-    track("callback_request_submitted", { when });
-    setCbDone(true);
-  }
-
   const dot = (on: boolean) =>
     `grid size-7 place-items-center rounded-full ${on ? "bg-amber text-inverse" : "border-[1.5px] border-line"}`;
 
@@ -267,7 +244,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
       <div className="container-omh">
         <div className="section-sm border-y border-oninverse/12">
           {heading && <h2 className="mb-10 font-sans text-h2 font-semibold">{heading}</h2>}
-          <div role="tablist" aria-label="How would you like to start?" className="grid gap-3 md:grid-cols-3">
+          <div role="tablist" aria-label="How would you like to start?" className="grid gap-3 md:grid-cols-2">
             {paths.map((p, i) => (
               <button
                 key={p.id}
@@ -512,7 +489,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                     <p className="mt-6 flex min-h-16 items-center gap-3 rounded-[14px] border-[1.5px] border-dashed border-line px-5 py-4 text-body">
                       <Phone aria-hidden className="size-6 shrink-0 text-amber-deep" />
                       <span>
-                        <strong className="font-semibold">The demo line is being set up.</strong> Book a demo or ask for a call back and we&apos;ll play you one on the call.
+                        <strong className="font-semibold">The demo line is being set up.</strong> Book a demo and we&apos;ll play you one on the call.
                       </span>
                     </p>
                   )}
@@ -531,47 +508,6 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
               </div>
             </div>
 
-            {/* Call back */}
-            <div role="tabpanel" id={`${uid}-panel-back`} aria-labelledby={`${uid}-tab-back`} hidden={tab !== 2} className={`${panelCls} p-6 sm:p-10`}>
-              <div className="grid items-start gap-8 md:grid-cols-2">
-                <div>
-                  <h3 className="font-sans text-h3 font-semibold">We&apos;ll ring you</h3>
-                  <p className="mt-2 text-body text-muted">A person from our UK team, not a robot. We&apos;ll ring within one working day.</p>
-                </div>
-                <form noValidate onSubmit={submitCallback} onChange={callback.recheck}>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Control label="Your name" autoComplete="name" error={callback.errors["Your name"]} />
-                    <Control label="Phone" type="tel" inputMode="tel" autoComplete="tel" error={callback.errors.Phone} />
-                  </div>
-                  <p id={`${uid}-when`} className="mt-5 text-label font-semibold">
-                    Best time to ring
-                  </p>
-                  <div role="radiogroup" aria-labelledby={`${uid}-when`} className="mt-2 grid grid-cols-3 gap-2">
-                    {ringTimes.map((t, i) => (
-                      <Radio key={t} index={i} checked={when === t} first={false} onPick={(to) => setWhen(ringTimes[to])} className="min-h-12 font-sans text-[17px] font-semibold">
-                        {t}
-                      </Radio>
-                    ))}
-                  </div>
-                  <input type="hidden" name="Best time to ring" value={when} />
-                  <Honeypot />
-                  {cbError && (
-                    <p role="alert" className="mt-5 text-bsm font-semibold text-error">
-                      {cbError}
-                    </p>
-                  )}
-                  {cbDone ? (
-                    <p ref={(el) => el?.focus()} tabIndex={-1} role="status" className="mt-7 text-center text-body font-semibold text-success outline-none">
-                      Thanks. We&apos;ll ring you in the {when.toLowerCase()}.
-                    </p>
-                  ) : (
-                    <button type="submit" disabled={cbSending} data-event="book_demo_callback_submit" className={`${btnPrimary} mt-7 w-full`}>
-                      {cbSending ? "Sending…" : "Ring me back"}
-                    </button>
-                  )}
-                </form>
-              </div>
-            </div>
           </div>
         </div>
       </div>
