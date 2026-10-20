@@ -932,3 +932,45 @@ html:has(.va-page dialog[open]) {
   70% { --mx: 75%; --my: 0%; }
   100% { --mx: 100%; --my: 90%; }
 }
+
+/* ================= Real estate extras (lib/content/voice-estate/extras.ts) ================= */
+/* A day at your branch: stacked bars, team answers at the bottom, misses on top; "with an AI agent" turns the
+   misses green. Closed hours sit on a hatched band. */
+#va-page .day-key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+#va-page .day-key-t, #va-page .day-t { background: var(--va-ink); }
+#va-page .day-key-m, #va-page .day-m { background: #c2554a; }
+#va-page [data-day]:has([data-mode="ai"]) .day-key-m, #va-page [data-mode="ai"] .day-m { background: var(--va-ok); }
+[data-theme="dark"] #va-page .day-key-t, [data-theme="dark"] #va-page .day-t { background: #8b95a7; }
+#va-page .day-chart { position: relative; padding-top: 8px; background: linear-gradient(to top, var(--va-line) 1px, transparent 1px) 0 calc(100% - 26px) / 100% calc((100% - 34px) / 3) repeat-y; }
+#va-page .day-cols { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 6px; height: 240px; align-items: stretch; }
+#va-page .day-col { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 8px; cursor: default; }
+#va-page .day-col.is-closed { background: repeating-linear-gradient(135deg, transparent 0 6px, color-mix(in srgb, var(--va-ink) 6%, transparent) 6px 8px); }
+#va-page .day-stack { flex: 1; width: 100%; max-width: 30px; display: flex; flex-direction: column; justify-content: flex-end; }
+#va-page .day-stack i { display: block; width: 100%; transition: background-color .45s ease, height .6s cubic-bezier(.16, 1, .3, 1); }
+#va-page .day-stack i:first-child { border-radius: 5px 5px 0 0; }
+#va-page .day-t:only-child, #va-page .day-m[style*="height:0"] + .day-t { border-radius: 5px 5px 0 0; }
+#va-page .day-h { font-size: 13px; font-weight: 600; color: var(--va-muted); font-variant-numeric: tabular-nums; }
+#va-page .day-col:hover .day-stack, #va-page .day-col:focus-within .day-stack { filter: brightness(1.15); }
+#va-page .day-col::after {
+  content: attr(data-tip); position: absolute; bottom: calc(100% - 4px); left: 50%; translate: -50% 0; z-index: 2;
+  white-space: nowrap; padding: 6px 10px; border-radius: 8px; background: #101828; color: #f7f6f2; font-size: 13px; font-weight: 600;
+  opacity: 0; pointer-events: none; transition: opacity .15s;
+}
+#va-page .day-col:hover::after { opacity: 1; }
+#va-page .day-col:first-child::after { left: 0; translate: 0 0; }
+#va-page .day-col:last-child::after { left: auto; right: 0; translate: 0 0; }
+@media (max-width: 639.98px) { #va-page .day-cols { gap: 3px; height: 200px; } #va-page .day-h { font-size: 11px; } }
+
+/* When it answers: three steps joined by arrows, the agent's step in gold. */
+#va-page .when-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+#va-page .when-step { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--va-line-strong); background: var(--va-paper, transparent); font-weight: 600; font-size: 15.5px; }
+#va-page .when-step:not(:last-child)::after { content: "→"; margin-left: 14px; margin-right: -6px; color: var(--va-muted); }
+#va-page .when-step.is-agent { background: #d79a37; border-color: #d79a37; color: #fff; }
+
+/* What we'll ask you for: big tap rows with a custom tick box. */
+#va-page .ready-row { display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 10px 12px; border-radius: 12px; cursor: pointer; transition: background-color .2s; }
+#va-page .ready-row:hover { background: var(--va-paper, rgb(0 0 0 / .03)); }
+#va-page .ready-box { display: grid; place-items: center; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; border: 1.5px solid var(--va-line-strong); color: transparent; transition: background-color .2s, border-color .2s, color .2s; }
+#va-page .ready-row input:checked + .ready-box { background: var(--va-ok); border-color: var(--va-ok); color: #fff; }
+#va-page .ready-row input:focus-visible + .ready-box { outline: 2px solid #d79a37; outline-offset: 2px; }
+#va-page .ready-row input:checked ~ span:last-child { color: var(--va-muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }

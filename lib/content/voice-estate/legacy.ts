@@ -1,23 +1,9 @@
 // Body of /ai-voice-agents/real-estate-letting-agents, part 2 (21 Oct 2026): the main page's kept sections (agency
-// types grid, client feedback, fit checker, ROI calculator, comparison, FAQ, sticky bar), written for estate and
+// types grid, client feedback as a grid, ROI calculator, FAQ, sticky bar), written for estate and
 // letting agents. Same structure, classes and data-* hooks as lib/content/ai-voice-agents-legacy.ts.
 import { roiCalculator } from "@/lib/content/roi-calculator";
 import { estateFaqs as voiceFaqs } from "@/lib/content/voice-estate/markup";
 
-// Comparison table from the SEO brief (19 Oct 2026). Guide figures: Connect Communications call answering
-// from £14.99 + VAT; UK receptionist base pay about £19k to £24k a year (Payscale) before employer costs;
-// RingCentral AI Receptionist from £32 a month. Recheck every six months.
-const cmpCols = ["OMH AI voice agent", "Voicemail", "Answering service", "Receptionist", "DIY platform"];
-const cmpRows = [
-  ["Typical monthly cost", "From £249 + VAT", "Free", "From about £15, rising with call volume", "Around £2,000+ with employer costs", "From about £30, plus usage"],
-  ["Evenings, Sundays and bank holidays", "Yes, every one", "Records a message, if callers leave one", "Depends on the plan", "Branch hours only", "Yes"],
-  ["Books viewings into your diary", "Yes, while the buyer is on the line", "No", "Sometimes, by hand", "Yes", "If you connect it yourself"],
-  ["When a new listing goes live", "Every caller answered at once", "One message at a time", "Depends on staffing", "One call at a time", "Many at once"],
-  ["Knows your listings and fees", "Loaded and kept up to date by us", "No", "A short script", "Best of all", "As well as you set it up"],
-  ["Offers and tenant emergencies", "Put through by your rules (Growth and Scale)", "Wait until someone listens", "A message passed on", "Handled in person", "If you build the routing"],
-  ["Setup and upkeep", "We build, test and tune it", "None", "Low", "Recruiting, training and holiday cover", "You build and maintain it"],
-  ["Results in your marketing report", "Beside your ads and website (Scale)", "No", "Call logs only", "Kept by hand", "A separate dashboard"],
-];
 
 const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="${cat}"${i ? "" : " open"} data-track-name="${q}">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
@@ -38,7 +24,7 @@ export const estateLegacyMarkup = String.raw`
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Agencies</p>
-        <h2 style="max-width:28ch">Built for every kind of<br class="max-sm:hidden"> <span class="hl">estate agency</span></h2>
+        <h2 style="max-width:28ch">Built for every kind of<br class="max-sm:hidden"> <span class="hl">real estate agency</span></h2>
       </div>
       <p class="mt-5 text-muted">We set up AI voice agents for sales agents, lettings and property management teams, mixed branches, multi-branch groups and new homes sales, each one scripted around the calls that team gets.</p>
     </div>
@@ -215,14 +201,14 @@ export const estateLegacyMarkup = String.raw`
   </div>
 </section>
 
-<section id="feedback" data-component="ClientFeedback">
+<section id="feedback" data-component="ClientFeedback" class="bg-surface">
   <div class="container-omh py-14 lg:py-20">
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Client feedback</p>
         <h2>Hear it take <span class="hl">a real estate call</span></h2>
       </div>
-      <p class="mt-5 text-muted">Press play on a recorded call with our AI voice agent, set up for an estate agency. Recordings for lettings, valuations, property management, new homes and multi-branch agencies are being prepared and stay marked as coming soon until they're checked.</p>
+      <p class="mt-5 text-muted">Press play on a recorded call with our AI voice agent, set up for an real estate agency. Recordings for lettings, valuations, property management, new homes and multi-branch agencies are being prepared and stay marked as coming soon until they're checked.</p>
     </div>
 
     <dl class="mt-12 grid border-y border-[var(--va-line-strong)] sm:grid-cols-3">
@@ -231,8 +217,7 @@ export const estateLegacyMarkup = String.raw`
       <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:pl-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">10</dd><dt class="mt-1.5 text-[16px] text-muted">UK cities with local numbers</dt></div>
     </dl>
 
-    <div class="va-car mt-10" data-carousel data-autoplay>
-    <div class="va-car-track" style="--car-w:380px" tabindex="0" aria-label="Client feedback, scroll sideways">
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card>
         <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
           <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
@@ -319,170 +304,19 @@ export const estateLegacyMarkup = String.raw`
         </figcaption>
       </figure>
     </div>
-    <div class="va-car-ui">
-      <button type="button" class="va-car-btn" data-car-prev aria-label="Previous testimonial"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg></button>
-      <div class="va-car-wave" aria-hidden="true" data-car-wave><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:45%"></i><i style="--h:75%"></i></div>
-      <span class="va-car-status" data-car-status aria-live="polite">1 / 6</span>
-      <button type="button" class="va-car-btn" data-car-next aria-label="Next testimonial"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
-    </div>
-    </div>
   </div>
 </section>
 
 
-<section id="right-fit" data-component="RightFit" class="bg-surface">
-  <div class="container-omh py-14 lg:py-20">
-    <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)] lg:items-start" data-fit>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Is it the right fit?</p>
-        <h2>A voice agent <span class="hl">isn't for everyone</span></h2>
-        <p class="mt-5 text-muted">We'd rather tell you now than three months in. Answer five quick questions about your branch and see for yourself. Nothing is sent anywhere.</p>
-        <form class="hover-card mt-8 rounded-[18px] border border-line bg-paper p-5 sm:p-6" data-fit-form>
-          <ol class="divide-y divide-line">
-          <li>
-            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">01</span>Do calls ring out while your team is on viewings or closed?</legend>
-              <span class="flex shrink-0 gap-1.5">
-                <label class="relative"><input type="radio" name="fit-q0" value="yes" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
-                <label class="relative"><input type="radio" name="fit-q0" value="no" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">02</span>Are most calls viewings, valuations and the same few questions?</legend>
-              <span class="flex shrink-0 gap-1.5">
-                <label class="relative"><input type="radio" name="fit-q1" value="yes" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
-                <label class="relative"><input type="radio" name="fit-q1" value="no" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">03</span>Could one missed call cost you a sale, a let or an instruction?</legend>
-              <span class="flex shrink-0 gap-1.5">
-                <label class="relative"><input type="radio" name="fit-q2" value="yes" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
-                <label class="relative"><input type="radio" name="fit-q2" value="no" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">04</span>Do you book viewings in a diary or property software?</legend>
-              <span class="flex shrink-0 gap-1.5">
-                <label class="relative"><input type="radio" name="fit-q3" value="yes" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
-                <label class="relative"><input type="radio" name="fit-q3" value="no" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-2.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">05</span>Are you happy for callers to be told they are speaking to an AI?</legend>
-              <span class="flex shrink-0 gap-1.5">
-                <label class="relative"><input type="radio" name="fit-q4" value="yes" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
-                <label class="relative"><input type="radio" name="fit-q4" value="no" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
-              </span>
-            </fieldset>
-          </li>
-          </ol>
-          <div class="mt-5 flex flex-col items-start gap-4 rounded-[14px] bg-sand p-5 sm:flex-row sm:items-center sm:gap-5" aria-live="polite" data-fit-result data-state="empty">
-            <svg viewBox="-6 0 212 136" class="shrink-0" role="img" aria-label="Fit gauge" data-fit-gauge>
-              <path d="M20 100 A80 80 0 0 1 180 100" class="fit-track"/>
-              <path d="M20 100 A80 80 0 0 1 180 100" class="fit-fill" style="stroke-dasharray:251.3;stroke-dashoffset:251.3" data-fit-arc data-arc="251.3"/>
-              <g class="fit-needle" style="transform:rotate(-90deg)" data-fit-needle><line x1="100" y1="100" x2="100" y2="34"/><circle cx="100" cy="100" r="7"/></g>
-              <text x="20" y="132" class="fit-tick" text-anchor="middle">0</text>
-              <text x="180" y="132" class="fit-tick" text-anchor="middle">5</text>
-            </svg>
-            <div class="min-w-0 flex-1">
-              <p class="font-display text-[24px] font-semibold leading-tight" data-fit-title>Start with question 1</p>
-              <p class="mt-1.5 text-[16px] leading-snug text-muted" data-fit-text>Tap Yes or No on each question. Your fit builds here as you answer.</p>
-              <div class="fit-dots mt-3" aria-hidden="true" data-fit-dots><i></i><i></i><i></i><i></i><i></i></div>
-              <p class="mt-1.5 text-[15px] font-semibold text-muted tnum" data-fit-count>0 of 5 answered</p>
-              <a href="#book-demo-form" class="btn btn-primary mt-3" data-fit-cta data-track="fit_check_book_demo" hidden>Book a 30-Minute Demo</a>
-            </div>
-            <button type="reset" class="inline-flex min-h-[44px] items-center gap-1.5 self-start text-[15px] font-semibold text-muted hover:text-ink" data-track="fit_check_reset"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Start again</button>
-          </div>
-        </form>
-      </div>
-      <div class="grid gap-5 lg:mt-[4.5rem]">
-        <div class="hover-card rounded-[18px] border border-[color-mix(in_srgb,var(--va-ok)_35%,transparent)] bg-[color-mix(in_srgb,var(--va-ok)_7%,var(--va-surface))] p-5 sm:p-6">
-          <h3 class="flex items-center gap-3 !text-[20px]"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ok text-surface"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>A good fit if</h3>
-          <ul class="mt-4 space-y-2.5 text-[16px] leading-snug text-muted [&_.icon]:text-ok">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">You miss calls</strong> while negotiators are on viewings, at lunch or after the branch closes.</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">Most calls repeat themselves:</strong> viewings, valuations, fees and availability.</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">An instruction or a let is worth real money,</strong> so one missed call can cost more than the agent.</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">You keep a viewing diary or property software</strong> the agent can book into.</span></li>
-          </ul>
-        </div>
-        <div class="hover-card rounded-[18px] border border-line bg-paper p-5 sm:p-6">
-          <h3 class="flex items-center gap-3 !text-[20px]"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span>Not the right fit if</h3>
-          <ul class="mt-4 space-y-2.5 text-[16px] leading-snug text-muted [&_.icon]:text-muted">
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">Your phone is quiet</strong> and you already answer every call.</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">Every call needs a negotiator from the first sentence.</strong> A good receptionist or answering service will serve you better.</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">You want it to discuss offers or prices.</strong> It never will. Those calls always go to a person.</span></li>
-          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">You want callers to think it's a person, or want to cold call people who haven't agreed to hear from you.</strong> We won't build either.</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 ${roiCalculator("real-estate")}
 
-<section id="compare" data-component="Compare">
-  <div class="container-omh py-14 lg:py-20">
-    <div>
-      <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Compare your options</p>
-        <h2>How an AI voice agent compares with <span class="hl">the usual answers</span></h2>
-      </div>
-      <p class="mt-5 text-muted">Most agencies handle missed calls with voicemail, an answering service, more staff on the phones or a DIY tool. Here's an honest side-by-side for a sales and lettings branch, including where each option wins.</p>
-    </div>
-
-    <div class="mt-12 hidden overflow-hidden rounded-[18px] border border-line bg-surface shadow-[0_30px_60px_-45px_rgb(16_24_40/0.45)] lg:block">
-      <table class="cmp-table w-full border-separate border-spacing-0 text-left text-[16px] leading-snug">
-        <caption class="sr-only">OMH AI voice agent compared with voicemail, an answering service, a receptionist and a DIY platform</caption>
-        <thead>
-          <tr>
-            <th scope="col" class="w-[16%] px-5 pb-4 pt-5 align-bottom text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">What matters</th>
-            <th scope="col" class="cmp-omh w-[16.8%] px-5 pb-4 pt-5 align-bottom text-ink"><span class="mb-2 inline-flex rounded-full bg-gold px-2.5 py-0.5 text-[16px] font-semibold text-navy">Managed for you</span><span class="block font-display text-[18px] font-semibold">OMH AI voice agent</span></th>${cmpCols.slice(1).map((c) => `<th scope="col" class="w-[16.8%] px-5 pb-4 pt-5 align-bottom"><span class="font-display text-[18px] font-semibold text-ink">${c}</span></th>`).join("\n")}
-          </tr>
-        </thead>
-        <tbody>
-${cmpRows.map(([k, ...v]) => `          <tr>
-            <th scope="row" class="border-t border-line px-5 py-4 align-top font-display text-[16px] font-semibold">${k}</th>
-            ${v.map((t, i) => `<td class="${i ? "text-muted" : "cmp-omh font-semibold"} border-t border-line px-5 py-4 align-top">${t}</td>`).join("\n")}
-          </tr>`).join("\n")}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="mt-10 lg:hidden" data-cmp>
-      <p class="font-semibold" id="cmp-pick-label">Compare OMH with</p>
-      <div role="radiogroup" aria-labelledby="cmp-pick-label" class="mt-3 flex flex-wrap gap-2" data-cmp-group>
-${cmpCols.slice(1).map((c, i) => `        <button type="button" role="radio" aria-checked="${!i}" tabindex="${i ? -1 : 0}" class="min-h-[44px] rounded-full border border-[var(--va-line-strong)] px-4 text-[16px] font-semibold aria-checked:border-ink aria-checked:bg-ink aria-checked:text-paper" data-cmp-opt="${i + 1}" data-track="compare_option" data-track-name="${c}">${c}</button>`).join("\n")}
-      </div>
-      <p class="sr-only" aria-live="polite">Comparing OMH with <span data-cmp-name>${cmpCols[1]}</span></p>
-      <dl class="mt-5 space-y-3">
-${cmpRows.map(([k, omh, ...v]) => `        <div class="rounded-[14px] border border-line bg-surface p-4">
-          <dt class="text-[16px] font-semibold">${k}</dt>
-          <dd class="mt-3 grid grid-cols-2 gap-2 text-[15px] leading-snug">
-            <span class="cmp-omh rounded-[10px] p-3"><span class="block text-[13px] font-semibold uppercase tracking-[0.1em] text-hl">OMH</span><span class="mt-1 block font-semibold">${omh}</span></span>
-            ${v.map((t, i) => `<span class="rounded-[10px] bg-paper p-3" data-cmp-cell="${i + 1}"${i ? " hidden" : ""}><span class="block text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">${cmpCols[i + 1]}</span><span class="mt-1 block text-muted">${t}</span></span>`).join("\n")}
-          </dd>
-        </div>`).join("\n")}
-      </dl>
-    </div>
-
-  </div>
-</section>
 
 <section id="faq" data-component="FAQ" class="bg-surface">
   <div class="container-omh grid gap-10 py-20 lg:grid-cols-[minmax(0,.72fr)_minmax(0,1.28fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-8 lg:py-28">
     <div>
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
-      <h2>What estate agents<br class="max-sm:hidden"> <span class="hl">ask us first</span></h2>
+      <h2>What real estate agents<br class="max-sm:hidden"> <span class="hl">ask us first</span></h2>
       <p class="mt-5 text-muted">Straight answers on viewings, offers, tenant emergencies, property software and client data.</p>
     </div>
 

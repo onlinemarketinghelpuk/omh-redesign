@@ -3,7 +3,7 @@
 // SEO brief (19 Oct 2026). Don't regenerate it: the port script would undo the brief's copy.
 // The hero, "How it works" and "Local cover" sections (20 Oct 2026): app/ai-voice-agents/page.tsx places them
 // between the rebuilt sections. Styles in landing-v4.css (.v4l).
-// /ai-voice-agents/real-estate-letting-agents: hero, how it works and local cover, worded for estate and letting
+// /ai-voice-agents/real-estate-letting-agents: hero, how it works and local cover, worded for real estate and letting
 // agents. Same structure and classes as lib/content/ai-voice-agents-landing-v4.ts.
 export const estateLandingMarkup = String.raw`
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -167,7 +167,7 @@ export const estateLandingMarkup = String.raw`
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
-      <h2 class="h2 mt-3" id="city-title">Estate agents across the UK.<br class="hidden md:block"> <span class="hl">A local number for each branch.</span></h2>
+      <h2 class="h2 mt-3" id="city-title">Real estate agents across the UK.<br class="hidden md:block"> <span class="hl">A local number for each branch.</span></h2>
       <p class="lead mt-4">Buyers and tenants trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set branches up by video call and phone from Hullbridge, Essex.</p>
     </div>
     <div class="va-car mt-12" data-carousel data-autoplay>
@@ -181,7 +181,7 @@ export const estateLandingMarkup = String.raw`
           <h3 class="h3-card">London</h3>
           <q>Good evening, you're through to the branch's AI assistant. Are you calling about a property, a valuation or a rental?</q>
           <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Greater London</p>
-          <a class="link t-small w-fit" href="/ai-voice-agents/real-estate-letting-agents/london" data-track="city_page" data-track-name="London">Estate agents in London</a>
+          <a class="link t-small w-fit" href="/ai-voice-agents/real-estate-letting-agents/london" data-track="city_page" data-track-name="London">Real estate agents in London</a>
         </div>
       </li>
       <li class="city" style="--tint:var(--tint-3)">

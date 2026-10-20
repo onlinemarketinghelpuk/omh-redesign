@@ -1,5 +1,5 @@
 // Body of /ai-voice-agents/real-estate-letting-agents (21 Oct 2026): the rebuilt sections of /ai-voice-agents
-// (what-is with the call player, capabilities, use cases, pricing), written for estate and letting agents.
+// (what-is with the call player, capabilities, use cases, pricing), written for real estate and letting agents.
 // Same structure, classes and data-* hooks as lib/content/ai-voice-agents-markup.ts, so VoiceAgentsScript,
 // VoiceMotion and voice-agents.css work unchanged. Composed by components/voice-agents/EstatePage.tsx.
 // Content sources: the previous estate page (git tag estate-oldv1), the main page's plans and process.
@@ -39,7 +39,7 @@ export const estateFaqs: { q: string; a: string; cat: keyof typeof estateFaqTopi
     a: "Only people who have given appropriate consent, such as buyers who asked for viewing feedback or a call back. We follow the UK PECR rules, screen lists against the Telephone Preference Service where required and act on opt-outs straight away. We don't run cold calling campaigns." },
   { cat: "working", q: "Will it replace our negotiators?",
     a: "No. It takes the overflow and the routine calls, so your team can focus on viewings, valuations and closing sales. You choose when it answers: only when the lines are busy, only out of hours, or first on every call." },
-  { cat: "working", q: "How much does an AI voice agent cost for an estate agency?",
+  { cat: "working", q: "How much does an AI voice agent cost for an real estate agency?",
     a: "Our managed AI voice agent starts at £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for several branches, is £849 a month. Extra minutes cost 60p each on every plan." },
   { cat: "working", q: "Is there a minimum contract?",
     a: "Plans are billed monthly with 30 days' notice. We set out the terms in writing before you start, including what's included each month and what counts as extra. Every invoice shows your included minutes and any overage." },
@@ -284,7 +284,7 @@ export const estateMarkup = String.raw`
   <div class="container-omh relative grid grid-cols-[minmax(0,1fr)] items-start gap-10 py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-24" data-brand
     data-brand-biz='[{"id":"sales","label":"Sales","name":"Wren &amp; Marlow","city":"London","num":"020 7946 0321","agent":"Ella","kind":"branch&#39;s","initials":"WM","voice":"British English, warm and friendly","never":"Agrees prices or offers","transfer":"Offers go straight to the negotiator","caller":"Can I view the two-bed flat on Halden Road this weekend?","reply":"Yes. I have Saturday at 11:30 with Tom. Shall I book that?","booked":"Viewing booked: Sat 11:30","summary":"Summary sent to Tom: first-time buyer, mortgage in principle, no chain"},{"id":"lettings","label":"Lettings","name":"Ashby Lettings","city":"Manchester","num":"0161 496 0123","agent":"Maya","kind":"team&#39;s","initials":"AL","voice":"British English, clear and upbeat","never":"Promises a tenancy before referencing","transfer":"Applicants who meet your criteria go to the lettings team","caller":"Is the flat on Mill Lane still available from next month?","reply":"It is. Can I ask about your move date, then book a viewing on Tuesday at 5:30?","booked":"Viewing booked: Tue 17:30","summary":"Summary sent to lettings: couple, no pets, moving next month"},{"id":"management","label":"Management","name":"Carden Property Management","city":"Leeds","num":"0113 496 0188","agent":"Ruth","kind":"office&#39;s","initials":"CP","voice":"British English, calm and measured","never":"Authorises repair costs","transfer":"Emergencies go to the on-call property manager","caller":"Water is coming through my bathroom ceiling.","reply":"I&#39;m putting you through to our on-call property manager now.","booked":"Put through to on-call manager","summary":"Repair logged for the morning: leak, Flat 4, access agreed"}]'>
     <div class="lg:col-start-1 lg:row-start-1">
-      <h2>What is an AI voice agent <span class="hl">for estate agents?</span></h2>
+      <h2>What is an AI voice agent <span class="hl">for real estate?</span></h2>
       <p class="mt-5 text-band-muted">An AI voice agent is software that answers and makes phone calls for your agency in natural, spoken conversation. It works out whether the caller is a buyer, a seller, a tenant or a landlord, answers from listing details and fees you have approved, books viewings and valuations into your diary and passes anything it can't handle to a negotiator, with a summary of the call.</p>
       <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained branch receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and property software, and keep improving it.</p>
     </div>
@@ -427,7 +427,7 @@ ${industries.map(industryPanel).join("\n")}
 <section id="pricing" data-component="Pricing" class="border-y border-line bg-surface">
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
-    <h2>AI voice agent pricing <span class="hl">for estate agents</span></h2>
+    <h2>AI voice agent pricing <span class="hl">for real estate agents</span></h2>
     <p class="mt-5 text-muted">Three plans, billed monthly, no minimum contract. Every plan includes a managed agent, a British voice, a summary of every call and a monthly report. Prices exclude VAT.</p>
 
     <div class="mt-10 grid gap-5 lg:grid-cols-3 lg:items-stretch">
