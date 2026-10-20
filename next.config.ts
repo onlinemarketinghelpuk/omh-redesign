@@ -47,6 +47,29 @@ const nextConfig: NextConfig = {
       { source: "/search-engine-optimisation", destination: "/seo-services", permanent: true },
       { source: "/best-local-seo-services", destination: "/local-seo", permanent: true },
       { source: "/web-content-writing-request-quote", destination: "/contact", permanent: true },
+      // Search Console 404s (20 Oct 2026): old WordPress URLs still indexed. Each goes to its closest live page; the
+      // three blog posts kept their slugs under /insights.
+      { source: "/all-services-price-list", destination: "/pricing", permanent: true },
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/website-maintenance", destination: "/wordpress-website-maintenance", permanent: true },
+      {
+        source: "/advance-tips-to-increase-conversion-rate-in-email-marketing",
+        destination: "/insights/advance-tips-to-increase-conversion-rate-in-email-marketing",
+        permanent: true,
+      },
+      {
+        source: "/10-benefits-of-custom-wordpress-development-for-uk-business",
+        destination: "/insights/10-benefits-of-custom-wordpress-development-for-uk-business",
+        permanent: true,
+      },
+      {
+        source: "/best-content-delivery-network-cdn-providers",
+        destination: "/insights/best-content-delivery-network-cdn-providers",
+        permanent: true,
+      },
+      // The old WordPress theme's files (greate, greate-child). Only themes: /wp-content/uploads may still be
+      // referenced by imported images (see images.remotePatterns above).
+      { source: "/wp-content/themes/:path*", destination: "/", permanent: true },
     ];
   },
 };
