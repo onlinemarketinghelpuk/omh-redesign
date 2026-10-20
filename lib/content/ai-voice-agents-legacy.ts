@@ -26,7 +26,6 @@ const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `     
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
           <span class="min-w-0 flex-1">
             <h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">${q}</h3>
-            <span class="mt-1 block text-[13.5px] font-semibold text-muted">${faqTopics[cat]}</span>
           </span>
           <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--va-line-strong)] group-open:border-gold group-open:bg-gold group-open:text-navy"><svg class="icon faq-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span>
         </summary>
@@ -43,7 +42,7 @@ export const legacyMarkup = String.raw`
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Industries</p>
         <h2>Built for businesses that live on <span class="hl">the phone</span></h2>
       </div>
-      <p class="mt-5 text-muted">We set up AI voice agents for real estate and letting agents, dental clinics, healthcare clinics, plumbers, heating engineers, builders, law firms and car dealerships. Each agent is scripted around the calls your sector actually gets.</p>
+      <p class="mt-5 text-muted">We set up AI voice agents for real estate and letting agents, dental and healthcare clinics, plumbers, heating engineers, builders, law firms and car dealerships, each one scripted around the calls your sector gets.</p>
     </div>
 
     <div role="group" aria-label="Filter industries by group" class="mt-10 flex flex-wrap gap-2" data-industry-filters>

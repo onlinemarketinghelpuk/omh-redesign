@@ -500,8 +500,7 @@ html:has(.va-page dialog[open]) {
 #va-page .va-car-track:focus-visible { outline: 2px solid var(--va-hl); outline-offset: 4px; border-radius: 12px; }
 #va-page .va-car-track > * { flex: 0 0 min(100%, var(--car-w, 400px)); width: min(100%, var(--car-w, 400px)); scroll-snap-align: start; margin: 0; }
 #va-page .va-car-track > [hidden] { display: none; }
-#va-page .va-car-track > :last-child { scroll-snap-align: start end; }
-#va-page .va-car-track.is-end { -webkit-mask-image: none; mask-image: none; }
+
 #va-page .va-car-ui { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
 #va-page .va-car-btn {
   display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 999px;
@@ -820,3 +819,15 @@ html:has(.va-page dialog[open]) {
 #va-page :is(h2 + p, div:has(> h2) + p, h3 + p.text-muted, .head-c .lead, .hero4 .lead) { max-width: 850px; }
 #va-page :is(.head-c .lead, .hero4 .lead) { margin-inline: auto; }
 #va-page .hero4 .h1-c { max-width: 1120px; }
+
+/* No stray two-to-four-word last lines (20 Oct 2026, client): section descriptions balance their lines, and running
+   copy avoids short last lines. The hero description is wide enough to sit on two lines from laptop width up. */
+/* Balance only centred intros: on a left-aligned intro it shrinks the paragraph well short of its heading. */
+#va-page :is(.head-c .lead, .hero4 .lead) { text-wrap: balance; }
+#va-page :is(p, li, dd) { text-wrap: pretty; }
+#va-page .hero4 .lead { max-width: 1000px; }
+#va-page .hero4 .h1-c { max-width: 1180px; }
+/* Industries title on two balanced lines like its neighbours (client, 20 Oct 2026). */
+#va-page #industries h2 { max-width: 20ch; text-wrap: balance; }
+/* The fit intro sits in a half-width column, so balancing it does not make it look narrow. */
+#va-page #right-fit h2 + p { text-wrap: balance; }

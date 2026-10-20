@@ -1139,64 +1139,91 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   }
 
   /* ------------------------------------------------------------ Carousels */
-  // Native scroll-snap tracks; this only adds the buttons, the waveform progress and the "n / total" status.
+  // Infinite loop: the track holds three copies of its cards and starts on the middle set. When scrolling settles
+  // in either outer copy, it jumps silently by one set's width, so moving left or right never meets an end. The
+  // status reads the real card ("3 / 6"). Copies are aria-hidden and out of the tab order; they run before the
+  // video pop-up is wired (see the init order), so a copy's play button opens its video like the original's.
   function initCarousels() {
     $$("[data-carousel]").forEach((root) => {
       const track = $(".va-car-track", root);
       const prev = $<HTMLButtonElement>("[data-car-prev]", root);
       const next = $<HTMLButtonElement>("[data-car-next]", root);
       const status = $("[data-car-status]", root);
-      if (!track || !prev || !next) return;
-      const cards = () => Array.from(track.children).filter((c) => !(c as HTMLElement).hidden) as HTMLElement[];
-      const stepWidth = () => {
-        const [a, b] = cards();
-        return b ? b.offsetLeft - a.offsetLeft : a?.offsetWidth || 1;
-      };
-      // "The end" is when the last card is fully on screen, wherever the snap happens to rest.
-      const atEnd = () => {
-        const list = cards();
-        const last = list[list.length - 1];
-        // A little tolerance: the snap can rest a few pixels short of the true end.
-        return !last || last.getBoundingClientRect().right <= track.getBoundingClientRect().right + 24;
-      };
-      let raf = 0;
-      // Count snap positions, not cards: with three cards on screen, six cards are four stops.
       const wave = $("[data-car-wave]", root);
+      if (!track || !prev || !next) return;
+      const originals = Array.from(track.children) as HTMLElement[];
+      const n = originals.length;
+      if (n < 2) return;
+
+      const copy = (el: HTMLElement) => {
+        const c = el.cloneNode(true) as HTMLElement;
+        c.setAttribute("aria-hidden", "true");
+        c.dataset.carClone = "";
+        c.removeAttribute("id");
+        c.querySelectorAll("[id]").forEach((x) => x.removeAttribute("id"));
+        c.querySelectorAll<HTMLElement>("a, button, [tabindex]").forEach((x) => (x.tabIndex = -1));
+        return c;
+      };
+      const before = originals.map(copy);
+      const after = originals.map(copy);
+      track.prepend(...before);
+      track.append(...after);
+      cleanups.push(() => [...before, ...after].forEach((c) => c.remove()));
+
+      const all = () => Array.from(track.children) as HTMLElement[];
+      const step = () => {
+        const [a, b] = all();
+        return b.offsetLeft - a.offsetLeft;
+      };
+      const index = () => Math.round(track.scrollLeft / step());
+      const jumpTo = (left: number) => {
+        track.style.scrollBehavior = "auto";
+        track.scrollLeft = left;
+        track.style.scrollBehavior = "";
+      };
+      // Start on the first original.
+      jumpTo(n * step());
+
+      // Waveform: one bar per card.
       const heights = [40, 70, 55, 90, 45, 75, 60, 85, 50, 65, 80, 35];
-      let bars = $$("i", wave);
+      if (wave) wave.innerHTML = Array.from({ length: n }, (_, k) => '<i style="--h:' + heights[k % heights.length] + '%"></i>').join("");
+      const bars = wave ? $$("i", wave) : [];
+
+      let raf = 0;
       function sync() {
         raf = 0;
-        const list = cards();
-        const end = atEnd();
-        track.classList.toggle("is-end", end);
-        const max = track.scrollWidth - track.clientWidth;
-        const base = list[0]?.offsetLeft ?? 0;
-        const stops = Math.max(1, list.filter((c) => c.offsetLeft - base < max - 24).length + (max > 24 ? 1 : 0));
-        if (bars.length !== stops) {
-          wave.innerHTML = Array.from({ length: stops }, (_, k) => '<i style="--h:' + heights[k % heights.length] + '%"></i>').join("");
-          bars = $$("i", wave);
-        }
-        const i = end ? stops - 1 : Math.min(stops - 2 >= 0 ? stops - 2 : 0, Math.max(0, Math.round(track.scrollLeft / stepWidth())));
-        const list_ = { length: stops };
-        if (status) status.textContent = (i + 1) + " / " + list_.length;
+        const real = ((index() % n) + n) % n;
+        if (status) status.textContent = real + 1 + " / " + n;
         bars.forEach((bar, k) => {
-          bar.classList.toggle("is-on", k <= i);
-          bar.classList.toggle("is-now", k === i);
+          bar.classList.toggle("is-on", k <= real);
+          bar.classList.toggle("is-now", k === real);
         });
       }
-      // Loops: next at the end returns to the start, previous at the start jumps to the end.
+      // Once scrolling settles in an outer copy, move back to the same card in the middle set.
+      let settle = 0;
+      function normalise() {
+        if (dragging) return;
+        const i = index();
+        if (i < n) jumpTo(track.scrollLeft + n * step());
+        else if (i >= 2 * n) jumpTo(track.scrollLeft - n * step());
+        sync();
+      }
+      on(track, "scroll", () => {
+        if (!raf) raf = requestAnimationFrame(sync);
+        clearTimeout(settle);
+        settle = later(normalise, 140);
+      }, { passive: true });
+      on(window, "resize", () => { jumpTo((n + (((index() % n) + n) % n)) * step()); sync(); });
+
       const go = (dir: number) => {
-        const behavior = reduceMotion.matches ? "auto" : "smooth";
-        if (dir > 0 && atEnd()) track.scrollTo({ left: 0, behavior });
-        else if (dir < 0 && track.scrollLeft <= 8) track.scrollTo({ left: track.scrollWidth, behavior }); // the first card snaps at the 6px padding
-        else track.scrollBy({ left: dir * stepWidth(), behavior });
+        normalise();
+        track.scrollTo({ left: (index() + dir) * step(), behavior: reduceMotion.matches ? "auto" : "smooth" });
       };
       on(prev, "click", () => go(-1));
       on(next, "click", () => go(1));
-      on(track, "scroll", () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
-      on(window, "resize", sync);
 
-      // Drag with a mouse or pen (touch already scrolls natively). A real drag swallows the click that follows.
+      // Drag with a mouse or pen (touch already scrolls natively), snapping to the nearest card either way.
+      // A real drag swallows the click that follows.
       let dragX = 0, dragLeft = 0, dragging = false, moved = false;
       on(track, "pointerdown", (e: PointerEvent) => {
         if (e.pointerType === "touch" || e.button !== 0) return;
@@ -1216,7 +1243,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         dragging = false;
         if (!moved) return;
         track.classList.remove("is-dragging");
-        track.scrollTo({ left: Math.round(track.scrollLeft / stepWidth()) * stepWidth(), behavior: reduceMotion.matches ? "auto" : "smooth" });
+        track.scrollTo({ left: index() * step(), behavior: reduceMotion.matches ? "auto" : "smooth" });
       };
       on(track, "pointerup", endDrag);
       on(track, "pointercancel", endDrag);
@@ -1244,8 +1271,6 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         on(next, "click", () => pause(8000));
         observe((entries) => { inView = entries[0].isIntersecting; if (inView) play(); else stop(); }, { threshold: 0.4 }).observe(root);
       }
-      // The industry filter chips (outside the carousel) hide cards; re-sync after any click.
-      on(page, "click", () => later(sync, 60));
       sync();
     });
   }
@@ -1318,6 +1343,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   initHeroCall();
   initLedger();
   initVideoFacade();
+  initCarousels();
   initVideoModal();
   initIndustryFilter();
   initTabs();
@@ -1332,7 +1358,6 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   initRelated();
   initDemoForm();
   initAreaMap();
-  initCarousels();
   initPlanInterest();
   initStickyBar();
   initReveal();

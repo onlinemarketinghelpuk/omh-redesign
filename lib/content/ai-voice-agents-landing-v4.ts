@@ -56,7 +56,7 @@ export const landingV4Markup = String.raw`
 <section id="top" class="hero4" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
     <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · 24/7</span>
-    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for UK Businesses: <span class="hl">Answer Every Call, Even at 2am</span></h1>
+    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for UK Businesses <br class="max-md:hidden"><span class="hl">Answer Every Call, Even at 2am</span></h1>
     <p class="lead mx-auto mt-6">Our AI voice agent answers on the first ring, qualifies the caller and books them into your calendar, day or night. We build it around your business, test it with you and manage it every month, so you never have to learn the software.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
@@ -75,7 +75,7 @@ export const landingV4Markup = String.raw`
       <div class="marquee" id="strip" data-marquee style="--dur: 38s">
         <div class="marquee-track">
           <ul aria-labelledby="strip-title">
-          <li><a class="ind" href="#uc-estate" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Real Estate &amp; Letting</b><small>Agents</small></a></li>
+          <li><a class="ind" href="#uc-estate" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Real Estate</b><small>&amp; Letting Agents</small></a></li>
           <li><a class="ind" href="#uc-dental" data-ind="dental"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tooth"/></svg></span><b>Dental</b><small>Clinics</small></a></li>
           <li><a class="ind" href="#uc-clinics" data-ind="clinics"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-medical"/></svg></span><b>Clinics &amp;</b><small>Healthcare</small></a></li>
           <li><a class="ind" href="#uc-plumbers" data-ind="plumbers"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-drop"/></svg></span><b>Plumbers</b><small>&nbsp;</small></a></li>

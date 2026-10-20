@@ -21,7 +21,7 @@ const REVEAL = [
   ["[data-industry], #features ol > li, .tl-card", "up"],
   [".cap-tab, [data-brand-step], [data-fit-form]", "left"],
   ["#right-fit .hover-card, [data-faq-item], #faq .rounded-\\[16px\\]", "right"],
-  ["#feedback figure, .city", "slide"],
+  [".va-car", "slide"],
   ["#pricing article, #compare [data-cmp] dl > div, #feedback dl, .kstats > div", "scale"],
   ["#compare .lg\\:block", "up"],
   [".tl-num", "pop"],

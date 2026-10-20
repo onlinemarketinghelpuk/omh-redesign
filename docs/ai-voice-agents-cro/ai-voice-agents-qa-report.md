@@ -313,3 +313,16 @@ page is 850px or narrower, titles 894px or narrower). "Ask for a call back" remo
 booking band on every page that uses it (verified on /ai-voice-agents and /google-adwords-ppc), so the
 `callback_request_submitted` event no longer exists; `demo_request_submitted` is the only conversion
 event.
+Round nine:
+- Hero title without the colon, on two lines ("AI Voice Agent for UK Businesses" / "Answer Every Call,
+  Even at 2am"); the hero description is up to 1,000px wide so it sits on two lines.
+- Intros: measured at 1920, 1440, 1280 and 1024px, every section intro is two lines (Local cover one)
+  with no two-to-four-word last line. Line balancing is used only on centred intros and the half-width
+  fit intro; on full-width left-aligned intros it shrank the paragraph well short of its title.
+  The Industries intro was tightened by a few words to fit two lines.
+- Industries title on two balanced lines.
+- FAQ: the topic label under each question removed (the topic filter chips remain).
+- Carousels loop infinitely: three copies of the cards, starting on the middle set, with a silent
+  jump by one set when scrolling settles in an outer copy. Verified: next and previous run 1 to 6 and
+  wrap both ways, dragging forward goes 1 to 6 and on to 1, copies are aria-hidden and out of the tab
+  order, a copy's play button opens its video. Each carousel now reveals as a whole.
