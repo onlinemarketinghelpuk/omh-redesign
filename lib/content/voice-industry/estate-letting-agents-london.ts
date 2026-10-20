@@ -4,10 +4,10 @@ import { roiCalculator } from "@/lib/content/roi-calculator";
 
 export const meta = {
   "title": "AI Voice Agents for Real Estate in London | OMH",
-  "description": "AI voice agents for London estate and letting agents. Answer every enquiry on the first ring, book viewings and valuations day and night, and route offers and tenant emergencies. Built and managed by OMH.",
+  "description": "AI voice agents for London real estate and letting agents. Answer every enquiry on the first ring, book viewings and valuations day and night, and route offers and tenant emergencies. Built and managed by OMH.",
   "ogTitle": "AI Voice Agents for Real Estate in London | OMH",
   "ogDescription": "Every London property enquiry answered, evenings and weekends included.",
-  "canonical": "/ai-voice-agents/estate-letting-agents/london"
+  "canonical": "/ai-voice-agents/real-estate-letting-agents/london"
 };
 
 export const schema = [
@@ -15,12 +15,12 @@ export const schema = [
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "AI Voice Agents for Real Estate in London",
-    "serviceType": "AI voice agent and AI receptionist for estate and letting agents",
-    "description": "Managed AI voice agents for London estate and letting agents. Answers every enquiry, books viewings and valuations, and routes offers and tenant emergencies.",
-    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents/london",
+    "serviceType": "AI voice agent and AI receptionist for real estate and letting agents",
+    "description": "Managed AI voice agents for London real estate and letting agents. Answers every enquiry, books viewings and valuations, and routes offers and tenant emergencies.",
+    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents/london",
     "audience": {
       "@type": "BusinessAudience",
-      "audienceType": "Estate and letting agents"
+      "audienceType": "Real estate and letting agents"
     },
     "provider": {
       "@type": "Organization",
@@ -147,14 +147,14 @@ export const schema = [
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Estate & Letting Agents",
-        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents"
+        "name": "Real Estate & Letting Agents",
+        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents"
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": "London",
-        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents/london"
+        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents/london"
       }
     ]
   }
@@ -203,7 +203,7 @@ export const markup = String.raw`
       <ol class="flex flex-wrap items-center gap-1.5">
         <li><a href="/" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Home">Home</a></li><li aria-hidden="true">/</li>
         <li><a href="/ai-voice-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="AI Voice Agents">AI Voice Agents</a></li><li aria-hidden="true">/</li>
-        <li><a href="/ai-voice-agents/estate-letting-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Estate and Letting Agents">Estate &amp; Letting Agents</a></li><li aria-hidden="true">/</li>
+        <li><a href="/ai-voice-agents/real-estate-letting-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Real Estate and Letting Agents">Real Estate &amp; Letting Agents</a></li><li aria-hidden="true">/</li>
         <li aria-current="page" class="font-semibold text-ink">London</li>
       </ol>
     </nav>
@@ -211,7 +211,7 @@ export const markup = String.raw`
       <div>
         <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(16_24_40/0.5)]"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London · 020</p>
         <h1 class="mt-5">AI Voice Agents for Real Estate <span class="hl">in London</span></h1>
-        <p class="mt-6 text-body text-muted">An AI receptionist for London estate and letting agents. It answers every enquiry on the first ring, books viewings and valuations, and routes offers and tenant emergencies to your team, day and night.</p>
+        <p class="mt-6 text-body text-muted">An AI receptionist for London real estate and letting agents. It answers every enquiry on the first ring, books viewings and valuations, and routes offers and tenant emergencies to your team, day and night.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="london_hero_book">Book a demo for your London branch</a>
           <a href="#call" class="btn btn-secondary !bg-surface" data-track="london_hero_hear"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a London call</a>
@@ -1077,11 +1077,11 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
 <section id="more" data-component="LondonRelated" class="bg-paper">
   <div class="container-omh py-14 lg:py-16">
     <div class="grid gap-4 md:grid-cols-3">
-      <a href="/ai-voice-agents/estate-letting-agents" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="industry">
+      <a href="/ai-voice-agents/real-estate-letting-agents" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="industry">
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">AI voice agents for estate agents</span><span class="mt-1 block text-[15px] text-muted">Everything it does for sales and lettings, anywhere in the UK.</span></span>
       </a>
-      <a href="/ai-voice-agents/estate-letting-agents#areas" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="other cities">
+      <a href="/ai-voice-agents/real-estate-letting-agents#areas" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="other cities">
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="icon !h-6 !w-6" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">Other UK cities</span><span class="mt-1 block text-[15px] text-muted">Birmingham, Manchester, Leeds, Liverpool, Bristol and more.</span></span>
       </a>

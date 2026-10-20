@@ -40,9 +40,9 @@ const dentalCopy: IndustryCopy = {
 };
 
 export const industryPages = {
-  "estate-letting-agents": { ...estate, copy: estateCopy, blocks: [], classes: "" },
-  "estate-letting-agents/london": { ...estateLondon, copy: estateCopy, blocks: ["london"], classes: "vi-london" },
-  "estate-letting-agents/london-v2": {
+  "real-estate-letting-agents": { ...estate, copy: estateCopy, blocks: [], classes: "" },
+  "real-estate-letting-agents/london": { ...estateLondon, copy: estateCopy, blocks: ["london"], classes: "vi-london" },
+  "real-estate-letting-agents/london-v2": {
     ...estateLondonV2,
     copy: estateCopy,
     blocks: ["london", "estate-london-v2"],

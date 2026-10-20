@@ -70,6 +70,13 @@ const nextConfig: NextConfig = {
       // The old WordPress theme's files (greate, greate-child). Only themes: /wp-content/uploads may still be
       // referenced by imported images (see images.remotePatterns above).
       { source: "/wp-content/themes/:path*", destination: "/", permanent: true },
+      // Client, 20 Oct 2026: the estate agents industry page is now "real estate and letting agents".
+      { source: "/ai-voice-agents/estate-letting-agents", destination: "/ai-voice-agents/real-estate-letting-agents", permanent: true },
+      {
+        source: "/ai-voice-agents/estate-letting-agents/:city",
+        destination: "/ai-voice-agents/real-estate-letting-agents/:city",
+        permanent: true,
+      },
     ];
   },
 };

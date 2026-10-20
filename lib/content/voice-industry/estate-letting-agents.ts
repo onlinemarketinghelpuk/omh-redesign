@@ -6,24 +6,24 @@ import { leadDemo } from "@/lib/content/lead-demo";
 import { roiCalculator } from "@/lib/content/roi-calculator";
 
 export const meta = {
-  "title": "AI Receptionist for Estate & Letting Agents | UK | OMH",
-  "description": "An AI voice agent for UK estate and letting agents. Answers every enquiry 24/7, books viewings and valuations, qualifies buyers and tenants and routes tenant emergencies. Built and managed by OMH.",
-  "ogTitle": "AI Receptionist for Estate & Letting Agents | OMH",
+  "title": "AI Receptionist for Real Estate & Letting Agents | UK | OMH",
+  "description": "An AI voice agent for UK real estate and letting agents. Answers every enquiry 24/7, books viewings and valuations, qualifies buyers and tenants and routes tenant emergencies. Built and managed by OMH.",
+  "ogTitle": "AI Receptionist for Real Estate & Letting Agents | OMH",
   "ogDescription": "Every property enquiry answered, even when the team is out on viewings. Built, tested and managed by a UK team.",
-  "canonical": "/ai-voice-agents/estate-letting-agents"
+  "canonical": "/ai-voice-agents/real-estate-letting-agents"
 };
 
 export const schema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI Receptionist for Estate and Letting Agents",
-    "serviceType": "AI voice agent and AI receptionist for estate and letting agents",
-    "description": "Managed AI voice agents that answer property enquiries, book viewings and valuations, qualify buyers and tenants and route urgent calls for UK estate and letting agents.",
-    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents",
+    "name": "AI Receptionist for Real Estate and Letting Agents",
+    "serviceType": "AI voice agent and AI receptionist for real estate and letting agents",
+    "description": "Managed AI voice agents that answer property enquiries, book viewings and valuations, qualify buyers and tenants and route urgent calls for UK real estate and letting agents.",
+    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents",
     "audience": {
       "@type": "BusinessAudience",
-      "audienceType": "Estate and letting agents"
+      "audienceType": "Real estate and letting agents"
     },
     "provider": {
       "@type": "Organization",
@@ -196,8 +196,8 @@ export const schema = [
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Estate & Letting Agents",
-        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents"
+        "name": "Real Estate & Letting Agents",
+        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents"
       }
     ]
   }
@@ -249,12 +249,12 @@ export const markup = String.raw`
         <li aria-hidden="true">/</li>
         <li><a href="/ai-voice-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="AI Voice Agents">AI Voice Agents</a></li>
         <li aria-hidden="true">/</li>
-        <li aria-current="page" class="font-semibold text-ink">Estate &amp; Letting Agents</li>
+        <li aria-current="page" class="font-semibold text-ink">Real Estate &amp; Letting Agents</li>
       </ol>
     </nav>
     <div class="mt-6 grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:gap-14">
       <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI receptionist for UK estate and letting agents</p>
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI receptionist for UK real estate and letting agents</p>
         <h1>Every property enquiry answered, <span class="hl">even when the team is out on viewings</span></h1>
         <p class="mt-6 text-body text-muted">Your AI voice agent books viewings and valuations, qualifies buyers and tenants, and puts urgent calls through, day and night. Built, tested and managed for your agency by OMH.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -1326,7 +1326,7 @@ ${leadDemo("real-estate")}
 <section id="areas" data-component="EstateAreas" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-areas>
     <div>
-      <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Areas we cover</p><h2>Estate and letting agents in <span class="hl">ten UK cities</span></h2></div>
+      <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Areas we cover</p><h2>Real estate and letting agents in <span class="hl">ten UK cities</span></h2></div>
       <div class="mt-5 space-y-3 text-muted">
         <p>Buyers and tenants trust a local number. Your agent can answer on your existing line or on a new number with your city's area code.</p>
         <p class="text-[16px]">Our team is in Hullbridge, Essex. We don't have offices in these cities. Set-up and reviews happen by video call and phone. <span class="flag">[CONFIRM] local number availability</span></p>
@@ -1348,7 +1348,7 @@ ${leadDemo("real-estate")}
       <figure class="dental-map rounded-[18px] border border-line bg-paper p-3 sm:p-4">
         <div class="relative mx-auto w-full max-w-[440px]" style="aspect-ratio:480/560">
           <svg viewBox="0 0 480 560" class="absolute inset-0 h-full w-full overflow-hidden rounded-[12px] bg-[var(--sea)]" role="img" aria-labelledby="dmap-title">
-            <title id="dmap-title">Map of England and Wales marking the ten cities we cover for estate and letting agents, with the OMH team in Hullbridge, Essex</title>
+            <title id="dmap-title">Map of England and Wales marking the ten cities we cover for real estate and letting agents, with the OMH team in Hullbridge, Essex</title>
             <path class="map-land map-land-other" d="M-204.4,124.5L-205,127.3L-208.8,123.3L-210.4,119.5L-221.3,116.4L-216.3,113.3L-214,114.6L-206.1,115.7L-204.1,117.6ZM-44.3,27.2L-53.3,32.6L-54.6,34.8L-57.9,44L-58.3,46.6L-61.4,51.3L-64.6,56.5L-67.7,58.4L-72.6,59.7L-75.3,61.1L-78.4,60L-82.5,59.8L-84.8,61.5L-84.7,63L-83.7,64.7L-80.4,67.5L-76.4,70.1L-77,72L-79.3,74L-93.6,78.4L-98.1,81.5L-99.6,83.5L-98.6,87.4L-88.4,99.5L-86.7,100.8L-85.5,107.4L-75.9,110.9L-72.3,115.4L-69,116.5L-61.6,116.7L-58.7,118.6L-56.8,117.6L-55.6,115.5L-49.1,110.4L-46.7,108.1L-47.6,104.7L-48.8,102.1L-44.7,97.3L-39.8,92.6L-37.4,92.9L-33.7,96.3L-30.8,100.8L-30.6,104.1L-30.2,106.6L-27.4,111.9L-25.5,113.9L-20.2,115.2L-19.1,117.3L-20.6,124.7L-20,127.3L-14.2,127.6L-8.1,127.5L-6.2,127.8L-3.9,126.5L-0.4,125L4.2,125.8L6.4,129.4L7.2,132.9L3.1,133.8L-1.2,132.9L-3.4,135.1L-3.8,139.3L-2.6,145L0,149.1L1.7,158.3L3.1,168.3L5.6,174.5L5.7,181.9L5.1,185.5L5.4,192.1L4,194.4L4.5,200.7L7.4,213.7L8.4,220.8L8.6,236.3L5.8,242.1L2.2,247.3L-0.5,253.8L-2.5,260.7L-4.2,272.2L-12.5,285L-15.8,288.1L-19.7,290L-12.1,299.7L-19.1,303.6L-26.3,304.5L-34,301.7L-38.9,301.5L-43.7,304.3L-45.4,306L-46.8,304.9L-49.2,297.2L-52.1,304.9L-56.9,307.1L-64.6,306L-77.7,307.2L-82.9,309.1L-85.2,312.4L-87.2,316.4L-89.5,318.5L-91.9,319.7L-102.2,321.8L-104.2,323L-109.6,329.1L-116,332.4L-121.1,333.1L-125.2,329L-126.9,326.5L-128.9,325L-135.9,324.8L-133.9,326.1L-132.6,328.8L-132.5,334.2L-133.7,339.2L-137.3,341.3L-141.4,341.5L-148.4,346.1L-157.2,346.8L-162.3,351.3L-191.5,356.8L-192.9,356.6L-196.7,354.1L-200.9,352.8L-205.2,353L-217.5,356.4L-223.4,354.8L-214.8,344.2L-204.2,339.5L-203,338L-206.3,337L-225.3,339L-232.2,341.7L-238.9,342L-235.3,337L-226.1,330.9L-221.3,327.9L-218.2,327L-214.9,323.2L-205.5,319.3L-235,325.9L-242.2,324L-243.6,321.2L-249.6,321.6L-250.9,314.8L-241.4,305.8L-235.9,302.1L-229.6,300.5L-223.6,297.8L-221,294L-223.6,292.3L-240.8,291.4L-248.9,289.6L-248.1,286.4L-246,283L-236.9,277.9L-232.3,277.4L-228.2,278.6L-224.4,280.5L-221.5,282.9L-211.8,282.7L-215.3,278.5L-215.1,270.4L-217.9,267.4L-213.6,264.2L-209,262.4L-200.7,255.5L-197.9,254.6L-183,254.4L-166.9,252L-150.7,247.9L-158.4,244L-161.9,239.6L-168.9,247.3L-173.6,250L-186.3,250.4L-190.2,249L-195.5,245.9L-197.4,246.7L-199.3,248.5L-208,251.6L-216.8,251.6L-205.9,245.3L-191.8,234.2L-188.4,230.4L-183.6,224L-184.5,220.9L-187,218.8L-176.3,205.5L-172.8,203.4L-166.9,203.5L-162.1,201.6L-160.3,201.8L-158.6,201.1L-154.3,197.2L-159.9,194L-165.7,192L-184.6,191.5L-187,190.9L-189.3,189.4L-190.5,187.4L-191.2,182.4L-192.3,181.3L-196.6,180.8L-200.8,181.8L-203.8,181.3L-206.4,178.9L-201.2,174.5L-207,172.7L-213,173L-217.9,171L-217.5,167.8L-214.9,165L-217.6,161.7L-217.8,157.8L-214.4,156.4L-211.2,157.4L-203.8,155.4L-195,155.1L-202.2,151.6L-205,149L-204.8,145.4L-203.8,142.5L-194.4,138.2L-184.9,137.1L-185.4,133.6L-184.2,130.1L-193.5,127.9L-203,129.5L-201.2,122.5L-198.3,116.6L-197.4,112.5L-197.3,108L-201.9,109.4L-201.8,103.1L-203.1,98.6L-209.8,100.8L-209,95.1L-206.7,91.4L-203.1,90L-199.9,91.2L-193.9,91.8L-187.6,89.4L-179,89.6L-165.4,91.9L-157,101.4L-154.4,100.2L-150.1,95.1L-148.3,94.8L-134.4,98.5L-125.9,102.3L-123.4,101.5L-124.3,95.7L-126.9,91.3L-122.6,86.2L-117.7,83L-114.4,81.5L-107.1,79.9L-103.9,78L-101.1,71.3L-97.5,65.8L-115.5,67.2L-131.6,58.9L-128.4,54.4L-124.6,51.9L-118.3,50.4L-117.5,48L-114.3,46.1L-108.7,41.2L-109.8,34L-108.4,28.8L-104.4,25.7L-102.7,20.9L-100.9,17.4L-93.4,16.8L-85.9,14.1L-83.4,14.6L-75,14.5L-72.2,16.1L-72.4,10.1L-67.2,9.9L-65.3,11.2L-64.7,15.4L-62.6,18.4L-62.3,23L-64.2,26.5L-67,29.1L-64.8,32L-69,36.8L-64.7,35L-58.6,30.4L-58.5,26.3L-59.1,21.1L-60.5,16.4L-59.3,11.3L-55.7,8.3L-47.3,7.3L-50.3,1.3L-47.2,1.1L-43.8,2.5L-39.3,7.4L-34.5,11.3L-29.3,14.4L-34.9,19.8L-41.4,23.1Z"/><path class="map-land" d="M199.1,366.2L194.8,370.1L180.8,373.9L174.8,377.9L164,387L162.1,387.8L146.2,385.2L134.6,373L127.3,367.9L124.1,367.2L120.9,368.6L113.9,369.9L106.9,369.5L110.7,364L115.6,361L104.9,358.6L101.8,356.8L98.5,352.9L90.1,352L86.1,352.8L78.9,357.7L67.9,362.7L55.1,354.6L52.7,351.2L53,344.8L51.3,339.6L47.8,337.8L52.8,331.4L58.4,327.2L70.8,323.3L89.8,313.8L100.2,309.7L110,302.5L114.1,298L117.2,291.7L120.1,284L124.5,277.7L120.6,276.1L118.8,271.3L119.6,266.6L121.4,262.3L120.1,256.9L117.4,251.2L117.7,246.9L118.4,242.2L111.2,242.3L103.8,243.5L97.1,246.6L90.6,250.8L85,251.4L85.1,247.8L87.7,243.5L94.3,237.4L101.5,232.4L104.1,228.4L106.1,223.9L109.7,220.2L118.9,213.4L136,206L138.7,205.5L145.4,206.7L151.9,205.7L157.7,202.8L163.6,202.3L176.3,210.9L172.6,198L178.4,195.1L186.5,206.8L189.6,208L196.1,206.4L193.5,204.4L190.6,204.2L186.8,202.5L183.8,198.7L178.5,186.9L179,180L182.5,172.8L186.7,166.2L183.5,164.8L180.7,162.3L180.2,155.5L181.2,149.8L188.3,144.6L190.4,136.8L191.6,128.1L190.4,124.1L183.4,124.7L180,126.3L177,128.9L173.8,128.6L165.4,118.8L160.5,111.5L152.1,96L151.1,86.8L158.5,67.2L169.5,54.7L182.1,50.5L179.8,49.7L160.6,49.1L154.1,50.6L148.1,55.6L144.7,57.2L141.4,57.6L138,60.1L134.9,63.7L131.5,65.9L125.1,65L121.9,65.8L119.8,63.6L118.1,60L115.6,59.1L112.8,60L107,64.4L101,67L94,63.8L84.8,58L83,59.9L80.6,64.9L79.1,72.6L72.9,65.6L67.6,56.1L65.9,50.5L66.2,44.1L69.2,41.6L72.4,44L78,28.9L88.5,9.5L92.2,3.8L94.8,-3.6L94.7,-8.7L92.7,-12.9L84.2,-22.8L84.6,-30.7L85.9,-39.4L88.6,-44.5L89.6,-45.5L101.4,-44.8L96.9,-47.8L88.1,-56.1L88.4,-58.9L90.8,-66.2L89.8,-65.4L87.8,-62.2L83.6,-54.1L81.3,-52.2L74.7,-50.6L73.4,-46.7L72.2,-45.6L68.9,-45.4L67.8,-41.7L67,-41.4L66.2,-45.5L66.6,-52.2L68.2,-58.4L70.9,-63.1L80.7,-73.7L76,-70.4L65.1,-60.7L59.4,-54.4L58,-52.2L57.3,-50.2L57.2,-48.1L59.1,-36.1L58.1,-30.8L47.2,4.8L45.3,8.3L43.6,10L42.1,10.4L37.6,9.5L35.7,6.6L35.8,3.7L37,-0.9L41.6,-17.8L43.6,-22.4L46.3,-26.7L51.9,-34.2L51.9,-34.7L48.2,-33.4L46.7,-34L45.8,-35.5L47.6,-58.3L50.8,-65.7L52.5,-76.7L55.5,-85.9L58.7,-92.6L61.3,-101.2L64.7,-105L66,-110.9L69.8,-117.1L72.9,-123.7L71.4,-123.2L52.6,-106.6L47.7,-103.6L41.6,-104.7L36.8,-107L33.3,-111.5L32,-119.5L27.6,-119.9L23.7,-121.6L23.8,-122.6L29.1,-126.7L37.4,-127.7L45.4,-134.2L38.8,-139.3L39.4,-140.8L45.6,-144.4L53.7,-157.5L56.1,-169.7L52.7,-175.6L51.6,-179.5L44.8,-184.1L43.9,-189.6L44.9,-192.5L47.3,-195.4L50.9,-197.5L56.5,-199.5L51.7,-202.1L50,-204.9L48.8,-209L48.9,-211.4L52,-221.6L53.7,-225.8L56.9,-231.1L69.9,-230.1L71.5,-232.5L73,-232.6L79.6,-230L78.6,-232.5L68.4,-246L67.6,-248.5L71,-255.2L71.3,-258.3L71.2,-261.8L72.2,-264.2L75.6,-265.4L86,-264.7L88.6,-265.8L87.7,-269.3L85.4,-273.8L85.2,-277.4L85.9,-280.7L86.4,-287.4L86.8,-290.2L89.5,-294.5L91.5,-295.8L94.2,-296.5L99.9,-294.7L101.9,-292.8L104.2,-288.5L106,-288.9L113.3,-293.1L115.5,-293.6L118.1,-288.3L130.4,-292.1L146.6,-293.4L156.4,-296L166.8,-296.7L176.4,-299.7L186.5,-298L186.8,-296.2L186.2,-293.7L183.6,-286.9L183.9,-279.1L183.3,-276.7L182,-273.9L178.2,-268.5L168.1,-261L149.6,-243.7L138.5,-235.1L136.9,-230.9L136,-225L142.3,-223.7L144.8,-221.6L143.3,-218.7L133.3,-208.6L130.1,-199.2L137.6,-199.3L143.7,-200.9L156.1,-206.5L167.5,-210.7L172.9,-210.8L183.6,-207.1L186,-206.9L190.6,-208.5L195.1,-208.6L226.1,-207.4L234.7,-209.3L240.5,-206.9L245.2,-200.8L249.8,-189.6L249.7,-187.8L246.9,-182.7L241.8,-176.3L237.4,-167.4L236.1,-162.6L235.3,-157.4L233.9,-152.6L225.1,-129.9L216.2,-117.5L212.4,-108.5L207.5,-101.4L202.9,-97L198,-94.1L183.7,-91L179.7,-89L174.9,-85.1L169.7,-83.2L175.6,-83.4L181.5,-85.5L192.1,-86.2L204.3,-78.5L203.1,-72.4L198.1,-67.5L186.9,-66.8L176.3,-56.3L171.5,-53.1L166.5,-51.5L160.2,-52.2L148.8,-55.2L144,-58.3L148.4,-53.4L153.3,-50.7L182.9,-44L184.7,-44.7L194.1,-50.9L206.7,-50.8L230.7,-39L237.5,-30L247.5,-17.1L252.9,-12.1L257,-7.5L259.3,-0.8L264.3,21.9L269.8,43.9L277.2,67.8L280.4,74.4L284.8,78.9L306.7,89.5L311.5,92.8L320.3,103L328.7,113.8L336.4,122L344.8,128.6L340.9,132.3L338.2,137.9L340.6,145.4L344,152.6L351,164.1L357.4,176.6L355.1,174.7L352.9,173.7L349.7,174L346.6,173.6L340.8,169.8L335.3,165L324.6,167.2L318.8,166.5L313.5,166.6L323.5,169.2L334.2,169.3L358.4,189.9L366.9,202.1L372.2,218.6L369.1,226.2L364.2,231.1L359.6,236.9L355.3,243.3L368.9,252.1L371.8,251.6L374.8,250.2L377.4,247L382.1,239.3L384.5,236.6L392.6,235.3L399.6,235.5L406.7,236.9L412.8,236.1L425.3,238.8L431.6,241.5L448.1,253.9L451.8,260.9L453.9,270.2L454.6,280.6L452.4,290.2L449.7,298.9L448.4,310L447.4,314.2L445.6,317.3L437.5,326.6L432,330.3L429.6,328.9L427.1,329.2L427,331.3L429.7,335.6L430.1,341.1L425.2,345.2L420,347.1L411.5,345.3L399.8,353.2L408.6,356.6L410.5,360.7L408.6,367.8L403.5,371.3L397.4,372.8L391.2,373.4L386.2,375.4L381.4,378.8L387.5,376.8L391.8,378.3L394.8,384.1L397.2,385.9L409.4,387.9L416.6,387.6L431.1,385.5L437.9,385.3L440.5,386.2L440.7,391.1L440.2,403.5L438.4,406.1L419.8,417.1L416,424.5L415.1,428.8L403.9,428.6L398.9,433.2L389.8,436.6L383,440.2L376.2,444.5L370.5,445.8L346,441.5L331.1,442.4L311.2,447L306,446.3L298.4,442.4L290.4,439.8L281.3,438.7L273.3,435L278.3,442.2L267.4,449.2L262.4,450.5L257.3,450.4L246.5,452.4L236.5,451.4L238.1,456.3L240.7,460.6L238.7,462.4L236.3,462.9L217.5,459.6L214.7,460.2L212.5,463.2L205.6,461.6L198.9,456.5L191.9,453L184.5,451.2L178.5,451.8L154.2,459.3L149,467.3L146.4,478.6L142.7,488.5L136.7,496.1L129.9,497.1L123.5,491.5L111.4,485.3L107.2,481L105.9,480.8L104.6,482.3L99.7,483.9L94.7,483.8L87.1,485.2L73.4,489.5L67.8,492.6L55.9,501.1L53.4,503.5L48.9,512.4L42.2,513.7L36.6,507.7L29.9,505.3L22.8,507.1L18.3,509.8L16.4,507.3L16.5,502.2L22,496.2L36.2,492.2L48.7,480.6L55.1,473.5L57.4,469.4L60.6,466.9L64.3,466.1L66.4,461.6L83.7,443.8L85.4,439.7L86.5,432.2L88,425L101.7,420.7L108.6,405.6L110.3,404.5L129.2,402.2L143.1,402.7L156.9,405.9L163.9,406.4L171,405.3L176.6,401.3L186.4,386.6L191.8,380.1L198,374.3L203.8,367.6L213.2,355.2L206.8,359.4ZM114.3,203.6L116.5,205.4L122.6,205.3L120.4,209.2L113.8,213.4L109.1,217.5L103.7,221L101.2,216.8L98.1,216.8L93.9,208.6L93.5,196.8L99.5,193.9L107.9,194.3ZM211.8,-354.3L206.4,-354.1L209.2,-359.7L212.6,-361.2L218.8,-360.5L217.8,-358ZM283.1,-476L282,-474.8L277.3,-484.4L280.5,-495.5L284.5,-495.2L285.2,-492.3L284.9,-489.6L282.8,-489.3L282.6,-488.5L283.3,-483.4L283.4,-477.5ZM270.7,-477.9L271.8,-471.4L274.1,-473.1L277.9,-466.7L279.7,-466.7L282.7,-469.4L282.1,-463.5L279.3,-446.8L278.3,-444L277.9,-438.9L277.2,-437.9L276.3,-427.9L274.3,-424.4L272.5,-416.5L271.8,-415.6L269.1,-418.7L271.7,-430.9L272.6,-438L271.9,-441.6L270.3,-444.9L266.3,-445L262.9,-443.5L262.2,-445.5L262,-448.1L261.2,-448.9L256.6,-448.7L255.4,-449.4L254.4,-451.8L254.2,-453.8L258.4,-455.3L262.1,-454.7L267.8,-458.7L264.2,-471.5L259.5,-472.6L258.5,-473.9L259.3,-476L261.8,-477.2L265.8,-483.8L268.1,-484.8L270.9,-484.7ZM295,-504.4L295,-503.3L292.8,-495.2L292.9,-492.2L289.1,-492.5L288.4,-493.3L287.6,-497.9L288.1,-502.8L288.5,-504.2L289.7,-504.7L290.9,-503.7L292.8,-506.2L293.8,-506.2ZM181.3,-313.2L178.4,-312.1L175.8,-312.2L171.5,-317.7L170,-321.8L170.4,-324.4L172.1,-325.2L176.3,-323.8L178.4,-319.2L178.5,-316.2L179,-315.1L181.6,-313.9ZM192.8,-308.1L192.3,-307.8L190.6,-309.6L187.7,-315.9L192.4,-317L194.5,-316.1L193.6,-313.5ZM186.9,-335.5L186.3,-333.2L190,-333.1L195.3,-331.1L198.6,-330.7L201.2,-328.2L199.8,-323.6L198,-322.3L196.2,-322.2L189.9,-326.9L181.5,-325.1L179.7,-325.7L178.7,-326.9L178.4,-328.6L178.4,-331.9L177.9,-332.8L174.9,-329.8L173.5,-330.1L172.8,-331.6L172.5,-334.8L172.9,-339L174.8,-345.2L177.8,-346.5L182.3,-345.6L187.4,-342.1L188.9,-339.9L188.9,-338.1ZM203,-350.1L198.8,-347.8L197.1,-349.8L196.8,-355.9L191.8,-358.6L189.4,-360.3L187.7,-363.3L188.1,-364.2L191.4,-365.5L196.9,-359.8L199.1,-355.2L203.1,-353.9L203.6,-353.2ZM-1.7,-111.7L-4.8,-111.2L-4.9,-112.7L0.8,-118.8L4.1,-119.5L5.1,-118.8L2.7,-115.3ZM71.7,0.3L64.9,0L62.6,-0.9L59.8,-3.3L57.2,-16.5L58.6,-21L60,-23.1L61.4,-24.8L65.1,-25.5L68.5,-22.8L69.7,-20.5L72.2,-11.5L72.4,-3.9ZM40.3,-86.2L19.1,-82.2L11.9,-83.1L11.3,-85.8L12.9,-87.3L18.9,-88.6L22.1,-101.1L13.6,-107.5L13.2,-109.2L14.1,-112L15.1,-113.1L20.7,-115.7L23,-116.2L24.9,-115.8L28.6,-112.1L32.5,-104.8L38.1,-103.3L41.9,-100ZM19.5,-48.2L20.7,-35.9L22.2,-28.2L22,-25.6L20.1,-22.1L11.1,-17.9L8.2,-18L8.3,-19.2L10.5,-24L9.2,-29.5L10.2,-33.7L9.5,-34.4L7.7,-34.1L0.9,-27.7L-1.2,-27.2L-1.3,-28.5L0.6,-34L1,-37.6L2.1,-39.9L4,-41.9L6.2,-43.4L7.7,-43.5L9.3,-41.7L14.8,-46ZM27.3,-36.7L26.1,-35.8L23.4,-36.1L22.5,-37.8L22.1,-40.1L22.3,-44.4L24.1,-47.4L31.2,-51.6L28.2,-53.4L28.1,-54.6L30.2,-58.4L38,-63.9L39.9,-65L41.8,-64.7L37.4,-54.2ZM30.1,-278.5L22.6,-262.4L20.2,-262.1L17.6,-258.2L10.6,-254L16.6,-253.6L18.1,-251.9L17.9,-248.7L16.7,-246.8L8.4,-239.8L3,-237.2L-3.2,-229.7L-6.1,-229.9L-9.4,-225L-11.9,-223.1L-13.2,-223.2L-14.7,-224.3L-17.8,-229.5L-11.1,-233.9L-10.2,-236.5L-5.6,-239.1L-5.9,-240L-12.7,-244.4L-15.2,-247.4L-14.7,-248.7L-11.2,-251.6L-12.8,-252L-13.8,-253.8L-15.5,-254.6L-16.1,-256.2L-16,-260.2L-15.3,-264.4L-13,-266.1L-12.2,-268L-11.2,-268.4L-8.3,-267.2L-5.3,-263.7L-1.6,-264.7L2.7,-263.8L2.9,-264.6L0.2,-272.9L0.9,-274.5L2.8,-276.3L13,-281.4L25.8,-290.4L28.9,-291.7L29.7,-290.3L30.7,-285.2ZM17.6,-146.4L16,-145.3L14.2,-145.6L12.2,-147.4L10.1,-152L15.9,-154.7L18.2,-152.8L18.8,-150.6L18.6,-148.3ZM27.8,-197.2L27.3,-192.9L26.1,-188L27.1,-182.7L27,-179.1L29.2,-177.6L30.3,-175.9L39.8,-173.4L48.9,-173.5L50.4,-171.8L50.5,-169.3L48.9,-166.8L43.6,-162.1L37.1,-154.6L35.1,-153.1L33.1,-153L31.8,-153.9L31.5,-168.1L25,-166.7L19.6,-167.2L16.8,-169L15,-172.4L11.5,-181.2L-0.2,-185.5L-3.2,-190.3L-4.1,-193.3L-3.5,-194.8L-0.8,-198L2.2,-196.7L4.2,-197.2L5.5,-198.8L5.5,-200.1L4.1,-203.2L4.2,-204.1L16.5,-207.1L17.8,-213.1L20.5,-213.4L23.3,-211.3L27.1,-204.8ZM-24.9,-217.6L-19.7,-211.9L-24.9,-203.4L-31.8,-204L-41.2,-211.2L-41.1,-212.5L-40.2,-214.4L-38.6,-215.9L-36.9,-216.1L-34.7,-214.8L-31,-216.3L-28.4,-215.4ZM-31.2,-164.1L-33.5,-163.8L-36.2,-164.5L-38,-166.1L-39.2,-172L-39.2,-175.7L-38,-182.2L-37.6,-189.9L-31.7,-189.8L-30.3,-188.5L-31.2,-165.1ZM-41,-150.7L-45.6,-149.7L-47.2,-150.5L-47.5,-151.9L-46.1,-155.1L-42.5,-155.9L-40.2,-153.9L-40,-152.3ZM4.2,125.8L-0.4,125L-3.9,126.5L-6.2,127.8L-8.1,127.5L-14.2,127.6L-20,127.3L-20.6,124.7L-19.1,117.3L-20.2,115.2L-25.5,113.9L-27.4,111.9L-30.2,106.6L-30.6,104.1L-30.8,100.8L-33.7,96.3L-37.4,92.9L-39.8,92.6L-44.7,97.3L-48.8,102.1L-47.6,104.7L-46.7,108.1L-49.1,110.4L-55.6,115.5L-56.8,117.6L-58.7,118.6L-61.6,116.7L-69,116.5L-72.3,115.4L-75.9,110.9L-85.5,107.4L-86.7,100.8L-88.4,99.5L-98.6,87.4L-99.6,83.5L-98.1,81.5L-93.6,78.4L-79.3,74L-77,72L-76.4,70.1L-80.4,67.5L-83.7,64.7L-84.7,63L-84.8,61.5L-82.5,59.8L-78.4,60L-75.3,61.1L-72.6,59.7L-67.7,58.4L-64.6,56.5L-61.4,51.3L-58.3,46.6L-57.9,44L-54.6,34.8L-53.3,32.6L-44.3,27.2L-42.4,30.8L-38.1,31.9L-34,29.1L-28.8,19.7L-25.7,19.5L-22.2,20.4L-15.4,19.7L-3,16L2.4,16.2L9.8,19L15.5,19.3L20.1,26.5L22.2,37.5L27.9,48.7L35.8,58.5L35.7,64.1L32.6,67.1L26.1,70.5L26.1,74.7L30.1,72.7L33.7,72.1L42.3,73.4L45.1,77.8L46.7,84L47.7,89.1L46.6,94.7L44.5,92.8L42.4,87.7L39.9,85.3L36.8,84L37.9,90.8L36.8,99.9L38.2,100.8L42.3,101.2L39.1,110.3L33.4,112.6L26.7,113.2L25,116.4L23.5,120.7L19.8,126.7L15.2,130.1L9.6,129.1ZM294.6,454.3L289.5,457.7L288,461.5L286.7,463L283.5,464L280.3,464.2L267.7,456.6L264.6,456.9L267.4,453.3L275.4,450.4L279.7,446.6L289.8,450.1Z"/>
           </svg>
           <span class="area-base" style="left:81.73%;top:65.04%" aria-hidden="true"><i></i><span>OMH team</span></span>
@@ -1384,8 +1384,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=london" class="btn btn-primary" data-track="estate_city_click" data-track-name="London">Talk to us about London</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=london" data-future-href="/ai-voice-agents/estate-letting-agents/london" class="text-link" data-track="estate_city_page" data-track-name="London">AI receptionist for estate agents in London<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=london" class="btn btn-primary" data-track="estate_city_click" data-track-name="London">Talk to us about London</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=london" data-future-href="/ai-voice-agents/real-estate-letting-agents/london" class="text-link" data-track="estate_city_page" data-track-name="London">AI receptionist for estate agents in London<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-birmingham" data-area-panel="birmingham" hidden role="tabpanel" aria-labelledby="area-tab-birmingham" tabindex="0">
@@ -1404,8 +1404,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=birmingham" class="btn btn-primary" data-track="estate_city_click" data-track-name="Birmingham">Talk to us about Birmingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=birmingham" data-future-href="/ai-voice-agents/estate-letting-agents/birmingham" class="text-link" data-track="estate_city_page" data-track-name="Birmingham">AI receptionist for estate agents in Birmingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=birmingham" class="btn btn-primary" data-track="estate_city_click" data-track-name="Birmingham">Talk to us about Birmingham</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=birmingham" data-future-href="/ai-voice-agents/real-estate-letting-agents/birmingham" class="text-link" data-track="estate_city_page" data-track-name="Birmingham">AI receptionist for estate agents in Birmingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-manchester" data-area-panel="manchester" hidden role="tabpanel" aria-labelledby="area-tab-manchester" tabindex="0">
@@ -1424,8 +1424,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=manchester" class="btn btn-primary" data-track="estate_city_click" data-track-name="Manchester">Talk to us about Manchester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=manchester" data-future-href="/ai-voice-agents/estate-letting-agents/manchester" class="text-link" data-track="estate_city_page" data-track-name="Manchester">AI receptionist for estate agents in Manchester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=manchester" class="btn btn-primary" data-track="estate_city_click" data-track-name="Manchester">Talk to us about Manchester</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=manchester" data-future-href="/ai-voice-agents/real-estate-letting-agents/manchester" class="text-link" data-track="estate_city_page" data-track-name="Manchester">AI receptionist for estate agents in Manchester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leeds" data-area-panel="leeds" hidden role="tabpanel" aria-labelledby="area-tab-leeds" tabindex="0">
@@ -1444,8 +1444,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leeds" class="btn btn-primary" data-track="estate_city_click" data-track-name="Leeds">Talk to us about Leeds</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leeds" data-future-href="/ai-voice-agents/estate-letting-agents/leeds" class="text-link" data-track="estate_city_page" data-track-name="Leeds">AI receptionist for estate agents in Leeds<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=leeds" class="btn btn-primary" data-track="estate_city_click" data-track-name="Leeds">Talk to us about Leeds</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=leeds" data-future-href="/ai-voice-agents/real-estate-letting-agents/leeds" class="text-link" data-track="estate_city_page" data-track-name="Leeds">AI receptionist for estate agents in Leeds<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-liverpool" data-area-panel="liverpool" hidden role="tabpanel" aria-labelledby="area-tab-liverpool" tabindex="0">
@@ -1464,8 +1464,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=liverpool" class="btn btn-primary" data-track="estate_city_click" data-track-name="Liverpool">Talk to us about Liverpool</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=liverpool" data-future-href="/ai-voice-agents/estate-letting-agents/liverpool" class="text-link" data-track="estate_city_page" data-track-name="Liverpool">AI receptionist for estate agents in Liverpool<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=liverpool" class="btn btn-primary" data-track="estate_city_click" data-track-name="Liverpool">Talk to us about Liverpool</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=liverpool" data-future-href="/ai-voice-agents/real-estate-letting-agents/liverpool" class="text-link" data-track="estate_city_page" data-track-name="Liverpool">AI receptionist for estate agents in Liverpool<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-bristol" data-area-panel="bristol" hidden role="tabpanel" aria-labelledby="area-tab-bristol" tabindex="0">
@@ -1484,8 +1484,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=bristol" class="btn btn-primary" data-track="estate_city_click" data-track-name="Bristol">Talk to us about Bristol</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=bristol" data-future-href="/ai-voice-agents/estate-letting-agents/bristol" class="text-link" data-track="estate_city_page" data-track-name="Bristol">AI receptionist for estate agents in Bristol<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=bristol" class="btn btn-primary" data-track="estate_city_click" data-track-name="Bristol">Talk to us about Bristol</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=bristol" data-future-href="/ai-voice-agents/real-estate-letting-agents/bristol" class="text-link" data-track="estate_city_page" data-track-name="Bristol">AI receptionist for estate agents in Bristol<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-sheffield" data-area-panel="sheffield" hidden role="tabpanel" aria-labelledby="area-tab-sheffield" tabindex="0">
@@ -1504,8 +1504,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=sheffield" class="btn btn-primary" data-track="estate_city_click" data-track-name="Sheffield">Talk to us about Sheffield</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=sheffield" data-future-href="/ai-voice-agents/estate-letting-agents/sheffield" class="text-link" data-track="estate_city_page" data-track-name="Sheffield">AI receptionist for estate agents in Sheffield<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=sheffield" class="btn btn-primary" data-track="estate_city_click" data-track-name="Sheffield">Talk to us about Sheffield</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=sheffield" data-future-href="/ai-voice-agents/real-estate-letting-agents/sheffield" class="text-link" data-track="estate_city_page" data-track-name="Sheffield">AI receptionist for estate agents in Sheffield<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-nottingham" data-area-panel="nottingham" hidden role="tabpanel" aria-labelledby="area-tab-nottingham" tabindex="0">
@@ -1524,8 +1524,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=nottingham" class="btn btn-primary" data-track="estate_city_click" data-track-name="Nottingham">Talk to us about Nottingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=nottingham" data-future-href="/ai-voice-agents/estate-letting-agents/nottingham" class="text-link" data-track="estate_city_page" data-track-name="Nottingham">AI receptionist for estate agents in Nottingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=nottingham" class="btn btn-primary" data-track="estate_city_click" data-track-name="Nottingham">Talk to us about Nottingham</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=nottingham" data-future-href="/ai-voice-agents/real-estate-letting-agents/nottingham" class="text-link" data-track="estate_city_page" data-track-name="Nottingham">AI receptionist for estate agents in Nottingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leicester" data-area-panel="leicester" hidden role="tabpanel" aria-labelledby="area-tab-leicester" tabindex="0">
@@ -1544,8 +1544,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leicester" class="btn btn-primary" data-track="estate_city_click" data-track-name="Leicester">Talk to us about Leicester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=leicester" data-future-href="/ai-voice-agents/estate-letting-agents/leicester" class="text-link" data-track="estate_city_page" data-track-name="Leicester">AI receptionist for estate agents in Leicester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=leicester" class="btn btn-primary" data-track="estate_city_click" data-track-name="Leicester">Talk to us about Leicester</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=leicester" data-future-href="/ai-voice-agents/real-estate-letting-agents/leicester" class="text-link" data-track="estate_city_page" data-track-name="Leicester">AI receptionist for estate agents in Leicester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-newcastle" data-area-panel="newcastle" hidden role="tabpanel" aria-labelledby="area-tab-newcastle" tabindex="0">
@@ -1564,8 +1564,8 @@ ${leadDemo("real-estate")}
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sales and lettings routing for your team</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=newcastle" class="btn btn-primary" data-track="estate_city_click" data-track-name="Newcastle">Talk to us about Newcastle</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=estate-letting-agents&amp;city=newcastle" data-future-href="/ai-voice-agents/estate-letting-agents/newcastle" class="text-link" data-track="estate_city_page" data-track-name="Newcastle">AI receptionist for estate agents in Newcastle<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=newcastle" class="btn btn-primary" data-track="estate_city_click" data-track-name="Newcastle">Talk to us about Newcastle</a>
+            <a href="/contact?service=ai-voice-agents&amp;industry=real-estate-letting-agents&amp;city=newcastle" data-future-href="/ai-voice-agents/real-estate-letting-agents/newcastle" class="text-link" data-track="estate_city_page" data-track-name="Newcastle">AI receptionist for estate agents in Newcastle<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
       </div>
@@ -1604,7 +1604,7 @@ ${leadDemo("real-estate")}
 <section id="stories" data-component="AgencyStories" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-fb>
     <div>
-      <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Agency stories</p><h2>Hear it from <span class="hl">estate and letting agents</span></h2></div>
+      <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Agency stories</p><h2>Hear it from <span class="hl">real estate and letting agents</span></h2></div>
       <p class="mt-5 text-muted">Short videos from branch managers, negotiators and lettings teams. Each story stays marked as pending until we have checked the results.</p>
     </div>
     <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-fb-list>

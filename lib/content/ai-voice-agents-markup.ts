@@ -52,9 +52,9 @@ const primaryCta = (track: string, cls = "") =>
 /* ----------------------------------------------------------- Industries */
 // Every H3, intro, bullet, safeguard and link from the two industry sections of the previous page, in one panel.
 const industries = [
-  { id: "estate", icon: "home", label: "Estate & Letting", full: "Estate & Letting Agents", tint: 1, href: "/ai-voice-agents/estate-letting-agents", slug: "estate-letting-agents",
+  { id: "estate", icon: "home", label: "Real Estate & Letting", full: "Real Estate & Letting Agents", tint: 1, href: "/ai-voice-agents/real-estate-letting-agents", slug: "real-estate-letting-agents",
     time: "Missed call · 23:40", status: "Answered by your AI agent", caller: "Is the house on Willow Creek still available?", agent: "It is. Would Saturday at 10am work for a viewing?", booked: "Viewing booked: Sat 10:00",
-    h3: "Estate and letting agents: book viewings day or night",
+    h3: "Real estate and letting agents: book viewings day or night",
     p: "Buyers, sellers and tenants call when they see a board or a listing, often while your team is out on appointments. The agent answers from your live listings and books the viewing.",
     bullets: ["Answers questions on price, rooms and availability", "Qualifies buyers, sellers and tenants", "Books viewings and valuations, and logs tenant maintenance calls"] },
   { id: "dental", icon: "tooth", label: "Dental", full: "Dental Clinics", tint: 3, href: "/ai-voice-agents/dental-clinics", slug: "dental-clinics",

@@ -43,7 +43,7 @@ export const legacyMarkup = String.raw`
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Industries</p>
         <h2>Built for businesses that live on <span class="hl">the phone</span></h2>
       </div>
-      <p class="mt-5 text-muted">We set up AI voice agents for estate and letting agents, dental clinics, healthcare clinics, plumbers, heating engineers, builders, law firms and car dealerships. Each agent is scripted around the calls your sector actually gets.</p>
+      <p class="mt-5 text-muted">We set up AI voice agents for real estate and letting agents, dental clinics, healthcare clinics, plumbers, heating engineers, builders, law firms and car dealerships. Each agent is scripted around the calls your sector actually gets.</p>
     </div>
 
     <div role="group" aria-label="Filter industries by group" class="mt-10 flex flex-wrap gap-2" data-industry-filters>
@@ -73,7 +73,7 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Estate &amp; Letting Agents</h3>
+        <h3 class="!text-[21px]">Real Estate &amp; Letting Agents</h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book viewings and valuations</span></li>

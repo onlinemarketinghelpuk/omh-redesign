@@ -75,7 +75,7 @@ export const landingV4Markup = String.raw`
       <div class="marquee" id="strip" data-marquee style="--dur: 38s">
         <div class="marquee-track">
           <ul aria-labelledby="strip-title">
-          <li><a class="ind" href="#uc-estate" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Estate &amp; Letting</b><small>Agents</small></a></li>
+          <li><a class="ind" href="#uc-estate" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Real Estate &amp; Letting</b><small>Agents</small></a></li>
           <li><a class="ind" href="#uc-dental" data-ind="dental"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tooth"/></svg></span><b>Dental</b><small>Clinics</small></a></li>
           <li><a class="ind" href="#uc-clinics" data-ind="clinics"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-medical"/></svg></span><b>Clinics &amp;</b><small>Healthcare</small></a></li>
           <li><a class="ind" href="#uc-plumbers" data-ind="plumbers"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-drop"/></svg></span><b>Plumbers</b><small>&nbsp;</small></a></li>

@@ -34,7 +34,7 @@ const paths = [
   { id: "call", icon: Calendar, badge: "Most popular", title: "Book a 30-minute demo", body: "Pick a time. We show you an agent set up for your calls." },
   { id: "ring", icon: PhoneIncoming, title: "Ring our demo agent now", body: "Hear one in action straight away, any time of day." },
 ];
-const industries = ["Estate & Letting Agents", "Dental Clinics", "Clinics & Healthcare", "Plumbers", "Heating & HVAC", "Contractors & Builders", "Law Firms", "Car Dealerships"];
+const industries = ["Real Estate & Letting Agents", "Dental Clinics", "Clinics & Healthcare", "Plumbers", "Heating & HVAC", "Contractors & Builders", "Law Firms", "Car Dealerships"];
 const cities = ["London", "Birmingham", "Manchester", "Leeds", "Liverpool", "Bristol", "Elsewhere in the UK"];
 const onTheCall = ["Ask who rings you and what gets missed", "Play you an agent set up for your type of business", "Follow up with a clear price in writing"];
 const thingsToTry = ["Book a boiler service for next week.", "Ask to speak to a person.", "Ask something it can't know, and hear how it handles it."];
