@@ -350,7 +350,7 @@ ${industries.map(industryTab).join("\n")}
       </div>
 ${industries.map(industryPanel).join("\n")}
     </div>
-    <div class="mt-8 flex flex-col gap-4 rounded-[16px] bg-sand p-6 sm:flex-row sm:items-center sm:justify-between">
+    <div class="fit-band mt-8 flex flex-col gap-4 rounded-[16px] bg-sand p-6 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <p class="font-display text-[18px] font-semibold">Not sure how your calls would fit?</p>
         <p class="mt-1 text-[16px] text-muted">Tell us who rings you and why. We'll map your calls and show you what the agent would handle and what it would pass to your team.</p>

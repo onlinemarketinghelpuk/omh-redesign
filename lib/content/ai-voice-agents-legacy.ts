@@ -315,8 +315,8 @@ export const legacyMarkup = String.raw`
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Hear it answer a real estate enquiry</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">A recorded call with our AI voice agent, set up for a real estate and letting agency.</p>
+          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Real Estate</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">A recorded call with our AI voice agent answering a property enquiry for a real estate agency.</p>
         </figcaption>
         <audio preload="none" src="/audio/Realest%20voice%20agent.m4a" data-audio></audio>
       </figure>
@@ -330,8 +330,8 @@ export const legacyMarkup = String.raw`
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">A first winter of breakdown calls in Leeds</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Quote to follow, covering out-of-hours breakdown calls and how many became booked repairs.</p>
+          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Heating Engineers</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking an out-of-hours boiler breakdown call and booking the repair.</p>
         </figcaption>
       </figure>
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
@@ -344,8 +344,8 @@ export const legacyMarkup = String.raw`
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Saturday viewing requests at a London branch</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Quote to follow, covering viewing requests taken while every negotiator was out.</p>
+          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Letting Agents</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent booking a viewing for a letting agency while the team is out.</p>
         </figcaption>
       </figure>
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
@@ -358,8 +358,8 @@ export const legacyMarkup = String.raw`
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">New enquiries while fee earners are in court</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Quote to follow, covering new enquiries taken while the team was in court or meetings.</p>
+          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Law Firms</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking a new enquiry for a law firm while fee earners are in court.</p>
         </figcaption>
       </figure>
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
@@ -372,8 +372,8 @@ export const legacyMarkup = String.raw`
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">The morning service rush in Liverpool</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Quote to follow, covering service bookings taken when the desk used to let the phone ring out.</p>
+          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Car Dealerships</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent booking a test drive or service slot for a car dealership.</p>
         </figcaption>
       </figure>
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
@@ -386,8 +386,8 @@ export const legacyMarkup = String.raw`
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Quote requests captured from site in Bristol</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Quote to follow, covering project enquiries captured while the team was on site.</p>
+          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Builders</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking a quote request for a builder while the team is on site.</p>
         </figcaption>
       </figure>
     </div>

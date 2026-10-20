@@ -910,3 +910,25 @@ html:has(.va-page dialog[open]) {
 
 /* Pricing: no lone "isn't" on the summary's second line. */
 #pricing summary { text-wrap: balance; }
+
+/* Use-case industry tabs: hover state for the unselected ones. */
+#use-cases [role="tab"] { transition: background-color .2s, border-color .2s, transform .2s, box-shadow .2s; }
+#use-cases [role="tab"]:not([aria-selected="true"]):hover {
+  background: var(--va-surface); border-color: var(--va-ink); transform: translateY(-1px);
+  box-shadow: 0 6px 16px -10px rgb(16 24 40 / .35);
+}
+
+/* "Not sure how your calls would fit?" band: the cursor spotlight drifts across it on its own, and follows the
+   pointer on hover. Registering --mx/--my lets them animate; the script's px values still apply. */
+@property --mx { syntax: "<length-percentage>"; inherits: true; initial-value: 50%; }
+@property --my { syntax: "<length-percentage>"; inherits: true; initial-value: 50%; }
+#va-page .fit-band.m-glow::before, #va-page .fit-band.m-glow::after { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  #va-page .fit-band.m-glow:not(:hover) { animation: fit-band-glow 9s ease-in-out infinite alternate; }
+}
+@keyframes fit-band-glow {
+  0% { --mx: 0%; --my: 10%; }
+  35% { --mx: 40%; --my: 100%; }
+  70% { --mx: 75%; --my: 0%; }
+  100% { --mx: 100%; --my: 90%; }
+}
