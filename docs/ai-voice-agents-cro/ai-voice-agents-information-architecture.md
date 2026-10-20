@@ -95,3 +95,13 @@ client's instruction, with its two buttons relabelled "Book a 30-Minute Demo" an
 (the second scrolls to the video). The greeting-builder band returned to its old slot after the
 capability cards. "What is an AI voice agent?" keeps the rebuilt definition-plus-walkthrough layout,
 now with numbered gold steps on a sand panel.
+
+**Later again:** "Why it matters", "In plain English", "What's included" and "Try it: build a
+greeting" were four sections in a row; the client found them confusing. They are now two:
+
+- **What is an AI voice agent?** (dark band): the definition, then "How a call goes" as four steps
+  that light up while the phone beside them plays an illustrative call for the chosen business and
+  tone (greeting, caller, reply, booking, summary). This absorbs the greeting builder and the old
+  walkthrough cards.
+- **What your AI voice agent does** (sand): "A day on your phones", a without/with switch over four
+  illustrative calls (absorbs "Why it matters"), followed by the six capabilities as compact rows.

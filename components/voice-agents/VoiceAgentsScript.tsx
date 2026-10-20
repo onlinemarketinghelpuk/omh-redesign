@@ -684,6 +684,10 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     voice: string;
     never: string;
     transfer: string;
+    caller?: string;
+    reply?: string;
+    booked?: string;
+    summary?: string;
   };
   function initBrandBuilder() {
     const root = $("[data-brand]");
@@ -692,23 +696,71 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     const state: Record<string, string> = { biz: biz[0].id, tone: "warm" };
     let typing = 0,
       clock = 0;
+    // The call that follows the greeting: lines on the phone and the matching step beside it.
+    const lines = $$("[data-brand-line], [data-brand-outcome]", root);
+    const steps = $$("[data-brand-step]", root);
+    let callTimers: number[] = [];
+    const lineStep: Record<string, number> = { caller: 1, agent: 3, summary: 4 };
+    function light(n: number) {
+      steps.forEach((el) => {
+        const k = Number(el.dataset.brandStep);
+        el.classList.toggle("is-on", k === n);
+        el.classList.toggle("is-done", k < n);
+      });
+    }
+    function resetCall() {
+      callTimers.forEach((id) => clearTimeout(id));
+      callTimers = [];
+      lines.forEach((el) => el.classList.remove("is-shown"));
+      light(0);
+    }
+    function showAll() {
+      lines.forEach((el) => el.classList.add("is-shown"));
+      light(5);
+    }
+    function playCall() {
+      if (!lines.length) return;
+      let at = 700;
+      const queue = (ms: number, fn: () => void) => callTimers.push(later(fn, (at += ms)));
+      lines.forEach((el) => {
+        const key = el.dataset.brandLine || "outcome";
+        if (key === "agent") queue(0, () => light(2)); // thinking
+        queue(key === "agent" ? 1100 : key === "outcome" ? 700 : 400, () => {
+          el.classList.add("is-shown");
+          if (lineStep[key]) light(lineStep[key]);
+          root.classList.toggle("is-speaking", key === "agent");
+        });
+        if (key === "agent") queue(2200, () => root.classList.remove("is-speaking"));
+      });
+      queue(1200, () => {
+        clearInterval(clock);
+        light(5);
+      });
+    }
     function greet(b: Biz, t: string) {
       if (t === "brisk") return b.name + ", " + b.agent + " speaking. I'm the " + b.kind + " AI assistant. What can I do for you?";
       if (t === "formal")
         return "Good morning. You have reached " + b.name + ". I am " + b.agent + ", the " + b.kind + " AI assistant. How may I direct your call?";
       return "Good morning, " + b.name + ". I'm " + b.agent + ", the " + b.kind + " AI assistant. How can I help you today?";
     }
-    const set = (sel: string, text: string) => ($(sel, root).textContent = text);
+    // Tolerant: the main page phone no longer shows every field (voice), the AI services one shows no call.
+    const set = (sel: string, text: string) => {
+      const el = $(sel, root);
+      if (el) el.textContent = text;
+    };
     function speak(text: string) {
       const out = $("[data-brand-greeting]", root);
       clearInterval(typing);
       clearInterval(clock);
       set("[data-brand-live]", text);
+      resetCall();
       if (reduceMotion.matches) {
         out.textContent = text;
         root.classList.remove("is-speaking");
+        showAll();
         return;
       }
+      light(1);
       let i = 0,
         secs = 0;
       out.textContent = "";
@@ -723,8 +775,9 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         out.textContent = text.slice(0, i);
         if (i >= text.length) {
           clearInterval(typing);
-          clearInterval(clock);
           root.classList.remove("is-speaking");
+          if (lines.length) playCall();
+          else clearInterval(clock);
         }
       }, 32);
     }
@@ -738,9 +791,18 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
       set("[data-brand-voice]", b.voice);
       set("[data-brand-never]", b.never);
       set("[data-brand-transfer]", b.transfer);
+      const opt = (sel: string, text?: string) => { const el = $(sel, root); if (el && text) el.textContent = text; };
+      opt("[data-brand-agent2]", b.agent);
+      opt("[data-brand-caller]", b.caller);
+      opt("[data-brand-reply]", b.reply);
+      opt("[data-brand-booked]", b.booked);
+      opt("[data-brand-summary]", b.summary);
       const text = greet(b, state.tone);
       if (animate) speak(text);
-      else set("[data-brand-greeting]", text);
+      else {
+        set("[data-brand-greeting]", text);
+        showAll();
+      }
     }
     $$("[data-brand-group]", root).forEach((group) => {
       const opts = $$("[data-brand-opt]", group);

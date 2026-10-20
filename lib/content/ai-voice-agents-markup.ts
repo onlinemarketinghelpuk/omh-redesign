@@ -192,63 +192,76 @@ export const voiceAgentsMarkup = String.raw`
   <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2h4"/></symbol>
 </svg>
 
-<section id="why" data-component="Problem" class="border-y border-line bg-surface">
-  <div class="container-omh py-14 lg:py-20">
-    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Why it matters</p>
-    <h2>Every missed call is a customer <span class="hl">who rang someone else</span></h2>
-    <div class="mt-8 grid gap-5 md:grid-cols-2">
-      <div class="rounded-[16px] border border-line bg-paper p-6 sm:p-7">
-        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-sand text-muted">${icon("phone-missed")}</span>Without an AI voice agent</h3>
-        <ul class="mt-5 space-y-3 text-[16px] leading-snug text-muted">
-          ${cross("Calls ring out while the team is with customers, on site or closed for the day")}
-          ${cross("Callers reach voicemail, or ring the next business on the list")}
-          ${cross("Enquiries from your ads and website wait until someone is free")}
-          ${cross("Engaged tones at the busiest times, when every call is a job")}
-        </ul>
-      </div>
-      <div class="rounded-[16px] border border-gold/60 bg-[color-mix(in_srgb,#d79a37_10%,var(--va-surface))] p-6 sm:p-7">
-        <h3 class="flex items-center gap-3 !text-[22px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-gold text-navy">${icon("phone")}</span>With an OMH AI voice agent</h3>
-        <ul class="mt-5 space-y-3 text-[16px] leading-snug">
-          ${tick("Every call answered on the first ring, day and night, many at once")}
-          ${tick("Enquiries captured with name, number and reason, then emailed to you")}
-          ${tick("Appointments booked straight into your diary while the caller is on the line")}
-          ${tick("Urgent or complicated calls handed to your team with a summary")}
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="what-is" data-component="WhatIs">
-  <div class="container-omh grid gap-10 py-16 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16 lg:py-24">
-    <div>
+<section id="what-is" data-component="WhatIs" class="on-band relative overflow-hidden bg-band text-band-ink">
+  <div class="pointer-events-none absolute right-[-10%] top-1/2 h-[620px] w-[620px] -translate-y-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
+  <div class="container-omh relative grid items-start gap-10 py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-24" data-brand
+    data-brand-biz='[{"id":"law","label":"Law firm","name":"Hartwell Reeve Solicitors","city":"Birmingham","num":"0121 496 0147","agent":"Grace","kind":"firm&#39;s","initials":"HR","voice":"British English, calm and measured","never":"Gives legal advice","transfer":"Existing clients go to their named solicitor","caller":"I need advice about a tenancy dispute.","reply":"I can book you a consultation with our property team on Monday at 11.","booked":"Consultation booked: Mon 11:00","summary":"Summary sent to the property team: new enquiry, tenancy dispute"},{"id":"dental","label":"Dental clinic","name":"Albion Square Dental","city":"Manchester","num":"0161 496 0123","agent":"Amy","kind":"practice&#39;s","initials":"AS","voice":"British English, warm and friendly","never":"Gives clinical advice","transfer":"Dental emergencies go to the on-call line","caller":"I&#39;ve cracked a tooth. Can I be seen today?","reply":"Sorry to hear that. I have an emergency slot at 9:15 this morning.","booked":"Emergency slot booked: 09:15","summary":"Summary emailed to reception: emergency appointment, 9:15"},{"id":"plumber","label":"Plumber","name":"Severn Plumbing","city":"Bristol","num":"0117 496 0135","agent":"Sam","kind":"team&#39;s","initials":"SP","voice":"British English, relaxed","never":"Quotes a price it has not been given","transfer":"Burst pipes go straight to the plumber on call","caller":"There&#39;s water coming through my kitchen ceiling.","reply":"Turn off the stopcock under the sink. Sam can be with you in 40 minutes.","booked":"Engineer dispatched: ETA 40 min","summary":"Summary texted to Sam: address, fault and access details"}]'>
+    <div class="lg:col-start-1 lg:row-start-1">
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>In plain English</p>
       <h2>What is an <span class="hl">AI voice agent?</span></h2>
-      <p class="mt-5 text-muted">An AI voice agent is software that answers and makes phone calls for your business in natural, spoken conversation. It understands what the caller wants, answers from information you have approved, books appointments into your calendar and passes anything it can't handle to a person on your team, with a summary of the call.</p>
-      <p class="mt-4 text-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and systems, and keep improving it.</p>
+      <p class="mt-5 text-band-muted">An AI voice agent is software that answers and makes phone calls for your business in natural, spoken conversation. It understands what the caller wants, answers from information you have approved, books appointments into your calendar and passes anything it can't handle to a person on your team, with a summary of the call.</p>
+      <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and systems, and keep improving it.</p>
     </div>
-    <div class="rounded-[22px] bg-sand p-5 sm:p-7">
-      <h3 class="!text-[24px]">How a call goes</h3>
-      <p class="mt-1 text-[16px] text-muted">One illustrative call, from the first ring to the summary in your inbox.</p>
-      <ol class="mt-5 grid gap-4 sm:grid-cols-2">
-        <li class="flex flex-col rounded-[16px] border border-line bg-surface p-5"><p class="flex items-center gap-3 font-display text-[17.5px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-[16px] text-navy" aria-hidden="true">1</span>It listens</p>
-          <div class="mini mt-3"><span class="icon-tile">${icon("phone-missed")}</span><span class="min-w-0"><b class="block">Call · 22:14</b><span class="text-[14px] font-semibold text-ok">Answered on the first ring</span></span></div>
-          <div class="chat mt-2"><p><span class="who">Caller</span>There's water coming through my kitchen ceiling.</p></div>
-          <p class="mt-3 text-[15px] text-muted">Speech recognition turns what the caller says into text as they speak.</p></li>
-        <li class="flex flex-col rounded-[16px] border border-line bg-surface p-5"><p class="flex items-center gap-3 font-display text-[17.5px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-[16px] text-navy" aria-hidden="true">2</span>It works out the answer</p>
-          <div class="mt-3 flex flex-wrap gap-2"><span class="mini-chip">${icon("check", "text-ok")}Your services</span><span class="mini-chip">${icon("check", "text-ok")}Your rules</span><span class="mini-chip">${icon("check", "text-ok")}Your diary</span></div>
-          <div class="mini mt-2">${icon("book", "text-hl")}<span>Trained on <b>your</b> business, not the internet</span></div>
-          <p class="mt-3 text-[15px] text-muted">The AI matches the request to your approved information and booking rules.</p></li>
-        <li class="flex flex-col rounded-[16px] border border-line bg-surface p-5"><p class="flex items-center gap-3 font-display text-[17.5px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-[16px] text-navy" aria-hidden="true">3</span>It replies and acts</p>
-          <div class="chat mt-3"><p class="ai"><span class="who">Your AI agent</span>Turn off the stopcock under the sink. Sam can be with you in 40 minutes.</p></div>
-          <span class="booked mt-2">${icon("check")}Engineer dispatched: ETA 40 min</span>
-          <p class="mt-3 text-[15px] text-muted">It answers in a natural voice, books the slot or transfers the call.</p></li>
-        <li class="flex flex-col rounded-[16px] border border-line bg-surface p-5"><p class="flex items-center gap-3 font-display text-[17.5px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-[16px] text-navy" aria-hidden="true">4</span>It reports back</p>
-          <div class="mini mt-3">${icon("mail", "text-hl")}<span><b>Call summary</b> sent to your inbox</span></div>
-          <div class="mt-2 flex flex-wrap gap-2"><span class="mini-chip">${icon("check", "text-ok")}Caller</span><span class="mini-chip">${icon("check", "text-ok")}Reason</span><span class="mini-chip">${icon("check", "text-ok")}Next step</span></div>
-          <p class="mt-3 text-[15px] text-muted">Every call is summarised for you. Callers can interrupt or change their mind at any point.</p></li>
+
+    <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2">
+      <h3 class="!text-[22px]">How a call goes</h3>
+      <p class="mt-1 text-[16px] text-band-muted">Watch the phone. Each step lights up as the call reaches it.</p>
+      <ol class="mt-5 space-y-2.5" aria-live="off">
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="1"><span class="step-num" aria-hidden="true">1</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It listens.</strong><span class="text-band-muted">Speech recognition turns what the caller says into text as they speak.</span></span></li>
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="2"><span class="step-num" aria-hidden="true">2</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It works out the answer.</strong><span class="text-band-muted">The AI matches the request to your approved information and booking rules.</span></span></li>
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="3"><span class="step-num" aria-hidden="true">3</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It replies and acts.</strong><span class="text-band-muted">It answers in a natural voice, books the slot or transfers the call.</span></span></li>
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="4"><span class="step-num" aria-hidden="true">4</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It reports back.</strong><span class="text-band-muted">You get a summary of every call. Callers can interrupt or change their mind at any point.</span></span></li>
       </ol>
-      <p class="mt-4 text-[14px] text-muted">Illustrative call with a fictional business. The agent only answers from information you have approved.</p>
+    </div>
+
+    <div class="mx-auto w-full max-w-[420px] lg:col-start-2 lg:row-span-2 lg:row-start-1">
+      <div class="rounded-[14px] border border-band-line bg-band-surface p-4 sm:p-5">
+        <p class="font-display text-[18px] font-semibold">Try it: pick a business and a tone, then listen in</p>
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <div role="radiogroup" aria-label="Business" class="flex flex-wrap gap-2" data-brand-group="biz">
+            <button type="button" role="radio" aria-checked="true" tabindex="0" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="law" data-track="branding_biz" data-track-name="Law firm">Law firm</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="dental" data-track="branding_biz" data-track-name="Dental clinic">Dental clinic</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="plumber" data-track="branding_biz" data-track-name="Plumber">Plumber</button>
+          </div>
+          <span class="hidden h-6 w-px bg-band-line sm:block" aria-hidden="true"></span>
+          <div role="radiogroup" aria-label="Tone" class="flex flex-wrap gap-2" data-brand-group="tone">
+            <button type="button" role="radio" aria-checked="true" tabindex="0" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="warm" data-track="branding_tone" data-track-name="Warm">Warm</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="brisk" data-track="branding_tone" data-track-name="Brisk">Brisk</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="formal" data-track="branding_tone" data-track-name="Formal">Formal</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-phone relative mt-5 rounded-[44px] border border-[rgb(247_246_242/.18)] bg-[#0b0f19] p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.8)]">
+        <div class="relative overflow-hidden rounded-[34px] bg-[#f7f6f2] px-4 pb-5 pt-4 text-[#101828]">
+          <div class="flex items-center justify-between text-[13px] font-semibold" aria-hidden="true"><span class="tnum">9:41</span><span class="h-[22px] w-[90px] rounded-full bg-[#0b0f19]"></span><span class="flex gap-1"><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]/40"></i></span></div>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#d79a37] font-display text-[18px] font-semibold text-[#101828]" aria-hidden="true" data-brand-initials>HR</span>
+            <span class="min-w-0"><span class="block truncate font-display text-[17px] font-semibold leading-tight" data-brand-name>Hartwell Reeve Solicitors</span><span class="block text-[13.5px] text-[rgb(16_24_40/0.68)]"><span class="tnum" data-brand-num>0121 496 0147</span>, <span data-brand-city>Birmingham</span></span></span>
+            <span class="ml-auto shrink-0 text-[13px] font-semibold text-[#1c6446]"><span class="mr-1 inline-block h-2 w-2 rounded-full bg-[#1c6446] align-middle"></span><span class="tnum" data-brand-timer>00:00</span></span>
+          </div>
+          <div class="mt-4 space-y-2.5 text-[14.5px] leading-[1.45]">
+            <div class="rounded-[4px_14px_14px_14px] bg-white p-3 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]">
+              <div class="flex items-center gap-2"><span class="text-[12.5px] font-semibold text-[#8f5a0e]"><span data-brand-agent>Grace</span>, AI assistant</span><svg viewBox="0 0 168 40" class="brand-wave h-5 flex-1" aria-hidden="true" data-brand-wave><rect x="1" y="13" width="3" height="14" rx="1.5" style="--d:0s"/><rect x="7" y="3" width="3" height="34" rx="1.5" style="--d:0.09s"/><rect x="13" y="15.5" width="3" height="9" rx="1.5" style="--d:0.18s"/><rect x="19" y="6" width="3" height="28" rx="1.5" style="--d:0.27s"/><rect x="25" y="14.5" width="3" height="11" rx="1.5" style="--d:0.36s"/><rect x="31" y="12" width="3" height="16" rx="1.5" style="--d:0.45s"/><rect x="37" y="5.5" width="3" height="29" rx="1.5" style="--d:0.54s"/><rect x="43" y="8" width="3" height="24" rx="1.5" style="--d:0s"/><rect x="49" y="7" width="3" height="26" rx="1.5" style="--d:0.09s"/><rect x="55" y="10" width="3" height="20" rx="1.5" style="--d:0.18s"/><rect x="61" y="10.5" width="3" height="19" rx="1.5" style="--d:0.27s"/><rect x="67" y="15" width="3" height="10" rx="1.5" style="--d:0.36s"/><rect x="73" y="3.5" width="3" height="33" rx="1.5" style="--d:0.45s"/><rect x="79" y="16" width="3" height="8" rx="1.5" style="--d:0.54s"/><rect x="85" y="4" width="3" height="32" rx="1.5" style="--d:0s"/><rect x="91" y="16.5" width="3" height="7" rx="1.5" style="--d:0.09s"/><rect x="97" y="11.5" width="3" height="17" rx="1.5" style="--d:0.18s"/><rect x="103" y="7.5" width="3" height="25" rx="1.5" style="--d:0.27s"/><rect x="109" y="8" width="3" height="24" rx="1.5" style="--d:0.36s"/><rect x="115" y="7" width="3" height="26" rx="1.5" style="--d:0.45s"/><rect x="121" y="8" width="3" height="24" rx="1.5" style="--d:0.54s"/><rect x="127" y="11" width="3" height="18" rx="1.5" style="--d:0s"/><rect x="133" y="17" width="3" height="6" rx="1.5" style="--d:0.09s"/><rect x="139" y="5" width="3" height="30" rx="1.5" style="--d:0.18s"/><rect x="145" y="16.5" width="3" height="7" rx="1.5" style="--d:0.27s"/><rect x="151" y="3" width="3" height="34" rx="1.5" style="--d:0.36s"/><rect x="157" y="15.5" width="3" height="9" rx="1.5" style="--d:0.45s"/><rect x="163" y="10" width="3" height="20" rx="1.5" style="--d:0.54s"/></svg></div>
+              <p class="mt-2 min-h-[64px]" aria-hidden="true">&ldquo;<span data-brand-greeting>Good morning, Hartwell Reeve Solicitors. I'm Grace, the firm's AI assistant. How can I help you today?</span><span class="brand-caret" data-brand-caret></span>&rdquo;</p>
+              <p class="sr-only" aria-live="polite" data-brand-live></p>
+            </div>
+            <div class="ml-8 rounded-[14px_4px_14px_14px] bg-[#101828] p-3 text-[#f7f6f2]" data-brand-line="caller"><span class="block text-[12.5px] font-semibold text-[rgb(247_246_242/0.6)]">Caller</span><span data-brand-caller>I need advice about a tenancy dispute.</span></div>
+            <div class="rounded-[4px_14px_14px_14px] bg-white p-3 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]" data-brand-line="agent"><span class="block text-[12.5px] font-semibold text-[#8f5a0e]"><span data-brand-agent2>Grace</span></span><span class="font-semibold" data-brand-reply>I can book you a consultation with our property team on Monday at 11.</span></div>
+            <p class="booked !text-[14px]" data-brand-outcome>${icon("check")}<span data-brand-booked>Consultation booked: Mon 11:00</span></p>
+            <p class="flex items-center gap-2 rounded-[10px] bg-white/70 px-3 py-2 text-[13.5px]" data-brand-line="summary">${icon("mail", "shrink-0 text-hl")}<span data-brand-summary>Summary sent to the property team: new enquiry, tenancy dispute</span></p>
+          </div>
+          <div class="mt-4 flex items-center justify-center gap-6">
+            <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-[#101828] text-[#f7f6f2] hover:bg-[#1a2437]" data-brand-replay data-track="branding_replay" aria-label="Replay the call">${icon("replay")}</button>
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-[#a3352b] text-white" aria-hidden="true">${icon("phone", "rotate-[135deg]")}</span>
+          </div>
+        </div>
+      </div>
+      <dl class="mt-4 grid gap-2 text-[14px] leading-snug sm:grid-cols-2">
+        <div class="flex gap-2 rounded-[10px] border border-band-line px-3 py-2"><dt class="font-semibold">Never:</dt><dd class="text-band-muted" data-brand-never>Gives legal advice</dd></div>
+        <div class="flex gap-2 rounded-[10px] border border-band-line px-3 py-2"><dt class="font-semibold">Transfers:</dt><dd class="text-band-muted" data-brand-transfer>Existing clients go to their named solicitor</dd></div>
+      </dl>
+      <p class="mt-3 text-center text-[14px] text-band-muted">Illustrative call. The businesses shown are fictional, and the agent only answers from information you have approved.</p>
     </div>
   </div>
 </section>
@@ -257,54 +270,49 @@ export const voiceAgentsMarkup = String.raw`
   <div class="container-omh py-16 lg:py-24">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What's included</p>
     <h2>What your <span class="hl">AI voice agent does</span></h2>
-    <p class="mt-5 text-muted">Everything a good front desk does on the phone, without adding to the payroll. Features marked Growth and Scale aren't on the Starter plan.</p>
-    <ul class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <li class="fcard">
-        <div class="fcard-vis" aria-hidden="true">
-          <div class="mini"><span class="icon-tile">${icon("phone")}</span><span class="min-w-0"><b class="block">Call · 02:14</b><span class="text-[14px] font-semibold text-ok">Answered on the first ring</span></span></div>
-          <div class="mini">${icon("users", "text-ok")}<span>3 more callers answered at the same time</span></div>
+    <p class="mt-5 text-muted">Everything a good front desk does on the phone, without adding to the payroll. Flip the switch to see the same four calls with and without an agent.</p>
+
+    <div class="mt-10 overflow-hidden rounded-[22px] border border-line bg-surface" data-day>
+      <div class="flex flex-col gap-4 border-b border-line p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <p class="font-display text-[20px] font-semibold">A day on your phones</p>
+        <div role="radiogroup" aria-label="Show the day with or without an AI voice agent" class="flex flex-wrap gap-2">
+          <label class="day-seg"><input type="radio" name="day" value="without" class="sr-only" checked data-track="day_toggle" data-track-name="Without">${icon("phone-missed", "!h-4 !w-4")}Without an agent</label>
+          <label class="day-seg"><input type="radio" name="day" value="with" class="sr-only" data-track="day_toggle" data-track-name="With">${icon("phone", "!h-4 !w-4")}With an OMH AI voice agent</label>
         </div>
-        <div class="fcard-body"><h3>First-ring answering, 24/7</h3><p>Every call answered straight away, including nights, weekends and bank holidays. It handles many calls at once, so nobody hears an engaged tone.</p></div>
-      </li>
-      <li class="fcard">
-        <div class="fcard-vis" aria-hidden="true">
-          <div class="mini"><span class="icon-tile">${icon("mic")}</span><span class="min-w-0"><b class="block">Ava · Your assistant</b><span class="text-[14px] text-muted">Your name, greeting and voice</span></span></div>
-          <div class="mini justify-center py-3"><span class="mini-wave"><i></i><i></i><i></i><i></i><i></i></span><span class="ml-2 text-[14px] font-semibold">"Thanks for calling, how can I help?"</span></div>
-        </div>
-        <div class="fcard-body"><h3>Sounds like your front desk</h3><p>Your business name, your greeting and a British voice that suits your callers. Callers can interrupt, change their mind or ask for a person, and OMH is never mentioned on a call.</p></div>
-      </li>
-      <li class="fcard">
-        <div class="fcard-vis" aria-hidden="true">
-          <div class="flex flex-wrap justify-center gap-2"><span class="mini-chip">${icon("check", "text-ok")}Services</span><span class="mini-chip">${icon("check", "text-ok")}Prices</span><span class="mini-chip">${icon("check", "text-ok")}Opening hours</span><span class="mini-chip">${icon("check", "text-ok")}Service area</span><span class="mini-chip">${icon("check", "text-ok")}FAQs</span></div>
-          <div class="mini">${icon("book", "text-hl")}<span>Trained on <b>your</b> business, not the internet</span></div>
-        </div>
-        <div class="fcard-body"><h3>Knows your services and prices</h3><p>It answers only from information you approve: services, prices, opening hours, service areas and FAQs. If a question falls outside that, it says so and takes a message.</p></div>
-      </li>
-      <li class="fcard">
-        <div class="fcard-vis" aria-hidden="true">
-          <div class="vcal-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
-          <div class="vcal"><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span class="new"></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span></span><span class="busy"></span><span></span></div>
-          <div class="mini">${icon("calendar", "text-ok")}<span><b>Booked:</b> Wed 11:00, no clash</span></div>
-        </div>
-        <div class="fcard-body"><h3>Books into your calendar without clashes</h3><p>It checks your live calendar, respects buffers, travel time and blocked hours, and texts the caller a confirmation.</p></div>
-      </li>
-      <li class="fcard">
-        <div class="fcard-vis" aria-hidden="true">
-          <div class="mini"><span class="icon-tile">${icon("user")}</span><span class="min-w-0"><b class="block">Caller asks for a person</b><span class="text-[14px] text-muted">"Can I speak to Sam?"</span></span></div>
-          <div class="mini">${icon("transfer", "text-hl")}<span><b>Transferring to Sam</b> with a quick briefing</span></div>
-        </div>
-        <div class="fcard-body"><h3>Warm transfer to a person ${tag("Growth and Scale")}</h3><p>You choose who gets put through and when. Your team gets a quick briefing first, so the caller never has to repeat themselves.</p></div>
-      </li>
-      <li class="fcard">
-        <div class="fcard-vis" aria-hidden="true">
-          <div class="mini"><span class="icon-tile">${icon("globe")}</span><span class="min-w-0"><b class="block">New web form · 14:02</b><span class="text-[14px] text-muted">Boiler quote request</span></span></div>
-          <div class="mini">${icon("timer", "text-ok")}<span><b>Called back</b> in 42 seconds</span></div>
-          <div class="mini justify-between"><span><b>Quote sent, no reply</b></span><span class="text-[14px] font-semibold text-ok">Visit booked</span></div>
-        </div>
-        <div class="fcard-body"><h3>Calls web leads back and follows up ${tag("Growth and Scale")}</h3><p>Form fills and ad leads get a call within 60 seconds, while they're still on your website. It also calls people who have agreed to hear from you about quotes, reminders and missed appointments.</p></div>
-      </li>
+      </div>
+      <ol class="divide-y divide-line">
+        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
+          <span class="font-display text-[16px] font-semibold"><span class="tnum">08:31</span><span class="block text-[14px] font-normal text-muted">Monday, busy clinic</span></span>
+          <span class="text-[16px]">Six patients ring at once to book.<span class="day-without block text-muted">Engaged tone. Three of them ring the next clinic.</span><span class="day-with block text-muted">All six answered. Appointments booked across practitioners.</span></span>
+          <span class="day-without day-miss">${icon("x")}3 callers lost</span><span class="day-with day-ok">${icon("check")}6 bookings made</span>
+        </li>
+        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
+          <span class="font-display text-[16px] font-semibold"><span class="tnum">14:02</span><span class="block text-[14px] font-normal text-muted">Web form arrives</span></span>
+          <span class="text-[16px]">A boiler quote request from your Google ad.<span class="day-without block text-muted">Sits in the inbox until someone is back at a desk.</span><span class="day-with block text-muted">Called back within 60 seconds and a visit booked. Growth and Scale.</span></span>
+          <span class="day-without day-miss">${icon("clock")}Waits hours</span><span class="day-with day-ok">${icon("check")}Visit booked</span>
+        </li>
+        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
+          <span class="font-display text-[16px] font-semibold"><span class="tnum">22:14</span><span class="block text-[14px] font-normal text-muted">Burst pipe</span></span>
+          <span class="text-[16px]">Water through a kitchen ceiling, and you're off the clock.<span class="day-without block text-muted">Voicemail. The caller rings another plumber.</span><span class="day-with block text-muted">Address and fault taken, the engineer on call is told straight away.</span></span>
+          <span class="day-without day-miss">${icon("phone-missed")}Job lost</span><span class="day-with day-ok">${icon("check")}Engineer dispatched</span>
+        </li>
+        <li class="grid gap-3 p-5 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 sm:px-6">
+          <span class="font-display text-[16px] font-semibold"><span class="tnum">Sun 16:10</span><span class="block text-[14px] font-normal text-muted">Showroom closed</span></span>
+          <span class="text-[16px]">"Is the blue hybrid SUV still in stock?"<span class="day-without block text-muted">Rings out. They try the dealership down the road.</span><span class="day-with block text-muted">Stock question answered and a test drive booked for Saturday.</span></span>
+          <span class="day-without day-miss">${icon("x")}No answer</span><span class="day-with day-ok">${icon("check")}Test drive booked</span>
+        </li>
+      </ol>
+      <p class="border-t border-line px-5 py-3 text-[14px] text-muted sm:px-6">Illustrative calls. Every call is summarised and emailed to you; on Growth and Scale the details go straight into your CRM or practice system.</p>
+    </div>
+
+    <ul class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("phone")}</span><span class="min-w-0"><h3 class="!text-[19px]">First-ring answering, 24/7</h3><p class="mt-1.5 text-[16px] text-muted">Every call answered straight away, including nights, weekends and bank holidays. It handles many calls at once, so nobody hears an engaged tone.</p></span></li>
+      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("mic")}</span><span class="min-w-0"><h3 class="!text-[19px]">Sounds like your front desk</h3><p class="mt-1.5 text-[16px] text-muted">Your business name, your greeting and a British voice that suits your callers. Callers can interrupt, change their mind or ask for a person, and OMH is never mentioned on a call.</p></span></li>
+      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("book")}</span><span class="min-w-0"><h3 class="!text-[19px]">Knows your services and prices</h3><p class="mt-1.5 text-[16px] text-muted">It answers only from information you approve: services, prices, opening hours, service areas and FAQs. If a question falls outside that, it says so and takes a message.</p></span></li>
+      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("calendar")}</span><span class="min-w-0"><h3 class="!text-[19px]">Books into your calendar without clashes</h3><p class="mt-1.5 text-[16px] text-muted">It checks your live calendar, respects buffers, travel time and blocked hours, and texts the caller a confirmation.</p></span></li>
+      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("transfer")}</span><span class="min-w-0"><h3 class="!text-[19px]">Warm transfer to a person ${tag("Growth and Scale")}</h3><p class="mt-1.5 text-[16px] text-muted">You choose who gets put through and when. Your team gets a quick briefing first, so the caller never has to repeat themselves.</p></span></li>
+      <li class="flex gap-4 rounded-[16px] border border-line bg-surface p-5"><span class="icon-tile">${icon("timer")}</span><span class="min-w-0"><h3 class="!text-[19px]">Calls web leads back and follows up ${tag("Growth and Scale")}</h3><p class="mt-1.5 text-[16px] text-muted">Form fills and ad leads get a call within 60 seconds, while they're still on your website. It also calls people who have agreed to hear from you about quotes, reminders and missed appointments.</p></span></li>
     </ul>
-    <p class="mt-6 text-[16px] text-muted">Every call is summarised and emailed to you. On Growth and Scale, the details, tags and next steps go straight into your CRM or practice system.</p>
   </div>
 </section>
 

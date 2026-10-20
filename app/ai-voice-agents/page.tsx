@@ -80,8 +80,7 @@ const v4 = sectionsOf(landingV4Markup, "v4l"); // how it works, local cover
 */
 const runs: [typeof fresh, string[]][] = [
   [v4, ["top"]],
-  [fresh, ["why", "what-is", "features"]],
-  [legacy, ["branding"]],
+  [fresh, ["what-is", "features"]],
   [v4, ["how"]],
   [fresh, ["use-cases"]],
   [legacy, ["industries", "feedback", "why-omh", "compare", "right-fit", "roi-calculator"]],

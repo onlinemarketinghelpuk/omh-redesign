@@ -457,3 +457,24 @@ html:has(.va-page dialog[open]) {
 .va-page .plan-facts dt .icon { width: .95rem; height: .95rem; color: var(--va-hl); }
 .va-page .plan-facts dd { margin-top: .3rem; font-family: var(--font-display); font-size: clamp(19px, 17px + .4vw, 22px); font-weight: 600; line-height: 1.1; color: var(--va-ink); }
 .va-page .plan-facts dd span { display: block; margin-top: .2rem; font-family: var(--font-body); font-size: 13px; font-weight: 400; line-height: 1.3; color: var(--va-muted); }
+
+/* "What is an AI voice agent?" call player and the "a day on your phones" toggle (20 Oct 2026). */
+.va-page {
+  /* Call lines appear one by one, like a chat, instead of reserving blank space on the phone. */
+  [data-brand] :is([data-brand-line], [data-brand-outcome]):not(.is-shown) { display: none; }
+  [data-brand] :is([data-brand-line], [data-brand-outcome]).is-shown { animation: va-modal-in .4s ease-out; }
+  [data-brand-step] { transition: background-color .25s ease, border-color .25s ease; }
+  [data-brand-step].is-on { background: var(--va-band-surface); border-color: var(--va-band-hl); }
+  [data-brand-step].is-on .step-num { background: #d79a37; color: #101828; }
+  [data-brand-step].is-done .step-num { background: var(--va-band-ok); color: #101828; }
+  .step-num { display: grid; place-items: center; flex-shrink: 0; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1.5px solid var(--va-band-line); font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--va-band-ink); transition: background-color .25s ease, color .25s ease; }
+  .day-seg { display: inline-flex; min-height: 44px; align-items: center; gap: .4rem; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--va-line-strong); font-family: var(--font-display); font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
+  .day-seg:has(input:checked) { background: var(--va-ink); border-color: var(--va-ink); color: var(--va-paper); }
+  .day-seg:has(input:focus-visible) { outline: 2px solid var(--va-hl); outline-offset: 3px; }
+  [data-day]:has(input[value="with"]:checked) .day-without, [data-day]:not(:has(input[value="with"]:checked)) .day-with { display: none; }
+  .day-miss { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .7rem; border-radius: 8px; background: color-mix(in srgb, var(--va-miss) 12%, var(--va-surface)); color: var(--va-miss); font-size: 14px; font-weight: 600; }
+  .day-ok { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .7rem; border-radius: 8px; background: color-mix(in srgb, var(--va-ok) 12%, var(--va-surface)); color: var(--va-ok); font-size: 14px; font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-brand] :is([data-brand-line], [data-brand-outcome]) { display: block !important; animation: none; }
+  }
+}

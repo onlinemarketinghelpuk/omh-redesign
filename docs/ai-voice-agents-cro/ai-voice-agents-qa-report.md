@@ -217,3 +217,9 @@ services gone. The `after/` captures were retaken.
 Later: the previous hero and the greeting-builder band were restored; 17 sections, 24,645px at
 1440 and 45,517px at 390; marquee, video facade and greeting builder initialise; `tsc`/`eslint`
 clean; captures retaken. The hero video still uses the placeholder YouTube id (see §10).
+Later again: the four explanatory sections became two (see the IA document). Verified in headless
+Chrome: the call plays greeting → caller → "works out the answer" → reply with the voice wave →
+booking → summary over about eight seconds, the four steps mark themselves done in turn, and
+switching business restarts it with that business's lines; under reduced motion the whole call shows
+at once. The without/with switch is CSS-only (radio inputs) and fires `day_toggle`. On small screens
+the phone sits between the definition and the steps. `tsc`/`eslint` clean; captures retaken.
