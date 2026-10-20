@@ -111,3 +111,9 @@ agent does, and what we do for you": a capability explorer (six selectable capab
 showing the mock-up, what the agent does and what OMH does) followed by the four "running it well"
 points from the old Why choose OMH, without the fictional dashboards. The without/with day switch
 was dropped. The "In plain English" eyebrow was removed.
+
+**Carousels (20 Oct 2026, evening):** the three large grids, Industries (8 cards), Client feedback
+(6) and Local cover (6), are now horizontal scroll-snap carousels with prev/next buttons, a waveform
+progress indicator and a running "n / total" count. No library: native scrolling, scroll-driven
+entrance animation where the browser supports it, static under reduced motion. Keyboard: the track
+is focusable and scrolls with the arrow keys; the buttons are ordinary buttons.

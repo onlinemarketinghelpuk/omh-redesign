@@ -12,6 +12,8 @@ export const landingV4Markup = String.raw`
     <symbol id="v4-i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="v4-i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="v4-i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="v4-i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="v4-i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
     <symbol id="v4-i-play" viewBox="0 0 24 24"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z"/></symbol>
     <symbol id="v4-i-pause" viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1"/><rect x="13.5" y="5" width="4" height="14" rx="1"/></symbol>
     <symbol id="v4-i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -164,7 +166,8 @@ export const landingV4Markup = String.raw`
       <h2 class="h2 mt-3" id="city-title">Local to you. <span class="hl">Answering calls across the UK.</span></h2>
       <p class="lead mt-4">A local number, your opening hours and an agent that knows the areas you cover.</p>
     </div>
-    <ul class="cities mx-auto mt-12">
+    <div class="va-car mt-12" data-carousel>
+    <ul class="cities va-car-track" style="--car-w:360px" tabindex="0" aria-label="Local cover, scroll sideways">
       <li class="city" style="--tint:var(--tint-1)">
         <div class="city-top">
           <svg viewBox="0 0 320 136" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M0 128 H320"/><path d="M18 128 V96 H44 V128 M52 128 V84 H74 V128 M250 128 V90 H276 V128 M284 128 V100 H306 V128 M96 128 V60 L104 46 L112 60 V128 M96 74 H112 M156 128 L176 70 L196 128 M134 70 a42 42 0 1 0 84 0 a42 42 0 1 0 -84 0 M134 70 H218 M176 28 V112 M146 40 L206 100 M146 100 L206 40 M224 128 V84 H242 V128"/></svg>
@@ -232,6 +235,13 @@ export const landingV4Markup = String.raw`
         </div>
       </li>
     </ul>
+    <div class="va-car-ui">
+      <button type="button" class="va-car-btn" data-car-prev aria-label="Previous city"><svg class="icon" aria-hidden="true" focusable="false"><use href="#v4-i-arrow-left"/></svg></button>
+      <div class="va-car-wave" aria-hidden="true" data-car-wave><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:45%"></i><i style="--h:75%"></i></div>
+      <span class="va-car-status" data-car-status aria-live="polite">1 / 6</span>
+      <button type="button" class="va-car-btn" data-car-next aria-label="Next city"><svg class="icon" aria-hidden="true" focusable="false"><use href="#v4-i-arrow-right"/></svg></button>
+    </div>
+    </div>
     <div class="mt-10 flex flex-col items-center gap-3 text-center">
       <a href="#book-demo-form" class="btn btn-primary">Book a 30-Minute Demo</a>
       <p class="t-small text-muted">Somewhere else? We cover towns and cities across the UK. <a href="#book-demo-form" class="link link-tap text-[15px]">Ask us about your area</a></p>

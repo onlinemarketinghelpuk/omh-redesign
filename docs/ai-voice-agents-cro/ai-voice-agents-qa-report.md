@@ -233,3 +233,7 @@ industry tabs keep links only for the three pages that do); the Client feedback 
 wait for a scroll-reveal (they rendered blank after a reload until the observer fired) and the
 YouTube note under them is gone; the mobile comparison is now one card per criterion with a
 labelled OMH cell and a labelled alternative cell, driven by the same chip selector.
+Carousels: Industries, Client feedback and Local cover are scroll-snap carousels (see the IA
+document). Verified in headless Chrome at 1440 and 390: next/prev move one card, the status and
+waveform update, the first/last buttons disable at the ends, the industry filter chips re-sync the
+count, no console errors.

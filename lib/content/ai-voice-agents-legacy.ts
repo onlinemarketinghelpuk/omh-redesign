@@ -55,7 +55,8 @@ export const legacyMarkup = String.raw`
     </div>
     <p class="sr-only" aria-live="polite" data-industry-count></p>
 
-    <div class="mt-8 grid gap-5 lg:grid-cols-2" data-industry-list>
+    <div class="va-car mt-8" data-carousel>
+    <div class="va-car-track" style="--car-w:560px" tabindex="0" aria-label="Industries, scroll sideways" data-industry-list>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="property">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
     <ellipse cx="100" cy="132" rx="78" ry="14.04" class="il-shadow"/>
@@ -274,7 +275,15 @@ export const legacyMarkup = String.raw`
         </ul>
         </div>
       </article>
-            <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 lg:col-span-2" aria-labelledby="industries-cta-title">
+    </div>
+    <div class="va-car-ui">
+      <button type="button" class="va-car-btn" data-car-prev aria-label="Previous industry"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg></button>
+      <div class="va-car-wave" aria-hidden="true" data-car-wave><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:45%"></i><i style="--h:75%"></i><i style="--h:60%"></i><i style="--h:85%"></i></div>
+      <span class="va-car-status" data-car-status aria-live="polite">1 / 8</span>
+      <button type="button" class="va-car-btn" data-car-next aria-label="Next industry"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+    </div>
+    </div>
+            <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 mt-8" aria-labelledby="industries-cta-title">
         <span class="grid size-[88px] place-items-center rounded-[12px] bg-white/5 sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold text-navy"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span></span>
         <div class="min-w-0">
         <h3 id="industries-cta-title" class="!text-[21px]">Not sure how your calls would fit?</h3>
@@ -284,7 +293,6 @@ export const legacyMarkup = String.raw`
         </div>
         </div>
       </aside>
-    </div>
   </div>
 </section>
 
@@ -304,7 +312,8 @@ export const legacyMarkup = String.raw`
       <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:pl-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">38%</dd><dt class="mt-1.5 text-[16px] text-muted">answered out of hours</dt></div>
     </dl>
 
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="va-car mt-10" data-carousel>
+    <div class="va-car-track" style="--car-w:380px" tabindex="0" aria-label="Client feedback, scroll sideways">
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]">
         <div class="relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
           <button type="button" class="group absolute inset-0 block w-full text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="" data-video-title="Evening calls at a Manchester dental practice" data-video-meta="Practice manager. Dental clinic, Manchester" data-track="testimonial_video_open" data-track-name="Dental clinic, Manchester" aria-label="Play video testimonial: Evening calls at a Manchester dental practice (opens in a pop-up)">
@@ -407,6 +416,13 @@ export const legacyMarkup = String.raw`
           <span class="mt-auto flex flex-wrap items-center gap-2 pt-4"><span class="chip">Building contractor</span><span class="chip"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Bristol</span><span class="chip chip-pending">Voice agent result: pending</span></span>
         </figcaption>
       </figure>
+    </div>
+    <div class="va-car-ui">
+      <button type="button" class="va-car-btn" data-car-prev aria-label="Previous testimonial"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg></button>
+      <div class="va-car-wave" aria-hidden="true" data-car-wave><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:45%"></i><i style="--h:75%"></i></div>
+      <span class="va-car-status" data-car-status aria-live="polite">1 / 6</span>
+      <button type="button" class="va-car-btn" data-car-next aria-label="Next testimonial"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+    </div>
     </div>
   </div>
 </section>

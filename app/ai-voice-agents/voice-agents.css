@@ -484,3 +484,43 @@ html:has(.va-page dialog[open]) {
 .va-page .cap-tab:hover { border-color: var(--va-line-strong); }
 .va-page .cap-tab[aria-selected="true"] { background: var(--va-surface); border-color: var(--va-ink); box-shadow: 0 18px 40px -30px rgb(16 24 40 / .45); }
 .va-page .cap-tab[aria-selected="true"] .icon-tile { background: #d79a37; color: #101828; }
+
+/* ---------- Carousel (20 Oct 2026) ----------
+   Native scroll-snap, no library. Cards ease in as they enter (scroll-driven animation where supported),
+   a waveform progress indicator fills as you move, round prev/next buttons. Scoped to the page root so it
+   works inside both the .va-page and .v4l wrappers. */
+#va-page .va-car { position: relative; }
+#va-page .va-car-track {
+  display: flex; gap: 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 6px 6px 18px; margin: -6px -6px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 48px), transparent);
+}
+#va-page .va-car-track::-webkit-scrollbar { display: none; }
+#va-page .va-car-track:focus-visible { outline: 2px solid var(--va-hl); outline-offset: 4px; border-radius: 12px; }
+#va-page .va-car-track > * { flex: 0 0 min(100%, var(--car-w, 400px)); width: min(100%, var(--car-w, 400px)); scroll-snap-align: start; margin: 0; }
+#va-page .va-car-track > [hidden] { display: none; }
+#va-page .va-car-ui { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+#va-page .va-car-btn {
+  display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 999px;
+  border: 1.5px solid var(--va-line-strong); color: var(--va-ink); background: var(--va-surface);
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease;
+}
+#va-page .va-car-btn:hover:not(:disabled) { background: #d79a37; border-color: #d79a37; color: #101828; }
+#va-page .va-car-btn:disabled { opacity: .35; cursor: default; }
+#va-page .va-car-btn .icon { width: 1.25rem; height: 1.25rem; }
+#va-page .va-car-wave { display: flex; align-items: center; gap: 4px; height: 28px; flex: 1; min-width: 0; max-width: 320px; }
+#va-page .va-car-wave i { display: block; flex: 1; max-width: 10px; height: var(--h, 40%); border-radius: 3px; background: var(--va-line-strong); opacity: .45; transition: background-color .25s ease, opacity .25s ease, height .25s ease; }
+#va-page .va-car-wave i.is-on { background: #d79a37; opacity: 1; }
+#va-page .va-car-wave i.is-now { height: 100%; }
+#va-page .va-car-status { font-family: var(--font-display); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--va-muted); white-space: nowrap; }
+#va-page .on-band .va-car-btn { border-color: var(--va-band-line); color: var(--va-band-ink); background: transparent; }
+#va-page .on-band .va-car-wave i { background: var(--va-band-line); }
+#va-page .on-band .va-car-status { color: var(--va-band-muted); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    #va-page .va-car-track > * { animation: va-car-in linear both; animation-timeline: view(inline); animation-range: entry 0% entry 70%; }
+  }
+}
+@keyframes va-car-in { from { opacity: .35; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { #va-page .va-car-track { scroll-behavior: auto; } #va-page .va-car-wave i { transition: none; } }

@@ -1108,6 +1108,47 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
     });
   }
 
+  /* ------------------------------------------------------------ Carousels */
+  // Native scroll-snap tracks; this only adds the buttons, the waveform progress and the "n / total" status.
+  function initCarousels() {
+    $$("[data-carousel]").forEach((root) => {
+      const track = $(".va-car-track", root);
+      const prev = $<HTMLButtonElement>("[data-car-prev]", root);
+      const next = $<HTMLButtonElement>("[data-car-next]", root);
+      const bars = $$("[data-car-wave] i", root);
+      const status = $("[data-car-status]", root);
+      if (!track || !prev || !next) return;
+      const cards = () => Array.from(track.children).filter((c) => !(c as HTMLElement).hidden) as HTMLElement[];
+      const stepWidth = () => {
+        const [a, b] = cards();
+        return b ? b.offsetLeft - a.offsetLeft : a?.offsetWidth || 1;
+      };
+      let raf = 0;
+      function sync() {
+        raf = 0;
+        const list = cards();
+        const i = Math.min(list.length - 1, Math.max(0, Math.round(track.scrollLeft / stepWidth())));
+        const end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+        prev.disabled = i === 0;
+        next.disabled = end;
+        if (status) status.textContent = (i + 1) + " / " + list.length;
+        const per = bars.length / Math.max(1, list.length);
+        bars.forEach((bar, k) => {
+          bar.classList.toggle("is-on", k < Math.ceil((i + 1) * per));
+          bar.classList.toggle("is-now", k === Math.min(bars.length - 1, Math.floor(i * per)));
+        });
+      }
+      const go = (dir: number) => track.scrollBy({ left: dir * stepWidth(), behavior: reduceMotion.matches ? "auto" : "smooth" });
+      on(prev, "click", () => go(-1));
+      on(next, "click", () => go(1));
+      on(track, "scroll", () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
+      on(window, "resize", sync);
+      // The industry filter chips (outside the carousel) hide cards; re-sync after any click.
+      on(page, "click", () => later(sync, 60));
+      sync();
+    });
+  }
+
   /* ----------------------------------------- Plan interest for the form */
   // A pricing button carries data-plan; the booking form's hidden "Plan interest" field picks it up.
   function initPlanInterest() {
@@ -1190,6 +1231,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   initRelated();
   initDemoForm();
   initAreaMap();
+  initCarousels();
   initPlanInterest();
   initStickyBar();
   initReveal();
