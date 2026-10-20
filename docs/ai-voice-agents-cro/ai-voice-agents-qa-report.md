@@ -340,3 +340,8 @@ inactive play button labelled "Recording coming soon" and "0:00 / --:--". To swi
 live first card's controls into it (`data-audio-toggle`, `data-audio-wave` with `aria-valuemax` set to
 the length in seconds, `data-audio-time`), add `<audio preload="none" src="/audio/…" data-audio>`, and
 drop `data-audio-pending`. The hero now uses the site's `hero-grid` backdrop like the other pages.
+
+**Mobile sideways scroll (fixed).** The feedback and cities carousels start 90px to the right for their
+slide-in entrance, which widened the page by 76px on phones and showed a horizontal scrollbar.
+`#va-page { overflow-x: clip; }` clips it at the page root. Verified page width equals the viewport at
+320, 360, 375, 390, 414 and 768px; carousels still reveal and step; the FAQ side panel still sticks.
