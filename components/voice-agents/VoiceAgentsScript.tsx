@@ -1143,6 +1143,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   // in either outer copy, it jumps silently by one set's width, so moving left or right never meets an end. The
   // status reads the real card ("3 / 6"). Copies are aria-hidden and out of the tab order; they run before the
   // video pop-up is wired (see the init order), so a copy's play button opens its video like the original's.
+  let carouselCount = 0;
   function initCarousels() {
     $$("[data-carousel]").forEach((root) => {
       const track = $(".va-car-track", root);
@@ -1152,6 +1153,8 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
       const wave = $("[data-car-wave]", root);
       if (!track || !prev || !next) return;
       const originals = Array.from(track.children) as HTMLElement[];
+      const carousel = String(carouselCount++);
+      originals.forEach((el, i) => (el.dataset.carKey = carousel + "-" + i));
       const n = originals.length;
       if (n < 2) return;
 
@@ -1281,59 +1284,79 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
   // A recording in a card: play/pause, a waveform that fills as it plays and can be clicked or arrow-keyed to seek,
   // and the time. Only one recording plays at a time. The file loads when someone presses play (preload="none").
   function initAudioCards() {
-    const audios: HTMLAudioElement[] = [];
+    // The infinite carousel shows three copies of each card. All copies of one card share the original's
+    // recording: any copy's button and waveform control it, and every copy shows its state, so the card in
+    // view always tells the truth about what is playing.
+    const groups = new Map<string, HTMLElement[]>();
+    let solo = 0;
     $$("[data-audio-card]").forEach((card) => {
-      const audio = $<HTMLAudioElement>("audio[data-audio]", card);
-      const btn = $("[data-audio-toggle]", card);
-      const wave = $("[data-audio-wave]", card);
-      const time = $("[data-audio-time]", card);
-      if (!audio || !btn || !wave) return;
+      if (card.hasAttribute("data-audio-pending")) return;
+      const key = card.dataset.carKey ?? "solo-" + solo++;
+      groups.set(key, [...(groups.get(key) ?? []), card]);
+    });
+    const audios: HTMLAudioElement[] = [];
+    groups.forEach((cards) => {
+      const master = cards.find((c) => !c.hasAttribute("data-car-clone")) ?? cards[0];
+      const audio = $<HTMLAudioElement>("audio[data-audio]", master);
+      if (!audio) return;
+      cards.forEach((c) => c !== master && c.querySelector("audio")?.remove());
       audios.push(audio);
-      const bars = $$("i", wave);
-      const fallback = Number(wave.getAttribute("aria-valuemax")) || 0;
       const fmt = (s: number) => Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+      const fallback = Number($("[data-audio-wave]", master)?.getAttribute("aria-valuemax")) || 0;
       const dur = () => (Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : fallback);
       function paint() {
         const d = dur();
-        const t = audio.currentTime;
-        const k = d ? Math.floor((t / d) * bars.length) : 0;
-        bars.forEach((b, i) => {
-          b.classList.toggle("is-played", i < k);
-          b.classList.toggle("is-now", i === k && !audio.paused);
+        const tNow = audio.currentTime;
+        const playing = !audio.paused;
+        cards.forEach((card) => {
+          const btn = $("[data-audio-toggle]", card);
+          const wave = $("[data-audio-wave]", card);
+          const time = $("[data-audio-time]", card);
+          const bars = wave ? $$("i", wave) : [];
+          const k = d ? Math.floor((tNow / d) * bars.length) : 0;
+          bars.forEach((bar, i) => {
+            bar.classList.toggle("is-played", i < k);
+            bar.classList.toggle("is-now", i === k && playing);
+          });
+          card.classList.toggle("is-playing", playing);
+          btn?.setAttribute("aria-label", playing ? "Pause the recording" : "Play the recording");
+          if (time) time.textContent = fmt(tNow) + " / " + fmt(d);
+          wave?.setAttribute("aria-valuenow", String(Math.round(tNow)));
+          wave?.setAttribute("aria-valuetext", fmt(tNow) + " of " + fmt(d));
         });
-        if (time) time.textContent = fmt(t) + " / " + fmt(d);
-        wave.setAttribute("aria-valuenow", String(Math.round(t)));
-        wave.setAttribute("aria-valuetext", fmt(t) + " of " + fmt(d));
       }
-      const setPlaying = (isOn: boolean) => {
-        card.classList.toggle("is-playing", isOn);
-        btn.setAttribute("aria-label", isOn ? "Pause the recording" : "Play the recording");
-      };
-      on(btn, "click", () => {
-        if (audio.paused) {
-          audios.forEach((a) => a !== audio && a.pause());
-          void audio.play();
-        } else audio.pause();
+      cards.forEach((card) => {
+        const btn = $("[data-audio-toggle]", card);
+        const wave = $("[data-audio-wave]", card);
+        if (btn)
+          on(btn, "click", () => {
+            if (audio.paused) {
+              audios.forEach((other) => other !== audio && other.pause());
+              void audio.play();
+            } else audio.pause();
+          });
+        if (!wave) return;
+        on(wave, "click", (e: MouseEvent) => {
+          const r = wave.getBoundingClientRect();
+          audio.currentTime = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * dur();
+          paint();
+        });
+        on(wave, "keydown", (e: KeyboardEvent) => {
+          const step = ({ ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5 } as Record<string, number>)[e.key];
+          if (e.key === "Home") audio.currentTime = 0;
+          else if (e.key === "End") audio.currentTime = dur();
+          else if (step === undefined) return;
+          else audio.currentTime = Math.min(dur(), Math.max(0, audio.currentTime + step));
+          e.preventDefault();
+          paint();
+        });
       });
-      on(audio, "play", () => { setPlaying(true); paint(); });
-      on(audio, "pause", () => { setPlaying(false); paint(); });
-      on(audio, "ended", () => { audio.currentTime = 0; setPlaying(false); paint(); });
+      on(audio, "play", paint);
+      on(audio, "pause", paint);
+      on(audio, "ended", () => { audio.currentTime = 0; paint(); });
       on(audio, "timeupdate", paint);
       on(audio, "loadedmetadata", paint);
-      on(wave, "click", (e: MouseEvent) => {
-        const r = wave.getBoundingClientRect();
-        audio.currentTime = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * dur();
-        paint();
-      });
-      on(wave, "keydown", (e: KeyboardEvent) => {
-        const step = ({ ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5 } as Record<string, number>)[e.key];
-        if (e.key === "Home") audio.currentTime = 0;
-        else if (e.key === "End") audio.currentTime = dur();
-        else if (step === undefined) return;
-        else audio.currentTime = Math.min(dur(), Math.max(0, audio.currentTime + step));
-        e.preventDefault();
-        paint();
-      });
+      paint();
       cleanups.push(() => audio.pause());
     });
   }
