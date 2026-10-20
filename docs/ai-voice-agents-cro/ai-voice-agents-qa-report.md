@@ -267,3 +267,11 @@ industry on hover, booking chips, the lit call step, the phone avatar, open FAQ 
 play buttons, the industries CTA tile, and the booking band's badge, step dots and selected tab icon).
 One unlayered CSS rule in voice-agents.css, scoped to this page and its booking band; verified by
 computed colour on all fourteen in headless Chrome.
+Hero: an intro now plays on load (badge, headline words rising from a mask, lead, buttons, the
+industry strip, then the video lifting in), settled by about 1.7s. The video is up to 1,280px wide
+(was 1,040px) and its scroll scale eases 0.86 → 1 toward the scroll position instead of tracking it
+frame by frame. Fixed a bug that also affected the section reveals: the hidden state was being
+transitioned in, so elements on screen never visibly started hidden; hidden states now apply with
+transitions off (`html.m-setup`) and the animation runs after a paint. Probed in headless Chrome:
+at +137ms the hero parts read opacity 0, at +600ms the badge is in and the first word is rising, at
++1.7s everything is at 1.

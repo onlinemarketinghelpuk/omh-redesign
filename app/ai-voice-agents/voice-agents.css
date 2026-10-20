@@ -600,3 +600,15 @@ html:has(.va-page dialog[open]) {
   .booked, .vp-play, .lf-gold, .ind:hover .ind-ico, .ind:focus-visible .ind-ico, .ind[aria-current="true"] .ind-ico,
   [data-brand-step].is-on .step-num, .cap-tab[aria-selected="true"] .icon-tile
 ) { color: #fff; }
+
+/* Hero (20 Oct 2026): a wider video and an intro that plays on load (VoiceMotion.tsx). */
+#va-page .hero4 .hero-video { width: min(100%, 1280px); max-width: none; }
+.motion-ready #va-page .hero-video .video-frame { transform: scale(.86); border-radius: 30px; }
+.motion-ready #va-page .m-hero:not(.is-in) { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+.motion-ready #va-page .m-hero { transition: opacity 1.1s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms), transform 1.3s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms), filter 1.1s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms); }
+.motion-ready #va-page .hero-video.m-hero:not(.is-in) { transform: translateY(70px); }
+.motion-ready #va-page .m-words .mw > span { transition-delay: calc(var(--wd, 0ms) + var(--i, 0) * 55ms); transition-duration: 1.1s; }
+@media (prefers-reduced-motion: reduce) { #va-page .hero-video .video-frame { transform: none; border-radius: 18px; } }
+
+/* Set while VoiceMotion applies hidden states, so they take effect at once instead of animating out. */
+.m-setup #va-page *, .m-setup #va-page *::before { transition: none !important; }

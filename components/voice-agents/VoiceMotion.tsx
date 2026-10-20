@@ -18,7 +18,7 @@ const REVEAL = [
   ["section .eyebrow", "up"],
   ["section > .container-omh > p.text-muted, section > .container-omh > p.text-band-muted, section .head-c > p, #what-is p.text-band-muted, #right-fit p.text-muted", "up"],
   ["[data-industry], #feedback figure, #pricing article, .tl-step, .cap-tab, [data-faq-item], [data-brand-step], #right-fit .hover-card, #features ol > li, .city, #compare .cmp-table, #compare [data-cmp] dl > div, #faq .rounded-\\[16px\\]", "up"],
-  [".hero-video, .brand-phone, #use-cases [data-tab-panel]:not([hidden]), [data-fit-form]", "clip"],
+  [".brand-phone, #use-cases [data-tab-panel]:not([hidden]), [data-fit-form]", "clip"],
   ["#feedback dl, .ucard-vis", "up"],
 ] as const;
 
@@ -37,7 +37,7 @@ export function VoiceMotion() {
     const vh = () => window.innerHeight;
 
     /* -------- Headings: words rise out of a mask, one after another */
-    const headings = Array.from(root.querySelectorAll<HTMLElement>("section h2")).filter((h) => !h.dataset.split && h.offsetParent);
+    const headings = Array.from(root.querySelectorAll<HTMLElement>("section h2, #top h1")).filter((h) => !h.dataset.split && h.offsetParent);
     headings.forEach((h) => {
       const original = h.innerHTML;
       let n = 0;
@@ -99,6 +99,20 @@ export function VoiceMotion() {
         }),
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
     );
+    /* -------- Hero intro: badge, headline words, lead, buttons, strip and video arrive in sequence on load */
+    const heroTop = root.querySelector<HTMLElement>("#top");
+    const heroParts = heroTop && heroTop.getBoundingClientRect().bottom > 0
+      ? Array.from(heroTop.querySelectorAll<HTMLElement>(".badge, h1, .lead, #hero-form, #hero-form + p, #industries-strip, .hero-video"))
+      : [];
+    const heroWords = heroTop?.querySelector<HTMLElement>("h1.m-words");
+    heroParts.forEach((el, k) => {
+      tagged.delete(el);
+      if (el !== heroWords) el.classList.add("m-hero");
+      el.style.setProperty("--d", `${[0, 120, 520, 650, 760, 860, 980][k] ?? 1000}ms`);
+    });
+    if (heroWords) heroWords.style.setProperty("--wd", "140ms");
+    undo.push(() => heroParts.forEach((el) => { el.classList.remove("m-hero", "is-in"); el.style.removeProperty("--d"); el.style.removeProperty("--wd"); }));
+
     tagged.forEach((el) => {
       // Already on screen or scrolled past: show now, no animation from a reload mid-page.
       if (el.getBoundingClientRect().top < vh() * 0.92) {
@@ -106,8 +120,20 @@ export function VoiceMotion() {
         countUp(el);
       } else io.observe(el);
     });
-    document.documentElement.classList.add("motion-ready");
-    const failsafe = window.setTimeout(() => tagged.forEach((el) => el.getBoundingClientRect().top < vh() && show(el)), 4000);
+    // Apply the hidden states with transitions off (otherwise the hiding itself animates and the hero never
+    // visibly starts hidden), let that paint, then switch transitions back on and play the hero in.
+    const html = document.documentElement;
+    html.classList.add("m-setup", "motion-ready");
+    void html.offsetHeight;
+    requestAnimationFrame(() => {
+      html.classList.remove("m-setup");
+      requestAnimationFrame(() => heroParts.forEach(show));
+    });
+    undo.push(() => html.classList.remove("m-setup"));
+    const failsafe = window.setTimeout(() => {
+      tagged.forEach((el) => el.getBoundingClientRect().top < vh() && show(el));
+      heroParts.forEach(show);
+    }, 4000);
     undo.push(() => {
       io.disconnect();
       clearTimeout(failsafe);
@@ -161,16 +187,25 @@ export function VoiceMotion() {
     const video = root.querySelector<HTMLElement>(".hero-video .video-frame");
     const glows = Array.from(root.querySelectorAll<HTMLElement>(".blur-3xl, .hero-glow"));
     let raf = 0;
+    // The video eases toward its scroll position (a fraction of the distance each frame), so the growth feels
+    // continuous rather than locked to the scrollbar.
+    let vp = -1;
+    const videoTarget = () => {
+      const r = video!.parentElement!.getBoundingClientRect();
+      return Math.max(0, Math.min(1, (vh() - r.top) / (vh() * 0.9)));
+    };
     const frame = () => {
       raf = 0;
       const doc = document.documentElement;
       const max = doc.scrollHeight - vh();
       bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
       if (video) {
-        const r = video.getBoundingClientRect();
-        const p = Math.max(0, Math.min(1, (vh() - r.top) / (vh() * 0.75)));
-        video.style.transform = `scale(${0.9 + 0.1 * p})`;
-        video.style.borderRadius = `${28 - 10 * p}px`;
+        const target = videoTarget();
+        vp = vp < 0 ? target : vp + (target - vp) * 0.09;
+        const eased = 1 - Math.pow(1 - vp, 2);
+        video.style.transform = `scale(${(0.86 + 0.14 * eased).toFixed(4)})`;
+        video.style.borderRadius = `${(30 - 14 * eased).toFixed(1)}px`;
+        if (Math.abs(target - vp) > 0.0008) raf = requestAnimationFrame(frame);
       }
       glows.forEach((g) => {
         const r = g.parentElement!.getBoundingClientRect();
