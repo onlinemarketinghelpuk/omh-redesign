@@ -37,6 +37,8 @@ const once = (method) => new Promise((res) => waiters.push({ method, res }));
 const evaluate = async (expression) => (await send("Runtime.evaluate", { expression, awaitPromise: true, returnByValue: true })).result.value;
 
 await send("Page.enable");
+// Reveals on the page are scroll-driven; a full-page capture never scrolls, so emulate reduced motion to see everything.
+await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
 for (const width of widths) {
   await send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 768 });
   const loaded = once("Page.loadEventFired");

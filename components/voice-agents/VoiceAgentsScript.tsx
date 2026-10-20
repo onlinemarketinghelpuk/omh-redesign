@@ -1123,14 +1123,21 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         const [a, b] = cards();
         return b ? b.offsetLeft - a.offsetLeft : a?.offsetWidth || 1;
       };
+      // "The end" is when the last card is fully on screen, wherever the snap happens to rest.
+      const atEnd = () => {
+        const list = cards();
+        const last = list[list.length - 1];
+        // A little tolerance: the snap can rest a few pixels short of the true end.
+        return !last || last.getBoundingClientRect().right <= track.getBoundingClientRect().right + 24;
+      };
       let raf = 0;
       function sync() {
         raf = 0;
         const list = cards();
-        const i = Math.min(list.length - 1, Math.max(0, Math.round(track.scrollLeft / stepWidth())));
-        const end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
-        prev.disabled = i === 0;
-        next.disabled = end;
+        const end = atEnd();
+        track.classList.toggle("is-end", end);
+        // At the end the last card is on screen, so the count and the wave read as complete.
+        const i = end ? list.length - 1 : Math.min(list.length - 1, Math.max(0, Math.round(track.scrollLeft / stepWidth())));
         if (status) status.textContent = (i + 1) + " / " + list.length;
         const per = bars.length / Math.max(1, list.length);
         bars.forEach((bar, k) => {
@@ -1138,7 +1145,13 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
           bar.classList.toggle("is-now", k === Math.min(bars.length - 1, Math.floor(i * per)));
         });
       }
-      const go = (dir: number) => track.scrollBy({ left: dir * stepWidth(), behavior: reduceMotion.matches ? "auto" : "smooth" });
+      // Loops: next at the end returns to the start, previous at the start jumps to the end.
+      const go = (dir: number) => {
+        const behavior = reduceMotion.matches ? "auto" : "smooth";
+        if (dir > 0 && atEnd()) track.scrollTo({ left: 0, behavior });
+        else if (dir < 0 && track.scrollLeft <= 8) track.scrollTo({ left: track.scrollWidth, behavior }); // the first card snaps at the 6px padding
+        else track.scrollBy({ left: dir * stepWidth(), behavior });
+      };
       on(prev, "click", () => go(-1));
       on(next, "click", () => go(1));
       on(track, "scroll", () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
@@ -1178,10 +1191,7 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
           if (tick || !inView || hold) return;
           tick = every(() => {
             if (dragging) return;
-            const list = cards();
-            const i = Math.round(track.scrollLeft / stepWidth());
-            if (i >= list.length - 1 || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) track.scrollTo({ left: 0, behavior: "smooth" });
-            else go(1);
+            go(1);
           }, 4500);
         };
         const pause = (ms: number) => { hold = true; stop(); clearTimeout(idle); idle = later(() => { hold = false; play(); }, ms); };

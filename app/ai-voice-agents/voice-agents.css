@@ -500,6 +500,8 @@ html:has(.va-page dialog[open]) {
 #va-page .va-car-track:focus-visible { outline: 2px solid var(--va-hl); outline-offset: 4px; border-radius: 12px; }
 #va-page .va-car-track > * { flex: 0 0 min(100%, var(--car-w, 400px)); width: min(100%, var(--car-w, 400px)); scroll-snap-align: start; margin: 0; }
 #va-page .va-car-track > [hidden] { display: none; }
+#va-page .va-car-track > :last-child { scroll-snap-align: start end; }
+#va-page .va-car-track.is-end { -webkit-mask-image: none; mask-image: none; }
 #va-page .va-car-ui { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
 #va-page .va-car-btn {
   display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 999px;
@@ -527,3 +529,36 @@ html:has(.va-page dialog[open]) {
 }
 @keyframes va-car-in { from { opacity: .35; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { #va-page .va-car-track { scroll-behavior: auto; } #va-page .va-car-wave i { transition: none; } }
+
+/* ---------- Rhythm, scroll reveals and hover lifts (20 Oct 2026) ----------
+   Reveals are scroll-driven CSS (no JavaScript, nothing can get stuck hidden); browsers without support show
+   everything as normal, and reduced motion turns it all off. */
+.v4l .section { padding-block: clamp(3.5rem, 2.5rem + 2.6vw, 5rem); }
+.v4l .hero4 .container-omh:last-child { padding-bottom: clamp(3rem, 2rem + 2.6vw, 4.5rem); }
+#va-page .hover-card, #va-page [data-industry], #va-page #pricing article, #va-page .tl-card, #va-page .fcard, #va-page #features ol > li, #va-page #feedback figure, #va-page .city {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+#va-page .hover-card:hover, #va-page [data-industry]:hover, #va-page #pricing article:hover, #va-page .tl-card:hover, #va-page .fcard:hover, #va-page #features ol > li:hover, #va-page #feedback figure:hover, #va-page .city:hover {
+  transform: translateY(-4px); box-shadow: 0 24px 50px -34px rgb(16 24 40 / .45); border-color: #d79a37;
+}
+#va-page [data-industry]:hover .il-bubble { animation: va-il-float 1.6s ease-in-out infinite; }
+#va-page .btn { transition: background-color .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease; }
+#va-page .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -14px rgb(215 154 55 / .9); }
+#va-page .icon-tile { transition: background-color .2s ease, color .2s ease, transform .2s ease; }
+#va-page li:hover > .icon-tile, #va-page .cap-tab:hover .icon-tile { transform: translateY(-2px); }
+#va-page details > summary { transition: background-color .15s ease; }
+#va-page details > summary:hover { background: color-mix(in srgb, var(--va-ink, #101828) 3%, transparent); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    #va-page section > .container-omh > :is(h2, .eyebrow, p, h3),
+    #va-page section > .container-omh > div > :is(h2, .eyebrow, p),
+    #va-page [data-industry], #va-page #pricing article, #va-page .tl-step, #va-page #features ol > li, #va-page .cap-tab, #va-page [data-faq-item],
+    #va-page #what-is [data-brand-step], #va-page #right-fit .hover-card, #va-page .ucard-vis, #va-page .brand-phone {
+      animation: va-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes va-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  #va-page .hover-card:hover, #va-page [data-industry]:hover, #va-page #pricing article:hover, #va-page .fcard:hover, #va-page .city:hover, #va-page .btn-primary:hover { transform: none; }
+}

@@ -154,7 +154,6 @@ export const landingV4Markup = String.raw`
           </span>
         </a>
       </div>
-      <p class="t-small mt-4 text-center text-muted">Watch our AI voice agent answer a call, qualify the caller and book a viewing (1:32).</p>
     </div>
   </div>
 

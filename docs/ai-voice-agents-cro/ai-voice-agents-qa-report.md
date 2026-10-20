@@ -237,3 +237,9 @@ Carousels: Industries, Client feedback and Local cover are scroll-snap carousels
 document). Verified in headless Chrome at 1440 and 390: next/prev move one card, the status and
 waveform update, the first/last buttons disable at the ends, the industry filter chips re-sync the
 count, no console errors.
+Round four: verified in headless Chrome at 1440: scrolling a carousel to its end reads "6 / 6" with
+all bars lit, next at the end returns to the first card and previous at the start jumps to the last;
+five "yes" answers in the fit check give "Strong fit", "5 of 5 answered" and show the CTA; the hero
+caption and comparison note are gone; no console errors. Page: 13 sections, 19,586px at 1440 and
+35,194px at 390. The capture script now emulates reduced motion so the scroll-driven reveals do not
+hide below-the-fold content in full-page captures.

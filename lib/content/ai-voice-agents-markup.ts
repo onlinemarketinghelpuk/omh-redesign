@@ -316,7 +316,7 @@ export const voiceAgentsMarkup = String.raw`
 </section>
 
 <section id="features" data-component="Features" class="border-y border-line bg-sand">
-  <div class="container-omh py-16 lg:py-24">
+  <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What's included</p>
     <h2>What your AI voice agent does, <span class="hl">and what we do for you</span></h2>
     <p class="mt-5 text-muted">Everything a good front desk does on the phone, without adding to the payroll. Pick a capability to see it in action and how OMH runs it for you. Features marked Growth and Scale aren't on the Starter plan.</p>
@@ -340,7 +340,7 @@ ${capabilities.map(capPanel).join("\n")}
 </section>
 
 <section id="use-cases" data-component="Industries">
-  <div class="container-omh py-16 lg:py-24">
+  <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Use cases</p>
     <h2>AI voice agent use cases <span class="hl">by industry</span></h2>
     <p class="mt-5 text-muted">We set up AI voice agents for eight types of business that live on the phone. Each agent is scripted around the calls your sector actually gets. Pick yours to see what it handles.</p>
@@ -361,7 +361,7 @@ ${industries.map(industryPanel).join("\n")}
 </section>
 
 <section id="pricing" data-component="Pricing" class="border-y border-line bg-surface">
-  <div class="container-omh py-16 lg:py-24">
+  <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
     <h2>${mainPagePricing.heading}</h2>
     <p class="mt-5 text-muted">Three plans, billed monthly, no minimum contract. Every plan includes a managed agent, a British voice, a summary of every call and a monthly report. Prices exclude VAT.</p>

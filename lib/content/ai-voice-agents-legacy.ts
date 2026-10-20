@@ -37,7 +37,7 @@ const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `     
 
 export const legacyMarkup = String.raw`
 <section id="industries" data-component="Industries" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28">
+  <div class="container-omh py-14 lg:py-20">
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Industries</p>
@@ -289,7 +289,7 @@ export const legacyMarkup = String.raw`
 </section>
 
 <section id="feedback" data-component="ClientFeedback">
-  <div class="container-omh py-20 lg:py-28">
+  <div class="container-omh py-14 lg:py-20">
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Client feedback</p>
@@ -434,130 +434,97 @@ export const legacyMarkup = String.raw`
 </dialog>
 
 <section id="right-fit" data-component="RightFit" class="bg-surface">
-  <div class="container-omh py-20 lg:py-28">
-    <div>
+  <div class="container-omh py-14 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)] lg:items-start" data-fit>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Is it the right fit?</p>
         <h2>A voice agent <span class="hl">isn't for everyone</span></h2>
+        <p class="mt-5 text-muted">We'd rather tell you now than three months in. Answer five quick questions and see for yourself. Nothing is sent anywhere.</p>
+        <form class="hover-card mt-8 rounded-[18px] border border-line bg-paper p-5 sm:p-6" data-fit-form>
+          <ol class="divide-y divide-line">
+          <li>
+            <fieldset class="flex items-center justify-between gap-4 py-3">
+              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">01</span>Do you miss calls when your team is busy, on site or closed?</legend>
+              <span class="flex shrink-0 gap-1.5">
+                <label class="relative"><input type="radio" name="fit-q0" value="yes" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
+                <label class="relative"><input type="radio" name="fit-q0" value="no" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
+              </span>
+            </fieldset>
+          </li>
+          <li>
+            <fieldset class="flex items-center justify-between gap-4 py-3">
+              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">02</span>Are most of your calls the same few requests?</legend>
+              <span class="flex shrink-0 gap-1.5">
+                <label class="relative"><input type="radio" name="fit-q1" value="yes" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
+                <label class="relative"><input type="radio" name="fit-q1" value="no" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
+              </span>
+            </fieldset>
+          </li>
+          <li>
+            <fieldset class="flex items-center justify-between gap-4 py-3">
+              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">03</span>Could one missed call cost you a customer worth real money?</legend>
+              <span class="flex shrink-0 gap-1.5">
+                <label class="relative"><input type="radio" name="fit-q2" value="yes" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
+                <label class="relative"><input type="radio" name="fit-q2" value="no" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
+              </span>
+            </fieldset>
+          </li>
+          <li>
+            <fieldset class="flex items-center justify-between gap-4 py-3">
+              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">04</span>Do you have a diary or system bookings can go into?</legend>
+              <span class="flex shrink-0 gap-1.5">
+                <label class="relative"><input type="radio" name="fit-q3" value="yes" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
+                <label class="relative"><input type="radio" name="fit-q3" value="no" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
+              </span>
+            </fieldset>
+          </li>
+          <li>
+            <fieldset class="flex items-center justify-between gap-4 py-3">
+              <legend class="float-left pr-2 text-[16px] leading-snug"><span class="num mr-2 text-[14px]">05</span>Are you happy for callers to be told they are speaking to an AI?</legend>
+              <span class="flex shrink-0 gap-1.5">
+                <label class="relative"><input type="radio" name="fit-q4" value="yes" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 yes"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span></label>
+                <label class="relative"><input type="radio" name="fit-q4" value="no" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 no"><span class="flex min-h-[40px] min-w-[56px] items-center justify-center rounded-full border border-[var(--va-line-strong)] px-3 text-[15px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span></label>
+              </span>
+            </fieldset>
+          </li>
+          </ol>
+          <div class="mt-5 flex flex-wrap items-center gap-4 rounded-[14px] bg-sand p-4" aria-live="polite" data-fit-result data-state="empty">
+            <svg viewBox="0 0 200 118" class="w-[112px] shrink-0" role="img" aria-label="Fit gauge" data-fit-gauge>
+              <path d="M20 100 A80 80 0 0 1 180 100" class="fit-track"/>
+              <path d="M20 100 A80 80 0 0 1 180 100" class="fit-fill" style="stroke-dasharray:251.3;stroke-dashoffset:251.3" data-fit-arc data-arc="251.3"/>
+              <g class="fit-needle" style="transform:rotate(-90deg)" data-fit-needle><line x1="100" y1="100" x2="100" y2="34"/><circle cx="100" cy="100" r="7"/></g>
+              <text x="20" y="116" class="fit-tick" text-anchor="middle">0</text>
+              <text x="180" y="116" class="fit-tick" text-anchor="middle">5</text>
+            </svg>
+            <div class="min-w-0 flex-1">
+              <p class="font-display text-[20px] font-semibold leading-tight" data-fit-title>Answer to see your fit</p>
+              <p class="mt-1 text-[15px] leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
+              <p class="mt-1 text-[14px] text-muted tnum" data-fit-count>0 of 5 answered</p>
+              <a href="#book-demo-form" class="btn btn-primary mt-3" data-fit-cta data-track="fit_check_book_demo" hidden>Book a 30-Minute Demo</a>
+            </div>
+            <button type="reset" class="inline-flex min-h-[44px] items-center gap-1.5 self-start text-[15px] font-semibold text-muted hover:text-ink" data-track="fit_check_reset"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Start again</button>
+          </div>
+        </form>
       </div>
-      <p class="mt-5 text-muted">We'd rather tell you now than three months in. Here's where it earns its keep and where it doesn't. Or answer five quick questions and see for yourself.</p>
-    </div>
-
-    <div class="mt-12 grid gap-5 md:grid-cols-2">
-      <div class="rounded-[16px] border border-[color-mix(in_srgb,var(--va-ok)_35%,transparent)] bg-[color-mix(in_srgb,var(--va-ok)_7%,var(--va-surface))] p-6 sm:p-8">
-        <h3 class="flex items-center gap-3 !text-[24px]"><span class="grid h-10 w-10 place-items-center rounded-full bg-ok text-surface"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>A good fit if</h3>
-        <ul class="mt-6 space-y-4">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone-missed"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You miss calls</strong><span class="text-muted">while your team is with customers, on site or closed for the day.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-message"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Most calls repeat themselves:</strong><span class="text-muted">bookings, opening hours, prices and availability.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Each customer is worth real money,</strong><span class="text-muted">so one missed call can cost more than the agent.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You have a diary or booking system</strong><span class="text-muted">the agent can book into.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-surface text-ok" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You're happy to be open about AI,</strong><span class="text-muted">because callers are told they're speaking to an AI assistant.</span></span></li>
-        </ul>
-      </div>
-      <div class="rounded-[16px] border border-line bg-paper p-6 sm:p-8">
-        <h3 class="flex items-center gap-3 !text-[24px]"><span class="grid h-10 w-10 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span>Not the right fit if</h3>
-        <ul class="mt-6 space-y-4">
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Your phone is quiet</strong><span class="text-muted">and you already answer every call.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">Every call needs expert judgement or a personal touch from the first sentence.</strong><span class="text-muted">A good receptionist or answering service will serve you better.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-wrench"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You have the technical time to build and maintain an agent yourself.</strong><span class="text-muted">A DIY platform will cost you less.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">The line handles emergencies or life-critical calls.</strong><span class="text-muted">An AI agent should never be the only route there.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want callers to think it's a person, or you want to cold call people who haven't agreed to hear from you.</strong><span class="text-muted">We won't build either.</span></span></li>
-          <li class="flex gap-3.5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sand text-muted" aria-hidden="true"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-clock"/></svg></span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">You want to set it and forget it.</strong><span class="text-muted">An agent needs a regular review to stay good.</span></span></li>
-        </ul>
-      </div>
-    </div>
-
-        <div class="mt-6 grid overflow-hidden rounded-[16px] border border-line bg-paper lg:grid-cols-[minmax(0,1.25fr)_minmax(0,.75fr)]" data-fit>
-      <form class="p-6 sm:p-8" data-fit-form>
-        <h3 class="!text-[24px]">Quick fit check</h3>
-        <p class="mt-1 text-[16px] text-muted">Five questions, about 20 seconds.</p>
-        <ol class="mt-6 divide-y divide-line border-y border-line">
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">01</span><span>Do you miss calls when your team is busy, on site or closed?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q0" value="yes" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q0" value="no" class="peer sr-only" data-fit-q="0" data-track="fit_check_answer" data-track-name="Q1 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">02</span><span>Are most of your calls the same few requests?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q1" value="yes" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q1" value="no" class="peer sr-only" data-fit-q="1" data-track="fit_check_answer" data-track-name="Q2 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">03</span><span>Could one missed call cost you a customer worth real money?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q2" value="yes" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q2" value="no" class="peer sr-only" data-fit-q="2" data-track="fit_check_answer" data-track-name="Q3 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">04</span><span>Do you have a diary or system bookings can go into?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q3" value="yes" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q3" value="no" class="peer sr-only" data-fit-q="3" data-track="fit_check_answer" data-track-name="Q4 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-          <li>
-            <fieldset class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <legend class="float-left flex gap-3 text-[16.5px] leading-snug sm:"><span class="num text-[15px] leading-[1.6]">05</span><span>Are you happy for callers to be told they are speaking to an AI?</span></legend>
-              <span class="flex shrink-0 gap-2 pl-8 sm:pl-0">
-                <label class="relative">
-                  <input type="radio" name="fit-q4" value="yes" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 yes">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">Yes</span>
-                </label><label class="relative">
-                  <input type="radio" name="fit-q4" value="no" class="peer sr-only" data-fit-q="4" data-track="fit_check_answer" data-track-name="Q5 no">
-                  <span class="flex min-h-[44px] min-w-[68px] items-center justify-center gap-1.5 rounded-full border border-[var(--va-line-strong)] px-4 text-[15.5px] font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--va-hl)]">No</span>
-                </label>
-              </span>
-            </fieldset>
-          </li>
-        </ol>
-        <button type="reset" class="mt-4 inline-flex min-h-[44px] items-center gap-2 text-[15.5px] font-semibold text-muted hover:text-ink" data-track="fit_check_reset"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Start again</button>
-      </form>
-
-      <div class="flex flex-col items-center justify-center bg-sand p-6 text-center sm:p-8" aria-live="polite" data-fit-result data-state="empty">
-        <svg viewBox="0 0 200 118" class="w-full max-w-[260px]" role="img" aria-label="Fit gauge" data-fit-gauge>
-          <path d="M20 100 A80 80 0 0 1 180 100" class="fit-track"/>
-          <path d="M20 100 A80 80 0 0 1 180 100" class="fit-fill" style="stroke-dasharray:251.3;stroke-dashoffset:251.3" data-fit-arc data-arc="251.3"/>
-          <g class="fit-needle" style="transform:rotate(-90deg)" data-fit-needle><line x1="100" y1="100" x2="100" y2="34"/><circle cx="100" cy="100" r="7"/></g>
-          <text x="20" y="116" class="fit-tick" text-anchor="middle">0</text>
-          <text x="180" y="116" class="fit-tick" text-anchor="middle">5</text>
-        </svg>
-        <p class="mt-3 font-display text-[26px] font-semibold leading-tight" data-fit-title>Answer to see your fit</p>
-        <p class="mt-2 text-[16px] leading-snug text-muted" data-fit-text>Your result appears here as you go. Nothing is sent anywhere.</p>
-        <p class="mt-1 text-[14.5px] text-muted tnum" data-fit-count>0 of 5 answered</p>
-        <a href="#book-demo-form" class="btn btn-primary mt-5" data-fit-cta data-track="fit_check_book_demo" hidden>Book a Voice Agent Demo</a>
+      <div class="grid gap-5 lg:mt-[4.5rem]">
+        <div class="hover-card rounded-[18px] border border-[color-mix(in_srgb,var(--va-ok)_35%,transparent)] bg-[color-mix(in_srgb,var(--va-ok)_7%,var(--va-surface))] p-5 sm:p-6">
+          <h3 class="flex items-center gap-3 !text-[20px]"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ok text-surface"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>A good fit if</h3>
+          <ul class="mt-4 space-y-2.5 text-[16px] leading-snug text-muted [&_.icon]:text-ok">
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">You miss calls</strong> while your team is with customers, on site or closed for the day.</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">Most calls repeat themselves:</strong> bookings, opening hours, prices and availability.</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">Each customer is worth real money,</strong> so one missed call can cost more than the agent.</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong class="font-semibold text-ink">You have a diary or booking system</strong> the agent can book into.</span></li>
+          </ul>
+        </div>
+        <div class="hover-card rounded-[18px] border border-line bg-paper p-5 sm:p-6">
+          <h3 class="flex items-center gap-3 !text-[20px]"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-[1.5px] border-[var(--va-line-strong)] text-muted"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></span>Not the right fit if</h3>
+          <ul class="mt-4 space-y-2.5 text-[16px] leading-snug text-muted [&_.icon]:text-muted">
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">Your phone is quiet</strong> and you already answer every call.</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">Every call needs expert judgement from the first sentence.</strong> A good receptionist or answering service will serve you better.</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">The line handles emergencies or life-critical calls.</strong> An AI agent should never be the only route there.</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] shrink-0" aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong class="font-semibold text-ink">You want callers to think it's a person, or want to cold call people who haven't agreed to hear from you.</strong> We won't build either.</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -566,7 +533,7 @@ export const legacyMarkup = String.raw`
 ${roiCalculator("any-business")}
 
 <section id="compare" data-component="Compare">
-  <div class="container-omh py-20 lg:py-28">
+  <div class="container-omh py-14 lg:py-20">
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Compare your options</p>
@@ -610,7 +577,6 @@ ${cmpRows.map(([k, omh, ...v]) => `        <div class="rounded-[14px] border bor
       </dl>
     </div>
 
-    <p class="mt-4 text-[16px] text-muted">Costs are rough UK guides for a small business, checked in October 2026, not quotes. Answering service and platform prices vary widely by provider and usage.</p>
   </div>
 </section>
 

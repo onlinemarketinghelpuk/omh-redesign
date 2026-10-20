@@ -122,3 +122,10 @@ is focusable and scrolls with the arrow keys; the buttons are ordinary buttons.
 Client feedback and Local cover stay carousels, now draggable with a mouse and auto-advancing every
 4.5 seconds while in view; autoplay pauses on hover or focus and for eight seconds after any
 interaction, and is off under reduced motion. The control row is compact: arrow, waveform, count, arrow.
+
+**Round four (client):** carousels read "6 / 6" with a full waveform once the last card is on
+screen, and the arrows loop rather than disable. "Is it the right fit?" is compact: the five-question
+fit check with an inline gauge on the left, two short fit/not-fit lists on the right. The hero video
+caption and the comparison price note are gone. Section padding is 80px at desktop (was 112px).
+Page-wide motion: scroll-driven CSS reveals on headings, cards and steps (no JavaScript, static under
+reduced motion) and hover lifts on cards and primary buttons.
