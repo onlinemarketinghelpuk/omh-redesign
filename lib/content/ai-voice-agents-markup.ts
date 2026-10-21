@@ -377,3 +377,19 @@ ${mainPagePricing.notes.map(([k, v]) => `      <div class="grid gap-1 border-b b
 </section>
 
 `;
+
+/* ------------------------------------------- Plans on /pricing (21 Oct 2026) */
+// The same three plan cards and notes as this page's pricing section, for the AI services entry on /pricing,
+// so prices are only ever set in voice-pricing.ts. Wrapped in the #va-page scope for its styles, with just the
+// icons the cards use, and demo buttons pointing at the booking form on /ai-voice-agents.
+const sprite = voiceAgentsMarkup.slice(0, voiceAgentsMarkup.indexOf("</svg>"));
+const symbols = ["clock", "calendar", "timer", "check", "x", "plus-star", "chevron-down"]
+  .map((name) => sprite.match(new RegExp(`<symbol id="i-${name}"[\\s\\S]*?</symbol>`))?.[0] ?? "")
+  .join("");
+export const voicePricingCards = `<svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">${symbols}</svg>
+<div class="grid gap-5 pt-4 lg:grid-cols-3 lg:items-stretch">
+${mainPagePricing.plans.map(plan).join("\n")}
+</div>
+<dl class="mt-10 border-t border-line">
+${mainPagePricing.notes.map(([k, v]) => `  <div class="grid gap-1 border-b border-line py-4 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-8"><dt class="text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt><dd class="text-[16px] leading-[1.5]">${v}</dd></div>`).join("\n")}
+</dl>`.replaceAll('href="#book-demo-form"', 'href="/ai-voice-agents#book-demo-form"');
