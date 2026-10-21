@@ -162,3 +162,20 @@ export async function getRelatedInsights(post: InsightPost, limit = 3): Promise<
   );
   return rows.map(toEntry);
 }
+
+// Draft preview only: every post with unpublished changes, newest edit first, for the Drafts list that
+// /insights shows while draft mode is on. "raw" so draft documents can be told apart by their drafts. id.
+export async function getDraftInsights(): Promise<Array<{ slug: string; title: string | null; updatedAt: string; published: boolean }>> {
+  return client
+    .withConfig({ token: readToken, apiVersion: "2025-02-19", perspective: "raw", useCdn: false })
+    .fetch(
+      groq`*[_type == "post" && _id in path("drafts.**") && defined(slug.current)] | order(_updatedAt desc){
+        "slug": slug.current,
+        title,
+        "updatedAt": _updatedAt,
+        "published": defined(*[_id == string::split(^._id, "drafts.")[1]][0]._id)
+      }`,
+      {},
+      { cache: "no-store" },
+    );
+}

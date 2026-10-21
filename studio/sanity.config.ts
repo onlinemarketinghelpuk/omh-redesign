@@ -1,6 +1,6 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { defineLocations, presentationTool } from "sanity/presentation";
+import { defineDocuments, defineLocations, presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { enquiry } from "./schemaTypes/enquiry";
 import { schemaTypes } from "./schemaTypes";
@@ -27,8 +27,11 @@ export default defineConfig([
       structureTool({ structure }),
       presentationTool({
         title: "Preview",
-        previewUrl: { origin: previewOrigin, previewMode: { enable: "/api/draft-mode/enable" } },
+        // Opens on /insights, which lists every draft at the top while previewing.
+        previewUrl: { origin: previewOrigin, preview: "/insights", previewMode: { enable: "/api/draft-mode/enable" } },
         resolve: {
+          // Which post a page shows, so "Documents on this page" opens it for editing.
+          mainDocuments: defineDocuments([{ route: "/:slug", filter: `_type == "post" && slug.current == $slug` }]),
           locations: {
             post: defineLocations({
               select: { title: "title", slug: "slug.current" },
