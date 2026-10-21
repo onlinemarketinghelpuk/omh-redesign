@@ -18,7 +18,7 @@ type Props = { params: Promise<{ industry: string }> };
 
 // Industries rebuilt on the /ai-voice-agents layout with their own content (21 Oct 2026); the others use IndustryPage.
 const LANDINGS = {
-  "real-estate-letting-agents": { Page: EstatePage, metadata: estateMetadata },
+  "estate-letting-agents": { Page: EstatePage, metadata: estateMetadata },
   "dental-clinics": { Page: DentalPage, metadata: dentalMetadata },
   "clinics-healthcare": { Page: ClinicsPage, metadata: clinicsMetadata },
   "contractors-builders": { Page: BuildersPage, metadata: buildersMetadata },

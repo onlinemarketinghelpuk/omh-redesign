@@ -40,9 +40,9 @@ export const legacyMarkup = String.raw`
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Industries</p>
-        <h2>Built for businesses that live on <span class="hl">the phone</span></h2>
+        <h2>Industries we set up <span class="hl">AI voice agents for</span></h2>
       </div>
-      <p class="mt-5 text-muted">We set up AI voice agents for real estate and letting agents, dental and healthcare clinics, plumbers, heating engineers, builders, law firms and car dealerships, each one scripted around the calls your sector gets.</p>
+      <p class="mt-5 text-muted">We set up AI voice agents for estate and letting agents, dental and healthcare clinics, plumbers, heating engineers, builders, law firms and car dealerships, each one scripted around the calls your sector gets.</p>
     </div>
 
     <div role="group" aria-label="Filter industries by group" class="mt-10 flex flex-wrap gap-2" data-industry-filters>
@@ -72,7 +72,7 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Real Estate &amp; Letting Agents</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/estate-letting-agents" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI voice agent for estate and letting agents">AI voice agent for estate and letting agents</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book viewings and valuations</span></li>
@@ -100,7 +100,7 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Dental Clinics</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/dental-clinics" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI receptionist for dental clinics">AI receptionist for dental clinics</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">An AI receptionist for dentists that keeps the front desk free for the patients in the room.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book check-ups and hygiene visits</span></li>
@@ -129,7 +129,7 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Clinics &amp; Healthcare</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/clinics-healthcare" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI receptionist for clinics and healthcare">AI receptionist for clinics and healthcare</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes booking and admin calls so reception can focus on the patients in front of them.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book across practitioners</span></li>
@@ -161,7 +161,7 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Plumbers</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/plumbers" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI answering service for plumbers">AI answering service for plumbers</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">An answering service for plumbers that picks up while your hands are full.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture call-outs while you are on a job</span></li>
@@ -192,7 +192,7 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Heating &amp; HVAC</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/heating-hvac" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI call answering for heating engineers">AI call answering for heating engineers</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers breakdown and service calls through the winter rush, day and night.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book annual services and repairs</span></li>
@@ -217,7 +217,7 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Contractors &amp; Builders</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/contractors-builders" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI voice agent for builders and contractors">AI voice agent for builders and contractors</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes project enquiries properly while the team is on site.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Take the brief: type, size, budget, timing</span></li>
@@ -240,7 +240,7 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Law Firms</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/law-firms" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI receptionist for law firms">AI receptionist for law firms</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes new enquiries and routes existing clients while fee earners are in court or meetings.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture new enquiries and area of law</span></li>
@@ -264,7 +264,7 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]">Car Dealerships</h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/car-dealerships" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI voice agent for car dealerships">AI voice agent for car dealerships</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers sales and service calls so nobody rings off while the desk is busy.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book test drives and services</span></li>
@@ -291,10 +291,10 @@ export const legacyMarkup = String.raw`
   <div class="container-omh py-14 lg:py-20">
     <div>
       <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Client feedback</p>
-        <h2>Proof goes here <span class="hl">when it's real</span></h2>
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Sample calls</p>
+        <h2>Sample calls <span class="hl">by industry</span></h2>
       </div>
-      <p class="mt-5 text-muted">Voice agents are a new service for us, so we haven't filled this wall with invented praise. Each video below is reserved for a client and stays marked as pending until we have checked their results.</p>
+      <p class="mt-5 text-muted">Hear how our AI voice agent handles calls for different types of business. These are sample recordings of our agent. We'll add client results here once we've checked them with each client.</p>
     </div>
 
     <dl class="mt-12 grid border-y border-[var(--va-line-strong)] sm:grid-cols-3">
@@ -302,23 +302,24 @@ export const legacyMarkup = String.raw`
       <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:px-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">317</dd><dt class="mt-1.5 text-[16px] text-muted">bookings made</dt></div>
       <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:pl-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">38%</dd><dt class="mt-1.5 text-[16px] text-muted">answered out of hours</dt></div>
     </dl>
+    <p class="mt-3 text-[16px] text-muted">From our demo line, September 2026.</p>
 
     <div class="va-car mt-10" data-carousel data-autoplay>
-    <div class="va-car-track" style="--car-w:380px" tabindex="0" aria-label="Client feedback, scroll sideways">
+    <div class="va-car-track" style="--car-w:380px" tabindex="0" aria-label="Sample calls, scroll sideways">
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card>
         <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
           <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
-          <button type="button" class="audio-toggle" data-audio-toggle aria-label="Play the recording" data-track="feedback_audio_play" data-track-name="Real estate call"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
+          <button type="button" class="audio-toggle" data-audio-toggle aria-label="Play the recording" data-track="feedback_audio_play" data-track-name="Estate agency call"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
           <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
             <div class="audio-wave" data-audio-wave role="slider" tabindex="0" aria-label="Recording position" aria-valuemin="0" aria-valuemax="141" aria-valuenow="0" aria-valuetext="0:00 of 2:21"><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i></div>
             <span class="audio-time tnum" data-audio-time>0:00 / 2:21</span>
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Real Estate</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">A recorded call with our AI voice agent answering a property enquiry for a real estate agency.</p>
+          <h3 class="!text-[20px] !leading-[1.3]">Estate agency: a property enquiry answered</h3>
+          <p class="mt-2 text-[16px] leading-[1.5] text-muted">A recorded call with our AI voice agent answering a property enquiry for an estate agency.</p>
         </figcaption>
-        <audio preload="none" src="/audio/Realest%20voice%20agent.m4a" data-audio></audio>
+        <audio preload="none" src="/audio/estate-agency-sample-call.m4a" data-audio></audio>
       </figure>
       <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
         <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-4)]">
@@ -326,11 +327,11 @@ export const legacyMarkup = String.raw`
           <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
           <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
             <div class="audio-wave" aria-hidden="true"><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i></div>
-            <span class="audio-time tnum">0:00 / --:--</span>
+            <span class="audio-time">Coming soon</span>
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Heating Engineers</h3>
+          <h3 class="!text-[20px] !leading-[1.3]">Heating engineer: an out-of-hours breakdown booked</h3>
           <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking an out-of-hours boiler breakdown call and booking the repair.</p>
         </figcaption>
       </figure>
@@ -340,11 +341,11 @@ export const legacyMarkup = String.raw`
           <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
           <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
             <div class="audio-wave" aria-hidden="true"><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i></div>
-            <span class="audio-time tnum">0:00 / --:--</span>
+            <span class="audio-time">Coming soon</span>
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Letting Agents</h3>
+          <h3 class="!text-[20px] !leading-[1.3]">Letting agency: a viewing booked while the team is out</h3>
           <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent booking a viewing for a letting agency while the team is out.</p>
         </figcaption>
       </figure>
@@ -354,11 +355,11 @@ export const legacyMarkup = String.raw`
           <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
           <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
             <div class="audio-wave" aria-hidden="true"><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i></div>
-            <span class="audio-time tnum">0:00 / --:--</span>
+            <span class="audio-time">Coming soon</span>
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Law Firms</h3>
+          <h3 class="!text-[20px] !leading-[1.3]">Law firm: a new enquiry taken during court</h3>
           <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking a new enquiry for a law firm while fee earners are in court.</p>
         </figcaption>
       </figure>
@@ -368,11 +369,11 @@ export const legacyMarkup = String.raw`
           <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
           <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
             <div class="audio-wave" aria-hidden="true"><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i></div>
-            <span class="audio-time tnum">0:00 / --:--</span>
+            <span class="audio-time">Coming soon</span>
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Car Dealerships</h3>
+          <h3 class="!text-[20px] !leading-[1.3]">Car dealership: a test drive booked</h3>
           <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent booking a test drive or service slot for a car dealership.</p>
         </figcaption>
       </figure>
@@ -382,11 +383,11 @@ export const legacyMarkup = String.raw`
           <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
           <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
             <div class="audio-wave" aria-hidden="true"><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i></div>
-            <span class="audio-time tnum">0:00 / --:--</span>
+            <span class="audio-time">Coming soon</span>
           </div>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Builders</h3>
+          <h3 class="!text-[20px] !leading-[1.3]">Builder: a quote request taken from site</h3>
           <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking a quote request for a builder while the team is on site.</p>
         </figcaption>
       </figure>
@@ -406,9 +407,9 @@ export const legacyMarkup = String.raw`
   <div class="container-omh py-14 lg:py-20">
     <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)] lg:items-start" data-fit>
       <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Is it the right fit?</p>
-        <h2>A voice agent <span class="hl">isn't for everyone</span></h2>
-        <p class="mt-5 text-muted">We'd rather tell you now than three months in. Answer five quick questions and see for yourself. Nothing is sent anywhere.</p>
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Fit check</p>
+        <h2>Is an AI voice agent <span class="hl">right for your business?</span></h2>
+        <p class="mt-5 text-muted">A voice agent isn't for everyone. We'd rather tell you now than three months in. Answer five quick questions and see for yourself. Nothing is sent anywhere.</p>
         <form class="hover-card mt-8 rounded-[18px] border border-line bg-paper p-5 sm:p-6" data-fit-form>
           <ol class="divide-y divide-line">
           <li>
@@ -507,7 +508,7 @@ ${roiCalculator("any-business")}
     <div>
       <div>
         <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Compare your options</p>
-        <h2>How an AI voice agent compares with <span class="hl">the usual answers</span></h2>
+        <h2>AI voice agent vs answering service, <span class="hl">receptionist and voicemail</span></h2>
       </div>
       <p class="mt-5 text-muted">Most businesses handle missed calls with voicemail, an answering service, more reception staff or a DIY tool. Here's an honest side-by-side, including where each option wins.</p>
     </div>

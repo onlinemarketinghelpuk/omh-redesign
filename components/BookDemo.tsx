@@ -34,7 +34,7 @@ const paths = [
   { id: "call", icon: Calendar, badge: "Most popular", title: "Book a 30-minute demo", body: "Pick a time. We show you an agent set up for your calls." },
   { id: "ring", icon: PhoneIncoming, title: "Ring our demo agent now", body: "Hear one in action straight away, any time of day." },
 ];
-const industries = ["Real Estate & Letting Agents", "Dental Clinics", "Clinics & Healthcare", "Plumbers", "Heating & HVAC", "Contractors & Builders", "Law Firms", "Car Dealerships"];
+const industries = ["Estate & Letting Agents", "Dental Clinics", "Clinics & Healthcare", "Plumbers", "Heating Engineers", "Builders & Contractors", "Law Firms", "Car Dealerships"];
 const cities = ["London", "Birmingham", "Manchester", "Leeds", "Liverpool", "Bristol", "Elsewhere in the UK"];
 const onTheCall = ["Ask who rings you and what gets missed", "Play you an agent set up for your type of business", "Follow up with a clear price in writing"];
 const thingsToTry = ["Book a boiler service for next week.", "Ask to speak to a person.", "Ask something it can't know, and hear how it handles it."];
@@ -307,7 +307,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                   <li className="flex items-center gap-2" aria-current={step === 1 ? "step" : undefined}>
                     <span className={dot(true)}>1</span>Pick a time
                   </li>
-                  <li aria-hidden className="h-px w-8 bg-line" />
+                  <li role="presentation" aria-hidden className="h-px w-8 bg-line" />
                   <li className={`flex items-center gap-2 ${step === 2 ? "" : "text-muted"}`} aria-current={step === 2 ? "step" : undefined}>
                     <span className={dot(step === 2)}>2</span>Your details
                   </li>

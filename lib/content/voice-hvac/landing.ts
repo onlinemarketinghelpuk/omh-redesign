@@ -56,7 +56,7 @@ export const hvacLandingMarkup = String.raw`
 <section id="top" class="hero4 hero-grid" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
     <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Heating &amp; HVAC</span>
-    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Heating &amp; HVAC <br class="max-md:hidden"><span class="hl">Every Breakdown Call Answered</span></h1>
+    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Heating &amp; HVAC<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Breakdown Call Answered</span></h1>
     <p class="lead mx-auto mt-6">Our AI voice agent answers every customer call on the first ring, books breakdowns, boiler services and landlord gas safety certificates, and takes quote requests, even when the first cold snap hits. It never diagnoses a fault. We build it around your firm and manage it every month.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
@@ -93,7 +93,7 @@ export const hvacLandingMarkup = String.raw`
     <div class="hero-video" id="hero-video">
       <div class="video-frame" data-video data-youtube-id="H1fMzyN93W0" data-video-title="How an AI voice agent answers and routes your calls">
         <a class="video-poster on-band has-thumb" href="https://www.youtube.com/watch?v=H1fMzyN93W0" target="_blank" rel="noopener" data-video-play aria-label="Play video: How an AI voice agent answers and routes your calls (1:07)">
-          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="Demo video: how an AI voice agent answers and routes calls" width="1280" height="720" loading="lazy" decoding="async">
           <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">How an AI voice agent answers and routes your calls</span></span>

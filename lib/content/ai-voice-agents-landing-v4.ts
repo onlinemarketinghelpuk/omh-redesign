@@ -56,7 +56,7 @@ export const landingV4Markup = String.raw`
 <section id="top" class="hero4 hero-grid" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
     <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · 24/7</span>
-    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for UK Businesses <br class="max-md:hidden"><span class="hl">Answer Every Call, Even at 2am</span></h1>
+    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for UK Businesses<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Answer Every Call, Even at 2am</span></h1>
     <p class="lead mx-auto mt-6">Our AI voice agent answers on the first ring, qualifies the caller and books them into your calendar, day or night. We build it around your business, test it with you and manage it every month, so you never have to learn the software.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
@@ -75,12 +75,12 @@ export const landingV4Markup = String.raw`
       <div class="marquee" id="strip" data-marquee style="--dur: 38s">
         <div class="marquee-track">
           <ul aria-labelledby="strip-title">
-          <li><a class="ind" href="#uc-estate" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Real Estate</b><small>&amp; Letting Agents</small></a></li>
+          <li><a class="ind" href="#uc-estate" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Estate</b><small>&amp; Letting Agents</small></a></li>
           <li><a class="ind" href="#uc-dental" data-ind="dental"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tooth"/></svg></span><b>Dental</b><small>Clinics</small></a></li>
           <li><a class="ind" href="#uc-clinics" data-ind="clinics"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-medical"/></svg></span><b>Clinics &amp;</b><small>Healthcare</small></a></li>
           <li><a class="ind" href="#uc-plumbers" data-ind="plumbers"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-drop"/></svg></span><b>Plumbers</b><small>&nbsp;</small></a></li>
-          <li><a class="ind" href="#uc-hvac" data-ind="hvac"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-flame"/></svg></span><b>Heating</b><small>&amp; HVAC</small></a></li>
-          <li><a class="ind" href="#uc-builders" data-ind="builders"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-hardhat"/></svg></span><b>Contractors</b><small>&amp; Builders</small></a></li>
+          <li><a class="ind" href="#uc-hvac" data-ind="hvac"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-flame"/></svg></span><b>Heating</b><small>Engineers</small></a></li>
+          <li><a class="ind" href="#uc-builders" data-ind="builders"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-hardhat"/></svg></span><b>Builders</b><small>&amp; Contractors</small></a></li>
           <li><a class="ind" href="#uc-law" data-ind="law"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-scale"/></svg></span><b>Law</b><small>Firms</small></a></li>
           <li><a class="ind" href="#uc-cars" data-ind="cars"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-car"/></svg></span><b>Car</b><small>Dealerships</small></a></li>
           </ul>
@@ -93,7 +93,7 @@ export const landingV4Markup = String.raw`
     <div class="hero-video" id="hero-video">
       <div class="video-frame" data-video data-youtube-id="H1fMzyN93W0" data-video-title="How an AI voice agent answers and routes your calls">
         <a class="video-poster on-band has-thumb" href="https://www.youtube.com/watch?v=H1fMzyN93W0" target="_blank" rel="noopener" data-video-play aria-label="Play video: How an AI voice agent answers and routes your calls (1:07)">
-          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="Demo video: how an AI voice agent answers and routes calls" width="1280" height="720" loading="lazy" decoding="async">
           <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">How an AI voice agent answers and routes your calls</span></span>
@@ -109,8 +109,8 @@ export const landingV4Markup = String.raw`
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
-      <h2 class="h2 mt-3" id="city-title">Local to you. <span class="hl">Answering calls across the UK.</span></h2>
-      <p class="lead mt-4">A local number, your opening hours and an agent that knows the areas you cover.</p>
+      <h2 class="h2 mt-3" id="city-title">Local AI receptionist cover <span class="hl">across the UK</span></h2>
+      <p class="lead mt-4">A local number, your opening hours and an agent that knows the areas you cover. Pair it with <a href="/local-seo" class="text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">local SEO</a> so more nearby customers call you.</p>
     </div>
     <div class="va-car mt-12" data-carousel data-autoplay>
     <ul class="cities va-car-track" style="--car-w:360px" tabindex="0" aria-label="Local cover, scroll sideways">
@@ -198,8 +198,8 @@ export const landingV4Markup = String.raw`
 <section id="how" class="section border-y border-line bg-surface" aria-labelledby="how-title">
   <div class="container-omh">
     <div class="head-c">
-      <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>How it works</p>
-      <h2 class="h2 mt-3" id="how-title">Live in 3 to 15 working days.<br class="hidden md:block"> <span class="hl">Working on every call after that.</span></h2>
+      <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Setup and every call</p>
+      <h2 class="h2 mt-3" id="how-title">How it works:<br class="hidden md:block"> <span class="hl">live in 3 to 15 working days</span></h2>
     </div>
 
     <h3 class="smallcaps mt-14 text-muted">Part 1: Setup, done for you</h3>
@@ -227,7 +227,7 @@ export const landingV4Markup = String.raw`
       <h3 class="smallcaps text-muted">Part 2: What happens to a new web lead (Growth and Scale)</h3>
       <p class="h3 mt-3">From ad click to a call back in under a minute.</p>
     <div class="lf mt-8" data-lf-flow role="group" aria-label="How a lead moves from your ad to your calendar">
-      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-megaphone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>Someone clicks your ad</b><small>Google or Facebook</small></span></div>
+      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-megaphone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>Someone clicks your ad</b><small><a href="/google-adwords-ppc" class="underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">Google</a> or Facebook</small></span></div>
       <span class="lf-arrow" data-lf="a1" aria-hidden="true"></span>
       <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>They enquire</b><small>Your website form, or a call</small></span></div>
       <span class="lf-arrow" data-lf="a2" aria-hidden="true"></span>

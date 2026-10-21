@@ -7,7 +7,7 @@ export const meta = {
   "description": "AI voice agents for London real estate and letting agents. Answer every enquiry on the first ring, book viewings and valuations day and night, and route offers and tenant emergencies. Built and managed by OMH.",
   "ogTitle": "AI Voice Agents for Real Estate in London | OMH",
   "ogDescription": "Every London property enquiry answered, evenings and weekends included.",
-  "canonical": "/ai-voice-agents/real-estate-letting-agents/london"
+  "canonical": "/ai-voice-agents/estate-letting-agents/london"
 };
 
 export const schema = [
@@ -17,7 +17,7 @@ export const schema = [
     "name": "AI Voice Agents for Real Estate in London",
     "serviceType": "AI voice agent and AI receptionist for real estate and letting agents",
     "description": "Managed AI voice agents for London real estate and letting agents. Answers every enquiry, books viewings and valuations, and routes offers and tenant emergencies.",
-    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents/london",
+    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents/london",
     "audience": {
       "@type": "BusinessAudience",
       "audienceType": "Real estate and letting agents"
@@ -148,13 +148,13 @@ export const schema = [
         "@type": "ListItem",
         "position": 3,
         "name": "Real Estate & Letting Agents",
-        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents"
+        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents"
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": "London",
-        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/real-estate-letting-agents/london"
+        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/estate-letting-agents/london"
       }
     ]
   }
@@ -203,7 +203,7 @@ export const markup = String.raw`
       <ol class="flex flex-wrap items-center gap-1.5">
         <li><a href="/" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Home">Home</a></li><li aria-hidden="true">/</li>
         <li><a href="/ai-voice-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="AI Voice Agents">AI Voice Agents</a></li><li aria-hidden="true">/</li>
-        <li><a href="/ai-voice-agents/real-estate-letting-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Real Estate and Letting Agents">Real Estate &amp; Letting Agents</a></li><li aria-hidden="true">/</li>
+        <li><a href="/ai-voice-agents/estate-letting-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Real Estate and Letting Agents">Real Estate &amp; Letting Agents</a></li><li aria-hidden="true">/</li>
         <li aria-current="page" class="font-semibold text-ink">London</li>
       </ol>
     </nav>
@@ -264,7 +264,7 @@ export const markup = String.raw`
     <div class="mx-auto mt-10 rounded-[24px] border border-line bg-surface p-3 sm:p-4">
       <div class="v4l"><div class="video-frame" data-video data-video-id="H1fMzyN93W0" data-video-title="How an AI voice agent answers and routes your calls">
         <button type="button" class="video-poster on-band has-thumb" data-video-play data-track="estate_london_video_open" aria-label="Play video: How an AI voice agent answers and routes your calls (1:07)">
-          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="Demo video: how an AI voice agent answers and routes calls" width="1280" height="720" loading="lazy" decoding="async">
           <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">How an AI voice agent answers and routes your calls</span></span>
@@ -1099,11 +1099,11 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
 <section id="more" data-component="LondonRelated" class="bg-paper">
   <div class="container-omh py-14 lg:py-16">
     <div class="grid gap-4 md:grid-cols-3">
-      <a href="/ai-voice-agents/real-estate-letting-agents" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="industry">
+      <a href="/ai-voice-agents/estate-letting-agents" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="industry">
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">AI voice agents for estate agents</span><span class="mt-1 block text-[15px] text-muted">Everything it does for sales and lettings, anywhere in the UK.</span></span>
       </a>
-      <a href="/ai-voice-agents/real-estate-letting-agents#areas" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="other cities">
+      <a href="/ai-voice-agents/estate-letting-agents#areas" class="group flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="london_related" data-track-name="other cities">
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="icon !h-6 !w-6" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">Other UK cities</span><span class="mt-1 block text-[15px] text-muted">Birmingham, Manchester, Leeds, Liverpool, Bristol and more.</span></span>
       </a>

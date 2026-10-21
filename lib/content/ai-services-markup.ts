@@ -589,7 +589,7 @@ ${planCard}
     <div class="mx-auto mt-10 rounded-[24px] border border-line bg-surface p-3 sm:p-4">
       <div class="v4l"><div class="video-frame" data-video data-video-id="H1fMzyN93W0" data-video-title="How an AI voice agent answers and routes your calls">
         <button type="button" class="video-poster on-band has-thumb" data-video-play data-track="ai_services_video_open" aria-label="Play video: How an AI voice agent answers and routes your calls (1:07)">
-          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="Demo video: how an AI voice agent answers and routes calls" width="1280" height="720" loading="lazy" decoding="async">
           <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">How an AI voice agent answers and routes your calls</span></span>

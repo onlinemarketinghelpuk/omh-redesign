@@ -3,7 +3,7 @@
 // SEO brief (19 Oct 2026). Don't regenerate it: the port script would undo the brief's copy.
 // The hero, "How it works" and "Local cover" sections (20 Oct 2026): app/ai-voice-agents/page.tsx places them
 // between the rebuilt sections. Styles in landing-v4.css (.v4l).
-// /ai-voice-agents/real-estate-letting-agents: hero, how it works and local cover, worded for real estate and letting
+// /ai-voice-agents/estate-letting-agents: hero, how it works and local cover, worded for estate and letting
 // agents. Same structure and classes as lib/content/ai-voice-agents-landing-v4.ts.
 export const estateLandingMarkup = String.raw`
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -60,8 +60,8 @@ export const estateLandingMarkup = String.raw`
 
 <section id="top" class="hero4 hero-grid" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
-    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Real estate</span>
-    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Real Estate <br class="max-md:hidden"><span class="hl">Book Viewings Day or Night</span></h1>
+    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Estate agents</span>
+    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Estate Agents<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Book Viewings Day or Night</span></h1>
     <p class="lead mx-auto mt-6">Our AI voice agent answers every property enquiry on the first ring, books viewings and valuations and qualifies buyers and tenants, even when the whole team is out on viewings. We build it around your agency, test it with you and manage it every month.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
@@ -98,7 +98,7 @@ export const estateLandingMarkup = String.raw`
     <div class="hero-video" id="hero-video">
       <div class="video-frame" data-video data-youtube-id="H1fMzyN93W0" data-video-title="How an AI voice agent answers and routes your calls">
         <a class="video-poster on-band has-thumb" href="https://www.youtube.com/watch?v=H1fMzyN93W0" target="_blank" rel="noopener" data-video-play aria-label="Play video: How an AI voice agent answers and routes your calls (1:07)">
-          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="Demo video: how an AI voice agent answers and routes calls" width="1280" height="720" loading="lazy" decoding="async">
           <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">How an AI voice agent answers and routes your calls</span></span>
@@ -114,7 +114,7 @@ export const estateLandingMarkup = String.raw`
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
-      <h2 class="h2 mt-3" id="city-title">Real estate agents across the UK.<br class="hidden md:block"> <span class="hl">A local number for each branch.</span></h2>
+      <h2 class="h2 mt-3" id="city-title">Estate agents across the UK.<br class="hidden md:block"> <span class="hl">A local number for each branch.</span></h2>
       <p class="lead mt-4">Buyers and tenants trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set branches up by video call and phone from Hullbridge, Essex.</p>
     </div>
     <div class="va-car mt-12" data-carousel data-autoplay>
@@ -128,7 +128,7 @@ export const estateLandingMarkup = String.raw`
           <h3 class="h3-card">London</h3>
           <q>Good evening, you're through to the branch's AI assistant. Are you calling about a property, a valuation or a rental?</q>
           <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Greater London</p>
-          <a class="link t-small w-fit" href="/ai-voice-agents/real-estate-letting-agents/london" data-track="city_page" data-track-name="London">Real estate agents in London</a>
+          <a class="link t-small w-fit" href="/ai-voice-agents/estate-letting-agents/london" data-track="city_page" data-track-name="London">Estate agents in London</a>
         </div>
       </li>
       <li class="city" style="--tint:var(--tint-3)">

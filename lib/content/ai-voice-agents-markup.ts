@@ -52,42 +52,42 @@ const primaryCta = (track: string, cls = "") =>
 /* ----------------------------------------------------------- Industries */
 // Every H3, intro, bullet, safeguard and link from the two industry sections of the previous page, in one panel.
 const industries = [
-  { id: "estate", icon: "home", label: "Real Estate & Letting", full: "Real Estate & Letting Agents", tint: 1, href: "/ai-voice-agents/real-estate-letting-agents", slug: "real-estate-letting-agents",
+  { id: "estate", icon: "home", link: "AI voice agent for estate and letting agents", label: "Estate & Letting", full: "Estate & Letting Agents", tint: 1, href: "/ai-voice-agents/estate-letting-agents", slug: "real-estate-letting-agents",
     time: "Missed call · 23:40", status: "Answered by your AI agent", caller: "Is the house on Willow Creek still available?", agent: "It is. Would Saturday at 10am work for a viewing?", booked: "Viewing booked: Sat 10:00",
-    h3: "Real estate and letting agents: book viewings day or night",
+    h3: "Estate and letting agents: book viewings day or night",
     p: "Buyers, sellers and tenants call when they see a board or a listing, often while your team is out on appointments. The agent answers from your live listings and books the viewing.",
     bullets: ["Answers questions on price, rooms and availability", "Qualifies buyers, sellers and tenants", "Books viewings and valuations, and logs tenant maintenance calls"] },
-  { id: "dental", icon: "tooth", label: "Dental", full: "Dental Clinics", tint: 3, href: "/ai-voice-agents/dental-clinics", slug: "dental-clinics",
+  { id: "dental", icon: "tooth", link: "AI receptionist for dental clinics", label: "Dental", full: "Dental Clinics", tint: 3, href: "/ai-voice-agents/dental-clinics", slug: "dental-clinics",
     time: "Call · 07:05", status: "Before the practice opens", caller: "I've cracked a tooth. Can I be seen today?", agent: "Sorry to hear that. I have an emergency slot at 9:15 this morning.", booked: "Emergency slot booked: 09:15",
     h3: "Dental clinics: fill the diary when reception is closed",
     p: "New patients ring around until someone answers. Your AI receptionist books check-ups, moves appointments and sends emergencies to the right person, without putting anyone on hold.",
     bullets: ["Books new patients, check-ups and hygiene visits", "Routes dental emergencies to your on-call dentist or emergency line", "Handles reschedules and cancellations"], note: "No clinical or medical advice given." },
-  { id: "clinics", icon: "stethoscope", label: "Clinics", full: "Clinics & Healthcare", tint: 2, href: "/ai-voice-agents/clinics-healthcare", slug: "clinics-healthcare",
+  { id: "clinics", icon: "stethoscope", link: "AI receptionist for clinics and healthcare", label: "Clinics", full: "Clinics & Healthcare", tint: 2, href: "/ai-voice-agents/clinics-healthcare", slug: "clinics-healthcare",
     time: "Call · 08:31", status: "6 other calls answered at the same time", caller: "Do you have a physio appointment this week?", agent: "Yes, Tuesday at 2:30pm with Dr Patel. Shall I book it?", booked: "Appointment booked: Tue 14:30",
     h3: "Clinics and healthcare: book appointments without a queue on the line",
     p: "Busy mornings mean engaged tones and lost patients. The agent answers many calls at once, books the right practitioner and sends the details to your team.",
     bullets: ["Books, moves and cancels appointments across practitioners", "Answers questions on services, prices, opening hours and directions", "Passes anything clinical to your team with a summary"], note: "No clinical or medical advice given." },
-  { id: "plumbers", icon: "drop", label: "Plumbers", full: "Plumbers", tint: 4, href: "/ai-voice-agents/plumbers", slug: "plumbers",
+  { id: "plumbers", icon: "drop", link: "AI answering service for plumbers", label: "Plumbers", full: "Plumbers", tint: 4, href: "/ai-voice-agents/plumbers", slug: "plumbers",
     time: "Call · 22:14", status: "Urgent: water leak", caller: "There's water coming through my kitchen ceiling.", agent: "Turn off the stopcock under the sink. Sam can be with you in 40 minutes.", booked: "Engineer dispatched: ETA 40 min",
     h3: "Plumbers: catch every emergency call, day or night",
     p: "A burst pipe at 10pm goes to whoever answers first. The agent takes the address and the problem, then gets the job to your on-call engineer straight away.",
     bullets: ["Takes the address, issue and access details", "Sends urgent jobs to whoever is on call", "Books routine jobs and quote visits into your diary"] },
-  { id: "hvac", icon: "flame", label: "Heating", full: "Heating & HVAC", tint: 1, href: "/ai-voice-agents/heating-hvac", slug: "heating-hvac",
+  { id: "hvac", icon: "flame", link: "AI call answering for heating engineers", label: "Heating", full: "Heating Engineers", tint: 1, href: "/ai-voice-agents/heating-hvac", slug: "heating-hvac",
     time: "Call · 18:48", status: "Peak season", caller: "My heating stopped working this evening.", agent: "I can get an engineer to you tomorrow at 8am. Does that work?", booked: "Service call booked: Tomorrow 08:00",
     h3: "Heating engineers: book service calls through the winter rush",
     p: "When the first cold snap hits, the phone never stops. The agent books services, repairs and quotes, so your engineers spend the day on jobs instead of on the phone.",
     bullets: ["Books boiler services, repairs and installs", "Records make, model and fault code", "Puts no-heating calls first, and tells anyone who smells gas to call the gas emergency line on 0800 111 999"] },
-  { id: "builders", icon: "hard-hat", label: "Builders", full: "Contractors & Builders", tint: 3, href: "/ai-voice-agents/contractors-builders", slug: "contractors-builders",
+  { id: "builders", icon: "hard-hat", link: "AI voice agent for builders and contractors", label: "Builders", full: "Builders & Contractors", tint: 3, href: "/ai-voice-agents/contractors-builders", slug: "contractors-builders",
     time: "Missed call · 14:20", status: "You were on site", caller: "We're looking for a quote on a kitchen extension.", agent: "Great. I can book a free site visit on Thursday at 4pm.", booked: "Site visit booked: Thu 16:00",
     h3: "Builders and contractors: turn quote requests into site visits",
     p: "You can't answer the phone from a roof. The agent asks about the job, budget and timing, then books a site visit with the right estimator.",
     bullets: ["Takes the brief: type, size, budget and start date", "Filters out jobs you don't take on", "Books site visits and routes existing clients to their site manager"] },
-  { id: "law", icon: "scale", label: "Law firms", full: "Law Firms", tint: 2, href: "/ai-voice-agents/law-firms", slug: "law-firms",
+  { id: "law", icon: "scale", link: "AI receptionist for law firms", label: "Law firms", full: "Law Firms", tint: 2, href: "/ai-voice-agents/law-firms", slug: "law-firms",
     time: "Call · 20:52", status: "After office hours", caller: "I need advice about a tenancy dispute.", agent: "I can book you a consultation with our property team on Monday at 11.", booked: "Consultation booked: Mon 11:00",
     h3: "Law firms: take intake calls and book consultations",
     p: "People call a few firms and go with the first one that listens. The agent takes the details, checks the area of law and books a consultation while fee earners are in court or meetings.",
     bullets: ["Takes intake details for each practice area", "Collects names for your conflict check", "Books consultations and routes existing clients to their named solicitor"], note: "No legal advice given." },
-  { id: "cars", icon: "car", label: "Car dealers", full: "Car Dealerships", tint: 4, href: "/ai-voice-agents/car-dealerships", slug: "car-dealerships",
+  { id: "cars", icon: "car", link: "AI voice agent for car dealerships", label: "Car dealers", full: "Car Dealerships", tint: 4, href: "/ai-voice-agents/car-dealerships", slug: "car-dealerships",
     time: "Call · Sunday 16:10", status: "Showroom closed", caller: "Is the blue hybrid SUV still in stock?", agent: "It is. Would you like a test drive on Saturday at 10?", booked: "Test drive booked: Sat 10:00",
     h3: "Car dealerships: book test drives and service slots",
     p: "Buyers enquire on several forecourts at once. The agent answers stock questions, books test drives and fills the service bay.",
@@ -116,7 +116,7 @@ const industryPanel = (x: (typeof industries)[number], i: number) => `
           <ul class="mt-5 space-y-2 text-[16px] leading-snug">
 ${x.bullets.map(tick).join("\n")}
           </ul>
-${x.note ? `          <p class="mt-4 inline-flex items-center gap-2 self-start rounded-[10px] border border-line bg-paper px-3 py-2 text-[15px] font-semibold">${icon("shield", "text-hl")}${x.note}</p>\n` : ""}          ${x.href ? `<p class="mt-6"><a href="${x.href}" class="text-link" data-track="industry_click" data-track-name="${x.full}">More about voice agents for ${x.full.toLowerCase().replace("&amp;", "and")}${icon("arrow-right")}</a></p>` : ""}
+${x.note ? `          <p class="mt-4 inline-flex items-center gap-2 self-start rounded-[10px] border border-line bg-paper px-3 py-2 text-[15px] font-semibold">${icon("shield", "text-hl")}${x.note}</p>\n` : ""}          ${x.href ? `<p class="mt-6"><a href="${x.href}" class="text-link" data-track="industry_click" data-track-name="${x.full}">More about our ${x.link}${icon("arrow-right")}</a></p>` : ""}
         </div>
       </div>`;
 
@@ -201,7 +201,7 @@ const capPanel = (c: (typeof capabilities)[number], i: number) => `
         <div class="fcard-vis" aria-hidden="true">
           ${c.vis}
         </div>
-        <h3 class="mt-5 !text-[clamp(22px,20px+.5vw,26px)]">${c.title}${c.plan ? ` ${tag(c.plan)}` : ""}</h3>
+        <h3 class="mt-5 !text-[clamp(22px,20px+.5vw,26px)]">${c.title}</h3>${c.plan ? `<p class="mt-2">${tag(c.plan)}</p>` : ""}
         <div class="mt-4 grid gap-3 sm:grid-cols-2">
           <div class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-muted">${icon("phone", "text-hl")}The agent</p><p class="mt-2 text-[16px]">${c.agent}</p></div>
           <div class="rounded-[14px] bg-paper p-4"><p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-muted">${icon("users", "text-hl")}OMH, for you</p><p class="mt-2 text-[16px]">${c.omh}</p></div>
@@ -258,7 +258,7 @@ export const voiceAgentsMarkup = String.raw`
     </div>
 
     <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2">
-      <h3 class="!text-[22px]">How a call goes</h3>
+      <h3 class="!text-[22px]">How does an AI voice agent work?</h3>
       <p class="mt-1 text-[16px] text-band-muted">Watch the phone. Each step lights up as the call reaches it.</p>
       <ol class="mt-5 space-y-2.5" aria-live="off">
         <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="1"><span class="step-num" aria-hidden="true">1</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It listens.</strong><span class="text-band-muted">Speech recognition turns what the caller says into text as they speak.</span></span></li>
@@ -328,13 +328,13 @@ ${capabilities.map(capTab).join("\n")}
 ${capabilities.map(capPanel).join("\n")}
     </div>
 
-    <h3 class="mt-14 !text-[24px]">The software is the easy part. <span class="hl">Running it well</span> is the job.</h3>
-    <p class="mt-3 text-muted">Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
+    <h3 class="mt-14 !text-[24px]">Why choose OMH to run <span class="hl">your AI voice agent?</span></h3>
+    <p class="mt-3 text-muted">The software is the easy part. Running it well is the job. Anyone can sign up for a voice AI tool. Whether it works for your business depends on the script, the testing and someone checking the calls every month. That's the part we do.</p>
     <ol class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <li class="rounded-[14px] border border-line bg-surface p-5"><p class="num text-[15px]">01</p><h4 class="mt-2 !text-[19px]">Built around your industry's calls</h4><p class="mt-2 text-[16px] text-muted">We start from the real reasons people ring you: the boiler fault, the viewing request, the cancelled appointment. The script, questions and handover rules follow from those.</p></li>
       <li class="rounded-[14px] border border-line bg-surface p-5"><p class="num text-[15px]">02</p><h4 class="mt-2 !text-[19px]">Tested before your customers hear it</h4><p class="mt-2 text-[16px] text-muted">You make test calls and sign off the agent before it goes live. After that you deal with our UK team, not a ticket queue, and Scale clients get a named account manager.</p></li>
       <li class="rounded-[14px] border border-line bg-surface p-5"><p class="flex items-center gap-3"><span class="num text-[15px]">03</span>${tag("Growth and Scale")}</p><h4 class="mt-2 !text-[19px]">Improved every month</h4><p class="mt-2 text-[16px] text-muted">Every month we read a sample of transcripts, look at what the agent couldn't answer and improve it. You get a short written summary of what we changed and why.</p></li>
-      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="flex items-center gap-3"><span class="num text-[15px]">04</span>${tag("Scale")}</p><h4 class="mt-2 !text-[19px]">Call results beside your marketing figures</h4><p class="mt-2 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your Google Ads and website figures, so you can follow an enquiry from click to booked job.</p></li>
+      <li class="rounded-[14px] border border-line bg-surface p-5"><p class="flex items-center gap-3"><span class="num text-[15px]">04</span>${tag("Scale")}</p><h4 class="mt-2 !text-[19px]">Call results beside your marketing figures</h4><p class="mt-2 text-[16px] text-muted">Calls answered, bookings made and calls transferred sit in the same report as your <a href="/google-adwords-ppc" class="text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">Google Ads</a> and <a href="/website-designs" class="text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">website</a> figures, so you can follow an enquiry from click to booked job.</p></li>
     </ol>
   </div>
 </section>

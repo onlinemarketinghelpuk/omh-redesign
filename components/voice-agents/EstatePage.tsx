@@ -8,21 +8,21 @@ import { estateFaqs, estateMarkup } from "@/lib/content/voice-estate/markup";
 import { SITE, faqSchema } from "@/lib/schema";
 
 /*
-  /ai-voice-agents/real-estate-letting-agents (21 Oct 2026): the /ai-voice-agents layout, section for section,
-  with content written for real estate and letting agents (lib/content/voice-estate/). Rendered by
+  /ai-voice-agents/estate-letting-agents (21 Oct 2026; moved from /ai-voice-agents/real-estate-letting-agents the same day, SEO brief v2 §4.6): the /ai-voice-agents layout, section for section,
+  with content written for estate and letting agents (lib/content/voice-estate/). Rendered by
   app/ai-voice-agents/[industry]/page.tsx. The page it replaced is frozen as git tag `estate-oldv1` and the
   noindex route /ai-voice-agents/real-estate-letting-agents-oldv1. The London page under it is unchanged.
 */
 
-const path = "/ai-voice-agents/real-estate-letting-agents";
+const path = "/ai-voice-agents/estate-letting-agents";
 const url = `${SITE}${path}`;
-const ogTitle = "AI Voice Agent for Real Estate & Letting Agents | OMH";
+const ogTitle = "AI Voice Agent for Estate & Letting Agents | OMH";
 const ogDescription = "Every property enquiry answered, even when the team is out on viewings. Built, tested and managed by a UK team.";
 
 export const estateMetadata: Metadata = {
-  title: { absolute: "AI Voice Agent & AI Receptionist for Real Estate & Letting Agents | OMH" },
+  title: { absolute: "AI Voice Agent for Estate & Letting Agents | UK | OMH" },
   description:
-    "An AI voice agent for UK real estate and letting agents. Answers every enquiry 24/7, books viewings and valuations, qualifies buyers and tenants and routes tenant emergencies. Built and managed by OMH.",
+    "An AI voice agent for UK estate and letting agents. Answers every enquiry 24/7, books viewings and valuations, qualifies buyers and tenants and routes tenant emergencies. Built and managed by OMH.",
   alternates: { canonical: url },
   openGraph: { type: "website", locale: "en_GB", siteName: "Online Marketing Help", title: ogTitle, description: ogDescription, url },
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription },
@@ -42,13 +42,13 @@ const graph = {
     {
       "@type": "Service",
       "@id": `${url}#service`,
-      name: "AI Voice Agent for Real Estate and Letting Agents",
-      serviceType: "AI voice agent and AI receptionist for real estate and letting agents",
+      name: "AI Voice Agent for Estate and Letting Agents",
+      serviceType: "AI voice agent and AI receptionist for estate and letting agents",
       description:
-        "Managed AI voice agents that answer property enquiries, book viewings and valuations, qualify buyers and tenants and route urgent calls for UK real estate and letting agents.",
+        "Managed AI voice agents that answer property enquiries, book viewings and valuations, qualify buyers and tenants and route urgent calls for UK estate and letting agents.",
       url,
       areaServed: { "@type": "Country", name: "United Kingdom" },
-      audience: { "@type": "BusinessAudience", audienceType: "Real estate and letting agents" },
+      audience: { "@type": "BusinessAudience", audienceType: "Estate and letting agents" },
       provider: { "@id": `${SITE}/#organisation` },
       offers: [offer("Starter", 249, 300, "£795"), offer("Growth", 449, 500, "£1,295"), offer("Scale", 849, 900, "£1,995")],
     },
@@ -58,7 +58,7 @@ const graph = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
         { "@type": "ListItem", position: 2, name: "AI Voice Agents", item: `${SITE}/ai-voice-agents` },
-        { "@type": "ListItem", position: 3, name: "Real Estate & Letting Agents", item: url },
+        { "@type": "ListItem", position: 3, name: "Estate & Letting Agents", item: url },
       ],
     },
   ],

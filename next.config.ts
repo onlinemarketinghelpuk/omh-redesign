@@ -74,11 +74,13 @@ const nextConfig: NextConfig = {
       // The old WordPress theme's files (greate, greate-child). Only themes: /wp-content/uploads may still be
       // referenced by imported images (see images.remotePatterns above).
       { source: "/wp-content/themes/:path*", destination: "/", permanent: true },
-      // Client, 20 Oct 2026: the estate agents industry page is now "real estate and letting agents".
-      { source: "/ai-voice-agents/estate-letting-agents", destination: "/ai-voice-agents/real-estate-letting-agents", permanent: true },
+      // SEO brief v2 §4.3: the sample call recording was renamed; the frozen oldv3 copy still uses the old name.
+      { source: "/audio/Realest%20voice%20agent.m4a", destination: "/audio/estate-agency-sample-call.m4a", permanent: true },
+      // SEO brief v2 §4.6 (21 Oct 2026): back to UK wording. This reverses the 20 Oct move to "real-estate-letting-agents".
+      { source: "/ai-voice-agents/real-estate-letting-agents", destination: "/ai-voice-agents/estate-letting-agents", permanent: true },
       {
-        source: "/ai-voice-agents/estate-letting-agents/:city",
-        destination: "/ai-voice-agents/real-estate-letting-agents/:city",
+        source: "/ai-voice-agents/real-estate-letting-agents/:city",
+        destination: "/ai-voice-agents/estate-letting-agents/:city",
         permanent: true,
       },
     ];

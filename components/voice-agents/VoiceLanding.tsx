@@ -22,7 +22,7 @@ export function sectionsOf(html: string, className: string) {
 export type Source = ReturnType<typeof sectionsOf>;
 export type Runs = [Source, string[]][];
 
-export function VoiceLanding({ runs, graph, page, demoHeading, children }: { runs: Runs; graph: object; page: string; demoHeading: ReactNode; children?: ReactNode }) {
+export function VoiceLanding({ runs, graph, page, demoHeading, children }: { runs: Runs; graph?: object; page: string; demoHeading: ReactNode; children?: ReactNode }) {
   const placed = runs.flatMap(([, keys]) => keys);
   for (const src of new Set(runs.map(([s]) => s)))
     for (const key of src.byKey.keys()) if (!placed.includes(key)) throw new Error(`${page}: section "${key}" has no place in runs`);
@@ -37,7 +37,7 @@ export function VoiceLanding({ runs, graph, page, demoHeading, children }: { run
   });
   return (
     <>
-      <JsonLd data={graph} />
+      {graph && <JsonLd data={graph} />}
       {/* One root for both page scripts; they find their widgets by data-* hooks inside it. */}
       <div id="va-page">
         {runs.map(([src], i) => (

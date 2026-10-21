@@ -1043,3 +1043,6 @@ html:has(.va-page dialog[open]) {
   .v4l .video-poster.has-thumb:is(:hover, :focus-visible) .vp-play { padding: .45rem; }
   .v4l .vp-play-label, .v4l .vp-kicker { display: none; }
 }
+
+/* Carousel copies use a div where the original card has a heading (SEO brief v2 §4.4); this keeps the heading look. */
+.car-h { font-family: var(--font-display); font-weight: 600; letter-spacing: 0; text-wrap: balance; }

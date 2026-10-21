@@ -1168,6 +1168,14 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
         c.removeAttribute("id");
         c.querySelectorAll("[id]").forEach((x) => x.removeAttribute("id"));
         c.querySelectorAll<HTMLElement>("a, button, [tabindex]").forEach((x) => (x.tabIndex = -1));
+        // Copies keep the look but not the heading: the page outline lists each card once (SEO brief v2 §4.4).
+        c.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((h) => {
+          const d = document.createElement("div");
+          for (const { name, value } of Array.from(h.attributes)) d.setAttribute(name, value);
+          d.classList.add("car-h");
+          d.innerHTML = h.innerHTML;
+          h.replaceWith(d);
+        });
         return c;
       };
       const before = originals.map(copy);

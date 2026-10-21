@@ -51,8 +51,8 @@ export const industryPages = {
     blocks: [],
     classes: "",
   },
-  "real-estate-letting-agents/london": { ...estateLondon, copy: estateCopy, blocks: ["london"], classes: "vi-london" },
-  "real-estate-letting-agents/london-v2": {
+  "estate-letting-agents/london": { ...estateLondon, copy: estateCopy, blocks: ["london"], classes: "vi-london" },
+  "estate-letting-agents/london-v2": {
     ...estateLondonV2,
     copy: estateCopy,
     blocks: ["london", "estate-london-v2"],
