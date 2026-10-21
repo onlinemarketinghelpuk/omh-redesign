@@ -121,21 +121,21 @@ export const difference = [
 ];
 
 // Tile labels are the anchor text into each service page, so each one carries
-// that page's own focus keyword (brief §7). Rows run shortest to tallest by rendered
-// height at 1440px, ties broken by title width (measured Oct 2026); Google Ads
-// sits last because its description wraps to two lines. Re-measure if copy changes.
+// that page's own focus keyword (brief §7). Rows run from the narrowest title to the
+// widest, by rendered width at 1440px (client, 21 Oct 2026; measured then). Re-measure
+// if a label changes.
 export const services = [
   { label: "SEO Services", href: "/seo-services", body: "Technical, on-page and content SEO for long-term organic growth." },
+  { label: "AI Voice Agents", href: "/ai-voice-agents", body: "Answers every call and books appointments, day and night." },
   { label: "Website Design", href: "/website-designs", body: "Fast, clear websites designed to turn visits into enquiries." },
   { label: "Local SEO Services", href: "/local-seo", body: "Google Business Profile and map pack visibility." },
-  { label: "AI Voice Agents", href: "/ai-voice-agents", body: "Answers every call and books appointments, day and night." },
+  { label: "Google Ads Agency", href: "/google-adwords-ppc", body: "Search, Shopping and Performance Max campaigns built around profit." },
   { label: "Amazon PPC Agency", href: "/amazon-ppc-advertising-agency-uk", body: "Sponsored ads that grow sales without wasting spend." },
   { label: "Paid Social Advertising", href: "/social-media-paid-advertising", body: "Meta, Instagram and TikTok ads that turn attention into leads." },
   { label: "Conversion Improvement", href: "/solutions/improve-website-conversion", body: "Testing and page changes that lift enquiries and sales." },
   { label: "Social Media Marketing Services", href: "/social-media-marketing-services", body: "Organic content and community management for your brand." },
   { label: "WordPress Development Services", href: "/wordpress-development", body: "Custom WordPress and WooCommerce builds." },
   { label: "WordPress Maintenance Packages", href: "/wordpress-website-maintenance", body: "Updates, security, backups and support." },
-  { label: "Google Ads Agency", href: "/google-adwords-ppc", body: "Search, Shopping and Performance Max campaigns built around profit." },
 ];
 
 export const testimonials = caseStudies
