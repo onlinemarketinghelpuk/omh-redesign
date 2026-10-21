@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { BuildersPage, buildersMetadata } from "@/components/voice-agents/BuildersPage";
+import { CarsPage, carsMetadata } from "@/components/voice-agents/CarsPage";
 import { ClinicsPage, clinicsMetadata } from "@/components/voice-agents/ClinicsPage";
 import { DentalPage, dentalMetadata } from "@/components/voice-agents/DentalPage";
 import { EstatePage, estateMetadata } from "@/components/voice-agents/EstatePage";
+import { HvacPage, hvacMetadata } from "@/components/voice-agents/HvacPage";
 import { IndustryPage, industryMetadata } from "@/components/voice-agents/IndustryPage";
+import { LawPage, lawMetadata } from "@/components/voice-agents/LawPage";
+import { PlumbersPage, plumbersMetadata } from "@/components/voice-agents/PlumbersPage";
 import { industryPaths } from "@/lib/content/voice-industry";
 
 type Props = { params: Promise<{ industry: string }> };
@@ -16,6 +21,11 @@ const LANDINGS = {
   "real-estate-letting-agents": { Page: EstatePage, metadata: estateMetadata },
   "dental-clinics": { Page: DentalPage, metadata: dentalMetadata },
   "clinics-healthcare": { Page: ClinicsPage, metadata: clinicsMetadata },
+  "contractors-builders": { Page: BuildersPage, metadata: buildersMetadata },
+  "car-dealerships": { Page: CarsPage, metadata: carsMetadata },
+  "heating-hvac": { Page: HvacPage, metadata: hvacMetadata },
+  "law-firms": { Page: LawPage, metadata: lawMetadata },
+  "plumbers": { Page: PlumbersPage, metadata: plumbersMetadata },
 } as const;
 const landing = (industry: string) => LANDINGS[industry as keyof typeof LANDINGS];
 
