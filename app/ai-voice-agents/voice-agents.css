@@ -961,23 +961,9 @@ html:has(.va-page dialog[open]) {
 #va-page .day-col:last-child::after { left: auto; right: 0; translate: 0 0; }
 @media (max-width: 639.98px) { #va-page .day-cols { gap: 3px; height: 200px; } #va-page .day-h { font-size: 11px; } }
 
-/* When it answers: three steps joined by arrows, the agent's step in gold. */
-#va-page .when-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-#va-page .when-step { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--va-line-strong); background: var(--va-paper, transparent); font-weight: 600; font-size: 15.5px; }
-#va-page .when-step:not(:last-child)::after { content: "→"; margin-left: 14px; margin-right: -6px; color: var(--va-muted); }
-#va-page .when-step.is-agent { background: #d79a37; border-color: #d79a37; color: #fff; }
-
-/* What we'll ask you for: big tap rows with a custom tick box. */
-#va-page .ready-row { display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 10px 12px; border-radius: 12px; cursor: pointer; transition: background-color .2s; }
-#va-page .ready-row:hover { background: var(--va-paper, rgb(0 0 0 / .03)); }
-#va-page .ready-box { display: grid; place-items: center; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; border: 1.5px solid var(--va-line-strong); color: transparent; transition: background-color .2s, border-color .2s, color .2s; }
-#va-page .ready-row input:checked + .ready-box { background: var(--va-ok); border-color: var(--va-ok); color: #fff; }
-#va-page .ready-row input:focus-visible + .ready-box { outline: 2px solid #d79a37; outline-offset: 2px; }
-#va-page .ready-row input:checked ~ span:last-child { color: var(--va-muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
-
 /* Hero video poster: the video's own frame under a cinematic overlay, a frosted play pill and a caption
    (client, 21 Oct 2026: the illustrated night scene looked artificial, then the plain button too basic). */
-.v4l .video-poster.has-thumb { --vp-ease: cubic-bezier(.2, .7, .2, 1); color: #f7f6f2; isolation: isolate; }
+.v4l .video-poster.has-thumb { --vp-ease: cubic-bezier(.2, .7, .2, 1); color: #f7f6f2; isolation: isolate; text-align: left; }
 .v4l .video-poster.has-thumb .vp-thumb { transform: scale(1.001); transition: transform 1.4s var(--vp-ease), filter .6s var(--vp-ease); filter: saturate(.92) brightness(.92); }
 /* Vignette + bottom shade so the caption reads on any frame. */
 .v4l .video-poster.has-thumb::before {

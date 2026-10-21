@@ -67,10 +67,10 @@ const graph = {
 const fresh = sectionsOf(dentalMarkup, "va-page");
 const legacy = sectionsOf(dentalLegacyMarkup, "va-page");
 const v4 = sectionsOf(dentalLandingMarkup, "v4l");
-const extras = sectionsOf(dentalExtrasMarkup, "va-page"); // dental only: day of calls, when it answers, what we need
+const extras = sectionsOf(dentalExtrasMarkup, "va-page"); // dental only: a practice's day of calls
 
 // The same order as the real estate page: the /ai-voice-agents sections, with the comparison table and fit checker
-// swapped for the practice's day of calls, when it answers and what we need from a practice.
+// swapped for the practice's day of calls (practice types, "Your team" and "Getting ready" removed, client 21 Oct 2026).
 const runs: Runs = [
   [v4, ["top"]],
   [fresh, ["what-is"]],
@@ -78,12 +78,9 @@ const runs: Runs = [
   [fresh, ["features"]],
   [v4, ["how"]],
   [fresh, ["use-cases"]],
-  [legacy, ["industries"]],
-  [extras, ["your-team"]],
   [legacy, ["feedback", "roi-calculator"]],
   [fresh, ["pricing"]],
   [v4, ["cities"]],
-  [extras, ["ready"]],
   [legacy, ["faq"]],
 ];
 

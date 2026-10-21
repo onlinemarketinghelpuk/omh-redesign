@@ -42,14 +42,6 @@ export function LandingExtrasScript() {
       });
     });
 
-    const items = Array.from(document.querySelectorAll<HTMLInputElement>("[data-ready-item]"));
-    const count = document.querySelector<HTMLElement>("[data-ready-count]");
-    const update = () => {
-      const n = items.filter((i) => i.checked).length;
-      if (count) count.textContent = n === items.length ? "All set. Let's build it." : `${n} of ${items.length} ready`;
-    };
-    items.forEach((i) => on(i, "change", update));
-
     return () => off.forEach((f) => f());
   }, []);
   return null;

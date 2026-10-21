@@ -67,11 +67,11 @@ const graph = {
 const fresh = sectionsOf(estateMarkup, "va-page");
 const legacy = sectionsOf(estateLegacyMarkup, "va-page");
 const v4 = sectionsOf(estateLandingMarkup, "v4l");
-const extras = sectionsOf(estateExtrasMarkup, "va-page"); // real estate only: day of calls, when it answers, what we need
+const extras = sectionsOf(estateExtrasMarkup, "va-page"); // real estate only: a branch's day of calls
 
 // The /ai-voice-agents order, with the comparison table and fit checker swapped for real estate sections
-// (client, 21 Oct 2026): a branch's day of calls after the definition, when it answers after the agency types,
-// and what we ask a branch for before the FAQ.
+// (client, 21 Oct 2026): a branch's day of calls after the definition. The agency types grid, "Your team" and
+// "Getting ready" were removed (client, 21 Oct 2026); leave them off new industry pages too.
 const runs: Runs = [
   [v4, ["top"]],
   [fresh, ["what-is"]],
@@ -79,12 +79,9 @@ const runs: Runs = [
   [fresh, ["features"]],
   [v4, ["how"]],
   [fresh, ["use-cases"]],
-  [legacy, ["industries"]],
-  [extras, ["your-team"]],
   [legacy, ["feedback", "roi-calculator"]],
   [fresh, ["pricing"]],
   [v4, ["cities"]],
-  [extras, ["ready"]],
   [legacy, ["faq"]],
 ];
 
