@@ -1046,3 +1046,34 @@ html:has(.va-page dialog[open]) {
 
 /* Carousel copies use a div where the original card has a heading (SEO brief v2 §4.4); this keeps the heading look. */
 .car-h { font-family: var(--font-display); font-weight: 600; letter-spacing: 0; text-wrap: balance; }
+
+/* Industries cards on /ai-voice-agents: the whole card opens the industry page (client, 21 Oct 2026).
+   The title link stretches over the card, so there is one link per card; the button is its visible cue. */
+#va-page #industries [data-industry]:has(.ind-card-link) {
+  position: relative; cursor: pointer;
+  transition: translate .35s cubic-bezier(.2, .7, .2, 1), border-color .3s, box-shadow .35s;
+}
+#va-page #industries .ind-card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+#va-page #industries .ind-card-link:focus-visible { outline: none; }
+#va-page #industries [data-industry]:has(.ind-card-link:focus-visible) { outline: 3px solid #d79a37; outline-offset: 3px; }
+#va-page #industries [data-industry] > span:first-child svg { transition: scale .5s cubic-bezier(.2, .7, .2, 1); }
+#va-page .ind-card-btn {
+  display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.25rem; min-height: 44px; padding: 0 1.1rem;
+  border: 1px solid var(--va-line-strong, rgb(16 24 40 / .18)); border-radius: 999px;
+  font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--va-ink, #101828);
+  transition: background-color .3s, border-color .3s, color .3s;
+}
+#va-page .ind-card-btn .icon { width: 1rem; height: 1rem; transition: translate .35s cubic-bezier(.2, .7, .2, 1); }
+@media (hover: hover) {
+  #va-page #industries [data-industry]:has(.ind-card-link):hover {
+    translate: 0 -4px; border-color: #d79a37; box-shadow: 0 24px 50px -30px rgb(16 24 40 / .45);
+  }
+  #va-page #industries [data-industry]:hover .ind-card-link { color: #b97822; }
+  #va-page #industries [data-industry]:hover > span:first-child svg { scale: 1.06; }
+  #va-page #industries [data-industry]:hover .ind-card-btn { background: #d79a37; border-color: #d79a37; color: #fff; }
+  #va-page #industries [data-industry]:hover .ind-card-btn .icon { translate: 4px 0; }
+}
+#va-page #industries [data-industry]:has(.ind-card-link:focus-visible) .ind-card-btn { background: #d79a37; border-color: #d79a37; color: #fff; }
+@media (prefers-reduced-motion: reduce) {
+  #va-page #industries [data-industry], #va-page #industries [data-industry] svg, #va-page .ind-card-btn .icon { transition: none; }
+}

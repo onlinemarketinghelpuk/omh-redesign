@@ -1,4 +1,4 @@
-// Body of /ai-voice-agents/clinics-healthcare (21 Oct 2026): the rebuilt sections of /ai-voice-agents (what-is with
+// Body of /ai-voice-agents/healthcare (21 Oct 2026): the rebuilt sections of /ai-voice-agents (what-is with
 // the call player, capabilities, use cases, pricing), written for private clinics. Same structure, classes and
 // data-* hooks as lib/content/ai-voice-agents-markup.ts. Composed by components/voice-agents/ClinicsPage.tsx.
 // Content sources: the previous clinics page (git tag clinics-oldv1), the main page's plans and process.

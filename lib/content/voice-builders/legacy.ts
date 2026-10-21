@@ -1,4 +1,4 @@
-// Body of /ai-voice-agents/contractors-builders, part 2 (21 Oct 2026): client feedback as a grid,
+// Body of /ai-voice-agents/builders-construction, part 2 (21 Oct 2026): client feedback as a grid,
 // ROI calculator, FAQ and sticky bar, written for builders and contractors. Same structure, classes and data-* hooks
 // as lib/content/ai-voice-agents-legacy.ts (via lib/content/voice-clinics/legacy.ts).
 import { roiCalculator } from "@/lib/content/roi-calculator";

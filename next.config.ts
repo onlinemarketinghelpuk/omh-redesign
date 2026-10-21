@@ -74,6 +74,14 @@ const nextConfig: NextConfig = {
       // The old WordPress theme's files (greate, greate-child). Only themes: /wp-content/uploads may still be
       // referenced by imported images (see images.remotePatterns above).
       { source: "/wp-content/themes/:path*", destination: "/", permanent: true },
+      // Client URL structure, 21 Oct 2026: dentists, healthcare and builders-construction.
+      { source: "/ai-voice-agents/dental-clinics", destination: "/ai-voice-agents/dentists", permanent: true },
+      { source: "/ai-voice-agents/dental-clinics/:city", destination: "/ai-voice-agents/dentists/:city", permanent: true },
+      { source: "/ai-voice-agents/clinics-healthcare", destination: "/ai-voice-agents/healthcare", permanent: true },
+      { source: "/ai-voice-agents/clinics-healthcare/:city", destination: "/ai-voice-agents/healthcare/:city", permanent: true },
+      { source: "/ai-voice-agents/contractors-builders", destination: "/ai-voice-agents/builders-construction", permanent: true },
+      { source: "/ai-voice-agents/contractors-builders/:city", destination: "/ai-voice-agents/builders-construction/:city", permanent: true },
+      { source: "/ai-voice-agents/dental-clinics-v2", destination: "/ai-voice-agents/dentists-v2", permanent: true },
       // SEO brief v2 §4.3: the sample call recording was renamed; the frozen oldv3 copy still uses the old name.
       { source: "/audio/Realest%20voice%20agent.m4a", destination: "/audio/estate-agency-sample-call.m4a", permanent: true },
       // SEO brief v2 §4.6 (21 Oct 2026): back to UK wording. This reverses the 20 Oct move to "real-estate-letting-agents".

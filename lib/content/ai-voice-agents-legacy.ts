@@ -72,13 +72,14 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/estate-letting-agents" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI voice agent for estate and letting agents">AI voice agent for estate and letting agents</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/estate-letting-agents" class="ind-card-link" data-track="industry_card_click" data-track-name="AI voice agent for estate and letting agents">AI Voice Agent for Estate and Letting Agents</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Catch every viewing request and landlord enquiry while the team is out on appointments.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book viewings and valuations</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Qualify buyers and tenants</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Log tenant maintenance calls</span></li>
         </ul>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
@@ -100,7 +101,7 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/dental-clinics" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI receptionist for dental clinics">AI receptionist for dental clinics</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/dentists" class="ind-card-link" data-track="industry_card_click" data-track-name="AI receptionist for dental clinics">AI Receptionist for Dental Clinics</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">An AI receptionist for dentists that keeps the front desk free for the patients in the room.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book check-ups and hygiene visits</span></li>
@@ -108,6 +109,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route urgent calls to your emergency line</span></li>
         </ul>
         <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
@@ -129,7 +131,7 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/clinics-healthcare" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI receptionist for clinics and healthcare">AI receptionist for clinics and healthcare</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/healthcare" class="ind-card-link" data-track="industry_card_click" data-track-name="AI receptionist for clinics and healthcare">AI Receptionist for Clinics and Healthcare</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes booking and admin calls so reception can focus on the patients in front of them.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book across practitioners</span></li>
@@ -137,6 +139,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Confirmation calls to cut no-shows</span></li>
         </ul>
         <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
@@ -161,13 +164,14 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/plumbers" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI answering service for plumbers">AI answering service for plumbers</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/plumbers" class="ind-card-link" data-track="industry_card_click" data-track-name="AI answering service for plumbers">AI Answering Service for Plumbers</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">An answering service for plumbers that picks up while your hands are full.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture call-outs while you are on a job</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put emergencies through to the plumber on call</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book quote visits</span></li>
         </ul>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
@@ -192,13 +196,14 @@ export const legacyMarkup = String.raw`
     </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/heating-hvac" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI call answering for heating engineers">AI call answering for heating engineers</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/heating-hvac" class="ind-card-link" data-track="industry_card_click" data-track-name="AI call answering for heating engineers">AI Call Answering for Heating Engineers</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers breakdown and service calls through the winter rush, day and night.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book annual services and repairs</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Record make, model and fault code</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put no-heating calls first</span></li>
         </ul>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
@@ -217,13 +222,14 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/contractors-builders" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI voice agent for builders and contractors">AI voice agent for builders and contractors</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/builders-construction" class="ind-card-link" data-track="industry_card_click" data-track-name="AI voice agent for builders and contractors">AI Voice Agent for Builders and Contractors</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes project enquiries properly while the team is on site.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Take the brief: type, size, budget, timing</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book site visits and quotes</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their site manager</span></li>
         </ul>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
@@ -240,7 +246,7 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/law-firms" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI receptionist for law firms">AI receptionist for law firms</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/law-firms" class="ind-card-link" data-track="industry_card_click" data-track-name="AI receptionist for law firms">AI Receptionist for Law Firms</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes new enquiries and routes existing clients while fee earners are in court or meetings.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Capture new enquiries and area of law</span></li>
@@ -248,6 +254,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their named solicitor</span></li>
         </ul>
         <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
@@ -264,13 +271,14 @@ export const legacyMarkup = String.raw`
   </g>
   </svg></span>
         <div class="min-w-0">
-        <h3 class="!text-[21px]"><a href="/ai-voice-agents/car-dealerships" class="hover:text-hl" data-track="industry_card_click" data-track-name="AI voice agent for car dealerships">AI voice agent for car dealerships</a></h3>
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/car-dealerships" class="ind-card-link" data-track="industry_card_click" data-track-name="AI voice agent for car dealerships">AI Voice Agent for Car Dealerships</a></h3>
         <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers sales and service calls so nobody rings off while the desk is busy.</p>
         <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book test drives and services</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Stock and opening-hours questions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Collect part-exchange details</span></li>
         </ul>
+          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
             <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 lg:col-span-2" aria-labelledby="industries-cta-title">

@@ -1169,7 +1169,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="icon !h-6 !w-6" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">Other UK cities</span><span class="mt-1 block text-[15px] text-muted">Birmingham, Manchester, Leeds, Liverpool, Bristol and more.</span></span>
       </a>
-      <a href="/ai-voice-agents/dental-clinics/london" class="flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="elv2_related" data-track-name="dental london">
+      <a href="/ai-voice-agents/dentists/london" class="flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="elv2_related" data-track-name="dental london">
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="icon !h-6 !w-6" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">Dental clinics in London</span><span class="mt-1 block text-[15px] text-muted">The same agent, set up for London dental practices.</span></span>
       </a>

@@ -7,7 +7,7 @@ export const meta = {
   "description": "AI voice agents for London dental practices. Answer every call on the first ring, book check-ups and new patients day and night, and route urgent calls to your team. No clinical advice. Built and managed by OMH.",
   "ogTitle": "AI Voice Agents for Dental Clinics in London | OMH",
   "ogDescription": "Try a call, see NHS access by area and work out your urgent care target.",
-  "canonical": "/ai-voice-agents/dental-clinics/london"
+  "canonical": "/ai-voice-agents/dentists/london"
 };
 
 export const schema = [
@@ -17,7 +17,7 @@ export const schema = [
     "name": "AI Voice Agents for Dental Clinics in London",
     "serviceType": "AI voice agent and AI receptionist for dental practices",
     "description": "Managed AI voice agents for London dental practices. Answers every call, books check-ups and new patients, and routes urgent calls to the practice team. No clinical advice.",
-    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/dental-clinics/london",
+    "url": "https://onlinemarketinghelp.co.uk/ai-voice-agents/dentists/london",
     "audience": {
       "@type": "BusinessAudience",
       "audienceType": "Dental practices"
@@ -156,13 +156,13 @@ export const schema = [
         "@type": "ListItem",
         "position": 3,
         "name": "Dental Clinics",
-        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/dental-clinics"
+        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/dentists"
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": "London",
-        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/dental-clinics/london"
+        "item": "https://onlinemarketinghelp.co.uk/ai-voice-agents/dentists/london"
       }
     ]
   }
@@ -211,7 +211,7 @@ export const markup = String.raw`
       <ol class="flex flex-wrap items-center gap-1.5">
         <li><a href="/" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Home">Home</a></li><li aria-hidden="true">/</li>
         <li><a href="/ai-voice-agents" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="AI Voice Agents">AI Voice Agents</a></li><li aria-hidden="true">/</li>
-        <li><a href="/ai-voice-agents/dental-clinics" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Dental Clinics">Dental Clinics</a></li><li aria-hidden="true">/</li>
+        <li><a href="/ai-voice-agents/dentists" class="inline-flex min-h-[44px] items-center hover:text-ink" data-track="breadcrumb_click" data-track-name="Dental Clinics">Dental Clinics</a></li><li aria-hidden="true">/</li>
         <li aria-current="page" class="font-semibold text-ink">London</li>
       </ol>
     </nav>
@@ -1095,11 +1095,11 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 <section id="more" data-component="Related" class="bg-paper">
   <div class="container-omh py-14 lg:py-16">
     <div class="grid gap-4 md:grid-cols-3">
-      <a href="/ai-voice-agents/dental-clinics" class="flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="dlv2_related" data-track-name="industry">
+      <a href="/ai-voice-agents/dentists" class="flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="dlv2_related" data-track-name="industry">
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="icon !h-6 !w-6" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">AI voice agents for dental clinics</span><span class="mt-1 block text-[15px] text-muted">Everything it does for NHS and private practices, anywhere in the UK.</span></span>
       </a>
-      <a href="/ai-voice-agents/dental-clinics#areas" class="flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="dlv2_related" data-track-name="other cities">
+      <a href="/ai-voice-agents/dentists#areas" class="flex items-start gap-4 rounded-[18px] border border-line bg-surface p-5 hover:border-gold" data-track="dlv2_related" data-track-name="other cities">
         <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-hl"><svg class="icon !h-6 !w-6" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg></span>
         <span><span class="block font-display text-[18px] font-semibold">Other UK cities</span><span class="mt-1 block text-[15px] text-muted">Birmingham, Manchester, Leeds, Liverpool, Bristol and more.</span></span>
       </a>

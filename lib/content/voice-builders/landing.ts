@@ -1,4 +1,4 @@
-// /ai-voice-agents/contractors-builders: hero, how it works and local cover, worded for builders and contractors.
+// /ai-voice-agents/builders-construction: hero, how it works and local cover, worded for builders and contractors.
 // Same structure and classes as lib/content/ai-voice-agents-landing-v4.ts (via lib/content/voice-clinics/landing.ts).
 export const buildersLandingMarkup = String.raw`
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">

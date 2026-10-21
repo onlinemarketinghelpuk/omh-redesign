@@ -1,4 +1,4 @@
-// /ai-voice-agents/dental-clinics: hero, how it works and local cover, worded for dental practices. Same
+// /ai-voice-agents/dentists: hero, how it works and local cover, worded for dental practices. Same
 // structure and classes as lib/content/ai-voice-agents-landing-v4.ts (via lib/content/voice-estate/landing.ts).
 export const dentalLandingMarkup = String.raw`
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -123,7 +123,7 @@ export const dentalLandingMarkup = String.raw`
           <h3 class="h3-card">London</h3>
           <q>Good morning, you're through to the practice's AI assistant. Are you calling to book, or about something urgent?</q>
           <p class="t-small mt-auto flex items-center gap-2 text-muted"><svg class="icon size-[1.05rem] text-hl" aria-hidden="true"><use href="#v4-i-globe"/></svg>Covers Greater London</p>
-          <a class="link t-small w-fit" href="/ai-voice-agents/dental-clinics/london" data-track="city_page" data-track-name="London">Dental practices in London</a>
+          <a class="link t-small w-fit" href="/ai-voice-agents/dentists/london" data-track="city_page" data-track-name="London">Dental practices in London</a>
         </div>
       </li>
       <li class="city" style="--tint:var(--tint-3)">

@@ -80,9 +80,9 @@ export const industryPages = {
     blocks: [],
     classes: "",
   },
-  "dental-clinics-v2": { ...dentalV2, copy: dentalCopy, blocks: ["dental-v2"], classes: "vi-dental-v2" },
-  "dental-clinics/london": { ...dentalLondon, copy: dentalCopy, blocks: ["london"], classes: "vi-london" },
-  "dental-clinics/london-v2": {
+  "dentists-v2": { ...dentalV2, copy: dentalCopy, blocks: ["dental-v2"], classes: "vi-dental-v2" },
+  "dentists/london": { ...dentalLondon, copy: dentalCopy, blocks: ["london"], classes: "vi-london" },
+  "dentists/london-v2": {
     ...dentalLondonV2,
     copy: dentalCopy,
     blocks: ["london", "dental-london-v2"],

@@ -1,4 +1,4 @@
-// Body of /ai-voice-agents/dental-clinics (21 Oct 2026): the rebuilt sections of /ai-voice-agents (what-is with
+// Body of /ai-voice-agents/dentists (21 Oct 2026): the rebuilt sections of /ai-voice-agents (what-is with
 // the call player, capabilities, use cases, pricing), written for dental practices. Same structure, classes and
 // data-* hooks as lib/content/ai-voice-agents-markup.ts. Composed by components/voice-agents/DentalPage.tsx.
 // Content sources: the previous dental page (git tag dental-oldv1), the main page's plans and process.

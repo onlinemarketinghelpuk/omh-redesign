@@ -1,4 +1,4 @@
-// /ai-voice-agents/clinics-healthcare: hero, how it works and local cover, worded for private clinics. Same
+// /ai-voice-agents/healthcare: hero, how it works and local cover, worded for private clinics. Same
 // structure and classes as lib/content/ai-voice-agents-landing-v4.ts (via lib/content/voice-estate/landing.ts).
 export const clinicLandingMarkup = String.raw`
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">

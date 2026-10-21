@@ -8,13 +8,13 @@ import { clinicFaqs, clinicMarkup } from "@/lib/content/voice-clinics/markup";
 import { SITE, faqSchema } from "@/lib/schema";
 
 /*
-  /ai-voice-agents/clinics-healthcare (21 Oct 2026): the /ai-voice-agents layout, section for section, with content
+  /ai-voice-agents/healthcare (21 Oct 2026): the /ai-voice-agents layout, section for section, with content
   written for private clinics (lib/content/voice-clinics/). Rendered by app/ai-voice-agents/[industry]/page.tsx.
   The page it replaced is frozen as git tag `clinics-oldv1` and the noindex route
   /ai-voice-agents/clinics-healthcare-oldv1.
 */
 
-const path = "/ai-voice-agents/clinics-healthcare";
+const path = "/ai-voice-agents/healthcare";
 const url = `${SITE}${path}`;
 const ogTitle = "AI Voice Agent for Private Clinics | OMH";
 const ogDescription = "Every patient call answered, even over the lunch hour. Built, tested and managed by a UK team.";

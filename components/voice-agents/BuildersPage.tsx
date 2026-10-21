@@ -8,11 +8,11 @@ import { buildersFaqs, buildersMarkup } from "@/lib/content/voice-builders/marku
 import { SITE, faqSchema } from "@/lib/schema";
 
 /*
-  /ai-voice-agents/contractors-builders (21 Oct 2026): the /ai-voice-agents layout, section for section, with content
+  /ai-voice-agents/builders-construction (21 Oct 2026): the /ai-voice-agents layout, section for section, with content
   written for builders and contractors (lib/content/voice-builders/). Rendered by app/ai-voice-agents/[industry]/page.tsx.
 */
 
-const path = "/ai-voice-agents/contractors-builders";
+const path = "/ai-voice-agents/builders-construction";
 const url = `${SITE}${path}`;
 const ogTitle = "AI Voice Agent for Builders & Contractors | OMH";
 const ogDescription = "Every call answered, even when you're up a ladder. Built, tested and managed by a UK team.";

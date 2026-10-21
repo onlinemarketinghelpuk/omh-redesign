@@ -8,13 +8,13 @@ import { dentalFaqs, dentalMarkup } from "@/lib/content/voice-dental/markup";
 import { SITE, faqSchema } from "@/lib/schema";
 
 /*
-  /ai-voice-agents/dental-clinics (21 Oct 2026): the /ai-voice-agents layout, section for section, with content
+  /ai-voice-agents/dentists (21 Oct 2026): the /ai-voice-agents layout, section for section, with content
   written for dental practices (lib/content/voice-dental/). Rendered by app/ai-voice-agents/[industry]/page.tsx.
   The page it replaced is frozen as git tag `dental-oldv1` and the noindex route
   /ai-voice-agents/dental-clinics-oldv1. The London and v2 pages are unchanged.
 */
 
-const path = "/ai-voice-agents/dental-clinics";
+const path = "/ai-voice-agents/dentists";
 const url = `${SITE}${path}`;
 const ogTitle = "AI Voice Agent for Dental Clinics | OMH";
 const ogDescription = "Every patient call answered, even when reception is full. Built, tested and managed by a UK team.";
