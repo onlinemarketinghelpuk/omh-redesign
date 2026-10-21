@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClinicsPage, clinicsMetadata } from "@/components/voice-agents/ClinicsPage";
 import { DentalPage, dentalMetadata } from "@/components/voice-agents/DentalPage";
 import { EstatePage, estateMetadata } from "@/components/voice-agents/EstatePage";
 import { IndustryPage, industryMetadata } from "@/components/voice-agents/IndustryPage";
@@ -14,6 +15,7 @@ type Props = { params: Promise<{ industry: string }> };
 const LANDINGS = {
   "real-estate-letting-agents": { Page: EstatePage, metadata: estateMetadata },
   "dental-clinics": { Page: DentalPage, metadata: dentalMetadata },
+  "clinics-healthcare": { Page: ClinicsPage, metadata: clinicsMetadata },
 } as const;
 const landing = (industry: string) => LANDINGS[industry as keyof typeof LANDINGS];
 

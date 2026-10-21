@@ -58,7 +58,17 @@ export const industryPages = {
     blocks: ["london", "estate-london-v2"],
     classes: "vi-london vi-london-v2",
   },
-  "clinics-healthcare": { ...clinics, copy: clinicCopy, blocks: [], classes: "" },
+  // Frozen backup of the clinics page before it moved onto the /ai-voice-agents layout (21 Oct 2026, git tag
+  // clinics-oldv1). Hidden from search, no JSON-LD. The live page is components/voice-agents/ClinicsPage.tsx.
+  // Do not edit ./clinics-healthcare.ts.
+  "clinics-healthcare-oldv1": {
+    ...clinics,
+    meta: { ...clinics.meta, title: "AI Receptionist for Clinics (oldv1 backup) | OMH", noindex: true },
+    schema: [],
+    copy: clinicCopy,
+    blocks: [],
+    classes: "",
+  },
   // Frozen backup of the dental page before it moved onto the /ai-voice-agents layout (21 Oct 2026, git tag
   // dental-oldv1). Hidden from search, no JSON-LD. The live page is components/voice-agents/DentalPage.tsx.
   // Do not edit ./dental-clinics.ts.
