@@ -79,7 +79,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Qualify buyers and tenants</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Log tenant maintenance calls</span></li>
         </ul>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
@@ -109,7 +109,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route urgent calls to your emergency line</span></li>
         </ul>
         <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
@@ -139,7 +139,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Confirmation calls to cut no-shows</span></li>
         </ul>
         <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
@@ -171,7 +171,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put emergencies through to the plumber on call</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book quote visits</span></li>
         </ul>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
@@ -203,7 +203,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Record make, model and fault code</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put no-heating calls first</span></li>
         </ul>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
@@ -229,7 +229,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book site visits and quotes</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their site manager</span></li>
         </ul>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
@@ -254,7 +254,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their named solicitor</span></li>
         </ul>
         <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
       <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
@@ -278,7 +278,7 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Stock and opening-hours questions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Collect part-exchange details</span></li>
         </ul>
-          <span class="ind-card-btn" aria-hidden="true">View industry page<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
       </article>
             <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 lg:col-span-2" aria-labelledby="industries-cta-title">
