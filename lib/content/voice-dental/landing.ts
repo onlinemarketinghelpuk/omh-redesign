@@ -91,8 +91,8 @@ export const dentalLandingMarkup = String.raw`
 
   <div class="container-omh pb-16 pt-10 md:pt-12 lg:pb-24">
     <div class="hero-video" id="hero-video">
-      <div class="video-frame" data-video data-youtube-id="M7lc1UVf-VE" data-video-title="AI voice agent answering a patient call and booking a check-up">
-        <a class="video-poster on-band has-scene" href="https://www.youtube.com/watch?v=M7lc1UVf-VE" target="_blank" rel="noopener" data-video-play aria-label="Play video: AI voice agent answering a patient call and booking a check-up (1:32)">
+      <div class="video-frame" data-video data-youtube-id="H1fMzyN93W0" data-video-title="AI voice agent answering a patient call and booking a check-up">
+        <a class="video-poster on-band has-scene" href="https://www.youtube.com/watch?v=H1fMzyN93W0" target="_blank" rel="noopener" data-video-play aria-label="Play video: AI voice agent answering a patient call and booking a check-up (1:07)">
           <svg class="vp-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="vs-sky" x1="0" y1="0" x2="0" y2="1">
@@ -150,7 +150,7 @@ export const dentalLandingMarkup = String.raw`
           <span class="vp-play" aria-hidden="true"><svg class="icon icon-fill"><use href="#v4-i-play"/></svg></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-title">Watch it book a patient after hours</span>
-            <span class="vp-time tnum">1:32</span>
+            <span class="vp-time tnum">1:07</span>
           </span>
         </a>
       </div>

@@ -522,7 +522,7 @@ ${leadDemo("healthcare")}
       <h2>Watch it handle <span class="hl">a patient call</span></h2>
     </div>
     <div class="mx-auto mt-10 rounded-[24px] border border-line bg-surface p-3 sm:p-4">
-      <button type="button" class="group relative block aspect-video w-full overflow-hidden rounded-[18px] bg-[linear-gradient(135deg,#1a2437,#101828_60%,#3a2f1a)] text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="[PLACEHOLDER]" data-video-title="A patient call, start to finish" data-video-meta="Albion Square Clinic, Manchester (fictional demo clinic)" data-track="clinic_video_open" aria-label="Play video: a patient call, start to finish (opens in a pop-up)">
+      <button type="button" class="group relative block aspect-video w-full overflow-hidden rounded-[18px] bg-[linear-gradient(135deg,#1a2437,#101828_60%,#3a2f1a)] text-left" aria-haspopup="dialog" data-video-modal-open data-video-id="H1fMzyN93W0" data-video-title="A patient call, start to finish" data-video-meta="Albion Square Clinic, Manchester (fictional demo clinic)" data-track="clinic_video_open" aria-label="Play video: a patient call, start to finish (opens in a pop-up)">
         <span class="absolute -right-10 -top-6 text-white/5" aria-hidden="true"><svg class="icon !h-[300px] !w-[300px]" aria-hidden="true" focusable="false"><use href="#i-stethoscope"/></svg></span>
         <span class="absolute left-[8%] top-[18%] w-[min(300px,46%)] rounded-[16px] bg-cream p-4 text-navy shadow-[0_30px_50px_-30px_rgb(0_0_0/0.8)]" aria-hidden="true">
           <span class="flex items-center gap-2 text-[12.5px] font-semibold text-[rgb(16_24_40/0.6)]"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>Incoming call</span>
@@ -532,7 +532,7 @@ ${leadDemo("healthcare")}
         <span class="absolute left-1/2 top-1/2 grid h-[72px] w-[72px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_14px_30px_-10px_rgb(0_0_0/0.6)] transition-transform group-hover:scale-105" aria-hidden="true"><svg class="icon !h-8 !w-8 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
         <span class="absolute bottom-4 left-5 right-5 flex items-end justify-between gap-4 text-white" aria-hidden="true">
           <span class="font-display text-[clamp(15px,1.8vw,22px)] font-semibold">One patient call, start to finish</span>
-          <span class="rounded-[6px] bg-black/50 px-2 py-0.5 text-[13px] font-semibold tnum">2:00</span>
+          <span class="rounded-[6px] bg-black/50 px-2 py-0.5 text-[13px] font-semibold tnum">1:07</span>
         </span>
       </button>
       <div class="flex flex-col items-center justify-between gap-3 px-2 pb-1 pt-4 sm:flex-row">
