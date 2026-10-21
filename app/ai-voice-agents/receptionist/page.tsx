@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { BookDemo } from "@/components/BookDemo";
-import { receptionistGraph, receptionistMarkup, receptionistMeta } from "@/lib/content/ai-receptionist";
-import { JsonLd, SITE } from "@/lib/schema";
-import "./receptionist.css";
+import { type Runs, VoiceLanding, sectionsOf } from "@/components/voice-agents/VoiceLanding";
+import { receptionistGraph, receptionistMeta } from "@/lib/content/ai-receptionist";
+import { receptionistLandingMarkup } from "@/lib/content/voice-receptionist/landing";
+import { receptionistLegacyMarkup } from "@/lib/content/voice-receptionist/legacy";
+import { receptionistMarkup } from "@/lib/content/voice-receptionist/markup";
+import { SITE } from "@/lib/schema";
 
 /*
-  /ai-voice-agents/receptionist (21 Oct 2026): the client's AI receptionist page, as supplied
-  (lib/content/ai-receptionist.ts), inside the site's own header and footer, with the shared booking form at the end.
-  Its own stylesheet is scoped to .rcp (./receptionist.css). A static route, so it wins over [industry].
+  /ai-voice-agents/receptionist (21 Oct 2026): the client's AI receptionist page, rebuilt on the /ai-voice-agents
+  layout (client: the standalone design didn't match the other voice agent pages). Copy and JSON-LD come from the
+  client's file; sections are the main page's, in lib/content/voice-receptionist/. A static route, so it wins
+  over [industry].
 */
 
 const url = `${SITE}/ai-voice-agents/receptionist`;
@@ -21,19 +24,33 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
 };
 
+const fresh = sectionsOf(receptionistMarkup, "va-page");
+const legacy = sectionsOf(receptionistLegacyMarkup, "va-page");
+const v4 = sectionsOf(receptionistLandingMarkup, "v4l");
+
+// The client's section order on the main page's designs: hero, what it is, features, setup, industries,
+// comparison, pricing, UK cover, FAQ, then the booking form.
+const runs: Runs = [
+  [v4, ["top"]],
+  [fresh, ["what-is", "features"]],
+  [v4, ["how"]],
+  [legacy, ["industries", "compare"]],
+  [fresh, ["pricing"]],
+  [v4, ["cities"]],
+  [legacy, ["faq"]],
+];
+
 export default function AiReceptionistPage() {
   return (
-    <>
-      <JsonLd data={receptionistGraph} />
-      <div className="rcp" dangerouslySetInnerHTML={{ __html: receptionistMarkup }} />
-      <BookDemo
-        id="book-demo-form"
-        heading={
-          <>
-            Book an AI receptionist demo, <span className="text-[#f2c675]">by video or phone</span>
-          </>
-        }
-      />
-    </>
+    <VoiceLanding
+      runs={runs}
+      graph={receptionistGraph}
+      page="/ai-voice-agents/receptionist"
+      demoHeading={
+        <>
+          Book an AI receptionist demo, <span className="text-[#f2c675]">by video or phone</span>
+        </>
+      }
+    />
   );
 }

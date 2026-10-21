@@ -243,7 +243,9 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
     <section id={id} aria-label="Book a demo" className="scroll-mt-[85px] bg-inverse text-oninverse">
       <div className="container-omh">
         <div className="section-sm border-y border-oninverse/12">
-          {heading && <h2 className="mb-10 font-sans text-h2 font-semibold">{heading}</h2>}
+          {/* The gold part of a heading always starts its own line, so the heading reads as two even lines instead of
+              leaving one word on its own (client, 21 Oct 2026). */}
+          {heading && <h2 className="mb-10 font-sans text-h2 font-semibold text-balance [&>span]:block">{heading}</h2>}
           <div role="tablist" aria-label="How would you like to start?" className="grid gap-3 md:grid-cols-2">
             {paths.map((p, i) => (
               <button
