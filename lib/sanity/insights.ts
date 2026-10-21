@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 import { cacheOptions, client } from "@/lib/sanity/client";
+import { readToken } from "@/lib/sanity/token";
 import { toArticleHtml } from "@/lib/sanity/portable-text";
 import type {
   InsightIndexEntry,
@@ -107,21 +108,34 @@ export async function getInsightSlugs(): Promise<string[]> {
   return client.fetch<string[]>(groq`*[${published}].slug.current`, {}, cacheOptions);
 }
 
-export async function getInsight(slug: string): Promise<InsightPost | null> {
-  const raw = await client.fetch<(RawEntry & { body: unknown; tags: InsightTopic[] | null; seoTitle: string | null; seoDescription: string | null; focusKeywords: string[] | null }) | null>(
-    groq`*[${published} && slug.current == $slug][0]{
+// Draft preview (Studio → Presentation, or a post's "Open preview"): the "drafts" perspective returns the
+// latest draft where one exists, published content otherwise. Never cached, read with the server-only token.
+const previewClient = () =>
+  client.withConfig({ token: readToken, apiVersion: "2025-02-19", perspective: "drafts", useCdn: false });
+
+/** `preview`: true while Next.js draft mode is on, to show unpublished changes. */
+export async function getInsight(slug: string, preview = false): Promise<InsightPost | null> {
+  const query = groq`*[${preview ? `_type == "post" && defined(slug.current)` : published} && slug.current == $slug][0]{
       ${indexFields},
       seoTitle,
       seoDescription,
       focusKeywords,
       "tags": tags[]->{ "slug": slug.current, name },
       body[]{ ..., _type == "image" => { ..., "src": asset->url } }
-    }`,
-    { slug },
-    cacheOptions,
-  );
+    }`;
+  type Raw = RawEntry & { body: unknown; tags: InsightTopic[] | null; seoTitle: string | null; seoDescription: string | null; focusKeywords: string[] | null };
+  const raw = preview
+    ? await previewClient().fetch<Raw | null>(query, { slug }, { cache: "no-store" })
+    : await client.fetch<Raw | null>(query, { slug }, cacheOptions);
 
   if (!raw) return null;
+  if (preview) {
+    // A draft can be missing fields the article template needs; fill them so the preview still renders.
+    raw.publishedAt ??= raw.modifiedAt;
+    raw.author ??= { id: "", name: "Online Marketing Help" } as RawEntry["author"];
+    raw.topic ??= { slug: "", name: "Draft" } as RawEntry["topic"];
+    raw.title ??= "Untitled draft";
+  }
 
   return {
     ...toEntry(raw),

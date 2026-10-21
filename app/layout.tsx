@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Source_Sans_3 } from "next/font/google";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollTop } from "@/components/layout/ScrollTop";
@@ -87,6 +89,8 @@ function later(){setTimeout(load,3500)}if(d.readyState==='complete')later();else
         <Footer />
         <ScrollTop />
         <SiteAssistant />
+        {/* Draft preview only: connects the page to the Studio's Presentation tool so edits show as you type. */}
+        {(await draftMode()).isEnabled && <VisualEditing />}
       </body>
     </html>
   );
