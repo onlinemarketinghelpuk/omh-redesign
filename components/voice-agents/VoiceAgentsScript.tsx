@@ -332,7 +332,8 @@ function init(page: HTMLElement, navigate: (href: string) => void) {
 
   /* ------------------------------------------------------- Video facade */
   function initVideoFacade() {
-    $$("[data-video]").forEach((box) => {
+    // Frames with data-youtube-id are the v4 hero player, which LandingV4Script runs.
+    $$("[data-video]:not([data-youtube-id])").forEach((box) => {
       const btn = $("[data-video-play]", box);
       const fallback = $("[data-video-fallback]", box);
       on(btn, "click", () => {

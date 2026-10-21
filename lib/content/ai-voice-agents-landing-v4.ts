@@ -91,65 +91,12 @@ export const landingV4Markup = String.raw`
 
   <div class="container-omh pb-16 pt-10 md:pt-12 lg:pb-24">
     <div class="hero-video" id="hero-video">
-      <div class="video-frame" data-video data-youtube-id="H1fMzyN93W0" data-video-title="AI voice agent answering a call and booking a property viewing">
-        <a class="video-poster on-band has-scene" href="https://www.youtube.com/watch?v=H1fMzyN93W0" target="_blank" rel="noopener" data-video-play aria-label="Play video: AI voice agent answering a call and booking a property viewing (1:07)">
-          <svg class="vp-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="vs-sky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#0b1426"/><stop offset=".5" stop-color="#1b2540"/><stop offset=".78" stop-color="#46384a"/><stop offset="1" stop-color="#b9763f"/>
-              </linearGradient>
-              <linearGradient id="vs-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2a6"/><stop offset="1" stop-color="#e9a54e"/></linearGradient>
-              <radialGradient id="vs-spill" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f1b866" stop-opacity=".55"/><stop offset="1" stop-color="#f1b866" stop-opacity="0"/></radialGradient>
-              <radialGradient id="vs-moon" cx=".5" cy=".5" r=".5"><stop offset=".3" stop-color="#f6e7c8" stop-opacity=".35"/><stop offset="1" stop-color="#f6e7c8" stop-opacity="0"/></radialGradient>
-              <filter id="vs-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
-            </defs>
-            <rect width="1600" height="720" fill="url(#vs-sky)"/>
-            <g fill="#fff"><circle cx="946" cy="301" r="1.8" opacity="0.5"/><circle cx="1060" cy="315" r="1" opacity="0.35"/><circle cx="1068" cy="258" r="1" opacity="0.35"/><circle cx="934" cy="170" r="1" opacity="0.35"/><circle cx="1123" cy="36" r="1.8" opacity="0.5"/><circle cx="1359" cy="330" r="1" opacity="0.7"/><circle cx="50" cy="285" r="1" opacity="0.35"/><circle cx="93" cy="112" r="1" opacity="0.7"/><circle cx="81" cy="252" r="1.4" opacity="0.5"/><circle cx="1230" cy="115" r="1" opacity="0.7"/><circle cx="622" cy="270" r="1" opacity="0.7"/><circle cx="194" cy="249" r="1.4" opacity="0.5"/><circle cx="1148" cy="57" r="1.4" opacity="0.5"/><circle cx="1572" cy="132" r="1.4" opacity="0.35"/><circle cx="163" cy="303" r="1" opacity="0.5"/><circle cx="240" cy="163" r="1.8" opacity="0.35"/><circle cx="54" cy="15" r="1" opacity="0.35"/><circle cx="127" cy="255" r="1.8" opacity="0.7"/><circle cx="833" cy="229" r="1" opacity="0.7"/><circle cx="1309" cy="116" r="1.4" opacity="0.5"/><circle cx="198" cy="174" r="1.4" opacity="0.35"/><circle cx="859" cy="75" r="1" opacity="0.35"/><circle cx="1467" cy="66" r="1" opacity="0.35"/><circle cx="972" cy="264" r="1" opacity="0.7"/><circle cx="1165" cy="111" r="1.8" opacity="0.7"/><circle cx="410" cy="82" r="1.8" opacity="0.7"/><circle cx="805" cy="74" r="1.8" opacity="0.5"/><circle cx="455" cy="15" r="1.4" opacity="0.7"/><circle cx="642" cy="25" r="1" opacity="0.35"/><circle cx="827" cy="323" r="1" opacity="0.35"/><circle cx="319" cy="124" r="1.8" opacity="0.5"/><circle cx="39" cy="327" r="1.4" opacity="0.5"/><circle cx="810" cy="52" r="1" opacity="0.35"/><circle cx="447" cy="313" r="1" opacity="0.35"/><circle cx="1251" cy="203" r="1.4" opacity="0.7"/><circle cx="948" cy="80" r="1.8" opacity="0.7"/><circle cx="297" cy="212" r="1" opacity="0.7"/><circle cx="335" cy="174" r="1" opacity="0.7"/><circle cx="530" cy="112" r="1" opacity="0.7"/><circle cx="1308" cy="298" r="1" opacity="0.7"/><circle cx="815" cy="262" r="1" opacity="0.5"/><circle cx="117" cy="68" r="1" opacity="0.35"/><circle cx="1069" cy="145" r="1" opacity="0.7"/><circle cx="1462" cy="215" r="1.4" opacity="0.5"/><circle cx="1241" cy="266" r="1.4" opacity="0.7"/><circle cx="379" cy="50" r="1" opacity="0.35"/><circle cx="1001" cy="301" r="1" opacity="0.5"/><circle cx="454" cy="119" r="1" opacity="0.35"/><circle cx="571" cy="225" r="1.8" opacity="0.35"/><circle cx="143" cy="38" r="1" opacity="0.5"/><circle cx="775" cy="286" r="1" opacity="0.35"/><circle cx="761" cy="85" r="1.8" opacity="0.5"/><circle cx="1365" cy="282" r="1" opacity="0.7"/><circle cx="91" cy="24" r="1.8" opacity="0.5"/><circle cx="1455" cy="174" r="1" opacity="0.35"/></g>
-            <circle cx="430" cy="165" r="110" fill="url(#vs-moon)"/>
-            <circle cx="430" cy="165" r="30" fill="#f6e7c8"/>
-            <path d="M0 610 C220 560 380 585 560 548 S920 520 1100 560 1420 520 1600 548 V720 H0z" fill="#202a42"/>
-            <path d="M0 650 C260 610 460 640 700 615 S1150 600 1600 628 V720 H0z" fill="#161f33"/>
-            <rect y="700" width="1600" height="200" fill="#0d1422"/>
-            <ellipse cx="1190" cy="712" rx="420" ry="46" fill="url(#vs-spill)"/>
-            <path d="M1185 700 H1240 L1330 900 H1090z" fill="#262b36"/>
-            <g filter="url(#vs-glow)" opacity=".75">
-              <rect x="960" y="545" width="200" height="135" fill="#f3b55e"/><rect x="1260" y="545" width="160" height="135" fill="#f3b55e"/>
-              <rect x="1035" y="420" width="150" height="80" fill="#f3b55e"/><rect x="1205" y="420" width="160" height="80" fill="#f3b55e"/>
-            </g>
-            <rect x="930" y="520" width="520" height="182" fill="#172033"/>
-            <rect x="1010" y="400" width="380" height="122" fill="#1d2842"/>
-            <rect x="992" y="390" width="416" height="12" fill="#0b111d"/>
-            <rect x="912" y="510" width="556" height="12" fill="#0b111d"/>
-            <g fill="url(#vs-win)">
-              <rect x="960" y="545" width="200" height="135"/><rect x="1260" y="545" width="160" height="135"/>
-              <rect x="1035" y="420" width="150" height="80"/><rect x="1205" y="420" width="160" height="80"/>
-              <rect x="1186" y="582" width="48" height="98" opacity=".7"/>
-            </g>
-            <g stroke="#172033" stroke-width="5">
-              <path d="M1027 545 V680 M1093 545 V680 M1340 545 V680 M1110 420 V500 M1285 420 V500"/>
-            </g>
-            <g fill="#8a5a26" opacity=".55"><circle cx="1060" cy="575" r="9"/><rect x="1058" y="545" width="3" height="22"/><rect x="990" y="640" width="80" height="40" rx="6"/><rect x="1290" y="635" width="95" height="45" rx="6"/></g>
-            <rect x="1395" y="430" width="10" height="250" fill="#0b111d"/>
-            <g fill="#0a101c">
-              <ellipse cx="190" cy="640" rx="120" ry="135"/><ellipse cx="320" cy="660" rx="95" ry="105"/><ellipse cx="80" cy="665" rx="90" ry="95"/>
-              <ellipse cx="1530" cy="620" rx="95" ry="150"/><rect x="1526" y="640" width="8" height="70"/>
-              <rect x="186" y="650" width="8" height="60"/><rect x="318" y="680" width="8" height="30"/>
-            </g>
-            <g>
-              <rect x="868" y="618" width="6" height="88" fill="#5a4a38"/>
-              <rect x="812" y="596" width="118" height="54" rx="5" fill="#d79a37"/>
-              <text x="871" y="619" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="15" font-weight="600" letter-spacing="1.5" fill="#101828">VIEWING DAY</text>
-              <text x="871" y="640" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13" font-weight="600" fill="#101828">SAT 10AM</text>
-            </g>
-          </svg>
-          <span class="vp-notif" aria-hidden="true"><span class="vp-notif-ico"><svg class="icon"><use href="#v4-i-check"/></svg></span><span><b>Appointment booked: Sat 10:00</b><small>New caller · Qualified · Added to your CRM</small></span></span>
-          <span class="vp-top" aria-hidden="true">
-            <span class="vp-brand"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span>
-            <span class="vp-chip"><svg class="icon"><use href="#v4-i-volume"/></svg>Sound on</span>
-          </span>
-          <span class="vp-play" aria-hidden="true"><svg class="icon icon-fill"><use href="#v4-i-play"/></svg></span>
+      <div class="video-frame" data-video data-youtube-id="H1fMzyN93W0" data-video-title="How an AI voice agent answers and routes your calls">
+        <a class="video-poster on-band has-thumb" href="https://www.youtube.com/watch?v=H1fMzyN93W0" target="_blank" rel="noopener" data-video-play aria-label="Play video: How an AI voice agent answers and routes your calls (1:07)">
+          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
-            <span class="vp-title">Watch it answer, qualify and book a caller</span>
+            <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">How an AI voice agent answers and routes your calls</span></span>
             <span class="vp-time tnum">1:07</span>
           </span>
         </a>
