@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "@/app/ai-voice-agents/voice-styles";
 import { BookDemo } from "@/components/BookDemo";
 import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";

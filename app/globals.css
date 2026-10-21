@@ -1,6 +1,10 @@
 @import "tailwindcss";
-/* The AI voice agent stylesheets load only where they are used: app/ai-voice-agents/voice-styles.ts
-   (PageSpeed, 21 Oct 2026: ~200 KB of CSS was render-blocking on every page). */
+/* These three stay here, inside the Tailwind build: voice-agents.css and industry.css carry @theme tokens
+   (band, ink, gold...) that Tailwind turns into utilities used across the site, BookDemo included. Moving them
+   to per-route imports (21 Oct 2026) silently dropped those utilities and broke several sections. */
+@import "./ai-voice-agents/voice-agents.css";
+@import "./ai-voice-agents/industry.css";
+@import "./ai-voice-agents/landing-v4.css";
 
 /* `dark:` follows the site toggle (<html data-theme>), not the OS setting. */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

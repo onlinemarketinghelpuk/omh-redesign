@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "@/app/ai-voice-agents/voice-styles";
 import { type Runs, VoiceLanding, sectionsOf } from "@/components/voice-agents/VoiceLanding";
 import { landingV4Markup } from "@/lib/content/ai-voice-agents-oldv3/landing-v4";
 import { legacyMarkup } from "@/lib/content/ai-voice-agents-oldv3/legacy";
