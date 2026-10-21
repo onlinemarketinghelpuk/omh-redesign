@@ -55,7 +55,7 @@ export const legacyMarkup = String.raw`
     <p class="sr-only" aria-live="polite" data-industry-count></p>
 
     <div class="mt-8 grid gap-5 lg:grid-cols-2" data-industry-list>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="property">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="property">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
     <ellipse cx="100" cy="132" rx="78" ry="14.04" class="il-shadow"/>
     <rect x="38" y="64" width="86" height="64" rx="3" class="il-wall"/>
@@ -79,10 +79,10 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Qualify buyers and tenants</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Log tenant maintenance calls</span></li>
         </ul>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
     <ellipse cx="160" cy="196" rx="130" ry="23.4" class="il-shadow"/>
     <rect x="44" y="70" width="150" height="120" rx="6" class="il-wall"/>
@@ -108,11 +108,11 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Move and cancel appointments</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route urgent calls to your emergency line</span></li>
         </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+        <p class="ind-card-note"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
     <ellipse cx="160" cy="196" rx="130" ry="23.4" class="il-shadow"/>
     <rect x="44" y="70" width="150" height="120" rx="6" class="il-wall"/>
@@ -138,11 +138,11 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Opening hours and directions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Confirmation calls to cut no-shows</span></li>
         </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+        <p class="ind-card-note"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No clinical or medical advice given.</span></p>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
     <ellipse cx="160" cy="196" rx="140" ry="25.2" class="il-shadow"/>
     <rect x="164" y="88" width="120" height="96" rx="4" class="il-wall"/>
@@ -171,10 +171,10 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put emergencies through to the plumber on call</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book quote visits</span></li>
         </ul>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
     <ellipse cx="160" cy="196" rx="140" ry="25.2" class="il-shadow"/>
     <rect x="164" y="88" width="120" height="96" rx="4" class="il-wall"/>
@@ -203,10 +203,10 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Record make, model and fault code</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Put no-heating calls first</span></li>
         </ul>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
     <ellipse cx="100" cy="132" rx="80" ry="14.399999999999999" class="il-shadow"/>
     <path d="M150 128 V22 M150 26 H58 M150 26 L134 42 M62 26 V48" class="il-ladder"/>
@@ -229,10 +229,10 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book site visits and quotes</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their site manager</span></li>
         </ul>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
     <ellipse cx="92" cy="132" rx="74" ry="13.32" class="il-shadow"/>
     <path d="M28 52 L92 22 L156 52 Z" class="il-roof"/>
@@ -253,11 +253,11 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Book initial consultations</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Route clients to their named solicitor</span></li>
         </ul>
-        <p class="mt-3 flex items-center gap-2 rounded-[10px] border border-line bg-surface px-3 py-2 text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+        <p class="ind-card-note"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No legal advice given.</span></p>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
-      <article class="grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
         <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
     <ellipse cx="96" cy="128" rx="80" ry="14.399999999999999" class="il-shadow"/>
     <path d="M22 108 V92 Q22 84 30 82 L52 78 L72 60 Q78 55 88 55 H128 Q138 55 144 62 L160 80 L172 84 Q178 86 178 94 V108 Z" class="il-gold"/>
@@ -278,8 +278,8 @@ export const legacyMarkup = String.raw`
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Stock and opening-hours questions</span></li>
           <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Collect part-exchange details</span></li>
         </ul>
-          <span class="text-link ind-card-more" aria-hidden="true">Learn more<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
         </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
             <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 lg:col-span-2" aria-labelledby="industries-cta-title">
         <span class="grid size-[88px] place-items-center rounded-[12px] bg-white/5 sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold text-navy"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span></span>
