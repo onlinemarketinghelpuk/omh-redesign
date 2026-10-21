@@ -45,16 +45,20 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Google Tag Manager, first in <head> as Google asks. The
-            @next/third-parties component would load it only after hydration. */}
+        {/* Google Tag Manager, loaded on the visitor's first interaction or 3.5s after the page loads,
+            whichever comes first (PageSpeed, 21 Oct 2026: GTM and the tags it pulls in were ~900ms of
+            main-thread blocking and ~500 KiB on mobile). dataLayer exists from the start, so events pushed
+            before GTM arrives are queued, not lost. Trade-off: a visitor who leaves within ~3s without
+            touching the page is not recorded. */}
         {/* eslint-disable-next-line @next/next/next-script-for-ga */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WWSXTPH');`,
+            __html: `(function(w,d,i){w.dataLayer=w.dataLayer||[];var done=0,ev=["pointerdown","keydown","touchstart","scroll","wheel"];
+function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true)});
+w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var j=d.createElement('script');j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
+ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true,once:true})});
+function later(){setTimeout(load,3500)}if(d.readyState==='complete')later();else w.addEventListener('load',later)})(window,document,'GTM-WWSXTPH');`,
           }}
         />
         {/* Runs before first paint: sets the theme so the page never flashes the

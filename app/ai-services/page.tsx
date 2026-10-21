@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@/app/ai-voice-agents/voice-styles";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
 import { aiServices, aiServicesFaqs, aiServicesMarkup } from "@/lib/content/ai-services-markup";
 import { JsonLd, SITE, faqSchema } from "@/lib/schema";

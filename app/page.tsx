@@ -116,7 +116,9 @@ export default async function Home() {
     <>
       <section className="hero-grid relative overflow-x-clip border-b border-line bg-warm">
         <div className="container-omh grid min-h-[680px] grid-cols-[minmax(0,0.92fr)_minmax(440px,0.78fr)] items-center gap-[clamp(48px,7vw,116px)] py-[clamp(40px,3.5vw,60px)] max-lg:min-h-0 max-lg:grid-cols-1 max-lg:gap-8 max-sm:gap-8">
-          <Reveal className="relative z-10">
+          {/* Above the fold: a CSS entrance (.hero-in) rather than <Reveal>, which waits for JS and held the
+              headline back from painting (PageSpeed, 21 Oct 2026). */}
+          <div className="hero-in relative z-10">
             <StarRating label={hero.eyebrow} />
             <h1 className="mb-7 mt-8 font-sans text-display font-semibold max-lg:max-w-none">
               Full-service digital marketing agency for <span className="text-amber-deep">UK businesses</span>
@@ -140,9 +142,9 @@ export default async function Home() {
                 </p>
               ))}
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal className="relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[760px]">
+          <div className="hero-in hero-in-2 relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[760px]">
             <Pointer className="hero-media relative mb-9">
               <div className="pointer-parallax relative">
               <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[8px] bg-inverse shadow-[0_36px_90px_-42px_rgb(16_24_40/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
@@ -169,7 +171,7 @@ export default async function Home() {
               </div>
               </div>
             </Pointer>
-          </Reveal>
+          </div>
         </div>
       </section>
 

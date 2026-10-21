@@ -1,7 +1,6 @@
 @import "tailwindcss";
-@import "./ai-voice-agents/voice-agents.css";
-@import "./ai-voice-agents/industry.css";
-@import "./ai-voice-agents/landing-v4.css";
+/* The AI voice agent stylesheets load only where they are used: app/ai-voice-agents/voice-styles.ts
+   (PageSpeed, 21 Oct 2026: ~200 KB of CSS was render-blocking on every page). */
 
 /* `dark:` follows the site toggle (<html data-theme>), not the OS setting. */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -1178,6 +1177,21 @@ select:focus-visible {
   .rv.in {
     opacity: 1;
     translate: 0 0;
+  }
+  /* Above-the-fold entrance: plays on first paint with no JS, so the hero counts as painted at once. */
+  .hero-in {
+    animation: hero-in 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  }
+  .hero-in-2 {
+    animation-delay: 0.1s;
+  }
+}
+/* Starts at 1%, not 0: Chrome skips fully transparent elements when it picks the largest paint, so a 0 start
+   made the header logo the LCP instead of the headline. 1% looks the same. */
+@keyframes hero-in {
+  from {
+    opacity: 0.01;
+    translate: 0 14px;
   }
 }
 
