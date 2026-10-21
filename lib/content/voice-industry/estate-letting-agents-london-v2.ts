@@ -265,6 +265,28 @@ export const markup = String.raw`
 </section>
 
 
+<!-- ===== COMPONENT: DemoVideo ===== -->
+<section id="video" data-component="DemoVideo" class="bg-paper">
+  <div class="container-omh py-20 lg:py-24">
+    <div class="mx-auto text-center">
+      <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Demo video</p>
+      <h2>See how it answers <span class="hl">your branch's calls</span></h2>
+    </div>
+    <div class="mx-auto mt-10 rounded-[24px] border border-line bg-surface p-3 sm:p-4">
+      <div class="v4l"><div class="video-frame" data-video data-video-id="H1fMzyN93W0" data-video-title="How an AI voice agent answers and routes your calls">
+        <button type="button" class="video-poster on-band has-thumb" data-video-play data-track="elv2_video_open" aria-label="Play video: How an AI voice agent answers and routes your calls (1:07)">
+          <img class="vp-thumb" src="/images/voice-agents/demo-video-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
+          <span class="vp-bottom" aria-hidden="true">
+            <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">How an AI voice agent answers and routes your calls</span></span>
+            <span class="vp-time tnum">1:07</span>
+          </span>
+        </button>
+      </div></div>
+      <p class="px-2 pb-1 pt-4 text-[16px] text-muted">Plays from YouTube's privacy-enhanced player, only when you press play.</p>
+    </div>
+  </div>
+</section>
 <!-- ===== COMPONENT: HowItWorksV2 ===== -->
 <section id="how" data-component="HowItWorksV2" class="bg-surface">
   <div class="container-omh py-20 lg:py-24" data-hw>
