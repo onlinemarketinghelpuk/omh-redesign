@@ -128,6 +128,7 @@ export const services = [
   { label: "SEO Services", href: "/seo-services", body: "Technical, on-page and content SEO for long-term organic growth." },
   { label: "Website Design", href: "/website-designs", body: "Fast, clear websites designed to turn visits into enquiries." },
   { label: "Local SEO Services", href: "/local-seo", body: "Google Business Profile and map pack visibility." },
+  { label: "AI Voice Agents", href: "/ai-voice-agents", body: "Answers every call and books appointments, day and night." },
   { label: "Amazon PPC Agency", href: "/amazon-ppc-advertising-agency-uk", body: "Sponsored ads that grow sales without wasting spend." },
   { label: "Paid Social Advertising", href: "/social-media-paid-advertising", body: "Meta, Instagram and TikTok ads that turn attention into leads." },
   { label: "Conversion Improvement", href: "/solutions/improve-website-conversion", body: "Testing and page changes that lift enquiries and sales." },
