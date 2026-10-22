@@ -4,12 +4,19 @@
 
 export type TocItem = { id: string; text: string };
 
+// The rail renders headings as text, so entities in the post HTML ("isn&#x27;t") are decoded here.
+const named: Record<string, string> = { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">", nbsp: " " };
+const decode = (s: string) =>
+  s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e: string) =>
+    e[0] === "#" ? String.fromCodePoint(e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : Number(e.slice(1))) : (named[e.toLowerCase()] ?? m),
+  );
+
 export function withContents(html: string) {
   const items: TocItem[] = [];
   const used = new Set<string>();
 
   const withIds = html.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (match, attrs: string, inner: string) => {
-    const text = inner.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    const text = decode(inner.replace(/<[^>]+>/g, "")).replace(/\s+/g, " ").trim();
     if (!text) return match;
 
     const base =

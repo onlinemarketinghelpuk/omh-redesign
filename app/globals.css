@@ -813,7 +813,7 @@ body {
 }
 
 .insight-prose h2 {
-  margin-top: 1.6em; /* was 2.1em; the gap above a heading read as a blank block (client, 22 Oct 2026) */
+  margin-top: 1em; /* was 2.1em; the gap above a heading read as a blank block (client, 22 Oct 2026) */
   font-size: var(--text-h2);
   line-height: var(--text-h2--line-height);
   scroll-margin-top: 110px;
