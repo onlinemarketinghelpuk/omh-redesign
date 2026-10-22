@@ -80,14 +80,14 @@ export const estateLandingMarkup = String.raw`
       <div class="marquee" id="strip" data-marquee style="--dur: 38s">
         <div class="marquee-track">
           <ul aria-labelledby="strip-title">
-          <li><a class="ind" href="#use-cases" data-ind="viewings"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Viewing</b><small>Requests</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="valuations"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><b>Valuation</b><small>Requests</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="lettings"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-key"/></svg></span><b>Rental</b><small>Enquiries</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="repairs"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-wrench"/></svg></span><b>Tenant</b><small>Repairs</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="offers"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tag"/></svg></span><b>Offers</b><small>&amp; Progression</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="landlords"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-users"/></svg></span><b>Landlord</b><small>Calls</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="questions"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-info"/></svg></span><b>Branch</b><small>Questions</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="afterhours"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-moon"/></svg></span><b>After</b><small>Hours</small></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="viewings"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Viewing Requests</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="valuations"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><b>Valuation Requests</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="lettings"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-key"/></svg></span><b>Rental Enquiries</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="repairs"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-wrench"/></svg></span><b>Tenant Repairs</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="offers"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tag"/></svg></span><b>Offers &amp; Progression</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="landlords"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-users"/></svg></span><b>Landlord Calls</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="questions"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-info"/></svg></span><b>Branch Questions</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="afterhours"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-moon"/></svg></span><b>After Hours</b></a></li>
           </ul>
         </div>
       </div>
@@ -277,13 +277,13 @@ export const estateLandingMarkup = String.raw`
       <h3 class="smallcaps text-muted">Part 2: What happens to a new buyer enquiry (Growth and Scale)</h3>
       <p class="h3 mt-3">From listing enquiry to a call back in under a minute.</p>
     <div class="lf mt-8" data-lf-flow role="group" aria-label="How a buyer enquiry moves from your listing to your viewing diary" data-lf-routes='["Route 1 of 3: the buyer books a viewing","Route 2 of 3: the buyer asks for a negotiator and is put through","Route 3 of 3: not ready yet, so the buyer goes into follow-up"]'>
-      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>Your listing goes live</b><small>On a portal or website</small></span></div>
+      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>Your listing goes live On a portal or website</b></span></div>
       <span class="lf-arrow" data-lf="a1" aria-hidden="true"></span>
-      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>A buyer enquires</b><small>A form, an email or a call</small></span></div>
+      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>A buyer enquires A form, an email or a call</b></span></div>
       <span class="lf-arrow" data-lf="a2" aria-hidden="true"></span>
-      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands</b><small>In your property software</small></span></div>
+      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands In your property software</b></span></div>
       <span class="lf-arrow" data-lf="a3" aria-hidden="true"></span>
-      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them</b><small>Within 60 seconds</small></span></div>
+      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them Within 60 seconds</b></span></div>
       <div class="lf-split" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="s1" d="M0 150 C50 150 50 50 100 50"/><path data-lf="s2" d="M0 150 L100 150"/><path data-lf="s3" d="M0 150 C50 150 50 250 100 250"/></svg>
         <span class="lf-arrow" data-lf="sm"></span>
@@ -291,16 +291,16 @@ export const estateLandingMarkup = String.raw`
       <div class="lf-branches">
         <p class="lf-then"><span class="sr-only">Step 5: </span>Then one of three things happens:</p>
         <ul aria-label="Step 5: the outcome">
-          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>A viewing booked</b><small>In your viewing diary</small></span></div></li>
-          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer</b><small>Put through to a negotiator</small></span></div></li>
-          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up</b><small>If they are not ready yet</small></span></div></li>
+          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>A viewing booked In your viewing diary</b></span></div></li>
+          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer Put through to a negotiator</b></span></div></li>
+          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up If they are not ready yet</b></span></div></li>
         </ul>
       </div>
       <div class="lf-merge" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="m1" d="M0 50 C50 50 50 150 100 150"/><path data-lf="m2" d="M0 150 L100 150"/><path data-lf="m3" d="M0 250 C50 250 50 150 100 150"/></svg>
         <span class="lf-arrow" data-lf="mm"></span>
       </div>
-      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags</b><small>Written back to your software</small></span></div>
+      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags Written back to your software</b></span></div>
     </div>
       <p class="lf-status" aria-hidden="true" data-lf-status>Follow a lead through it. Hover or tap an outcome to trace its route.</p>
       <dl class="kstats mt-10">

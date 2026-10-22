@@ -7,7 +7,7 @@ import { InsightMeta } from "@/components/insights/InsightMeta";
 import { InsightImage } from "@/components/insights/ArchiveRow";
 import { InsightsArchive } from "@/components/insights/InsightsArchive";
 import { getFeaturedInsights, getInsightTopics, getInsightsIndex } from "@/lib/sanity/insights";
-import { insightHref, type InsightIndexEntry } from "@/lib/content/insights-types";
+import { imageRatio, insightHref, type InsightIndexEntry } from "@/lib/content/insights-types";
 
 const pageSize = 12;
 
@@ -38,7 +38,7 @@ function FeaturedStories({ posts }: { posts: InsightIndexEntry[] }) {
             href={insightHref(lead)}
             className="group grid grid-cols-12 items-center gap-x-12 gap-y-8 max-lg:block"
           >
-            <span className="relative col-span-7 block aspect-[16/10] overflow-hidden rounded-media border border-line bg-soft max-lg:mb-8">
+            <span className="relative col-span-7 block aspect-[16/10] overflow-hidden rounded-media border border-line bg-soft max-lg:mb-8" style={imageRatio(lead)}>
               <InsightImage post={lead} priority />
             </span>
             <span className="col-span-5 block">

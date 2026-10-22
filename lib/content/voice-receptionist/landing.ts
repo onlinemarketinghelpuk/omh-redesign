@@ -72,14 +72,14 @@ export const receptionistLandingMarkup = String.raw`
       <div class="marquee" id="strip" data-marquee style="--dur: 38s">
         <div class="marquee-track">
           <ul aria-labelledby="strip-title">
-          <li><a class="ind" href="/ai-voice-agents/estate-letting-agents" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Estate</b><small>&amp; Letting Agents</small></a></li>
-          <li><a class="ind" href="/ai-voice-agents/dentists" data-ind="dental"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tooth"/></svg></span><b>Dental</b><small>Clinics</small></a></li>
-          <li><a class="ind" href="/ai-voice-agents/healthcare" data-ind="clinics"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-medical"/></svg></span><b>Clinics &amp;</b><small>Healthcare</small></a></li>
-          <li><a class="ind" href="/ai-voice-agents/plumbers" data-ind="plumbers"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-drop"/></svg></span><b>Plumbers</b><small>&nbsp;</small></a></li>
-          <li><a class="ind" href="/ai-voice-agents/heating-hvac" data-ind="hvac"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-flame"/></svg></span><b>Heating</b><small>Engineers</small></a></li>
-          <li><a class="ind" href="/ai-voice-agents/builders-construction" data-ind="builders"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-hardhat"/></svg></span><b>Builders</b><small>&amp; Contractors</small></a></li>
-          <li><a class="ind" href="/ai-voice-agents/law-firms" data-ind="law"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-scale"/></svg></span><b>Law</b><small>Firms</small></a></li>
-          <li><a class="ind" href="/ai-voice-agents/car-dealerships" data-ind="cars"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-car"/></svg></span><b>Car</b><small>Dealerships</small></a></li>
+          <li><a class="ind" href="/ai-voice-agents/estate-letting-agents" data-ind="estate"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Estate &amp; Letting Agents</b></a></li>
+          <li><a class="ind" href="/ai-voice-agents/dentists" data-ind="dental"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tooth"/></svg></span><b>Dental Clinics</b></a></li>
+          <li><a class="ind" href="/ai-voice-agents/healthcare" data-ind="clinics"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-medical"/></svg></span><b>Clinics &amp; Healthcare</b></a></li>
+          <li><a class="ind" href="/ai-voice-agents/plumbers" data-ind="plumbers"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-drop"/></svg></span><b>Plumbers</b></a></li>
+          <li><a class="ind" href="/ai-voice-agents/heating-hvac" data-ind="hvac"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-flame"/></svg></span><b>Heating Engineers</b></a></li>
+          <li><a class="ind" href="/ai-voice-agents/builders-construction" data-ind="builders"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-hardhat"/></svg></span><b>Builders &amp; Contractors</b></a></li>
+          <li><a class="ind" href="/ai-voice-agents/law-firms" data-ind="law"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-scale"/></svg></span><b>Law Firms</b></a></li>
+          <li><a class="ind" href="/ai-voice-agents/car-dealerships" data-ind="cars"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-car"/></svg></span><b>Car Dealerships</b></a></li>
           </ul>
         </div>
       </div>
@@ -226,11 +226,11 @@ export const receptionistLandingMarkup = String.raw`
     <div class="lf mt-8" data-lf-flow role="group" aria-label="How a lead moves from your ad to your calendar">
       <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-megaphone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>Someone clicks your ad</b><small><a href="/google-adwords-ppc" class="underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">Google</a> or Facebook</small></span></div>
       <span class="lf-arrow" data-lf="a1" aria-hidden="true"></span>
-      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>They enquire</b><small>Your website form, or a call</small></span></div>
+      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>They enquire Your website form, or a call</b></span></div>
       <span class="lf-arrow" data-lf="a2" aria-hidden="true"></span>
-      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands</b><small>Straight into your CRM</small></span></div>
+      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands Straight into your CRM</b></span></div>
       <span class="lf-arrow" data-lf="a3" aria-hidden="true"></span>
-      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them</b><small>Within 60 seconds</small></span></div>
+      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them Within 60 seconds</b></span></div>
       <div class="lf-split" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="s1" d="M0 150 C50 150 50 50 100 50"/><path data-lf="s2" d="M0 150 L100 150"/><path data-lf="s3" d="M0 150 C50 150 50 250 100 250"/></svg>
         <span class="lf-arrow" data-lf="sm"></span>
@@ -238,16 +238,16 @@ export const receptionistLandingMarkup = String.raw`
       <div class="lf-branches">
         <p class="lf-then"><span class="sr-only">Step 5: </span>Then one of three things happens:</p>
         <ul aria-label="Step 5: the outcome">
-          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>An appointment booked</b><small>On your calendar</small></span></div></li>
-          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer</b><small>Put straight through to you</small></span></div></li>
-          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up</b><small>If they are not ready yet</small></span></div></li>
+          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>An appointment booked On your calendar</b></span></div></li>
+          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer Put straight through to you</b></span></div></li>
+          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up If they are not ready yet</b></span></div></li>
         </ul>
       </div>
       <div class="lf-merge" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="m1" d="M0 50 C50 50 50 150 100 150"/><path data-lf="m2" d="M0 150 L100 150"/><path data-lf="m3" d="M0 250 C50 250 50 150 100 150"/></svg>
         <span class="lf-arrow" data-lf="mm"></span>
       </div>
-      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags</b><small>Written back to your CRM</small></span></div>
+      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags Written back to your CRM</b></span></div>
     </div>
       <p class="lf-status" aria-hidden="true" data-lf-status>Follow a lead through it. Hover or tap an outcome to trace its route.</p>
       <dl class="kstats mt-10">

@@ -595,6 +595,9 @@ html:has(.va-page dialog[open]) {
   [data-brand-step].is-on .step-num, .cap-tab[aria-selected="true"] .icon-tile
 ) { color: #fff; }
 
+/* Industry strip (client, 22 Oct 2026): each label is one line ("Car Dealerships"), so the item sizes to its text. */
+#va-page .v4l .ind { width: auto; padding-inline: 1rem; white-space: nowrap; }
+
 /* Hero (20 Oct 2026): a wider video and an intro that plays on load (VoiceMotion.tsx). */
 #va-page .hero4 .hero-video { width: min(100%, 1280px); max-width: none; }
 .motion-ready #va-page .hero-video .video-frame { transform: scale(.86); border-radius: 30px; }

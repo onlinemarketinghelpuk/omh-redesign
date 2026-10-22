@@ -1,7 +1,6 @@
 // Long-form posts run to 10+ minutes, so the article body earns a contents rail.
 // The imported WordPress HTML has no ids, so they are added here at render time
-// and the same pass returns the list the rail renders from. Each heading also
-// gets a hover anchor link so readers can share a section.
+// and the same pass returns the list the rail renders from.
 
 export type TocItem = { id: string; text: string };
 
@@ -24,7 +23,7 @@ export function withContents(html: string) {
     used.add(id);
     items.push({ id, text });
 
-    return `<h2${attrs.replace(/\s*id="[^"]*"/g, "")} id="${id}">${inner}<a class="heading-anchor" href="#${id}" aria-label="Link to this section">#</a></h2>`;
+    return `<h2${attrs.replace(/\s*id="[^"]*"/g, "")} id="${id}">${inner}</h2>`;
   });
 
   return { html: withIds, items };

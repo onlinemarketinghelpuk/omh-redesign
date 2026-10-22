@@ -75,14 +75,14 @@ export const plumbersLandingMarkup = String.raw`
       <div class="marquee" id="strip" data-marquee style="--dur: 38s">
         <div class="marquee-track">
           <ul aria-labelledby="strip-title">
-          <li><a class="ind" href="#use-cases" data-ind="emergencies"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-drop"/></svg></span><b>Burst Pipes</b><small>&amp; Leaks</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="repairs"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-wrench"/></svg></span><b>Repairs</b><small>&amp; Blockages</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="quotes"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><b>Quote</b><small>Visits</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="landlords"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-key"/></svg></span><b>Landlords</b><small>&amp; Agents</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="tenants"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Tenant</b><small>Reports</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="prices"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tag"/></svg></span><b>Callout</b><small>&amp; Prices</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="details"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><b>Photos</b><small>By Text</small></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="afterhours"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-moon"/></svg></span><b>Evenings</b><small>&amp; Weekends</small></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="emergencies"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-drop"/></svg></span><b>Burst Pipes &amp; Leaks</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="repairs"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-wrench"/></svg></span><b>Repairs &amp; Blockages</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="quotes"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><b>Quote Visits</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="landlords"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-key"/></svg></span><b>Landlords &amp; Agents</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="tenants"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-home"/></svg></span><b>Tenant Reports</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="prices"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-tag"/></svg></span><b>Callout &amp; Prices</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="details"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><b>Photos By Text</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="afterhours"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-moon"/></svg></span><b>Evenings &amp; Weekends</b></a></li>
           </ul>
         </div>
       </div>
@@ -271,13 +271,13 @@ export const plumbersLandingMarkup = String.raw`
       <h3 class="smallcaps text-muted">Part 2: What happens to a new job enquiry (Growth and Scale)</h3>
       <p class="h3 mt-3">From website enquiry to a call back in under a minute.</p>
     <div class="lf mt-8" data-lf-flow role="group" aria-label="How a new job enquiry moves from your website to your diary" data-lf-routes='["Route 1 of 3: the customer books a visit","Route 2 of 3: the customer asks for a person and is put through","Route 3 of 3: not ready yet, so the customer gets a follow-up"]'>
-      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-sparkle"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>A customer finds you</b><small>On Google or your website</small></span></div>
+      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-sparkle"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>A customer finds you On Google or your website</b></span></div>
       <span class="lf-arrow" data-lf="a1" aria-hidden="true"></span>
-      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>They enquire</b><small>A form, an email or a call</small></span></div>
+      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>They enquire A form, an email or a call</b></span></div>
       <span class="lf-arrow" data-lf="a2" aria-hidden="true"></span>
-      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands</b><small>In your job software</small></span></div>
+      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands In your job software</b></span></div>
       <span class="lf-arrow" data-lf="a3" aria-hidden="true"></span>
-      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them</b><small>Within 60 seconds</small></span></div>
+      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them Within 60 seconds</b></span></div>
       <div class="lf-split" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="s1" d="M0 150 C50 150 50 50 100 50"/><path data-lf="s2" d="M0 150 L100 150"/><path data-lf="s3" d="M0 150 C50 150 50 250 100 250"/></svg>
         <span class="lf-arrow" data-lf="sm"></span>
@@ -285,16 +285,16 @@ export const plumbersLandingMarkup = String.raw`
       <div class="lf-branches">
         <p class="lf-then"><span class="sr-only">Step 5: </span>Then one of three things happens:</p>
         <ul aria-label="Step 5: the outcome">
-          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>A visit booked</b><small>In your diary</small></span></div></li>
-          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer</b><small>Put through to your team</small></span></div></li>
-          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up</b><small>If they are not ready yet</small></span></div></li>
+          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>A visit booked In your diary</b></span></div></li>
+          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer Put through to your team</b></span></div></li>
+          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up If they are not ready yet</b></span></div></li>
         </ul>
       </div>
       <div class="lf-merge" aria-hidden="true">
         <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="m1" d="M0 50 C50 50 50 150 100 150"/><path data-lf="m2" d="M0 150 L100 150"/><path data-lf="m3" d="M0 250 C50 250 50 150 100 150"/></svg>
         <span class="lf-arrow" data-lf="mm"></span>
       </div>
-      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags</b><small>Written back to your system</small></span></div>
+      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags Written back to your system</b></span></div>
     </div>
       <p class="lf-status" aria-hidden="true" data-lf-status>Follow a lead through it. Hover or tap an outcome to trace its route.</p>
       <dl class="kstats mt-10">

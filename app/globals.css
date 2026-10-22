@@ -813,7 +813,7 @@ body {
 }
 
 .insight-prose h2 {
-  margin-top: 2.1em;
+  margin-top: 1.6em; /* was 2.1em; the gap above a heading read as a blank block (client, 22 Oct 2026) */
   font-size: var(--text-h2);
   line-height: var(--text-h2--line-height);
   scroll-margin-top: 110px;
@@ -1225,25 +1225,7 @@ select:focus-visible {
   }
 }
 
-/* Section anchors in articles: a "#" that appears on hover beside each h2. */
-.insight-prose h2 {
-  position: relative;
-}
-
-.insight-prose h2 .heading-anchor {
-  margin-left: 0.4em;
-  color: var(--color-amber-deep);
-  font-weight: 500;
-  text-decoration: none;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.insight-prose h2:hover .heading-anchor,
-.insight-prose h2 .heading-anchor:focus-visible {
-  opacity: 1;
-}
-
+/* A section opened from the contents rail flashes once. (The hover "#" beside each h2 was removed, client 22 Oct 2026.) */
 .insight-prose h2:target {
   animation: heading-flash 1.6s ease-out;
 }

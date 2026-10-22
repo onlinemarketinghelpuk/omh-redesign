@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@/components/ui/Button";
-import { insightHref, type InsightIndexEntry } from "@/lib/content/insights-types";
+import { imageRatio, insightHref, type InsightIndexEntry } from "@/lib/content/insights-types";
 
 // Shared by the server-rendered hub and the client-side archive filter.
 
@@ -30,7 +30,7 @@ export function ArchiveRow({ post }: { post: InsightIndexEntry }) {
       href={insightHref(post)}
       className="insight-row group grid grid-cols-[240px_minmax(0,1fr)_auto] items-center gap-x-9 gap-y-5 border-b border-line py-7 max-lg:grid-cols-[190px_minmax(0,1fr)_auto] max-md:grid-cols-1"
     >
-      <span className="relative block aspect-[16/10] overflow-hidden rounded-[10px] border border-line bg-soft">
+      <span className="relative block aspect-[16/10] overflow-hidden rounded-[10px] border border-line bg-soft" style={imageRatio(post)}>
         <InsightImage post={post} />
       </span>
 
