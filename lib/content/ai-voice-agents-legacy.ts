@@ -5,6 +5,7 @@
 // point at #book-demo-form. page.tsx places these between the rebuilt sections in ai-voice-agents-markup.ts.
 import { roiCalculator } from "@/lib/content/roi-calculator";
 import { voiceFaqs } from "@/lib/content/ai-voice-agents-markup";
+import { sampleCard } from "@/lib/content/sample-calls";
 
 // Comparison table from the SEO brief (19 Oct 2026). Guide figures: Connect Communications call answering
 // from £14.99 + VAT; UK receptionist base pay about £19k to £24k a year (Payscale) before employer costs;
@@ -314,91 +315,16 @@ export const legacyMarkup = String.raw`
 
     <div class="va-car mt-10" data-carousel data-autoplay>
     <div class="va-car-track" style="--car-w:380px" tabindex="0" aria-label="Sample calls, scroll sideways">
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
-          <button type="button" class="audio-toggle" data-audio-toggle aria-label="Play the recording" data-track="feedback_audio_play" data-track-name="Estate agency call"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" data-audio-wave role="slider" tabindex="0" aria-label="Recording position" aria-valuemin="0" aria-valuemax="141" aria-valuenow="0" aria-valuetext="0:00 of 2:21"><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i></div>
-            <span class="audio-time tnum" data-audio-time>0:00 / 2:21</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Estate agency: a property enquiry answered</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">A recorded call with our AI voice agent answering a property enquiry for an estate agency.</p>
-        </figcaption>
-        <audio preload="none" src="/audio/estate-agency-sample-call.m4a" data-audio></audio>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-4)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Heating engineer: an out-of-hours breakdown booked</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking an out-of-hours boiler breakdown call and booking the repair.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-2)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Letting agency: a viewing booked while the team is out</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent booking a viewing for a letting agency while the team is out.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-2)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Law firm: a new enquiry taken during court</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking a new enquiry for a law firm while fee earners are in court.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-3)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Car dealership: a test drive booked</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent booking a test drive or service slot for a car dealership.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-hard-hat"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">Builder: a quote request taken from site</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking a quote request for a builder while the team is on site.</p>
-        </figcaption>
-      </figure>
+${[
+  sampleCard("estate", { title: "Estate agency: a property enquiry answered", caption: "A recorded call with our AI voice agent answering a property enquiry for an estate agency.", offset: 0 }),
+  sampleCard("dental", { title: "Dental clinic: a patient call answered", caption: "A recorded call with our AI voice agent, set up for a dental practice.", offset: 4 }),
+  sampleCard("healthcare", { title: "Private clinic: a patient call answered", caption: "A recorded call with our AI voice agent, set up for a private clinic.", offset: 8 }),
+  sampleCard("plumbers", { title: "Plumber: a job call answered", caption: "A recorded call with our AI voice agent, set up for a plumbing business.", offset: 12 }),
+  sampleCard("heating", { title: "Heating engineer: an out-of-hours breakdown booked", caption: "Our AI voice agent taking an out-of-hours boiler breakdown call and booking the repair.", offset: 16 }),
+  sampleCard("builders", { title: "Builder: a quote request taken from site", caption: "Our AI voice agent taking a quote request for a builder while the team is on site.", offset: 20 }),
+  sampleCard("law", { title: "Law firm: a new enquiry taken during court", caption: "Our AI voice agent taking a new enquiry for a law firm while fee earners are in court.", offset: 24 }),
+  sampleCard("cars", { title: "Car dealership: a test drive booked", caption: "Our AI voice agent booking a test drive or service slot for a car dealership.", offset: 28 }),
+].join("\n")}
     </div>
     <div class="va-car-ui">
       <button type="button" class="va-car-btn" data-car-prev aria-label="Previous testimonial"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg></button>

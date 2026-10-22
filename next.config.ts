@@ -83,7 +83,8 @@ const nextConfig: NextConfig = {
       { source: "/ai-voice-agents/contractors-builders/:city", destination: "/ai-voice-agents/builders-construction/:city", permanent: true },
       { source: "/ai-voice-agents/dental-clinics-v2", destination: "/ai-voice-agents/dentists-v2", permanent: true },
       // SEO brief v2 §4.3: the sample call recording was renamed; the frozen oldv3 copy still uses the old name.
-      { source: "/audio/Realest%20voice%20agent.m4a", destination: "/audio/estate-agency-sample-call.m4a", permanent: true },
+      { source: "/audio/Realest%20voice%20agent.m4a", destination: "/audio/estate-agency-sample-call.mp3", permanent: true },
+      { source: "/audio/estate-agency-sample-call.m4a", destination: "/audio/estate-agency-sample-call.mp3", permanent: true },
       // SEO brief v2 §4.6 (21 Oct 2026): back to UK wording. This reverses the 20 Oct move to "real-estate-letting-agents".
       { source: "/ai-voice-agents/real-estate-letting-agents", destination: "/ai-voice-agents/estate-letting-agents", permanent: true },
       {

@@ -70,6 +70,7 @@ export const primaryNav: NavItem[] = [
       {
         links: [
           { label: "AI Voice Agents", href: "/ai-voice-agents", ready: true },
+          { label: "AI Receptionist", href: "/ai-voice-agents/receptionist", ready: true },
           { label: "AI Websites & Software", href: "/ai-services#ai-websites-software", ready: true },
           { label: "AI Technology Consulting", href: "/ai-services#ai-consulting", ready: true },
           { label: "AI Integrations", href: "/ai-services#ai-integrations", ready: true },
@@ -137,6 +138,7 @@ export const readyPages: NavLink[] = [
   { label: "SEO Services", href: "/seo-services", ready: true },
   { label: "AI Services", href: "/ai-services", ready: true },
   { label: "AI Voice Agents", href: "/ai-voice-agents", ready: true },
+  { label: "AI Receptionist", href: "/ai-voice-agents/receptionist", ready: true },
   { label: "Facebook Marketing", href: "/facebook-marketing-agency", ready: true },
   { label: "Instagram Marketing", href: "/instagram-marketing-agency", ready: true },
 ];
