@@ -812,24 +812,43 @@ body {
   text-wrap: balance;
 }
 
+/* Article headings (client, 22 Oct 2026): less space above, tied to the text they introduce, and marked in amber
+   like the site's eyebrows — a short bar over each h2, a rule beside each h3. */
 .insight-prose h2 {
-  margin-top: 1em; /* was 2.1em; the gap above a heading read as a blank block (client, 22 Oct 2026) */
+  margin-top: 1em; /* was 2.1em; the gap above a heading read as a blank block */
   font-size: var(--text-h2);
   line-height: var(--text-h2--line-height);
   scroll-margin-top: 110px;
 }
 
+.insight-prose h2::before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 4px;
+  margin-bottom: 0.4em;
+  border-radius: 2px;
+  background: var(--color-amber);
+}
+
 .insight-prose h3 {
-  margin-top: 1.9em;
+  margin-top: 1.3em; /* was 1.9em */
+  padding-left: 0.7em;
+  border-left: 3px solid var(--color-amber);
   font-size: var(--text-h3);
   line-height: var(--text-h3--line-height);
 }
 
 .insight-prose h4,
 .insight-prose h5 {
-  margin-top: 1.75em;
+  margin-top: 1.3em; /* was 1.75em */
+  color: var(--color-amber-deep);
   font-size: var(--text-h4);
   line-height: var(--text-h4--line-height);
+}
+
+.insight-prose :is(h2, h3, h4, h5) + * {
+  margin-top: 0.8em;
 }
 
 .insight-prose a {
