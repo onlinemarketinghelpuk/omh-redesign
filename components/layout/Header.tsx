@@ -139,7 +139,8 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
                           : item.columns.length === 3
                             ? "grid w-[620px] grid-cols-3 gap-x-6"
                             : item.columns.length === 2
-                              ? "grid w-[460px] grid-cols-2 gap-x-6"
+                              ? // Grows to its widest link so "AI Agent for Builders & Construction" stays on one line.
+                                "grid w-max min-w-[460px] grid-cols-2 gap-x-6"
                               : "w-[360px]"
                       }`}
                     >

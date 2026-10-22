@@ -65,27 +65,29 @@ export const primaryNav: NavItem[] = [
   },
   {
     // Mega menu (client, 22 Oct 2026): voice agents and their industry pages, then the sections of /ai-services.
+    // "Custom AI Voice Agents" leads; the rest of each column runs widest to narrowest by rendered width in the
+    // menu font (measured, not character count). Re-measure if a label changes.
     label: "AI Services",
     columns: [
       {
         heading: "AI Receptionist",
         links: [
-          { label: "AI Voice Agents", href: "/ai-voice-agents", ready: true },
-          { label: "Builders & Construction", href: "/ai-voice-agents/builders-construction", ready: true },
-          { label: "Car Dealerships", href: "/ai-voice-agents/car-dealerships", ready: true },
-          { label: "Dentists", href: "/ai-voice-agents/dentists", ready: true },
-          { label: "Estate & Letting Agents", href: "/ai-voice-agents/estate-letting-agents", ready: true },
-          { label: "Healthcare & Clinics", href: "/ai-voice-agents/healthcare", ready: true },
-          { label: "Heating & HVAC", href: "/ai-voice-agents/heating-hvac", ready: true },
-          { label: "Law Firms", href: "/ai-voice-agents/law-firms", ready: true },
-          { label: "Plumbers", href: "/ai-voice-agents/plumbers", ready: true },
+          { label: "Custom AI Voice Agents", href: "/ai-voice-agents", ready: true },
+          { label: "AI Agent for Builders & Construction", href: "/ai-voice-agents/builders-construction", ready: true },
+          { label: "AI Agent for Estate & Letting Agents", href: "/ai-voice-agents/estate-letting-agents", ready: true },
+          { label: "AI Agent for Healthcare & Clinics", href: "/ai-voice-agents/healthcare", ready: true },
+          { label: "AI Agent for Heating & HVAC", href: "/ai-voice-agents/heating-hvac", ready: true },
+          { label: "AI Agent for Car Dealerships", href: "/ai-voice-agents/car-dealerships", ready: true },
+          { label: "AI Agent for Law Firms", href: "/ai-voice-agents/law-firms", ready: true },
+          { label: "AI Agent for Plumbers", href: "/ai-voice-agents/plumbers", ready: true },
+          { label: "AI Agent for Dentists", href: "/ai-voice-agents/dentists", ready: true },
         ],
       },
       {
         heading: "Build with AI",
         links: [
-          { label: "AI Websites & Software", href: "/ai-services#ai-websites-software", ready: true },
           { label: "AI Technology Consulting", href: "/ai-services#ai-consulting", ready: true },
+          { label: "AI Websites & Software", href: "/ai-services#ai-websites-software", ready: true },
           { label: "AI Chatbot", href: "/ai-services#ai-chatbot", ready: true },
           { label: "AI UGC", href: "/ai-services#ai-ugc", ready: true },
         ],
@@ -148,7 +150,7 @@ export const readyPages: NavLink[] = [
   { label: "Terms & Conditions", href: "/terms", ready: true },
   { label: "SEO Services", href: "/seo-services", ready: true },
   { label: "AI Services", href: "/ai-services", ready: true },
-  { label: "AI Voice Agents", href: "/ai-voice-agents", ready: true },
+  { label: "Custom AI Voice Agents", href: "/ai-voice-agents", ready: true },
   { label: "AI Receptionist", href: "/ai-voice-agents/receptionist", ready: true },
   { label: "Facebook Marketing", href: "/facebook-marketing-agency", ready: true },
   { label: "Instagram Marketing", href: "/instagram-marketing-agency", ready: true },
