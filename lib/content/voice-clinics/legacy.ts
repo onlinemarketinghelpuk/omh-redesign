@@ -1,7 +1,8 @@
-// Body of /ai-voice-agents/healthcare, part 2 (21 Oct 2026): client feedback as a grid,
+// Body of /ai-voice-agents/healthcare, part 2 (21 Oct 2026): six sample calls as a grid (22 Oct 2026),
 // ROI calculator, FAQ and sticky bar, written for private clinics. Same structure, classes and data-* hooks as
 // lib/content/ai-voice-agents-legacy.ts (via lib/content/voice-estate/legacy.ts).
 import { roiCalculator } from "@/lib/content/roi-calculator";
+import { sampleCard } from "@/lib/content/sample-calls";
 import { clinicFaqs as voiceFaqs } from "@/lib/content/voice-clinics/markup";
 
 
@@ -23,10 +24,10 @@ export const clinicLegacyMarkup = String.raw`
   <div class="container-omh py-14 lg:py-20">
     <div>
       <div>
-        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Client feedback</p>
-        <h2>Clinic call recordings, <span class="hl">on the way</span></h2>
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Sample calls</p>
+        <h2>Clinic sample calls, <span class="hl">by call type</span></h2>
       </div>
-      <p class="mt-5 text-muted">Voice agents are a new service for us, so we haven't filled this wall with invented praise. Recordings of each of these clinic calls are being prepared and stay marked as coming soon until they're checked. Book a demo to hear one set up for a clinic today.</p>
+      <p class="mt-5 text-muted">Hear how our AI voice agent handles six everyday clinic calls, from booking a first visit to passing a worried patient to the clinical team. These are sample recordings with made-up clinics and patients. We'll add client results here once we've checked them with each client.</p>
     </div>
 
     <dl class="mt-12 grid border-y border-[var(--va-line-strong)] sm:grid-cols-3">
@@ -36,90 +37,14 @@ export const clinicLegacyMarkup = String.raw`
     </dl>
 
     <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-user"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for New Patients</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent taking a new patient's details and booking their physio assessment.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-3)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Urgent Clinic Calls</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent putting a patient who is worried after a procedure through to the nurse, with no advice given.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-2)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Appointments</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent moving a follow-up to a time that suits the patient.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-4)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Cancellations</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent rebooking a cancellation and offering the gap to the waitlist.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-1)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Follow-ups</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent calling a consented patient who is due a review.</p>
-        </figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-[var(--va-line-strong)]" data-audio-card data-audio-pending>
-        <div class="audio-panel relative aspect-video overflow-hidden rounded-[11px] bg-[var(--va-tint-3)]">
-          <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-stethoscope"/></svg></span>
-          <button type="button" class="audio-toggle" aria-disabled="true" aria-label="Recording coming soon" title="Recording coming soon"><svg class="icon i-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg></button>
-          <div class="absolute inset-x-4 bottom-3 flex items-center gap-3">
-            <div class="audio-wave" aria-hidden="true"><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:75%"></i><i style="--h:45%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:80%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:90%"></i><i style="--h:50%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:40%"></i><i style="--h:60%"></i><i style="--h:75%"></i><i style="--h:30%"></i><i style="--h:50%"></i><i style="--h:65%"></i><i style="--h:45%"></i><i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:90%"></i><i style="--h:50%"></i></div>
-            <span class="audio-time">Coming soon</span>
-          </div>
-        </div>
-        <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
-          <h3 class="!text-[20px] !leading-[1.3]">AI Voice Agent for Service Enquiries</h3>
-          <p class="mt-2 text-[16px] leading-[1.5] text-muted">Our AI voice agent answering a skin check enquiry and booking a consultation.</p>
-        </figcaption>
-      </figure>
+${[
+  sampleCard("clinicBooking", { title: "Appointment Booking", caption: "Our AI voice agent booking a new patient's first physiotherapy visit, offering two afternoon slots and texting a confirmation.", offset: 0 }),
+  sampleCard("clinicReschedule", { title: "Appointment Cancellation & Rescheduling", caption: "Our AI voice agent checking a second detail to find the right booking, then moving a physio appointment to Friday.", offset: 4 }),
+  sampleCard("clinicFaqs", { title: "General Information & FAQs", caption: "Our AI voice agent answering questions on Saturday hours and services, and passing a referral question to reception.", offset: 8 }),
+  sampleCard("clinicNewPatient", { title: "New Patient Registration & Enquiry", caption: "Our AI voice agent explaining how registration works, taking the caller's details and checking appointment times.", offset: 12 }),
+  sampleCard("clinicReminder", { title: "Appointment Follow-up & Reminders", caption: "Our AI voice agent calling a patient about Thursday's physio appointment and recording that they'll attend.", offset: 16 }),
+  sampleCard("clinicHandover", { title: "Patient Enquiry, Triage Routing & Human Handover", caption: "Our AI voice agent declining to assess symptoms, logging a callback for the clinical team and pointing emergencies to 999.", offset: 20 }),
+].join("\n")}
     </div>
   </div>
 </section>

@@ -1,6 +1,6 @@
 // The AI voice agent sample call recordings (client, 22 Oct 2026), one per industry, in public/audio/.
-// Lengths read from the MP3 headers. Used only by the Sample calls carousel on /ai-voice-agents (client,
-// 22 Oct 2026), so a file or length only changes here.
+// Lengths read from the MP3 headers. Used by the Sample calls carousel on /ai-voice-agents (client,
+// 22 Oct 2026) and the clinic call grid on /ai-voice-agents/healthcare, so a file or length only changes here.
 // Cards use the player hooks in VoiceAgentsScript ([data-audio-card], [data-audio-toggle], [data-audio-wave]).
 
 export const sampleCalls = {
@@ -12,6 +12,13 @@ export const sampleCalls = {
   builders: { file: "builders-sample-call.mp3", seconds: 90, icon: "hard-hat", tint: 3, name: "Builder call" },
   law: { file: "law-firm-sample-call.mp3", seconds: 65, icon: "scale", tint: 2, name: "Law firm call" },
   cars: { file: "car-dealership-sample-call.mp3", seconds: 83, icon: "car", tint: 4, name: "Car dealership call" },
+  // /ai-voice-agents/healthcare, one per clinic call type (client, 22 Oct 2026)
+  clinicBooking: { file: "AI Voice Agent for Clinics & Healthcare/1-Appointment Booking.MP3", seconds: 76, icon: "calendar", tint: 1, name: "Clinic appointment booking call" },
+  clinicReschedule: { file: "AI Voice Agent for Clinics & Healthcare/2-Appointment Cancellation & Rescheduling.MP3", seconds: 52, icon: "replay", tint: 3, name: "Clinic rescheduling call" },
+  clinicFaqs: { file: "AI Voice Agent for Clinics & Healthcare/3-General Information & FAQs.MP3", seconds: 49, icon: "message", tint: 2, name: "Clinic FAQ call" },
+  clinicNewPatient: { file: "AI Voice Agent for Clinics & Healthcare/4-New Patient Registration & Enquiry.MP3", seconds: 58, icon: "user", tint: 4, name: "Clinic new patient call" },
+  clinicReminder: { file: "AI Voice Agent for Clinics & Healthcare/5-Appointment Follow-up & Reminders.MP3", seconds: 36, icon: "clock", tint: 1, name: "Clinic reminder call" },
+  clinicHandover: { file: "AI Voice Agent for Clinics & Healthcare/6-Patient Enquiry, Triage Routing & Human Handover.MP3", seconds: 52, icon: "phone-forwarded", tint: 3, name: "Clinic triage handover call" },
 } as const;
 export type SampleCall = keyof typeof sampleCalls;
 
@@ -36,6 +43,6 @@ export function sampleCard(key: SampleCall, { title, caption, offset = 0 }: { ti
           <h3 class="!text-[20px] !leading-[1.3]">${title}</h3>
           <p class="mt-2 text-[16px] leading-[1.5] text-muted">${caption}</p>
         </figcaption>
-        <audio preload="none" src="/audio/${c.file}" data-audio></audio>
+        <audio preload="none" src="/audio/${c.file.split("/").map(encodeURIComponent).join("/")}" data-audio></audio>
       </figure>`;
 }
