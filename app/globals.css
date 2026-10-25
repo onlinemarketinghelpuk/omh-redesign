@@ -229,11 +229,23 @@ body {
 .hero-grid {
   position: relative;
   isolation: isolate;
+}
+
+/* The grid itself (client, 25 Oct 2026): neutral ink hairlines on their own layer, masked so they are
+   clearest behind the headline and fade out before the edges, the way product sites frame a hero.
+   Ink flips in dark mode, so no separate dark rule is needed. Tune strength with the 7% below. */
+.hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-image:
-    /* Grid lines in the accent (client, 25 Oct 2026): the old ink at 3.5% read as no grid at all. */
-    linear-gradient(rgb(var(--accent-rgb) / 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--accent-rgb) / 0.3) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(color-mix(in srgb, var(--color-ink) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-ink) 7%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  mask-image: radial-gradient(ellipse 75% 85% at 35% 25%, #000 25%, transparent 78%);
 }
 
 .hero-grid::after {
@@ -1229,7 +1241,6 @@ select:focus-visible {
   a light-on-light gradient was baked into a decorative background.
 */
 :root[data-theme="dark"] {
-  .hero-grid,
   .solution-hero,
   .recognition-field {
     background-image:
