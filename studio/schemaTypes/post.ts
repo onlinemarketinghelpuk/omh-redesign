@@ -102,6 +102,21 @@ export const post = defineType({
                   }),
                 ],
               },
+              // Inline download: highlight words, attach a file. Renders as a small
+              // brand button sitting in the sentence, so it never breaks the paragraph.
+              {
+                name: "fileLink",
+                title: "Download file",
+                type: "object",
+                fields: [
+                  defineField({
+                    name: "file",
+                    title: "File",
+                    type: "file",
+                    validation: (rule) => rule.required(),
+                  }),
+                ],
+              },
             ],
           },
         }),
@@ -109,6 +124,33 @@ export const post = defineType({
           type: "image",
           options: { hotspot: true },
           fields: [defineField({ name: "alt", title: "Alt text", type: "string" })],
+        }),
+        // Downloadable file (PDF, zip, template…) shown as a button in the article.
+        // Stored as a Sanity file asset, same CDN as images. ponytail: no size cap in
+        // schema; Sanity's own asset limit applies.
+        defineArrayMember({
+          type: "object",
+          name: "download",
+          title: "Download button",
+          fields: [
+            defineField({
+              name: "file",
+              title: "File",
+              type: "file",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "label",
+              title: "Button text",
+              type: "string",
+              description: "e.g. Download the checklist (PDF). Leave blank to use the file name.",
+              validation: (rule) => rule.max(80),
+            }),
+          ],
+          preview: {
+            select: { title: "label", file: "file.asset.originalFilename" },
+            prepare: ({ title, file }) => ({ title: title || file || "Download", subtitle: file ? `Download · ${file}` : "Download" }),
+          },
         }),
         // The 6 legacy posts containing tables land here verbatim, so the import
         // is lossless. Not offered as a new-content option in any meaningful way.

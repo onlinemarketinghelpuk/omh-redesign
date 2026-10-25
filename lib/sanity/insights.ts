@@ -121,7 +121,21 @@ export async function getInsight(slug: string, preview = false): Promise<Insight
       seoDescription,
       focusKeywords,
       "tags": tags[]->{ "slug": slug.current, name },
-      body[]{ ..., _type == "image" => { ..., "src": asset->url } }
+      body[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "fileLink" => { ..., "url": file.asset->url, "filename": file.asset->originalFilename }
+        },
+        _type == "image" => { ..., "src": asset->url },
+        _type == "download" => {
+          ...,
+          "url": file.asset->url,
+          "filename": file.asset->originalFilename,
+          "size": file.asset->size,
+          "extension": file.asset->extension
+        }
+      }
     }`;
   type Raw = RawEntry & { body: unknown; tags: InsightTopic[] | null; seoTitle: string | null; seoDescription: string | null; focusKeywords: string[] | null };
   const raw = preview
