@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { DownloadIcon } from "@sanity/icons/Download";
 
 // Mirrors lib/content/insights-types.ts. The pull script (scripts/pull-sanity.mjs)
 // serialises these documents back into content/insights-*.json, so field names
@@ -107,6 +108,7 @@ export const post = defineType({
               {
                 name: "fileLink",
                 title: "Download file",
+                icon: DownloadIcon,
                 type: "object",
                 fields: [
                   defineField({
@@ -132,6 +134,7 @@ export const post = defineType({
           type: "object",
           name: "download",
           title: "Download button",
+          icon: DownloadIcon,
           fields: [
             defineField({
               name: "file",
