@@ -494,43 +494,134 @@ html:has(.vi-page) {
 @keyframes vi-hv-pop { from { opacity: 0; } to { opacity: 1; } }
 
 /* ---------------------------------------------------------------- live demo
-   The "hear it" section (lib/content/lead-demo.ts). The assistant sits on the
-   dark band as the object of the section, so the frame gets a single edge and
-   a soft lift rather than a border inside a border. */
+   The "hear it" section (lib/content/lead-demo.ts). The assistant is the
+   object of the section, so it gets the light, the lift and the only accent
+   edge on the band. Everything else is deliberately quieter than it. */
 .ld-stage { position: relative; }
+/* A pool of light under the frame, so it reads as lit rather than pasted on. */
+.ld-stage::before {
+  content: "";
+  position: absolute;
+  inset: -8% -6% -14%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(60% 50% at 50% 45%, rgb(var(--accent-rgb) / .22), transparent 70%);
+  filter: blur(34px);
+  pointer-events: none;
+}
 .ld-frame {
   position: relative;
-  border-radius: 20px;
+  z-index: 1;
+  border-radius: 22px;
   overflow: hidden;
   background: var(--color-surface, #fff);
-  border: 1px solid rgb(255 255 255 / .14);
-  box-shadow: 0 50px 90px -40px rgb(0 0 0 / .65), 0 0 0 1px rgb(0 0 0 / .18);
+  border: 1px solid rgb(var(--accent-rgb) / .34);
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / .2),
+    0 2px 0 rgb(255 255 255 / .22) inset,
+    0 60px 100px -45px rgb(0 0 0 / .72);
 }
 .ld-frame iframe { display: block; border: 0; }
+/* Shorter on a phone, where 700px of frame pushed everything under it off the
+   first two screens. */
+.ld-iframe { height: 560px; }
+@media (min-width: 640px) { .ld-iframe { height: 660px; } }
+@media (min-width: 1280px) { .ld-iframe { height: 700px; } }
+
+/* It is genuinely live, and saying so is the difference between "a screenshot"
+   and "I can press that". */
+.ld-live {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px 5px 9px;
+  border-radius: 999px;
+  background: rgb(16 24 40 / .82);
+  color: #fff;
+  font: 600 12px/1 var(--font-display);
+  letter-spacing: .02em;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+.ld-live i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgb(74 222 128 / .7);
+  animation: ld-pulse 2s ease-out infinite;
+}
+@keyframes ld-pulse {
+  70% { box-shadow: 0 0 0 7px rgb(74 222 128 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(74 222 128 / 0); }
+}
 
 /* The suggested questions are buttons, not decoration: one click asks it. */
 .ld-ask {
-  display: block;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
   width: 100%;
   text-align: left;
-  border-radius: 14px;
+  border-radius: 16px;
   border: 1px solid rgb(255 255 255 / .16);
-  background: rgb(255 255 255 / .05);
-  padding: 14px 18px;
+  background: linear-gradient(180deg, rgb(255 255 255 / .07), rgb(255 255 255 / .035));
+  padding: 15px 18px;
   font: 400 16px/1.45 var(--font-body);
   color: var(--va-band-ink, #f7f6f2);
   cursor: pointer;
-  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
-.ld-ask:hover { background: rgb(255 255 255 / .1); border-color: rgb(var(--accent-rgb) / .55); }
-.ld-ask:active { transform: translateY(1px); }
-.ld-ask span { display: block; }
-.ld-ask span::before { content: "\201C"; }
-.ld-ask span::after { content: "\201D"; }
-/* The refusal is the one worth trying, so it is marked. */
-.ld-ask-key { border-color: rgb(var(--accent-rgb) / .5); background: rgb(var(--accent-rgb) / .12); }
-.ld-ask-key:hover { background: rgb(var(--accent-rgb) / .2); }
+.ld-ask:hover {
+  background: rgb(255 255 255 / .11);
+  border-color: rgb(var(--accent-rgb) / .6);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px -22px rgb(0 0 0 / .9);
+}
+.ld-ask:active { transform: translateY(1px); box-shadow: none; }
+.ld-ask:focus-visible { outline: 2px solid rgb(var(--accent-rgb) / .9); outline-offset: 3px; }
+.ld-n {
+  font: 700 11px/1 var(--font-display);
+  letter-spacing: .12em;
+  color: rgb(var(--accent-rgb) / .9);
+  padding-top: 3px;
+}
+.ld-q { display: block; }
+.ld-q::before { content: "\201C"; }
+.ld-q::after { content: "\201D"; }
+/* The refusal is the one worth trying, so it is marked and says why. */
+.ld-ask-key {
+  border-color: rgb(var(--accent-rgb) / .5);
+  background: linear-gradient(180deg, rgb(var(--accent-rgb) / .2), rgb(var(--accent-rgb) / .08));
+  padding-bottom: 36px;
+}
+.ld-ask-key:hover { background: rgb(var(--accent-rgb) / .24); }
+.ld-tag {
+  position: absolute;
+  left: 48px;
+  bottom: 11px;
+  font: 600 11px/1 var(--font-display);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgb(var(--accent-rgb) / .95);
+}
+
+/* Four short facts. Two columns everywhere: one column made a long ladder on a
+   phone, and these are scanned rather than read. */
+.ld-facts dt { text-wrap: balance; }
+
+@media (max-width: 420px) {
+  .ld-ask { padding: 13px 15px; gap: 10px; font-size: 15.5px; }
+  .ld-ask-key { padding-bottom: 32px; }
+  .ld-tag { left: 41px; }
+  .ld-iframe { height: 520px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .ld-ask { transition: none; }
+  .ld-live i { animation: none; }
 }

@@ -75,11 +75,15 @@ export const leadDemos = {
  */
 export const leadDemo = (key: keyof typeof leadDemos) => {
   const d = leadDemos[key];
+  /* The middle one is the refusal, and it is the one worth pressing, so it is
+     numbered like the others but carries a tag saying so. */
   const asks = d.tries
     .map(
       (t, i) =>
         `<button type="button" class="ld-ask${i === 1 ? " ld-ask-key" : ""}" data-ld-ask="${t.replace(/"/g, "&quot;")}" data-track="${key}_demo_ask">
-          <span>${t}</span>
+          <span class="ld-n" aria-hidden="true">0${i + 1}</span>
+          <span class="ld-q">${t}</span>
+          ${i === 1 ? '<span class="ld-tag" aria-hidden="true">Try this one</span>' : ""}
         </button>`,
     )
     .join("");
@@ -98,9 +102,12 @@ export const leadDemo = (key: keyof typeof leadDemos) => {
       </p>
     </div>
 
-    <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-start lg:gap-14">
+    <!-- Two columns only from 1280px. At the old lg (1024px) the prompt column
+         held its 420px and the assistant was squeezed into 468px, so the thing
+         the section exists for ended up smaller than the text beside it. -->
+    <div class="ld-grid mt-12 grid gap-10 xl:grid-cols-[minmax(0,400px)_minmax(0,1fr)] xl:items-start xl:gap-14">
 
-      <div class="lg:pt-2">
+      <div class="xl:pt-2">
         <p class="font-display text-[17px] font-semibold">Try one of these, as a ${d.role}</p>
         <div class="mt-4 grid gap-2.5" data-ld-asks>${asks}</div>
         <p class="mt-5 text-[15px] leading-relaxed text-band-muted">
@@ -108,7 +115,7 @@ export const leadDemo = (key: keyof typeof leadDemos) => {
           actually want an agent on your phone to do.
         </p>
 
-        <dl class="mt-9 grid gap-x-6 gap-y-5 border-t border-white/15 pt-7 sm:grid-cols-2">
+        <dl class="ld-facts mt-9 grid gap-x-6 gap-y-5 border-t border-white/15 pt-7 grid-cols-2">
           <div><dt class="font-display text-[16px] font-semibold">Answers in two rings</dt><dd class="mt-1 text-[14.5px] text-band-muted">Any hour, many calls at once.</dd></div>
           <div><dt class="font-display text-[16px] font-semibold">Books while you talk</dt><dd class="mt-1 text-[14.5px] text-band-muted">Into the diary, not a message.</dd></div>
           <div><dt class="font-display text-[16px] font-semibold">Says when it cannot</dt><dd class="mt-1 text-[14.5px] text-band-muted">It hands over rather than guessing.</dd></div>
@@ -118,13 +125,14 @@ export const leadDemo = (key: keyof typeof leadDemos) => {
 
       <div class="ld-stage">
         <div class="ld-frame">
+          <span class="ld-live"><i aria-hidden="true"></i>Live now</span>
           <iframe
             src="${d.host}/embed.html"
             title="Talk to the ${d.business} assistant"
             loading="lazy"
             allow="microphone"
             data-ld-frame
-            class="h-[640px] w-full sm:h-[700px]"
+            class="ld-iframe w-full"
           ></iframe>
         </div>
         <p class="mt-4 text-center text-[14px] text-band-muted">
