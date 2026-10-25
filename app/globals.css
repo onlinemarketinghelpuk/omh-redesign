@@ -230,8 +230,9 @@ body {
   position: relative;
   isolation: isolate;
   background-image:
-    linear-gradient(rgb(16 24 40 / 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(16 24 40 / 0.035) 1px, transparent 1px);
+    /* Grid lines in the accent (client, 25 Oct 2026): the old ink at 3.5% read as no grid at all. */
+    linear-gradient(rgb(var(--accent-rgb) / 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--accent-rgb) / 0.3) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
