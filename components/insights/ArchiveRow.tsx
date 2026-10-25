@@ -9,7 +9,7 @@ import { imageRatio, insightHref, type InsightIndexEntry } from "@/lib/content/i
 
 export function InsightImage({ post, priority = false }: { post: InsightIndexEntry; priority?: boolean }) {
   if (!post.featuredImage) {
-    return <span className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgb(215_154_55/0.24),transparent_28%),linear-gradient(145deg,#f8eddc,#efe1c9)]" />;
+    return <span className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgb(var(--accent-rgb)/0.24),transparent_28%),linear-gradient(145deg,#f8eddc,#efe1c9)]" />;
   }
 
   return (

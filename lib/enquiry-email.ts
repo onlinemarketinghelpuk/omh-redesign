@@ -14,8 +14,8 @@ const INK = "#101828";
 const MUTED = "#667085";
 const LINE = "#d9ddd8";
 const WARM = "#f7f6f2";
-const GOLD = "#d79a37";
-const GOLD_DEEP = "#8f5a0e";
+const GOLD = "var(--color-teal)";
+const GOLD_DEEP = "var(--color-amber-deep)";
 const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 
 const escape = (value: unknown) =>

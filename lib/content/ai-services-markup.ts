@@ -797,7 +797,7 @@ ${whyTable}
             ${field("demo-email", "email", "Email", "email", "email")}
           </div>
           <label class="mt-5 flex items-start gap-3 text-[15px] leading-snug text-muted">
-            <input type="checkbox" name="consent" required class="mt-1 h-5 w-5 shrink-0 accent-[#b97822]" aria-describedby="demo-consent-err" data-demo-field data-demo-message="Tick the box so we can contact you about your enquiry.">
+            <input type="checkbox" name="consent" required class="mt-1 h-5 w-5 shrink-0 accent-[var(--color-teal-dark)]" aria-describedby="demo-consent-err" data-demo-field data-demo-message="Tick the box so we can contact you about your enquiry.">
             <span>I'm happy for OMH to contact me about this enquiry. See our <a href="/privacy" class="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-2">privacy policy</a>.</span>
           </label>
           <p id="demo-consent-err" class="mt-1 text-[14px] font-semibold text-miss" data-demo-error hidden></p>

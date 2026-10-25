@@ -383,7 +383,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                       data-check=""
                       aria-invalid={booking.errors.Consent ? true : undefined}
                       aria-describedby={booking.errors.Consent ? `${uid}-consent-err` : undefined}
-                      className="mt-1 size-5 shrink-0 accent-[#b97822]"
+                      className="mt-1 size-5 shrink-0 accent-[var(--color-teal-dark)]"
                     />
                     <span>
                       I&apos;m happy for OMH to contact me about this demo. See our{" "}

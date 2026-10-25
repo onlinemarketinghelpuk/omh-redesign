@@ -37,7 +37,7 @@ export function SolutionLeadForm({
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-5 text-body font-semibold text-[#f5d394] underline underline-offset-4"
+          className="mt-5 text-body font-semibold text-[var(--accent-light)] underline underline-offset-4"
         >
           Send another enquiry
         </button>
@@ -64,13 +64,13 @@ export function SolutionLeadForm({
       <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
         <div>
           <label htmlFor={nameId} className="mb-1.5 block text-body font-semibold text-oninverse">
-            Name <span className="text-[#f5d394]">*</span>
+            Name <span className="text-[var(--accent-light)]">*</span>
           </label>
           <input id={nameId} name="name" required autoComplete="name" className={controlClass} />
         </div>
         <div>
           <label htmlFor={emailId} className="mb-1.5 block text-body font-semibold text-oninverse">
-            Work email <span className="text-[#f5d394]">*</span>
+            Work email <span className="text-[var(--accent-light)]">*</span>
           </label>
           <input id={emailId} name="email" type="email" required autoComplete="email" className={controlClass} />
         </div>
@@ -82,7 +82,7 @@ export function SolutionLeadForm({
         </div>
         <div className="col-span-2 max-sm:col-span-1">
           <label htmlFor={detailId} className="mb-1.5 block text-body font-semibold text-oninverse">
-            {prompt} <span className="text-[#f5d394]">*</span>
+            {prompt} <span className="text-[var(--accent-light)]">*</span>
           </label>
           <textarea id={detailId} name="details" required rows={4} className={`${controlClass} min-h-32 py-3 leading-relaxed`} />
         </div>

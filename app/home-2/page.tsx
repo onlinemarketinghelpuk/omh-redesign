@@ -82,7 +82,7 @@ function StarRating({ label }: { label: string }) {
 
 function CardArrow({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-warm text-amber-deep transition-[color,background-color,border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:scale-[1.035] group-hover:border-teal group-hover:bg-teal group-hover:text-white group-hover:shadow-[0_12px_26px_-18px_rgb(215_154_55/0.8)] max-sm:size-10 ${className}`}>
+    <span className={`inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-warm text-amber-deep transition-[color,background-color,border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:scale-[1.035] group-hover:border-teal group-hover:bg-teal group-hover:text-white group-hover:shadow-[0_12px_26px_-18px_rgb(var(--accent-rgb)/0.8)] max-sm:size-10 ${className}`}>
       <ArrowRight className="size-5 transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-0.5" />
     </span>
   );

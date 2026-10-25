@@ -9,7 +9,7 @@
     outlines (1px --color-line, radius 12px) that darken to ink on hover. No drop shadows, no textures.
   - Type: nothing under 18px on this page (header excluded: its nav tiers are width-tuned in Header.tsx).
     Labels are sentence case, not tracked capitals.
-  - Gold (#b9741b on white, #d98e2b on black): hero headline, eyebrow labels, hover states. Always white type on gold.
+  - Gold (var(--accent-dark) on white, var(--accent) on black): hero headline, eyebrow labels, hover states. Always white type on gold.
   - The closing CTA and footer are the one black block in the light theme.
   To adopt site-wide: move the two palettes into :root / :root[data-theme="dark"] in globals.css.
 */
@@ -25,9 +25,9 @@
   --color-soft-dark: #e6e6e6;
   --color-inverse: #0a0a0a;
   --color-oninverse: #ffffff;
-  --color-teal: #b9741b;
-  --color-teal-dark: #d98e2b;
-  --color-amber: #b9741b;
+  --color-teal: var(--accent-dark);
+  --color-teal-dark: var(--accent);
+  --color-amber: var(--accent-dark);
   --color-amber-deep: #0a0a0a;
   --color-tint-blue: #ffffff;
   --color-tint-green: #ffffff;
@@ -57,9 +57,9 @@
   --color-soft-dark: #242424;
   --color-inverse: #0a0a0a;
   --color-oninverse: #ffffff;
-  --color-teal: #d98e2b;
-  --color-teal-dark: #e9a349;
-  --color-amber: #d98e2b;
+  --color-teal: var(--accent);
+  --color-teal-dark: var(--accent-light);
+  --color-amber: var(--accent);
   --color-amber-deep: #ffffff;
   --color-tint-blue: #0a0a0a;
   --color-tint-green: #0a0a0a;

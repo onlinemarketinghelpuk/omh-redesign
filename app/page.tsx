@@ -76,7 +76,7 @@ function StarRating({ label }: { label: string }) {
 
 function CardArrow({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-warm text-amber-deep transition-[color,background-color,border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:scale-[1.035] group-hover:border-teal group-hover:bg-teal group-hover:text-white group-hover:shadow-[0_12px_26px_-18px_rgb(215_154_55/0.8)] max-sm:size-10 ${className}`}>
+    <span className={`inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-warm text-amber-deep transition-[color,background-color,border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:scale-[1.035] group-hover:border-teal group-hover:bg-teal group-hover:text-white group-hover:shadow-[0_12px_26px_-18px_rgb(var(--accent-rgb)/0.8)] max-sm:size-10 ${className}`}>
       <ArrowRight className="size-5 transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-0.5" />
     </span>
   );
@@ -165,7 +165,7 @@ export default async function Home() {
                 <p className="text-[14px] font-semibold uppercase tracking-[0.12em] text-amber">Connected delivery</p>
                 <p className="mt-2 text-body font-semibold">Plan &rarr; Build &rarr; Measure</p>
               </div>
-              <div className="absolute -right-5 top-9 flex size-24 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_20px_45px_-22px_rgb(215_154_55/0.75)] max-sm:right-3 max-sm:top-4 max-sm:size-20">
+              <div className="absolute -right-5 top-9 flex size-24 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_20px_45px_-22px_rgb(var(--accent-rgb)/0.75)] max-sm:right-3 max-sm:top-4 max-sm:size-20">
                 <Gauge className="mb-1 size-7" aria-hidden />
                 <span className="text-[14px] font-semibold">Growth ready</span>
               </div>
@@ -199,7 +199,7 @@ export default async function Home() {
                     <div className="program-icon">
                       <ProgramIcon className="size-8" strokeWidth={1.8} aria-hidden />
                     </div>
-                    <p className="mt-7 inline-flex self-start rounded-full bg-teal/20 px-3 py-1.5 text-[14px] font-semibold uppercase tracking-[0.1em] text-[#f5d394]">
+                    <p className="mt-7 inline-flex self-start rounded-full bg-teal/20 px-3 py-1.5 text-[14px] font-semibold uppercase tracking-[0.1em] text-[var(--accent-light)]">
                       {program.range}
                     </p>
                     <h3 className="mt-5 font-sans text-[clamp(25px,22px+0.45vw,31px)] font-semibold leading-tight">
@@ -322,7 +322,7 @@ export default async function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute bottom-5 right-2 flex size-28 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_0_42px_rgb(215_154_55/0.42)] max-sm:bottom-4 max-sm:size-20">
+                <div className="absolute bottom-5 right-2 flex size-28 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_0_42px_rgb(var(--accent-rgb)/0.42)] max-sm:bottom-4 max-sm:size-20">
                   <span className="font-sans text-[26px] font-semibold">One</span>
                   <span className="mt-1 text-[14px] font-semibold uppercase tracking-[0.1em] text-inverse/70">joined-up team</span>
                 </div>
@@ -530,7 +530,7 @@ export default async function Home() {
                   const WhoIcon = whoIcons[index] ?? Store;
                   return (
                     <li key={item} className="rounded-[8px] border border-oninverse/12 bg-oninverse/[0.04] p-7">
-                      <span className="grid size-12 place-items-center rounded-[8px] bg-teal/20 text-[#f5d394]">
+                      <span className="grid size-12 place-items-center rounded-[8px] bg-teal/20 text-[var(--accent-light)]">
                         <WhoIcon className="size-6" strokeWidth={1.7} aria-hidden />
                       </span>
                       <p className="mt-6 font-sans text-[clamp(19px,18px+0.3vw,22px)] font-semibold leading-snug">{item}</p>

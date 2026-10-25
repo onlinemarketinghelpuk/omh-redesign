@@ -59,7 +59,7 @@ function SolutionHero({ content }: { content: SolutionPageContent }) {
                       <span className="font-sans text-[clamp(19px,2vw,26px)] font-semibold first-letter:uppercase">
                         {item}
                       </span>
-                      <span className="text-[18px] tabular-nums text-[#f5d394]">0{index + 1}</span>
+                      <span className="text-[18px] tabular-nums text-[var(--accent-light)]">0{index + 1}</span>
                     </div>
                     {index < all.length - 1 && <div className="ml-7 h-8 w-px bg-[#f2c675]/55" />}
                   </div>
@@ -172,7 +172,7 @@ function ComparisonSection({ content }: { content: SolutionPageContent }) {
               </div>
             ))}
             <div className="rounded-card bg-inverse p-8 text-oninverse max-sm:p-6">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-[#f5d394]">{comparison.verdict.label}</p>
+              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-[var(--accent-light)]">{comparison.verdict.label}</p>
               <p className="mt-4 text-body leading-relaxed text-oninverse/90">{comparison.verdict.body}</p>
             </div>
           </div>
@@ -208,7 +208,7 @@ function OutcomesSection({ content }: { content: SolutionPageContent }) {
                     : "min-h-[320px] border-r border-oninverse/15 px-8 py-9 first:pl-0 last:border-r-0 max-md:min-h-0 max-md:border-r-0 max-md:px-0"
                 }
               >
-                <span className="font-sans text-[18px] font-semibold text-[#f5d394]">{item.number}</span>
+                <span className="font-sans text-[18px] font-semibold text-[var(--accent-light)]">{item.number}</span>
                 <h3 className="mt-16 font-sans text-[clamp(24px,2vw,31px)] font-semibold leading-tight max-md:mt-7">{item.title}</h3>
                 <p className="mt-5 text-body leading-relaxed text-oninverse/62">{item.body}</p>
               </article>
@@ -436,9 +436,9 @@ function FinalSection({ content }: { content: SolutionPageContent }) {
               <h2 className="mt-6 font-sans text-[clamp(36px,4.4vw,60px)] font-semibold leading-[1.04] text-balance">{content.final.title}</h2>
               <p className="mt-6 text-body leading-relaxed text-oninverse/66">{content.final.body}</p>
               <div className="mt-9 space-y-3 text-body text-oninverse/58">
-                <p><span className="mr-3 text-[#f5d394]">01</span>Your enquiry is read by a person.</p>
-                <p><span className="mr-3 text-[#f5d394]">02</span>We review the context before suggesting a service.</p>
-                <p><span className="mr-3 text-[#f5d394]">03</span>You receive a clear recommendation on the next step.</p>
+                <p><span className="mr-3 text-[var(--accent-light)]">01</span>Your enquiry is read by a person.</p>
+                <p><span className="mr-3 text-[var(--accent-light)]">02</span>We review the context before suggesting a service.</p>
+                <p><span className="mr-3 text-[var(--accent-light)]">03</span>You receive a clear recommendation on the next step.</p>
               </div>
             </div>
             <SolutionLeadForm need={content.final.formNeed} prompt={content.final.formPrompt} submitLabel={content.final.cta} eventPrefix={content.slug.replaceAll("-", "_")} />

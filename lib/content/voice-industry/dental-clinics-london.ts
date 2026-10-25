@@ -189,7 +189,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: LondonHero ===== -->
-<section id="hero" data-component="LondonHero" class="relative overflow-hidden bg-[color-mix(in_srgb,#d79a37_10%,var(--paper))]">
+<section id="hero" data-component="LondonHero" class="relative overflow-hidden bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--paper))]">
   <div class="container-omh relative pb-16 pt-6 lg:pb-20">
     <nav aria-label="Breadcrumb" class="text-[14.5px] text-muted">
       <ol class="flex flex-wrap items-center gap-1.5">
@@ -461,7 +461,7 @@ export const markup = String.raw`
         <div class="mt-2 grid grid-cols-3 gap-1 rounded-[12px] border border-line bg-surface p-1 text-[14.5px] font-semibold" role="group" aria-labelledby="rt-type-label">
           <button type="button" class="min-h-[44px] rounded-[9px] px-2 aria-pressed:bg-ink aria-pressed:text-paper" aria-pressed="true" data-rt-type="newpt" data-team="Reception team" data-do="books a new patient visit in the {b} diary and texts the forms and directions." data-say="I'd like to register as a new patient." data-track="london_dental_routing_type" data-track-name="New patient">New patient</button><button type="button" class="min-h-[44px] rounded-[9px] px-2 aria-pressed:bg-ink aria-pressed:text-paper" aria-pressed="false" data-rt-type="urgent" data-team="Dentist on call" data-do="offers the first urgent slot at {b}, or puts the caller through to the dentist on call. It never gives clinical advice." data-say="I've got really bad toothache." data-track="london_dental_routing_type" data-track-name="Toothache">Toothache</button><button type="button" class="min-h-[44px] rounded-[9px] px-2 aria-pressed:bg-ink aria-pressed:text-paper" aria-pressed="false" data-rt-type="treatment" data-team="Treatment coordinator" data-do="books a consultation at {b} and sends the treatment coordinator the details." data-say="I'm interested in Invisalign." data-track="london_dental_routing_type" data-track-name="Treatment">Treatment</button>
         </div>
-        <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,#d79a37_10%,var(--surface))] p-4" aria-live="polite" data-rt-result>
+        <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--surface))] p-4" aria-live="polite" data-rt-result>
           <p class="font-display text-[16px] font-semibold">Enter a postcode to see the route</p>
           <p class="mt-1 text-[15px] text-muted">For example, SW4 goes to Clapham.</p>
         </div>
@@ -612,7 +612,7 @@ export const markup = String.raw`
         <span class="text-[14px] font-semibold text-band-hl tnum" data-lc-timer>00:42</span>
       </div>
       <ol class="mt-4 space-y-3" aria-label="Call transcript">
-        <li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Good evening, Halden Dental. I'm Amy, the practice's AI assistant. How can I help?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Hi, I've just moved to Islington. Can I register as a new patient?</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Of course. Are you looking for NHS or private care?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Private is fine.</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Lovely. I have Thursday at 9:10 or Friday at 2:30 with Dr Patel. Which suits you?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Thursday, please.</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(215_154_55/0.16)]">Booked: Thursday at 9:10 with Dr Patel. I'll text you the new patient forms and directions now.</p></li>
+        <li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(var(--accent-rgb)/0.16)]">Good evening, Halden Dental. I'm Amy, the practice's AI assistant. How can I help?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Hi, I've just moved to Islington. Can I register as a new patient?</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(var(--accent-rgb)/0.16)]">Of course. Are you looking for NHS or private care?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Private is fine.</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(var(--accent-rgb)/0.16)]">Lovely. I have Thursday at 9:10 or Friday at 2:30 with Dr Patel. Which suits you?</p></li><li class="lc-line text-right" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Caller</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[16px_4px_16px_16px] border border-band-line">Thursday, please.</p></li><li class="lc-line" data-lc-line><p class="text-[12.5px] font-semibold text-band-muted">Ella, AI assistant</p><p class="mt-1 inline-block max-w-[88%] px-3.5 py-2.5 text-left text-[15.5px] leading-snug rounded-[4px_16px_16px_16px] bg-[rgb(var(--accent-rgb)/0.16)]">Booked: Thursday at 9:10 with Dr Patel. I'll text you the new patient forms and directions now.</p></li>
         <li class="lc-line" data-lc-line><p class="flex items-center gap-2 rounded-[12px] bg-[rgb(142_211_174/0.12)] px-4 py-3 text-[15px] font-semibold text-band-ok"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>New patient visit booked: Thu 09:10 with Dr Patel. Forms sent.</p></li>
       </ol>
       <p class="mt-4 text-[13px] text-band-muted">A fictional example. The practice and caller are made up.</p>
@@ -721,7 +721,7 @@ export const markup = String.raw`
           <h3 class="mt-3 !text-[26px]">NHS urgent care requirement</h3>
           <p class="mt-5 text-[13.5px] font-semibold uppercase tracking-wide text-muted">What has changed</p>
           <ul class="mt-2 space-y-2 text-[16px]"><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Urgent care within 24 hours, and other unscheduled care within a week</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>At least 8.2% of contract value delivered as urgent care: 11 urgent courses per £10,000</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Each urgent course of treatment is paid at £75</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Patients referred by NHS 111 and walk-ins count towards the total</span></li></ul>
-          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,#d79a37_10%,var(--surface))] p-4">
+          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--surface))] p-4">
             <p class="flex items-center gap-2 font-display text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>How your agent handles these calls</p>
             <p class="mt-2 text-[16px]">Books callers into the urgent slots you set aside, following your rules, and logs every urgent call for your team. Anyone who needs a clinician is put through. It never gives clinical advice.</p>
           </div>
@@ -732,7 +732,7 @@ export const markup = String.raw`
           <h3 class="mt-3 !text-[26px]">New NHS dental charges</h3>
           <p class="mt-5 text-[13.5px] font-semibold uppercase tracking-wide text-muted">What has changed</p>
           <ul class="mt-2 space-y-2 text-[16px]"><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Band 1, including a check-up: £27.90</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Band 2, such as fillings: £76.60</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Band 3, such as crowns: £332.10</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Urgent treatment: £27.90</span></li></ul>
-          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,#d79a37_10%,var(--surface))] p-4">
+          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--surface))] p-4">
             <p class="flex items-center gap-2 font-display text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>How your agent handles these calls</p>
             <p class="mt-2 text-[16px]">Quotes the current NHS charges and your private price list, exactly as you approve them. It doesn't tell callers which treatment they need.</p>
           </div>
@@ -743,7 +743,7 @@ export const markup = String.raw`
           <h3 class="mt-3 !text-[26px]">New NHS care pathways</h3>
           <p class="mt-5 text-[13.5px] font-semibold uppercase tracking-wide text-muted">What has changed</p>
           <ul class="mt-2 space-y-2 text-[16px]"><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Fixed-fee pathways for patients with complex needs, such as several teeth with decay</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Dental nurses with extra training can apply fluoride varnish to children without a full examination</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Fissure sealants have moved to Band 2</span></li></ul>
-          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,#d79a37_10%,var(--surface))] p-4">
+          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--surface))] p-4">
             <p class="flex items-center gap-2 font-display text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>How your agent handles these calls</p>
             <p class="mt-2 text-[16px]">Books the appointment type you tell it to for each kind of call. Clinical decisions stay with your dentists.</p>
           </div>
@@ -754,7 +754,7 @@ export const markup = String.raw`
           <h3 class="mt-3 !text-[26px]">NHS access in your area</h3>
           <p class="mt-5 text-[13.5px] font-semibold uppercase tracking-wide text-muted">What has changed</p>
           <ul class="mt-2 space-y-2 text-[16px]"><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Between 36% and 44% of adults in each London NHS area saw an NHS dentist in two years</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>North East London has the fewest NHS dentists per person</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Many callers ask whether you are taking on NHS patients</span></li></ul>
-          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,#d79a37_10%,var(--surface))] p-4">
+          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--surface))] p-4">
             <p class="flex items-center gap-2 font-display text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>How your agent handles these calls</p>
             <p class="mt-2 text-[16px]">Tells callers whether you are taking NHS patients, using wording you keep up to date, then offers your waiting list or a private visit.</p>
           </div>
@@ -765,7 +765,7 @@ export const markup = String.raw`
           <h3 class="mt-3 !text-[26px]">Health data needs extra care</h3>
           <p class="mt-5 text-[13.5px] font-semibold uppercase tracking-wide text-muted">What has changed</p>
           <ul class="mt-2 space-y-2 text-[16px]"><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Information about a patient's health is special category data under UK GDPR</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>You need a clear reason to collect it and must keep it secure</span></li><li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true"></span><span>Only collect what you need for the appointment</span></li></ul>
-          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,#d79a37_10%,var(--surface))] p-4">
+          <div class="mt-6 rounded-[16px] border-l-[3px] border-gold bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--surface))] p-4">
             <p class="flex items-center gap-2 font-display text-[16px] font-semibold"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg>How your agent handles these calls</p>
             <p class="mt-2 text-[16px]">Asks only the questions you approve and keeps call notes in line with your data agreement with us.</p>
           </div>
@@ -988,7 +988,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
     </div>
 
     <div role="tablist" aria-label="How would you like to start?" class="mx-auto mt-10 grid gap-3 md:grid-cols-3">
-      <button type="button" role="tab" id="bk-tab-call" aria-controls="bk-panel-call" aria-selected="true" tabindex="0" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_#d79a37] sm:p-5" data-bk-path="call" data-track="booking_path" data-track-name="Book a 30-minute demo">
+      <button type="button" role="tab" id="bk-tab-call" aria-controls="bk-panel-call" aria-selected="true" tabindex="0" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_var(--color-teal)] sm:p-5" data-bk-path="call" data-track="booking_path" data-track-name="Book a 30-minute demo">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-band-hl group-aria-selected:bg-gold group-aria-selected:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></span>
           <span class="min-w-0">
             <span class="mb-1 inline-block rounded-full bg-gold px-2 py-0.5 text-[12px] font-semibold text-navy">Most popular</span>
@@ -996,7 +996,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
             <span class="mt-1 block text-[14.5px] leading-snug text-band-muted">Pick a time. We show you an agent set up for a dental practice.</span>
           </span>
         </button>
-      <button type="button" role="tab" id="bk-tab-ring" aria-controls="bk-panel-ring" aria-selected="false" tabindex="-1" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_#d79a37] sm:p-5" data-bk-path="ring" data-track="booking_path" data-track-name="Ring our demo agent now">
+      <button type="button" role="tab" id="bk-tab-ring" aria-controls="bk-panel-ring" aria-selected="false" tabindex="-1" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_var(--color-teal)] sm:p-5" data-bk-path="ring" data-track="booking_path" data-track-name="Ring our demo agent now">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-band-hl group-aria-selected:bg-gold group-aria-selected:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-phone-incoming"/></svg></span>
           <span class="min-w-0">
             
@@ -1004,7 +1004,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
             <span class="mt-1 block text-[14.5px] leading-snug text-band-muted">Hear one in action straight away, any time of day.</span>
           </span>
         </button>
-      <button type="button" role="tab" id="bk-tab-back" aria-controls="bk-panel-back" aria-selected="false" tabindex="-1" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_#d79a37] sm:p-5" data-bk-path="back" data-track="booking_path" data-track-name="Ask for a call back">
+      <button type="button" role="tab" id="bk-tab-back" aria-controls="bk-panel-back" aria-selected="false" tabindex="-1" class="bk-path group flex items-start gap-4 rounded-[16px] border border-band-line bg-band-surface p-4 text-left transition-colors hover:border-[rgb(247_246_242/.4)] aria-selected:border-gold aria-selected:shadow-[0_0_0_1px_var(--color-teal)] sm:p-5" data-bk-path="back" data-track="booking_path" data-track-name="Ask for a call back">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-gold/20 text-band-hl group-aria-selected:bg-gold group-aria-selected:text-navy" aria-hidden="true"><svg class="icon !h-5 !w-5" aria-hidden="true" focusable="false"><use href="#i-phone-forwarded"/></svg></span>
           <span class="min-w-0">
             
@@ -1083,7 +1083,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
               </div>
             </div>
             <label class="mt-5 flex items-start gap-3 text-[15px] leading-snug text-muted">
-              <input type="checkbox" name="consent" required class="mt-1 h-5 w-5 shrink-0 accent-[#b97822]" aria-describedby="bk-consent-err" data-bk-field>
+              <input type="checkbox" name="consent" required class="mt-1 h-5 w-5 shrink-0 accent-[var(--color-teal-dark)]" aria-describedby="bk-consent-err" data-bk-field>
               <span>I'm happy for OMH to contact me about this demo. See our <a href="/privacy" class="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-2">privacy policy</a>.</span>
             </label>
             <p id="bk-consent-err" class="mt-1 text-[14px] font-semibold text-miss" hidden></p>
