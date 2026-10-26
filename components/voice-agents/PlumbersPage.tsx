@@ -14,13 +14,13 @@ import { SITE, faqSchema } from "@/lib/schema";
 
 const path = "/ai-voice-agents/plumbers";
 const url = `${SITE}${path}`;
-const ogTitle = "AI Voice Agent for Plumbers | OMH";
-const ogDescription = "Every call answered, even when you're under a sink. Built, tested and managed by a UK team.";
+const ogTitle = "AI Voice Agent & AI Receptionist for Plumbers | OMH";
+const ogDescription = "An AI receptionist for plumbers: every call answered, even when you're under a sink. Built, tested and managed by a UK team.";
 
 export const plumbersMetadata: Metadata = {
   title: { absolute: "AI Voice Agent & AI Receptionist for Plumbers | UK | OMH" },
   description:
-    "An AI voice agent for UK plumbers. Answers calls 24/7, sends burst pipes and leaks to whoever is on call, books repairs and quote visits and takes landlord jobs. Never diagnoses a fault. Built and managed by OMH.",
+    "An AI receptionist for plumbers in the UK. Answers calls 24/7, sends burst pipes and leaks to whoever is on call, books repairs and quote visits. Never diagnoses a fault.",
   alternates: { canonical: url },
   openGraph: { type: "website", locale: "en_GB", siteName: "Online Marketing Help", title: ogTitle, description: ogDescription, url },
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription },

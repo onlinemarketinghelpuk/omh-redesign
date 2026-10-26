@@ -1,5 +1,5 @@
 // Body of /ai-voice-agents/car-dealerships, part 2 (21 Oct 2026): client feedback as a grid,
-// ROI calculator, FAQ and sticky bar, written for car dealerships. Same structure, classes and data-* hooks as
+// ROI calculator, FAQ and sticky bar, written for car dealerships and garages. Same structure, classes and data-* hooks as
 // lib/content/ai-voice-agents-legacy.ts (via lib/content/voice-clinics/legacy.ts).
 import { roiCalculator } from "@/lib/content/roi-calculator";
 import { carsFaqs as voiceFaqs } from "@/lib/content/voice-cars/markup";
@@ -133,19 +133,19 @@ ${roiCalculator("car-dealerships")}
   <div class="container-omh grid gap-10 py-20 lg:grid-cols-[minmax(0,.72fr)_minmax(0,1.28fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-8 lg:py-28">
     <div>
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
-      <h2>What car dealerships<br class="max-sm:hidden"> <span class="hl">ask us first</span></h2>
-      <p class="mt-5 text-muted">Straight answers on stock, test drives, part-exchange, finance, dealer systems and customer data. See how our <a href="/ai-voice-agents" class="text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">AI voice agent</a> works for other UK businesses.</p>
+      <h2>What dealerships and garages<br class="max-sm:hidden"> <span class="hl">ask us first</span></h2>
+      <p class="mt-5 text-muted">Straight answers on stock, test drives, part-exchange, finance, servicing, dealer systems and customer data. See how our <a href="/ai-voice-agents" class="text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">AI voice agent</a> works for other UK businesses.</p>
     </div>
 
     <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2 lg:sticky lg:top-28 lg:self-start">
       <div class="rounded-[16px] bg-band p-6 text-band-ink on-band">
-        <p class="font-display text-body font-semibold">Ask us about your dealership</p>
+        <p class="font-display text-body font-semibold">Ask us about your dealership or garage</p>
         <p class="mt-1.5 text-[16px] leading-snug text-band-muted">Talk to a person on our UK team about your sales, service and parts calls. No sales script.</p>
         <p class="mt-4 text-[15px] font-semibold uppercase tracking-[0.12em] text-band-muted">On the demo, try</p>
         <ol class="mt-2 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">1</span><span>Book a test drive for the grey hybrid SUV in stock</span></li>
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">2</span><span>Ask what your car is worth in part-exchange and hear what it does</span></li>
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">3</span><span>Ask something it can't know, and hear what it does</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">1</span><span>Ask about a car in stock and book a test drive</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">2</span><span>Book an MOT for next week</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">3</span><span>Ask for a finance quote and hear where it puts you through</span></li>
         </ol>
         <ul class="mt-4 space-y-1 text-[16px]">
           <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>020 3489 3934</a></li>

@@ -1,5 +1,6 @@
 // Body of /ai-voice-agents/car-dealerships (21 Oct 2026): the rebuilt sections of /ai-voice-agents (what-is with
-// the call player, capabilities, use cases, pricing), written for UK franchised and independent car dealerships.
+// the call player, capabilities, use cases, pricing), written for UK car dealerships, garages and MOT centres. Copy from the
+// 26 Oct 2026 "Automotive AI Receptionist" brief; the "Dealerships and garages" section (#dealerships) is this page's own.
 // Same structure, classes and data-* hooks as lib/content/ai-voice-agents-markup.ts (via
 // lib/content/voice-estate/markup.ts), so VoiceAgentsScript, VoiceMotion and voice-agents.css work unchanged.
 // Composed by components/voice-agents/CarsPage.tsx. Prices and plans are the main page's.
@@ -25,6 +26,8 @@ export const carsFaqs: { q: string; a: string; cat: keyof typeof carsFaqTopics }
     a: "Yes. It books into your workshop diary by job type and length, follows your rules on drop-off times, courtesy cars and waiting customers, and texts a confirmation. It never diagnoses a fault. Calls about a warning light or a car that may not be safe to drive go to your service advisors." },
   { cat: "workshop", q: "What happens with parts enquiries?",
     a: "It takes the part needed, the registration and the caller's details, then passes them to your parts desk, or puts the call through on Growth and Scale. It only gives parts prices or stock levels you have approved." },
+  { cat: "workshop", q: "Does it work for independent garages and MOT centres?",
+    a: "Yes. An AI receptionist for garages books MOTs, services and repair checks into your workshop diary, takes the registration and the problem, and passes anything that needs a technician to your team. It never diagnoses a fault over the phone." },
   { cat: "customers", q: "Can the agent put a caller through to sales, service or parts?",
     a: "Yes, on the Growth and Scale plans. You set the rules: finance questions, buyers ready to reserve, complaints and anyone who asks for a person can be put through to the right desk. Outside your hours, and on the Starter plan, the agent takes a detailed message and sends it to your team." },
   { cat: "customers", q: "Our showroom is busiest on Saturdays. Can it help then?",
@@ -47,8 +50,8 @@ export const carsFaqs: { q: string; a: string; cat: keyof typeof carsFaqTopics }
     a: "Only customers who have given appropriate consent, such as those who asked for MOT and service reminders or a call back about a car. We follow the UK PECR rules, screen lists against the Telephone Preference Service where required and act on opt-outs straight away. We don't run cold calling campaigns." },
   { cat: "working", q: "Will it replace our sales team or service advisors?",
     a: "No. It takes the overflow and the routine calls, so your team can look after the customers in the showroom and the workshop. You choose when it answers: only when the lines are busy, only out of hours, or first on every call." },
-  { cat: "working", q: "How much does an AI voice agent cost for a car dealership?",
-    a: "Our managed AI voice agent starts at £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for several sites or brands, is £849 a month. Extra minutes cost 60p each on every plan." },
+  { cat: "working", q: "How much does an AI receptionist for car dealerships cost?",
+    a: "Our AI receptionist for car dealerships and garages (the Starter plan) is £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for dealer groups with several sites or brands, is £849 a month. Extra minutes cost 60p each on every plan." },
   { cat: "working", q: "Is there a minimum contract?",
     a: "Plans are billed monthly with 30 days' notice. We set out the terms in writing before you start, including what's included each month and what counts as extra. Every invoice shows your included minutes and any overage." },
 ];
@@ -81,7 +84,7 @@ const industries = [
   { id: "service", icon: "wrench", label: "Service and MOT", full: "Service, MOT and repairs", tint: 4,
     time: "Call · Mon 08:10", status: "Service desk checking cars in", caller: "My car's MOT is due next week. Can you do a service at the same time?", agent: "Yes. I have Tuesday at 8:15 for both. Will you wait, or would you like a courtesy car?", booked: "MOT and service booked: Tue 08:15",
     h3: "Service, MOT and repairs: the workshop diary filled",
-    p: "The workshop phones peak at drop-off time, just when the service desk is checking cars in. The agent books services, MOTs and repairs by your rules and leaves fault questions to your advisors.",
+    p: "The workshop phones at dealerships, garages and MOT centres peak at drop-off time, just when the service desk is checking cars in. The agent books services, MOTs and repairs by your rules and leaves fault questions to your advisors.",
     bullets: ["Books by job type and length into the workshop diary", "Follows your rules on drop-off times, waiting customers and courtesy cars", "Puts warning-light worries through to a service advisor"], note: "Never diagnoses a fault." },
   { id: "parts", icon: "package", label: "Parts", full: "Parts enquiries", tint: 1,
     time: "Call · 11:30", status: "Parts desk on another line", caller: "I need a pair of wiper blades for my car. Do you have them?", agent: "I'll pass that to the parts desk. Can I take your registration so they can check the right part?", booked: "Sent to the parts desk: reg taken",
@@ -149,7 +152,7 @@ const swap: Record<string, string> = {
   "A fourth location or department (a priced add-on)": "A fourth site, brand or department (a priced add-on)",
 };
 const straps: Record<string, string> = {
-  starter: "One site, one agent answering and booking test drives. Best for a single showroom with straightforward phones.",
+  starter: "One site, one agent answering and booking. Best for an independent garage or small dealer.",
   growth: "For a dealership where the phone sells cars and fills the workshop. Where most dealerships should start.",
   scale: "For several sites or brands, each with its own lines, on one managed service.",
 };
@@ -200,35 +203,35 @@ const capabilities = [
   { id: "answer", icon: "phone", title: "First-ring answering, 24/7",
     vis: `<div class="mini"><span class="icon-tile">${icon("phone")}</span><span class="min-w-0"><b class="block">Call · Sat 11:20</b><span class="text-[14px] font-semibold text-ok">Answered on the first ring</span></span></div>
           <div class="mini">${icon("users", "text-ok")}<span>Busy Saturday: 5 callers answered at once</span></div>`,
-    agent: "Every call answered straight away, including Saturdays, evenings and bank holidays. When the showroom is full and the sales team are out on test drives, every caller still gets through.",
-    omh: "We divert your showroom and workshop lines, set your opening hours and agree what it picks up and when: overflow, out of hours or every call. Nothing goes live without your sign-off." },
-  { id: "voice", icon: "mic", title: "Sounds like your dealership",
-    vis: `<div class="mini"><span class="icon-tile">${icon("mic")}</span><span class="min-w-0"><b class="block">Grace · Your assistant</b><span class="text-[14px] text-muted">Your dealership name, greeting and voice</span></span></div>
-          <div class="mini justify-center py-3"><span class="mini-wave"><i></i><i></i><i></i><i></i><i></i></span><span class="ml-2 text-[14px] font-semibold">"Thanks for calling Ashgrove Motors, how can I help?"</span></div>`,
-    agent: "Your dealership name, your greeting and a British voice that suits your customers. Callers can interrupt, change their mind or ask for a person, and OMH is never mentioned on a call.",
-    omh: "We write the script around the real reasons people ring your showroom and workshop, then you make test calls and adjust it with us until it sounds like your dealership." },
-  { id: "knows", icon: "book", title: "Knows your stock and prices",
-    vis: `<div class="flex flex-wrap justify-center gap-2"><span class="mini-chip">${icon("check", "text-ok")}Stock list</span><span class="mini-chip">${icon("check", "text-ok")}Service prices</span><span class="mini-chip">${icon("check", "text-ok")}Test drive rules</span><span class="mini-chip">${icon("check", "text-ok")}Opening hours</span><span class="mini-chip">${icon("check", "text-ok")}Directions</span></div>
+    agent: "Every call answered straight away, on a busy Saturday or after the showroom has closed. Several callers answered at once. No voicemail and no engaged tone.",
+    omh: "We divert your lines, set your hours and agree what it picks up and when. Nothing goes live without your sign-off." },
+  { id: "voice", icon: "mic", title: "Sounds like your business",
+    vis: `<div class="mini"><span class="icon-tile">${icon("mic")}</span><span class="min-w-0"><b class="block">Grace · Your assistant</b><span class="text-[14px] text-muted">Your business name, greeting and voice</span></span></div>
+          <div class="mini justify-center py-3"><span class="mini-wave"><i></i><i></i><i></i><i></i><i></i></span><span class="ml-2 text-[14px] font-semibold">"Thanks for calling Ashford Road Motors, how can I help?"</span></div>`,
+    agent: "A natural British voice that greets callers with your business name and knows your brands.",
+    omh: "We pick the voice and tone with you, write the greeting and test it until it sounds right for your customers." },
+  { id: "knows", icon: "book", title: "Knows your stock, prices and service menu",
+    vis: `<div class="flex flex-wrap justify-center gap-2"><span class="mini-chip">${icon("check", "text-ok")}Stock list</span><span class="mini-chip">${icon("check", "text-ok")}Prices</span><span class="mini-chip">${icon("check", "text-ok")}Service menu</span><span class="mini-chip">${icon("check", "text-ok")}Test drive rules</span><span class="mini-chip">${icon("check", "text-ok")}Opening hours</span><span class="mini-chip">${icon("check", "text-ok")}Directions</span></div>
           <div class="mini">${icon("book", "text-hl")}<span>Trained on <b>your</b> dealership, not the internet</span></div>`,
-    agent: "It answers only from information you approve: the stock list you sign off, service and MOT prices, test drive rules, opening hours and directions. It never quotes a finance rate or a part-exchange value.",
-    omh: "We load that information for you, and on Growth and Scale we read a sample of transcripts every month, see what it couldn't answer and add the answers worth adding." },
-  { id: "books", icon: "calendar", title: "Books test drives and workshop slots without clashes",
+    agent: "Answers from the stock list, prices and service menu you approve, exactly as you word them.",
+    omh: "We load your stock feed or list, service menu and team, and update them whenever you send us changes." },
+  { id: "books", icon: "calendar", title: "Books test drives and workshop slots",
     vis: `<div class="vcal-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
           <div class="vcal"><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span class="busy"></span><span class="new"></span><span class="busy"></span><span></span><span class="busy"></span><span></span><span></span><span class="busy"></span><span></span></div>
           <div class="mini">${icon("calendar", "text-ok")}<span><b>Test drive booked:</b> Wed 11:00, no clash</span></div>`,
-    agent: "It checks the live diary by sales executive, car and workshop slot, follows your rules on test drives, drop-off times and courtesy cars, and texts the customer a confirmation.",
-    omh: "We connect your diary, plus your dealer management system on Growth and Scale, and tell you on the discovery call what connects directly and what needs a workaround." },
-  { id: "transfer", icon: "transfer", title: "Warm transfer to sales, service or finance", plan: "Growth and Scale",
+    agent: "Offers real slots and books test drives, MOTs and services with the registration and details attached.",
+    omh: "We connect your diaries and set the rules: slot lengths, who takes test drives and how much notice the workshop needs." },
+  { id: "transfer", icon: "transfer", title: "Puts callers through to sales, service or parts", plan: "Growth and Scale",
     vis: `<div class="mini"><span class="icon-tile">${icon("user")}</span><span class="min-w-0"><b class="block">Caller asks about finance</b><span class="text-[14px] text-muted">"What would my monthly payments be?"</span></span></div>
           <div class="mini">${icon("transfer", "text-hl")}<span><b>Transferring to the finance team</b> with a quick briefing</span></div>`,
-    agent: "Finance questions, buyers ready to reserve and anyone who asks for a person are put through to the right desk with a quick briefing first, so nobody repeats themselves. Outside your hours it takes a detailed message instead.",
-    omh: "You choose who gets put through and when: finance, buyers ready to reserve, complaints, anyone who asks for a person. We set those rules and test them with you." },
-  { id: "leads", icon: "timer", title: "Calls new enquiries back and follows up", plan: "Growth and Scale",
+    agent: "Passes each caller to the right team, with everything they said passed across. Finance calls always go to a person.",
+    omh: "We build your routing rules, with a backup if the first person doesn't answer." },
+  { id: "leads", icon: "timer", title: "Calls back new enquiries", plan: "Growth and Scale",
     vis: `<div class="mini"><span class="icon-tile">${icon("car")}</span><span class="min-w-0"><b class="block">New enquiry · 14:02</b><span class="text-[14px] text-muted">Used hybrid SUV, website enquiry</span></span></div>
           <div class="mini">${icon("timer", "text-ok")}<span><b>Called back</b> in 42 seconds</span></div>
           <div class="mini justify-between"><span><b>MOT due</b></span><span class="text-[14px] font-semibold text-ok">MOT booked</span></div>`,
-    agent: "New enquiries from your website and listing sites that land in your system get a call within 60 seconds, while the buyer is still comparing forecourts. It also calls customers who agreed to MOT and service reminders.",
-    omh: "Every call is summarised and emailed to you; on Growth and Scale the details go into your dealer system, and on Scale calls answered, test drives booked and transfers are reported beside your Google Ads and website figures." },
+    agent: "Rings back new web and portal enquiries within a minute, while the buyer is still looking.",
+    omh: "We agree the timings and wording with you, and only call people who have asked to hear from you." },
 ];
 
 const capTab = (c: (typeof capabilities)[number], i: number) =>
@@ -294,21 +297,21 @@ export const carsMarkup = String.raw`
 <section id="what-is" data-component="WhatIs" class="on-band relative overflow-hidden bg-band text-band-ink">
   <div class="pointer-events-none absolute right-[-10%] top-1/2 h-[620px] w-[620px] -translate-y-1/2 rounded-full bg-gold/15 blur-3xl" aria-hidden="true"></div>
   <div class="container-omh relative grid grid-cols-[minmax(0,1fr)] items-start gap-10 py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-24" data-brand
-    data-brand-biz='[{"id":"sales","label":"Sales","name":"Ashgrove Motors","city":"Birmingham","num":"0121 496 0347","agent":"Grace","kind":"dealership&#39;s","initials":"AM","voice":"British English, warm and friendly","never":"Gives finance advice or quotes a rate","transfer":"Finance questions go to the finance team","caller":"Is the grey hybrid SUV on your website still for sale? Could I test drive it?","reply":"It is. I have Saturday at 10:30 with Dan. Shall I book that?","booked":"Test drive booked: Sat 10:30","summary":"Summary sent to Dan: test drive booked, has a car to part-exchange"},{"id":"service","label":"Service","name":"Tarnside Autos","city":"Leeds","num":"0113 496 0274","agent":"Hannah","kind":"service team&#39;s","initials":"TA","voice":"British English, clear and upbeat","never":"Diagnoses a fault","transfer":"Warning-light worries go to a service advisor","caller":"My car&#39;s MOT is due next week. Can you do a service at the same time?","reply":"Yes. I have Tuesday at 8:15 for both. Shall I book it?","booked":"MOT and service booked: Tue 08:15","summary":"Workshop diary updated: MOT and service, customer will wait, text sent"},{"id":"partex","label":"Part-exchange","name":"Hollins Car Sales","city":"Manchester","num":"0161 496 0519","agent":"Priya","kind":"dealership&#39;s","initials":"HC","voice":"British English, calm and measured","never":"Values a car over the phone","transfer":"Part-exchange details go to the used car manager","caller":"What would you give me for my 2019 hatchback in part-exchange?","reply":"I can&#39;t value it over the phone, but I can book an appraisal. Could you do Thursday at 5pm?","booked":"Appraisal booked: Thu 17:00","summary":"Sent to the used car manager: reg AB19 CDE, 41,000 miles, appraisal booked"}]'>
+    data-brand-biz='[{"id":"sales","label":"Sales","name":"Ashford Road Motors","city":"Birmingham","num":"0121 496 0731","agent":"Grace","kind":"dealership&#39;s","initials":"AR","voice":"British English, warm and friendly","never":"Gives finance advice or quotes a rate","transfer":"Finance questions go to the finance team","caller":"Is the grey Golf on your website still available?","reply":"Yes, the 2021 Golf Life in grey is still in stock. I have Saturday at 10:30 with Daniel. Shall I book it and text you the details?","booked":"Test drive booked: Sat 10:30","summary":"Summary sent to Daniel: test drive booked for Saturday at 10:30, details texted to the caller"},{"id":"service","label":"Service and MOT","name":"Ashford Road Motors","city":"Birmingham","num":"0121 496 0731","agent":"Hannah","kind":"workshop&#39;s","initials":"AR","voice":"British English, clear and upbeat","never":"Diagnoses a fault","transfer":"Warning-light worries go to a service advisor","caller":"My MOT is due next week. Can you fit me in?","reply":"Of course. Can I take the registration? I have Tuesday at 8:30 or Thursday at 1pm.","booked":"MOT booked: Tue 08:30","summary":"Workshop diary updated: MOT booked for Tuesday at 8:30, service offered at the same time"},{"id":"garage","label":"Independent garage","name":"Millbrook Garage","city":"Leeds","num":"0113 496 0264","agent":"Priya","kind":"garage&#39;s","initials":"MG","voice":"British English, calm and measured","never":"Diagnoses a fault over the phone","transfer":"Anything that needs a technician goes to your team","caller":"There&#39;s a grinding noise when I brake.","reply":"Thanks for telling me. I can&#39;t diagnose it over the phone, but I can book it in for a brake check. Is tomorrow at 9am any good?","booked":"Brake check booked: tomorrow 09:00","summary":"Sent to the workshop: brake check booked for 9am, call the customer before doing any work"}]'>
     <div class="lg:col-start-1 lg:row-start-1">
-      <h2>What is an AI voice agent <span class="hl">for car dealerships?</span></h2>
-      <p class="mt-5 text-band-muted">An AI voice agent is software that answers and makes phone calls for your dealership in natural, spoken conversation. It works out whether the caller wants a car, a test drive, a part-exchange appraisal, a service or a part, answers from the stock list and prices you have approved, books test drives and workshop slots into your diary and passes anything it can't handle to the right person, with a summary of the call.</p>
-      <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained showroom receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and dealer systems, and keep improving it.</p>
+      <h2>What is an AI receptionist <span class="hl">for car dealerships?</span></h2>
+      <p class="mt-5 text-band-muted">An AI receptionist for car dealerships is software that answers and makes phone calls for your showroom and workshop in natural, spoken conversation. You may also hear it called an automotive AI receptionist. It works out whether the caller wants a car, a test drive, a part-exchange appraisal, a service, an MOT or a part, answers from the stock list and prices you have approved, books test drives and workshop slots into your diary and passes anything it can't handle to the right person, with a summary of the call.</p>
+      <p class="mt-4 text-band-muted">On Starter it does exactly that job. On Growth and Scale it works as a full AI voice agent: it puts callers through to sales, service or parts, calls back new enquiries and works across several sites or brands. Either way, OMH writes the script, connects your diary and dealer system where it allows, and runs it for you. See our <a href="/ai-voice-agents/receptionist">AI receptionist plan</a>, or how our <a href="/ai-voice-agents">AI voice agent</a> works across UK businesses.</p>
     </div>
 
     <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2">
       <h3 class="!text-[22px]">How a call goes</h3>
       <p class="mt-1 text-[16px] text-band-muted">Watch the phone. Each step lights up as the call reaches it.</p>
       <ol class="mt-5 space-y-2.5" aria-live="off">
-        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="1"><span class="step-num" aria-hidden="true">1</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It listens.</strong><span class="text-band-muted">It hears whether it's a stock question, a test drive, a service or a finance question as the caller speaks.</span></span></li>
-        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="2"><span class="step-num" aria-hidden="true">2</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It works out the answer.</strong><span class="text-band-muted">It matches the request to your stock list, prices and booking rules.</span></span></li>
-        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="3"><span class="step-num" aria-hidden="true">3</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It replies and acts.</strong><span class="text-band-muted">It answers in a natural voice, books the test drive or puts the call through.</span></span></li>
-        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="4"><span class="step-num" aria-hidden="true">4</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It reports back.</strong><span class="text-band-muted">Your team gets a summary of every call. Callers can interrupt or change their mind at any point.</span></span></li>
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="1"><span class="step-num" aria-hidden="true">1</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It listens.</strong><span class="text-band-muted">It hears whether it's a sales enquiry, a test drive, a service or MOT, or a parts call as the caller speaks.</span></span></li>
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="2"><span class="step-num" aria-hidden="true">2</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It works out the answer.</strong><span class="text-band-muted">It checks the request against your stock list, prices, diaries and booking rules.</span></span></li>
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="3"><span class="step-num" aria-hidden="true">3</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It replies and acts.</strong><span class="text-band-muted">It answers in a natural voice, books the slot or puts the call through.</span></span></li>
+        <li class="flex gap-4 rounded-[14px] border border-band-line p-4" data-brand-step="4"><span class="step-num" aria-hidden="true">4</span><span class="text-[16px] leading-snug"><strong class="block font-display text-[17.5px] font-semibold">It reports back.</strong><span class="text-band-muted">Your team gets a summary of every call, with name, number, registration and what the caller needs.</span></span></li>
       </ol>
     </div>
 
@@ -318,8 +321,8 @@ export const carsMarkup = String.raw`
         <div class="mt-3 flex flex-wrap items-center gap-2">
           <div role="radiogroup" aria-label="Team" class="flex flex-wrap gap-2" data-brand-group="biz">
             <button type="button" role="radio" aria-checked="true" tabindex="0" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="sales" data-track="branding_biz" data-track-name="Sales">Sales</button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="service" data-track="branding_biz" data-track-name="Service">Service</button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="partex" data-track="branding_biz" data-track-name="Part-exchange">Part-exchange</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="service" data-track="branding_biz" data-track-name="Service and MOT">Service and MOT</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" class="min-h-[44px] rounded-full border border-[rgb(247_246_242/.35)] px-4 text-[15.5px] font-semibold text-band-ink aria-checked:border-gold aria-checked:bg-gold aria-checked:text-navy" data-brand-opt="garage" data-track="branding_biz" data-track-name="Independent garage">Independent garage</button>
           </div>
           <span class="hidden h-6 w-px bg-band-line sm:block" aria-hidden="true"></span>
           <div role="radiogroup" aria-label="Tone" class="flex flex-wrap gap-2" data-brand-group="tone">
@@ -334,20 +337,20 @@ export const carsMarkup = String.raw`
         <div class="relative overflow-hidden rounded-[34px] bg-[#f7f6f2] px-4 pb-5 pt-4 text-[#101828]">
           <div class="flex items-center justify-between text-[13px] font-semibold" aria-hidden="true"><span class="tnum">9:41</span><span class="h-[22px] w-[90px] rounded-full bg-[#0b0f19]"></span><span class="flex gap-1"><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]/40"></i></span></div>
           <div class="mt-4 flex items-center gap-3">
-            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--color-teal)] font-display text-[18px] font-semibold text-[#101828]" aria-hidden="true" data-brand-initials>AM</span>
-            <span class="min-w-0"><span class="block truncate font-display text-[17px] font-semibold leading-tight" data-brand-name>Ashgrove Motors</span><span class="block text-[13.5px] text-[rgb(16_24_40/0.68)]"><span class="tnum" data-brand-num>0121 496 0347</span>, <span data-brand-city>Birmingham</span></span></span>
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--color-teal)] font-display text-[18px] font-semibold text-[#101828]" aria-hidden="true" data-brand-initials>AR</span>
+            <span class="min-w-0"><span class="block truncate font-display text-[17px] font-semibold leading-tight" data-brand-name>Ashford Road Motors</span><span class="block text-[13.5px] text-[rgb(16_24_40/0.68)]"><span class="tnum" data-brand-num>0121 496 0731</span>, <span data-brand-city>Birmingham</span></span></span>
             <span class="ml-auto shrink-0 text-[13px] font-semibold text-[#1c6446]"><span class="mr-1 inline-block h-2 w-2 rounded-full bg-[#1c6446] align-middle"></span><span class="tnum" data-brand-timer>00:00</span></span>
           </div>
           <div class="mt-4 space-y-2.5 text-[14.5px] leading-[1.45]">
             <div class="rounded-[4px_14px_14px_14px] bg-white p-3 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]">
               <div class="flex items-center gap-2"><span class="text-[12.5px] font-semibold text-[var(--color-amber-deep)]"><span data-brand-agent>Grace</span>, AI assistant</span><svg viewBox="0 0 168 40" class="brand-wave h-5 flex-1" aria-hidden="true" data-brand-wave><rect x="1" y="13" width="3" height="14" rx="1.5" style="--d:0s"/><rect x="7" y="3" width="3" height="34" rx="1.5" style="--d:0.09s"/><rect x="13" y="15.5" width="3" height="9" rx="1.5" style="--d:0.18s"/><rect x="19" y="6" width="3" height="28" rx="1.5" style="--d:0.27s"/><rect x="25" y="14.5" width="3" height="11" rx="1.5" style="--d:0.36s"/><rect x="31" y="12" width="3" height="16" rx="1.5" style="--d:0.45s"/><rect x="37" y="5.5" width="3" height="29" rx="1.5" style="--d:0.54s"/><rect x="43" y="8" width="3" height="24" rx="1.5" style="--d:0s"/><rect x="49" y="7" width="3" height="26" rx="1.5" style="--d:0.09s"/><rect x="55" y="10" width="3" height="20" rx="1.5" style="--d:0.18s"/><rect x="61" y="10.5" width="3" height="19" rx="1.5" style="--d:0.27s"/><rect x="67" y="15" width="3" height="10" rx="1.5" style="--d:0.36s"/><rect x="73" y="3.5" width="3" height="33" rx="1.5" style="--d:0.45s"/><rect x="79" y="16" width="3" height="8" rx="1.5" style="--d:0.54s"/><rect x="85" y="4" width="3" height="32" rx="1.5" style="--d:0s"/><rect x="91" y="16.5" width="3" height="7" rx="1.5" style="--d:0.09s"/><rect x="97" y="11.5" width="3" height="17" rx="1.5" style="--d:0.18s"/><rect x="103" y="7.5" width="3" height="25" rx="1.5" style="--d:0.27s"/><rect x="109" y="8" width="3" height="24" rx="1.5" style="--d:0.36s"/><rect x="115" y="7" width="3" height="26" rx="1.5" style="--d:0.45s"/><rect x="121" y="8" width="3" height="24" rx="1.5" style="--d:0.54s"/><rect x="127" y="11" width="3" height="18" rx="1.5" style="--d:0s"/><rect x="133" y="17" width="3" height="6" rx="1.5" style="--d:0.09s"/><rect x="139" y="5" width="3" height="30" rx="1.5" style="--d:0.18s"/><rect x="145" y="16.5" width="3" height="7" rx="1.5" style="--d:0.27s"/><rect x="151" y="3" width="3" height="34" rx="1.5" style="--d:0.36s"/><rect x="157" y="15.5" width="3" height="9" rx="1.5" style="--d:0.45s"/><rect x="163" y="10" width="3" height="20" rx="1.5" style="--d:0.54s"/></svg></div>
-              <p class="mt-2 min-h-[64px]" aria-hidden="true">&ldquo;<span data-brand-greeting>Good morning, Ashgrove Motors. I'm Grace, the dealership's AI assistant. How can I help you today?</span><span class="brand-caret" data-brand-caret></span>&rdquo;</p>
+              <p class="mt-2 min-h-[64px]" aria-hidden="true">&ldquo;<span data-brand-greeting>Good morning, Ashford Road Motors. I'm Grace, the dealership's AI assistant. How can I help you today?</span><span class="brand-caret" data-brand-caret></span>&rdquo;</p>
               <p class="sr-only" aria-live="polite" data-brand-live></p>
             </div>
-            <div class="ml-8 rounded-[14px_4px_14px_14px] bg-[#101828] p-3 text-[#f7f6f2]" data-brand-line="caller"><span class="block text-[12.5px] font-semibold text-[rgb(247_246_242/0.6)]">Caller</span><span data-brand-caller>Is the grey hybrid SUV on your website still for sale? Could I test drive it?</span></div>
-            <div class="rounded-[4px_14px_14px_14px] bg-white p-3 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]" data-brand-line="agent"><span class="block text-[12.5px] font-semibold text-[var(--color-amber-deep)]"><span data-brand-agent2>Grace</span></span><span class="font-semibold" data-brand-reply>It is. I have Saturday at 10:30 with Dan. Shall I book that?</span></div>
+            <div class="ml-8 rounded-[14px_4px_14px_14px] bg-[#101828] p-3 text-[#f7f6f2]" data-brand-line="caller"><span class="block text-[12.5px] font-semibold text-[rgb(247_246_242/0.6)]">Caller</span><span data-brand-caller>Is the grey Golf on your website still available?</span></div>
+            <div class="rounded-[4px_14px_14px_14px] bg-white p-3 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]" data-brand-line="agent"><span class="block text-[12.5px] font-semibold text-[var(--color-amber-deep)]"><span data-brand-agent2>Grace</span></span><span class="font-semibold" data-brand-reply>Yes, the 2021 Golf Life in grey is still in stock. I have Saturday at 10:30 with Daniel. Shall I book it and text you the details?</span></div>
             <p class="booked !text-[14px]" data-brand-outcome>${icon("check")}<span data-brand-booked>Test drive booked: Sat 10:30</span></p>
-            <p class="flex items-center gap-2 rounded-[10px] bg-white/70 px-3 py-2 text-[13.5px]" data-brand-line="summary">${icon("mail", "shrink-0 text-hl")}<span data-brand-summary>Summary sent to Dan: test drive booked, has a car to part-exchange</span></p>
+            <p class="flex items-center gap-2 rounded-[10px] bg-white/70 px-3 py-2 text-[13.5px]" data-brand-line="summary">${icon("mail", "shrink-0 text-hl")}<span data-brand-summary>Summary sent to Daniel: test drive booked for Saturday at 10:30, details texted to the caller</span></p>
           </div>
           <div class="mt-4 flex items-center justify-center gap-6">
             <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-[#101828] text-[#f7f6f2] hover:bg-[#1a2437]" data-brand-replay data-track="branding_replay" aria-label="Replay the call">${icon("replay")}</button>
@@ -355,15 +358,56 @@ export const carsMarkup = String.raw`
           </div>
         </div>
       </div>
+      <p class="mt-3 text-center text-[14px] text-band-muted">Example scripts. Business names are made up.</p>
     </div>
   </div>
 </section>
 
+<section id="dealerships" data-component="DealershipsGarages" class="border-y border-line bg-surface">
+  <div class="container-omh py-14 lg:py-20">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Who we work with</p>
+    <h2>Built for dealerships <span class="hl">and garages</span></h2>
+    <p class="mt-5 text-muted">Showrooms and workshops get different calls. We script the agent around yours: your stock, your service menu, your teams and what must go to a person.</p>
+    <div class="mt-10 grid gap-5 lg:grid-cols-2">
+      <div class="hover-card rounded-[16px] border border-line bg-paper p-5 sm:p-6">
+        <p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${icon("car", "text-hl")}Showrooms</p>
+        <h3 class="mt-3 !text-[clamp(22px,20px+.5vw,26px)]">AI Receptionist for Car Dealerships</h3>
+        <p class="mt-2 font-display text-[18px] font-semibold">Buyers ring while your sales team is with a customer.</p>
+        <p class="mt-3 text-[16px] text-muted">Our automotive AI receptionist answers stock questions from your approved list, books test drives with the right sales executive and takes part-exchange details for your used car team.</p>
+        <ul class="mt-4 space-y-2 text-[16px] leading-snug text-muted">
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Answers questions about cars in stock, from your approved list</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Books test drives and showroom appointments</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Takes part-exchange details: registration, mileage and condition</span></li>
+        </ul>
+        <p class="mt-4 inline-flex items-center gap-2 self-start rounded-[10px] border border-line bg-surface px-3 py-2 text-[15px] font-semibold">${icon("shield", "text-hl")}Never values a car, agrees a price or gives finance advice</p>
+      </div>
+      <div class="hover-card rounded-[16px] border border-line bg-paper p-5 sm:p-6">
+        <p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${icon("wrench", "text-hl")}Workshops</p>
+        <h3 class="mt-3 !text-[clamp(22px,20px+.5vw,26px)]">AI Receptionist for Garages &amp; MOT Centres</h3>
+        <p class="mt-2 font-display text-[18px] font-semibold">Your technicians are under a car, not at the phone.</p>
+        <p class="mt-3 text-[16px] text-muted">An AI receptionist for garages books MOTs, services and repairs into your workshop diary and takes the registration and the problem before the car arrives. It also works as an AI receptionist for car repair shops, body shops and tyre centres.</p>
+        <ul class="mt-4 space-y-2 text-[16px] leading-snug text-muted">
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Books MOTs, services and repair checks by registration</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Takes a description of the problem and any warning lights</span></li>
+            <li class="flex gap-2.5"><span aria-hidden="true" class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-50"></span><span>Reminds customers who have asked for MOT and service reminders</span></li>
+        </ul>
+        <p class="mt-4 inline-flex items-center gap-2 self-start rounded-[10px] border border-line bg-surface px-3 py-2 text-[15px] font-semibold">${icon("shield", "text-hl")}Never diagnoses a fault or quotes for a repair it hasn't been given</p>
+      </div>
+    </div>
+    <div class="mt-5 flex flex-col gap-4 rounded-[16px] border border-line bg-paper p-5 sm:p-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+      <div class="min-w-0">
+        <h3 class="!text-[20px]">Another kind of motor business?</h3>
+        <p class="mt-2 text-[16px] text-muted">We also set the agent up for van and commercial dealers, car supermarkets, tyre centres, body shops and driving schools. Tell us what your callers ask, and we'll show you how the agent would handle it on the demo.</p>
+      </div>
+      <a href="#book-demo-form" class="text-link shrink-0" data-track="dealerships_ask">Ask about your business${icon("arrow-right")}</a>
+    </div>
+  </div>
+</section>
 <section id="features" data-component="Features" class="border-y border-line bg-sand">
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What's included</p>
-    <h2>What it does for your dealership,<br class="max-sm:hidden"> <span class="hl">and what we run for you</span></h2>
-    <p class="mt-5 text-muted">Stock questions, test drives, part-exchange, services, parts and the questions in between, handled the way a good showroom receptionist would. Pick a capability to see it in action. Features marked Growth and Scale aren't on Starter.</p>
+    <h2>What it does for your business,<br class="max-sm:hidden"> <span class="hl">and what we run for you</span></h2>
+    <p class="mt-5 text-muted">Sales, service, parts and the questions in between, handled the way a good showroom receptionist would. Pick a capability to see who does what. Features marked Growth and Scale aren't on Starter.</p>
 
     <div class="mt-10 grid gap-5 lg:grid-cols-[minmax(0,.4fr)_minmax(0,.6fr)] lg:items-start" data-tabs>
       <div role="tablist" aria-label="Capabilities" aria-orientation="vertical" class="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
@@ -372,8 +416,8 @@ ${capabilities.map(capTab).join("\n")}
 ${capabilities.map(capPanel).join("\n")}
     </div>
 
-    <h3 class="mt-14 !text-[24px]">Your team stays <span class="hl">in charge</span></h3>
-    <p class="mt-3 text-muted">You decide the rules before it answers a single call. Finance questions go to your finance team and part-exchange values come from your used car team, never from the agent.</p>
+    <h3 class="mt-14 !text-[24px]">You and your team stay <span class="hl">in charge</span></h3>
+    <p class="mt-3 text-muted">You decide the rules before it answers a single call. It never values a car, agrees a price, takes a deposit or gives finance advice. It only gives stock details and prices you have approved, word for word, and anything it doesn't know, it says so and passes on.</p>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="hover-card rounded-[16px] border border-line bg-surface p-5 sm:p-6">
         <p class="flex items-center gap-3 font-display text-[19px] font-semibold"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ok text-surface">${icon("check")}</span>It handles</p>
@@ -418,8 +462,8 @@ ${capabilities.map(capPanel).join("\n")}
 <section id="use-cases" data-component="Industries">
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Use cases</p>
-    <h2>Car dealership use cases <span class="hl">by type of call</span></h2>
-    <p class="mt-5 text-muted">A dealership gets the same eight kinds of call, week in, week out. We script your agent around each one. Pick a call to see how the agent handles it.</p>
+    <h2>Car dealership and garage use cases <span class="hl">by type of call</span></h2>
+    <p class="mt-5 text-muted">A dealership or garage gets the same eight kinds of call, week in, week out. We script your agent around each one. Pick a call to see how the agent handles it.</p>
     <div class="mt-8" data-tabs>
       <div role="tablist" aria-label="Choose a type of call" class="flex flex-wrap gap-2">
 ${industries.map(industryTab).join("\n")}
@@ -429,7 +473,7 @@ ${industries.map(industryPanel).join("\n")}
     <div class="fit-band mt-8 flex flex-col gap-4 rounded-[16px] bg-sand p-6 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <p class="font-display text-[18px] font-semibold">Not sure how your calls would fit?</p>
-        <p class="mt-1 text-[16px] text-muted">Tell us who rings your showroom and workshop and why. We'll map your calls and show you what the agent would handle and what it would pass to your team.</p>
+        <p class="mt-1 text-[16px] text-muted">Tell us who rings your business and why. We'll map your calls and show you what the agent would handle and what it would pass to your team.</p>
       </div>
       ${primaryCta("industries_book_demo", "shrink-0")}
     </div>
@@ -439,12 +483,13 @@ ${industries.map(industryPanel).join("\n")}
 <section id="pricing" data-component="Pricing" class="border-y border-line bg-surface">
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
-    <h2>AI voice agent pricing <span class="hl">for car dealerships</span></h2>
+    <h2>AI voice agent pricing <span class="hl">for car dealerships and garages</span></h2>
     <p class="mt-5 text-muted">Three plans, billed monthly, no minimum contract. Every plan includes a managed agent, a British voice, a summary of every call and a monthly report. Prices exclude VAT.</p>
 
     <div class="mt-10 grid gap-5 lg:grid-cols-3 lg:items-stretch">
 ${carsPricing.plans.map(plan).join("\n")}
     </div>
+    <p class="mt-6 text-[16px] text-muted">Starter is our <a href="/ai-voice-agents/receptionist" class="text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">AI receptionist plan</a>.</p>
 
     <dl class="mt-12 border-t border-line">
 ${carsPricing.notes.map(([k, v]) => `      <div class="grid gap-1 border-b border-line py-4 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-8"><dt class="text-[16px] font-semibold uppercase tracking-[0.14em] text-muted">${k}</dt><dd class="text-[16px] leading-[1.5]">${v}</dd></div>`).join("\n")}

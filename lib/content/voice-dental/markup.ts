@@ -26,6 +26,10 @@ export const dentalFaqs: { q: string; a: string; cat: keyof typeof dentalFaqTopi
     a: "It says so. The agent answers only from information you have approved, so when a question falls outside that, it offers to take a message or transfer the call. We review those moments and add the answers worth adding." },
   { cat: "setup", q: "Does it work with our practice management software?",
     a: "It works with most diaries and practice systems. We check yours on the first call and tell you plainly what connects directly and what needs a workaround." },
+  { cat: "working", q: "Is this an AI dental receptionist for UK practices?",
+    a: "Yes. It is built and run by a UK team for UK dental practices. It speaks with a British voice, follows your rules for NHS and private patients, works to UK GDPR and never gives clinical advice. We set practices up by video call and phone from Hullbridge, Essex." },
+  { cat: "patients", q: "How do we choose the best dental AI receptionist for our practice?",
+    a: "Look at four things: whether it books straight into your practice software or only takes messages, how it handles patients in pain without giving clinical advice, whether it covers evenings and weekends as standard, and who sets it up and keeps it running. Many apps leave the setup to you. With OMH, we build, test and manage it for you, so ask us to show you each of these on a demo." },
   { cat: "setup", q: "Can we keep our phone number, or get a local one?",
     a: "You can keep your number and divert calls to the agent, either all of them or only the ones reception misses. If you want a local number for a new practice, we can set one up." },
   { cat: "setup", q: "How long does setup take?",
@@ -38,8 +42,8 @@ export const dentalFaqs: { q: string; a: string; cat: keyof typeof dentalFaqTopi
     a: "Only patients who have agreed to reminders. We follow the UK PECR rules and act on opt-outs straight away; opt-outs are removed the same day. We don't run cold calling campaigns." },
   { cat: "working", q: "Will it replace our receptionists?",
     a: "No. It takes the overflow and the routine calls, so your team can look after the patients in front of them. You choose when it answers: only when the lines are busy, only out of hours, or first on every call. Anything clinical, sensitive or complicated still goes to your team." },
-  { cat: "working", q: "How much does an AI voice agent cost for a dental practice?",
-    a: "Our managed AI voice agent starts at £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for groups of practices, is £849 a month. Extra minutes cost 60p each on every plan." },
+  { cat: "working", q: "How much does an AI receptionist for dentists cost?",
+    a: "Our AI receptionist for dentists (the Starter plan) is £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for groups of practices, is £849 a month. Extra minutes cost 60p each on every plan." },
   { cat: "working", q: "Is there a minimum contract?",
     a: "Plans are billed monthly with 30 days' notice. We set out the terms in writing before you start, including what's included each month and what counts as extra. Every invoice shows your included minutes and any overage." },
 ];
@@ -284,9 +288,9 @@ export const dentalMarkup = String.raw`
   <div class="container-omh relative grid grid-cols-[minmax(0,1fr)] items-start gap-10 py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-24" data-brand
     data-brand-biz='[{"id":"newpatient","label":"New patient","name":"Albion Square Dental","city":"Manchester","num":"0161 496 0123","agent":"Amy","kind":"practice&#39;s","initials":"AS","voice":"British English, warm and friendly","never":"Gives clinical advice","transfer":"Treatment questions go to the treatment coordinator","caller":"I&#39;d like to register as a new patient. Do you have anything this week?","reply":"Yes. I have Thursday at 9:10 with Dr Patel. Shall I book it?","booked":"First visit booked: Thu 09:10","summary":"Summary sent to reception: new private patient, forms sent by text"},{"id":"urgent","label":"Urgent","name":"Harbour Dental Care","city":"Bristol","num":"0117 496 0135","agent":"Leah","kind":"practice&#39;s","initials":"HD","voice":"British English, calm and measured","never":"Assesses symptoms","transfer":"Urgent calls go to the emergency line","caller":"My face has swollen up overnight. Can I be seen today?","reply":"I&#39;m sorry to hear that. I can book you into our 8:40 emergency slot.","booked":"Emergency slot booked: 08:40","summary":"Flagged for the dentist: swelling, booked 08:40, no advice given"},{"id":"checkup","label":"Check-up","name":"Northgate Family Dental","city":"Leeds","num":"0113 496 0188","agent":"Ruth","kind":"practice&#39;s","initials":"NF","voice":"British English, clear and upbeat","never":"Quotes a fee it has not been given","transfer":"Complaints go to the practice manager","caller":"I need to move my check-up next Tuesday.","reply":"No problem. I can move you to Wednesday at 4:10pm. Does that work?","booked":"Check-up moved: Wed 16:10","summary":"Diary updated: check-up moved to Wed 16:10, text sent"}]'>
     <div class="lg:col-start-1 lg:row-start-1">
-      <h2>What is an AI voice agent <span class="hl">for dental clinics?</span></h2>
-      <p class="mt-5 text-band-muted">An AI voice agent is software that answers and makes phone calls for your practice in natural, spoken conversation. It works out whether the caller is a new patient, a registered patient or someone in pain, answers from fees and information you have approved, books appointments into your diary and passes anything clinical to your team, with a summary of the call.</p>
-      <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained dental receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and practice software, and keep improving it.</p>
+      <h2>What is an AI receptionist <span class="hl">for dentists?</span></h2>
+      <p class="mt-5 text-band-muted">An AI receptionist for dentists is software that answers and makes phone calls for your practice in natural, spoken conversation. Some practices call it a dental AI receptionist or an AI dental receptionist; we call it an AI voice agent, because on Growth and Scale it does more than answer the phone. It works out whether the caller is a new patient, a registered patient or someone in pain, answers from fees and information you have approved, books appointments into your diary and passes anything clinical to your team, with a summary of the call.</p>
+      <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained dental receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and practice software, and keep improving it. See our <a href="/ai-voice-agents/receptionist">AI receptionist plan</a> for practices that only need the phone answered.</p>
     </div>
 
     <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2">
@@ -407,7 +411,7 @@ ${capabilities.map(capPanel).join("\n")}
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Use cases</p>
     <h2>Dental use cases <span class="hl">by type of call</span></h2>
-    <p class="mt-5 text-muted">A dental front desk gets the same eight kinds of call, day in, day out. We script your agent around each one. Pick a call to see how the agent handles it.</p>
+    <p class="mt-5 text-muted">A dental front desk gets the same eight kinds of call, day in, day out, and any AI receptionist for dental practices has to handle all of them. We script your agent around each one. Pick a call to see how the agent handles it.</p>
     <div class="mt-8" data-tabs>
       <div role="tablist" aria-label="Choose a type of call" class="flex flex-wrap gap-2">
 ${industries.map(industryTab).join("\n")}
@@ -427,7 +431,7 @@ ${industries.map(industryPanel).join("\n")}
 <section id="pricing" data-component="Pricing" class="border-y border-line bg-surface">
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</p>
-    <h2>AI voice agent pricing <span class="hl">for dental clinics</span></h2>
+    <h2>AI voice agent pricing <span class="hl">for dentists</span></h2>
     <p class="mt-5 text-muted">Three plans, billed monthly, no minimum contract. Every plan includes a managed agent, a British voice, a summary of every call and a monthly report. Prices exclude VAT.</p>
 
     <div class="mt-10 grid gap-5 lg:grid-cols-3 lg:items-stretch">

@@ -1,4 +1,4 @@
-// /ai-voice-agents/car-dealerships: hero, how it works and local cover, worded for UK car dealerships. Same
+// /ai-voice-agents/car-dealerships: hero, how it works and local cover, worded for UK car dealerships and garages. Same
 // structure and classes as lib/content/ai-voice-agents-landing-v4.ts (via lib/content/voice-estate/landing.ts).
 export const carsLandingMarkup = String.raw`
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -57,9 +57,9 @@ export const carsLandingMarkup = String.raw`
 
 <section id="top" class="hero4 hero-grid" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
-    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Car dealerships</span>
-    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Car Dealerships<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Sales and Service Call Answered</span></h1>
-    <p class="lead mx-auto mt-6">Our AI voice agent answers every sales, service and parts call on the first ring, books test drives and workshop slots and takes part-exchange details, even on a busy Saturday. It never gives finance advice or values a car. We build it around your dealership and manage it every month.</p>
+    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Car dealerships &amp; garages</span>
+    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Car Dealerships &amp; Garages<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Sales and Service Call Answered</span></h1>
+    <p class="lead mx-auto mt-6">Our AI voice agent works as an AI receptionist for car dealerships and garages. It answers every sales, service and parts call on the first ring, books test drives, MOTs and workshop slots and takes part-exchange details, even on a busy Saturday. It never gives finance advice or values a car. We build it around your business and manage it every month.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
       <a href="#hero-video" class="btn btn-secondary w-full sm:w-auto" data-track="hero_watch_demo">Watch the demo</a>
@@ -70,7 +70,7 @@ export const carsLandingMarkup = String.raw`
   <!-- Call-type strip: loops slowly, pauses on hover or focus. Each tile jumps to the use cases. -->
   <div class="mt-12 md:mt-14" id="industries-strip">
     <div class="container-omh flex items-center justify-center gap-3">
-      <p class="t-small font-display font-semibold text-muted" id="strip-title">Built for every call your dealership gets</p>
+      <p class="t-small font-display font-semibold text-muted" id="strip-title">Built for every call your business gets</p>
       <button type="button" class="mq-pause" data-marquee-toggle="strip" data-what="call type list" aria-pressed="false" aria-label="Pause the moving list of call types"><svg class="icon icon-fill i-pause size-3.5" aria-hidden="true"><use href="#v4-i-pause"/></svg><svg class="icon icon-fill i-play size-3.5" aria-hidden="true"><use href="#v4-i-play"/></svg></button>
     </div>
     <div class="mx-auto mt-4 max-w-[1440px]">
@@ -79,11 +79,11 @@ export const carsLandingMarkup = String.raw`
           <ul aria-labelledby="strip-title">
           <li><a class="ind" href="#use-cases" data-ind="stock"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-car"/></svg></span><b>Stock Enquiries</b></a></li>
           <li><a class="ind" href="#use-cases" data-ind="testdrives"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-key"/></svg></span><b>Test Drives</b></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="partex"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><b>Part-exchange Appraisals</b></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="service"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-wrench"/></svg></span><b>Service &amp; MOT</b></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="parts"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-package"/></svg></span><b>Parts Enquiries</b></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="finance"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-pound"/></svg></span><b>Finance Questions</b></a></li>
-          <li><a class="ind" href="#use-cases" data-ind="followups"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-refresh"/></svg></span><b>Follow-up Calls</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="partex"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><b>Part-Exchange</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="service"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><b>Service &amp; MOT</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="service"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-wrench"/></svg></span><b>Repairs</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="parts"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-package"/></svg></span><b>Parts</b></a></li>
+          <li><a class="ind" href="#use-cases" data-ind="finance"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-pound"/></svg></span><b>Finance Calls</b></a></li>
           <li><a class="ind" href="#use-cases" data-ind="afterhours"><span class="ind-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-moon"/></svg></span><b>Saturdays &amp; Evenings</b></a></li>
           </ul>
         </div>
@@ -111,8 +111,8 @@ export const carsLandingMarkup = String.raw`
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
-      <h2 class="h2 mt-3" id="city-title">Car dealerships across the UK.<br class="hidden md:block"> <span class="hl">A local number for each site.</span></h2>
-      <p class="lead mt-4">Buyers and service customers trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set dealerships up by video call and phone from Hullbridge, Essex.</p>
+      <h2 class="h2 mt-3" id="city-title">Dealerships and garages across the UK.<br class="hidden md:block"> <span class="hl">A local number for each site.</span></h2>
+      <p class="lead mt-4">Customers trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set up our AI receptionist for garages and car dealers across the UK by video call and phone from Hullbridge, Essex.</p>
     </div>
     <div class="va-car mt-12" data-carousel data-autoplay>
     <ul class="cities va-car-track" style="--car-w:360px" tabindex="0" aria-label="Local cover, scroll sideways">
@@ -236,7 +236,7 @@ export const carsLandingMarkup = String.raw`
     </div>
     <div class="mt-10 flex flex-col items-center gap-3 text-center">
       <a href="#book-demo-form" class="btn btn-primary">Book a 30-Minute Demo</a>
-      <p class="t-small text-muted">Somewhere else? We set up dealerships in towns and cities across the UK. <a href="#book-demo-form" class="link link-tap text-[15px]">Ask us about your area</a></p>
+      <p class="t-small text-muted">Somewhere else? We set up dealerships and garages in towns and cities across the UK. <a href="#book-demo-form" class="link link-tap text-[15px]">Ask us about your area</a></p>
     </div>
   </div>
 
@@ -252,22 +252,22 @@ export const carsLandingMarkup = String.raw`
     <ol class="tl mt-6">
       <li class="tl-step">
         <div class="tl-head"><span class="tl-num">01</span></div>
-        <div class="card tl-card"><h4 class="h4">Connect</h4><p class="t-card mt-2 text-muted">You divert your showroom and workshop lines. We link your diaries, plus your dealer management system on Growth and Scale.</p><p class="tl-proof mt-5"><span class="dot" aria-hidden="true"></span>Showroom line diverted</p></div>
+        <div class="card tl-card"><h4 class="h4">Connect</h4><p class="t-card mt-2 text-muted">You divert your sales and service lines. We link your diaries and, where it allows, your dealer system.</p><p class="tl-proof mt-5"><span class="dot" aria-hidden="true"></span>Lines diverted</p></div>
       </li>
       <li class="tl-step">
         <div class="tl-head"><span class="tl-num">02</span></div>
-        <div class="card tl-card"><h4 class="h4">Train</h4><p class="t-card mt-2 text-muted">We load your stock list, service prices, test drive rules and who handles finance and part-exchange.</p><p class="tl-proof mt-5"><span class="dot" aria-hidden="true"></span>Booking rules set</p></div>
+        <div class="card tl-card"><h4 class="h4">Train</h4><p class="t-card mt-2 text-muted">We load your stock, prices, service menu, teams and routing rules.</p><p class="tl-proof mt-5"><span class="dot" aria-hidden="true"></span>Rules set</p></div>
       </li>
       <li class="tl-step">
         <div class="tl-head"><span class="tl-num">03</span></div>
-        <div class="card tl-card"><h4 class="h4">Test together</h4><p class="t-card mt-2 text-muted">You and your sales and service teams ring it and try to trip it up. Nothing goes live without your sign-off.</p><p class="tl-proof mt-5"><span class="dot" aria-hidden="true"></span>3 test calls passed</p></div>
+        <div class="card tl-card"><h4 class="h4">Test together</h4><p class="t-card mt-2 text-muted">You and your team ring it and try to trip it up. Nothing goes live without your sign-off.</p><p class="tl-proof mt-5"><span class="dot" aria-hidden="true"></span>3 test calls passed</p></div>
       </li>
       <li class="tl-step">
         <div class="tl-head"><span class="tl-num">04</span></div>
-        <div class="card tl-card"><h4 class="h4">Go live</h4><p class="t-card mt-2 text-muted">It answers on the first ring, evenings and weekends included. We check and tune the first two weeks of live calls at no extra cost.</p><p class="tl-proof live mt-5"><span class="dot" aria-hidden="true"></span>Live and answering</p></div>
+        <div class="card tl-card"><h4 class="h4">Go live</h4><p class="t-card mt-2 text-muted">It answers on the first ring, from the first MOT of the day to the last Saturday test drive. We check and tune the first two weeks of live calls at no extra cost.</p><p class="tl-proof live mt-5"><span class="dot" aria-hidden="true"></span>Live and answering</p></div>
       </li>
     </ol>
-    <p class="t-card mt-6 text-muted">Starter goes live in 3 working days, Growth in 5 to 7 and Scale in 12 to 15. The clock starts once we have your stock list, booking rules and diary access.</p>
+    <p class="t-card mt-6 text-muted">Starter goes live in 3 working days, Growth in 5 to 7 and Scale in 12 to 15. The clock starts once we have your stock list, prices, routing rules and diary access.</p>
 
     <div class="flow-panel on-band mt-14">
       <h3 class="smallcaps text-muted">Part 2: What happens to a new car enquiry (Growth and Scale)</h3>

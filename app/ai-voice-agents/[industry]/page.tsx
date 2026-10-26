@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AccountantsPage, accountantsMetadata } from "@/components/voice-agents/AccountantsPage";
 import { BuildersPage, buildersMetadata } from "@/components/voice-agents/BuildersPage";
 import { CarsPage, carsMetadata } from "@/components/voice-agents/CarsPage";
 import { ClinicsPage, clinicsMetadata } from "@/components/voice-agents/ClinicsPage";
@@ -8,6 +9,8 @@ import { HvacPage, hvacMetadata } from "@/components/voice-agents/HvacPage";
 import { IndustryPage, industryMetadata } from "@/components/voice-agents/IndustryPage";
 import { LawPage, lawMetadata } from "@/components/voice-agents/LawPage";
 import { PlumbersPage, plumbersMetadata } from "@/components/voice-agents/PlumbersPage";
+import { SalonsPage, salonsMetadata } from "@/components/voice-agents/SalonsPage";
+import { TradesPage, tradesMetadata } from "@/components/voice-agents/TradesPage";
 import { industryPaths } from "@/lib/content/voice-industry";
 
 type Props = { params: Promise<{ industry: string }> };
@@ -26,6 +29,10 @@ const LANDINGS = {
   "heating-hvac": { Page: HvacPage, metadata: hvacMetadata },
   "law-firms": { Page: LawPage, metadata: lawMetadata },
   "plumbers": { Page: PlumbersPage, metadata: plumbersMetadata },
+  // 26 Oct 2026 briefs.
+  "accountants-financial-advisers": { Page: AccountantsPage, metadata: accountantsMetadata },
+  "salons": { Page: SalonsPage, metadata: salonsMetadata },
+  "trades": { Page: TradesPage, metadata: tradesMetadata },
 } as const;
 const landing = (industry: string) => LANDINGS[industry as keyof typeof LANDINGS];
 

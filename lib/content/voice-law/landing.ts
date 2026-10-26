@@ -55,9 +55,9 @@ export const lawLandingMarkup = String.raw`
 
 <section id="top" class="hero4 hero-grid" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
-    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Law firms</span>
-    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Law Firms<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Client Call Answered</span></h1>
-    <p class="lead mx-auto mt-6">Our AI voice agent answers every call on the first ring, sorts new enquiries by practice area, books consultations and puts urgent matters straight through, even when your fee earners are in court. It never gives legal advice. We build it around your firm and manage it every month.</p>
+    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Law firms &amp; solicitors</span>
+    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Law Firms &amp; Solicitors<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Client Call Answered</span></h1>
+    <p class="lead mx-auto mt-6">Our AI voice agent works as an AI receptionist for law firms and solicitors. It answers every call on the first ring, sorts new enquiries by practice area, books consultations and puts urgent matters straight through, even when your fee earners are in court. It never gives legal advice. We build it around your firm and manage it every month.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
       <a href="#hero-video" class="btn btn-secondary w-full sm:w-auto" data-track="hero_watch_demo">Watch the demo</a>
@@ -110,7 +110,7 @@ export const lawLandingMarkup = String.raw`
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
       <h2 class="h2 mt-3" id="city-title">Law firms across the UK.<br class="hidden md:block"> <span class="hl">A local number for each office.</span></h2>
-      <p class="lead mt-4">Clients trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set firms up by video call and phone from Hullbridge, Essex.</p>
+      <p class="lead mt-4">Clients trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set up our AI receptionist for law firms and solicitors across the UK by video call and phone from Hullbridge, Essex.</p>
     </div>
     <div class="va-car mt-12" data-carousel data-autoplay>
     <ul class="cities va-car-track" style="--car-w:360px" tabindex="0" aria-label="Local cover, scroll sideways">

@@ -57,7 +57,7 @@ export const clinicLandingMarkup = String.raw`
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
     <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Clinics</span>
     <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Private Clinics<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Patient Call Answered</span></h1>
-    <p class="lead mx-auto mt-6">Our AI voice agent answers every patient call on the first ring, books appointments, handles self-pay and insured patients and routes urgent calls, even in the 8am rush. It never gives clinical advice. We build it around your clinic and manage it every month.</p>
+    <p class="lead mx-auto mt-6">Our AI voice agent works as an AI receptionist for medical clinics and private clinics. It answers every patient call on the first ring, books appointments, handles self-pay and insured patients and routes urgent calls, even in the 8am rush. It never gives clinical advice. We build it around your clinic and manage it every month.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
       <a href="#hero-video" class="btn btn-secondary w-full sm:w-auto" data-track="hero_watch_demo">Watch the demo</a>

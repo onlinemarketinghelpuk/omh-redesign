@@ -282,6 +282,87 @@ export const legacyMarkup = String.raw`
         </div>
         <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
       </article>
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="professional">
+        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
+    <ellipse cx="92" cy="132" rx="74" ry="13.32" class="il-shadow"/>
+    <path d="M28 52 L92 22 L156 52 Z" class="il-roof"/>
+    <rect x="34" y="52" width="116" height="8" class="il-ink"/>
+    <rect x="44" y="62" width="14" height="56" rx="2" class="il-wall"/><rect x="70" y="62" width="14" height="56" rx="2" class="il-wall"/><rect x="96" y="62" width="14" height="56" rx="2" class="il-wall"/><rect x="122" y="62" width="14" height="56" rx="2" class="il-wall"/>
+    <rect x="28" y="118" width="128" height="10" rx="2" class="il-ink"/>
+    <g class="il-bubble" transform="translate(132 12)">
+    <rect x="0" y="0" width="54" height="38" rx="10" class="il-card"/>
+    <path d="M14 38 L10 48 L24 38 Z" class="il-card"/>
+    <path d="M27 8 V30 M17 30 H37 M13 14 H41" class="il-stroke"/><path d="M13 14 L8 24 H18 Z M41 14 L36 24 H46 Z" class="il-goldline"/>
+  </g>
+  </svg></span>
+        <div class="min-w-0">
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/accountants-financial-advisers" class="ind-card-link" data-track="industry_card_click" data-track-name="AI receptionist for accountants">AI Receptionist for Accountants & Financial Advisers</a></h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers client calls, books meetings and takes new enquiries, even in the January rush.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Books meetings and takes new enquiries</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Answers from the information you approve</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Passes anything that needs an adviser to your team</span></li>
+        </ul>
+        <p class="ind-card-note"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No financial advice given.</span></p>
+        </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
+      </article>
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="health">
+        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 320 220" class="h-full w-full" aria-hidden="true">
+    <ellipse cx="160" cy="196" rx="130" ry="23.4" class="il-shadow"/>
+    <rect x="44" y="70" width="150" height="120" rx="6" class="il-wall"/>
+    <rect x="44" y="70" width="150" height="22" rx="6" class="il-ink"/>
+    <rect x="104" y="40" width="30" height="30" rx="5" class="il-card"/><path d="M119 46 V64 M110 55 H128" class="il-crossline"/>
+    <rect x="60" y="104" width="22" height="20" rx="3" class="il-win"/><rect x="92" y="104" width="22" height="20" rx="3" class="il-win"/><rect x="156" y="104" width="22" height="20" rx="3" class="il-win"/>
+    <rect x="60" y="136" width="22" height="20" rx="3" class="il-win"/><rect x="156" y="136" width="22" height="20" rx="3" class="il-win"/>
+    <rect x="96" y="140" width="46" height="50" rx="3" class="il-ink"/>
+    <path d="M232 92 c10-10 28-12 36 0 c8 12 2 26-2 40 c-3 12-4 24-10 30 c-4 4-8 0-9-6 l-3-14 c-1-6-9-6-10 0 l-3 14 c-1 6-5 10-9 6 c-6-6-7-18-10-30 c-4-14-10-28-2-40 c8-12 26-10 22 0" class="il-tooth"/>
+    <g class="il-bubble" transform="translate(206 20)">
+      <rect x="0" y="0" width="96" height="58" rx="12" class="il-card"/>
+      <path d="M22 58 L16 70 L34 58 Z" class="il-card"/>
+      <rect x="12" y="12" width="34" height="34" rx="5" class="il-line"/><path d="M12 22 H46" class="il-stroke"/>
+      <text x="29" y="40" text-anchor="middle" class="il-num">9:10</text>
+      <circle cx="70" cy="29" r="9" class="il-ok"/><path d="M66 29 l3 3 l5 -6" class="il-tick"/>
+    </g>
+  </svg></span>
+        <div class="min-w-0">
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/salons" class="ind-card-link" data-track="industry_card_click" data-track-name="AI receptionist for salons">AI Receptionist for Salons & Beauty</a></h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Answers every booking call, even when every chair is full.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Books and moves appointments</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Fills cancellations</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Answers questions on services, prices and opening hours</span></li>
+        </ul>
+        </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
+      </article>
+      <article class="ind-card grid items-start gap-4 rounded-[18px] border border-line bg-surface p-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-6" data-industry data-group="trades">
+        <span class="block h-[120px] w-full rounded-[12px] bg-paper p-2 sm:w-[160px]" aria-hidden="true"><svg viewBox="0 0 200 150" class="h-full w-full" aria-hidden="true">
+    <ellipse cx="100" cy="132" rx="80" ry="14.399999999999999" class="il-shadow"/>
+    <path d="M150 128 V22 M150 26 H58 M150 26 L134 42 M62 26 V48" class="il-ladder"/>
+    <rect x="54" y="48" width="16" height="12" rx="2" class="il-gold"/>
+    <rect x="36" y="78" width="96" height="50" class="il-wall"/>
+    <rect x="40" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="63" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="86" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="109" y="82" width="20" height="11" rx="1.5" class="il-brick"/><rect x="51" y="97" width="20" height="11" rx="1.5" class="il-brick"/><rect x="74" y="97" width="20" height="11" rx="1.5" class="il-brick"/><rect x="97" y="97" width="20" height="11" rx="1.5" class="il-brick"/><rect x="120" y="97" width="10" height="11" rx="1.5" class="il-brick"/><rect x="40" y="112" width="20" height="11" rx="1.5" class="il-brick"/><rect x="63" y="112" width="20" height="11" rx="1.5" class="il-brick"/><rect x="86" y="112" width="20" height="11" rx="1.5" class="il-brick"/><rect x="109" y="112" width="20" height="11" rx="1.5" class="il-brick"/>
+    <path d="M30 128 V70 M138 128 V70 M30 70 H138 M30 100 H138" class="il-scaffold"/>
+    <path d="M8 128 h22 v-14 a11 11 0 0 1 22 0 v14" class="il-gold"/>
+    <g class="il-bubble" transform="translate(140 52)">
+    <rect x="0" y="0" width="54" height="38" rx="10" class="il-card"/>
+    <path d="M14 38 L10 48 L24 38 Z" class="il-card"/>
+    <rect x="10" y="9" width="22" height="20" rx="3" class="il-line"/><path d="M10 15 H32" class="il-stroke"/><circle cx="40" cy="19" r="9" class="il-ok"/><path d="M36 19 l3 3 l5 -6" class="il-tick"/>
+  </g>
+  </svg></span>
+        <div class="min-w-0">
+        <h3 class="!text-[21px]"><a href="/ai-voice-agents/trades" class="ind-card-link" data-track="industry_card_click" data-track-name="AI receptionist for trades">AI Receptionist for Trades</a></h3>
+        <p class="mt-2 text-[16px] leading-[1.5] text-muted">Takes quote requests and books site visits while you are up a ladder or driving to the next job.</p>
+        <ul class="mt-4 space-y-1.5 text-[16px] leading-snug">
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Takes quote requests and books site visits</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sends urgent jobs to whoever is on call</span></li>
+          <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Texts you a summary of every call</span></li>
+        </ul>
+        <p class="ind-card-note"><svg class="icon text-hl" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>No technical advice given.</span></p>
+        </div>
+        <span class="ind-card-foot" aria-hidden="true"><span>Learn more</span><span class="ind-card-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span></span>
+      </article>
             <aside class="on-band grid items-center gap-4 rounded-[18px] bg-band p-5 text-band-ink sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-6 lg:col-span-2" aria-labelledby="industries-cta-title">
         <span class="grid size-[88px] place-items-center rounded-[12px] bg-white/5 sm:size-[120px]" aria-hidden="true"><span class="grid size-14 place-items-center rounded-[14px] sm:size-16 bg-gold text-navy"><svg class="icon !h-7 !w-7" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span></span>
         <div class="min-w-0">

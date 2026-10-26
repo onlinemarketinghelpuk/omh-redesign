@@ -14,13 +14,13 @@ import { SITE, faqSchema } from "@/lib/schema";
 
 const path = "/ai-voice-agents/builders-construction";
 const url = `${SITE}${path}`;
-const ogTitle = "AI Voice Agent for Builders & Contractors | OMH";
-const ogDescription = "Every call answered, even when you're up a ladder. Built, tested and managed by a UK team.";
+const ogTitle = "AI Voice Agent & AI Receptionist for Construction Companies | OMH";
+const ogDescription = "An AI receptionist for construction companies: every call answered, even when you're up a ladder. Built, tested and managed by a UK team.";
 
 export const buildersMetadata: Metadata = {
-  title: { absolute: "AI Voice Agent & AI Receptionist for Builders & Contractors | UK | OMH" },
+  title: { absolute: "AI Voice Agent & AI Receptionist for Construction Companies | OMH" },
   description:
-    "An AI voice agent for UK builders and contractors. Answers calls 24/7 while you're on site, takes quote requests, qualifies jobs and books site surveys. Never quotes a price it hasn't been given. Built and managed by OMH.",
+    "An AI receptionist for construction companies, builders and contractors in the UK. Answers calls 24/7 while you're on site, takes quote requests and books site surveys.",
   alternates: { canonical: url },
   openGraph: { type: "website", locale: "en_GB", siteName: "Online Marketing Help", title: ogTitle, description: ogDescription, url },
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription },
@@ -56,7 +56,7 @@ const graph = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
         { "@type": "ListItem", position: 2, name: "AI Voice Agents", item: `${SITE}/ai-voice-agents` },
-        { "@type": "ListItem", position: 3, name: "Contractors & Builders", item: url },
+        { "@type": "ListItem", position: 3, name: "Builders & Construction", item: url },
       ],
     },
   ],

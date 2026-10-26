@@ -16,13 +16,13 @@ import { SITE, faqSchema } from "@/lib/schema";
 
 const path = "/ai-voice-agents/estate-letting-agents";
 const url = `${SITE}${path}`;
-const ogTitle = "AI Voice Agent for Estate & Letting Agents | OMH";
-const ogDescription = "Every property enquiry answered, even when the team is out on viewings. Built, tested and managed by a UK team.";
+const ogTitle = "AI Voice Agent & AI Receptionist for Estate Agents | OMH";
+const ogDescription = "An AI voice agent for estate agents: every property enquiry answered, even when the team is out on viewings. Built, tested and managed by a UK team.";
 
 export const estateMetadata: Metadata = {
-  title: { absolute: "AI Voice Agent for Estate & Letting Agents | UK | OMH" },
+  title: { absolute: "AI Voice Agent & AI Receptionist for Estate Agents | UK | OMH" },
   description:
-    "An AI voice agent for UK estate and letting agents. Answers every enquiry 24/7, books viewings and valuations, qualifies buyers and tenants and routes tenant emergencies. Built and managed by OMH.",
+    "AI voice agent for estate agents and letting agents in the UK. Answers every call 24/7, books viewings and valuations and routes tenant repairs. From £249 a month.",
   alternates: { canonical: url },
   openGraph: { type: "website", locale: "en_GB", siteName: "Online Marketing Help", title: ogTitle, description: ogDescription, url },
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription },
@@ -74,7 +74,7 @@ const extras = sectionsOf(estateExtrasMarkup, "va-page"); // real estate only: a
 // "Getting ready" were removed (client, 21 Oct 2026); leave them off new industry pages too.
 const runs: Runs = [
   [v4, ["top"]],
-  [fresh, ["what-is"]],
+  [fresh, ["what-is", "receptionist"]],
   [extras, ["day"]],
   [fresh, ["features"]],
   [v4, ["how"]],

@@ -28,6 +28,8 @@ export const clinicFaqs: { q: string; a: string; cat: keyof typeof clinicFaqTopi
     a: "It works with most diaries and clinic systems. We check yours on the first call and tell you plainly what connects directly and what needs a workaround." },
   { cat: "setup", q: "Can it book different clinicians and appointment types?",
     a: "Yes. It books by clinician, room and appointment type, such as an initial assessment or a follow-up, and keeps to the lengths and rules you set. Anything that needs a referral or a clinician's say-so first goes to your team." },
+  { cat: "setup", q: "Which types of clinic do you set it up for?",
+    a: "Private clinics of most kinds: chiropractors, physiotherapy and sports injury clinics, laser and aesthetics clinics, therapists and counsellors, pharmacies with private services, and veterinary clinics. We don't set it up for NHS GP surgeries." },
   { cat: "setup", q: "Can we keep our phone number, or get a local one?",
     a: "You can keep your number and divert calls to the agent, either all of them or only the ones reception misses. If you want a local number for a new clinic, we can set one up." },
   { cat: "setup", q: "How long does setup take?",
@@ -40,8 +42,8 @@ export const clinicFaqs: { q: string; a: string; cat: keyof typeof clinicFaqTopi
     a: "Only patients who have agreed to reminders. We follow the UK PECR rules and act on opt-outs straight away; opt-outs are removed the same day. We don't run cold calling campaigns." },
   { cat: "working", q: "Will it replace our receptionists?",
     a: "No. It takes the overflow and the routine calls, so your team can look after the patients in front of them. You choose when it answers: only when the lines are busy, only out of hours, or first on every call. Anything clinical, sensitive or complicated still goes to your team." },
-  { cat: "working", q: "How much does an AI voice agent cost for a private clinic?",
-    a: "Our managed AI voice agent starts at £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for groups of clinics, is £849 a month. Extra minutes cost 60p each on every plan." },
+  { cat: "working", q: "How much does an AI receptionist for medical clinics cost?",
+    a: "Our AI receptionist for medical clinics (the Starter plan) is £249 a month plus VAT with 300 minutes included, and a one-off setup fee from £795. Growth is £449 a month and Scale, for groups of clinics, is £849 a month. Extra minutes cost 60p each on every plan." },
   { cat: "working", q: "Is there a minimum contract?",
     a: "Plans are billed monthly with 30 days' notice. We set out the terms in writing before you start, including what's included each month and what counts as extra. Every invoice shows your included minutes and any overage." },
 ];
@@ -239,6 +241,22 @@ const capPanel = (c: (typeof capabilities)[number], i: number) => `
       </div>`;
 
 /* ------------------------------------------------------------------ Page */
+// "Clinics we work with" (keyword brief, 26 Oct 2026): one card per clinic type the SEO plan names. The H3s carry
+// the secondary keywords, so keep them as written.
+const clinicTypes: [string, string, string][] = [
+  ["users", "AI Receptionist for Chiropractors", "Patients book, move and cancel adjustments all day while you are hands-on. Our AI receptionist for chiropractors books first visits and follow-ups into the right practitioner's diary, explains your first-visit fee as you word it and fills cancellations from your waitlist."],
+  ["stethoscope", "AI Receptionist for Physiotherapy", "Physios can't pick up mid-session. An AI receptionist for a physio clinic books initial assessments and follow-up sessions, takes insurer and authorisation details for insured patients and sends post-surgery worries to a clinician."],
+  ["plus-star", "AI Receptionist for Laser Clinics", "Our AI receptionist for laser clinics books consultations and patch tests before treatment, explains course prices from your list and moves bookings when a patient needs to rebook. Aftercare worries go straight to your team."],
+  ["message", "AI Receptionist for Therapists", "Counsellors, sports therapists and massage therapists are in sessions, not at the phone. An AI receptionist for therapists books and moves sessions, answers questions about fees and availability and keeps every call private and brief."],
+  ["clipboard", "AI Receptionist for Pharmacies", "Our AI receptionist for pharmacies answers questions about opening hours, private services and travel clinics, and books appointments such as flu jabs or blood pressure checks. Anything about a medicine or a prescription goes to the pharmacist."],
+  ["shield", "AI Receptionist for Veterinary Clinics", "An AI receptionist for veterinary clinics books check-ups, vaccinations and nurse appointments and answers questions about fees and opening hours. If an owner says their animal is in distress, it puts them through to the vet on duty or gives your out-of-hours emergency number."],
+];
+const clinicTypeCard = ([ic, h3, text]: [string, string, string]) => `      <li class="hover-card rounded-[16px] border border-line bg-paper p-5 sm:p-6">
+        <span class="icon-tile">${icon(ic)}</span>
+        <h3 class="mt-4 !text-[22px]">${h3}</h3>
+        <p class="mt-2 text-[16px] text-muted">${text}</p>
+      </li>`;
+
 export const clinicMarkup = String.raw`
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -286,9 +304,9 @@ export const clinicMarkup = String.raw`
   <div class="container-omh relative grid grid-cols-[minmax(0,1fr)] items-start gap-10 py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-24" data-brand
     data-brand-biz='[{"id":"newpatient","label":"New patient","name":"Brookfield Clinic","city":"Manchester","num":"0161 496 0123","agent":"Ruth","kind":"clinic&#39;s","initials":"BC","voice":"British English, warm and friendly","never":"Gives clinical advice","transfer":"Clinical questions go to the duty clinician","caller":"I&#39;d like to book a physio assessment for my knee. Do you have anything this week?","reply":"Yes. I have Thursday at 9:10 with Sarah. Shall I book it?","booked":"Assessment booked: Thu 09:10","summary":"Summary sent to reception: new self-pay patient, intake form sent by text"},{"id":"urgent","label":"Urgent","name":"Harbour Private Clinic","city":"Bristol","num":"0117 496 0135","agent":"Leah","kind":"clinic&#39;s","initials":"HP","voice":"British English, calm and measured","never":"Assesses symptoms","transfer":"Worries after a procedure go to the duty nurse","caller":"I had a procedure with you yesterday and I&#39;m worried about the wound.","reply":"I&#39;m sorry to hear that. I&#39;m putting you through to the nurse on duty now.","booked":"Put through to the duty nurse","summary":"Flagged for the clinical team: post-procedure call, put through, no advice given"},{"id":"insured","label":"Insured","name":"Northgate Health","city":"Leeds","num":"0113 496 0188","agent":"Amy","kind":"clinic&#39;s","initials":"NH","voice":"British English, clear and upbeat","never":"Quotes a fee it has not been given","transfer":"Billing queries go to the accounts team","caller":"I&#39;m with Bupa and I have a referral for a knee scan. Can I book it?","reply":"Yes. Do you have your authorisation number? I can book you in on Tuesday at 2:30pm.","booked":"Scan booked: Tue 14:30, authorisation noted","summary":"Diary updated: insured patient, authorisation number noted, text sent"}]'>
     <div class="lg:col-start-1 lg:row-start-1">
-      <h2>What is an AI voice agent <span class="hl">for private clinics?</span></h2>
-      <p class="mt-5 text-band-muted">An AI voice agent is software that answers and makes phone calls for your clinic in natural, spoken conversation. It works out whether the caller is a new patient, an existing patient or someone worried after a procedure, answers from fees and information you have approved, books appointments into your diary and passes anything clinical to your team, with a summary of the call.</p>
-      <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained clinic receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and clinic software, and keep improving it.</p>
+      <h2>What is an AI receptionist <span class="hl">for medical clinics?</span></h2>
+      <p class="mt-5 text-band-muted">An AI receptionist for medical clinics is software that answers and makes phone calls for your clinic in natural, spoken conversation. Some clinics call it an AI medical receptionist; we call it an AI voice agent, because on Growth and Scale it does more than answer the phone. It works out whether the caller is a new patient, an existing patient or someone worried after a procedure, answers from fees and information you have approved, books appointments into your diary and passes anything clinical to your team, with a summary of the call.</p>
+      <p class="mt-4 text-band-muted">Callers don't press buttons or leave voicemails. They say what they need, and the agent responds the way a well-trained clinic receptionist would. The difference with OMH is that we set it up and run it for you: we write the script around your real calls, connect your diary and clinic software, and keep improving it. See our <a href="/ai-voice-agents/receptionist">AI receptionist plan</a> for clinics that only need the phone answered.</p>
     </div>
 
     <div class="order-last lg:order-none lg:col-start-1 lg:row-start-2">
@@ -423,6 +441,18 @@ ${industries.map(industryPanel).join("\n")}
       </div>
       ${primaryCta("industries_book_demo", "shrink-0")}
     </div>
+  </div>
+</section>
+
+<section id="clinic-types" data-component="ClinicTypes" class="border-y border-line bg-surface">
+  <div class="container-omh py-14 lg:py-20">
+    <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Clinics we work with</p>
+    <h2>Built for every kind <span class="hl">of private clinic</span></h2>
+    <p class="mt-5 text-muted">Every clinic gets different calls. We script the agent around yours: the treatments you offer, who sees which patients and what counts as urgent. These are the clinics we set up most often.</p>
+    <ul class="mt-10 grid gap-5 md:grid-cols-2" role="list">
+${clinicTypes.map(clinicTypeCard).join("\n")}
+    </ul>
+    <p class="mt-6 text-[14px] text-muted">The agent never gives medical, veterinary or medicine advice. It reads out only the information you have approved.</p>
   </div>
 </section>
 

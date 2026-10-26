@@ -22,7 +22,7 @@ export function sectionsOf(html: string, className: string) {
 export type Source = ReturnType<typeof sectionsOf>;
 export type Runs = [Source, string[]][];
 
-export function VoiceLanding({ runs, graph, page, demoHeading, children }: { runs: Runs; graph?: object; page: string; demoHeading: ReactNode; children?: ReactNode }) {
+export function VoiceLanding({ runs, graph, page, demoHeading, thingsToTry, children }: { runs: Runs; graph?: object; page: string; demoHeading: ReactNode; thingsToTry?: readonly string[]; children?: ReactNode }) {
   const placed = runs.flatMap(([, keys]) => keys);
   for (const src of new Set(runs.map(([s]) => s)))
     for (const key of src.byKey.keys()) if (!placed.includes(key)) throw new Error(`${page}: section "${key}" has no place in runs`);
@@ -46,7 +46,7 @@ export function VoiceLanding({ runs, graph, page, demoHeading, children }: { run
       </div>
       <LandingV4Script />
       {/* The booking band every "Book a 30-Minute Demo" button on the page points at. */}
-      <BookDemo id="book-demo-form" heading={demoHeading} />
+      <BookDemo id="book-demo-form" heading={demoHeading} thingsToTry={thingsToTry} />
       <VoiceAgentsScript />
       <VoiceMotion />
       {/* Page-specific widgets, e.g. EstateScript. */}

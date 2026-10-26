@@ -92,6 +92,21 @@ const industries = [
     h3: "Car dealerships: book test drives and service slots",
     p: "Buyers enquire on several forecourts at once. The agent answers stock questions, books test drives and fills the service bay.",
     bullets: ["Answers questions on stock, part-exchange and opening hours", "Books test drives with your sales team", "Books MOTs and services into the workshop"] },
+  { id: "accountants", icon: "book", link: "AI receptionist for accountants", label: "Accountants", full: "Accountants & Financial Advisers", tint: 1, href: "/ai-voice-agents/accountants-financial-advisers", slug: "accountants-financial-advisers",
+    time: "Call · 17:35", status: "January rush", caller: "I need to get my self-assessment in. Can someone call me back?", agent: "Of course. I can book you a call with your accountant tomorrow at 9:30.", booked: "Call booked: Tomorrow 09:30",
+    h3: "Accountants and financial advisers: every client call answered in the January rush",
+    p: "Clients ring with deadlines, documents and questions while the team is heads-down. The agent takes the details, books the meeting and passes anything that needs an adviser to your team.",
+    bullets: ["Books meetings and takes new enquiries", "Answers from the information you approve", "Passes anything that needs an adviser to your team"], note: "No financial advice given." },
+  { id: "salons", icon: "users", link: "AI receptionist for salons", label: "Salons", full: "Salons & Beauty", tint: 3, href: "/ai-voice-agents/salons", slug: "salons",
+    time: "Call · 11:20", status: "Every chair is full", caller: "Can I move my cut and colour to Thursday?", agent: "Yes. Thursday at 2pm with Jade is free. Shall I move it?", booked: "Appointment moved: Thu 14:00",
+    h3: "Salons and beauty: every booking call answered when every chair is full",
+    p: "Booking calls come in while stylists have their hands full. The agent books, moves and cancels appointments and fills the gaps that cancellations leave.",
+    bullets: ["Books and moves appointments", "Fills cancellations", "Answers questions on services, prices and opening hours"] },
+  { id: "trades", icon: "wrench", link: "AI receptionist for trades", label: "Trades", full: "Trades", tint: 4, href: "/ai-voice-agents/trades", slug: "trades",
+    time: "Missed call · 10:05", status: "You were up a ladder", caller: "Can you quote for rewiring a three-bed house?", agent: "Yes. I can book a site visit on Tuesday at 4pm.", booked: "Site visit booked: Tue 16:00",
+    h3: "Trades: every job call answered while you are on the job",
+    p: "Electricians, carpenters, cleaners, roofers and landscapers cannot answer the phone mid-job. The agent takes the quote request, books the visit and sends urgent jobs to whoever is on call.",
+    bullets: ["Takes quote requests and books site visits", "Sends urgent jobs to whoever is on call", "Texts you a summary of every call"], note: "No technical advice given." },
 ];
 
 const callVis = (x: { time: string; status: string; caller: string; agent: string; booked: string; tint: number }) => `
@@ -110,7 +125,7 @@ const industryPanel = (x: (typeof industries)[number], i: number) => `
         <div class="call-vis" style="--tint:var(--va-tint-${x.tint})" aria-hidden="true">${callVis(x)}
         </div>
         <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-          <p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${icon(x.icon, "text-hl")}${x.full}<span class="ml-1 tnum">${String(i + 1).padStart(2, "0")} / 08</span></p>
+          <p class="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">${icon(x.icon, "text-hl")}${x.full}<span class="ml-1 tnum">${String(i + 1).padStart(2, "0")} / ${String(industries.length).padStart(2, "0")}</span></p>
           <h3 class="mt-3 !text-[clamp(23px,21px+.5vw,28px)]">${x.h3}</h3>
           <p class="mt-3 text-[16px] text-muted">${x.p}</p>
           <ul class="mt-5 space-y-2 text-[16px] leading-snug">

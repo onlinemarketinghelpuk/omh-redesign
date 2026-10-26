@@ -16,13 +16,13 @@ import { SITE, faqSchema } from "@/lib/schema";
 
 const path = "/ai-voice-agents/dentists";
 const url = `${SITE}${path}`;
-const ogTitle = "AI Voice Agent for Dental Clinics | OMH";
-const ogDescription = "Every patient call answered, even when reception is full. Built, tested and managed by a UK team.";
+const ogTitle = "AI Voice Agent & AI Receptionist for Dentists | OMH";
+const ogDescription = "An AI receptionist for dentists: every patient call answered, even when reception is full. Built, tested and managed by a UK team.";
 
 export const dentalMetadata: Metadata = {
-  title: { absolute: "AI Voice Agent & AI Receptionist for Dental Clinics | UK | OMH" },
+  title: { absolute: "AI Voice Agent & AI Receptionist for Dentists | UK | OMH" },
   description:
-    "An AI voice agent for UK dental practices. Answers patient calls 24/7, books check-ups, fills cancellations and routes urgent calls. Never gives clinical advice. Built and managed by OMH.",
+    "An AI receptionist for dentists and dental practices in the UK. Answers patient calls 24/7, books check-ups, fills cancellations and routes urgent calls. No clinical advice.",
   alternates: { canonical: url },
   openGraph: { type: "website", locale: "en_GB", siteName: "Online Marketing Help", title: ogTitle, description: ogDescription, url },
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription },
@@ -42,7 +42,7 @@ const graph = {
     {
       "@type": "Service",
       "@id": `${url}#service`,
-      name: "AI Voice Agent for Dental Clinics",
+      name: "AI Voice Agent for Dentists",
       serviceType: "AI voice agent and AI receptionist for dental practices",
       description:
         "Managed AI voice agents that answer patient calls, book check-ups and hygiene visits, fill cancellations and route urgent calls for UK dental practices. They never give clinical advice.",
@@ -58,7 +58,7 @@ const graph = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
         { "@type": "ListItem", position: 2, name: "AI Voice Agents", item: `${SITE}/ai-voice-agents` },
-        { "@type": "ListItem", position: 3, name: "Dental Clinics", item: url },
+        { "@type": "ListItem", position: 3, name: "Dentists", item: url },
       ],
     },
   ],

@@ -38,7 +38,7 @@ const paths = [
 const industries = ["Estate & Letting Agents", "Dental Clinics", "Clinics & Healthcare", "Plumbers", "Heating Engineers", "Builders & Contractors", "Law Firms", "Car Dealerships"];
 const cities = ["London", "Birmingham", "Manchester", "Leeds", "Liverpool", "Bristol", "Elsewhere in the UK"];
 const onTheCall = ["Ask who rings you and what gets missed", "Play you an agent set up for your type of business", "Follow up with a clear price in writing"];
-const thingsToTry = ["Book a boiler service for next week.", "Ask to speak to a person.", "Ask something it can't know, and hear how it handles it."];
+const defaultThingsToTry = ["Book a boiler service for next week.", "Ask to speak to a person.", "Ask something it can't know, and hear how it handles it."];
 
 const messages: Record<string, string> = {
   "Your name": "Enter your name.",
@@ -172,7 +172,7 @@ function Radio({ checked, first, index, onPick, className, children }: { checked
 }
 
 /** `id`: an anchor for in-page "Book a demo" links (the AI voice agents page uses "book-demo-form"). `heading`: an h2 above the tabs. */
-export function BookDemo({ id, eyebrow, heading }: { id?: string; eyebrow?: string; heading?: ReactNode } = {}) {
+export function BookDemo({ id, eyebrow, heading, thingsToTry = defaultThingsToTry }: { id?: string; eyebrow?: string; heading?: ReactNode; /** The "things to try" list; industry pages pass their own. */ thingsToTry?: readonly string[] } = {}) {
   const uid = useId();
   const [tab, setTab] = useState(0);
 

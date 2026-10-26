@@ -16,13 +16,13 @@ import { SITE, faqSchema } from "@/lib/schema";
 
 const path = "/ai-voice-agents/healthcare";
 const url = `${SITE}${path}`;
-const ogTitle = "AI Voice Agent for Private Clinics | OMH";
-const ogDescription = "Every patient call answered, even over the lunch hour. Built, tested and managed by a UK team.";
+const ogTitle = "AI Voice Agent & AI Receptionist for Medical Clinics | OMH";
+const ogDescription = "An AI receptionist for medical clinics: every patient call answered, even over the lunch hour. Built, tested and managed by a UK team.";
 
 export const clinicsMetadata: Metadata = {
-  title: { absolute: "AI Voice Agent & AI Receptionist for Private Clinics | UK | OMH" },
+  title: { absolute: "AI Voice Agent & AI Receptionist for Medical Clinics | UK | OMH" },
   description:
-    "An AI voice agent for UK private clinics. Answers patient calls 24/7, handles self-pay and insured patients, books the right appointment type and fills cancellations. Never gives clinical advice. Built and managed by OMH.",
+    "An AI receptionist for medical clinics and private clinics in the UK. Answers patient calls 24/7, books the right appointment type and fills cancellations. No clinical advice.",
   alternates: { canonical: url },
   openGraph: { type: "website", locale: "en_GB", siteName: "Online Marketing Help", title: ogTitle, description: ogDescription, url },
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription },
@@ -77,7 +77,7 @@ const runs: Runs = [
   [extras, ["day"]],
   [fresh, ["features"]],
   [v4, ["how"]],
-  [fresh, ["use-cases"]],
+  [fresh, ["use-cases", "clinic-types"]],
   [legacy, ["feedback", "roi-calculator"]],
   [fresh, ["pricing"]],
   [v4, ["cities"]],

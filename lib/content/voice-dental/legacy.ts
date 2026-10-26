@@ -133,7 +133,7 @@ ${roiCalculator("dental")}
   <div class="container-omh grid gap-10 py-20 lg:grid-cols-[minmax(0,.72fr)_minmax(0,1.28fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-8 lg:py-28">
     <div>
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Questions</p>
-      <h2>What dental practices<br class="max-sm:hidden"> <span class="hl">ask us first</span></h2>
+      <h2>What dentists<br class="max-sm:hidden"> <span class="hl">ask us first</span></h2>
       <p class="mt-5 text-muted">Straight answers on clinical safety, emergencies, NHS and private patients, practice software and patient data. See how our <a href="/ai-voice-agents" class="text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">AI voice agent</a> works for other UK businesses.</p>
     </div>
 

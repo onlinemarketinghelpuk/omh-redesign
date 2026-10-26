@@ -74,6 +74,7 @@ export const primaryNav: NavItem[] = [
         heading: "AI Receptionist",
         links: [
           { label: "Custom AI Voice Agents", href: "/ai-voice-agents", ready: true },
+          { label: "AI Agent for Accountants & Advisers", href: "/ai-voice-agents/accountants-financial-advisers", ready: true },
           { label: "AI Agent for Builders & Construction", href: "/ai-voice-agents/builders-construction", ready: true },
           { label: "AI Agent for Estate & Letting Agents", href: "/ai-voice-agents/estate-letting-agents", ready: true },
           { label: "AI Agent for Healthcare & Clinics", href: "/ai-voice-agents/healthcare", ready: true },
@@ -81,7 +82,9 @@ export const primaryNav: NavItem[] = [
           { label: "AI Agent for Car Dealerships", href: "/ai-voice-agents/car-dealerships", ready: true },
           { label: "AI Agent for Law Firms", href: "/ai-voice-agents/law-firms", ready: true },
           { label: "AI Agent for Plumbers", href: "/ai-voice-agents/plumbers", ready: true },
+          { label: "AI Agent for Salons & Beauty", href: "/ai-voice-agents/salons", ready: true },
           { label: "AI Agent for Dentists", href: "/ai-voice-agents/dentists", ready: true },
+          { label: "AI Agent for Trades", href: "/ai-voice-agents/trades", ready: true },
         ],
       },
       {
@@ -154,6 +157,18 @@ export const readyPages: NavLink[] = [
   { label: "AI Services", href: "/ai-services", ready: true },
   { label: "Custom AI Voice Agents", href: "/ai-voice-agents", ready: true },
   { label: "AI Receptionist", href: "/ai-voice-agents/receptionist", ready: true },
+  // Industry voice-agent pages (26 Oct 2026): listed here so the sitemap and site search carry them.
+  { label: "AI Agent for Estate & Letting Agents", href: "/ai-voice-agents/estate-letting-agents", ready: true },
+  { label: "AI Agent for Dentists", href: "/ai-voice-agents/dentists", ready: true },
+  { label: "AI Agent for Healthcare & Clinics", href: "/ai-voice-agents/healthcare", ready: true },
+  { label: "AI Agent for Plumbers", href: "/ai-voice-agents/plumbers", ready: true },
+  { label: "AI Agent for Heating & HVAC", href: "/ai-voice-agents/heating-hvac", ready: true },
+  { label: "AI Agent for Builders & Construction", href: "/ai-voice-agents/builders-construction", ready: true },
+  { label: "AI Agent for Law Firms", href: "/ai-voice-agents/law-firms", ready: true },
+  { label: "AI Agent for Car Dealerships", href: "/ai-voice-agents/car-dealerships", ready: true },
+  { label: "AI Agent for Accountants & Advisers", href: "/ai-voice-agents/accountants-financial-advisers", ready: true },
+  { label: "AI Agent for Salons & Beauty", href: "/ai-voice-agents/salons", ready: true },
+  { label: "AI Agent for Trades", href: "/ai-voice-agents/trades", ready: true },
   { label: "Facebook Marketing", href: "/facebook-marketing-agency", ready: true },
   { label: "Instagram Marketing", href: "/instagram-marketing-agency", ready: true },
 ];

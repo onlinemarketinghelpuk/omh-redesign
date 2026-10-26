@@ -15,13 +15,13 @@ import { SITE, faqSchema } from "@/lib/schema";
 
 const path = "/ai-voice-agents/heating-hvac";
 const url = `${SITE}${path}`;
-const ogTitle = "AI Voice Agent for Heating & HVAC Engineers | OMH";
-const ogDescription = "Every breakdown call answered, even when the first cold snap hits. Built, tested and managed by a UK team.";
+const ogTitle = "AI Voice Agent & AI Receptionist for Heating & HVAC | OMH";
+const ogDescription = "An AI receptionist for HVAC services: every breakdown call answered, even when the first cold snap hits. Built, tested and managed by a UK team.";
 
 export const hvacMetadata: Metadata = {
-  title: { absolute: "AI Voice Agent & AI Receptionist for Heating & HVAC Engineers | UK | OMH" },
+  title: { absolute: "AI Voice Agent & AI Receptionist for Heating & HVAC Services | OMH" },
   description:
-    "An AI voice agent for UK heating and HVAC engineers. Answers customer calls 24/7, books breakdowns, boiler services and landlord gas safety certificates, and takes quote requests. Never diagnoses a fault. Built and managed by OMH.",
+    "An AI receptionist for HVAC services and heating engineers in the UK. Answers calls 24/7, books breakdowns, boiler services and gas safety certificates. Never diagnoses a fault.",
   alternates: { canonical: url },
   openGraph: { type: "website", locale: "en_GB", siteName: "Online Marketing Help", title: ogTitle, description: ogDescription, url },
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription },

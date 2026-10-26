@@ -55,9 +55,9 @@ export const dentalLandingMarkup = String.raw`
 
 <section id="top" class="hero4 hero-grid" aria-labelledby="hero-title">
   <div class="container-omh pt-12 text-center md:pt-16 lg:pt-20">
-    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Dental</span>
-    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Dental Clinics<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Patient Call Answered</span></h1>
-    <p class="lead mx-auto mt-6">Our AI voice agent answers every patient call on the first ring, books check-ups, fills cancellations and routes urgent calls, even in the 8am rush. It never gives clinical advice. We build it around your practice and manage it every month.</p>
+    <span class="badge"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>AI voice agents · Dentists</span>
+    <h1 class="h1-c mx-auto mt-6" id="hero-title">AI Voice Agent for Dentists<span class="sr-only">:</span> <br class="max-md:hidden"><span class="hl">Every Patient Call Answered</span></h1>
+    <p class="lead mx-auto mt-6">Our AI voice agent works as an AI receptionist for dentists. It answers every patient call on the first ring, books check-ups, fills cancellations and routes urgent calls, even in the 8am rush. It never gives clinical advice. We build it around your practice and manage it every month.</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" id="hero-form">
       <a href="#book-demo-form" class="btn btn-primary w-full sm:w-auto" data-track="hero_book_demo">Book a 30-Minute Demo</a>
       <a href="#hero-video" class="btn btn-secondary w-full sm:w-auto" data-track="hero_watch_demo">Watch the demo</a>
@@ -109,7 +109,7 @@ export const dentalLandingMarkup = String.raw`
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Local cover</p>
-      <h2 class="h2 mt-3" id="city-title">Dental practices across the UK.<br class="hidden md:block"> <span class="hl">A local number for each practice.</span></h2>
+      <h2 class="h2 mt-3" id="city-title">Dentists across the UK.<br class="hidden md:block"> <span class="hl">A local number for each practice.</span></h2>
       <p class="lead mt-4">Patients trust a local number. Your agent answers on your existing line, or on a new one with your city's code. We set practices up by video call and phone from Hullbridge, Essex.</p>
     </div>
     <div class="va-car mt-12" data-carousel data-autoplay>
