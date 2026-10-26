@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   // deploy, whose CSS no longer exists, so the page loaded unstyled. Expiring with the revalidate drops it.
   expireTime: 3600,
   images: {
+    // AVIF first (sharp is installed): smaller than WebP for the photo-heavy media frames.
+    formats: ["image/avif", "image/webp"],
     // Optimised images are immutable per URL, so let browsers and the CDN keep them for 31 days
     // (PageSpeed, 26 Oct 2026: the 4-hour default was flagged as an inefficient cache policy).
     minimumCacheTTL: 2678400,

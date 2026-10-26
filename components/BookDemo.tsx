@@ -184,7 +184,6 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
   const [time, setTime] = useState<string | null>(null);
   const [step, setStep] = useState<1 | 2>(1);
   const [slotError, setSlotError] = useState(false);
-  const [who, setWho] = useState("Your business");
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
   const [doneName, setDoneName] = useState<string | null>(null);
@@ -298,10 +297,6 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                     track("demo_form_start", { form: "Demo booking" });
                   }
                   booking.recheck(e);
-                  const f = e.currentTarget.elements;
-                  const biz = (f.namedItem("Business name") as HTMLInputElement).value.trim();
-                  const city = (f.namedItem("Where you're based") as HTMLSelectElement).value;
-                  setWho(biz && city ? `${biz}, ${city}` : biz || city || "Your business");
                 }}
                 className="p-6 sm:p-8"
               >
@@ -454,7 +449,7 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
                   </p>
                   <p className="mt-2 flex items-center gap-2 text-body text-muted">
                     <MapPin aria-hidden className="size-5 shrink-0 text-amber-deep" />
-                    {who}
+                    Online / Google Meet
                   </p>
                 </div>
                 <p className="mt-6 font-sans text-[18px] font-semibold">On the call we</p>

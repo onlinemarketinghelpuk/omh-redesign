@@ -91,7 +91,7 @@ export function SolutionLeadForm({
       <button
         type="submit"
         disabled={sending}
-        className="button-motion group mt-5 inline-flex min-h-12 items-center gap-2 rounded-button bg-[#f2c675] px-6 py-4 text-body font-semibold text-white hover:bg-surface disabled:cursor-wait disabled:opacity-70 max-sm:w-full max-sm:justify-center"
+        className="button-motion group mt-5 inline-flex min-h-12 items-center gap-2 rounded-button border-[1.5px] border-transparent bg-teal px-6 py-4 text-body font-semibold text-white hover:bg-teal-dark hover:text-white disabled:cursor-wait disabled:opacity-70 max-sm:w-full max-sm:justify-center"
       >
         {sending ? "Sending…" : submitLabel}
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

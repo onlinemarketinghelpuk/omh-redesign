@@ -7,6 +7,8 @@ import { Accordion } from "@/components/ui/Accordion";
 import { ArrowRight, Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Proof";
 import { SolutionLeadForm } from "@/components/solutions/SolutionLeadForm";
+import { GrowthPath } from "@/components/solutions/GrowthPath";
+import { definitionIcons } from "@/components/solutions/definition-icons";
 import { withLinks } from "@/components/services/ServicePrimitives";
 import { navLabels } from "@/lib/content/nav";
 import { solutionOrder, solutions, type SolutionPageContent } from "@/lib/content/solutions";
@@ -15,7 +17,8 @@ function SolutionHero({ content }: { content: SolutionPageContent }) {
   return (
     <section className="hero-grid overflow-hidden border-b border-line bg-warm">
       <div className="container-omh grid min-h-[690px] grid-cols-[minmax(0,1.05fr)_minmax(390px,.75fr)] items-center gap-[clamp(48px,7vw,110px)] py-[clamp(64px,7vw,105px)] max-lg:min-h-0 max-lg:grid-cols-1">
-        <Reveal className="relative z-10">
+        {/* CSS-only entrance, not Reveal: the JS-gated reveal held the headline at opacity 0 until hydration and delayed LCP. */}
+        <div className="hero-in relative z-10">
           <Eyebrow>{content.eyebrow}</Eyebrow>
           <h1 className="mt-7 font-sans text-display font-semibold text-balance max-lg:">
             {content.title} <span className="text-amber-deep">{content.titleAccent}</span>
@@ -25,7 +28,7 @@ function SolutionHero({ content }: { content: SolutionPageContent }) {
             <Button href="#enquire" arrow data-event={`${content.slug}_hero_primary_click`}>
               {content.primaryCta}
             </Button>
-            <Button href="#approach" variant="secondary" data-event={`${content.slug}_hero_secondary_click`}>
+            <Button href="#approach" variant="secondary" arrow data-event={`${content.slug}_hero_secondary_click`}>
               {content.secondaryCta}
             </Button>
           </div>
@@ -40,37 +43,11 @@ function SolutionHero({ content }: { content: SolutionPageContent }) {
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal className="relative z-10 max-lg:mx-auto max-lg:w-full max-lg:max-w-[760px]">
-          <div className={`solution-signal solution-signal-${content.theme} relative aspect-[4/5] overflow-hidden rounded-[10px] border border-oninverse/10 bg-inverse p-7 text-oninverse shadow-[0_36px_90px_-44px_rgb(16_24_40/.72)] max-lg:aspect-[16/10] max-sm:aspect-auto max-sm:min-h-[520px] max-sm:p-5`}>
-            <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.07)_1px,transparent_1px)] [background-size:42px_42px]" />
-            <div className="relative flex h-full flex-col justify-between">
-              <div className="flex items-center justify-between border-b border-oninverse/12 pb-4 text-[14px] uppercase tracking-[0.14em] text-oninverse/55">
-                <span>Growth path</span>
-                <span className="size-2 rounded-full bg-[#f2c675] shadow-[0_0_0_6px_rgb(242_198_117/.12)]" />
-              </div>
-              <div className="py-8">
-                {content.signal.split(" → ").map((item, index, all) => (
-                  <div key={item}>
-                    <div className="flex items-center justify-between gap-5 border border-oninverse/12 bg-oninverse/[0.055] px-5 py-5 backdrop-blur-sm">
-                      {/* Source strings are mid-sentence fragments, so the step
-                          labels arrived as "Acquisition → product confidence". */}
-                      <span className="font-sans text-[clamp(19px,2vw,26px)] font-semibold first-letter:uppercase">
-                        {item}
-                      </span>
-                      <span className="text-[18px] tabular-nums text-[var(--accent-light)]">0{index + 1}</span>
-                    </div>
-                    {index < all.length - 1 && <div className="ml-7 h-8 w-px bg-[#f2c675]/55" />}
-                  </div>
-                ))}
-              </div>
-              <div className="border-t border-oninverse/12 pt-4 text-[18px] leading-relaxed text-oninverse/55">
-                {content.signalNote ?? "One connected journey. Measured against the action that matters."}
-              </div>
-            </div>
-          </div>
-        </Reveal>
+        <div className="hero-in hero-in-2 relative z-10 max-lg:mx-auto max-lg:w-full max-lg:max-w-[760px]">
+          <GrowthPath content={content} />
+        </div>
       </div>
     </section>
   );
@@ -107,16 +84,25 @@ function DefinitionSection({ content }: { content: SolutionPageContent }) {
             </div>
           )}
           {definition.tags && (
-            <div className="mt-12 rounded-card border border-line bg-surface p-8 max-sm:p-6">
+            <div className="mt-10">
               <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">{definition.tagsLabel}</p>
-              <ul className="mt-5 flex flex-wrap gap-3">
-                {definition.tags.map((tag) => (
-                  <li key={tag} className="inline-flex items-center gap-2.5 rounded-full border border-line bg-warm px-5 py-2.5 font-sans text-[17px] font-semibold">
-                    <Check className="size-4 text-amber-deep" aria-hidden="true" />
-                    {tag}
-                  </li>
-                ))}
+              <ul className="mt-4 grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+                {definition.tags.map((tag) => {
+                  const Icon = definitionIcons[tag.icon];
+                  return (
+                    <li key={tag.title} className="flex gap-4 rounded-card border border-line bg-surface p-5">
+                      <span className="flex size-11 shrink-0 items-center justify-center rounded-[10px] bg-soft text-amber-deep">
+                        <Icon className="size-5" aria-hidden="true" />
+                      </span>
+                      <div>
+                        <h3 className="font-sans text-[18px] font-semibold">{tag.title}</h3>
+                        <p className="mt-1 text-bsm leading-relaxed text-ink/68">{tag.body}</p>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
+              {definition.tagsNote && <p className="mt-4 text-bsm text-ink/60">{definition.tagsNote}</p>}
             </div>
           )}
         </Reveal>
@@ -204,12 +190,12 @@ function OutcomesSection({ content }: { content: SolutionPageContent }) {
                 key={item.number}
                 className={
                   content.outcomes.items.length === 4
-                    ? "min-h-[320px] border-r border-oninverse/15 px-7 py-9 first:pl-0 last:border-r-0 max-lg:min-h-0 max-lg:border-r-0 max-lg:px-0"
-                    : "min-h-[320px] border-r border-oninverse/15 px-8 py-9 first:pl-0 last:border-r-0 max-md:min-h-0 max-md:border-r-0 max-md:px-0"
+                    ? "border-r border-oninverse/15 px-7 py-9 first:pl-0 last:border-r-0 max-lg:border-r-0 max-lg:px-0"
+                    : "border-r border-oninverse/15 px-8 py-9 first:pl-0 last:border-r-0 max-md:border-r-0 max-md:px-0"
                 }
               >
                 <span className="font-sans text-[18px] font-semibold text-[var(--accent-light)]">{item.number}</span>
-                <h3 className="mt-16 font-sans text-[clamp(24px,2vw,31px)] font-semibold leading-tight max-md:mt-7">{item.title}</h3>
+                <h3 className="mt-5 font-sans text-[clamp(24px,2vw,31px)] font-semibold leading-tight">{item.title}</h3>
                 <p className="mt-5 text-body leading-relaxed text-oninverse/62">{item.body}</p>
               </article>
             ))}
@@ -255,7 +241,7 @@ function MediaSection({ content }: { content: SolutionPageContent }) {
               )}
             </div>
             <Captioned caption={content.media.captions?.[0]} className="col-span-7">
-              <MediaFrame kind="image" theme={content.theme} ratio="16/10" title={content.media.videoTitle} note="Video placeholder for approved project media." source="/images/home/campaign-review.png" alt="Marketing campaign planning and review" />
+              <MediaFrame kind="image" theme={content.theme} ratio="16/10" title={content.media.videoTitle} note="Video placeholder for approved project media." source="/images/home/campaign-review.webp" alt="Marketing campaign planning and review" />
             </Captioned>
           </div>
           <div className="mt-6 grid grid-cols-12 gap-6">
@@ -380,11 +366,11 @@ function ProofSection({ content }: { content: SolutionPageContent }) {
             </div>
             <div>
               <p className="text-body leading-relaxed text-ink/68">{content.proof.body}</p>
-              <div className="mt-7 flex flex-wrap gap-x-7 gap-y-4">
-                {content.proof.links.map((link) => (
-                  <Link key={link.href} href={link.href} className="group inline-flex items-center gap-2 font-semibold text-amber-deep hover:underline underline-offset-4">
-                    {link.label}<ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+              <div className="mt-7 flex flex-wrap gap-3 max-sm:flex-col">
+                {content.proof.links.map((link, index) => (
+                  <Button key={link.href} href={link.href} variant={index === 0 ? "primary" : "secondary"} arrow data-event={`${content.slug}_proof_${index === 0 ? "primary" : "secondary"}_click`}>
+                    {link.label}
+                  </Button>
                 ))}
               </div>
             </div>
