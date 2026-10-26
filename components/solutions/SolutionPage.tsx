@@ -6,7 +6,6 @@ import { MediaFrame } from "@/components/ServiceMedia";
 import { Accordion } from "@/components/ui/Accordion";
 import { ArrowRight, Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Proof";
-import { SolutionLeadForm } from "@/components/solutions/SolutionLeadForm";
 import { GrowthPath } from "@/components/solutions/GrowthPath";
 import { definitionIcons } from "@/components/solutions/definition-icons";
 import { withLinks } from "@/components/services/ServicePrimitives";
@@ -411,30 +410,6 @@ function FaqAndNext({ content }: { content: SolutionPageContent }) {
   );
 }
 
-function FinalSection({ content }: { content: SolutionPageContent }) {
-  return (
-    <section id="enquire" className="scroll-mt-24 bg-inverse text-oninverse">
-      <div className="container-omh section-lg">
-        <Reveal>
-          <div className="grid grid-cols-[.82fr_1.18fr] gap-[clamp(48px,8vw,120px)] max-lg:grid-cols-1">
-            <div>
-              <Eyebrow light>{content.final.eyebrow ?? "Start with the real problem"}</Eyebrow>
-              <h2 className="mt-6 font-sans text-[clamp(36px,4.4vw,60px)] font-semibold leading-[1.04] text-balance">{content.final.title}</h2>
-              <p className="mt-6 text-body leading-relaxed text-oninverse/66">{content.final.body}</p>
-              <div className="mt-9 space-y-3 text-body text-oninverse/58">
-                <p><span className="mr-3 text-[var(--accent-light)]">01</span>Your enquiry is read by a person.</p>
-                <p><span className="mr-3 text-[var(--accent-light)]">02</span>We review the context before suggesting a service.</p>
-                <p><span className="mr-3 text-[var(--accent-light)]">03</span>You receive a clear recommendation on the next step.</p>
-              </div>
-            </div>
-            <SolutionLeadForm need={content.final.formNeed} prompt={content.final.formPrompt} submitLabel={content.final.cta} eventPrefix={content.slug.replaceAll("-", "_")} />
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 export function SolutionPage({ content }: { content: SolutionPageContent }) {
   return (
     <div className={`solution-page solution-page-${content.theme}`}>
@@ -449,7 +424,6 @@ export function SolutionPage({ content }: { content: SolutionPageContent }) {
       <FitSection content={content} />
       <ProofSection content={content} />
       <FaqAndNext content={content} />
-      <FinalSection content={content} />
     </div>
   );
 }

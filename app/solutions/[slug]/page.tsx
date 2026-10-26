@@ -86,7 +86,8 @@ export default async function Page({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
       />
       <SolutionPage content={content} />
-      <BookDemo />
+      {/* Client, 26 Oct 2026: the enquiry-form section is gone; its eyebrow and title now head the booking section. */}
+      <BookDemo id="enquire" eyebrow={content.final.eyebrow ?? "Start with the real problem"} heading={content.final.title} />
     </>
   );
 }

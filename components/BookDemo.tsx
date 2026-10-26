@@ -5,6 +5,7 @@ import { useId, useMemo, useState, useSyncExternalStore, type ComponentProps, ty
 import { flushSync } from "react-dom";
 import { Calendar, Check, Clock, MapPin, Phone, PhoneIncoming } from "lucide-react";
 import { ArrowRight } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Proof";
 import { demoTimes } from "@/lib/book-demo";
 import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
 
@@ -171,7 +172,7 @@ function Radio({ checked, first, index, onPick, className, children }: { checked
 }
 
 /** `id`: an anchor for in-page "Book a demo" links (the AI voice agents page uses "book-demo-form"). `heading`: an h2 above the tabs. */
-export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } = {}) {
+export function BookDemo({ id, eyebrow, heading }: { id?: string; eyebrow?: string; heading?: ReactNode } = {}) {
   const uid = useId();
   const [tab, setTab] = useState(0);
 
@@ -244,7 +245,8 @@ export function BookDemo({ id, heading }: { id?: string; heading?: ReactNode } =
         <div className="section-sm border-y border-oninverse/12">
           {/* The gold part of a heading always starts its own line, so the heading reads as two even lines instead of
               leaving one word on its own (client, 21 Oct 2026). */}
-          {heading && <h2 className="mb-10 font-sans text-h2 font-semibold text-balance [&>span]:block">{heading}</h2>}
+          {eyebrow && <Eyebrow light>{eyebrow}</Eyebrow>}
+          {heading && <h2 className={`mb-10 font-sans text-h2 font-semibold text-balance [&>span]:block ${eyebrow ? "mt-6" : ""}`}>{heading}</h2>}
           <div role="tablist" aria-label="How would you like to start?" className="grid gap-3 md:grid-cols-2">
             {paths.map((p, i) => (
               <button
