@@ -41,6 +41,7 @@ const serviceProof = {
   wordpress: { study: ["bar", "Reservation increase"], review: ["Natasha Kendle", "The process was so easy and Sarah was fantastic in presenting me with ideas"] },
   maintenance: { fact: "Est. 2019 · Companies House no. 12328533", review: ["Ricky Catt", "didn’t try to over exaggerate the work that needed done"] },
   shopify: { study: ["clothing-business", "Purchase-conversion increase"], review: ["Kiera Taylor-Elton", "Great to work with a company that aren’t so pushy on the sales front"] },
+  "ecommerce-seo": { study: ["clothing-business", "Organic-traffic increase"], review: ["Ricky Catt", "she was so polite and professional"] },
   "social-media": { fact: "13 services under one roof", review: ["Karl Weller", "Now with Online Marketing Helps support I can put my feet up and relax"] },
   "paid-social": { fact: "100% UK business focus", review: ["Natasha Kendle", "FB paid ads and I am really happy with the results"] },
 } satisfies Record<string, { study?: [slug: string, resultLabel: string]; fact?: string; review: [name: string, excerpt: string] }>;

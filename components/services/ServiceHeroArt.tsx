@@ -142,12 +142,55 @@ function Screens({ shots, badge }: { shots: [string, string][]; badge: string })
   );
 }
 
-export function ServiceHeroArt({ variant }: { variant: "shopify" | "maintenance" | "wordpress" | "designs" }) {
+function EcommerceSeo() {
+  const bars = [34, 40, 38, 48, 55, 52, 64, 70, 76, 82, 88, 96];
+  const rows: [string, string][] = [
+    ["Category pages", "Optimised"],
+    ["Product schema", "Valid"],
+    ["Filter URLs", "Canonicalised"],
+    ["Core Web Vitals", "Passing"],
+  ];
+  return (
+    <Frame>
+      <div className={`${tile} p-4`}>
+        <div className="flex items-center justify-between">
+          <span className="font-sans text-[15px] font-semibold">Organic revenue</span>
+          <span className="rounded-full bg-success/15 px-2.5 py-0.5 text-[12px] font-semibold text-success">Trending up</span>
+        </div>
+        <div className="mt-3 flex h-20 items-end gap-1.5" aria-hidden="true">
+          {bars.map((h, i) => (
+            <span key={i} className={`flex-1 rounded-t-[3px] ${i === bars.length - 1 ? "bg-amber" : "bg-ink/15"}`} style={{ height: `${h}%` }} />
+          ))}
+        </div>
+        <div className="mt-1.5 flex justify-between text-[11px] text-ink/50"><span>12 months ago</span><span>Now</span></div>
+        <div className="mt-4 border-t border-line pt-3">
+          <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-ink/55">Catalogue health</span>
+          <ul className="mt-2 space-y-1.5">
+            {rows.map(([k, v]) => (
+              <li key={k} className="flex items-center justify-between gap-3 text-[13px]">
+                <span className="flex items-center gap-2 text-ink/75"><Check className="size-3.5 text-success" aria-hidden="true" />{k}</span>
+                <span className="font-semibold">{v}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className={`${tile} mx-auto -mt-3 flex w-[78%] items-center gap-3 px-4 py-3`}>
+        <Star className="size-4 fill-amber text-amber" aria-hidden="true" />
+        <div className="text-[13px] font-semibold">Product rich results showing in search</div>
+      </div>
+    </Frame>
+  );
+}
+
+export function ServiceHeroArt({ variant }: { variant: "shopify" | "maintenance" | "wordpress" | "designs" | "ecommerce-seo" }) {
   switch (variant) {
     case "shopify":
       return <Shopify />;
     case "maintenance":
       return <Maintenance />;
+    case "ecommerce-seo":
+      return <EcommerceSeo />;
     case "wordpress":
       return (
         <Screens

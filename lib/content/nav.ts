@@ -32,6 +32,7 @@ const serviceColumns: NavColumn[] = [
     links: [
       { label: "Local SEO", href: "/local-seo", ready: true },
       { label: "SEO Services", href: "/seo-services", ready: true },
+      { label: "Ecommerce SEO", href: "/ecommerce-seo-services", ready: true },
     ],
   },
   {
@@ -149,6 +150,7 @@ export const readyPages: NavLink[] = [
   { label: "Cookie Policy", href: "/cookies", ready: true },
   { label: "Terms & Conditions", href: "/terms", ready: true },
   { label: "SEO Services", href: "/seo-services", ready: true },
+  { label: "Ecommerce SEO", href: "/ecommerce-seo-services", ready: true },
   { label: "AI Services", href: "/ai-services", ready: true },
   { label: "Custom AI Voice Agents", href: "/ai-voice-agents", ready: true },
   { label: "AI Receptionist", href: "/ai-voice-agents/receptionist", ready: true },

@@ -37,7 +37,7 @@ export function RelatedServices({
               </h2>
               {body && <p className="mt-5 text-body leading-relaxed text-ink/70">{body}</p>}
             </div>
-            <div className="col-span-8 grid grid-cols-3 gap-5 max-md:grid-cols-1">
+            <div className={`col-span-8 grid gap-5 max-md:grid-cols-1 ${links.length === 4 ? "grid-cols-2" : "grid-cols-3"}`}>
               {links.map((link, index) => (
                 <Link
                   key={link.href}
