@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import { DownloadIcon } from "@sanity/icons/Download";
+import { BulbOutlineIcon } from "@sanity/icons/BulbOutline";
 
 // Mirrors lib/content/insights-types.ts. The pull script (scripts/pull-sanity.mjs)
 // serialises these documents back into content/insights-*.json, so field names
@@ -126,6 +127,72 @@ export const post = defineType({
           type: "image",
           options: { hotspot: true },
           fields: [defineField({ name: "alt", title: "Alt text", type: "string" })],
+        }),
+        // "The short version" box: a title and a few points. Replaces pasting the
+        // <aside class="omh-callout"> HTML by hand; the site styles it in both themes.
+        defineArrayMember({
+          type: "object",
+          name: "callout",
+          title: "Callout box",
+          icon: BulbOutlineIcon,
+          fields: [
+            defineField({
+              name: "title",
+              title: "Title",
+              type: "string",
+              initialValue: "The short version",
+              validation: (rule) => rule.required().max(80),
+            }),
+            defineField({
+              name: "body",
+              title: "Points",
+              type: "array",
+              description: "Usually a bulleted list. Plain paragraphs work too.",
+              validation: (rule) => rule.required(),
+              of: [
+                defineArrayMember({
+                  type: "block",
+                  styles: [{ title: "Normal", value: "normal" }],
+                  lists: [
+                    { title: "Bulleted", value: "bullet" },
+                    { title: "Numbered", value: "number" },
+                  ],
+                  marks: {
+                    decorators: [
+                      { title: "Bold", value: "strong" },
+                      { title: "Italic", value: "em" },
+                    ],
+                    annotations: [
+                      {
+                        name: "link",
+                        title: "Link",
+                        type: "object",
+                        fields: [
+                          defineField({
+                            name: "href",
+                            title: "Address",
+                            type: "url",
+                            validation: (rule) =>
+                              rule.required().uri({ scheme: ["http", "https", "mailto", "tel"] }),
+                          }),
+                          defineField({
+                            name: "newTab",
+                            title: "Open in a new tab",
+                            type: "boolean",
+                            initialValue: false,
+                          }),
+                        ],
+                      },
+                    ],
+                  },
+                }),
+              ],
+            }),
+          ],
+          preview: {
+            select: { title: "title" },
+            prepare: ({ title }) => ({ title: title || "Callout", subtitle: "Callout box" }),
+          },
         }),
         // Downloadable file (PDF, zip, template…) shown as a button in the article.
         // Stored as a Sanity file asset, same CDN as images. ponytail: no size cap in

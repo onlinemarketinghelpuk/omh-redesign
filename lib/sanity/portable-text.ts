@@ -53,6 +53,10 @@ const components: Partial<PortableTextHtmlComponents> = {
     },
     image: ({ value }) =>
       `<img src="${escape(value.src)}" alt="${escape(value.alt)}" loading="lazy" decoding="async">`,
+    // Same markup as the legacy pasted <aside class="omh-callout"> HTML, so one
+    // CSS rule styles both.
+    callout: ({ value }) =>
+      `<aside class="omh-callout" role="note"><p class="omh-callout-title"><strong>${escape(value?.title)}</strong></p>${toHTML(value?.body ?? [], { components })}</aside>`,
     // Posts whose original WordPress markup did not survive conversion to rich
     // text are stored verbatim, so those pages render exactly as they always did.
     rawHtml: ({ value }) => value?.html ?? "",
