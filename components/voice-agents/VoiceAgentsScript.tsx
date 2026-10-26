@@ -24,9 +24,21 @@ export function VoiceAgentsScript() {
   useEffect(() => {
     const page = document.getElementById("va-page");
     if (!page) return;
-    const stop = init(page, (href) => router.push(href));
-    const unfit = fitRoiFrames(page);
-    return () => { stop(); unfit(); };
+    // Deferred to idle time (client audit, 26 Oct 2026, PageSpeed 71): the twenty-odd inits ran inside
+    // hydration and blocked the main thread. The 800ms timeout keeps interactions responsive on slow devices.
+    let stop = () => {};
+    let unfit = () => {};
+    const run = () => {
+      stop = init(page, (href) => router.push(href));
+      unfit = fitRoiFrames(page);
+    };
+    const idle = window.requestIdleCallback ? window.requestIdleCallback(run, { timeout: 800 }) : window.setTimeout(run, 1);
+    return () => {
+      if (window.cancelIdleCallback) window.cancelIdleCallback(idle);
+      else clearTimeout(idle);
+      stop();
+      unfit();
+    };
   }, [router]);
 
   return null;

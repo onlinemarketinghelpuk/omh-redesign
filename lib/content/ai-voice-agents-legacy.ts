@@ -306,12 +306,7 @@ export const legacyMarkup = String.raw`
       <p class="mt-5 text-muted">Hear how our AI voice agent handles calls for different types of business. These are sample recordings of our agent. We'll add client results here once we've checked them with each client.</p>
     </div>
 
-    <dl class="mt-12 grid border-y border-[var(--va-line-strong)] sm:grid-cols-3">
-      <div class="py-5 sm:pr-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">1,284</dd><dt class="mt-1.5 text-[16px] text-muted">calls answered</dt></div>
-      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:px-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">317</dd><dt class="mt-1.5 text-[16px] text-muted">bookings made</dt></div>
-      <div class="border-t border-line py-5 sm:border-l sm:border-t-0 sm:pl-6"><dd class="font-display text-[30px] font-semibold leading-none tnum">38%</dd><dt class="mt-1.5 text-[16px] text-muted">answered out of hours</dt></div>
-    </dl>
-    <p class="mt-3 text-[16px] text-muted">From our demo line, September 2026.</p>
+    <!-- Demo-line figures removed for now (client audit, 26 Oct 2026). -->
 
     <div class="va-car mt-10" data-carousel data-autoplay>
     <div class="va-car-track" style="--car-w:380px" tabindex="0" aria-label="Sample calls, scroll sideways">

@@ -93,7 +93,7 @@ export const lawLandingMarkup = String.raw`
     <div class="hero-video" id="hero-video">
       <div class="video-frame" data-video data-youtube-id="NB9WWD0TBR8" data-video-title="Stop missing calls with the OMH AI Receptionist">
         <a class="video-poster on-band has-thumb" href="https://www.youtube.com/watch?v=NB9WWD0TBR8" target="_blank" rel="noopener" data-video-play aria-label="Play video: Stop missing calls with the OMH AI Receptionist (1:09)">
-          <img class="vp-thumb" src="/images/voice-agents/ai-receptionist-video-poster.jpg" alt="Video: the OMH AI Receptionist answering calls 24/7" width="1280" height="720" loading="lazy" decoding="async">
+          <img class="vp-thumb" src="/images/voice-agents/ai-receptionist-video-poster.jpg" alt="Video: the OMH AI Receptionist answering calls 24/7" width="1280" height="720" fetchpriority="high" decoding="async">
           <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">Stop missing calls with the OMH AI Receptionist</span></span>

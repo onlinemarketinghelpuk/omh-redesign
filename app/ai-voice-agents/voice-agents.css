@@ -501,7 +501,7 @@ html:has(.va-page dialog[open]) {
 #va-page .va-car-track > * { flex: 0 0 min(100%, var(--car-w, 400px)); width: min(100%, var(--car-w, 400px)); scroll-snap-align: start; margin: 0; }
 #va-page .va-car-track > [hidden] { display: none; }
 
-#va-page .va-car-ui { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
+#va-page .va-car-ui { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 1rem; }
 #va-page .va-car-btn {
   display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 999px;
   border: 1.5px solid var(--va-line-strong, rgb(16 24 40 / .45)); color: var(--va-ink, #101828); background: var(--va-surface, #fff);

@@ -93,7 +93,7 @@ export const landingV4Markup = String.raw`
     <div class="hero-video" id="hero-video">
       <div class="video-frame" data-video data-youtube-id="NB9WWD0TBR8" data-video-title="Stop missing calls with the OMH AI Receptionist">
         <a class="video-poster on-band has-thumb" href="https://www.youtube.com/watch?v=NB9WWD0TBR8" target="_blank" rel="noopener" data-video-play aria-label="Play video: Stop missing calls with the OMH AI Receptionist (1:09)">
-          <img class="vp-thumb" src="/images/voice-agents/ai-receptionist-video-poster.jpg" alt="Video: the OMH AI Receptionist answering calls 24/7" width="1280" height="720" loading="lazy" decoding="async">
+          <img class="vp-thumb" src="/images/voice-agents/ai-receptionist-video-poster.jpg" alt="Video: the OMH AI Receptionist answering calls 24/7" width="1280" height="720" fetchpriority="high" decoding="async">
           <span class="vp-play" aria-hidden="true"><span class="vp-play-core"><svg class="vp-play-ico" viewBox="0 0 24 24" focusable="false"><path d="M8 5.6v12.8l10.4-6.4z"/></svg></span><span class="vp-play-label">Watch the demo</span></span>
           <span class="vp-bottom" aria-hidden="true">
             <span class="vp-cap"><span class="vp-kicker"><span class="voice-mark"><i></i><i></i><i></i></span>Online Marketing Help</span><span class="vp-title">Stop missing calls with the OMH AI Receptionist</span></span>
@@ -223,42 +223,6 @@ export const landingV4Markup = String.raw`
     </ol>
     <p class="t-card mt-6 text-muted">Starter goes live in 3 working days, Growth in 5 to 7 and Scale in 12 to 15. The clock starts once we have your content and diary access.</p>
 
-    <div class="flow-panel on-band mt-14">
-      <h3 class="smallcaps text-muted">Part 2: What happens to a new web lead (Growth and Scale)</h3>
-      <p class="h3 mt-3">From ad click to a call back in under a minute.</p>
-    <div class="lf mt-8" data-lf-flow role="group" aria-label="How a lead moves from your ad to your calendar">
-      <div data-lf="n1" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-megaphone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 1: </span>Someone clicks your ad</b><small><a href="/google-adwords-ppc" class="underline decoration-gold decoration-2 underline-offset-4 hover:text-hl">Google</a> or Facebook</small></span></div>
-      <span class="lf-arrow" data-lf="a1" aria-hidden="true"></span>
-      <div data-lf="n2" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-globe"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 2: </span>They enquire Your website form, or a call</b></span></div>
-      <span class="lf-arrow" data-lf="a2" aria-hidden="true"></span>
-      <div data-lf="n3" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-clipboard"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 3: </span>The lead lands Straight into your CRM</b></span></div>
-      <span class="lf-arrow" data-lf="a3" aria-hidden="true"></span>
-      <div data-lf="n4" class="lf-node lf-gold"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-phone"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 4: </span>Your agent rings them Within 60 seconds</b></span></div>
-      <div class="lf-split" aria-hidden="true">
-        <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="s1" d="M0 150 C50 150 50 50 100 50"/><path data-lf="s2" d="M0 150 L100 150"/><path data-lf="s3" d="M0 150 C50 150 50 250 100 250"/></svg>
-        <span class="lf-arrow" data-lf="sm"></span>
-      </div>
-      <div class="lf-branches">
-        <p class="lf-then"><span class="sr-only">Step 5: </span>Then one of three things happens:</p>
-        <ul aria-label="Step 5: the outcome">
-          <li><div data-lf="b1" tabindex="0" class="lf-node lf-ok"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-calendar"/></svg></span><span class="lf-txt"><b>An appointment booked On your calendar</b></span></div></li>
-          <li><div data-lf="b2" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-transfer"/></svg></span><span class="lf-txt"><b>A warm transfer Put straight through to you</b></span></div></li>
-          <li><div data-lf="b3" tabindex="0" class="lf-node"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-message"/></svg></span><span class="lf-txt"><b>A follow-up If they are not ready yet</b></span></div></li>
-        </ul>
-      </div>
-      <div class="lf-merge" aria-hidden="true">
-        <svg viewBox="0 0 100 300" preserveAspectRatio="none"><path data-lf="m1" d="M0 50 C50 50 50 150 100 150"/><path data-lf="m2" d="M0 150 L100 150"/><path data-lf="m3" d="M0 250 C50 250 50 150 100 150"/></svg>
-        <span class="lf-arrow" data-lf="mm"></span>
-      </div>
-      <div data-lf="n5" class="lf-node lf-final on-band"><span class="lf-ico" aria-hidden="true"><svg class="icon"><use href="#v4-i-mail"/></svg></span><span class="lf-txt"><b><span class="sr-only">Step 6: </span>A summary and tags Written back to your CRM</b></span></div>
-    </div>
-      <p class="lf-status" aria-hidden="true" data-lf-status>Follow a lead through it. Hover or tap an outcome to trace its route.</p>
-      <dl class="kstats mt-10">
-        <div><dt class="sr-only">Answer speed</dt><dd><b>1st ring</b><span>answer speed</span></dd></div>
-        <div><dt class="sr-only">New lead call time</dt><dd><b>60 sec</b><span>to call new web leads</span><small>(Growth and Scale)</small></dd></div>
-        <div><dt class="sr-only">Hours</dt><dd><b>24/7</b><span>bank holidays included</span></dd></div>
-        <div><dt class="sr-only">Calls summarised</dt><dd><b>100%</b><span>of calls summarised for you</span></dd></div>
-      </dl>
-    </div>
+    <!-- The "Part 2" lead-flow panel was removed here (client audit, 26 Oct 2026). -->
   </div>
 `;
