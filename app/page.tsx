@@ -3,14 +3,19 @@ import Image from "@/components/ui/SiteImage";
 import Link from "next/link";
 import {
   Activity,
+  BadgeCheck,
   BarChart3,
   Blocks,
   Crown,
   Gauge,
   Globe2,
+  Landmark,
   Layers3,
+  MapPin,
+  MessageSquare,
   MonitorUp,
   MousePointerClick,
+  PhoneCall,
   Quote,
   Search,
   ShoppingBag,
@@ -44,7 +49,7 @@ import {
   whoWeWorkWith,
 } from "@/lib/content/home";
 import { getFeaturedInsights } from "@/lib/sanity/insights";
-import { insightHref } from "@/lib/content/insights-types";
+import { imageRatio, insightHref } from "@/lib/content/insights-types";
 
 export const metadata: Metadata = {
   title: { absolute: homeMeta.title },
@@ -91,16 +96,26 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 const programIcons: LucideIcon[] = [Zap, Activity, MonitorUp, Crown];
-const recognitionIcons: LucideIcon[] = [
-  Target,
-  MousePointerClick,
-  BarChart3,
-  Gauge,
-  Blocks,
-  Globe2,
-  Search,
-  Layers3,
-];
+// One per stat, in the order of `stats` (client audit, 26 Oct 2026).
+const statIcons: LucideIcon[] = [Users, Layers3, Landmark, MapPin];
+// Double-height tiles; see the note on `recognition` in lib/content/home.ts.
+const tallTiles = new Set([1, 5, 10, 12]);
+const recognitionIcons: Record<string, LucideIcon> = {
+  "Google Ads": Target,
+  "AI Voice Agents": PhoneCall,
+  "Meta Ads": MousePointerClick,
+  GA4: BarChart3,
+  "Tag Manager": Gauge,
+  WordPress: Blocks,
+  WooCommerce: Globe2,
+  "Local SEO": Search,
+  "Landing Pages": Layers3,
+  Reporting: Target,
+  "Conversion Rate": MousePointerClick,
+  "Technical SEO": BarChart3,
+  "Account Support": Gauge,
+  "AI Chatbots": MessageSquare,
+};
 
 export default async function Home() {
   const featured = await getFeaturedInsights();
@@ -130,7 +145,7 @@ export default async function Home() {
               <Button href={hero.primaryCta.href} arrow>
                 {hero.primaryCta.label}
               </Button>
-              <Button href={hero.secondaryCta.href} variant="secondary">
+              <Button href={hero.secondaryCta.href} variant="secondary" arrow>
                 {hero.secondaryCta.label}
               </Button>
             </div>
@@ -149,7 +164,7 @@ export default async function Home() {
               <div className="pointer-parallax relative">
               <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[8px] bg-inverse shadow-[0_36px_90px_-42px_rgb(16_24_40/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
                 <Image
-                  src="/images/home/campaign-review.png"
+                  src="/images/home/campaign-review.webp"
                   alt="Full-service digital marketing agency team reviewing campaign and website performance"
                   fill
                   priority
@@ -220,14 +235,20 @@ export default async function Home() {
 
       <section className="border-y border-line bg-surface text-ink">
         <div className="stats-grid container-omh grid grid-cols-4 divide-x divide-line max-lg:grid-cols-2 max-lg:divide-x-0 max-sm:grid-cols-1">
-          {stats.map((stat) => (
-            <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-sm:px-0">
-              <p className="font-sans text-[clamp(38px,30px+1.6vw,54px)] font-semibold leading-none text-amber-deep whitespace-nowrap">
-                {stat.value}
-              </p>
-              <p className="mt-3 text-body font-semibold text-ink/65">{stat.label}</p>
-            </div>
-          ))}
+          {stats.map((stat, index) => {
+            const StatIcon = statIcons[index] ?? Users;
+            return (
+              <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-sm:px-0">
+                <span className="grid size-12 place-items-center rounded-[8px] bg-teal/15 text-amber-deep" aria-hidden>
+                  <StatIcon className="size-6" strokeWidth={1.7} />
+                </span>
+                <p className="mt-5 font-sans text-[clamp(38px,30px+1.6vw,54px)] font-semibold leading-none text-amber-deep whitespace-nowrap">
+                  {stat.value}
+                </p>
+                <p className="mt-3 text-body font-semibold text-ink/65">{stat.label}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -259,7 +280,6 @@ export default async function Home() {
                     fill
                     sizes="(max-width: 1024px) 100vw, 58vw"
                     className="object-cover"
-                    priority
                   />
                 </div>
                 <div className="grid grid-cols-[0.42fr_1fr] gap-8 p-8 max-sm:grid-cols-1 max-sm:p-6">
@@ -306,7 +326,7 @@ export default async function Home() {
                 <div className="pointer-parallax relative pb-16 pr-14 max-sm:pb-14 max-sm:pr-0">
                 <div className="image-hover-frame media-shine relative aspect-[5/4] overflow-hidden rounded-[8px] border border-oninverse/10 bg-black shadow-[0_34px_80px_-32px_rgb(0_0_0/0.78)] max-sm:aspect-[4/5]">
                   <Image
-                    src="/images/home/agency-collaboration.png"
+                    src="/images/home/agency-collaboration.webp"
                     alt="Online Marketing Help team planning a digital marketing strategy"
                     fill
                     sizes="(max-width: 1024px) 100vw, 52vw"
@@ -397,7 +417,7 @@ export default async function Home() {
                 {withLinks("Never miss a call again with an [AI voice agent](/ai-voice-agents) that answers, books and follows up for you.")}
               </p>
               <div className="mt-8">
-                <Button href="/services" variant="secondary" arrow>
+                <Button href="/pricing" variant="secondary" arrow>
                   Explore all services
                 </Button>
               </div>
@@ -439,15 +459,21 @@ export default async function Home() {
                     key={testimonial.name}
                     className="surface-card group flex flex-col justify-between rounded-[8px] border border-teal/20 bg-surface p-8"
                   >
-                    <blockquote className="text-[22px] leading-relaxed text-ink/85">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </blockquote>
+                    <div>
+                      <Quote className="size-9 text-amber transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:-translate-y-1 group-hover:rotate-[-4deg]" strokeWidth={1.5} aria-hidden />
+                      <blockquote className="mt-5 text-[22px] leading-relaxed text-ink/85">
+                        &ldquo;{testimonial.quote}&rdquo;
+                      </blockquote>
+                    </div>
                     <figcaption className="mt-8 flex items-center justify-between gap-4 text-body font-semibold max-sm:flex-col max-sm:items-start">
                       {testimonial.name}
                       {/* ponytail: no star row — these are named, real reviewers
                           who never gave a score, so five stars would be an
                           invented rating (brief §6). */}
-                      <span className="text-[14px] font-normal text-muted">Client review</span>
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-[14px] font-semibold uppercase tracking-[0.08em] text-amber-deep">
+                        <BadgeCheck className="size-4" aria-hidden />
+                        Client review
+                      </span>
                     </figcaption>
                   </figure>
                 ))}
@@ -487,9 +513,9 @@ export default async function Home() {
 
               <div className="recognition-masonry">
                 {recognition.map((item, index) => {
-                  const RecognitionIcon = recognitionIcons[index % recognitionIcons.length];
+                  const RecognitionIcon = recognitionIcons[item] ?? Target;
                   return (
-                    <div key={item} className={`recognition-tile recognition-tile-${(index % 4) + 1}`}>
+                    <div key={item} className={`recognition-tile${tallTiles.has(index) ? " recognition-tile-2" : ""}`}>
                       <RecognitionIcon className="size-7" strokeWidth={1.7} aria-hidden />
                       <span>{item}</span>
                       <ArrowRight className="recognition-arrow size-4" />
@@ -529,8 +555,8 @@ export default async function Home() {
                 {whoWeWorkWith.items.map((item, index) => {
                   const WhoIcon = whoIcons[index] ?? Store;
                   return (
-                    <li key={item} className="rounded-[8px] border border-oninverse/12 bg-oninverse/[0.04] p-7">
-                      <span className="grid size-12 place-items-center rounded-[8px] bg-teal/20 text-[var(--accent-light)]">
+                    <li key={item} className="surface-card group rounded-[8px] border border-oninverse/12 bg-oninverse/[0.04] p-7 hover:bg-oninverse/[0.09]">
+                      <span className="grid size-12 place-items-center rounded-[8px] bg-teal/20 text-[var(--accent-light)] transition-colors duration-500 group-hover:bg-teal group-hover:text-inverse">
                         <WhoIcon className="size-6" strokeWidth={1.7} aria-hidden />
                       </span>
                       <p className="mt-6 font-sans text-[clamp(19px,18px+0.3vw,22px)] font-semibold leading-snug">{item}</p>
@@ -582,54 +608,40 @@ export default async function Home() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-[1.12fr_0.88fr] gap-8 max-lg:grid-cols-1">
-              <Link
-                href={insights[0].href}
-                className="surface-card group relative isolate flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[8px] bg-inverse p-[clamp(28px,4vw,52px)] text-oninverse max-sm:min-h-0 max-sm:gap-20"
-              >
-                {/* The card stretches to the three rows beside it; the post's cover fills that height. */}
-                {insights[0].image && (
-                  <>
-                    <Image src={insights[0].image.src} alt="" fill sizes="(max-width: 1024px) 100vw, 56vw" className="-z-20 object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                    <div className="absolute inset-0 -z-10 bg-linear-to-t from-inverse via-inverse/80 to-inverse/40" aria-hidden />
-                  </>
-                )}
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-[18px] font-semibold uppercase tracking-[0.14em] text-amber">
-                    {insights[0].category}
-                  </p>
-                  <CardArrow />
-                </div>
-                <div>
-                  <h3 className="font-sans text-[clamp(32px,26px+1.5vw,50px)] font-semibold leading-tight">
-                    {insights[0].title}
-                  </h3>
-                  <p className="mt-5 text-body leading-relaxed text-oninverse/70">
-                    {insights[0].body}
-                  </p>
-                </div>
-              </Link>
-
-              <div className="border-t border-line">
-                {insights.slice(1).map((post) => (
-                  <Link
-                    key={post.title}
-                    href={post.href}
-                    className="insight-row group grid min-h-[250px] grid-cols-[1fr_auto] content-between gap-6 border-b border-line py-8"
-                  >
-                    <div>
-                      <p className="text-[18px] font-semibold uppercase tracking-[0.14em] text-amber-deep">
-                        {post.category}
-                      </p>
-                      <h3 className="mt-4 font-sans text-[27px] font-semibold leading-tight">
-                        {post.title}
-                      </h3>
+            {/* Client audit (26 Oct 2026): a compact four-up grid instead of the tall feature card
+                plus three rows. Each thumbnail keeps its own ratio (client, 22 Oct 2026). */}
+            <div className="grid grid-cols-4 gap-6 max-xl:grid-cols-2 max-sm:grid-cols-1">
+              {insights.slice(0, 4).map((post) => (
+                <Link
+                  key={post.title}
+                  href={post.href}
+                  className="surface-card group flex flex-col overflow-hidden rounded-[8px] border border-line bg-warm"
+                >
+                  {post.image ? (
+                    <div className="relative aspect-[16/10] overflow-hidden bg-inverse" style={imageRatio({ featuredImage: post.image })}>
+                      <Image
+                        src={post.image.src}
+                        alt=""
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      />
                     </div>
-                    <CardArrow />
-                    <p className="col-span-2 text-body leading-relaxed text-ink/70">{post.body}</p>
-                  </Link>
-                ))}
-              </div>
+                  ) : (
+                    <div className="fpo-hatch aspect-[16/10]" aria-hidden />
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-amber-deep">
+                      {post.category}
+                    </p>
+                    <h3 className="mt-3 font-sans text-[22px] font-semibold leading-tight">{post.title}</h3>
+                    <p className="mt-auto flex items-center justify-between gap-4 pt-6 text-body font-semibold text-ink/70">
+                      Read article
+                      <CardArrow className="size-10" />
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </Reveal>
         </div>

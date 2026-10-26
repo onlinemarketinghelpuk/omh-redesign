@@ -160,7 +160,7 @@ export default async function Home2() {
               <div className="pointer-parallax relative">
               <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[12px] bg-inverse shadow-[0_36px_90px_-42px_rgb(16_24_40/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
                 <Image
-                  src="/images/home/campaign-review.png"
+                  src="/images/home/campaign-review.webp"
                   alt="Full-service digital marketing agency team reviewing campaign and website performance"
                   fill
                   priority
@@ -317,7 +317,7 @@ export default async function Home2() {
                 <div className="pointer-parallax relative pb-16 pr-14 max-sm:pb-14 max-sm:pr-0">
                 <div className="image-hover-frame media-shine relative aspect-[5/4] overflow-hidden rounded-[12px] border border-oninverse/10 bg-black shadow-[0_34px_80px_-32px_rgb(0_0_0/0.78)] max-sm:aspect-[4/5]">
                   <Image
-                    src="/images/home/agency-collaboration.png"
+                    src="/images/home/agency-collaboration.webp"
                     alt="Online Marketing Help team planning a digital marketing strategy"
                     fill
                     sizes="(max-width: 1024px) 100vw, 52vw"
@@ -408,7 +408,7 @@ export default async function Home2() {
                 {withLinks("Never miss a call again with an [AI voice agent](/ai-voice-agents) that answers, books and follows up for you.")}
               </p>
               <div className="mt-8">
-                <Button href="/services" variant="secondary" arrow>
+                <Button href="/pricing" variant="secondary" arrow>
                   Explore all services
                 </Button>
               </div>

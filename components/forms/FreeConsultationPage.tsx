@@ -43,7 +43,7 @@ export function FreeConsultationPage() {
             theme="ppc"
             title="Plan your consultation"
             note="Project planning illustration."
-            ratio="16/9" source="/images/home/agency-collaboration.png" alt="Team collaboration during project planning" />
+            ratio="16/9" source="/images/home/agency-collaboration.webp" alt="Team collaboration during project planning" />
         </div>
         <p className="mt-7 text-center text-body text-ink/70">
           <Button href="/contact" arrow>Arrange your free consultation</Button>
@@ -91,7 +91,7 @@ export function FreeConsultationPage() {
                 theme="ppc"
                 title={client.name}
                 note="Client video testimonial."
-                ratio="16/9" source="/images/home/agency-collaboration.png" alt="Illustrative agency collaboration" />
+                ratio="16/9" source="/images/home/agency-collaboration.webp" alt="Illustrative agency collaboration" />
               <figcaption className="mt-5 text-body leading-relaxed text-ink/75">
                 {client.body}
               </figcaption>

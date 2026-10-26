@@ -125,6 +125,7 @@ export const difference = [
 // widest, by rendered width at 1440px (client, 21 Oct 2026; measured then). Re-measure
 // if a label changes.
 export const services = [
+  { label: "AI Services", href: "/ai-services", body: "Chatbots, voice agents, integrations and automation, built and managed for you." },
   { label: "SEO Services", href: "/seo-services", body: "Technical, on-page and content SEO for long-term organic growth." },
   { label: "AI Voice Agents", href: "/ai-voice-agents", body: "Answers every call and books appointments, day and night." },
   { label: "Website Design", href: "/website-designs", body: "Fast, clear websites designed to turn visits into enquiries." },
@@ -143,8 +144,12 @@ export const testimonials = caseStudies
   .slice(0, 3)
   .map((s) => ({ quote: s.testimonial!.quote, name: s.testimonial!.attribution }));
 
+// 14 tiles. The home page draws positions 1, 5, 10 and 12 double-height (the two AI
+// tiles among them); with dense packing that is the spread that fills the three-column
+// masonry in exactly six rows with no hole. Re-check if a tile is added or removed.
 export const recognition = [
   "Google Ads",
+  "AI Voice Agents",
   "Meta Ads",
   "GA4",
   "Tag Manager",
@@ -155,6 +160,7 @@ export const recognition = [
   "Reporting",
   "Conversion Rate",
   "Technical SEO",
+  "AI Chatbots",
   "Account Support",
 ];
 

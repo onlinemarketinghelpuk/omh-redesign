@@ -492,6 +492,7 @@ body {
   transition:
     transform 480ms cubic-bezier(0.2, 0.8, 0.2, 1),
     border-color 480ms ease,
+    background-color 480ms ease,
     box-shadow 480ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -1240,7 +1241,6 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 
 /* Fields already have a border, so a ring on top reads as a bar around the

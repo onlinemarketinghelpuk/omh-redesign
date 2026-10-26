@@ -49,7 +49,7 @@ export function FaqHero() {
                 theme="wordpress"
                 ratio="4/3"
                 title="The questions we get asked most"
-                note="Add a short video answering the three most common questions." source="/images/home/agency-collaboration.png" alt="Agency team discussing a project" />
+                note="Add a short video answering the three most common questions." source="/images/home/agency-collaboration.webp" alt="Agency team discussing a project" />
             </div>
           </div>
         </Reveal>

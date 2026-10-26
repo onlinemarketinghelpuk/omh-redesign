@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   // deploy, whose CSS no longer exists, so the page loaded unstyled. Expiring with the revalidate drops it.
   expireTime: 3600,
   images: {
+    // Optimised images are immutable per URL, so let browsers and the CDN keep them for 31 days
+    // (PageSpeed, 26 Oct 2026: the 4-hour default was flagged as an inefficient cache policy).
+    minimumCacheTTL: 2678400,
     remotePatterns: [
       {
         protocol: "https",
@@ -21,6 +24,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/blog", destination: "/insights", permanent: true },
+      // No services hub page exists; the homepage once linked here and the prefetch 404'd (audit, 26 Oct 2026).
+      { source: "/services", destination: "/pricing", permanent: true },
       // Phase 4: the four standalone legacy case-study pages now live in the
       // /case-studies/[slug] system, so their old URLs keep their equity.
       {

@@ -188,7 +188,8 @@ export const company = {
 };
 
 // Footer link groups after the brand intro: the first three service groups as
-// in the mega menu, then Solutions, with Company last. Within every column the
+// in the mega menu, then Solutions, then the top five AI Services pages (client
+// audit, 26 Oct 2026: this replaced the Company column). Within every column the
 // links run narrowest to widest by rendered width (measured in the footer font,
 // not character count — "Paid Social Advertising" renders narrower than
 // "Google Ads Management"). Re-measure if a label changes.
@@ -205,13 +206,13 @@ export const footerCols: NavColumn[] = [
     ],
   },
   {
-    heading: "Company",
+    heading: "AI Services",
     links: [
-      { label: "About", href: "/about-us" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Insights", href: "/insights" },
-      { label: "Contact", href: "/contact" },
-      { label: "Case Studies", href: "/case-studies" },
+      { label: "Custom AI Voice Agents", href: "/ai-voice-agents" },
+      { label: "AI Agent for Heating & HVAC", href: "/ai-voice-agents/heating-hvac" },
+      { label: "AI Agent for Healthcare & Clinics", href: "/ai-voice-agents/healthcare" },
+      { label: "AI Agent for Builders & Construction", href: "/ai-voice-agents/builders-construction" },
+      { label: "AI Agent for Estate & Letting Agents", href: "/ai-voice-agents/estate-letting-agents" },
     ],
   },
 ];

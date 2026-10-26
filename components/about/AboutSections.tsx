@@ -53,7 +53,7 @@ export function AboutHero() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-media border border-line bg-soft">
                   <Image
-                    src="/images/home/agency-collaboration.png"
+                    src="/images/home/agency-collaboration.webp"
                     alt="The Online Marketing Help team working together on a client campaign"
                     fill
                     priority
