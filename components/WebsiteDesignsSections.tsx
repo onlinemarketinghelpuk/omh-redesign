@@ -72,10 +72,10 @@ function GuaranteeBadge() {
         <textPath href="#badge-ring" startOffset="2%">MONEY-BACK GUARANTEE • ONLINE MARKETING HELP •</textPath>
       </text>
       <circle cx="120" cy="120" r="68" fill="var(--accent)" />
-      <circle cx="120" cy="120" r="60" fill="none" stroke="#101828" strokeOpacity=".35" strokeWidth="1.5" />
-      <path d="M120 88l24 9v18c0 16-10 28-24 33-14-5-24-17-24-33V97z" fill="#101828" />
+      <circle cx="120" cy="120" r="60" fill="none" stroke="#000" strokeOpacity=".35" strokeWidth="1.5" />
+      <path d="M120 88l24 9v18c0 16-10 28-24 33-14-5-24-17-24-33V97z" fill="#000" />
       <path d="M110 120l7 7 14-15" fill="none" stroke="var(--accent)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <text x="120" y="162" textAnchor="middle" fill="#101828" fontSize="10.5" fontWeight="700" letterSpacing="2" fontFamily="var(--font-instrument), sans-serif">BACKED BY OUR CEO</text>
+      <text x="120" y="162" textAnchor="middle" fill="#000" fontSize="10.5" fontWeight="700" letterSpacing="2" fontFamily="var(--font-instrument), sans-serif">BACKED BY OUR CEO</text>
     </svg>
   );
 }
@@ -306,7 +306,7 @@ export function WebsiteDesignsPage() {
             <ul className="mt-5 divide-y divide-oninverse/12">
               <li className="py-4">
                 <Link href={company.phoneHref} data-event="website_designs_phone_click" className="group flex items-center gap-4 text-oninverse">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-amber text-[#101828]"><Phone className="size-5" aria-hidden="true" /></span>
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-amber text-white"><Phone className="size-5" aria-hidden="true" /></span>
                   <span>
                     <span className="block text-[14px] text-oninverse/60">Call us</span>
                     <span className="font-sans text-h4 font-semibold group-hover:text-[var(--accent-light)]">{page.contact.phone}</span>
@@ -315,7 +315,7 @@ export function WebsiteDesignsPage() {
               </li>
               <li className="py-4">
                 <a href={`mailto:${company.email}`} data-event="website_designs_email_click" className="group flex items-center gap-4 text-oninverse">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-amber text-[#101828]"><Mail className="size-5" aria-hidden="true" /></span>
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-amber text-white"><Mail className="size-5" aria-hidden="true" /></span>
                   <span className="min-w-0">
                     <span className="block text-[14px] text-oninverse/60">Email us</span>
                     <span className="block truncate font-sans text-h4 font-semibold group-hover:text-[var(--accent-light)]">{company.email}</span>
@@ -329,7 +329,7 @@ export function WebsiteDesignsPage() {
 
       <ServiceBand label={page.guarantee.eyebrow} tone="warm" accent={ACCENT} labelStyle={LABEL}>
         <div className="grid grid-cols-12 overflow-hidden rounded-card border border-line bg-surface max-lg:block">
-          <div className="col-span-5 flex items-center bg-[radial-gradient(circle_at_50%_30%,#1d2b45_0%,#101828_70%)] p-10 max-sm:p-7">
+          <div className="col-span-5 flex items-center bg-[radial-gradient(circle_at_50%_30%,#262626_0%,#000_70%)] p-10 max-sm:p-7">
             <GuaranteeBadge />
           </div>
           <div className="col-span-7 p-10 max-sm:p-6">

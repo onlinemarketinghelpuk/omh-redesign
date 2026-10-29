@@ -95,7 +95,7 @@ export function CarsPage() {
       thingsToTry={["Ask about a car in stock and book a test drive.", "Book an MOT for next week.", "Ask for a finance quote and hear where it puts you through."]}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#f2c675]">for your dealership or garage</span>
+          Book a 30-minute demo <span className="text-[#7d5c33]">for your dealership or garage</span>
         </>
       }
     >

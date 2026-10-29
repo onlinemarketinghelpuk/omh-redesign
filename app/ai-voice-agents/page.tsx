@@ -86,7 +86,7 @@ export default function AiVoiceAgentsPage() {
       page="/ai-voice-agents"
       demoHeading={
         <>
-          Book an AI voice agent demo, <span className="text-[#f2c675]">by video or phone</span>
+          Book an AI voice agent demo, <span className="text-[#7d5c33]">by video or phone</span>
         </>
       }
     />

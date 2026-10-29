@@ -40,7 +40,7 @@ export default function AiVoiceAgentsOldV3Page() {
       page="/ai-voice-agents-oldv3"
       demoHeading={
         <>
-          Book a 30-minute demo, <span className="text-[#f2c675]">by video or phone</span>
+          Book a 30-minute demo, <span className="text-[#7d5c33]">by video or phone</span>
         </>
       }
     />

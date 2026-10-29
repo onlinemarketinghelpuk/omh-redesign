@@ -6,7 +6,7 @@ import { sampleCard } from "@/lib/content/sample-calls";
 import { clinicFaqs as voiceFaqs } from "@/lib/content/voice-clinics/markup";
 
 
-const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="${cat}"${i ? "" : " open"} data-track-name="${q}">
+const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="${cat}"${i ? "" : " open"} data-track-name="${q}">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
           <span class="min-w-0 flex-1">
@@ -68,9 +68,9 @@ ${roiCalculator("clinics")}
         <p class="mt-1.5 text-[16px] leading-snug text-band-muted">Talk to a person on our UK team about your new patient, urgent and follow-up calls. No sales script.</p>
         <p class="mt-4 text-[15px] font-semibold uppercase tracking-[0.12em] text-band-muted">On the demo, try</p>
         <ol class="mt-2 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">1</span><span>Book a physio assessment for next week as a new patient</span></li>
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">2</span><span>Say you're worried after a procedure and hear how it routes you</span></li>
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#f2c675]">3</span><span>Ask something it can't know, and hear what it does</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#7d5c33]">1</span><span>Book a physio assessment for next week as a new patient</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#7d5c33]">2</span><span>Say you're worried after a procedure and hear how it routes you</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#7d5c33]">3</span><span>Ask something it can't know, and hear what it does</span></li>
         </ol>
         <ul class="mt-4 space-y-1 text-[16px]">
           <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>020 3489 3934</a></li>
@@ -110,7 +110,7 @@ ${voiceFaqs.map(faqItem).join("\n")}
   </div>
 </section>
 
-<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
+<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(0_0_0/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo-form" class="btn btn-primary flex-1 whitespace-nowrap !px-3" data-track="sticky_book_demo">Book a Demo</a>
     <a href="tel:+442034893934" class="btn btn-secondary shrink-0 whitespace-nowrap !px-3 tnum" data-track="sticky_phone_click" aria-label="Call 020 3489 3934"><span class="max-[374px]:hidden">Call&nbsp;</span>020 3489 3934</a>

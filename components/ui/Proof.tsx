@@ -132,7 +132,7 @@ export function Eyebrow({ children, light = false }: { children: ReactNode; ligh
           : "gap-2.5 tracking-[0.16em] text-muted"
       }`}
     >
-      <span aria-hidden className={`h-0.5 w-5 ${light ? "bg-[#f2c675]" : "bg-amber"}`} />
+      <span aria-hidden className={`h-0.5 w-5 ${light ? "bg-[#7d5c33]" : "bg-amber"}`} />
       {children}
     </p>
   );

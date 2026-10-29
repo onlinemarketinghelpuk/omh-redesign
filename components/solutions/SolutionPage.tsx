@@ -323,7 +323,7 @@ function ServicesSection({ content }: { content: SolutionPageContent }) {
 
 function FitSection({ content }: { content: SolutionPageContent }) {
   return (
-    <section className="border-b border-line bg-soft/55">
+    <section className="border-b border-line bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-12 gap-x-12 gap-y-9 max-lg:block">

@@ -237,7 +237,7 @@ export function BookDemo({ id, eyebrow, heading, thingsToTry = defaultThingsToTr
   }
 
   const dot = (on: boolean) =>
-    `grid size-7 place-items-center rounded-full ${on ? "bg-amber text-inverse" : "border-[1.5px] border-line"}`;
+    `grid size-7 place-items-center rounded-full ${on ? "bg-amber text-white" : "border-[1.5px] border-line"}`;
 
   return (
     <section id={id} aria-label="Book a demo" className="scroll-mt-[85px] bg-inverse text-oninverse">
@@ -264,13 +264,13 @@ export function BookDemo({ id, eyebrow, heading, thingsToTry = defaultThingsToTr
               >
                 <span
                   aria-hidden
-                  className="grid size-11 shrink-0 place-items-center rounded-[12px] bg-amber/20 text-[#f2c675] group-aria-selected:bg-amber group-aria-selected:text-inverse"
+                  className="grid size-11 shrink-0 place-items-center rounded-[12px] bg-amber/20 text-[#7d5c33] group-aria-selected:bg-amber group-aria-selected:text-white"
                 >
                   <p.icon className="size-5" />
                 </span>
                 <span className="min-w-0">
                   {p.badge && (
-                    <span className="mb-1.5 inline-block rounded-full bg-amber px-2.5 py-0.5 text-[14px] font-semibold text-inverse">
+                    <span className="mb-1.5 inline-block rounded-full bg-amber px-2.5 py-0.5 text-[14px] font-semibold text-white">
                       {p.badge}
                     </span>
                   )}
@@ -479,7 +479,7 @@ export function BookDemo({ id, eyebrow, heading, thingsToTry = defaultThingsToTr
                       href={demoLine.href}
                       data-event="book_demo_ring_click"
                       onClick={() => track("demo_line_click")}
-                      className="mt-6 flex min-h-16 items-center justify-center gap-3 rounded-[14px] bg-amber px-5 font-sans text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-inverse tabular-nums"
+                      className="mt-6 flex min-h-16 items-center justify-center gap-3 rounded-[14px] bg-amber px-5 font-sans text-[clamp(1.3rem,1.1rem+1vw,1.75rem)] font-semibold text-white tabular-nums"
                     >
                       <Phone aria-hidden className="size-6" />
                       {demoLine.display}

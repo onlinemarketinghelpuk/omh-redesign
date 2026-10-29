@@ -70,7 +70,7 @@ const whoIcons: LucideIcon[] = [Store, ShoppingBag, Layers3, Users];
 
 function StarRating({ label }: { label: string }) {
   return (
-    <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-body font-semibold text-ink shadow-[0_12px_28px_-24px_rgb(16_24_40/0.55)]">
+    <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-body font-semibold text-ink shadow-[0_12px_28px_-24px_rgb(0_0_0/0.55)]">
       {/* ponytail: no star glyphs — five stars next to no rating reads as a
           review score, which brief §6/§33 forbids inventing. Restore only
           alongside a real, attributed rating. */}
@@ -158,7 +158,7 @@ export default async function Home2() {
           <div className="hero-in hero-in-2 relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[760px]">
             <Pointer className="hero-media relative mb-9">
               <div className="pointer-parallax relative">
-              <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[12px] bg-inverse shadow-[0_36px_90px_-42px_rgb(16_24_40/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
+              <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[12px] bg-inverse shadow-[0_36px_90px_-42px_rgb(0_0_0/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
                 <Image
                   src="/images/home/campaign-review.webp"
                   alt="Full-service digital marketing agency team reviewing campaign and website performance"
@@ -167,12 +167,12 @@ export default async function Home2() {
                   sizes="(max-width: 1024px) 100vw, 44vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_48%,rgb(16_24_40/0.72)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_48%,rgb(0_0_0/0.72)_100%)]" />
                 <p className="absolute bottom-36 left-7 right-7 font-sans text-[22px] font-semibold leading-snug text-oninverse max-sm:bottom-32 max-sm:text-body">
                   Decisions grounded in the campaign, the website, and the numbers.
                 </p>
               </div>
-              <div className="absolute -bottom-7 -left-8 w-[250px] rounded-[12px] border border-oninverse/15 bg-inverse p-5 text-oninverse shadow-[0_24px_60px_-24px_rgb(16_24_40/0.65)] max-sm:-bottom-10 max-sm:left-4">
+              <div className="absolute -bottom-7 -left-8 w-[250px] rounded-[12px] border border-oninverse/15 bg-inverse p-5 text-oninverse shadow-[0_24px_60px_-24px_rgb(0_0_0/0.65)] max-sm:-bottom-10 max-sm:left-4">
                 <p className="text-[18px] font-semibold uppercase tracking-[0.12em] text-amber">Connected delivery</p>
                 <p className="mt-2 text-body font-semibold">Plan &rarr; Build &rarr; Measure</p>
               </div>

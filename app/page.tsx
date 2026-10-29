@@ -69,7 +69,7 @@ const whoIcons: LucideIcon[] = [Store, ShoppingBag, Layers3, Users];
 
 function StarRating({ label }: { label: string }) {
   return (
-    <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-body font-semibold text-ink shadow-[0_12px_28px_-24px_rgb(16_24_40/0.55)]">
+    <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-body font-semibold text-ink shadow-[0_12px_28px_-24px_rgb(0_0_0/0.55)]">
       {/* ponytail: no star glyphs — five stars next to no rating reads as a
           review score, which brief §6/§33 forbids inventing. Restore only
           alongside a real, attributed rating. */}
@@ -162,7 +162,7 @@ export default async function Home() {
           <div className="hero-in hero-in-2 relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[760px]">
             <Pointer className="hero-media relative mb-9">
               <div className="pointer-parallax relative">
-              <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[8px] bg-inverse shadow-[0_36px_90px_-42px_rgb(16_24_40/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
+              <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[8px] bg-inverse shadow-[0_36px_90px_-42px_rgb(0_0_0/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
                 <Image
                   src="/images/home/campaign-review.webp"
                   alt="Full-service digital marketing agency team reviewing campaign and website performance"
@@ -171,12 +171,12 @@ export default async function Home() {
                   sizes="(max-width: 1024px) 100vw, 44vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_48%,rgb(16_24_40/0.72)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_48%,rgb(0_0_0/0.72)_100%)]" />
                 <p className="absolute bottom-36 left-7 right-7 font-sans text-[22px] font-semibold leading-snug text-oninverse max-sm:bottom-32 max-sm:text-body">
                   Decisions grounded in the campaign, the website, and the numbers.
                 </p>
               </div>
-              <div className="absolute -bottom-7 -left-8 w-[250px] rounded-[8px] border border-oninverse/15 bg-inverse p-5 text-oninverse shadow-[0_24px_60px_-24px_rgb(16_24_40/0.65)] max-sm:-bottom-10 max-sm:left-4">
+              <div className="absolute -bottom-7 -left-8 w-[250px] rounded-[8px] border border-oninverse/15 bg-inverse p-5 text-oninverse shadow-[0_24px_60px_-24px_rgb(0_0_0/0.65)] max-sm:-bottom-10 max-sm:left-4">
                 <p className="text-[14px] font-semibold uppercase tracking-[0.12em] text-amber">Connected delivery</p>
                 <p className="mt-2 text-body font-semibold">Plan &rarr; Build &rarr; Measure</p>
               </div>
@@ -198,7 +198,7 @@ export default async function Home() {
                 Our programs
               </p>
               <h2 className="mt-5 font-sans text-h2 font-semibold">
-                Digital marketing programs for <span className="text-[#f2c675]">growing UK businesses</span>
+                Digital marketing programs for <span className="text-[#7d5c33]">growing UK businesses</span>
               </h2>
               <p className="mx-auto mt-5 max-w-[850px] text-body leading-relaxed text-oninverse/68">
                 Pick the starting point that matches your goal. Each program brings paid ads, SEO,
@@ -354,7 +354,7 @@ export default async function Home() {
                   Why choose us
                 </p>
                 <h2 className="mt-6 font-sans text-h2 font-semibold">
-                  Why UK businesses choose <span className="text-[#f2c675]">a full-service agency</span>
+                  Why UK businesses choose <span className="text-[#7d5c33]">a full-service agency</span>
                 </h2>
                 <p className="mt-6 text-body leading-relaxed text-oninverse/70">
                   When strategy, ads, SEO, design and reporting sit with separate suppliers, things get
@@ -539,7 +539,7 @@ export default async function Home() {
                 </p>
                 <h2 className="mt-6 font-sans text-h2 font-semibold">
                   A digital marketing agency for{" "}
-                  <span className="text-[#f2c675]">small businesses and growing UK brands</span>
+                  <span className="text-[#7d5c33]">small businesses and growing UK brands</span>
                 </h2>
                 <p className="mt-6 text-body leading-relaxed text-oninverse/70">{whoWeWorkWith.body}</p>
                 <p className="mt-6 border-l-2 border-amber pl-5 text-body leading-relaxed text-oninverse/85">
@@ -556,7 +556,7 @@ export default async function Home() {
                   const WhoIcon = whoIcons[index] ?? Store;
                   return (
                     <li key={item} className="surface-card group rounded-[8px] border border-oninverse/12 bg-oninverse/[0.04] p-7 hover:bg-oninverse/[0.09]">
-                      <span className="grid size-12 place-items-center rounded-[8px] bg-teal/20 text-[var(--accent-light)] transition-colors duration-500 group-hover:bg-teal group-hover:text-inverse">
+                      <span className="grid size-12 place-items-center rounded-[8px] bg-teal/20 text-[var(--accent-light)] transition-colors duration-500 group-hover:bg-teal group-hover:text-white">
                         <WhoIcon className="size-6" strokeWidth={1.7} aria-hidden />
                       </span>
                       <p className="mt-6 font-sans text-[clamp(19px,18px+0.3vw,22px)] font-semibold leading-snug">{item}</p>

@@ -49,7 +49,7 @@ export default function AiReceptionistPage() {
       page="/ai-voice-agents/receptionist"
       demoHeading={
         <>
-          Book an AI receptionist demo, <span className="text-[#f2c675]">by video or phone</span>
+          Book an AI receptionist demo, <span className="text-[#7d5c33]">by video or phone</span>
         </>
       }
     />

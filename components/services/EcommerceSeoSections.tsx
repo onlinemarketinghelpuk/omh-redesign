@@ -114,7 +114,7 @@ function AuditMock() {
         {rows.map(([k, v, high]) => (
           <li key={k} className="flex items-center justify-between gap-3 border-b border-oninverse/10 py-2.5 text-[13px] last:border-b-0">
             <span className="text-oninverse/85">{k}</span>
-            <span className={`rounded-full px-2.5 py-0.5 text-[12px] font-semibold ${high ? "bg-amber text-[#101828]" : "border border-oninverse/20 text-oninverse/65"}`}>{v}</span>
+            <span className={`rounded-full px-2.5 py-0.5 text-[12px] font-semibold ${high ? "bg-amber text-white" : "border border-oninverse/20 text-oninverse/65"}`}>{v}</span>
           </li>
         ))}
       </ul>

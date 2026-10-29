@@ -19,7 +19,7 @@ export function Band({ tone = "white", ...props }: Omit<Parameters<typeof Servic
 
 function SocialDashboard() {
   return (
-    <div className="service-media-frame relative overflow-hidden rounded-card border border-[#b8cde3] bg-[#10243a] p-5 text-oninverse shadow-xl" role="img" aria-label="Illustrated social media campaign planning dashboard">
+    <div className="service-media-frame relative overflow-hidden rounded-card border border-line bg-[#000] p-5 text-oninverse shadow-xl" role="img" aria-label="Illustrated social media campaign planning dashboard">
       <div className="flex items-center justify-between border-b border-oninverse/10 pb-4"><span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#9bc3f3]">Campaign studio</span><span className="flex gap-1.5"><i className="size-2 rounded-full bg-[#ef8067]" /><i className="size-2 rounded-full bg-[#76a9e8]" /><i className="size-2 rounded-full bg-oninverse/30" /></span></div>
       <div className="mt-5 grid grid-cols-[1.2fr_.8fr] gap-4 max-sm:grid-cols-1">
         <div className="rounded-xl bg-surface p-5 text-ink"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-deep">Content calendar</p><div className="mt-4 grid grid-cols-4 gap-2">{Array.from({ length: 12 }).map((_, i) => <span key={i} className={`aspect-square rounded-md ${[1,4,6,9,10].includes(i) ? "bg-[#ef8067]" : i === 7 ? "bg-[#76a9e8]" : "bg-tint-blue"}`} />)}</div><div className="mt-5 h-2 rounded-full bg-tint-blue"><span className="block h-full w-[72%] rounded-full bg-[var(--color-teal)]" /></div></div>

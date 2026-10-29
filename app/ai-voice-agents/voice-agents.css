@@ -24,7 +24,7 @@
   --color-band-miss: var(--va-band-miss);
   --color-gold: var(--color-teal);
   --color-gold-deep: var(--color-teal-dark);
-  --color-navy: #101828;
+  --color-navy: #000;
   --color-cream: #f7f6f2;
   --font-display: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
   --radius-btn: 10px;
@@ -37,16 +37,16 @@
   --va-ink: var(--color-ink);
   --va-muted: var(--color-muted);
   --va-line: var(--color-line);
-  --va-line-strong: rgb(16 24 40 / 0.45);
+  --va-line-strong: rgb(0 0 0 / 0.45);
   --va-hl: var(--color-amber-deep);
   --va-ok: #1c6446;
   --va-miss: #a3352b;
   --va-band: var(--color-inverse);
-  --va-band-surface: #1a2437;
+  --va-band-surface: #000;
   --va-band-ink: #f7f6f2;
   --va-band-muted: rgb(247 246 242 / 0.74);
   --va-band-line: rgb(247 246 242 / 0.16);
-  --va-band-hl: #e9bd6a;
+  --va-band-hl: #7d5c33;
   --va-band-ok: #8ed3ae;
   --va-band-miss: #f4a69b;
   --va-btn-hover: var(--color-teal-dark);
@@ -60,22 +60,22 @@
 }
 
 [data-theme="dark"] .va-page {
-  --va-sand: #13181f;
-  --va-line-strong: rgb(233 235 240 / 0.45);
+  --va-sand: #181818;
+  --va-line-strong: rgb(235 235 235 / 0.45);
   --va-ok: #8ed3ae;
   --va-miss: #f4a69b;
-  --va-band-surface: #1c222c;
-  --va-band-ink: #f4f6f8;
-  --va-band-muted: rgb(244 246 248 / 0.74);
-  --va-band-line: rgb(244 246 248 / 0.16);
-  --va-btn-hover: #e6b25a;
-  --va-sea: #0c1015;
+  --va-band-surface: #222222;
+  --va-band-ink: #f6f6f6;
+  --va-band-muted: rgb(246 246 246 / 0.74);
+  --va-band-line: rgb(246 246 246 / 0.16);
+  --va-btn-hover: #5e4526;
+  --va-sea: #101010;
   --va-tint-1: #2b2414;
-  --va-tint-2: #1a2230;
+  --va-tint-2: #222222;
   --va-tint-3: #16241d;
   --va-tint-4: #2a1f1c;
-  --va-land: #1f2630;
-  --va-land-other: #171c24;
+  --va-land: #252525;
+  --va-land-other: #1c1c1c;
 }
 
 html:has(.va-page) {
@@ -134,7 +134,7 @@ html:has(.va-page dialog[open]) {
       font-family: var(--font-display); font-weight: 600; font-size: 17px; line-height: 1.2;
       text-align: center; transition: background-color .18s ease, border-color .18s ease;
     }
-    .btn-primary { background: var(--color-teal); color: #101828; }
+    .btn-primary { background: var(--color-teal); color: #fff; }
     .btn-primary:hover { background: var(--va-btn-hover); }
     .btn-secondary { border-color: var(--va-line-strong); color: var(--va-ink); }
     .btn-secondary:hover { border-color: var(--va-ink); background: color-mix(in srgb, var(--va-ink) 5%, transparent); }
@@ -190,7 +190,7 @@ html:has(.va-page dialog[open]) {
     }
     .field[aria-invalid="true"] { border-color: var(--va-miss); }
     input[type="range"] { width: 100%; height: 44px; accent-color: var(--color-teal-dark); background: transparent; }
-    [data-theme="dark"] & input[type="range"] { accent-color: #e9bd6a; }
+    [data-theme="dark"] & input[type="range"] { accent-color: #7d5c33; }
 
   }
 }
@@ -245,8 +245,8 @@ html:has(.va-page dialog[open]) {
   .flow-text { font-family: var(--font-display); font-weight: 600; font-size: 15.5px; fill: var(--va-ink); }
   .flow-agent .flow-box { fill: var(--color-teal); stroke: var(--color-teal-dark); }
   .flow-agent .flow-icon-bg { fill: rgb(255 255 255 / .35); }
-  .flow-agent .flow-icon { color: #101828; }
-  .flow-agent .flow-text { fill: #101828; }
+  .flow-agent .flow-icon { color: #000; }
+  .flow-agent .flow-text { fill: #000; }
   .flow-ok .flow-box { fill: color-mix(in srgb, var(--va-ok) 12%, var(--va-surface)); stroke: color-mix(in srgb, var(--va-ok) 45%, transparent); }
   .flow-ok .flow-icon { color: var(--va-ok); }
   .flow-miss .flow-box { fill: color-mix(in srgb, var(--va-miss) 10%, var(--va-surface)); stroke: color-mix(in srgb, var(--va-miss) 40%, transparent); }
@@ -260,12 +260,12 @@ html:has(.va-page dialog[open]) {
   .flow-arrow { fill: var(--va-line-strong); }
   .flow-node { cursor: pointer; outline: none; }
   .flow-node:hover .flow-box, .flow-node.is-on .flow-box { stroke: var(--color-teal-dark); stroke-width: 2.4; }
-  [data-theme="dark"] & .flow-node:hover .flow-box, [data-theme="dark"] & .flow-node.is-on .flow-box { stroke: #e9bd6a; }
+  [data-theme="dark"] & .flow-node:hover .flow-box, [data-theme="dark"] & .flow-node.is-on .flow-box { stroke: #7d5c33; }
   .flow-node:focus-visible .flow-box { stroke: var(--va-hl); stroke-width: 3; }
   .flow.is-tracing .flow-node:not(.is-lit) { opacity: .35; }
   .flow.is-tracing .flow-edge:not(.is-lit) { opacity: .2; }
   .flow.is-tracing .flow-edge.is-lit { stroke: var(--color-teal); }
-  .sol-tab[aria-selected="true"] { box-shadow: 0 18px 40px -26px rgb(16 24 40 / .55); }
+  .sol-tab[aria-selected="true"] { box-shadow: 0 18px 40px -26px rgb(0 0 0 / .55); }
 
 
   /* ---------- Video pop-up ---------- */
@@ -321,9 +321,9 @@ html:has(.va-page dialog[open]) {
   .il-roof { fill: var(--color-teal); }
   .il-gold { fill: var(--color-teal); }
   .il-ink { fill: var(--va-ink); }
-  [data-theme="dark"] & .il-ink { fill: #2b3340; }
+  [data-theme="dark"] & .il-ink { fill: #333333; }
   .il-win { fill: color-mix(in srgb, #8fb3d9 45%, var(--va-surface)); }
-  .il-card { fill: var(--va-surface); filter: drop-shadow(0 6px 10px rgb(16 24 40 / .14)); }
+  .il-card { fill: var(--va-surface); filter: drop-shadow(0 6px 10px rgb(0 0 0 / .14)); }
   .il-line { fill: none; stroke: var(--va-line-strong); stroke-width: 2; }
   .il-stroke { fill: none; stroke: var(--va-ink); stroke-width: 2.4; stroke-linecap: round; }
   .il-goldline { fill: none; stroke: var(--color-teal-dark); stroke-width: 2.4; stroke-linejoin: round; }
@@ -335,14 +335,14 @@ html:has(.va-page dialog[open]) {
   .il-flame { fill: var(--color-teal); }
   .il-brick { fill: color-mix(in srgb, var(--color-teal-dark) 55%, var(--va-surface)); }
   .il-scaffold { fill: none; stroke: var(--va-ink); stroke-width: 2.5; stroke-linecap: round; opacity: .55; }
-  .il-label { font: 700 9px var(--font-body); fill: #101828; letter-spacing: .04em; }
-  .il-van { font: 700 11px var(--font-body); fill: #101828; letter-spacing: .06em; }
+  .il-label { font: 700 9px var(--font-body); fill: #000; letter-spacing: .04em; }
+  .il-van { font: 700 11px var(--font-body); fill: #000; letter-spacing: .06em; }
   .il-num { font: 700 11px var(--font-body); fill: var(--va-ink); }
   .il-small { font: 700 12px var(--font-body); fill: var(--va-ink); }
   .il-smallok { font: 600 11px var(--font-body); fill: var(--va-ok); }
   .il-bubble { transition: transform .4s ease; }
   .sector-card { transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
-  .sector-card:hover, .sector-card:focus-visible { border-color: var(--color-teal); box-shadow: 0 24px 50px -34px rgb(16 24 40 / .5); }
+  .sector-card:hover, .sector-card:focus-visible { border-color: var(--color-teal); box-shadow: 0 24px 50px -34px rgb(0 0 0 / .5); }
   @media (prefers-reduced-motion: no-preference) {
     .sector-card:hover .il-bubble { animation: va-il-float 1.6s ease-in-out infinite; }
   }
@@ -356,7 +356,7 @@ html:has(.va-page dialog[open]) {
   .map-label-base { font-size: 13px; fill: var(--va-muted); }
   .map-base rect { fill: var(--va-ink); stroke: var(--va-surface); stroke-width: 2; }
   .map-pin.is-active .map-pin-dot { r: 9; fill: var(--color-teal-dark); }
-  [data-theme="dark"] & .map-pin.is-active .map-pin-dot { fill: #e9bd6a; }
+  [data-theme="dark"] & .map-pin.is-active .map-pin-dot { fill: #7d5c33; }
   .map-pin.is-active .map-label { fill: var(--va-hl); }
   .map-pin.is-active .map-pin-pulse { animation: va-pin-pulse 1.4s ease-out infinite; }
   .area-card { transition: border-color .2s ease; }
@@ -414,11 +414,11 @@ html:has(.va-page dialog[open]) {
   .mini-wave > i { display: block; width: 3px; height: 30%; border-radius: 3px; background: var(--va-hl); }
   .mini-wave > i:nth-child(2n) { height: 70%; }
   .mini-wave > i:nth-child(3n) { height: 100%; }
-  .chat { display: grid; gap: .6rem; padding: 1rem; border-radius: 14px; background: var(--va-surface); border: 1px solid var(--va-line); box-shadow: 0 10px 24px -18px rgb(16 24 40 / .5); }
+  .chat { display: grid; gap: .6rem; padding: 1rem; border-radius: 14px; background: var(--va-surface); border: 1px solid var(--va-line); box-shadow: 0 10px 24px -18px rgb(0 0 0 / .5); }
   .chat p { font-size: 15px; line-height: 1.45; }
   .chat .who { display: block; font-size: 12.5px; font-weight: 600; color: var(--va-muted); }
   .chat .ai { font-weight: 600; }
-  .booked { display: inline-flex; align-items: center; gap: .45rem; justify-self: start; padding: .5rem .85rem; border-radius: 10px; background: var(--color-teal); color: #101828; font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+  .booked { display: inline-flex; align-items: center; gap: .45rem; justify-self: start; padding: .5rem .85rem; border-radius: 10px; background: var(--color-teal); color: #fff; font-family: var(--font-display); font-size: 15px; font-weight: 600; }
   .booked .icon { width: 1.05rem; height: 1.05rem; }
   .vcal-head { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .35rem; text-align: center; font-size: 12.5px; font-weight: 600; color: var(--va-muted); }
   .vcal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .35rem; }
@@ -465,8 +465,8 @@ html:has(.va-page dialog[open]) {
   [data-brand] :is([data-brand-line], [data-brand-outcome]).is-shown { animation: va-modal-in .4s ease-out; }
   [data-brand-step] { transition: background-color .25s ease, border-color .25s ease; }
   [data-brand-step].is-on { background: var(--va-band-surface); border-color: var(--va-band-hl); }
-  [data-brand-step].is-on .step-num { background: var(--color-teal); color: #101828; }
-  [data-brand-step].is-done .step-num { background: var(--va-band-ok); color: #101828; }
+  [data-brand-step].is-on .step-num { background: var(--color-teal); color: #fff; }
+  [data-brand-step].is-done .step-num { background: var(--va-band-ok); color: #000; }
   .step-num { display: grid; place-items: center; flex-shrink: 0; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1.5px solid var(--va-band-line); font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--va-band-ink); transition: background-color .25s ease, color .25s ease; }
   .day-seg { display: inline-flex; min-height: 44px; align-items: center; gap: .4rem; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--va-line-strong); font-family: var(--font-display); font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
   .day-seg:has(input:checked) { background: var(--va-ink); border-color: var(--va-ink); color: var(--va-paper); }
@@ -482,8 +482,8 @@ html:has(.va-page dialog[open]) {
 /* Capability explorer (20 Oct 2026): the tab list beside its panel. */
 .va-page .cap-tab { display: flex; align-items: center; gap: .85rem; width: 100%; min-height: 64px; padding: .8rem 1rem; border-radius: 14px; border: 1px solid var(--va-line); background: transparent; text-align: left; color: var(--va-ink); transition: background-color .15s ease, border-color .15s ease; }
 .va-page .cap-tab:hover { border-color: var(--va-line-strong); }
-.va-page .cap-tab[aria-selected="true"] { background: var(--va-surface); border-color: var(--va-ink); box-shadow: 0 18px 40px -30px rgb(16 24 40 / .45); }
-.va-page .cap-tab[aria-selected="true"] .icon-tile { background: var(--color-teal); color: #101828; }
+.va-page .cap-tab[aria-selected="true"] { background: var(--va-surface); border-color: var(--va-ink); box-shadow: 0 18px 40px -30px rgb(0 0 0 / .45); }
+.va-page .cap-tab[aria-selected="true"] .icon-tile { background: var(--color-teal); color: #fff; }
 
 /* ---------- Carousel (20 Oct 2026) ----------
    Native scroll-snap, no library. Cards ease in as they enter (scroll-driven animation where supported),
@@ -504,14 +504,14 @@ html:has(.va-page dialog[open]) {
 #va-page .va-car-ui { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 1rem; }
 #va-page .va-car-btn {
   display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 999px;
-  border: 1.5px solid var(--va-line-strong, rgb(16 24 40 / .45)); color: var(--va-ink, #101828); background: var(--va-surface, #fff);
+  border: 1.5px solid var(--va-line-strong, rgb(0 0 0 / .45)); color: var(--va-ink, #000); background: var(--va-surface, #fff);
   transition: background-color .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease;
 }
 #va-page .va-car-btn:hover:not(:disabled) { background: var(--color-teal); border-color: var(--color-teal); color: #fff; }
 #va-page .va-car-btn:disabled { opacity: .35; cursor: default; }
 #va-page .va-car-btn .icon { width: 1.25rem; height: 1.25rem; }
 #va-page .va-car-wave { display: flex; align-items: center; gap: 4px; height: 28px; flex: none; }
-#va-page .va-car-wave i { display: block; width: 8px; height: var(--h, 40%); border-radius: 3px; background: var(--va-line-strong, rgb(16 24 40 / .45)); opacity: .45; transition: background-color .25s ease, opacity .25s ease, height .25s ease; }
+#va-page .va-car-wave i { display: block; width: 8px; height: var(--h, 40%); border-radius: 3px; background: var(--va-line-strong, rgb(0 0 0 / .45)); opacity: .45; transition: background-color .25s ease, opacity .25s ease, height .25s ease; }
 #va-page .va-car-wave i.is-on { background: var(--color-teal); opacity: 1; }
 #va-page .va-car-wave i.is-now { height: 100%; }
 #va-page .va-car-status { font-family: var(--font-display); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--va-muted, #667085); white-space: nowrap; }
@@ -538,7 +538,7 @@ html:has(.va-page dialog[open]) {
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 #va-page .hover-card:hover, #va-page [data-industry]:hover, #va-page #pricing article:hover, #va-page .tl-card:hover, #va-page .fcard:hover, #va-page #features ol > li:hover, #va-page #feedback figure:hover, #va-page .city:hover {
-  transform: translateY(-4px); box-shadow: 0 24px 50px -34px rgb(16 24 40 / .45); border-color: var(--color-teal);
+  transform: translateY(-4px); box-shadow: 0 24px 50px -34px rgb(0 0 0 / .45); border-color: var(--color-teal);
 }
 #va-page [data-industry]:hover .il-bubble { animation: va-il-float 1.6s ease-in-out infinite; }
 /* Buttons match the header's "Book a Growth Consultation": gold with white text, darker gold on hover. One subtle
@@ -548,7 +548,7 @@ html:has(.va-page dialog[open]) {
 #va-page :is(.btn, .va-car-btn, .cap-tab, .brand-chip, .day-seg, .filter-btn, [data-faq-filter], [data-cmp-opt], [data-brand-opt], [data-tab]) {
   transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .3s ease, transform .3s cubic-bezier(.2, .8, .2, 1), translate .45s cubic-bezier(.2, .8, .2, 1);
 }
-#va-page :is(.btn, .va-car-btn):hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 22px -16px rgb(16 24 40 / .55); }
+#va-page :is(.btn, .va-car-btn):hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 22px -16px rgb(0 0 0 / .55); }
 #va-page :is(.btn, .va-car-btn):active:not(:disabled) { transform: translateY(0); box-shadow: none; }
 #va-page .va-car-btn:hover:not(:disabled) { color: #fff; }
 #va-page .icon-tile { transition: background-color .2s ease, color .2s ease, transform .2s ease; }
@@ -568,7 +568,7 @@ html:has(.va-page dialog[open]) {
 .motion-ready #va-page .m-words:not(.is-in) .mw > span { transform: translateY(110%); }
 .motion-ready #va-page .m-words .mw > span { transition: transform .9s cubic-bezier(.16, 1, .3, 1) calc(var(--i, 0) * 45ms); }
 #va-page .m-instant, #va-page .m-instant .mw > span { transition: none !important; }
-.m-progress { position: fixed; inset: 0 0 auto; z-index: 60; height: 3px; background: linear-gradient(90deg, var(--color-teal), #f2c675); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+.m-progress { position: fixed; inset: 0 0 auto; z-index: 60; height: 3px; background: linear-gradient(90deg, var(--color-teal), #7d5c33); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
 #va-page .hero-video .video-frame { transform-origin: 50% 0; will-change: transform; transition: border-radius .2s ease; }
 @media (prefers-reduced-motion: reduce) { .m-progress { display: none; } }
 
@@ -701,7 +701,7 @@ html:has(.va-page dialog[open]) {
 
 /* 2. Cursor spotlight: a soft fill and a lit edge that follow the pointer, gold on light cards, pale gold on dark. */
 #va-page .m-glow, #book-demo-form .m-glow { position: relative; isolation: isolate; --glow-fill: rgb(var(--accent-rgb) / .13); --glow-edge: rgb(var(--accent-rgb) / .9); }
-#va-page .m-glow-dark, #book-demo-form .m-glow-dark { --glow-fill: rgb(242 198 117 / .11); --glow-edge: rgb(242 198 117 / .75); }
+#va-page .m-glow-dark, #book-demo-form .m-glow-dark { --glow-fill: rgb(125 92 51 / .11); --glow-edge: rgb(125 92 51 / .75); }
 :is(#va-page, #book-demo-form) .m-glow::before, :is(#va-page, #book-demo-form) .m-glow::after {
   content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .4s ease;
 }
@@ -775,41 +775,42 @@ html:has(.va-page dialog[open]) {
    for them; without this the Local cover carousel controls fell back to white circles in dark mode. */
 #va-page .v4l {
   --va-paper: var(--color-warm); --va-surface: var(--color-surface); --va-ink: var(--color-ink); --va-muted: var(--color-muted);
-  --va-line: var(--color-line); --va-line-strong: rgb(16 24 40 / 0.45); --va-hl: var(--color-amber-deep); --va-sand: #efece2;
+  --va-line: var(--color-line); --va-line-strong: rgb(0 0 0 / 0.45); --va-hl: var(--color-amber-deep); --va-sand: #efece2;
 }
-[data-theme="dark"] #va-page .v4l { --va-line-strong: rgb(233 235 240 / 0.45); --va-sand: #171d26; }
+[data-theme="dark"] #va-page .v4l { --va-line-strong: rgb(235 235 235 / 0.45); --va-sand: #1d1d1d; }
 
-/* Dark: lift cards off their bands, strengthen borders, and separate the bands themselves. */
-[data-theme="dark"] .va-page { --va-sand: #171d26; --va-line-strong: rgb(233 235 240 / 0.5); }
-[data-theme="dark"] #va-page :is(section.bg-sand, .bg-sand > section) { background-color: #141a22; }
+/* Dark: lift cards off their bands, strengthen borders, and separate the bands themselves.
+   Neutral greys, no blue tint (client, 29 Oct 2026); each keeps the luminance of the slate it replaced. */
+[data-theme="dark"] .va-page { --va-sand: #1d1d1d; --va-line-strong: rgb(235 235 235 / 0.5); }
+[data-theme="dark"] #va-page :is(section.bg-sand, .bg-sand > section) { background-color: #1a1a1a; }
 [data-theme="dark"] #va-page :is(
   [data-industry], #pricing article, #feedback figure, .city, .tl-card, .cap-tab, #features [data-tab-panel], #use-cases [data-tab-panel],
   #features ol > li, [data-faq-item], #compare [data-cmp] dl > div, #compare .lg\:block, #use-cases .bg-sand, #faq .rounded-\[16px\],
   [data-fit-form], #right-fit .hover-card:not([class*="color-mix"])
-) { background-color: #1c232d; border-color: #343d4a; }
-[data-theme="dark"] #va-page .cap-tab[aria-selected="true"] { background-color: #242c38; border-color: var(--color-teal); }
-[data-theme="dark"] #va-page #plan-growth { background-color: #1f2631; }
-[data-theme="dark"] #va-page :is(.mini, .mini-chip, .chat, .tl-proof, [data-fit-result], .plan-facts > div) { border-color: #343d4a; }
-[data-theme="dark"] #va-page [data-fit-result] { background-color: #232b36; }
-[data-theme="dark"] #va-page .chat { background-color: #232b36; }
-[data-theme="dark"] #va-page .fcard-vis { background: color-mix(in srgb, var(--color-teal) 9%, #1c232d); }
+) { background-color: #222222; border-color: #3c3c3c; }
+[data-theme="dark"] #va-page .cap-tab[aria-selected="true"] { background-color: #2b2b2b; border-color: var(--color-teal); }
+[data-theme="dark"] #va-page #plan-growth { background-color: #262626; }
+[data-theme="dark"] #va-page :is(.mini, .mini-chip, .chat, .tl-proof, [data-fit-result], .plan-facts > div) { border-color: #3c3c3c; }
+[data-theme="dark"] #va-page [data-fit-result] { background-color: #2a2a2a; }
+[data-theme="dark"] #va-page .chat { background-color: #2a2a2a; }
+[data-theme="dark"] #va-page .fcard-vis { background: color-mix(in srgb, var(--color-teal) 9%, #222222); }
 
 /* Dark: the industry illustrations were dark grey on near-black. */
-[data-theme="dark"] #va-page [data-industry] > span:first-child { background-color: #262f3b; }
-[data-theme="dark"] #va-page .il-wall { fill: #3b4655; stroke: #566273; }
-[data-theme="dark"] #va-page .il-ink { fill: #121820; }
+[data-theme="dark"] #va-page [data-industry] > span:first-child { background-color: #2e2e2e; }
+[data-theme="dark"] #va-page .il-wall { fill: #454545; stroke: #616161; }
+[data-theme="dark"] #va-page .il-ink { fill: #181818; }
 [data-theme="dark"] #va-page .il-win { fill: #7d9cc0; }
-[data-theme="dark"] #va-page .il-card { fill: #e9ebf0; }
-[data-theme="dark"] #va-page .il-line { stroke: #6b7686; }
-[data-theme="dark"] #va-page .il-stroke { stroke: #101828; }
+[data-theme="dark"] #va-page .il-card { fill: #ebebeb; }
+[data-theme="dark"] #va-page .il-line { stroke: #757575; }
+[data-theme="dark"] #va-page .il-stroke { stroke: #000; }
 [data-theme="dark"] #va-page .il-shadow { fill: rgb(0 0 0 / .35); }
-[data-theme="dark"] #va-page .il-tooth { fill: #e9ebf0; stroke: #101828; }
-[data-theme="dark"] #va-page .il-scaffold { stroke: #8b96a6; }
-[data-theme="dark"] #va-page .il-ladder { stroke: #6b7686; }
-[data-theme="dark"] #va-page :is(.il-num, .il-small) { fill: #101828; }
+[data-theme="dark"] #va-page .il-tooth { fill: #ebebeb; stroke: #000; }
+[data-theme="dark"] #va-page .il-scaffold { stroke: #959595; }
+[data-theme="dark"] #va-page .il-ladder { stroke: #757575; }
+[data-theme="dark"] #va-page :is(.il-num, .il-small) { fill: #000; }
 
 /* Dark: the calculator frame sits in a band that matches its own dark background. */
-[data-theme="dark"] #va-page #roi-calculator { background-color: #0f1319; }
+[data-theme="dark"] #va-page #roi-calculator { background-color: #000; }
 
 /* Comparison table: a soft row highlight on hover, the OMH cell a touch stronger. */
 #va-page .cmp-table tbody tr > * { transition: background-color .2s ease; }
@@ -838,7 +839,7 @@ html:has(.va-page dialog[open]) {
 /* Audio card in Client feedback (20 Oct 2026). */
 #va-page .audio-toggle {
   position: absolute; left: 50%; top: 42%; translate: -50% -50%; display: grid; place-items: center; width: 64px; height: 64px;
-  border-radius: 999px; background: var(--color-teal); color: #fff; box-shadow: 0 10px 24px -8px rgb(16 24 40 / .55); transition: transform .2s ease, background-color .2s ease;
+  border-radius: 999px; background: var(--color-teal); color: #fff; box-shadow: 0 10px 24px -8px rgb(0 0 0 / .55); transition: transform .2s ease, background-color .2s ease;
 }
 #va-page .audio-toggle:hover { transform: scale(1.06); background: var(--color-teal-dark); }
 #va-page .audio-toggle .icon { width: 1.5rem; height: 1.5rem; }
@@ -850,13 +851,13 @@ html:has(.va-page dialog[open]) {
 }
 @keyframes va-audio-ring { from { opacity: 1; transform: scale(.92); } to { opacity: 0; transform: scale(1.25); } }
 #va-page .audio-wave { display: flex; flex: 1; align-items: center; gap: 3px; height: 34px; min-width: 0; cursor: pointer; border-radius: 6px; }
-#va-page .audio-wave i { display: block; flex: 1; height: var(--h); border-radius: 2px; background: rgb(16 24 40 / .22); transition: background-color .2s ease; }
-#va-page .audio-wave:hover i:not(.is-played) { background: rgb(16 24 40 / .32); }
+#va-page .audio-wave i { display: block; flex: 1; height: var(--h); border-radius: 2px; background: rgb(0 0 0 / .22); transition: background-color .2s ease; }
+#va-page .audio-wave:hover i:not(.is-played) { background: rgb(0 0 0 / .32); }
 #va-page .audio-wave i.is-played { background: var(--color-teal); }
 #va-page [data-audio-card].is-playing .audio-wave i.is-now { background: var(--color-teal-dark); animation: va-audio-now .6s ease-in-out infinite alternate; }
 @keyframes va-audio-now { from { transform: scaleY(.6); } to { transform: scaleY(1.1); } }
-#va-page .audio-time { flex: none; border-radius: 5px; background: rgb(16 24 40 / .85); padding: 2px 6px; font-size: 13px; font-weight: 600; color: #fff; }
-[data-theme="dark"] #va-page .audio-wave i { background: rgb(233 235 240 / .25); }
+#va-page .audio-time { flex: none; border-radius: 5px; background: rgb(0 0 0 / .85); padding: 2px 6px; font-size: 13px; font-weight: 600; color: #fff; }
+[data-theme="dark"] #va-page .audio-wave i { background: rgb(235 235 235 / .25); }
 [data-theme="dark"] #va-page .audio-wave i.is-played { background: var(--color-teal); }
 @media (prefers-reduced-motion: reduce) {
   #va-page [data-audio-card].is-playing .audio-toggle::after, #va-page [data-audio-card].is-playing .audio-wave i.is-now { animation: none; }
@@ -866,8 +867,8 @@ html:has(.va-page dialog[open]) {
 #va-page [data-audio-pending] .audio-toggle { cursor: default; }
 #va-page [data-audio-pending] .audio-toggle:hover { transform: none; background: var(--color-teal); }
 #va-page [data-audio-pending] .audio-wave { cursor: default; }
-#va-page [data-audio-pending] .audio-wave:hover i { background: rgb(16 24 40 / .22); }
-[data-theme="dark"] #va-page [data-audio-pending] .audio-wave:hover i { background: rgb(233 235 240 / .25); }
+#va-page [data-audio-pending] .audio-wave:hover i { background: rgb(0 0 0 / .22); }
+[data-theme="dark"] #va-page [data-audio-pending] .audio-wave:hover i { background: rgb(235 235 235 / .25); }
 
 /* Slide-in entrances start off to the side (the carousels 90px to the right); before they arrive that offset
    widened the page on phones and showed a sideways scrollbar. Clip sideways overflow at the page root.
@@ -918,7 +919,7 @@ html:has(.va-page dialog[open]) {
 #use-cases [role="tab"] { transition: background-color .2s, border-color .2s, transform .2s, box-shadow .2s; }
 #use-cases [role="tab"]:not([aria-selected="true"]):hover {
   background: var(--va-surface); border-color: var(--va-ink); transform: translateY(-1px);
-  box-shadow: 0 6px 16px -10px rgb(16 24 40 / .35);
+  box-shadow: 0 6px 16px -10px rgb(0 0 0 / .35);
 }
 
 /* "Not sure how your calls would fit?" band: the cursor spotlight drifts across it on its own, and follows the
@@ -943,7 +944,7 @@ html:has(.va-page dialog[open]) {
 #va-page .day-key-t, #va-page .day-t { background: var(--va-ink); }
 #va-page .day-key-m, #va-page .day-m { background: #c2554a; }
 #va-page [data-day]:has([data-mode="ai"]) .day-key-m, #va-page [data-mode="ai"] .day-m { background: var(--va-ok); }
-[data-theme="dark"] #va-page .day-key-t, [data-theme="dark"] #va-page .day-t { background: #8b95a7; }
+[data-theme="dark"] #va-page .day-key-t, [data-theme="dark"] #va-page .day-t { background: #949494; }
 #va-page .day-chart { position: relative; padding-top: 8px; background: linear-gradient(to top, var(--va-line) 1px, transparent 1px) 0 calc(100% - 26px) / 100% calc((100% - 34px) / 3) repeat-y; }
 #va-page .day-cols { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 6px; height: 240px; align-items: stretch; }
 #va-page .day-col { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 8px; cursor: default; }
@@ -956,7 +957,7 @@ html:has(.va-page dialog[open]) {
 #va-page .day-col:hover .day-stack, #va-page .day-col:focus-within .day-stack { filter: brightness(1.15); }
 #va-page .day-col::after {
   content: attr(data-tip); position: absolute; bottom: calc(100% - 4px); left: 50%; translate: -50% 0; z-index: 2;
-  white-space: nowrap; padding: 6px 10px; border-radius: 8px; background: #101828; color: #f7f6f2; font-size: 13px; font-weight: 600;
+  white-space: nowrap; padding: 6px 10px; border-radius: 8px; background: #000; color: #f7f6f2; font-size: 13px; font-weight: 600;
   opacity: 0; pointer-events: none; transition: opacity .15s;
 }
 #va-page .day-col:hover::after { opacity: 1; }
@@ -986,7 +987,7 @@ html:has(.va-page dialog[open]) {
 .v4l .video-poster.has-thumb .vp-play {
   width: auto; aspect-ratio: auto; display: inline-flex; align-items: center; gap: .9rem;
   padding: .55rem 1.6rem .55rem .55rem; color: #fff;
-  background: rgb(16 24 40 / .42); border: 1px solid rgb(255 255 255 / .22);
+  background: rgb(0 0 0 / .42); border: 1px solid rgb(255 255 255 / .22);
   -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
   box-shadow: 0 24px 60px -20px rgb(0 0 0 / .65), inset 0 1px 0 rgb(255 255 255 / .18);
   transition: transform .5s var(--vp-ease), background-color .4s var(--vp-ease), border-color .4s var(--vp-ease), padding .5s var(--vp-ease);
@@ -994,7 +995,7 @@ html:has(.va-page dialog[open]) {
 .v4l .vp-play-core {
   position: relative; display: grid; place-items: center; flex-shrink: 0;
   width: clamp(52px, 7.5cqw, 72px); aspect-ratio: 1; border-radius: 999px;
-  background: linear-gradient(145deg, #e6ae4f, #c9862a); color: #fff;
+  background: linear-gradient(145deg, #7d5c33, #5e4526); color: #fff;
   box-shadow: 0 10px 28px -8px rgb(var(--accent-rgb) / .8), inset 0 1px 0 rgb(255 255 255 / .35);
   transition: transform .5s var(--vp-ease);
 }
@@ -1013,7 +1014,7 @@ html:has(.va-page dialog[open]) {
 .v4l .vp-kicker { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: rgb(247 246 242 / .82); }
 .v4l .video-poster.has-thumb .vp-title { max-width: 30ch; font-size: clamp(16px, 2.6cqw, 26px); text-shadow: 0 2px 18px rgb(0 0 0 / .45); }
 .v4l .video-poster.has-thumb .vp-time {
-  margin-left: auto; color: #fff; background: rgb(16 24 40 / .55); border: 1px solid rgb(255 255 255 / .18);
+  margin-left: auto; color: #fff; background: rgb(0 0 0 / .55); border: 1px solid rgb(255 255 255 / .18);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
 }
 
@@ -1022,7 +1023,7 @@ html:has(.va-page dialog[open]) {
 .v4l .video-poster.has-thumb:is(:hover, :focus-visible)::before { opacity: .8; }
 .v4l .video-poster.has-thumb:is(:hover, :focus-visible) .vp-play {
   transform: translate(-50%, -50%) scale(1.04); padding-right: 1.9rem;
-  background: rgb(16 24 40 / .58); border-color: rgb(230 174 79 / .55);
+  background: rgb(0 0 0 / .58); border-color: rgb(125 92 51 / .55);
 }
 .v4l .video-poster.has-thumb:is(:hover, :focus-visible) .vp-play-core { transform: scale(1.08); }
 .v4l .video-poster.has-thumb:active .vp-play { transform: translate(-50%, -50%) scale(.98); transition-duration: .15s; }
@@ -1047,18 +1048,18 @@ html:has(.va-page dialog[open]) {
 }
 /* One wave: a bright soft edge that spreads out and dissolves, with a wider haze behind it. */
 @keyframes vp-wave {
-  0% { box-shadow: 0 0 0 0 rgb(240 190 100 / 0), 0 0 0 0 rgb(230 174 79 / 0); }
-  12% { box-shadow: 0 0 0 2px rgb(240 190 100 / .38), 0 0 16px 4px rgb(230 174 79 / .3); }
-  100% { box-shadow: 0 0 0 26px rgb(240 190 100 / 0), 0 0 44px 34px rgb(230 174 79 / 0); }
+  0% { box-shadow: 0 0 0 0 rgb(125 92 51 / 0), 0 0 0 0 rgb(125 92 51 / 0); }
+  12% { box-shadow: 0 0 0 2px rgb(125 92 51 / .38), 0 0 16px 4px rgb(125 92 51 / .3); }
+  100% { box-shadow: 0 0 0 26px rgb(125 92 51 / 0), 0 0 44px 34px rgb(125 92 51 / 0); }
 }
 /* Steady warm aura under the waves, breathing with the core. */
 @keyframes vp-aura {
-  0%, 100% { box-shadow: 0 24px 60px -20px rgb(0 0 0 / .65), inset 0 1px 0 rgb(255 255 255 / .18), 0 0 22px 2px rgb(230 174 79 / .16); }
-  50% { box-shadow: 0 24px 60px -20px rgb(0 0 0 / .65), inset 0 1px 0 rgb(255 255 255 / .18), 0 0 34px 6px rgb(230 174 79 / .3); }
+  0%, 100% { box-shadow: 0 24px 60px -20px rgb(0 0 0 / .65), inset 0 1px 0 rgb(255 255 255 / .18), 0 0 22px 2px rgb(125 92 51 / .16); }
+  50% { box-shadow: 0 24px 60px -20px rgb(0 0 0 / .65), inset 0 1px 0 rgb(255 255 255 / .18), 0 0 34px 6px rgb(125 92 51 / .3); }
 }
 @keyframes vp-breathe {
   0%, 100% { scale: 1; box-shadow: 0 10px 28px -8px rgb(var(--accent-rgb) / .8), inset 0 1px 0 rgb(255 255 255 / .35); }
-  50% { scale: 1.045; box-shadow: 0 10px 34px -6px rgb(var(--accent-rgb) / .95), 0 0 0 6px rgb(230 174 79 / .12), inset 0 1px 0 rgb(255 255 255 / .35); }
+  50% { scale: 1.045; box-shadow: 0 10px 34px -6px rgb(var(--accent-rgb) / .95), 0 0 0 6px rgb(125 92 51 / .12), inset 0 1px 0 rgb(255 255 255 / .35); }
 }
 @keyframes vp-shine { 0% { background-position: 160% 0; } 22%, 100% { background-position: -60% 0; } }
 @keyframes vp-pop { from { opacity: 0; transform: translate(-50%, -50%) scale(.82); } }
@@ -1079,8 +1080,8 @@ html:has(.va-page dialog[open]) {
    .ind-card, so the frozen oldv2/oldv3 copies keep their look. */
 #va-page .ind-card {
   position: relative; cursor: pointer; row-gap: 0;
-  border-radius: 20px; border-color: color-mix(in srgb, var(--va-ink, #101828) 9%, transparent);
-  padding: 1.5rem; box-shadow: 0 1px 2px rgb(16 24 40 / .04);
+  border-radius: 20px; border-color: color-mix(in srgb, var(--va-ink, #000) 9%, transparent);
+  padding: 1.5rem; box-shadow: 0 1px 2px rgb(0 0 0 / .04);
   transition: translate .4s cubic-bezier(.2, .7, .2, 1), border-color .3s, box-shadow .4s;
 }
 @media (min-width: 640px) { #va-page .ind-card { grid-template-rows: 1fr auto; column-gap: 1.5rem; } }
@@ -1097,26 +1098,26 @@ html:has(.va-page dialog[open]) {
 #va-page .ind-card:has(.ind-card-link:focus-visible) { outline: 3px solid var(--color-teal); outline-offset: 3px; }
 #va-page .ind-card-note {
   display: inline-flex; align-items: center; gap: .5rem; margin-top: 1rem; padding: .4rem .85rem;
-  border-radius: 12px; background: rgb(var(--accent-rgb) / .1); color: var(--va-ink, #101828);
+  border-radius: 12px; background: rgb(var(--accent-rgb) / .1); color: var(--va-ink, #000);
   font-size: 16px; font-weight: 600; line-height: 1.3;
 }
 #va-page .ind-card-note .icon { width: 1rem; height: 1rem; }
 /* Footer row: spans the card, sits on the bottom edge, so it lines up across a row. */
 #va-page .ind-card-foot {
   grid-column: 1 / -1; align-self: end; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--va-ink, #101828) 9%, transparent);
-  font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--va-ink, #101828);
+  padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--va-ink, #000) 9%, transparent);
+  font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--va-ink, #000);
 }
 #va-page .ind-card-go {
   display: grid; place-items: center; width: 40px; height: 40px; border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--va-ink, #101828) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--va-ink, #000) 16%, transparent);
   transition: background-color .3s, border-color .3s, color .3s;
 }
 #va-page .ind-card-go .icon { width: 1.05rem; height: 1.05rem; transition: translate .35s cubic-bezier(.2, .7, .2, 1); }
 @media (hover: hover) {
   #va-page .ind-card:hover {
     translate: 0 -3px; border-color: rgb(var(--accent-rgb) / .55);
-    box-shadow: 0 1px 2px rgb(16 24 40 / .04), 0 22px 44px -28px rgb(16 24 40 / .35);
+    box-shadow: 0 1px 2px rgb(0 0 0 / .04), 0 22px 44px -28px rgb(0 0 0 / .35);
   }
   #va-page .ind-card:hover .ind-card-link { color: var(--color-amber-deep); }
   #va-page .ind-card:hover > span:first-child svg { scale: 1.05; }

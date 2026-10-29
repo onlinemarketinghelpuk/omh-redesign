@@ -99,7 +99,7 @@ export function ClinicsPage() {
       page={path}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#f2c675]">for your clinic</span>
+          Book a 30-minute demo <span className="text-[#7d5c33]">for your clinic</span>
         </>
       }
     >

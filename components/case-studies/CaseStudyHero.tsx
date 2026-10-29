@@ -42,7 +42,7 @@ export function CaseStudyHero({ study }: { study: CaseStudy }) {
             ratio="5/4"
             priority
             caption
-            frameClassName="shadow-[0_36px_90px_-42px_rgb(16_24_40/0.48)]"
+            frameClassName="shadow-[0_36px_90px_-42px_rgb(0_0_0/0.48)]"
           />
         </div>
       </div>

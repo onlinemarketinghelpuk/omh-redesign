@@ -59,7 +59,7 @@ export default function AiVoiceAgentsOldV2Page() {
         id="book-demo-form"
         heading={
           <>
-            Hear an AI voice agent answer <span className="text-[#f2c675]">as your business</span>
+            Hear an AI voice agent answer <span className="text-[#7d5c33]">as your business</span>
           </>
         }
       />

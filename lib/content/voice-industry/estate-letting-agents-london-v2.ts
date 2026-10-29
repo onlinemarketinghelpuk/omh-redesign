@@ -213,7 +213,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: LondonTonight ===== -->
-<section id="hero" data-component="LondonTonight" class="relative overflow-hidden bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--paper))]">
+<section id="hero" data-component="LondonTonight" class="relative overflow-hidden bg-surface">
   <div class="container-omh relative pb-16 pt-6 lg:pb-20">
     <nav aria-label="Breadcrumb" class="text-[14.5px] text-muted">
       <ol class="flex flex-wrap items-center gap-1.5">
@@ -225,7 +225,7 @@ export const markup = String.raw`
     </nav>
     <div class="mt-6 grid items-center gap-10 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-14">
       <div>
-        <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(16_24_40/0.5)]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>London real estate and letting agents · 020</p>
+        <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(0_0_0/0.5)]"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>London real estate and letting agents · 020</p>
         <h1 class="mt-5">AI Voice Agents for Real Estate <span class="hl">in London</span></h1>
         <p class="mt-6 text-body text-muted">Your branch closes at six. London keeps ringing. Your AI receptionist answers every enquiry, books viewings and valuations, and sends offers and tenant emergencies to your team.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -235,7 +235,7 @@ export const markup = String.raw`
         <p class="mt-6 text-[15px] text-muted">Built and managed by OMH, a UK team based in Hullbridge, Essex.</p>
       </div>
 
-      <figure class="rounded-[26px] border border-line bg-surface p-4 shadow-[0_40px_80px_-50px_rgb(16_24_40/0.55)] sm:p-5" data-hv>
+      <figure class="rounded-[26px] border border-line bg-surface p-4 shadow-[0_40px_80px_-50px_rgb(0_0_0/0.55)] sm:p-5" data-hv>
         <div class="flex flex-wrap items-center justify-between gap-3">
           <p class="flex items-center gap-2 font-display text-[17px] font-semibold"><span class="live-dot" aria-hidden="true"></span>One London branch, one evening</p>
           <button type="button" class="inline-flex min-h-[40px] items-center gap-1.5 rounded-full border border-[var(--line-strong)] px-3 text-[14px] font-semibold" aria-pressed="false" data-hv-pause data-track="elv2_hero_pause"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg><span data-hv-pause-label>Pause</span></button>
@@ -518,7 +518,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: TryACall ===== -->
-<section id="try" data-component="TryACall" class="bg-sand">
+<section id="try" data-component="TryACall" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-tc>
     <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Try a call</p><h2>Pick a caller and a time. <span class="hl">See what happens.</span></h2></div>
@@ -694,7 +694,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: MondayBeforeAfter ===== -->
-<section id="monday" data-component="MondayBeforeAfter" class="bg-sand">
+<section id="monday" data-component="MondayBeforeAfter" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-ba>
     <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Monday at 9am</p><h2>Drag to see <span class="hl">the same morning, two ways</span></h2></div>
@@ -1179,7 +1179,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
 
 
 <!-- ===== COMPONENT: VideoModal ===== -->
-<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#0b0f19]/80">
+<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#000]/80">
   <div class="on-band overflow-hidden rounded-[16px] bg-band shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]">
     <div class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
       <div class="min-w-0">
@@ -1189,7 +1189,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
       </div>
       <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
-    <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
+    <div class="relative aspect-video bg-[#000]" data-video-modal-player></div>
   </div>
 </dialog>
 
@@ -1198,7 +1198,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
 
 
 <!-- ===== COMPONENT: MobileStickyBar ===== -->
-<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
+<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(0_0_0/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a London demo</a>
     <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>

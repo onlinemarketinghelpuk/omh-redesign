@@ -189,7 +189,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: LondonHero ===== -->
-<section id="hero" data-component="LondonHero" class="relative overflow-hidden bg-[color-mix(in_srgb,var(--color-teal)_10%,var(--paper))]">
+<section id="hero" data-component="LondonHero" class="relative overflow-hidden bg-surface">
   <div class="container-omh relative pb-16 pt-6 lg:pb-20">
     <nav aria-label="Breadcrumb" class="text-[14.5px] text-muted">
       <ol class="flex flex-wrap items-center gap-1.5">
@@ -201,7 +201,7 @@ export const markup = String.raw`
     </nav>
     <div class="mt-6 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
       <div>
-        <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(16_24_40/0.5)]"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London · 020</p>
+        <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(0_0_0/0.5)]"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>London · 020</p>
         <h1 class="mt-5">AI Voice Agents for Dental Clinics <span class="hl">in London</span></h1>
         <p class="mt-6 text-body text-muted">An AI receptionist for London dental practices. It answers every call on the first ring, books check-ups and new patients, and sends urgent calls to your team, day and night. It never gives clinical advice.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -234,7 +234,7 @@ export const markup = String.raw`
     <g transform="translate(360 196)"><rect width="36" height="56" class="lx-house"/><path d="M-2 0 L18 -16 L38 0 Z" class="lx-roof"/><rect x="6" y="10" width="9" height="11" class="lx-hwin"/><rect x="21" y="10" width="9" height="11" class="lx-hwin"/><rect x="13" y="34" width="10" height="22" class="lx-door"/></g><g transform="translate(398 196)"><rect width="36" height="56" class="lx-house"/><path d="M-2 0 L18 -16 L38 0 Z" class="lx-roof"/><rect x="6" y="10" width="9" height="11" class="lx-hwin"/><rect x="21" y="10" width="9" height="11" class="lx-hwin"/><rect x="13" y="34" width="10" height="22" class="lx-door"/></g><g transform="translate(436 196)"><rect width="36" height="56" class="lx-house"/><path d="M-2 0 L18 -16 L38 0 Z" class="lx-roof"/><rect x="6" y="10" width="9" height="11" class="lx-hwin"/><rect x="21" y="10" width="9" height="11" class="lx-hwin"/><rect x="13" y="34" width="10" height="22" class="lx-door"/></g><g transform="translate(474 196)"><rect width="36" height="56" class="lx-house"/><path d="M-2 0 L18 -16 L38 0 Z" class="lx-roof"/><rect x="6" y="10" width="9" height="11" class="lx-hwin"/><rect x="21" y="10" width="9" height="11" class="lx-hwin"/><rect x="13" y="34" width="10" height="22" class="lx-door"/></g><g transform="translate(512 196)"><rect width="36" height="56" class="lx-house"/><path d="M-2 0 L18 -16 L38 0 Z" class="lx-roof"/><rect x="6" y="10" width="9" height="11" class="lx-hwin"/><rect x="21" y="10" width="9" height="11" class="lx-hwin"/><rect x="13" y="34" width="10" height="22" class="lx-door"/></g><g transform="translate(550 196)"><rect width="36" height="56" class="lx-house"/><path d="M-2 0 L18 -16 L38 0 Z" class="lx-roof"/><rect x="6" y="10" width="9" height="11" class="lx-hwin"/><rect x="21" y="10" width="9" height="11" class="lx-hwin"/><rect x="13" y="34" width="10" height="22" class="lx-door"/></g>
   </g>
 </svg>
-        <div class="absolute -bottom-6 left-3 w-[min(300px,80%)] rounded-[18px] border border-line bg-surface p-4 shadow-[0_30px_60px_-30px_rgb(16_24_40/0.55)] sm:-left-6">
+        <div class="absolute -bottom-6 left-3 w-[min(300px,80%)] rounded-[18px] border border-line bg-surface p-4 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.55)] sm:-left-6">
           <p class="flex items-center justify-between text-[12.5px] font-semibold text-muted"><span class="flex items-center gap-1.5"><span class="live-dot" aria-hidden="true"></span>Incoming, 020 7946 0321</span><span class="tnum">Tue 19:42</span></p>
           <p class="mt-2 text-[15px] leading-snug">&ldquo;Hi, I&rsquo;m new to the area. Can I book a check-up this week?&rdquo;</p>
           <p class="mt-2 flex items-center gap-1.5 text-[13.5px] font-semibold text-ok"><svg class="icon !h-4 !w-4" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>New patient visit booked, Thu 09:10</p>
@@ -562,7 +562,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: ModernisePractice ===== -->
-<section id="modernise" data-component="ModernisePractice" class="bg-sand">
+<section id="modernise" data-component="ModernisePractice" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-mb>
     <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Modernise your practice</p><h2>The same Monday morning, <span class="hl">two ways</span></h2></div>
@@ -686,7 +686,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: LondonRules ===== -->
-<section id="rules" data-component="LondonRules" class="bg-sand">
+<section id="rules" data-component="LondonRules" class="bg-surface">
   <div class="container-omh py-20 lg:py-28" data-lr>
     <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>What is changing</p><h2>New rules mean <span class="hl">more calls to answer</span></h2></div>
@@ -1187,7 +1187,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 
 
 <!-- ===== COMPONENT: VideoModal ===== -->
-<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#0b0f19]/80">
+<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#000]/80">
   <div class="on-band overflow-hidden rounded-[16px] bg-band shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]">
     <div class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
       <div class="min-w-0">
@@ -1197,7 +1197,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
       </div>
       <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
-    <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
+    <div class="relative aspect-video bg-[#000]" data-video-modal-player></div>
   </div>
 </dialog>
 
@@ -1206,7 +1206,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
 
 
 <!-- ===== COMPONENT: MobileStickyBar ===== -->
-<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
+<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(0_0_0/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a London demo</a>
     <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>

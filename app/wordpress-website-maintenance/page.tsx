@@ -38,7 +38,7 @@ export default function WordPressWebsiteMaintenancePage() {
       <MaintenanceFitSection />
       <MaintenanceWhyChooseSection />
       {/* Related case studies removed (client audit, 26 Oct 2026): this is a service page. */}
-      <SiteTestimonials eventPrefix="maintenance" accent="bg-[#f2c675]" />
+      <SiteTestimonials eventPrefix="maintenance" accent="bg-[#7d5c33]" />
       <RelatedServices
         eventPrefix="maintenance"
         title="Move from routine WordPress maintenance to the right wider service"

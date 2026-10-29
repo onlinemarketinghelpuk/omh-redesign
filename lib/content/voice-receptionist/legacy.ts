@@ -16,7 +16,7 @@ const cmpRows = [
   ["Setup and upkeep", "Done for you, improved monthly", "None", "A few days", "Hiring, training, cover", "All yours"],
 ];
 
-const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="${cat}"${i ? "" : " open"} data-track-name="${q}">
+const faqItem = ({ q, a, cat }: (typeof voiceFaqs)[number], i: number) => `      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="${cat}"${i ? "" : " open"} data-track-name="${q}">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
           <span class="min-w-0 flex-1">
@@ -300,7 +300,7 @@ export const receptionistLegacyMarkup = String.raw`
       <p class="mt-5 text-muted">How an AI phone receptionist compares with voicemail, a human receptionist, a call answering service and a DIY app, for a typical small UK business.</p>
     </div>
 
-    <div class="mt-12 hidden overflow-hidden rounded-[18px] border border-line bg-surface shadow-[0_30px_60px_-45px_rgb(16_24_40/0.45)] lg:block">
+    <div class="mt-12 hidden overflow-hidden rounded-[18px] border border-line bg-surface shadow-[0_30px_60px_-45px_rgb(0_0_0/0.45)] lg:block">
       <table class="cmp-table w-full border-separate border-spacing-0 text-left text-[16px] leading-snug">
         <caption class="sr-only">OMH AI receptionist compared with voicemail, an answering service, a human receptionist and a DIY app</caption>
         <thead>
@@ -387,7 +387,7 @@ ${voiceFaqs.map(faqItem).join("\n")}
   </div>
 </section>
 
-<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
+<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(0_0_0/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo-form" class="btn btn-primary flex-1 whitespace-nowrap !px-3" data-track="sticky_book_demo">Book a Demo</a>
     <a href="tel:+442034893934" class="btn btn-secondary shrink-0 whitespace-nowrap !px-3 tnum" data-track="sticky_phone_click" aria-label="Call 020 3489 3934"><span class="max-[374px]:hidden">Call&nbsp;</span>020 3489 3934</a>

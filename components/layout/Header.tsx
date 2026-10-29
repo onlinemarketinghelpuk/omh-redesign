@@ -18,8 +18,9 @@ function Chevron({ className = "" }: { className?: string }) {
   );
 }
 
-// The current page's link is marked with gold text and a short gold bar; hover alone gets the soft background,
-// so an open menu never shows two items that look selected.
+// The current page's link is marked with gold text and a short gold bar; hover alone gets the soft background
+// and an accent border (inset ring, so nothing shifts), so an open menu never shows two items that look selected.
+// In dark mode hover keeps the ink text: the brown accent is too dim on the dark ground (client, 29 Oct 2026).
 function MenuLink({ link, onClick }: { link: NavLink; onClick?: () => void }) {
   const current = usePathname() === link.href;
   return (
@@ -27,10 +28,10 @@ function MenuLink({ link, onClick }: { link: NavLink; onClick?: () => void }) {
       href={link.href}
       onClick={onClick}
       aria-current={current ? "page" : undefined}
-      className={`relative block rounded-button px-2.5 py-2.5 text-[16px] font-medium transition-colors hover:bg-warm ${
+      className={`relative block rounded-button px-2.5 py-2.5 text-[16px] font-medium transition-colors hover:bg-warm hover:ring-1 hover:ring-inset hover:ring-amber ${
         current
           ? "pl-4 font-semibold text-amber-deep before:absolute before:left-1 before:top-1/2 before:h-4 before:w-[3px] before:-translate-y-1/2 before:rounded-full before:bg-amber before:content-['']"
-          : "text-ink hover:text-amber-deep"
+          : "text-ink hover:text-amber-deep dark:hover:text-ink"
       }`}
     >
       {link.label}
@@ -105,7 +106,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
       data-scrolled={scrolled ? "" : undefined}
       className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow,margin] duration-300 ${
         scrolled
-          ? "mb-4 border-line bg-warm/85 shadow-[0_10px_30px_-24px_rgb(16_24_40/0.5)] backdrop-blur-md"
+          ? "mb-4 border-line bg-warm/85 shadow-[0_10px_30px_-24px_rgb(0_0_0/0.5)] backdrop-blur-md"
           : "border-transparent bg-warm"
       }`}
     >
@@ -161,7 +162,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
                       alignRight ? "right-0" : item.columns.length === 3 ? "left-1/2 -translate-x-1/2" : "left-0"
                     } top-full z-50 pt-3`}
                   >
-                    <div className="menu-pop rounded-card border border-line bg-surface p-4 shadow-[0_28px_60px_-30px_rgb(16_24_40/0.55)]">
+                    <div className="menu-pop rounded-card border border-line bg-surface p-4 shadow-[0_28px_60px_-30px_rgb(0_0_0/0.55)]">
                       <div
                         className={
                           // Sized by column count. The 4-column panel drops to 3 cols at lg (1024–1279) so

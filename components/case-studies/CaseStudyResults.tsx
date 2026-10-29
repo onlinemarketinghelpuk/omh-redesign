@@ -16,7 +16,7 @@ export function CaseStudyResults({ study }: { study: CaseStudy }) {
         </h2>
         <div className="mt-12 grid gap-x-16 gap-y-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="flex flex-col justify-center lg:border-r lg:border-oninverse/15 lg:pr-14">
-            <p className="font-sans text-[clamp(72px,9vw,128px)] font-semibold leading-none text-[#f2c675]">{headline.value}</p>
+            <p className="font-sans text-[clamp(72px,9vw,128px)] font-semibold leading-none text-[#7d5c33]">{headline.value}</p>
             <p className="mt-5 font-sans text-h4 font-semibold">{headline.label}</p>
             {headline.context && <p className="mt-3 text-body leading-relaxed text-oninverse/70">{headline.context}</p>}
           </div>

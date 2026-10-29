@@ -46,7 +46,7 @@ export default function AiVoiceAgentsOldPage() {
         id="book-demo-form"
         heading={
           <>
-            Hear a voice agent answer <span className="text-[#f2c675]">as your business</span>
+            Hear a voice agent answer <span className="text-[#7d5c33]">as your business</span>
           </>
         }
       />

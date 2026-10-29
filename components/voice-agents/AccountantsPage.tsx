@@ -94,7 +94,7 @@ export function AccountantsPage() {
       thingsToTry={["Ask for help with a tax return as a new client.", "Ask to speak to your adviser and hear how it routes you.", "Ask for advice and hear what it does."]}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#f2c675]">for your firm</span>
+          Book a 30-minute demo <span className="text-[#7d5c33]">for your firm</span>
         </>
       }
     >

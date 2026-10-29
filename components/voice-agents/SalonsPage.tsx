@@ -88,7 +88,7 @@ export function SalonsPage() {
       thingsToTry={["Book a cut and colour as a new client.", "Cancel tomorrow's appointment and hear what it offers.", "Ask something it can't know, and hear what it does."]}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#f2c675]">for your salon</span>
+          Book a 30-minute demo <span className="text-[#7d5c33]">for your salon</span>
         </>
       }
     >

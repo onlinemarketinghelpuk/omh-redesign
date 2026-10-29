@@ -239,7 +239,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: DentalHero2 ===== -->
-<section id="hero" data-component="DentalHero2" class="relative overflow-hidden bg-mint">
+<section id="hero" data-component="DentalHero2" class="relative overflow-hidden bg-surface">
   <div class="container-omh relative pb-20 pt-6 lg:pb-24">
     <nav aria-label="Breadcrumb" class="text-[14.5px] text-muted">
       <ol class="flex flex-wrap items-center gap-1.5">
@@ -250,7 +250,7 @@ export const markup = String.raw`
     </nav>
     <div class="mt-6 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
       <div>
-        <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(16_24_40/0.5)]"><svg class="h-4 w-4 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg>AI receptionist for dental practices</p>
+        <p class="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[14.5px] font-semibold text-hl shadow-[0_8px_20px_-14px_rgb(0_0_0/0.5)]"><svg class="h-4 w-4 tooth-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg>AI receptionist for dental practices</p>
         <h1 class="mt-5">From the first ring <span class="hl">to the dentist's chair</span></h1>
         <p class="mt-6 text-body text-muted">It answers every patient call, books check-ups and fills cancellations, and leaves anything clinical to your team. Built and managed for your practice by OMH.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -292,7 +292,7 @@ export const markup = String.raw`
   <g transform="translate(60 312)"><rect width="120" height="74" rx="10" class="sc-card"/><path d="M14 22h70M14 38h92M14 54h56" class="sc-lines"/></g>
   <g transform="translate(76 300) rotate(-8)"><rect width="120" height="74" rx="10" class="sc-card2"/><path d="M14 22h40" class="sc-lines2"/><text x="14" y="52" class="sc-cardtext">Thu 09:10</text></g>
 </svg>
-        <div class="absolute -bottom-6 right-2 w-[min(290px,78%)] rounded-[18px] border border-line bg-surface p-4 shadow-[0_30px_60px_-30px_rgb(16_24_40/0.55)] sm:right-[-18px]">
+        <div class="absolute -bottom-6 right-2 w-[min(290px,78%)] rounded-[18px] border border-line bg-surface p-4 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.55)] sm:right-[-18px]">
           <p class="flex items-center justify-between text-[12.5px] font-semibold text-muted"><span class="flex items-center gap-1.5"><span class="live-dot" aria-hidden="true"></span>Answered on ring 1</span><span class="tnum">08:01</span></p>
           <p class="mt-2 text-[15px] leading-snug">&ldquo;Good morning, Albion Square Dental. I'm Amy, the practice's AI assistant. How can I help?&rdquo;</p>
         </div>
@@ -475,7 +475,7 @@ export const markup = String.raw`
             </button>
           </div>
             </div>
-            <div class="pd-tip pointer-events-none absolute z-10 hidden w-[210px] rounded-[12px] border border-line bg-surface p-3 text-[13.5px] leading-snug shadow-[0_20px_40px_-20px_rgb(16_24_40/0.5)]" data-pd-tip role="status"></div>
+            <div class="pd-tip pointer-events-none absolute z-10 hidden w-[210px] rounded-[12px] border border-line bg-surface p-3 text-[13.5px] leading-snug shadow-[0_20px_40px_-20px_rgb(0_0_0/0.5)]" data-pd-tip role="status"></div>
           </div>
           <div class="mt-2 grid grid-cols-[repeat(14,minmax(0,1fr))] gap-[3px] pl-7 text-center text-[11px] text-muted tnum sm:gap-[6px] sm:text-[12px]" aria-hidden="true"><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span></div>
         </div>
@@ -495,7 +495,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: MeetAmy ===== -->
-<section id="amy" data-component="MeetAmy" class="relative bg-mint">
+<section id="amy" data-component="MeetAmy" class="relative bg-surface">
   <div class="smile-edge is-flip" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0 0 C 360 64 1080 64 1440 0 L1440 64 L0 64 Z" style="fill:var(--surface)"/></svg></div>
   <div class="container-omh grid items-center gap-12 py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:py-24" data-hear>
     <div>
@@ -516,7 +516,7 @@ export const markup = String.raw`
     <div class="relative mx-auto w-full max-w-[380px] pt-10" aria-live="polite">
       <span class="absolute left-1/2 top-0 h-12 w-[3px] -translate-x-1/2 rounded-full bg-gold" aria-hidden="true"></span>
       <span class="absolute left-1/2 top-9 h-5 w-12 -translate-x-1/2 rounded-[6px] bg-[var(--line-strong)]" aria-hidden="true"></span>
-      <div class="badge overflow-hidden rounded-[26px] border border-line bg-surface shadow-[0_50px_90px_-50px_rgb(16_24_40/0.65)]">
+      <div class="badge overflow-hidden rounded-[26px] border border-line bg-surface shadow-[0_50px_90px_-50px_rgb(0_0_0/0.65)]">
         <div class="on-band flex items-center justify-between bg-band px-5 py-3 text-band-ink">
           <span class="flex items-center gap-2 font-display text-[15px] font-semibold"><svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5c1.5-1.5 4-2.5 6-1 2.5 1.8 2 5 1 7-1 2-1.5 4.5-2 8-.3 1.6-2 1.7-2.5.2L13.5 15c-.5-1.5-2.5-1.5-3 0l-1 4.7c-.5 1.5-2.2 1.4-2.5-.2-.5-3.5-1-6-2-8-1-2-1.5-5.2 1-7 2-1.5 4.5-.5 6 1z"/></svg><span data-hear-practice>Albion Square Dental</span></span>
           <span class="text-[12px] font-semibold uppercase tracking-wide">Staff</span>
@@ -767,7 +767,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: ChairTimeCalculator ===== -->
-<section id="calculator" data-component="ChairTimeCalculator" class="bg-mint">
+<section id="calculator" data-component="ChairTimeCalculator" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
     <div class="mx-auto text-center">
       <p class="eyebrow justify-center"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Chair-time calculator</p>
@@ -899,7 +899,7 @@ export const markup = String.raw`
         </div>
         <figcaption class="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-[14.5px] text-muted"><span class="flex items-center gap-2"><span class="block h-3 w-3 rounded-full bg-gold"></span>Cities we cover</span><span class="flex items-center gap-2"><span class="block h-2.5 w-2.5 rotate-45 rounded-[2px] bg-ink"></span>Our team in Hullbridge, Essex</span></figcaption>
       </figure>
-      <div class="rounded-[18px] border border-line bg-surface p-5 shadow-[0_30px_60px_-45px_rgb(16_24_40/0.5)] sm:p-7" aria-live="polite">
+      <div class="rounded-[18px] border border-line bg-surface p-5 shadow-[0_30px_60px_-45px_rgb(0_0_0/0.5)] sm:p-7" aria-live="polite">
         <div class="area-panel" id="area-panel-london" data-area-panel="london" role="tabpanel" aria-labelledby="area-tab-london" tabindex="0">
           <div class="flex items-end justify-between gap-4 border-b border-line pb-5">
             <div><p class="text-[14.5px] font-semibold text-muted">Local numbers with</p><p class="font-display text-[clamp(2.6rem,2.2rem+2.4vw,4.5rem)] font-semibold leading-none tracking-tight text-hl tnum">020</p></div>
@@ -1162,7 +1162,7 @@ export const markup = String.raw`
 
 
 <!-- ===== COMPONENT: GettingStarted ===== -->
-<section id="getting-started" data-component="GettingStarted" class="bg-mint">
+<section id="getting-started" data-component="GettingStarted" class="bg-surface">
   <div class="container-omh py-20 lg:py-28">
     <div>
       <div><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Getting started</p><h2>From first call <span class="hl">to go-live</span></h2></div>
@@ -1243,8 +1243,8 @@ ${pricingSection("bg-surface")}
             <span class="block transition-transform group-hover:scale-[1.015]"><span class="relative block aspect-video overflow-hidden rounded-[14px] bg-[var(--tint-1)]">
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
-            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:12</span>
+            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:12</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1261,8 +1261,8 @@ ${pricingSection("bg-surface")}
             <span class="block transition-transform group-hover:scale-[1.015]"><span class="relative block aspect-video overflow-hidden rounded-[14px] bg-[var(--tint-2)]">
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:45%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:75%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:55%"></i><i style="height:30%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:65%"></i></span>
-            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:58</span>
+            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:58</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1279,8 +1279,8 @@ ${pricingSection("bg-surface")}
             <span class="block transition-transform group-hover:scale-[1.015]"><span class="relative block aspect-video overflow-hidden rounded-[14px] bg-[var(--tint-3)]">
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:80%"></i><i style="height:30%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i></span>
-            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:04</span>
+            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:04</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1297,8 +1297,8 @@ ${pricingSection("bg-surface")}
             <span class="block transition-transform group-hover:scale-[1.015]"><span class="relative block aspect-video overflow-hidden rounded-[14px] bg-[var(--tint-4)]">
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:35%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:85%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i></span>
-            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:47</span>
+            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:47</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1315,8 +1315,8 @@ ${pricingSection("bg-surface")}
             <span class="block transition-transform group-hover:scale-[1.015]"><span class="relative block aspect-video overflow-hidden rounded-[14px] bg-[var(--tint-1)]">
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i></span>
-            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:52</span>
+            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:52</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1333,8 +1333,8 @@ ${pricingSection("bg-surface")}
             <span class="block transition-transform group-hover:scale-[1.015]"><span class="relative block aspect-video overflow-hidden rounded-[14px] bg-[var(--tint-2)]">
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
-            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:39</span>
+            <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:39</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1378,7 +1378,7 @@ ${pricingSection("bg-surface")}
         <button type="button" class="inline-flex min-h-[44px] items-center gap-1.5 font-semibold text-ink hover:text-hl" data-faq-expand data-track="faq_expand_all">Open all</button>
       </div>
       <div class="mt-2 space-y-3">
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="patients" open data-track-name="Will patients know they are talking to an AI?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="patients" open data-track-name="Will patients know they are talking to an AI?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">01</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Will patients know they are talking to an AI?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Patients and AI</span></span>
@@ -1389,7 +1389,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="clinical" data-track-name="Does it give clinical or medical advice?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="clinical" data-track-name="Does it give clinical or medical advice?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">02</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it give clinical or medical advice?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Clinical safety</span></span>
@@ -1400,7 +1400,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="clinical" data-track-name="What happens with dental emergencies out of hours?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="clinical" data-track-name="What happens with dental emergencies out of hours?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">03</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">What happens with dental emergencies out of hours?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Clinical safety</span></span>
@@ -1411,7 +1411,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="patients" data-track-name="Does it work for NHS and private patients?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="patients" data-track-name="Does it work for NHS and private patients?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">04</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it work for NHS and private patients?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Patients and AI</span></span>
@@ -1422,7 +1422,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="setup" data-track-name="Does it work with our practice management software?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="setup" data-track-name="Does it work with our practice management software?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">05</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Does it work with our practice management software?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Setup and systems</span></span>
@@ -1433,7 +1433,7 @@ ${pricingSection("bg-surface")}
           <p class="mt-3"><span class="flag flag-wrap">[CONFIRM] supported practice management systems</span></p>
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="patients" data-track-name="How does it handle elderly or anxious patients?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="patients" data-track-name="How does it handle elderly or anxious patients?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">06</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">How does it handle elderly or anxious patients?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Patients and AI</span></span>
@@ -1444,7 +1444,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="setup" data-track-name="Can it fill last-minute cancellations?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="setup" data-track-name="Can it fill last-minute cancellations?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">07</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Can it fill last-minute cancellations?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Setup and systems</span></span>
@@ -1455,7 +1455,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="data" data-track-name="Is patient data kept safe?">
+      <details class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="data" data-track-name="Is patient data kept safe?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">08</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Is patient data kept safe?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Data and rules</span></span>
@@ -1466,7 +1466,7 @@ ${pricingSection("bg-surface")}
           <p class="mt-3"><span class="flag flag-wrap">[CONFIRM] storage region and retention options</span></p>
         </div>
       </details>
-      <details data-faq-extra class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="data" data-track-name="Are calls recorded?">
+      <details data-faq-extra class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="data" data-track-name="Are calls recorded?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">09</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Are calls recorded?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Data and rules</span></span>
@@ -1477,7 +1477,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details data-faq-extra class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="working" data-track-name="Will it replace our receptionists?">
+      <details data-faq-extra class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="working" data-track-name="Will it replace our receptionists?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">10</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Will it replace our receptionists?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Working with us</span></span>
@@ -1488,7 +1488,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details data-faq-extra class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="working" data-track-name="Is there a minimum contract?">
+      <details data-faq-extra class="group rounded-[14px] border border-line bg-surface transition-colors open:border-[var(--line-strong)] open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="working" data-track-name="Is there a minimum contract?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">11</span>
           <span class="min-w-0 flex-1"><h3 class="!text-[clamp(18px,17px+.3vw,20.5px)] !leading-[1.3]">Is there a minimum contract?</h3><span class="mt-1 block text-[13.5px] font-semibold text-muted">Working with us</span></span>
@@ -1718,7 +1718,7 @@ ${pricingSection("bg-surface")}
 
 
 <!-- ===== COMPONENT: VideoModal ===== -->
-<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#0b0f19]/80">
+<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#000]/80">
   <div class="on-band overflow-hidden rounded-[16px] bg-band shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]">
     <div class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
       <div class="min-w-0">
@@ -1728,7 +1728,7 @@ ${pricingSection("bg-surface")}
       </div>
       <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
-    <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
+    <div class="relative aspect-video bg-[#000]" data-video-modal-player></div>
   </div>
 </dialog>
 
@@ -1737,7 +1737,7 @@ ${pricingSection("bg-surface")}
 
 
 <!-- ===== COMPONENT: MobileStickyBar ===== -->
-<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
+<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(0_0_0/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="#book-demo" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a practice demo</a>
     <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>

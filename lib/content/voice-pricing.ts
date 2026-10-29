@@ -145,7 +145,7 @@ const icon = (name: string, cls = "") =>
 
 type Plan = (typeof plans)[number];
 
-const card = (p: Plan) => `      <article id="plan-${p.id}" class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 ${p.popular ? "border-ink bg-surface shadow-[0_24px_60px_-32px_rgb(16_24_40/0.4)] dark:border-gold" : "border-line bg-surface"}" data-tier="${p.id}">
+const card = (p: Plan) => `      <article id="plan-${p.id}" class="relative flex flex-col rounded-[14px] border p-6 sm:p-8 ${p.popular ? "border-ink bg-surface shadow-[0_24px_60px_-32px_rgb(0_0_0/0.4)] dark:border-gold" : "border-line bg-surface"}" data-tier="${p.id}">
         <div class="flex items-center justify-between gap-3">
           <h3>${p.name}</h3>
           ${p.popular ? '<span class="rounded-full bg-gold px-3 py-1 text-[13.5px] font-semibold text-navy">Most popular</span>' : ""}

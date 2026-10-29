@@ -474,20 +474,20 @@ export const voiceAgentsMarkup = String.raw`
     </div>
 
         <div class="relative mx-auto w-full max-w-[380px] [perspective:1400px]">
-      <div class="brand-phone relative rounded-[44px] border border-[rgb(247_246_242/.18)] bg-[#0b0f19] p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.8)] lg:[transform:rotateY(-10deg)_rotateX(4deg)]">
-        <div class="relative overflow-hidden rounded-[34px] bg-[#f7f6f2] px-5 pb-6 pt-4 text-[#101828]">
-          <div class="flex items-center justify-between text-[13px] font-semibold" aria-hidden="true"><span class="tnum">9:41</span><span class="h-[22px] w-[90px] rounded-full bg-[#0b0f19]"></span><span class="flex gap-1"><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#101828]/40"></i></span></div>
+      <div class="brand-phone relative rounded-[44px] border border-[rgb(247_246_242/.18)] bg-[#000] p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.8)] lg:[transform:rotateY(-10deg)_rotateX(4deg)]">
+        <div class="relative overflow-hidden rounded-[34px] bg-[#f7f6f2] px-5 pb-6 pt-4 text-[#000]">
+          <div class="flex items-center justify-between text-[13px] font-semibold" aria-hidden="true"><span class="tnum">9:41</span><span class="h-[22px] w-[90px] rounded-full bg-[#000]"></span><span class="flex gap-1"><i class="block h-2.5 w-1 rounded-sm bg-[#000]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#000]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#000]/40"></i></span></div>
 
           <div class="mt-6 text-center">
             <p class="text-[13.5px] font-semibold text-[#1c6446]"><span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-[#1c6446] align-middle"></span>Call answered <span class="tnum" data-brand-timer>00:03</span></p>
-            <span class="mx-auto mt-4 grid h-[72px] w-[72px] place-items-center rounded-full bg-[#d79a37] font-display text-[24px] font-semibold text-[#101828]" aria-hidden="true" data-brand-initials>HR</span>
+            <span class="mx-auto mt-4 grid h-[72px] w-[72px] place-items-center rounded-full bg-[#7d5c33] font-display text-[24px] font-semibold text-[#000]" aria-hidden="true" data-brand-initials>HR</span>
             <p class="mt-3 font-display text-[21px] font-semibold leading-tight" data-brand-name>Hartwell Reeve Solicitors</p>
-            <p class="mt-0.5 text-[14.5px] text-[rgb(16_24_40/0.68)]"><span class="tnum" data-brand-num>0121 496 0147</span>, <span data-brand-city>Birmingham</span></p>
+            <p class="mt-0.5 text-[14.5px] text-[rgb(0_0_0/0.68)]"><span class="tnum" data-brand-num>0121 496 0147</span>, <span data-brand-city>Birmingham</span></p>
           </div>
 
-          <div class="mt-5 rounded-[18px] bg-white p-4 shadow-[0_10px_30px_-20px_rgb(16_24_40/0.6)]">
+          <div class="mt-5 rounded-[18px] bg-white p-4 shadow-[0_10px_30px_-20px_rgb(0_0_0/0.6)]">
             <div class="flex items-center gap-3">
-              <span class="text-[13px] font-semibold text-[#8f5a0e]"><span data-brand-agent>Grace</span>, AI assistant</span>
+              <span class="text-[13px] font-semibold text-[#7d5c33]"><span data-brand-agent>Grace</span>, AI assistant</span>
               <svg viewBox="0 0 168 40" class="brand-wave h-7 flex-1" aria-hidden="true" data-brand-wave>
                 <rect x="1" y="13" width="3" height="14" rx="1.5" style="--d:0s"/><rect x="7" y="3" width="3" height="34" rx="1.5" style="--d:0.09s"/><rect x="13" y="15.5" width="3" height="9" rx="1.5" style="--d:0.18s"/><rect x="19" y="6" width="3" height="28" rx="1.5" style="--d:0.27s"/><rect x="25" y="14.5" width="3" height="11" rx="1.5" style="--d:0.36s"/><rect x="31" y="12" width="3" height="16" rx="1.5" style="--d:0.44999999999999996s"/><rect x="37" y="5.5" width="3" height="29" rx="1.5" style="--d:0.54s"/><rect x="43" y="8" width="3" height="24" rx="1.5" style="--d:0s"/><rect x="49" y="7" width="3" height="26" rx="1.5" style="--d:0.09s"/><rect x="55" y="10" width="3" height="20" rx="1.5" style="--d:0.18s"/><rect x="61" y="10.5" width="3" height="19" rx="1.5" style="--d:0.27s"/><rect x="67" y="15" width="3" height="10" rx="1.5" style="--d:0.36s"/><rect x="73" y="3.5" width="3" height="33" rx="1.5" style="--d:0.44999999999999996s"/><rect x="79" y="16" width="3" height="8" rx="1.5" style="--d:0.54s"/><rect x="85" y="4" width="3" height="32" rx="1.5" style="--d:0s"/><rect x="91" y="16.5" width="3" height="7" rx="1.5" style="--d:0.09s"/><rect x="97" y="11.5" width="3" height="17" rx="1.5" style="--d:0.18s"/><rect x="103" y="7.5" width="3" height="25" rx="1.5" style="--d:0.27s"/><rect x="109" y="8" width="3" height="24" rx="1.5" style="--d:0.36s"/><rect x="115" y="7" width="3" height="26" rx="1.5" style="--d:0.44999999999999996s"/><rect x="121" y="8" width="3" height="24" rx="1.5" style="--d:0.54s"/><rect x="127" y="11" width="3" height="18" rx="1.5" style="--d:0s"/><rect x="133" y="17" width="3" height="6" rx="1.5" style="--d:0.09s"/><rect x="139" y="5" width="3" height="30" rx="1.5" style="--d:0.18s"/><rect x="145" y="16.5" width="3" height="7" rx="1.5" style="--d:0.27s"/><rect x="151" y="3" width="3" height="34" rx="1.5" style="--d:0.36s"/><rect x="157" y="15.5" width="3" height="9" rx="1.5" style="--d:0.44999999999999996s"/><rect x="163" y="10" width="3" height="20" rx="1.5" style="--d:0.54s"/>
               </svg>
@@ -503,7 +503,7 @@ export const voiceAgentsMarkup = String.raw`
           </dl>
 
           <div class="mt-5 flex items-center justify-center gap-6">
-            <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-[#101828] text-[#f7f6f2] hover:bg-[#1a2437]" data-brand-replay data-track="branding_replay" aria-label="Replay the greeting"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-replay"/></svg></button>
+            <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-[#000] text-[#f7f6f2] hover:bg-[#262626]" data-brand-replay data-track="branding_replay" aria-label="Replay the greeting"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-replay"/></svg></button>
             <span class="grid h-12 w-12 place-items-center rounded-full bg-[#a3352b] text-white" aria-hidden="true"><svg class="icon rotate-[135deg]" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span>
           </div>
         </div>
@@ -665,9 +665,9 @@ export const voiceAgentsMarkup = String.raw`
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
             <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
             <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Practice manager</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>1:12</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>1:12</span>
           </button>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -682,9 +682,9 @@ export const voiceAgentsMarkup = String.raw`
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:45%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:75%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:55%"></i><i style="height:30%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:65%"></i></span>
             <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
             <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Director</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:58</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:58</span>
           </button>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -699,9 +699,9 @@ export const voiceAgentsMarkup = String.raw`
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:80%"></i><i style="height:30%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i></span>
             <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
             <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Branch manager</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>1:04</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>1:04</span>
           </button>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -716,9 +716,9 @@ export const voiceAgentsMarkup = String.raw`
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-scale"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:35%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:85%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i></span>
             <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
             <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Partner</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:47</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:47</span>
           </button>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -733,9 +733,9 @@ export const voiceAgentsMarkup = String.raw`
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i></span>
             <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
             <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Service manager</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:52</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:52</span>
           </button>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -750,9 +750,9 @@ export const voiceAgentsMarkup = String.raw`
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[150px] !w-[150px]" aria-hidden="true" focusable="false"><use href="#i-hard-hat"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-5 bottom-11 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
             <span class="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-[13px] font-semibold text-ink">Video testimonial</span>
-            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(16_24_40/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
+            <span class="absolute left-1/2 top-[40%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)] transition-transform group-hover:scale-110" aria-hidden="true"><svg class="icon !h-6 !w-6 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
             <span class="absolute bottom-3 left-4 right-20 truncate text-[14px] font-semibold text-ink">Owner</span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#101828]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:39</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum"><span class="sr-only">Length </span>0:39</span>
           </button>
         </div>
         <figcaption class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -766,7 +766,7 @@ export const voiceAgentsMarkup = String.raw`
   </div>
 </section>
 
-<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#0b0f19]/80">
+<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#000]/80">
   <div class="on-band overflow-hidden rounded-[16px] bg-band shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]">
     <div class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
       <div class="min-w-0">
@@ -776,7 +776,7 @@ export const voiceAgentsMarkup = String.raw`
       </div>
       <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
-    <div class="relative aspect-video bg-[#05070c]" data-video-modal-player></div>
+    <div class="relative aspect-video bg-[#000]" data-video-modal-player></div>
   </div>
 </dialog>
 
@@ -794,7 +794,7 @@ ${pricingSection("bg-surface")}
       <p class="mt-5 text-muted">Most businesses handle missed calls with voicemail, an answering service, more reception staff or a DIY tool. Here is an honest side-by-side, including where each option wins.</p>
     </div>
 
-    <div class="mt-12 hidden overflow-hidden rounded-[18px] border border-line bg-surface shadow-[0_30px_60px_-45px_rgb(16_24_40/0.45)] lg:block">
+    <div class="mt-12 hidden overflow-hidden rounded-[18px] border border-line bg-surface shadow-[0_30px_60px_-45px_rgb(0_0_0/0.45)] lg:block">
       <table class="cmp-table w-full border-separate border-spacing-0 text-left text-[16px] leading-snug">
         <caption class="sr-only">OMH managed voice agent compared with voicemail, an answering service, an in-house receptionist and a DIY voice AI platform</caption>
         <thead>
@@ -976,7 +976,7 @@ ${pricingSection("bg-surface")}
       </div>
 
       <div class="mt-2 space-y-3" data-faq-list>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="callers" open data-track-name="Will callers know they are talking to an AI?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="callers" open data-track-name="Will callers know they are talking to an AI?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">01</span>
           <span class="min-w-0 flex-1">
@@ -990,7 +990,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="callers" data-track-name="Can the agent transfer a call to a real person?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="callers" data-track-name="Can the agent transfer a call to a real person?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">02</span>
           <span class="min-w-0 flex-1">
@@ -1004,7 +1004,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="setup" data-track-name="Which calendars and systems does it work with?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="setup" data-track-name="Which calendars and systems does it work with?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">03</span>
           <span class="min-w-0 flex-1">
@@ -1017,7 +1017,7 @@ ${pricingSection("bg-surface")}
           <p data-faq-answer>The agent needs somewhere to put bookings and call notes, usually your calendar and your CRM or practice system. We check your exact tools during discovery and tell you plainly what connects directly, what needs a workaround and what is not possible yet.</p>
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="setup" data-track-name="Can we keep our existing phone number, or get a local one?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="setup" data-track-name="Can we keep our existing phone number, or get a local one?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">04</span>
           <span class="min-w-0 flex-1">
@@ -1030,7 +1030,7 @@ ${pricingSection("bg-surface")}
           <p data-faq-answer>In most cases you keep your number and divert calls to the agent, either all of them or only the ones your team cannot answer. If you want a new local number, for example an 0161 number for Manchester, we can arrange one as part of setup.</p>
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="data" data-track-name="Are calls recorded, and how does that fit with UK GDPR?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="data" data-track-name="Are calls recorded, and how does that fit with UK GDPR?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">05</span>
           <span class="min-w-0 flex-1">
@@ -1043,7 +1043,7 @@ ${pricingSection("bg-surface")}
           <p data-faq-answer>Calls can be recorded and transcribed so you can review them, and callers are told at the start of the call. You remain the data controller and OMH acts as your processor under a written agreement. We agree retention periods with you and delete recordings on that schedule.</p>
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="data" data-track-name="What are the rules for outbound calls?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="data" data-track-name="What are the rules for outbound calls?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">06</span>
           <span class="min-w-0 flex-1">
@@ -1057,7 +1057,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="sectors" data-track-name="Is it suitable for dental clinics and healthcare providers?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="sectors" data-track-name="Is it suitable for dental clinics and healthcare providers?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">07</span>
           <span class="min-w-0 flex-1">
@@ -1071,7 +1071,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="sectors" data-track-name="Is it suitable for law firms?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="sectors" data-track-name="Is it suitable for law firms?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">08</span>
           <span class="min-w-0 flex-1">
@@ -1085,7 +1085,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="working" data-track-name="We are not in one of your six cities. Can we still work with you?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="working" data-track-name="We are not in one of your six cities. Can we still work with you?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">09</span>
           <span class="min-w-0 flex-1">
@@ -1099,7 +1099,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="setup" data-track-name="How long does setup take?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="setup" data-track-name="How long does setup take?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">10</span>
           <span class="min-w-0 flex-1">
@@ -1113,7 +1113,7 @@ ${pricingSection("bg-surface")}
           <p class="mt-3">Starter is live in 3 working days, Growth in 5 to 7, Scale in 12 to 15. The clock starts when we have your content and your diary access.</p>
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="callers" data-track-name="What happens when the agent does not know the answer?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="callers" data-track-name="What happens when the agent does not know the answer?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">11</span>
           <span class="min-w-0 flex-1">
@@ -1127,7 +1127,7 @@ ${pricingSection("bg-surface")}
           
         </div>
       </details>
-      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(16_24_40/0.45)]" data-faq-item data-cat="working" data-track-name="Is there a minimum contract?">
+      <details class="group rounded-[14px] border border-line bg-paper transition-colors open:border-[var(--va-line-strong)] open:bg-surface open:shadow-[0_18px_40px_-30px_rgb(0_0_0/0.45)]" data-faq-item data-cat="working" data-track-name="Is there a minimum contract?">
         <summary class="flex min-h-[64px] items-center gap-4 px-5 py-4">
           <span class="num hidden w-7 shrink-0 text-[15px] sm:block" aria-hidden="true">12</span>
           <span class="min-w-0 flex-1">
@@ -1161,7 +1161,7 @@ ${pricingSection("bg-surface")}
     <ul class="mt-12 grid gap-5 md:grid-cols-3">
       <li>
         <a href="/google-adwords-ppc" class="group flex h-full flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-gold focus-visible:border-gold" data-related-card="ads" data-track="related_service_click" data-track-name="Google Ads">
-          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="rounded-[10px] bg-surface p-3.5 text-left shadow-[0_10px_24px_-18px_rgb(16_24_40/0.5)]">
+          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="rounded-[10px] bg-surface p-3.5 text-left shadow-[0_10px_24px_-18px_rgb(0_0_0/0.5)]">
           <p class="text-[12px] font-semibold">Sponsored</p>
           <p class="mt-0.5 text-[14.5px] font-semibold leading-snug text-[#1a4fb5] dark:text-[#9bbcff]">Emergency Plumber in Bristol, Call Now</p>
           <p class="mt-0.5 text-[12.5px] leading-snug text-muted">Burst pipes, leaks and boiler faults. Same-day call-outs.</p>
@@ -1176,7 +1176,7 @@ ${pricingSection("bg-surface")}
       </li>
       <li>
         <a href="/local-seo" class="group flex h-full flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-gold focus-visible:border-gold" data-related-card="seo" data-track="related_service_click" data-track-name="Local SEO">
-          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="rounded-[10px] bg-surface p-3.5 text-left shadow-[0_10px_24px_-18px_rgb(16_24_40/0.5)]">
+          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="rounded-[10px] bg-surface p-3.5 text-left shadow-[0_10px_24px_-18px_rgb(0_0_0/0.5)]">
           <div class="flex h-14 items-center justify-center rounded-[8px] bg-[var(--va-sea)]"><svg class="icon !h-7 !w-7 text-hl" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg></div>
           <p class="mt-2.5 text-[14.5px] font-semibold leading-snug">Severn Plumbing</p>
           <p class="text-[12.5px] text-muted">Plumber in Bristol. <span class="font-semibold text-ok">Open 24 hours</span></p>
@@ -1191,7 +1191,7 @@ ${pricingSection("bg-surface")}
       </li>
       <li>
         <a href="/website-designs" class="group flex h-full flex-col rounded-[16px] border border-line bg-surface p-3 transition-colors hover:border-gold focus-visible:border-gold" data-related-card="web" data-track="related_service_click" data-track-name="Website Design">
-          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="overflow-hidden rounded-[10px] bg-surface text-left shadow-[0_10px_24px_-18px_rgb(16_24_40/0.5)]">
+          <div class="grid place-items-center rounded-[12px] bg-sand p-5 md:min-h-[262px] lg:min-h-[214px] [&>*]:w-full" aria-hidden="true"><div class="overflow-hidden rounded-[10px] bg-surface text-left shadow-[0_10px_24px_-18px_rgb(0_0_0/0.5)]">
           <div class="flex gap-1 border-b border-line px-3 py-2"><i class="block h-2 w-2 rounded-full bg-ink/20"></i><i class="block h-2 w-2 rounded-full bg-ink/20"></i><i class="block h-2 w-2 rounded-full bg-ink/20"></i></div>
           <div class="p-3.5">
             <p class="text-[14.5px] font-semibold leading-snug">Leak? Call us now, day or night.</p>
@@ -1228,7 +1228,7 @@ ${pricingSection("bg-surface")}
   </div>
 </section>
 
-<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(16_24_40/0.35)] md:hidden" inert>
+<div data-component="MobileStickyBar" data-sticky-bar class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 pb-[max(.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_-18px_rgb(0_0_0/0.35)] md:hidden" inert>
   <div class="flex items-center gap-3">
     <a href="/contact?service=ai-voice-agents" class="btn btn-primary flex-1" data-track="sticky_book_demo">Book a Demo</a>
     <a href="tel:+442034893934" class="btn btn-secondary !px-0 w-[52px]" aria-label="Call OMH on 020 3489 3934" data-track="sticky_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a>

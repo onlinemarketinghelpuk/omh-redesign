@@ -95,7 +95,7 @@ export function TradesPage() {
       thingsToTry={["Ask for a quote as a new customer.", "Say something is urgent and hear how it routes you.", "Ask something it can't know, and hear what it does."]}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#f2c675]">for your trades business</span>
+          Book a 30-minute demo <span className="text-[#7d5c33]">for your trades business</span>
         </>
       }
     >

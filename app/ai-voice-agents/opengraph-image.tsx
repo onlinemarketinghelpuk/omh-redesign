@@ -7,8 +7,8 @@ export const alt = "OMH AI voice agent answering a customer call and booking an 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const INK = "#101828";
-const AMBER = "#f2c675";
+const INK = "#000";
+const AMBER = "#7d5c33";
 const GREEN = "#7fd1a8";
 
 export default async function Image() {

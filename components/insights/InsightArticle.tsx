@@ -60,7 +60,7 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
                   because many lead images are graphics with text in them. */}
               {post.featuredImage && (
                 <div className="col-span-6 max-lg:mt-9">
-                  <div className="overflow-hidden rounded-media border border-line bg-soft shadow-[0_30px_70px_-50px_rgb(16_24_40/0.55)]">
+                  <div className="overflow-hidden rounded-media border border-line bg-soft shadow-[0_30px_70px_-50px_rgb(0_0_0/0.55)]">
                     {post.featuredImage.width && post.featuredImage.height ? (
                       <Image
                         src={post.featuredImage.src}

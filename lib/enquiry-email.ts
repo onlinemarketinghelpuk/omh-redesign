@@ -10,7 +10,7 @@ import { company } from "@/lib/content/nav";
   and ignore most modern CSS. ponytail: no MJML, no react-email — one template.
 */
 
-const INK = "#101828";
+const INK = "#000";
 const MUTED = "#667085";
 const LINE = "#d9ddd8";
 const WARM = "#f7f6f2";

@@ -133,9 +133,9 @@ export const landingV4Markup = String.raw`
             </g>
             <g>
               <rect x="868" y="618" width="6" height="88" fill="#5a4a38"/>
-              <rect x="812" y="596" width="118" height="54" rx="5" fill="#d79a37"/>
-              <text x="871" y="619" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="15" font-weight="600" letter-spacing="1.5" fill="#101828">VIEWING DAY</text>
-              <text x="871" y="640" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13" font-weight="600" fill="#101828">SAT 10AM</text>
+              <rect x="812" y="596" width="118" height="54" rx="5" fill="#7d5c33"/>
+              <text x="871" y="619" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="15" font-weight="600" letter-spacing="1.5" fill="#000">VIEWING DAY</text>
+              <text x="871" y="640" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13" font-weight="600" fill="#000">SAT 10AM</text>
             </g>
           </svg>
           <span class="vp-notif" aria-hidden="true"><span class="vp-notif-ico"><svg class="icon"><use href="#v4-i-check"/></svg></span><span><b>Appointment booked: Sat 10:00</b><small>New caller · Qualified · Added to your CRM</small></span></span>
@@ -171,7 +171,7 @@ export const landingV4Markup = String.raw`
   </div>
 </section>
 
-<section class="section bg-sand" aria-labelledby="features-title">
+<section class="section bg-surface" aria-labelledby="features-title">
   <div class="container-omh">
     <div class="head-c">
       <p class="eyebrow"><span class="voice-mark" aria-hidden="true"><i></i><i></i><i></i></span>Why it works</p>

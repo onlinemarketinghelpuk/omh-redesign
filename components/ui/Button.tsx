@@ -13,7 +13,7 @@ const styles: Record<Variant, string> = {
   secondary: "border-ink text-ink hover:bg-ink/5",
   // Sits on the dark CTA ground, so it pins to the fixed light/dark pair. Hover is the full accent
   // (client audit, 26 Oct 2026: the pale soft-dark tint barely read as a change on dark sections).
-  inverse: "border-transparent bg-oninverse text-inverse hover:bg-teal hover:text-inverse",
+  inverse: "border-transparent bg-oninverse text-inverse hover:bg-teal hover:text-white",
   "ghost-white": "border-oninverse/55 text-oninverse hover:border-oninverse hover:bg-oninverse/10",
 };
 

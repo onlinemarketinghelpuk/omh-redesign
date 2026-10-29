@@ -5,9 +5,9 @@ import type { GrowthMock, SolutionPageContent } from "@/lib/content/solutions";
    under it (client audit, 26 Oct 2026). Mock text is illustrative UI, not a claim. */
 
 const shell = "rounded-[8px] border border-oninverse/10 bg-inverse/60";
-const pill = "rounded-full bg-amber px-2.5 py-0.5 text-[12px] font-semibold text-[#101828]";
+const pill = "rounded-full bg-amber px-2.5 py-0.5 text-[12px] font-semibold text-white";
 const ghostPill = "rounded-full border border-oninverse/20 px-2.5 py-0.5 text-[12px] text-oninverse/55";
-const button = "rounded-[6px] bg-amber px-3.5 py-1.5 text-[13px] font-semibold text-[#101828]";
+const button = "rounded-[6px] bg-amber px-3.5 py-1.5 text-[13px] font-semibold text-white";
 
 function SearchBar({ query, tag, dim = false }: { query: string; tag?: string; dim?: boolean }) {
   return (
@@ -40,7 +40,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
             <span className="absolute left-[72%] top-[55%] size-1.5 rounded-full bg-oninverse/35" />
             <span className="absolute left-[40%] top-[62%] size-1.5 rounded-full bg-oninverse/35" />
             <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2">
-              <MapPin className="size-6 fill-amber text-[#101828]" aria-hidden="true" />
+              <MapPin className="size-6 fill-amber text-white" aria-hidden="true" />
               <span className={pill}>{mock.pin}</span>
             </span>
           </div>
@@ -81,7 +81,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
       return (
         <div className={`${shell} p-3.5`}>
           <div className="flex items-center gap-3">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber text-[12px] font-bold text-[#101828]">{mock.initials}</span>
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber text-[12px] font-bold text-white">{mock.initials}</span>
             <div className="min-w-0 flex-1">
               <div className="truncate text-[14px] font-semibold">{mock.title}</div>
               <div className="truncate text-[12px] text-oninverse/55">{mock.sub}</div>
@@ -134,7 +134,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
           {mock.items.map((item, i) => (
             <li key={item} className="flex flex-1 items-center gap-2">
               <span className={`flex items-center gap-1.5 whitespace-nowrap text-[13px] ${i < mock.done ? "text-oninverse/80" : "font-semibold text-amber"}`}>
-                <span className={`flex size-5 items-center justify-center rounded-full text-[11px] ${i < mock.done ? "bg-[#7fd1a4]/20 text-[#7fd1a4]" : "bg-amber text-[#101828]"}`}>
+                <span className={`flex size-5 items-center justify-center rounded-full text-[11px] ${i < mock.done ? "bg-[#7fd1a4]/20 text-[#7fd1a4]" : "bg-amber text-white"}`}>
                   {i < mock.done ? <Check className="size-3" aria-hidden="true" /> : i + 1}
                 </span>
                 {item}
@@ -219,7 +219,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
 export function GrowthPath({ content }: { content: SolutionPageContent }) {
   const steps = content.signal.split(" → ");
   return (
-    <div className={`solution-signal solution-signal-${content.theme} relative overflow-hidden rounded-[10px] border border-oninverse/10 bg-inverse p-7 text-oninverse shadow-[0_36px_90px_-44px_rgb(16_24_40/.72)] max-sm:p-5`}>
+    <div className={`solution-signal solution-signal-${content.theme} relative overflow-hidden rounded-[10px] border border-oninverse/10 bg-inverse p-7 text-oninverse shadow-[0_36px_90px_-44px_rgb(0_0_0/.72)] max-sm:p-5`}>
       <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.07)_1px,transparent_1px)] [background-size:42px_42px]" />
       <div className="relative">
         <div className="flex items-center justify-between border-b border-oninverse/12 pb-4 text-[14px] uppercase tracking-[0.14em] text-oninverse/55">

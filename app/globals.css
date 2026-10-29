@@ -24,26 +24,28 @@
   sits on it — those stay dark and light in both themes.
 */
 :root {
-  /* Site accent (client, 25 Oct 2026): tan replaces gold. TO REVERT, swap these five values
-     back to the OLD ones noted beside each; nothing else needs touching. */
-  --accent: #d2b48c;        /* OLD #d79a37 */
-  --accent-dark: #b39977;   /* OLD #b97822 (hover) */
+  /* Site accent (client, 29 Oct 2026): one brown, #7d5c33, replaces the tan (25 Oct) and the gold.
+     TO REVERT, swap these five values back to the TAN or OLD gold ones noted beside each. */
+  --accent: #7d5c33;        /* TAN #d2b48c, OLD #d79a37 */
+  --accent-dark: #5e4526;   /* TAN #b39977, OLD #b97822 (hover) */
   --accent-deep: #7d5c33;   /* OLD #8f5a0e (link + eyebrow text, 5.6:1 on warm) */
-  --accent-light: #e0c6a0;  /* OLD #f5d394 (text on dark sections, dark-mode links) */
-  --accent-rgb: 210 180 140; /* OLD 215 154 55 (glows, shadows, grid) */
+  --accent-light: #7d5c33;  /* TAN #e0c6a0, OLD #f5d394 (text on dark sections, dark-mode links) */
+  --accent-rgb: 125 92 51;  /* TAN 210 180 140, OLD 215 154 55 (glows, shadows, grid) */
 }
 
 @theme {
-  --color-ink: #101828;
+  --color-ink: #000;
   --color-muted: #667085;
   --color-line: #d9ddd8;
 
-  --color-warm: #f7f6f2;
+  /* Sections are black and white only (client, 29 Oct 2026): warm and the tints below are white.
+     OLD warm #f7f6f2; OLD tints blue #edf4fb, green #eef4f0, amber #f7f0e3, rose #fbf2ee. */
+  --color-warm: #ffffff;
   --color-surface: #ffffff;
   --color-soft: #f8eddc;
   --color-soft-dark: #efd9b5;
 
-  --color-inverse: #101828;
+  --color-inverse: #000;
   --color-oninverse: #ffffff;
 
   --color-teal: var(--accent);
@@ -54,35 +56,39 @@
   --color-amber-deep: var(--accent-deep);
 
   /* Section tints that used to be one-off hexes per service page. */
-  --color-tint-blue: #edf4fb;
-  --color-tint-green: #eef4f0;
-  --color-tint-amber: #f7f0e3;
-  --color-tint-rose: #fbf2ee;
+  --color-tint-blue: #ffffff;
+  --color-tint-green: #ffffff;
+  --color-tint-amber: #ffffff;
+  --color-tint-rose: #ffffff;
 
   --color-error: #b42318;
   --color-success: #067647;
 }
 
+/* Dark mode is neutral black and grey, no blue tint (client, 29 Oct 2026). Greys keep the old
+   luminance; OLD ink #e9ebf0, muted #99a3b2, line #2c333e, warm #0f1319, surface #161b23,
+   soft #1c222c, soft-dark #2b333f, inverse #080b10, oninverse #f4f6f8. */
 :root[data-theme="dark"] {
-  --color-ink: #e9ebf0;
-  --color-muted: #99a3b2;
-  --color-line: #2c333e;
+  --color-ink: #ebebeb;
+  --color-muted: #a2a2a2;
+  --color-line: #333333;
 
-  --color-warm: #0f1319;
-  --color-surface: #161b23;
-  --color-soft: #1c222c;
-  --color-soft-dark: #2b333f;
+  --color-warm: #000;
+  --color-surface: #1b1b1b;
+  --color-soft: #222222;
+  --color-soft-dark: #323232;
 
-  --color-inverse: #080b10;
-  --color-oninverse: #f4f6f8;
+  --color-inverse: #000;
+  --color-oninverse: #f6f6f6;
 
   /* Amber has to lighten to stay readable on a dark ground. */
   --color-amber-deep: var(--accent-light);
 
-  --color-tint-blue: #131b26;
-  --color-tint-green: #101d18;
-  --color-tint-amber: #1d1810;
-  --color-tint-rose: #1e1517;
+  /* Same ground as warm, so no section reads as coloured. OLD #131b26 / #101d18 / #1d1810 / #1e1517. */
+  --color-tint-blue: #000;
+  --color-tint-green: #000;
+  --color-tint-amber: #000;
+  --color-tint-rose: #000;
 
   color-scheme: dark;
 }
@@ -124,9 +130,12 @@
 }
 
 /* Layout primitives (brief §17): 1280px content, 48/32/20 gutters, 144/104/72 rhythm */
+/* The 1440px cap is the content box (client, 29 Oct 2026): the gutters sit outside it, so on wide screens
+   the content runs the full 1440px instead of losing 96px to padding. Below 1536px the gutters still keep
+   text off the screen edge. OLD max-width: 1440px (content 1344px). */
 @utility container-omh {
   width: 100%;
-  max-width: 1440px;
+  max-width: calc(1440px + 2 * 48px);
   margin-inline: auto;
   padding-inline: clamp(20px, 8.4px + 3.09vw, 48px);
 }
@@ -142,7 +151,7 @@
 /* Hatched "for position only" ground for unverified imagery (brief §1) */
 @utility fpo-hatch {
   background:
-    repeating-linear-gradient(45deg, rgb(16 24 40 / 0.028) 0 1.5px, transparent 1.5px 12px),
+    repeating-linear-gradient(45deg, rgb(0 0 0 / 0.028) 0 1.5px, transparent 1.5px 12px),
     linear-gradient(180deg, #efede6, #e9e7df);
 }
 
@@ -328,7 +337,7 @@ body {
 
 .program-card:hover {
   transform: translateY(-10px);
-  border-color: rgb(242 198 117 / 0.55);
+  border-color: rgb(125 92 51 / 0.55);
   background-color: rgb(var(--accent-rgb) / 0.08);
   box-shadow: 0 34px 74px -38px rgb(0 0 0 / 0.92), 0 0 42px rgb(var(--accent-rgb) / 0.11);
 }
@@ -347,10 +356,10 @@ body {
   height: 72px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(242 198 117 / 0.14);
+  border: 1px solid rgb(125 92 51 / 0.14);
   border-radius: 8px;
   background: rgb(var(--accent-rgb) / 0.17);
-  color: #f2c675;
+  color: #7d5c33;
   transition:
     transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
     color 520ms ease,
@@ -360,14 +369,14 @@ body {
 .program-card:hover .program-icon {
   transform: translateY(-4px) rotate(-3deg);
   background: var(--color-teal);
-  color: var(--color-ink);
+  color: #fff;
 }
 
 .program-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #f2c675;
+  color: #7d5c33;
   font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
@@ -390,7 +399,7 @@ body {
 
 .media-card:hover {
   border-color: rgb(var(--accent-rgb) / 0.48);
-  box-shadow: 0 30px 70px -40px rgb(16 24 40 / 0.62);
+  box-shadow: 0 30px 70px -40px rgb(0 0 0 / 0.62);
 }
 
 /* Service-page identity: every service keeps the shared brand system, but its
@@ -404,8 +413,8 @@ body {
    for each commercial journey. The layout remains CSS-only and Elementor-ready. */
 .solution-hero {
   background-image:
-    linear-gradient(rgb(16 24 40 / 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(16 24 40 / 0.03) 1px, transparent 1px);
+    linear-gradient(rgb(0 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 0 0 / 0.03) 1px, transparent 1px);
   background-size: 52px 52px;
 }
 
@@ -436,7 +445,7 @@ body {
 .solution-signal-shopify::after { background: rgb(36 116 79 / 0.38); }
 .solution-signal-wordpress::after { background: rgb(var(--accent-rgb) / 0.3); }
 .solution-signal-seo::after { background: rgb(118 169 232 / 0.34); }
-.solution-signal-maintenance::after { background: rgb(242 198 117 / 0.3); }
+.solution-signal-maintenance::after { background: rgb(125 92 51 / 0.3); }
 
 @media (max-width: 1024px) {
   .solution-orbit {
@@ -451,7 +460,7 @@ body {
 
 .service-media-frame {
   isolation: isolate;
-  box-shadow: 0 24px 70px -48px rgb(16 24 40 / 0.7);
+  box-shadow: 0 24px 70px -48px rgb(0 0 0 / 0.7);
   transition:
     transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
     border-color 420ms ease,
@@ -472,7 +481,7 @@ body {
 
 .service-media-frame:hover {
   transform: translateY(-6px);
-  box-shadow: 0 34px 80px -42px rgb(16 24 40 / 0.72);
+  box-shadow: 0 34px 80px -42px rgb(0 0 0 / 0.72);
 }
 
 .service-media-frame:hover::after,
@@ -499,7 +508,7 @@ body {
 .surface-card:hover {
   transform: translateY(-7px);
   border-color: rgb(var(--accent-rgb) / 0.48);
-  box-shadow: 0 30px 70px -40px rgb(16 24 40 / 0.62);
+  box-shadow: 0 30px 70px -40px rgb(0 0 0 / 0.62);
 }
 
 .case-row,
@@ -595,7 +604,7 @@ body {
 
 .button-motion:hover {
   transform: translateY(-2px) scale(1);
-  box-shadow: 0 16px 30px -22px rgb(16 24 40 / 0.62);
+  box-shadow: 0 16px 30px -22px rgb(0 0 0 / 0.62);
 }
 
 .button-motion:active {
@@ -719,9 +728,9 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, transparent, rgb(242 198 117 / 0.85), transparent) 30% 0 / 34% 1px no-repeat,
+    linear-gradient(90deg, transparent, rgb(125 92 51 / 0.85), transparent) 30% 0 / 34% 1px no-repeat,
     linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-oninverse) 60%, transparent), transparent) 70% 100% / 26% 1px no-repeat;
-  filter: drop-shadow(0 0 3px rgb(242 198 117 / 0.55));
+  filter: drop-shadow(0 0 3px rgb(125 92 51 / 0.55));
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -771,7 +780,7 @@ body {
 }
 
 .site-search::backdrop {
-  background: rgb(16 24 40 / 0.42);
+  background: rgb(0 0 0 / 0.42);
   backdrop-filter: blur(3px);
 }
 
@@ -913,7 +922,7 @@ body {
   color: #fff;
   background: var(--color-teal-dark);
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px -22px rgb(16 24 40 / 0.62);
+  box-shadow: 0 16px 30px -22px rgb(0 0 0 / 0.62);
 }
 
 .insight-prose .insight-download:active {
@@ -1089,8 +1098,8 @@ body {
 
 .recognition-field {
   background-image:
-    linear-gradient(rgb(16 24 40 / 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(16 24 40 / 0.025) 1px, transparent 1px);
+    linear-gradient(rgb(0 0 0 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 0 0 / 0.025) 1px, transparent 1px);
   background-size: 54px 54px;
 }
 
@@ -1118,7 +1127,7 @@ body {
   text-align: center;
   font-size: 18px;
   font-weight: 700;
-  box-shadow: 0 18px 42px -38px rgb(16 24 40 / 0.65);
+  box-shadow: 0 18px 42px -38px rgb(0 0 0 / 0.65);
   transition:
     transform 480ms cubic-bezier(0.2, 0.8, 0.2, 1),
     color 480ms ease,
@@ -1146,19 +1155,19 @@ body {
   border-color: var(--color-teal);
   background: var(--color-ink);
   color: white;
-  box-shadow: 0 30px 58px -34px rgb(16 24 40 / 0.72);
+  box-shadow: 0 30px 58px -34px rgb(0 0 0 / 0.72);
 }
 
 .recognition-tile:hover svg:first-child {
   transform: scale(1.12) rotate(-4deg);
-  color: #f2c675;
+  color: #7d5c33;
 }
 
 .recognition-arrow {
   position: absolute;
   right: 12px;
   bottom: 12px;
-  color: #f2c675;
+  color: #7d5c33;
   opacity: 0;
   transform: translateX(-8px);
   transition:

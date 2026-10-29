@@ -92,9 +92,9 @@ export function WarrantyCoverage() {
             </div>
           </div>
           <div className="col-span-7 max-lg:mt-10">
-            <div className="border-t border-[#10243a]/15">
+            <div className="border-t border-[#000]/15">
               {warranty.covers.map((item, index) => (
-                <div key={item} className="flex items-baseline gap-6 border-b border-[#10243a]/15 py-5">
+                <div key={item} className="flex items-baseline gap-6 border-b border-[#000]/15 py-5">
                   <span className="font-sans text-[18px] font-semibold tabular-nums text-amber-deep">
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -111,7 +111,7 @@ export function WarrantyCoverage() {
 
 export function WarrantyPricing() {
   return (
-    <ServiceBand label="Warranty pricing" tone="navy" accent="bg-[#f2c675]" labelStyle="underline">
+    <ServiceBand label="Warranty pricing" tone="navy" accent="bg-[#7d5c33]" labelStyle="underline">
       <Reveal>
         <h2 className="mb-11 font-sans text-h2 font-semibold text-balance">
           Choose the term that fits how you use your website
@@ -122,7 +122,7 @@ export function WarrantyPricing() {
               key={plan.term}
               className="flex flex-col rounded-card border border-oninverse/15 bg-oninverse/[0.04] p-8 max-sm:p-6"
             >
-              <span aria-hidden className="text-[18px] font-semibold tabular-nums text-[#f2c675]">
+              <span aria-hidden className="text-[18px] font-semibold tabular-nums text-[#7d5c33]">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <p className="mt-4 text-[14px] font-semibold uppercase tracking-[0.14em] text-oninverse/60">

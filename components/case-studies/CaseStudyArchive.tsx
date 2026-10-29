@@ -83,7 +83,7 @@ export function CaseStudyArchive() {
       </header>
 
       <section aria-label="Featured case study" className="container-omh pt-[clamp(56px,6vw,88px)]">
-        <div className="dark-grid grid grid-cols-1 overflow-hidden rounded-card bg-inverse text-oninverse shadow-[0_36px_90px_-48px_rgb(16_24_40/0.6)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+        <div className="dark-grid grid grid-cols-1 overflow-hidden rounded-card bg-inverse text-oninverse shadow-[0_36px_90px_-48px_rgb(0_0_0/0.6)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <Link
             href={`/case-studies/${featured.slug}`}
             aria-label={`Read the ${featured.client} case study`}
@@ -109,7 +109,7 @@ export function CaseStudyArchive() {
               {cardResults(featured).map((result) => (
                 <div key={result.label} className="flex flex-col">
                   <dt className="mt-2 text-body leading-snug text-oninverse/70">{result.label}</dt>
-                  <dd className="order-first font-sans text-h3 font-semibold text-[#f2c675]">{result.value}</dd>
+                  <dd className="order-first font-sans text-h3 font-semibold text-[#7d5c33]">{result.value}</dd>
                 </div>
               ))}
             </dl>

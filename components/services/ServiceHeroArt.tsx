@@ -5,13 +5,13 @@ import { Activity, Check, Database, Heart, RefreshCw, ShieldCheck, ShoppingBag, 
    right"). Built from CSS, icons and the site's own screenshots, so nothing is a stock photo and
    nothing claims a result. Mock text is illustrative UI. */
 
-const tile = "rounded-[10px] border border-line bg-surface shadow-[0_18px_40px_-28px_rgb(16_24_40/.45)]";
-const chip = "rounded-full bg-amber px-2.5 py-0.5 text-[12px] font-semibold text-[#101828]";
+const tile = "rounded-[10px] border border-line bg-surface shadow-[0_18px_40px_-28px_rgb(0_0_0/.45)]";
+const chip = "rounded-full bg-amber px-2.5 py-0.5 text-[12px] font-semibold text-white";
 
 function Frame({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`hero-art relative overflow-hidden rounded-[16px] border border-line bg-[linear-gradient(135deg,#fff7e8_0%,#f3e7d2_55%,#e9dcc6_100%)] p-6 max-sm:p-4 ${className}`}>
-      <div className="absolute inset-0 opacity-50 [background-image:radial-gradient(rgb(16_24_40/.08)_1px,transparent_1px)] [background-size:22px_22px]" />
+      <div className="absolute inset-0 opacity-50 [background-image:radial-gradient(rgb(0_0_0/.08)_1px,transparent_1px)] [background-size:22px_22px]" />
       <div className="relative">{children}</div>
     </div>
   );
@@ -31,7 +31,7 @@ function Shopify() {
           <span className="font-sans text-[13px] font-semibold uppercase tracking-[0.14em]">Yourstore</span>
           <span className="relative">
             <ShoppingBag className="size-4 text-ink/70" aria-hidden="true" />
-            <span className="absolute -right-1.5 -top-1.5 flex size-3.5 items-center justify-center rounded-full bg-amber text-[9px] font-bold text-[#101828]">2</span>
+            <span className="absolute -right-1.5 -top-1.5 flex size-3.5 items-center justify-center rounded-full bg-amber text-[9px] font-bold text-white">2</span>
           </span>
         </div>
         <div className="p-4">
@@ -127,7 +127,7 @@ function Screens({ shots, badge }: { shots: [string, string][]; badge: string })
     <Frame className="min-h-[420px] max-sm:min-h-[300px]">
       <div className="relative aspect-[4/3.3]">
         {shots.map(([src, alt], i) => (
-          <div key={src} className={`absolute w-[72%] overflow-hidden rounded-[8px] border border-line bg-surface shadow-[0_24px_50px_-26px_rgb(16_24_40/.55)] ${offsets[i]}`}>
+          <div key={src} className={`absolute w-[72%] overflow-hidden rounded-[8px] border border-line bg-surface shadow-[0_24px_50px_-26px_rgb(0_0_0/.55)] ${offsets[i]}`}>
             <div className="flex gap-1 border-b border-line px-2 py-1.5">
               <span className="size-1.5 rounded-full bg-line" /><span className="size-1.5 rounded-full bg-line" /><span className="size-1.5 rounded-full bg-line" />
             </div>
@@ -136,7 +136,7 @@ function Screens({ shots, badge }: { shots: [string, string][]; badge: string })
             </div>
           </div>
         ))}
-        <span className={`${chip} absolute bottom-0 right-0 z-30 px-3.5 py-1.5 text-[13px] shadow-[0_10px_24px_-14px_rgb(16_24_40/.6)]`}>{badge}</span>
+        <span className={`${chip} absolute bottom-0 right-0 z-30 px-3.5 py-1.5 text-[13px] shadow-[0_10px_24px_-14px_rgb(0_0_0/.6)]`}>{badge}</span>
       </div>
     </Frame>
   );

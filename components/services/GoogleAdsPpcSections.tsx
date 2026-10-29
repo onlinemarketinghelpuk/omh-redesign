@@ -111,7 +111,7 @@ export function PpcCapabilityGrid() {
               <p className="mt-5 text-lead leading-relaxed text-oninverse/75">{featured.body}</p>
             </div>
             <ul className="col-span-5 col-start-8 grid gap-3 border-t border-oninverse/15 pt-6 max-lg:mt-8">
-              {featured.detail?.map((line) => <li key={line} className="flex gap-3 text-body leading-snug text-oninverse/85"><Check className="mt-0.5 size-4 shrink-0 text-[#f2c675]" />{line}</li>)}
+              {featured.detail?.map((line) => <li key={line} className="flex gap-3 text-body leading-snug text-oninverse/85"><Check className="mt-0.5 size-4 shrink-0 text-[#7d5c33]" />{line}</li>)}
             </ul>
           </div>
         </Pointer>

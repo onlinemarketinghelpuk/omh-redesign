@@ -41,7 +41,7 @@ export function CapabilityShowcase({
             <div className="col-span-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-oninverse/55">{featured.eyebrow}</p>
-                {featured.tag && <span className="rounded-full bg-amber px-3 py-1 text-[13px] font-semibold text-[#101828]">{featured.tag}</span>}
+                {featured.tag && <span className="rounded-full bg-amber px-3 py-1 text-[13px] font-semibold text-white">{featured.tag}</span>}
               </div>
               <h3 className="mt-5 font-sans text-h2 font-semibold">{featured.title}</h3>
               <p className="mt-5 text-body leading-relaxed text-oninverse/75">{featured.body}</p>

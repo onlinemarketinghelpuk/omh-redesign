@@ -108,7 +108,7 @@ export function FaqGroups() {
 
 function FaqMediaBreak() {
   return (
-    <ServiceBand label="How we work" tone="dark" accent="bg-[#f2c675]" labelStyle="pill">
+    <ServiceBand label="How we work" tone="dark" accent="bg-[#7d5c33]" labelStyle="pill">
       <Reveal>
         <div className="grid grid-cols-12 items-center gap-x-12 gap-y-10 max-lg:block">
           <div className="col-span-5">

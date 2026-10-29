@@ -91,7 +91,7 @@ export function LawPage() {
       page={path}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#f2c675]">for your firm</span>
+          Book a 30-minute demo <span className="text-[#7d5c33]">for your firm</span>
         </>
       }
     >
