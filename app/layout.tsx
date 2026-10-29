@@ -91,6 +91,17 @@ function later(){setTimeout(load,3500)}if(d.readyState==='complete')later();else
         <SiteAssistant />
         {/* Draft preview only: connects the page to the Studio's Presentation tool so edits show as you type. */}
         {(await draftMode()).isEnabled && <VisualEditing />}
+        {/* Plerdy heatmaps and session tracking (site ID 82582), as supplied by Plerdy. */}
+        <script
+          data-plerdy_code="1"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d){if(w.__plerdyCode)return;w.__plerdyCode=1;
+w._protocol=w.location.protocol=="https:"?"https://":"http://";
+w._site_hash_code="0eb2c6d30f5cb5b16b2df3bebdd85de7";w._suid=82582;
+var s=d.createElement("script");s.async=true;s.referrerPolicy="strict-origin-when-cross-origin";
+s.src="https://d.plerdy.com/public/js/click/main.js?v="+Math.random();d.head.appendChild(s)})(window,document);`,
+          }}
+        />
       </body>
     </html>
   );
