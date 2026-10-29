@@ -71,6 +71,13 @@ strip. Checked at 1024, 1280, 1440 and mobile, light and dark.
 
 Salons and Accountants: the brief says "add when live". Both are live, so they go in at the end of the list.
 
+#### Step 2 result (29 Oct 2026): done
+Built as above. The three-column panel (about 740px) is centred under "AI Services", because hung from the trigger's
+left edge it ran 60px off the screen at 1024px. Checked at 1024, 1280 and 1440 (no overflow), mobile 375 (no
+sideways scroll; descriptions, Trades sub-line and the demo card show in the accordion), dark mode, and the current
+page highlight (on /plumbers the "Plumbers" sub-link turns gold and "AI Services" shows as active). Services,
+Solutions and Company menus unchanged.
+
 ### Step 3. Visible breadcrumb on the industry pages
 All four full-page briefs put "Home › AI Voice Agents › <Industry>" at the top of the hero; the keyword briefs ask
 for it on Plumbers, Heating and Builders with Trades in the middle. The pages carry BreadcrumbList schema but show

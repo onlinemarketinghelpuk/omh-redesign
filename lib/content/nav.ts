@@ -4,9 +4,14 @@
 // page (app/[...slug]), so the client can walk the full planned structure
 // without hitting a 404.
 
-export type NavLink = { label: string; href: string; ready?: boolean };
+/** `desc`: one-line note under the label. `sub`: small child links shown inline under it (Trades → plumbers…). */
+export type NavLink = { label: string; href: string; ready?: boolean; desc?: string; sub?: NavLink[] };
 export type NavColumn = { heading?: string; links: NavLink[] };
-export type NavItem = { label: string; href?: string; columns?: NavColumn[] };
+/** `cta`: a strip across the bottom of the mega menu. */
+export type NavItem = { label: string; href?: string; columns?: NavColumn[]; cta?: { text: string; label: string; href: string } };
+
+/** A column's links with their sub-links, flattened. */
+export const columnLinks = (col: NavColumn): NavLink[] => col.links.flatMap((l) => [l, ...(l.sub ?? [])]);
 
 // Shared by the Services mega menu and the footer.
 const serviceColumns: NavColumn[] = [
@@ -65,26 +70,39 @@ export const primaryNav: NavItem[] = [
     columns: serviceColumns,
   },
   {
-    // Mega menu (client, 22 Oct 2026): voice agents and their industry pages, then the sections of /ai-services.
-    // "Custom AI Voice Agents" leads; the rest of each column runs widest to narrowest by rendered width in the
-    // menu font (measured, not character count). Re-measure if a label changes.
+    // Mega menu (client's menu brief, 29 Oct 2026): the two voice products, then industries by demand and SEO
+    // phase (Phase 1 first; plumbers, heating and builders sit under Trades, their hub), then /ai-services.
+    // Use-case pages (appointment booking, customer service, lead generation) join the first column when they exist.
     label: "AI Services",
     columns: [
       {
-        heading: "AI Receptionist",
+        heading: "AI Voice Agents",
         links: [
-          { label: "Custom AI Voice Agents", href: "/ai-voice-agents", ready: true },
-          { label: "AI Agent for Accountants & Advisers", href: "/ai-voice-agents/accountants-financial-advisers", ready: true },
-          { label: "AI Agent for Builders & Construction", href: "/ai-voice-agents/builders-construction", ready: true },
-          { label: "AI Agent for Estate & Letting Agents", href: "/ai-voice-agents/estate-letting-agents", ready: true },
-          { label: "AI Agent for Healthcare & Clinics", href: "/ai-voice-agents/healthcare", ready: true },
-          { label: "AI Agent for Heating & HVAC", href: "/ai-voice-agents/heating-hvac", ready: true },
-          { label: "AI Agent for Car Dealerships", href: "/ai-voice-agents/car-dealerships", ready: true },
-          { label: "AI Agent for Law Firms", href: "/ai-voice-agents/law-firms", ready: true },
-          { label: "AI Agent for Plumbers", href: "/ai-voice-agents/plumbers", ready: true },
-          { label: "AI Agent for Salons & Beauty", href: "/ai-voice-agents/salons", ready: true },
-          { label: "AI Agent for Dentists", href: "/ai-voice-agents/dentists", ready: true },
-          { label: "AI Agent for Trades", href: "/ai-voice-agents/trades", ready: true },
+          { label: "AI Voice Agents", href: "/ai-voice-agents", desc: "Answer every call, 24/7", ready: true },
+          { label: "AI Receptionist", href: "/ai-voice-agents/receptionist", desc: "Never miss a call, from £249/month", ready: true },
+        ],
+      },
+      {
+        heading: "By Industry",
+        links: [
+          { label: "Healthcare & Clinics", href: "/ai-voice-agents/healthcare", ready: true },
+          { label: "Dentists", href: "/ai-voice-agents/dentists", ready: true },
+          { label: "Estate & Letting Agents", href: "/ai-voice-agents/estate-letting-agents", ready: true },
+          {
+            label: "Trades",
+            href: "/ai-voice-agents/trades",
+            ready: true,
+            sub: [
+              { label: "Plumbers", href: "/ai-voice-agents/plumbers", ready: true },
+              { label: "Heating", href: "/ai-voice-agents/heating-hvac", ready: true },
+              { label: "Builders", href: "/ai-voice-agents/builders-construction", ready: true },
+            ],
+          },
+          { label: "Law Firms", href: "/ai-voice-agents/law-firms", ready: true },
+          { label: "Car Dealerships & Garages", href: "/ai-voice-agents/car-dealerships", ready: true },
+          { label: "Salons & Beauty", href: "/ai-voice-agents/salons", ready: true },
+          { label: "Accountants & Financial Advisers", href: "/ai-voice-agents/accountants-financial-advisers", ready: true },
+          { label: "All industries →", href: "/ai-voice-agents#industries", ready: true },
         ],
       },
       {
@@ -97,6 +115,8 @@ export const primaryNav: NavItem[] = [
         ],
       },
     ],
+    // AI-specific demo strip; the header's "Book a Growth Consultation" stays the general CTA.
+    cta: { text: "Hear an AI voice agent handle a real call.", label: "Book a Free Demo", href: "/ai-voice-agents#book-demo-form" },
   },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Insights", href: "/insights" },
@@ -179,7 +199,7 @@ export const navLabels: Record<string, string> = (() => {
   for (const item of primaryNav) {
     if (item.href) out[item.href] = item.label;
     for (const col of item.columns ?? []) {
-      for (const link of col.links) out[link.href] = link.label;
+      for (const link of columnLinks(col)) out[link.href] = link.label;
     }
   }
   return out;

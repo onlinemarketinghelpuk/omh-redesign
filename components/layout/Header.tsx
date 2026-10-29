@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { SiteSearch } from "@/components/layout/SiteSearch";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { Button } from "@/components/ui/Button";
 import type { SearchEntry } from "@/lib/content/search-index";
-import { primaryNav, company, type NavItem, type NavLink } from "@/lib/content/nav";
+import { primaryNav, company, columnLinks, type NavItem, type NavLink } from "@/lib/content/nav";
 
 function Chevron({ className = "" }: { className?: string }) {
   return (
@@ -34,13 +34,41 @@ function MenuLink({ link, onClick }: { link: NavLink; onClick?: () => void }) {
       }`}
     >
       {link.label}
+      {link.desc && <span className="block text-[14px] font-normal text-muted">{link.desc}</span>}
     </Link>
+  );
+}
+
+// A menu link plus its sub-links, which sit on one small line under it (Trades: Plumbers · Heating · Builders).
+function MenuEntry({ link, onClick }: { link: NavLink; onClick?: () => void }) {
+  const pathname = usePathname();
+  return (
+    <>
+      <MenuLink link={link} onClick={onClick} />
+      {link.sub && (
+        <p className="-mt-1.5 flex flex-wrap items-center gap-x-1.5 pb-2 pl-5 pr-2.5 text-[14px] text-muted">
+          {link.sub.map((sub, i) => (
+            <Fragment key={sub.href}>
+              {i > 0 && <span aria-hidden>·</span>}
+              <Link
+                href={sub.href}
+                onClick={onClick}
+                aria-current={pathname === sub.href ? "page" : undefined}
+                className={`py-1 transition-colors hover:text-amber-deep ${pathname === sub.href ? "font-semibold text-amber-deep" : ""}`}
+              >
+                {sub.label}
+              </Link>
+            </Fragment>
+          ))}
+        </p>
+      )}
+    </>
   );
 }
 
 function isCurrent(pathname: string, item: NavItem) {
   if (item.href) return pathname === item.href || pathname.startsWith(`${item.href}/`);
-  return (item.columns ?? []).some((col) => col.links.some((link) => pathname === link.href.split("#")[0]));
+  return (item.columns ?? []).some((col) => columnLinks(col).some((link) => pathname === link.href.split("#")[0]));
 }
 
 // Future Elementor widget: "OMH Header".
@@ -126,40 +154,52 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
                   />
                 </button>
                 {menu === item.label && (
-                  <div className={`absolute ${alignRight ? "right-0" : "left-0"} top-full z-50 pt-3`}>
-                    <div
-                      className={`menu-pop rounded-card border border-line bg-surface p-4 shadow-[0_28px_60px_-30px_rgb(16_24_40/0.55)] ${
-                        // Sized by column count — "Get a Quote" has 3 columns and
-                        // used to leave an empty cell in a hardcoded 4-col grid.
-                        // 4-column panel drops to 3 cols at lg (1024–1279) so
-                        // the widest link stops wrapping; the 4th category
-                        // flows to a second row until xl gives it its own column.
-                        item.columns.length > 3
-                          ? "grid w-[720px] grid-cols-3 gap-x-4 gap-y-6 min-[1420px]:w-[920px] min-[1420px]:grid-cols-4 min-[1420px]:gap-y-0"
-                          : item.columns.length === 3
-                            ? "grid w-[620px] grid-cols-3 gap-x-6"
-                            : item.columns.length === 2
-                              ? // Grows to its widest link so "AI Agent for Builders & Construction" stays on one line.
-                                "grid w-max min-w-[460px] grid-cols-2 gap-x-6"
+                  // The three-column AI panel (~740px) is centred on its trigger: hung from the left edge it ran
+                  // 60px past the viewport at 1024px.
+                  <div
+                    className={`absolute ${
+                      alignRight ? "right-0" : item.columns.length === 3 ? "left-1/2 -translate-x-1/2" : "left-0"
+                    } top-full z-50 pt-3`}
+                  >
+                    <div className="menu-pop rounded-card border border-line bg-surface p-4 shadow-[0_28px_60px_-30px_rgb(16_24_40/0.55)]">
+                      <div
+                        className={
+                          // Sized by column count. The 4-column panel drops to 3 cols at lg (1024–1279) so
+                          // the widest link stops wrapping; the 4th category flows to a second row until
+                          // xl gives it its own column.
+                          item.columns.length > 3
+                            ? "grid w-[720px] grid-cols-3 gap-x-4 gap-y-6 min-[1420px]:w-[920px] min-[1420px]:grid-cols-4 min-[1420px]:gap-y-0"
+                            : item.columns.length >= 2
+                              ? // Each column as wide as its widest link, so no label wraps.
+                                `grid w-max gap-x-6 ${item.columns.length === 3 ? "grid-flow-col auto-cols-max" : "min-w-[460px] grid-cols-2"}`
                               : "w-[360px]"
-                      }`}
-                    >
-                      {item.columns.map((col) => (
-                        <div key={col.heading ?? item.label}>
-                          {col.heading && (
-                            <p className="mb-2 border-b border-line px-2.5 pb-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-muted">
-                              {col.heading}
-                            </p>
-                          )}
-                          <ul>
-                            {col.links.map((link) => (
-                              <li key={link.href}>
-                                <MenuLink link={link} onClick={() => setMenu(null)} />
-                              </li>
-                            ))}
-                          </ul>
+                        }
+                      >
+                        {item.columns.map((col) => (
+                          <div key={col.heading ?? item.label}>
+                            {col.heading && (
+                              <p className="mb-2 border-b border-line px-2.5 pb-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-muted">
+                                {col.heading}
+                              </p>
+                            )}
+                            <ul>
+                              {col.links.map((link) => (
+                                <li key={link.href}>
+                                  <MenuEntry link={link} onClick={() => setMenu(null)} />
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      {item.cta && (
+                        <div className="mt-4 flex items-center justify-between gap-6 border-t border-line px-2.5 pt-4">
+                          <p className="text-[16px] text-muted">{item.cta.text}</p>
+                          <Button href={item.cta.href} small arrow onClick={() => setMenu(null)} className="whitespace-nowrap">
+                            {item.cta.label}
+                          </Button>
                         </div>
-                      ))}
+                      )}
                     </div>
                   </div>
                 )}
@@ -232,10 +272,18 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
                           </p>
                         )}
                         {col.links.map((link) => (
-                          <MenuLink key={link.href} link={link} onClick={() => setOpen(false)} />
+                          <MenuEntry key={link.href} link={link} onClick={() => setOpen(false)} />
                         ))}
                       </div>
                     ))}
+                    {item.cta && (
+                      <div className="mt-3 rounded-card border border-line bg-surface p-4">
+                        <p className="text-[16px] text-muted">{item.cta.text}</p>
+                        <Button href={item.cta.href} small arrow onClick={() => setOpen(false)} className="mt-3">
+                          {item.cta.label}
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </details>
               ) : (
