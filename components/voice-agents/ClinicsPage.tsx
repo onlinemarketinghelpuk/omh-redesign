@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { type Runs, VoiceLanding, sectionsOf } from "@/components/voice-agents/VoiceLanding";
 import { LandingExtrasScript } from "@/components/voice-agents/LandingExtrasScript";
+import { LeadDemoScript } from "@/components/voice-agents/LeadDemoScript";
+import { leadDemo } from "@/lib/content/lead-demo";
 import { clinicExtrasMarkup } from "@/lib/content/voice-clinics/extras";
 import { clinicLandingMarkup } from "@/lib/content/voice-clinics/landing";
 import { clinicLegacyMarkup } from "@/lib/content/voice-clinics/legacy";
@@ -58,7 +60,7 @@ const graph = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
         { "@type": "ListItem", position: 2, name: "AI Voice Agents", item: `${SITE}/ai-voice-agents` },
-        { "@type": "ListItem", position: 3, name: "Clinics & Healthcare", item: url },
+        { "@type": "ListItem", position: 3, name: "Healthcare & Clinics", item: url },
       ],
     },
   ],
@@ -67,6 +69,9 @@ const graph = {
 const fresh = sectionsOf(clinicMarkup, "va-page");
 const legacy = sectionsOf(clinicLegacyMarkup, "va-page");
 const v4 = sectionsOf(clinicLandingMarkup, "v4l");
+// The live demo from the page this one replaced (oldv1): a working agent the visitor talks to (29 Oct 2026).
+// The leading newline matters: sectionsOf takes whatever comes before the first <section> as the source's head.
+const demo = sectionsOf(`\n${leadDemo("healthcare")}`, "va-page");
 const extras = sectionsOf(clinicExtrasMarkup, "va-page"); // clinics only: a clinic's day of calls
 
 // The same order as the real estate and dental pages: the /ai-voice-agents sections, with the comparison table and
@@ -75,6 +80,7 @@ const runs: Runs = [
   [v4, ["top"]],
   [fresh, ["what-is"]],
   [extras, ["day"]],
+  [demo, ["hear"]],
   [fresh, ["features"]],
   [v4, ["how"]],
   [fresh, ["use-cases", "clinic-types"]],
@@ -98,6 +104,7 @@ export function ClinicsPage() {
       }
     >
       <LandingExtrasScript />
+      <LeadDemoScript />
     </VoiceLanding>
   );
 }

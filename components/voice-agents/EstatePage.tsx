@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { type Runs, VoiceLanding, sectionsOf } from "@/components/voice-agents/VoiceLanding";
 import { LandingExtrasScript } from "@/components/voice-agents/LandingExtrasScript";
+import { LeadDemoScript } from "@/components/voice-agents/LeadDemoScript";
+import { leadDemo } from "@/lib/content/lead-demo";
 import { estateExtrasMarkup } from "@/lib/content/voice-estate/extras";
 import { estateLandingMarkup } from "@/lib/content/voice-estate/landing";
 import { estateLegacyMarkup } from "@/lib/content/voice-estate/legacy";
@@ -67,6 +69,9 @@ const graph = {
 const fresh = sectionsOf(estateMarkup, "va-page");
 const legacy = sectionsOf(estateLegacyMarkup, "va-page");
 const v4 = sectionsOf(estateLandingMarkup, "v4l");
+// The live demo from the page this one replaced (oldv1): a working agent the visitor talks to (29 Oct 2026).
+// The leading newline matters: sectionsOf takes whatever comes before the first <section> as the source's head.
+const demo = sectionsOf(`\n${leadDemo("real-estate")}`, "va-page");
 const extras = sectionsOf(estateExtrasMarkup, "va-page"); // real estate only: a branch's day of calls
 
 // The /ai-voice-agents order, with the comparison table and fit checker swapped for real estate sections
@@ -76,6 +81,7 @@ const runs: Runs = [
   [v4, ["top"]],
   [fresh, ["what-is", "receptionist"]],
   [extras, ["day"]],
+  [demo, ["hear"]],
   [fresh, ["features"]],
   [v4, ["how"]],
   [fresh, ["use-cases"]],
@@ -99,6 +105,7 @@ export function EstatePage() {
       }
     >
       <LandingExtrasScript />
+      <LeadDemoScript />
     </VoiceLanding>
   );
 }
