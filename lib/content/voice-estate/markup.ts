@@ -418,7 +418,7 @@ ${capabilities.map(capPanel).join("\n")}
   <div class="container-omh py-14 lg:py-20">
     <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"><i></i><i></i><i></i></span>Use cases</p>
     <h2>Estate agency use cases <span class="hl">by type of call</span></h2>
-    <p class="mt-5 text-muted">A sales and lettings branch gets the same eight kinds of call, week in, week out. We script your agent around each one. Pick a call to see how the agent handles it.</p>
+    <p class="mt-5 text-muted">An estate and letting agency gets the same eight kinds of call, week in, week out. We script your agent around each one. Pick a call to see how the agent handles it.</p>
     <div class="mt-8" data-tabs>
       <div role="tablist" aria-label="Choose a type of call" class="flex flex-wrap gap-2">
 ${industries.map(industryTab).join("\n")}

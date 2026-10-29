@@ -14,6 +14,9 @@ export const hvacFaqs: { q: string; a: string; cat: keyof typeof hvacFaqTopics }
     a: "No. The agent never diagnoses a fault, suggests a fix or tells anyone an appliance is safe to use. It takes the make, model and any fault code on the display, books an engineer by your rules and passes anything technical to your team." },
   { cat: "safety", q: "What happens if a caller says they can smell gas?",
     a: "The agent tells them to call the National Gas Emergency Service on 0800 111 999 straight away. It gives no other gas safety advice. The call is flagged for your team at once and sits at the top of the summary." },
+  // 22 Oct review, still open in the 26 Oct keyword brief: carbon monoxide gets the same route as a smell of gas.
+  { cat: "safety", q: "What happens if a caller thinks there is carbon monoxide?",
+    a: "The same as a smell of gas. The agent tells them to call the National Gas Emergency Service on 0800 111 999 straight away and gives no other safety advice. The call is flagged for your team at once and sits at the top of the summary." },
   { cat: "safety", q: "How does it handle breakdowns with no heating or hot water?",
     a: "It follows the priority rules you set. It takes the make, model and fault code, asks whether anyone in the home is elderly, unwell or very young if you want it to, and books into the slots you hold back for breakdowns. Every breakdown is flagged in the summary." },
   { cat: "customers", q: "Can it book landlord gas safety certificates?",

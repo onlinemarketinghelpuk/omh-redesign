@@ -105,6 +105,22 @@ The briefs list these as outside the keyword work. Some need facts only the clie
 - Law: SRA section, practice areas block.
 - "Coming soon" recording cards: keep or hide (client's choice).
 
+#### Step 4 result (29 Oct 2026): partly done, the rest waits on the client
+The earlier 21/22 Oct review documents, which hold the full copy for most of these, are not in the repo or Downloads.
+Only items whose wording is fixed, or can be lifted from copy already approved on the page, were done:
+- Done, Heating: FAQ "What happens if a caller thinks there is carbon monoxide?", same route as the gas-smell answer
+  (0800 111 999, no other advice, flagged). FAQ count 19 → 20, JSON-LD follows.
+- Done, Estate: use-cases intro now opens "An estate and letting agency" (the brief's own wording).
+
+Waiting on the client (new copy or facts nobody has confirmed):
+- CQC line (clinics, dentists): what OMH can say about CQC.
+- F-gas line (heating): the wording.
+- Comparison sections (7 pages), estate portals copy and portal FAQ, law SRA section and practice areas: the copy
+  is in the 21/22 Oct reviews; send those documents.
+- simPRO (plumbers), Dentally / Software of Excellence (dentists): confirm they connect before naming them.
+- "Coming soon" recording cards: keep or hide.
+- ROI calculators for accountants, salons and trades: new files from the ROI repo (see step 1).
+
 ### Step 5. Ship
 Commit per step, push to origin (Vercel preview), then paste-ready VPS web-console commands for the live site,
 and the Search Console "request indexing" list for the 11 URLs.
