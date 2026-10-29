@@ -81,6 +81,7 @@ export default function AiVoiceAgentsPage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={graph}
       page="/ai-voice-agents"
       demoHeading={

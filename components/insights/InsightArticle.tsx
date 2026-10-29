@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock3 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { formatInsightDate } from "@/components/insights/InsightMeta";
 import { InsightContents } from "@/components/insights/InsightContents";
 import { ShareRow } from "@/components/insights/ShareRow";
@@ -28,16 +29,10 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
       <header className="hero-grid overflow-x-clip border-b border-line bg-warm">
         <div className="container-omh section-md">
           <Reveal>
-            <nav
-              aria-label="Breadcrumb"
-              className="mb-10 flex flex-wrap items-center gap-2 text-[18px] text-muted"
-            >
-              <Link href="/insights" className="hover:text-amber-deep hover:underline underline-offset-4">
-                Insights
-              </Link>
-              <span aria-hidden>/</span>
-              <span>{post.topic.name}</span>
-            </nav>
+            <Breadcrumbs
+              items={[{ name: "Home", href: "/" }, { name: "Insights", href: "/insights" }, { name: post.title }]}
+              className="mb-10"
+            />
 
             <p className="flex flex-wrap items-center gap-x-3 gap-y-2 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
               <span className="text-amber-deep">{post.topic.name}</span>

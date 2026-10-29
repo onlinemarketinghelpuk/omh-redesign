@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CaseStudyVisual } from "@/components/case-studies/CaseStudyVisual";
 import { caseStudyServices, type CaseStudy } from "@/lib/content/case-studies";
 import { AccentTitle } from "@/components/services/ServicePrimitives";
@@ -21,13 +21,9 @@ export function CaseStudyHero({ study }: { study: CaseStudy }) {
   return (
     <header className="hero-grid overflow-x-clip border-b border-line bg-warm">
       <div className="container-omh section-md">
-        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-body text-muted">
-          <Link href="/case-studies" className="underline-offset-4 hover:text-amber-deep hover:underline">
-            Case studies
-          </Link>
-          <span aria-hidden>/</span>
-          <span>{study.client}</span>
-        </nav>
+        <Breadcrumbs
+          items={[{ name: "Home", href: "/" }, { name: "Case Studies", href: "/case-studies" }, { name: study.client }]}
+        />
         <div className="mt-10 grid items-center gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <div>
             <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-amber-deep">

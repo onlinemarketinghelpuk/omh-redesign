@@ -44,6 +44,7 @@ export default function AiReceptionistPage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={receptionistGraph}
       page="/ai-voice-agents/receptionist"
       demoHeading={

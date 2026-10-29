@@ -205,6 +205,32 @@ export const navLabels: Record<string, string> = (() => {
   return out;
 })();
 
+// Breadcrumb names (components/layout/SiteBreadcrumbs.tsx): every menu and ready page, plus the pages outside the
+// menu. A path missing here is not linked as a parent.
+export const crumbLabels: Record<string, string> = {
+  ...Object.fromEntries(readyPages.map((p) => [p.href, p.label])),
+  ...navLabels,
+  "/calendly-thank-you": "Thank you",
+  "/contact-us-thank-you": "Thank you",
+  "/local-seo-thank-you": "Thank you",
+  "/quotation-questionnaire-thank-you": "Thank you",
+  "/search-engine-optimisation-thank-you": "Thank you",
+  "/subscription-thank-you": "Thank you",
+  "/wordpress-development-thank-you": "Thank you",
+  "/wordpress-maintenance-thank-you-page": "Thank you",
+  "/facebook-paid-ads-questionnaire": "Facebook Ads Questionnaire",
+  "/new-website-development-quotation-questionnaire": "Website Quotation Questionnaire",
+  "/website-redesign-project-questionnaire": "Website Redesign Questionnaire",
+  "/ppc-request-quote": "PPC Quote",
+  "/seo-request-quote": "SEO Quote",
+  "/social-media-paid-marketing-request-quote": "Paid Social Quote",
+  "/wordpress-development-request-quote": "WordPress Development Quote",
+  "/wordpress-website-maintenance-request-quote": "WordPress Maintenance Quote",
+  "/omh-free-consultation": "Free Consultation",
+  "/design-system": "Design System",
+  "/home-2": "Home (preview)",
+};
+
 export const company = {
   name: "Online Marketing Help",
   phoneDisplay: "020 3489 3934",

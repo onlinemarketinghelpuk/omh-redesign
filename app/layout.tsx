@@ -5,6 +5,7 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollTop } from "@/components/layout/ScrollTop";
+import { SiteBreadcrumbs } from "@/components/layout/SiteBreadcrumbs";
 import { SiteAssistant } from "@/components/layout/SiteAssistant";
 import { getSearchIndex } from "@/lib/content/search-index";
 import { JsonLd, SITE, organisation, website } from "@/lib/schema";
@@ -83,7 +84,8 @@ function later(){setTimeout(load,3500)}if(d.readyState==='complete')later();else
           Skip to content
         </a>
         <Header searchEntries={searchEntries} />
-        <main id="main" className="flex-1">
+        <main id="main" className="relative flex-1">
+          <SiteBreadcrumbs />
           {children}
         </main>
         <Footer />
