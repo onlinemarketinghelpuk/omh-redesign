@@ -84,6 +84,15 @@ for it on Plumbers, Heating and Builders with Trades in the middle. The pages ca
 no breadcrumb. Add one small line above the eyebrow on all 11 pages (Trades children: Home › AI Voice Agents ›
 Trades › Plumbers), matching the schema. Shared in `VoiceLanding`, so one component change plus one prop per page.
 
+#### Step 3 result (29 Oct 2026): done
+`VoiceLanding` takes a `breadcrumb` flag and draws the trail from the page's own BreadcrumbList, so the visible line
+and the schema can't differ. All 11 industry pages turn it on; Plumbers, Heating & HVAC and Builders & Construction
+now have Trades in both (Home › AI Voice Agents › Trades › Plumbers). The hub and the AI Receptionist page don't
+show one. Checked: trail = schema on all 11, links work, 1280 and 375 widths, dark mode, brief audit still 0
+problems. Note: inside the v4 hero wrapper `mb-*` utilities are zeroed, so the trail uses `pb-6`.
+
+Clinics shows "Clinics & Healthcare" (its existing schema name); the menu says "Healthcare & Clinics". Left as is.
+
 ### Step 4. "Still open" items (needs your call, not started without it)
 The briefs list these as outside the keyword work. Some need facts only the client has.
 

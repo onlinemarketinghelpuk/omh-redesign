@@ -89,6 +89,7 @@ export function CarsPage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={graph}
       page={path}
       thingsToTry={["Ask about a car in stock and book a test drive.", "Book an MOT for next week.", "Ask for a finance quote and hear where it puts you through."]}

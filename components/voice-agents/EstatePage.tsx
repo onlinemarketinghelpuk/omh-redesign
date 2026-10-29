@@ -89,6 +89,7 @@ export function EstatePage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={graph}
       page={path}
       demoHeading={

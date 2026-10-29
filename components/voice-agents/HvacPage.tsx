@@ -57,7 +57,8 @@ const graph = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
         { "@type": "ListItem", position: 2, name: "AI Voice Agents", item: `${SITE}/ai-voice-agents` },
-        { "@type": "ListItem", position: 3, name: "Heating & HVAC", item: url },
+        { "@type": "ListItem", position: 3, name: "Trades", item: `${SITE}/ai-voice-agents/trades` },
+        { "@type": "ListItem", position: 4, name: "Heating & HVAC", item: url },
       ],
     },
   ],
@@ -87,6 +88,7 @@ export function HvacPage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={graph}
       page={path}
       demoHeading={

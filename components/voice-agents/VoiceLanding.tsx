@@ -3,7 +3,7 @@ import { BookDemo } from "@/components/BookDemo";
 import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
 import { VoiceMotion } from "@/components/voice-agents/VoiceMotion";
-import { JsonLd } from "@/lib/schema";
+import { JsonLd, SITE } from "@/lib/schema";
 
 /*
   The /ai-voice-agents layout, shared by the main page and the industry pages built on it (real estate first).
@@ -22,7 +22,26 @@ export function sectionsOf(html: string, className: string) {
 export type Source = ReturnType<typeof sectionsOf>;
 export type Runs = [Source, string[]][];
 
-export function VoiceLanding({ runs, graph, page, demoHeading, thingsToTry, children }: { runs: Runs; graph?: object; page: string; demoHeading: ReactNode; thingsToTry?: readonly string[]; children?: ReactNode }) {
+type Crumb = { name: string; item: string };
+
+// The visible trail above the hero badge, read from the page's BreadcrumbList so the two can't drift apart.
+function breadcrumbHtml(graph: object | undefined, page: string) {
+  const list = ((graph as { "@graph"?: { "@type": string; itemListElement?: Crumb[] }[] })?.["@graph"] ?? []).find(
+    (n) => n["@type"] === "BreadcrumbList",
+  )?.itemListElement;
+  if (!list) throw new Error(`${page}: breadcrumb asked for, but the graph has no BreadcrumbList`);
+  const esc = (s: string) => s.replace(/&/g, "&amp;");
+  const items = list.map((c, i) =>
+    i === list.length - 1
+      ? `<li aria-current="page" class="font-semibold text-ink">${esc(c.name)}</li>`
+      : `<li><a href="${c.item.replace(SITE, "") || "/"}" class="transition-colors hover:text-amber-deep">${esc(c.name)}</a></li><li aria-hidden="true">›</li>`,
+  );
+  // pb, not mb: the v4 hero wrapper (.v4l) zeroes mb-* utilities.
+  return `<nav aria-label="Breadcrumb" class="pb-6 text-[14px] text-muted"><ol class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">${items.join("")}</ol></nav>`;
+}
+
+/** `breadcrumb`: show the graph's BreadcrumbList above the hero badge (industry pages, per the October briefs). */
+export function VoiceLanding({ runs, graph, page, demoHeading, thingsToTry, breadcrumb, children }: { runs: Runs; graph?: object; page: string; demoHeading: ReactNode; thingsToTry?: readonly string[]; breadcrumb?: boolean; children?: ReactNode }) {
   const placed = runs.flatMap(([, keys]) => keys);
   for (const src of new Set(runs.map(([s]) => s)))
     for (const key of src.byKey.keys()) if (!placed.includes(key)) throw new Error(`${page}: section "${key}" has no place in runs`);
@@ -30,6 +49,10 @@ export function VoiceLanding({ runs, graph, page, demoHeading, thingsToTry, chil
     const html = keys.map((k) => {
       const part = src.byKey.get(k);
       if (!part) throw new Error(`${page}: no section "${k}"`);
+      if (breadcrumb && k === "top") {
+        if (!part.includes('<span class="badge">')) throw new Error(`${page}: no hero badge to put the breadcrumb above`);
+        return part.replace('<span class="badge">', () => breadcrumbHtml(graph, page) + '<span class="badge">');
+      }
       return part;
     });
     // The icon sprite goes in the first wrapper of its source.

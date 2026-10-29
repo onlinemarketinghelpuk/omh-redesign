@@ -88,6 +88,7 @@ export function AccountantsPage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={graph}
       page={path}
       thingsToTry={["Ask for help with a tax return as a new client.", "Ask to speak to your adviser and hear how it routes you.", "Ask for advice and hear what it does."]}

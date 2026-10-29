@@ -82,6 +82,7 @@ export function SalonsPage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={graph}
       page={path}
       thingsToTry={["Book a cut and colour as a new client.", "Cancel tomorrow's appointment and hear what it offers.", "Ask something it can't know, and hear what it does."]}

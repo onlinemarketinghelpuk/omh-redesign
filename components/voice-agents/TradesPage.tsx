@@ -89,6 +89,7 @@ export function TradesPage() {
   return (
     <VoiceLanding
       runs={runs}
+      breadcrumb
       graph={graph}
       page={path}
       thingsToTry={["Ask for a quote as a new customer.", "Say something is urgent and hear how it routes you.", "Ask something it can't know, and hear what it does."]}
