@@ -109,7 +109,8 @@ The briefs list these as outside the keyword work. Some need facts only the clie
 The earlier 21/22 Oct review documents, which hold the full copy for most of these, are not in the repo or Downloads.
 Only items whose wording is fixed, or can be lifted from copy already approved on the page, were done:
 - Done, Heating: FAQ "What happens if a caller thinks there is carbon monoxide?", same route as the gas-smell answer
-  (0800 111 999, no other advice, flagged). FAQ count 19 → 20, JSON-LD follows.
+  (0800 111 999, no other advice, flagged), plus "call 999 if anyone feels unwell" (added at the user's request).
+  FAQ count 19 → 20, JSON-LD follows.
 - Done, Estate: use-cases intro now opens "An estate and letting agency" (the brief's own wording).
 
 Waiting on the client (new copy or facts nobody has confirmed):
@@ -124,3 +125,8 @@ Waiting on the client (new copy or facts nobody has confirmed):
 ### Step 5. Ship
 Commit per step, push to origin (Vercel preview), then paste-ready VPS web-console commands for the live site,
 and the Search Console "request indexing" list for the 11 URLs.
+
+#### Step 5 result (29 Oct 2026)
+Pushed to origin (up to 4681abf); Vercel build: success. Final recheck on fresh HTML: brief audit 0 problems on all
+11 pages, breadcrumbs on all 11 (Trades parent on 3), example calls word for word, menu data matches the brief.
+Still to do by hand: run the VPS update in the web console, then request indexing for the 11 URLs.
