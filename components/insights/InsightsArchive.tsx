@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { flushSync } from "react-dom";
 import { Search } from "lucide-react";
 import { TextLink } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Proof";
@@ -117,6 +118,14 @@ export function InsightsArchive({
     return () => clearTimeout(timer);
   }, [cleanQuery, currentPage, activeTopic]);
 
+  // Page buttons sit at the bottom of the list: take the reader back up to the topic bar. flushSync first, so the
+  // scroll measures the new page (page 1 adds the featured block above the archive and moves it down).
+  function goToPage(number: number) {
+    flushSync(() => setPage(number));
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("archive")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+
   const heading = activeTopic
     ? topics.find((candidate) => candidate.slug === activeTopic)?.name
     : cleanQuery
@@ -200,7 +209,7 @@ export function InsightsArchive({
             {currentPage > 1 ? (
               <button
                 type="button"
-                onClick={() => setPage(currentPage - 1)}
+                onClick={() => goToPage(currentPage - 1)}
                 className="group inline-flex cursor-pointer items-center gap-2 font-semibold text-amber-deep transition-colors duration-500 hover:underline underline-offset-4"
               >
                 Previous
@@ -213,7 +222,7 @@ export function InsightsArchive({
                 <button
                   key={number}
                   type="button"
-                  onClick={() => setPage(number)}
+                  onClick={() => goToPage(number)}
                   aria-current={number === currentPage ? "page" : undefined}
                   className={`flex size-10 cursor-pointer items-center justify-center rounded-full border text-[18px] font-semibold transition-colors ${
                     number === currentPage
@@ -228,7 +237,7 @@ export function InsightsArchive({
             {currentPage < pageCount ? (
               <button
                 type="button"
-                onClick={() => setPage(currentPage + 1)}
+                onClick={() => goToPage(currentPage + 1)}
                 className="group inline-flex cursor-pointer items-center gap-2 font-semibold text-amber-deep transition-colors duration-500 hover:underline underline-offset-4"
               >
                 Next
