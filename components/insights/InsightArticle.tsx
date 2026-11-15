@@ -204,19 +204,36 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
                 <Link
                   key={item.slug}
                   href={insightHref(item)}
-                  className="surface-card group flex flex-col rounded-card border border-line bg-surface p-7"
+                  className="surface-card group flex flex-col overflow-hidden rounded-card border border-line bg-surface"
                 >
-                  <p className="font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-amber-deep">
-                    {item.topic.name}
-                  </p>
-                  <h3 className="mt-4 font-sans text-h4 font-semibold leading-snug text-balance">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 text-body leading-relaxed text-ink/66">{item.summary}</p>
-                  <span className="mt-auto inline-flex items-center gap-2 pt-7 text-body font-semibold text-amber-deep">
-                    Read article
-                    <ArrowRight className="size-4 transition-transform duration-500 group-hover:translate-x-1" />
+                  {/* One frame ratio for all three cards (design rule 5) and object-contain, never cover: many covers
+                      are graphics with lettering (rule 11). 1200×630 is the usual cover size, so most fill it edge to edge. */}
+                  <span className="relative block aspect-[1200/630] overflow-hidden border-b border-line bg-soft">
+                    {item.featuredImage ? (
+                      <Image
+                        src={item.featuredImage.src}
+                        alt=""
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-contain transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.03]"
+                      />
+                    ) : (
+                      <span className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgb(var(--accent-rgb)/0.24),transparent_28%),linear-gradient(145deg,#f8eddc,#efe1c9)]" />
+                    )}
                   </span>
+                  <div className="flex flex-1 flex-col p-7">
+                    <p className="font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-amber-deep">
+                      {item.topic.name}
+                    </p>
+                    <h3 className="mt-4 font-sans text-h4 font-semibold leading-snug text-balance">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-body leading-relaxed text-ink/66">{item.summary}</p>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-7 text-body font-semibold text-amber-deep">
+                      Read article
+                      <ArrowRight className="size-4 transition-transform duration-500 group-hover:translate-x-1" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
