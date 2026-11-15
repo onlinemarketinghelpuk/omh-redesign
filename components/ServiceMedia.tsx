@@ -1,5 +1,6 @@
 import Image from "@/components/ui/SiteImage";
 import { Reveal } from "@/components/Reveal";
+import { ServiceBand } from "@/components/services/ServiceBand";
 
 // Global media primitives shared by service pages and future landing pages.
 
@@ -40,28 +41,25 @@ export function MediaFrame({ kind, theme, title, ratio = "16/10", className = ""
   );
 }
 
+// Same layout as the /seo-services "Search landscape" band (client, 15 Nov 2026): label band, stacked title and
+// body, then two rows of two images at their own proportions. Each row's columns are the two images' width/height
+// ratios, so both end on the same line (design rule 5) and nothing is cropped.
 export function WordPressVisualStory() {
   return (
-    <section className="overflow-hidden border-b border-line bg-tint-amber">
-      <div className="container-omh section-md">
-        <Reveal>
-          <div className="grid grid-cols-12 items-end gap-x-10 gap-y-7 max-lg:block">
-            <div className="col-span-5 max-lg:mb-9">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-amber-deep">WordPress build story</p>
-              <h2 className="mt-5 font-sans text-[clamp(32px,25px+1.9vw,48px)] font-semibold leading-[1.05]">See the thinking, the build and the editable result.</h2>
-              <p className="mt-5 text-body leading-relaxed text-ink/70">From the first wireframe to a live, editable website: the same process behind every WordPress build we deliver.</p>
-            </div>
-            <div className="col-span-7">
-              <MediaFrame kind="image" theme="wordpress" ratio="16/9" title="45-second WordPress project overview" note="Replace with a concise planning-to-launch video." source="/images/Services/wordpress development 1.jpg" alt="WordPress website planning and development" />
-            </div>
-          </div>
-          <div className="mt-7 grid grid-cols-12 gap-7">
-            <MediaFrame kind="image" theme="wordpress" ratio="5/4" title="Planning and wireframe" note="Add an approved sitemap, wireframe or workshop photograph." source="/images/Services/wordpress development.jpg" alt="A designer’s desk with page code on one screen, a live layout on another and the same design open on a tablet." className="col-span-5 max-md:col-span-12" />
-            <MediaFrame kind="screen" theme="wordpress" ratio="16/9" title="Responsive website reveal" note="Show desktop and mobile views from a real WordPress project." source="/images/website-designs/WordPress-Website-Theme-Essex.png" alt="A WordPress website theme shown across desktop and smaller screens." className="col-span-7 max-md:col-span-12" />
-          </div>
-        </Reveal>
-      </div>
-    </section>
+    <ServiceBand label="WordPress build story" tone="mist">
+      <Reveal>
+        <h2 className="font-sans text-h2 font-semibold text-balance">See the thinking, the build and the editable result.</h2>
+        <p className="mt-6 text-body leading-relaxed text-ink/70">From the first wireframe to a live, editable website: the same process behind every WordPress build we deliver.</p>
+        <div className="mt-11 grid gap-6 md:grid-cols-[0.987fr_1.778fr]">
+          <MediaFrame kind="image" theme="wordpress" ratio="1366/1384" title="WordPress dashboard" note="" source="/images/Services/wordpress development 1.jpg" alt="A WordPress dashboard open on a desktop monitor, with site stats and recent comments." className="min-h-0!" />
+          <MediaFrame kind="screen" theme="wordpress" ratio="1920/1080" title="Responsive website reveal" note="" source="/images/website-designs/WordPress-Website-Theme-Essex.png" alt="A WordPress website theme shown across desktop and smaller screens." className="min-h-0!" />
+        </div>
+        <div className="mt-6 grid gap-6 md:grid-cols-[1.778fr_0.801fr]">
+          <MediaFrame kind="screen" theme="wordpress" ratio="1920/1080" title="Construction theme on desktop and laptop" note="" source="/images/website-designs/WordPress-Website-Theme-Essex-Team.png" alt="A construction company WordPress theme shown on a laptop beside its full desktop homepage." className="min-h-0!" />
+          <MediaFrame kind="image" theme="wordpress" ratio="1108/1384" title="Planning and wireframe" note="" source="/images/Services/wordpress development.jpg" alt="A designer’s desk with page code on one screen, a live layout on another and the same design open on a tablet." className="min-h-0!" />
+        </div>
+      </Reveal>
+    </ServiceBand>
   );
 }
 
