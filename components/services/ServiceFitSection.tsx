@@ -17,7 +17,6 @@ export function ServiceFitSection({
   notFit,
   goodTitle = "A good fit",
   notFitTitle = "Probably not yet",
-  showNotFitIcon = true,
   footer,
   tone = "white",
   bandAccent = "bg-amber",
@@ -31,7 +30,6 @@ export function ServiceFitSection({
   notFit: readonly string[];
   goodTitle?: string;
   notFitTitle?: string;
-  showNotFitIcon?: boolean;
   footer?: ReactNode;
   tone?: ServiceBandTone;
   bandAccent?: string;
@@ -44,18 +42,17 @@ export function ServiceFitSection({
             <ServiceSectionIntro title={title} accent={titleAccent} body={body} />
           ) : null)}
 
-        <div className="mt-12 grid grid-cols-12 gap-x-10 gap-y-8 max-lg:block">
-          <div className="col-span-7 rounded-card border border-soft-dark bg-soft/70 p-9 max-lg:mb-8 max-sm:p-6">
+        {/* One card split into two equal halves, like the solution pages' fit block (client, 15 Nov 2026): the
+            good-fit list used to sit in a padded card beside an unpadded one, so the headings and rows never lined up. */}
+        <div className="mt-12 grid grid-cols-2 overflow-hidden rounded-card border border-line bg-surface max-md:grid-cols-1">
+          <div className="bg-soft/70 p-9 max-sm:p-6">
             <h3 className="flex items-center gap-2.5 font-sans text-h3 font-semibold">
               <CheckIcon className="size-5 text-amber-deep" />
               {goodTitle}
             </h3>
             <ul className="mt-6">
               {good.map((item) => (
-                <li
-                  key={item}
-                  className="flex gap-3.5 border-b border-soft-dark py-3.5 text-body leading-snug text-ink/85 last:border-b-0 last:pb-0"
-                >
+                <li key={item} className="flex gap-3.5 border-b border-line py-3.5 text-body leading-snug text-ink/85 last:border-b-0">
                   <CheckIcon className="mt-1 size-4 shrink-0 text-amber-deep" />
                   {item}
                 </li>
@@ -63,24 +60,22 @@ export function ServiceFitSection({
             </ul>
           </div>
 
-          <div className="col-span-5 max-lg:pt-2">
+          <div className="border-l border-line p-9 max-md:border-l-0 max-md:border-t max-sm:p-6">
             <h3 className="flex items-center gap-2.5 font-sans text-h3 font-semibold text-muted">
-              {showNotFitIcon && <MinusIcon className="size-5" />}
+              <MinusIcon className="size-5" />
               {notFitTitle}
             </h3>
-            <ul className="mt-6 border-t border-line">
+            <ul className="mt-6">
               {notFit.map((item) => (
-                <li
-                  key={item}
-                  className="border-b border-line py-3.5 text-body leading-snug text-muted"
-                >
+                <li key={item} className="flex gap-3.5 border-b border-line py-3.5 text-body leading-snug text-muted last:border-b-0">
+                  <MinusIcon className="mt-1 size-4 shrink-0" />
                   {item}
                 </li>
               ))}
             </ul>
-            {footer}
           </div>
         </div>
+        {footer}
       </Reveal>
     </ServiceBand>
   );
