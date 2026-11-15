@@ -18,17 +18,15 @@ export function ServiceTestimonials({
   testimonials,
   title,
   body,
-  eyebrow = "Customer feedback",
   label = "Customer reviews",
   eventPrefix,
   tone = "navy",
-  accent = "bg-[#ee8c67]",
+  accent = "bg-amber",
   labelStyle = "rule",
 }: {
   testimonials: readonly Testimonial[];
   title: string;
   body: string;
-  eyebrow?: string;
   label?: string;
   eventPrefix: string;
   tone?: ServiceBandTone;
@@ -77,9 +75,10 @@ export function ServiceTestimonials({
           onKeyDown={onKeyDown}
           className="grid grid-cols-12 gap-x-12 gap-y-10 outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 max-lg:block"
         >
+          {/* Band label straight into the heading, like every other band: a second eyebrow here repeated it. Site
+              accent only (client, 15 Nov 2026): the blue eyebrow, quote mark and dot were pre-monochrome leftovers. */}
           <div className="col-span-4 max-lg:mb-10">
-            <p className={`text-[14px] font-semibold uppercase tracking-[0.15em] ${dark ? "text-[#9bc3f3]" : "text-amber-deep"}`}>{eyebrow}</p>
-            <h2 id={headingId} className="mt-5 font-sans text-h2 font-semibold">{title}</h2>
+            <h2 id={headingId} className="font-sans text-h2 font-semibold">{title}</h2>
             <p className={`mt-5 text-body leading-relaxed ${secondary}`}>{body}</p>
             <div className={`mt-8 flex items-center gap-3 border-t pt-5 ${rule}`}>
               <button
@@ -118,7 +117,7 @@ export function ServiceTestimonials({
                     aria-hidden={index === current ? undefined : true}
                     className={`flex w-full shrink-0 flex-col rounded-card border p-[clamp(24px,3vw,36px)] ${dark ? "border-oninverse/12 bg-oninverse/[0.04]" : "border-line bg-surface"}`}
                   >
-                    <span className={`font-body text-[40px] leading-none ${dark ? "text-[#9bc3f3]" : "text-amber"}`} aria-hidden>“</span>
+                    <span className="font-body text-[40px] leading-none text-amber" aria-hidden>“</span>
                     {/* Slides share the tallest quote's height; auto margins centre shorter quotes
                         instead of leaving a gap above the attribution. */}
                     <blockquote className={`my-auto py-3 font-body text-[clamp(19px,1.3vw,22px)] leading-[1.42] ${dark ? "text-oninverse/88" : "text-ink/88"}`}>{testimonialItem.quote}</blockquote>
@@ -146,7 +145,7 @@ export function ServiceTestimonials({
                   aria-current={index === current ? "true" : undefined}
                   data-event={`${eventPrefix}_testimonial_select`}
                   data-testimonial={item.name}
-                  className={`h-1.5 rounded-full transition-all ${index === current ? `w-9 ${dark ? "bg-[#9bc3f3]" : "bg-teal"}` : `w-4 ${dark ? "bg-oninverse/22 hover:bg-surface/45" : "bg-line hover:bg-muted/45"}`}`}
+                  className={`h-1.5 rounded-full transition-all ${index === current ? "w-9 bg-teal" : `w-4 ${dark ? "bg-oninverse/22 hover:bg-surface/45" : "bg-line hover:bg-muted/45"}`}`}
                 />
               ))}
             </div>
@@ -162,7 +161,6 @@ export function SiteTestimonials({
   eventPrefix,
   title = "What customers said about working with OMH.",
   body = "Eight client reviews published on the original OMH service pages. They are customer comments, not evidence of a guaranteed result.",
-  eyebrow = "Published customer reviews",
   tone = "navy",
   accent,
   labelStyle,
@@ -171,7 +169,6 @@ export function SiteTestimonials({
   eventPrefix: string;
   title?: string;
   body?: string;
-  eyebrow?: string;
   tone?: ServiceBandTone;
   accent?: string;
   labelStyle?: ServiceBandLabel;
@@ -182,7 +179,6 @@ export function SiteTestimonials({
       label={label}
       title={title}
       body={body}
-      eyebrow={eyebrow}
       eventPrefix={eventPrefix}
       tone={tone}
       accent={accent}

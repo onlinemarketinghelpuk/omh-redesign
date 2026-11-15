@@ -38,7 +38,7 @@ export default function ShopifyDevelopmentPage() {
       <ShopifyNeedSection />
       <ShopifyWhyChooseSection />
       {/* Related case studies removed (client audit, 26 Oct 2026): this is a service page. */}
-      <SiteTestimonials eventPrefix="shopify" accent="bg-[#e46f55]" />
+      <SiteTestimonials eventPrefix="shopify" />
       <RelatedServices
         eventPrefix="shopify"
         title="Connect store development with acquisition and support"

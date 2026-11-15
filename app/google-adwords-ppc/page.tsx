@@ -63,7 +63,7 @@ export default function GoogleAdwordsPpcPage() {
         title="Campaign work alongside SEO and website delivery"
         body="Paid media rarely works in isolation. These projects show where campaign work sat alongside website and organic search delivery."
       />
-      <SiteTestimonials eventPrefix="ppc" accent="bg-[#b8ef3e]" />
+      <SiteTestimonials eventPrefix="ppc" />
       <RelatedServices
         eventPrefix="ppc"
         title="Connect paid traffic with the website it depends on"

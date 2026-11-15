@@ -46,7 +46,7 @@ export default function WordPressDevelopmentPage() {
         title="Website projects connected to wider growth"
         body="Website launches, information architecture, technical improvements and the acquisition work that followed them."
       />
-      <SiteTestimonials eventPrefix="wordpress" accent="bg-amber" />
+      <SiteTestimonials eventPrefix="wordpress" />
       <RelatedServices
         eventPrefix="wordpress"
         title="Support the website after it launches"

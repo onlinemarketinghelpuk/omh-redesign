@@ -55,7 +55,7 @@ export default function EcommerceSeoServicesPage() {
       <EcommerceSeoPackages />
       <EcommerceSeoWhyOmh />
       <EcommerceSeoResults />
-      <SiteTestimonials eventPrefix="ecommerce_seo" accent="bg-amber" />
+      <SiteTestimonials eventPrefix="ecommerce_seo" />
       <EcommerceSeoPromise />
       <RelatedServices eventPrefix="ecommerce_seo" title={page.related.title} links={page.related.links} />
       <EcommerceSeoFAQ />
