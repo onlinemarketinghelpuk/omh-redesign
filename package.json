@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "audit:images": "node scripts/audit-images.mjs",
+    "audit:responsive": "node scripts/responsive-audit.mjs audit",
+    "check:design": "node scripts/check-design.mjs",
     "widget:build": "node widget/web/embed/build.mjs && cp widget/web/embed/dist/ohm-assistant.js public/ohm-assistant.js",
     "prebuild": "npm run widget:build"
   },

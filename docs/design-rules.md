@@ -106,6 +106,31 @@ omh-redesign.vercel.app.
     and published as FAQPage schema from the same array, with any
     `[anchor](/path)` markup stripped from the schema.
 
+## 4b. Responsive rules (16 Nov 2026)
+
+Agreed with the user when planning the responsive rebuild; the full plan and its progress log are in
+`docs/responsive-plan.md`. These apply to every new or migrated section.
+
+20. **Four tiers, mobile-first.** Phone under 640px (one column, must work at 320px), tablet 640-1023px
+    (card grids 2-up, text-and-media rows side by side from 768px), laptop 1024-1279px (7/5 and 5/7 rows
+    side by side; 4/8 sticky-intro rows stack until 1152px, the `wide` breakpoint), desktop from 1280px
+    (the approved look, which must not move). A column must be at least 20rem wide before a row goes
+    side by side. Breakpoint classes live in the shared components, not in page files.
+21. **Spacing and type come from tokens**, never one-off values: section padding (`sm`, `md`, `lg`,
+    `hero`), gutter, header-to-content gap, grid gap, card padding, and the type scale.
+    `npm run check:design` fails when a file gains a one-off class.
+22. **One small-caps label per section on phones.** Below 640px a band shows its label and hides a
+    duplicate kicker above the title; a label never wraps past two lines.
+23. **Floors.** Content text is 14px or larger (decorative mock-up UI is marked `data-mock` and exempt).
+    Buttons, menu and footer links, form controls and carousel controls are at least 44px tall.
+24. **Long lists collapse on phones only.** Package and feature lists show their first rows and a
+    "Show all" control below 640px; every word stays in the HTML.
+25. **Floating UI never overlaps** on a phone: sticky bar at the bottom, the assistant pill above it,
+    scroll-to-top above that, all clear of the safe area.
+
+*Check:* `npm run audit:responsive` (budgets in `docs/responsive-plan.md` section 5) at 320-1280px,
+and `diff-rects` for the desktop gate. Both are described at the top of the plan.
+
 ## 5. How to run the checks
 
 The browser pane resets its viewport between calls, so set the width and
