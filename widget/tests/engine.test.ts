@@ -617,7 +617,10 @@ console.log("\n== booking confirmations ==");
   eq("it is a text", item.channel, "sms");
   eq("to the number they booked with", item.to, "+447700900123");
   ok("it names the reference", item.body.includes("OMH-CONF01"), item.body);
-  ok("and the date and time", item.body.includes("2026-12-01") && item.body.includes("10:00"), item.body);
+  /* In words, the way the OMH guide writes a date. This used to assert the
+     stored "2026-12-01", which was the customer reading a machine date. */
+  ok("and the date and time, in words", item.body.includes("Tuesday 1st December") && item.body.includes("10:00"), item.body);
+  ok("and never the stored machine form", !item.body.includes("2026-12-01"), item.body);
   ok("it is tied to the person, so the gate has somebody to check", item.leadId === leadId, item);
   eq("keyed on the booking, not a step", item.idempotencyKey, `booking:${bookingId}:confirmed`);
 

@@ -70,23 +70,23 @@ type. The guide then applies to words we never wrote.
 
 ## Tasks
 
-- [ ] 1. `gates/tone.js`: the mechanical rules as plain JS, single-line
+- [x] 1. `gates/tone.js`: the mechanical rules as plain JS, single-line
       export, no imports, so n8n can inline it and the tests can import it.
-- [ ] 2. `tests/tone.test.ts`: the rules themselves, watched failing first,
+- [x] 2. `tests/tone.test.ts`: the rules themselves, watched failing first,
       then proven to have teeth by planting a violation.
-- [ ] 3. Run it over every string in `templates.ts` as its own assertion, so
+- [x] 3. Run it over every string in `templates.ts` as its own assertion, so
       a new template cannot be added in the wrong voice.
-- [ ] 4. Fix whatever task 3 reports. Copy changes only; no behaviour.
-- [ ] 5. `prompt-core.md`: replace the TONE section with the six principles,
+- [x] 4. Fix whatever task 3 reports. Copy changes only; no behaviour.
+- [x] 5. `prompt-core.md`: replace the TONE section with the six principles,
       the say-this / not-this table and the house style. One edit, three
       agents.
-- [ ] 6. `prompt-outbound.md` and `prompt-voice.md`: the parts of the guide
+- [x] 6. `prompt-outbound.md` and `prompt-voice.md`: the parts of the guide
       that are spoken rather than written, mainly matching formality and
       saying prices as a person would.
-- [ ] 7. `gates/brain.js`: the sales brief an AI reply is written from
+- [x] 7. `gates/brain.js`: the sales brief an AI reply is written from
       carries the voice, not only the facts.
-- [ ] 8. `validateMessage`: tone warnings beside the existing ones.
-- [ ] 9. Rebuild the workflows, confirm the inlined gate is byte identical to
+- [x] 8. `validateMessage`: tone warnings beside the existing ones.
+- [x] 9. Rebuild the workflows, confirm the inlined gate is byte identical to
       the file the tests import.
 
 ## Found while auditing: the prompts are not in version control
@@ -105,6 +105,92 @@ drift would be worse than one copy outside git.
 - [ ] 10. **Rafiul's decision.** Where the Retell prompts should live, and
       whether moving them into the repo is worth the path change in three
       files. Until then, copy the three files before editing them.
+
+## Done, 16 November 2026: what ran and what it found
+
+Evidence from real runs, not from the diff.
+
+**Task 3, the count before fixing.** 27 templates, rendered with the two date
+shapes the system really hands them (`appointmentWords()` and the booking row),
+and with no details at all. **5 templates with an issue, 10 issues, every one
+`date_format`.** Zero em dashes, never-use words, prices, exclamation marks or
+American spellings in the hand-written copy. Every hit came from the date
+VALUE, not the words:
+
+- `booking_confirmed` was rendered from the booking row as stored, so the
+  confirmation text read "booked for 2026-12-01 at 10:00".
+- `appointmentWords()` wrote "Tuesday 1 December"; the guide writes "Tuesday
+  13th October". That reaches `g_sms_missed`, `h_email_day_before`,
+  `h_sms_same_day`, `booking_reminder` and every owner message using
+  `{{appointment}}`.
+
+**Task 4.** Fixed in the two formatters in `convex/routing.ts`
+(`bookingWords()`, and an ordinal in `dayWords()`), because the words in
+`templates.ts` were already right. No route, timing or step changed. Route B's
+first text is unchanged, so it is still 230 characters and two SMS segments.
+`engine.test.ts` asserted the machine date in the confirmation, so it had
+encoded the defect; it now asserts the words and that the machine form is gone.
+
+**Teeth.** A planted em dash, "we would love to", "!" and "optimize" in
+`b_sms_first` failed by name. Disabling the em dash rule failed 10 assertions.
+A planted "£450 a month" and a dash in `prompt-core.md` failed 2. All restored
+byte identical.
+
+**Task 5 and 6.** `prompt-core.md` TONE section replaced: the six principles,
+matching formality, the say-this table, the house style. Also its tool list
+used six em dashes and its two price examples had no VAT, and a model copies
+its examples more faithfully than its rules, so those changed too. "+ VAT" on
+every price rests on two sources: the guide, and `kb/faq.json` ("All invoices
+are subject to UK VAT"). Previous wording kept in
+`OHM/widget/retell/.before-013-tone-2026-11-16/` (shasums matched at copy).
+
+**Task 7.** `salesBrief()` said "How to sell" with nothing on how to sound. It
+now carries one line: advisory, never pushy, say when OMH is not the right fit,
+and the written house style. The never-guess rule is still its last line.
+
+**Task 8.** `validateMessage` returns `tone_*` WARNINGS, never errors, judged on
+what the owner typed with `{{variables}}` left out. Driven in a real browser on
+the local dev server: typing "we can unlock more leads for £450 a month, with a
+dash and a !" showed four tone warnings in plain words; the guide-voice rewrite
+showed none; every code message opens with none. (The editor is read only on
+the local server, which has no write secret; the check lifted `disabled` in the
+DOM, so it proves the rendering, and nothing was saved.)
+
+**Task 9.** `build-workflows.py` rebuilt locally. Only `01-chat.json` changed.
+The Clean Reply node contains `tone.js` byte for byte, and its body, run through
+`new Function` as n8n runs it, returns `tone: ["em_dash", "price_format"]` for a
+reply with both, and leaves the reply text untouched.
+
+**Suites.** Before: 1937 assertions, every suite passed. After: 2101, every
+suite passed (`zsh widget/tests/run.sh`). `tsc --noEmit` clean.
+
+### Where the brief and the code disagreed
+
+The brief says `validateMessage` runs inside n8n. It does not: its callers are
+`convex/flows.ts`, `components/dashboard/MessageEditor.tsx` and the tests, all
+of which bundle. So `message-text.js` imports `tone.js` (the one gate with an
+import), and `tone.test.ts` asserts it is never passed through `gate_inline()`.
+
+### Deliberately not made into rules
+
+Paragraphs of three sentences, active voice, lists of three, matching
+formality. Either judgement or too noisy to trust; they live in the prompt.
+
+### Waiting for Rafiul's typed approval
+
+Nothing below has run. Each is one command.
+
+1. n8n, the chat with the new prompt and the tone report:
+   `cd OHM/widget && python3 n8n/push.py --only 01-chat`
+2. Retell, the web voice agent's prompt:
+   `cd OHM/widget && python3 retell/create-agent.py --update`
+   (The callback agent is still not created; it will read the new prompts
+   when it is.)
+3. Convex dev (`cool-ferret-103`), for the date words, the sales brief and
+   the owner warnings. No push command is written down in `docs/`, so none is
+   given here; push it the way it was last pushed.
+4. The site, for the Messages screen warnings, after Convex (the order the
+   last deploy note gives).
 
 ## Not in scope
 

@@ -1,7 +1,8 @@
 import { toneIssues, NEVER_USE, AVOID_PHRASES } from "../gates/tone.js";
 import { render, templateKeys, templateSource, routeMessageKeys } from "../gates/templates.ts";
 import { validateMessage } from "../gates/message-text.js";
-import { readFileSync } from "node:fs";
+import { salesBrief } from "../gates/brain.js";
+import { readFileSync, existsSync } from "node:fs";
 
 /* =========================================================================
    The OMH voice, the half of it that is a rule rather than a judgement.
@@ -224,6 +225,57 @@ console.log("\n== 5. the gate is shaped for n8n, and inlined, not copied ==");
      and the tests, which all bundle. It would be a syntax error inside a
      Code node. If anybody ever inlines it, this says why it broke. */
   ok("message-text.js is never inlined into n8n (it has an import)", !builder.includes('gate_inline("message-text.js")'));
+}
+
+/* ===================================================================== */
+console.log("\n== 6. the prompts that define Melissa, where they are written down ==");
+{
+  /* OHM/widget/retell/ is OUTSIDE this repository (plan.md task 10), so on a
+     fresh clone these files are not here. That is reported, loudly, rather
+     than passed: a green line for a file nobody read is the failure run.sh
+     already refuses to commit under bash. */
+  const dir = new URL("../../../widget/retell/", import.meta.url);
+  const files = ["prompt-core.md", "prompt-voice.md", "prompt-outbound.md"];
+  const present = files.filter((f) => existsSync(new URL(f, dir)));
+  if (present.length !== files.length) {
+    console.log("  NOT CHECKED: retell prompts not found at OHM/widget/retell (outside git). Found: " + present.join(", "));
+  } else {
+    const read = (f: string) => readFileSync(new URL(f, dir), "utf8");
+    for (const f of files) {
+      const text = read(f);
+      ok(`${f}: no em dash`, !text.includes("\u2014"), (text.match(/.{0,30}\u2014.{0,30}/) || [""])[0]);
+      /* Every price the prompt shows the model, in the guide's form. The
+         model copies its examples more faithfully than its rules. */
+      /* A counter-example ('not "£450/mo"') is the prompt showing the
+         model what NOT to write, so it is left out of the check. */
+      const bad = text.split("\n").map((l) => l.replace(/not "[^"]*"/g, "")).filter((l) => l.includes("£"))
+        .flatMap((l) => toneIssues(l).filter((i: any) => i.code === "price_format").map((i: any) => i.found));
+      eq(`${f}: every written price carries + VAT`, bad, []);
+    }
+    const core = read("prompt-core.md");
+    for (const p of ["Straight talk, said kindly", "Explain the why, in plain English", "Protect them",
+                     "Honest caveats, built in", "Options, priced and clear", "Own it and close the loop"]) {
+      ok(`prompt-core: principle "${p}"`, core.includes(p));
+    }
+    ok("prompt-core: matching their formality", /Matching them\./.test(core));
+    ok("prompt-core: the never-use list", NEVER_USE.slice(0, 14).every((w: any) => core.includes(w.word)));
+    ok("prompt-core: the voice never changes a fact", core.includes("It never changes a fact"));
+    ok("prompt-core: NEVER GUESS still outranks it", core.indexOf("NEVER GUESS") > -1 && core.indexOf("NEVER GUESS") < core.indexOf("## TONE"));
+    ok("prompt-voice: prices are spoken with the VAT", read("prompt-voice.md").includes("plus VAT"));
+  }
+}
+
+/* ===================================================================== */
+console.log("\n== 7. the reply brain's sales brief carries the voice ==");
+{
+  const brief = salesBrief({ channel: "website_form", lead: { name: "Sarah", service: "SEO" } });
+  ok("it points the assistant at the OMH tone of voice", /tone of voice/i.test(brief), brief);
+  ok("it says advisory, not pushy", /never pushy/i.test(brief));
+  ok("it says to say so when OMH is not the right fit", /not the right fit/i.test(brief));
+  ok("it gives the written house style for a text", brief.includes("£450 + VAT") && brief.includes("1st December"));
+  eq("the brief itself is in the guide's voice", toneIssues(brief), []);
+  const lines = brief.split("\n");
+  ok("never guessing is still the last thing it reads", /never guess/i.test(lines[lines.length - 1]), lines[lines.length - 1]);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

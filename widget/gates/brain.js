@@ -170,6 +170,11 @@ function salesBrief(input) {
     "How to sell: answer exactly what they asked first. Then say in one sentence what OMH would do for them, using the knowledge base. Then ask for the booking with two specific weekday times between 9am and 5pm. One question per message.",
     "If they hesitate, find the reason with one short question and answer that reason. If they say no, thank them and stop: do not push twice.",
     "Keep it to two or three short sentences: it is a text. No links except the booking link.",
+    /* OMH's tone of voice (docs/tone-of-voice.md). The full version is the
+       TONE section of the system prompt this brief sits under; this line is
+       the part that pulls against "sell", repeated where the selling is,
+       plus the written house style a text needs. */
+    "How to sound: OMH's own tone of voice, as in your TONE section. Advisory, never pushy: the consultation is an offer, not a close. If OMH is not the right fit for them, say so plainly and kindly. Write prices as £450 + VAT, dates as Tuesday 1st December, no dashes between thoughts and no exclamation marks.",
   ];
   if (lead.name) lines.splice(2, 0, "Their name: " + lead.name + ".");
   if (notes) lines.push("From the owner: " + notes);
