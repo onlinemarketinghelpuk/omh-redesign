@@ -204,19 +204,8 @@ export function InsightsArchive({
         {pageCount > 1 && (
           <nav
             aria-label="Insights pagination"
-            className="mt-10 flex flex-wrap items-center justify-between gap-5"
+            className="mt-10"
           >
-            {currentPage > 1 ? (
-              <button
-                type="button"
-                onClick={() => goToPage(currentPage - 1)}
-                className="group inline-flex cursor-pointer items-center gap-2 font-semibold text-amber-deep transition-colors duration-500 hover:underline underline-offset-4"
-              >
-                Previous
-              </button>
-            ) : (
-              <span />
-            )}
             <div className="flex flex-wrap items-center justify-center gap-2">
               {Array.from({ length: pageCount }, (_, index) => index + 1).map((number) => (
                 <button
@@ -234,17 +223,6 @@ export function InsightsArchive({
                 </button>
               ))}
             </div>
-            {currentPage < pageCount ? (
-              <button
-                type="button"
-                onClick={() => goToPage(currentPage + 1)}
-                className="group inline-flex cursor-pointer items-center gap-2 font-semibold text-amber-deep transition-colors duration-500 hover:underline underline-offset-4"
-              >
-                Next
-              </button>
-            ) : (
-              <span />
-            )}
           </nav>
         )}
         </div>
