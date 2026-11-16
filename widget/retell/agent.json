@@ -1,0 +1,8 @@
+{
+  "llm_id": "llm_2ac3c48ff420d14521e4366c1a3e",
+  "agent_id": "agent_fd985b032a062ed77300663c6f",
+  "agent_name": "OMH Site Assistant (Melissa)",
+  "voice_id": "11labs-Amy",
+  "tool_webhook": "https://n8n.srv1836598.hstgr.cloud/webhook/ohm-retell-tool",
+  "events_webhook": "https://n8n.srv1836598.hstgr.cloud/webhook/ohm-retell-events"
+}
