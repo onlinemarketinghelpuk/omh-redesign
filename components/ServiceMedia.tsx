@@ -9,11 +9,11 @@ type MediaTheme = "wordpress" | "shopify" | "maintenance" | "ppc" | "amazon" | "
 
 const themeStyles: Record<MediaTheme, string> = {
   wordpress: "border-ink/25 bg-tint-amber text-ink",
-  shopify: "border-[#7fb49b]/45 bg-tint-green text-ink",
-  maintenance: "border-[#7d5c33]/40 bg-[#000] text-oninverse",
-  ppc: "border-[#b8ef3e]/45 bg-[#000] text-oninverse",
-  amazon: "border-[#ff9900]/55 bg-[#000] text-oninverse",
-  seo: "border-ink/25 bg-[#000] text-oninverse",
+  shopify: "border-amber/45 bg-tint-green text-ink",
+  maintenance: "border-amber/40 bg-inverse text-oninverse",
+  ppc: "border-amber/45 bg-inverse text-oninverse",
+  amazon: "border-amber/55 bg-inverse text-oninverse",
+  seo: "border-ink/25 bg-inverse text-oninverse",
 };
 
 export function MediaFrame({ kind, theme, title, ratio = "16/10", className = "", source, poster, alt }: {
@@ -70,7 +70,7 @@ export function ShopifyStorefrontShowcase() {
         <Reveal>
           <div>
             <div>
-              <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#ef9a83]">Storefront showcase</p>
+              <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-amber-deep">Storefront showcase</p>
               <h2 className="mt-5 font-sans text-h2 font-semibold">Let products and buying journeys do more of the explaining.</h2>
             </div>
             <p className="mt-5 text-body leading-relaxed text-oninverse/68">From product discovery through to a completed checkout: every step of the storefront built to convert.</p>
@@ -81,7 +81,7 @@ export function ShopifyStorefrontShowcase() {
             <MediaFrame kind="image" theme="shopify" ratio="4/5" title="Mobile checkout" note="Approved checkout or cart screen." source="/images/Services/shopify/mobile-checkout.png" alt="A hand holding a phone showing a simple mobile checkout with a one-item order summary and a Pay now button." className="col-span-4" />
           </div>
           <div className="mt-5 grid grid-cols-3 gap-5 max-sm:grid-cols-1">
-            {["Discovery", "Product confidence", "Checkout"].map((label, index) => <div key={label} className="border-t border-oninverse/20 pt-4"><span className="mr-3 text-body font-semibold text-[#ef9a83]">0{index + 1}</span><span className="text-[18px] font-semibold uppercase tracking-[0.1em] text-oninverse/75">{label}</span></div>)}
+            {["Discovery", "Product confidence", "Checkout"].map((label, index) => <div key={label} className="border-t border-oninverse/20 pt-4"><span className="mr-3 text-body font-semibold text-amber-deep">0{index + 1}</span><span className="text-[18px] font-semibold uppercase tracking-[0.1em] text-oninverse/75">{label}</span></div>)}
           </div>
         </Reveal>
       </div>
@@ -96,11 +96,11 @@ export function MaintenanceControlRoom() {
         <Reveal>
           <div className="grid grid-cols-12 gap-x-10 gap-y-8 max-lg:block">
             <div className="col-span-4 max-lg:mb-9">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#7d5c33]">Maintenance control room</p>
+              <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-amber">Maintenance control room</p>
               <h2 className="mt-5 font-sans text-h2 font-semibold">Show the WordPress maintenance and support work that normally happens quietly.</h2>
               <p className="mt-5 text-body leading-relaxed text-oninverse/65">Uptime monitoring, update logs and a monthly report you can actually read: the ongoing care that keeps a site reliable.</p>
               <div className="mt-8 grid gap-3 text-body">
-                {["Uptime and fault alerts", "Updates and backup checks", "Monthly work summary"].map((label) => <div key={label} className="flex items-center gap-3 rounded-lg border border-oninverse/10 bg-oninverse/[0.035] px-4 py-3"><span className="size-2 rounded-full bg-[#7d5c33] shadow-[0_0_14px_rgba(125,92,51,.65)]" />{label}</div>)}
+                {["Uptime and fault alerts", "Updates and backup checks", "Monthly work summary"].map((label) => <div key={label} className="flex items-center gap-3 rounded-lg border border-oninverse/10 bg-oninverse/[0.035] px-4 py-3"><span className="size-2 rounded-full bg-amber shadow-[0_0_14px_rgb(var(--accent-rgb)/.65)]" />{label}</div>)}
               </div>
             </div>
             <div className="col-span-8 grid grid-cols-8 gap-5">
@@ -122,11 +122,11 @@ export function PpcCampaignStudio() {
         <Reveal>
           <div className="grid grid-cols-12 items-center gap-x-12 gap-y-9 max-lg:block">
             <div className="col-span-6 max-lg:mb-9">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.17em] text-[#b8ef3e]">Campaign studio</p>
+              <p className="text-[14px] font-semibold uppercase tracking-[0.17em] text-amber-deep">Campaign studio</p>
               <h2 className="mt-5 font-sans text-[clamp(34px,27px+2vw,52px)] font-semibold leading-[1.02]">Watch how a search becomes a measured action.</h2>
               <p className="mt-6 text-body leading-relaxed text-oninverse/66">From the initial campaign structure through search-term review to the landing page it drives traffic to.</p>
               <div className="mt-8 flex flex-wrap gap-2.5">
-                {['Search intent', 'Ad message', 'Landing page', 'Conversion'].map((label, index) => <span key={label} className="rounded-full border border-[#b8ef3e]/25 px-3 py-2 text-body font-semibold text-[#d7ff7b]"><b className="mr-2 opacity-45">0{index + 1}</b>{label}</span>)}
+                {['Search intent', 'Ad message', 'Landing page', 'Conversion'].map((label, index) => <span key={label} className="rounded-full border border-amber/40 px-3 py-2 text-body font-semibold text-oninverse"><b className="mr-2 text-amber-deep">0{index + 1}</b>{label}</span>)}
               </div>
             </div>
             <MediaFrame kind="image" theme="ppc" ratio="1/1" title="Google Ads campaign walkthrough" note="Replace with a concise, anonymised screen recording." className="col-span-6" source="/images/Services/Google Ads management.png" alt="Google Ads campaign planning" />
@@ -147,7 +147,7 @@ export function AmazonMarketplaceWorkbench() {
         <Reveal>
           <div className="grid grid-cols-12 items-end gap-x-12 gap-y-9 max-lg:block">
             <div className="col-span-5 max-lg:mb-9">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.17em] text-[#ffb84d]">Marketplace workbench</p>
+              <p className="text-[14px] font-semibold uppercase tracking-[0.17em] text-amber-deep">Marketplace workbench</p>
               <h2 className="mt-5 font-sans text-[clamp(34px,27px+2vw,52px)] font-semibold leading-[1.02]">See the listing, campaign and search term together.</h2>
               <p className="mt-6 text-body leading-relaxed text-oninverse/68">Catalogue, campaign and listing performance reviewed together, because on Amazon they can’t be managed apart.</p>
             </div>
@@ -160,7 +160,7 @@ export function AmazonMarketplaceWorkbench() {
           <div className="mt-6 grid grid-cols-4 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {["Catalogue readiness", "Search intent", "Bid control", "Sales context"].map((label, index) => (
               <div key={label} className="border-t border-oninverse/15 pt-4">
-                <span className="mr-3 text-body font-semibold text-[#ffb84d]">0{index + 1}</span>
+                <span className="mr-3 text-body font-semibold text-amber-deep">0{index + 1}</span>
                 <span className="text-[14px] font-semibold uppercase tracking-[0.1em] text-oninverse/72">{label}</span>
               </div>
             ))}
@@ -173,7 +173,7 @@ export function AmazonMarketplaceWorkbench() {
 
 export function SeoSearchLandscape() {
   return (
-    <section className="overflow-hidden border-b border-[#cad9eb] bg-tint-blue text-ink">
+    <section className="overflow-hidden border-b border-line bg-tint-blue text-ink">
       <div className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-12 items-end gap-x-12 gap-y-9 max-lg:block">
@@ -190,7 +190,7 @@ export function SeoSearchLandscape() {
           </div>
           <div className="mt-6 grid grid-cols-4 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {["Discover", "Understand", "Choose a page", "Take action"].map((label, index) => (
-              <div key={label} className="border-t border-[#000]/15 pt-4">
+              <div key={label} className="border-t border-inverse/15 pt-4">
                 <span className="mr-3 text-body font-semibold text-amber-deep">0{index + 1}</span>
                 <span className="text-[14px] font-semibold uppercase tracking-[0.1em] text-ink/72">{label}</span>
               </div>

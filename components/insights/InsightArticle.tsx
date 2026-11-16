@@ -218,7 +218,7 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
                         className="object-contain transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.03]"
                       />
                     ) : (
-                      <span className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgb(var(--accent-rgb)/0.24),transparent_28%),linear-gradient(145deg,#f8eddc,#efe1c9)]" />
+                      <span className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgb(var(--accent-rgb)/0.24),transparent_28%),linear-gradient(145deg,var(--color-soft),var(--color-soft-dark))]" />
                     )}
                   </span>
                   <div className="flex flex-1 flex-col p-7">

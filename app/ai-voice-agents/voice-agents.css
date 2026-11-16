@@ -46,16 +46,16 @@
   --va-band-ink: #f7f6f2;
   --va-band-muted: rgb(247 246 242 / 0.74);
   --va-band-line: rgb(247 246 242 / 0.16);
-  --va-band-hl: #7d5c33;
+  --va-band-hl: var(--accent);
   --va-band-ok: #8ed3ae;
   --va-band-miss: #f4a69b;
   --va-btn-hover: var(--color-teal-dark);
   --va-sea: #eef1f2;
-  --va-tint-1: #f3e4c4;
-  --va-tint-2: #e5e9ef;
-  --va-tint-3: #e1ebe3;
-  --va-tint-4: #efe2d6;
-  --va-land: #e4dfd2;
+  --va-tint-1: var(--color-soft);
+  --va-tint-2: color-mix(in srgb, var(--color-ink) 6%, var(--color-surface));
+  --va-tint-3: color-mix(in srgb, var(--accent) 10%, var(--color-surface));
+  --va-tint-4: color-mix(in srgb, var(--accent) 16%, var(--color-surface));
+  --va-land: color-mix(in srgb, var(--accent) 12%, var(--color-surface));
   --va-land-other: #ebe8df;
 }
 
@@ -70,10 +70,8 @@
   --va-band-line: rgb(246 246 246 / 0.16);
   --va-btn-hover: #5e4526;
   --va-sea: #101010;
-  --va-tint-1: #2b2414;
+  --va-tint-1: color-mix(in srgb, var(--accent) 20%, var(--color-surface));
   --va-tint-2: #222222;
-  --va-tint-3: #16241d;
-  --va-tint-4: #2a1f1c;
   --va-land: #252525;
   --va-land-other: #1c1c1c;
 }
@@ -322,14 +320,14 @@ html:has(.va-page dialog[open]) {
   .il-gold { fill: var(--color-teal); }
   .il-ink { fill: var(--va-ink); }
   [data-theme="dark"] & .il-ink { fill: #333333; }
-  .il-win { fill: color-mix(in srgb, #8fb3d9 45%, var(--va-surface)); }
+  .il-win { fill: color-mix(in srgb, var(--accent) 30%, var(--va-surface)); }
   .il-card { fill: var(--va-surface); filter: drop-shadow(0 6px 10px rgb(0 0 0 / .14)); }
   .il-line { fill: none; stroke: var(--va-line-strong); stroke-width: 2; }
   .il-stroke { fill: none; stroke: var(--va-ink); stroke-width: 2.4; stroke-linecap: round; }
   .il-goldline { fill: none; stroke: var(--color-teal-dark); stroke-width: 2.4; stroke-linejoin: round; }
   .il-ok { fill: var(--va-ok); }
   .il-tick { fill: none; stroke: var(--va-surface); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-  .il-crossline { fill: none; stroke: #a3352b; stroke-width: 5; stroke-linecap: round; }
+  .il-crossline { fill: none; stroke: var(--va-miss); stroke-width: 5; stroke-linecap: round; }
   .il-tooth { fill: var(--va-surface); stroke: var(--va-ink); stroke-width: 3; stroke-linejoin: round; }
   .il-ladder { fill: none; stroke: var(--va-line-strong); stroke-width: 4; stroke-linecap: round; }
   .il-flame { fill: var(--color-teal); }
@@ -799,7 +797,7 @@ html:has(.va-page dialog[open]) {
 [data-theme="dark"] #va-page [data-industry] > span:first-child { background-color: #2e2e2e; }
 [data-theme="dark"] #va-page .il-wall { fill: #454545; stroke: #616161; }
 [data-theme="dark"] #va-page .il-ink { fill: #181818; }
-[data-theme="dark"] #va-page .il-win { fill: #7d9cc0; }
+[data-theme="dark"] #va-page .il-win { fill: color-mix(in srgb, var(--accent) 55%, var(--va-surface)); }
 [data-theme="dark"] #va-page .il-card { fill: #ebebeb; }
 [data-theme="dark"] #va-page .il-line { stroke: #757575; }
 [data-theme="dark"] #va-page .il-stroke { stroke: #000; }
@@ -959,7 +957,7 @@ html:has(.va-page dialog[open]) {
    misses green. Closed hours sit on a hatched band. */
 #va-page .day-key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
 #va-page .day-key-t, #va-page .day-t { background: var(--va-ink); }
-#va-page .day-key-m, #va-page .day-m { background: #c2554a; }
+#va-page .day-key-m, #va-page .day-m { background: var(--va-miss); }
 #va-page [data-day]:has([data-mode="ai"]) .day-key-m, #va-page [data-mode="ai"] .day-m { background: var(--va-ok); }
 [data-theme="dark"] #va-page .day-key-t, [data-theme="dark"] #va-page .day-t { background: #949494; }
 #va-page .day-chart { position: relative; padding-top: 8px; background: linear-gradient(to top, var(--va-line) 1px, transparent 1px) 0 calc(100% - 26px) / 100% calc((100% - 34px) / 3) repeat-y; }
@@ -1103,7 +1101,7 @@ html:has(.va-page dialog[open]) {
 }
 @media (min-width: 640px) { #va-page .ind-card { grid-template-rows: 1fr auto; column-gap: 1.5rem; } }
 #va-page .ind-card > span:first-child {
-  border-radius: 16px; background: linear-gradient(160deg, #fbf3e4, #f3efe7);
+  border-radius: 16px; background: linear-gradient(160deg, var(--color-soft), var(--va-sand));
   box-shadow: inset 0 0 0 1px rgb(var(--accent-rgb) / .14);
 }
 #va-page .ind-card > span:first-child svg { transition: scale .6s cubic-bezier(.2, .7, .2, 1); }

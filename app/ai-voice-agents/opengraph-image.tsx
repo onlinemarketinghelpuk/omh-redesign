@@ -9,7 +9,6 @@ export const contentType = "image/png";
 
 const INK = "#000";
 const AMBER = "#7d5c33";
-const GREEN = "#7fd1a8";
 
 export default async function Image() {
   const logo = await readFile(join(process.cwd(), "public/images/logo-white.png"));
@@ -46,7 +45,7 @@ export default async function Image() {
           {/* The call: answered, then booked. */}
           <div style={{ display: "flex", flexDirection: "column", gap: 14, width: 470, fontSize: 26 }}>
             <div style={{ ...row, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.16)" }}>
-              <span style={{ width: 14, height: 14, borderRadius: 7, background: GREEN }} />
+              <span style={{ width: 14, height: 14, borderRadius: 7, background: AMBER }} />
               <span>Call answered on the first ring</span>
             </div>
             <div style={{ ...row, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.16)", color: "rgba(255,255,255,0.8)" }}>

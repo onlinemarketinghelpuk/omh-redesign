@@ -56,7 +56,7 @@ function HeroCards() {
           <path d="M0 38 C40 36 80 34 110 40 C140 46 160 14 195 10 C215 8 235 10 250 11 L250 60 L0 60Z" fill="currentColor" className="cs-area text-oninverse/10" />
           <path d="M0 38 C40 36 80 34 110 40 C140 46 160 14 195 10 C215 8 235 10 250 11" fill="none" stroke="#7d5c33" strokeWidth="3" className="cs-line" />
         </svg>
-        <p className="mt-4 font-sans text-[34px] font-semibold leading-none text-[#7d5c33]">+59.5%</p>
+        <p className="mt-4 font-sans text-[34px] font-semibold leading-none text-amber">+59.5%</p>
         <p className="mt-2 text-body text-oninverse/75">organic traffic in six months</p>
       </div>
 
@@ -111,7 +111,7 @@ function Featured() {
             ].map(([value, label]) => (
               <div key={value} className="flex flex-col">
                 <dt className="mt-2 text-body leading-snug text-oninverse/70">{label}</dt>
-                <dd className="order-first font-sans text-h2 font-semibold leading-none text-[#7d5c33]">{value}</dd>
+                <dd className="order-first font-sans text-h2 font-semibold leading-none text-amber">{value}</dd>
               </div>
             ))}
           </dl>
@@ -459,7 +459,7 @@ export function CaseStudyArchive() {
             {proof.map((item) => (
               <div key={item.label} className="flex flex-col border-oninverse/12 px-9 py-8 max-sm:border-t max-sm:first:border-t-0 sm:border-l sm:first:border-l-0">
                 <dt className="mt-3 text-body text-oninverse/75">{item.label}</dt>
-                <dd className="order-first font-sans text-[clamp(38px,30px+1.4vw,52px)] font-semibold leading-none text-[#7d5c33]">
+                <dd className="order-first font-sans text-[clamp(38px,30px+1.4vw,52px)] font-semibold leading-none text-amber">
                   {item.value}
                 </dd>
               </div>

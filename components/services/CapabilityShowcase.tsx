@@ -106,13 +106,13 @@ export function StorefrontMock() {
       <div className="mt-3 grid grid-cols-3 gap-2.5">
         {["Linen shirt", "Canvas tote", "Field jacket"].map((name, i) => (
           <div key={name}>
-            <div className={`aspect-square rounded-[6px] ${["bg-[#e7c9b5]", "bg-[#c7d9ea]", "bg-[#cfe0c4]"][i]}`} />
+            <div className={`aspect-square rounded-[6px] ${["bg-amber/25", "bg-amber/45", "bg-amber/65"][i]}`} />
             <div className="mt-1.5 text-[12px] font-semibold">{name}</div>
           </div>
         ))}
       </div>
       <div className="mt-3 flex items-center gap-3 rounded-[8px] bg-oninverse/[0.08] px-3 py-2">
-        <span className="flex size-6 items-center justify-center rounded-full bg-[#7fd1a4]/20"><Check className="size-3.5 text-[#7fd1a4]" /></span>
+        <span className="flex size-6 items-center justify-center rounded-full bg-oninverse/20"><Check className="size-3.5 text-oninverse" /></span>
         <span className="text-[12px]"><span className="font-semibold">New order</span> · 2 items · paid</span>
       </div>
     </div>
@@ -130,19 +130,19 @@ export function MonitorMock() {
     <div className={`${shell} p-4`}>
       <div className="flex items-center justify-between border-b border-oninverse/12 pb-3">
         <span className="font-sans text-[14px] font-semibold">This month&apos;s window</span>
-        <span className="rounded-full bg-[#7fd1a4]/15 px-2.5 py-0.5 text-[12px] font-semibold text-[#7fd1a4]">Complete</span>
+        <span className="rounded-full bg-oninverse/15 px-2.5 py-0.5 text-[12px] font-semibold text-oninverse">Complete</span>
       </div>
       <ul className="mt-2">
         {rows.map(([k, v]) => (
           <li key={k} className="flex items-center justify-between gap-3 border-b border-oninverse/10 py-2 text-[13px] last:border-b-0">
-            <span className="flex items-center gap-2 text-oninverse/80"><Check className="size-3.5 text-[#7fd1a4]" />{k}</span>
+            <span className="flex items-center gap-2 text-oninverse/80"><Check className="size-3.5 text-oninverse" />{k}</span>
             <span className="font-semibold">{v}</span>
           </li>
         ))}
       </ul>
       <div className="mt-3 flex items-end gap-1" aria-hidden="true">
         {[60, 100, 100, 100, 90, 100, 100, 100, 100, 70, 100, 100].map((h, i) => (
-          <span key={i} className="flex-1 rounded-t-[2px] bg-[#7fd1a4]/70" style={{ height: `${h * 0.22}px` }} />
+          <span key={i} className="flex-1 rounded-t-[2px] bg-oninverse/70" style={{ height: `${h * 0.22}px` }} />
         ))}
       </div>
       <div className="mt-1.5 text-[12px] text-oninverse/55">Uptime, last 12 checks</div>

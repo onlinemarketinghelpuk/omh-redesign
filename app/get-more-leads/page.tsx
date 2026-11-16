@@ -116,7 +116,7 @@ export default function GetMoreLeadsPage() {
       <ServiceBand label="See it in action" labelStyle="dot" tone="dark" className="dark-grid">
         <Reveal>
           <h2 className="font-sans text-h2 font-semibold">
-            You run the business. <span className="text-[#7d5c33]">We fill the diary.</span>
+            You run the business. <span className="text-amber">We fill the diary.</span>
           </h2>
           <p className="mt-5 text-body leading-relaxed text-oninverse/70">
             We plan, build and run your Google Ads, Meta Ads, SEO and website under one roof, then show you clearly what

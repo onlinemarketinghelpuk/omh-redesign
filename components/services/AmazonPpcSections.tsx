@@ -28,7 +28,7 @@ function SectionShell({
   children: ReactNode;
 }) {
   return (
-    <ServiceBand label={label} id={id} tone={dark ? "dark" : "white"} accent="bg-[#ff9900]">
+    <ServiceBand label={label} id={id} tone={dark ? "dark" : "white"} accent="bg-amber">
       {children}
     </ServiceBand>
   );
@@ -113,10 +113,10 @@ export function AmazonCampaignMap() {
         </div>
         <div className="mt-12 grid grid-cols-12 gap-5">
           {content.campaignTypes.map((item, index) => (
-            <article key={item.title} className={`${index === 0 || index === 3 ? "col-span-7" : "col-span-5"} rounded-card border border-oninverse/12 bg-oninverse/[0.035] p-7 transition-colors hover:border-[#ff9900]/55 hover:bg-[#ff9900]/[0.045] max-lg:col-span-6 max-md:col-span-12`}>
+            <article key={item.title} className={`${index === 0 || index === 3 ? "col-span-7" : "col-span-5"} rounded-card border border-oninverse/12 bg-oninverse/[0.035] p-7 transition-colors hover:border-amber/55 hover:bg-amber/[0.045] max-lg:col-span-6 max-md:col-span-12`}>
               <div className="flex items-start justify-between gap-5">
                 <div>
-                  <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-[#ffb84d]">{item.label}</p>
+                  <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">{item.label}</p>
                   <h3 className="mt-4 font-sans text-h3 font-semibold">{item.title}</h3>
                 </div>
                 <span aria-hidden className="font-sans text-[38px] font-semibold leading-none text-oninverse/[0.08]">0{index + 1}</span>
@@ -161,9 +161,9 @@ export function AmazonProcess() {
 
 function PackageCard({ pkg, index }: { pkg: Package; index: number }) {
   return (
-    <article className="flex min-h-full flex-col overflow-hidden rounded-card border border-line bg-surface shadow-[0_20px_65px_-55px_rgba(45,30,10,.8)]">
+    <article className="flex min-h-full flex-col overflow-hidden rounded-card border border-line bg-surface shadow-[0_20px_65px_-55px_rgb(var(--accent-rgb)/.8)]">
       <div className={`${index === 3 ? "bg-[#211a12] text-oninverse" : "bg-tint-amber"} p-6`}>
-        <p className={`text-[14px] font-semibold uppercase tracking-[0.15em] ${index === 3 ? "text-[#ffb84d]" : "text-amber-deep"}`}>{pkg.stage}</p>
+        <p className={`text-[14px] font-semibold uppercase tracking-[0.15em] ${index === 3 ? "text-amber-deep" : "text-amber-deep"}`}>{pkg.stage}</p>
         <h3 className="mt-3 font-sans text-h4 font-semibold">{pkg.name}</h3>
         <p className="mt-4 font-sans text-[36px] font-semibold leading-none">{pkg.price}</p>
         <p className={`mt-4 text-body leading-relaxed ${index === 3 ? "text-oninverse/68" : "text-ink/68"}`}>{pkg.bestFor}</p>
@@ -202,7 +202,7 @@ export function AmazonPricing() {
           <div className="mt-12 grid grid-cols-4 gap-5 max-xl:grid-cols-2 max-sm:grid-cols-1">
             {content.packages.map((pkg, index) => <PackageCard key={pkg.name} pkg={pkg} index={index} />)}
           </div>
-          <ul className="mt-8 grid gap-2 border-l-2 border-[#ff9900] pl-5 text-body leading-relaxed text-muted">
+          <ul className="mt-8 grid gap-2 border-l-2 border-amber pl-5 text-body leading-relaxed text-muted">
             {content.pricingNotes.map((note) => <li key={note}>{note}</li>)}
           </ul>
         </Reveal>
@@ -218,13 +218,13 @@ export function AmazonProofGuide() {
       <Reveal>
         <div className="grid grid-cols-12 items-center gap-x-12 gap-y-10 max-lg:block">
           <div className="col-span-5 max-lg:mb-9">
-            <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-[#ffb84d]">Before increasing spend</p>
+            <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">Before increasing spend</p>
             <h2 className="mt-5 font-sans text-h2 font-semibold">Use a real account story, with the measurement explained.</h2>
             <p className="mt-5 text-body leading-relaxed text-oninverse/68">Every Amazon example we share states the products, date range, spend, attribution window and commercial context, so the result can be read in proportion.</p>
             <ul className="mt-7 grid gap-3 border-t border-oninverse/12 pt-5 text-body text-oninverse/72">
-              {["Starting account and catalogue context", "Campaign and listing work completed", "Spend and comparison period", "Verified outcome with metric definitions"].map((item) => <li key={item} className="flex gap-3"><Check className="mt-0.5 size-4 shrink-0 text-[#ffb84d]" />{item}</li>)}
+              {["Starting account and catalogue context", "Campaign and listing work completed", "Spend and comparison period", "Verified outcome with metric definitions"].map((item) => <li key={item} className="flex gap-3"><Check className="mt-0.5 size-4 shrink-0 text-amber-deep" />{item}</li>)}
             </ul>
-            {CASE_STUDIES_LIVE && <div className="mt-7"><TextLink href="/case-studies" className="text-[#ffb84d] hover:text-[#ffc96f]" data-event="amazon_case_study_click">View case studies</TextLink></div>}
+            {CASE_STUDIES_LIVE && <div className="mt-7"><TextLink href="/case-studies" className="text-amber-deep hover:text-oninverse" data-event="amazon_case_study_click">View case studies</TextLink></div>}
           </div>
           <div className="col-span-7">
             <MediaFrame kind="image" theme="amazon" ratio="16/10" title="Verified Amazon PPC case study" note="Replace with approved product imagery and a comparable before-and-after account view." source="/images/Services/Images on the pages/Verified Amazon PPC case study.png" alt="An Amazon PPC case-study summary showing spend, sales, ACoS, orders and ROAS for a single product over a 30-day period." />
@@ -246,7 +246,7 @@ export function AmazonFAQ() {
       phoneEvent="amazon_phone_click"
       headingSize="lg"
       headingMaxWidthClassName=""
-      bandAccent="bg-[#ff9900]"
+      bandAccent="bg-amber"
     />
   );
 }

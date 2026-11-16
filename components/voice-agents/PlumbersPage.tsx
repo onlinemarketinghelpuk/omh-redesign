@@ -92,7 +92,7 @@ export function PlumbersPage() {
       page={path}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#7d5c33]">for your plumbing business</span>
+          Book a 30-minute demo <span className="text-amber">for your plumbing business</span>
         </>
       }
     >

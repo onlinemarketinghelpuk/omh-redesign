@@ -34,7 +34,7 @@ html:has(.vi-page) {
 .vi-page:not(.review-mode) .flag { display: none !important; }
 .vi-page.review-mode::after {
   content: "Review mode: placeholders visible"; position: fixed; left: 12px; bottom: 12px; z-index: 90;
-  padding: 6px 10px; border-radius: 8px; background: #a3352b; color: #fff; font: 600 13px var(--font-body);
+  padding: 6px 10px; border-radius: 8px; background: var(--color-error); color: #fff; font: 600 13px var(--font-body);
 }
 
 .vi-page {
@@ -128,7 +128,7 @@ html:has(.vi-page) {
   .hw-ok { transform-box: fill-box; transform-origin: center; }
 
   /* ---------- Dental page ---------- */
-  .fd-live { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: #3fa66b; box-shadow: 0 0 0 0 rgb(63 166 107 / .5); }
+  .fd-live { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: var(--va-ok); box-shadow: 0 0 0 0 color-mix(in srgb, var(--va-ok) 50%, transparent); }
   .fd-dot { background: rgb(247 246 242 / .08); color: var(--va-band-muted); border: 1px solid var(--va-band-line); transition: background-color .3s ease, color .3s ease, transform .3s ease; }
   .fd-step { color: var(--va-band-muted); transition: color .3s ease; }
   .fd-step.is-done .fd-dot { background: rgb(142 211 174 / .18); color: var(--va-band-ok); border-color: transparent; }
@@ -145,8 +145,7 @@ html:has(.vi-page) {
     [data-wf-panel]:not([hidden]) { animation: vi-panel-in .3s ease; }
   }
   /* Front desk day chart */
-  & { --vi-pd-team: #3f6fb5; --vi-pd-miss: #b8432f; --vi-pd-ai: #7d5c33; }
-  [data-theme="dark"] & { --vi-pd-team: #5b8bd6; --vi-pd-miss: #d4604e; --vi-pd-ai: #7d5c33; }
+  & { --vi-pd-team: var(--va-muted); --vi-pd-miss: var(--va-miss); --vi-pd-ai: var(--accent); }
   .pd-team { background: var(--vi-pd-team); }
   .pd-top { background: var(--vi-pd-miss); transition: background-color .4s ease; }
   [data-pd][data-mode="agent"] .pd-top { background: var(--vi-pd-ai); }
@@ -185,7 +184,7 @@ html:has(.vi-page) {
 
 .vi-page.vi-dental-v2 {
   .tooth-ico { fill: currentColor; }
-  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: #2e9e6b; }
+  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: var(--va-ok); }
 
   .smile-edge { line-height: 0; }
   .smile-edge svg { display: block; width: 100%; height: 48px; }
@@ -284,8 +283,8 @@ html:has(.vi-page) {
 
 .vi-page.vi-london {
   /* ---------- London page ---------- */
-  & { --lx-sky: #e9e2cf; --lx-far: #c9bfa6; --lx-mid: #000; --lx-river: #3f6fb5; --lx-house: #f7f6f2; --lx-roof: var(--color-amber-deep); }
-  [data-theme="dark"] & { --lx-sky: #242424; --lx-far: #353535; --lx-mid: #111111; --lx-river: #2b4f86; --lx-house: #d9d2c0; --lx-roof: #7d5c33; }
+  & { --lx-sky: var(--color-soft); --lx-far: var(--color-soft-dark); --lx-mid: var(--color-inverse); --lx-river: var(--color-muted); --lx-house: var(--color-surface); --lx-roof: var(--color-amber-deep); }
+  [data-theme="dark"] & { --lx-sky: #242424; --lx-far: #353535; --lx-mid: #111111; --lx-river: var(--color-muted); --lx-house: var(--color-ink); --lx-roof: var(--accent); }
   .lx-sky { fill: var(--lx-sky); } .lx-sun { fill: var(--color-teal); opacity: .85; }
   .lx-far { fill: var(--lx-far); } .lx-mid { fill: var(--lx-mid); }
   .lx-clock { fill: var(--color-teal); } .lx-win { fill: var(--color-teal); opacity: .7; } .lx-line { stroke: var(--color-teal); stroke-width: 2; }
@@ -293,7 +292,7 @@ html:has(.vi-page) {
   .lx-river { fill: var(--lx-river); } .lx-ripple { fill: none; stroke: rgb(247 246 242 / .45); stroke-width: 2; stroke-dasharray: 10 14; }
   .lx-house { fill: var(--lx-house); stroke: var(--lx-mid); stroke-width: 1.5; } .lx-roof { fill: var(--lx-roof); }
   .lx-hwin { fill: var(--color-teal); } .lx-door { fill: var(--lx-mid); }
-  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: #3fa66b; }
+  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: var(--va-ok); }
   /* Map */
   .lm-land { fill: color-mix(in srgb, var(--color-teal) 9%, var(--va-paper)); stroke: var(--va-line-strong); stroke-width: 1.5; stroke-dasharray: 6 6; }
   .lm-river { fill: none; stroke: var(--lx-river); stroke-width: 14; stroke-linecap: round; opacity: .55; }
@@ -343,7 +342,7 @@ html:has(.vi-page) {
   }
 
   /* Compare */
-  .cmp-cell { display: block; height: 14px; border-radius: 2px; background: color-mix(in srgb, var(--va-miss) 16%, var(--va-surface)); transition: background-color .25s ease; }
+  .cmp-cell { display: block; height: 14px; border-radius: 2px; background: color-mix(in srgb, var(--va-ink) 10%, var(--va-surface)); transition: background-color .25s ease; }
   .cmp-cell.is-on { background: var(--va-ink); }
   .cmp-mode { transition: border-color .2s ease, background-color .2s ease; }
   .cmp-mode:hover { border-color: var(--color-teal); }
@@ -371,8 +370,8 @@ html:has(.vi-page) {
 
 .vi-page.vi-london-v2 {
   /* ---------- Dental London v2 ---------- */
-  & { --nm0: #f3e6cc; --nm1: #e7cb94; --nm2: var(--color-teal); --nm3: #a8711f; --nm4: #6e470f; }
-  [data-theme="dark"] & { --nm0: #3a3020; --nm1: #5a4520; --nm2: #8a6420; --nm3: #b8862e; --nm4: #e2b25c; }
+  & { --nm0: color-mix(in srgb, var(--accent) 14%, var(--color-surface)); --nm1: color-mix(in srgb, var(--accent) 45%, var(--color-surface)); --nm2: var(--accent); --nm3: color-mix(in srgb, var(--accent) 70%, var(--color-inverse)); --nm4: color-mix(in srgb, var(--accent) 45%, var(--color-inverse)); }
+  [data-theme="dark"] & { --nm0: color-mix(in srgb, var(--accent) 25%, var(--color-surface)); --nm1: color-mix(in srgb, var(--accent) 50%, var(--color-surface)); --nm2: var(--accent); --nm3: color-mix(in srgb, var(--accent) 70%, var(--color-oninverse)); --nm4: color-mix(in srgb, var(--accent) 45%, var(--color-oninverse)); }
   /* Hero */
   .hv-ring { fill: none; stroke: var(--color-teal); stroke-width: 2; opacity: 0; }
   .hv-dot { fill: var(--color-teal); stroke: var(--va-surface); stroke-width: 2.5; }
@@ -461,8 +460,8 @@ html:has(.vi-page) {
   .cv-table[open] .faq-chevron { transform: rotate(180deg); }
 
   /* ---------- Real estate London v2 ---------- */
-  & { --sd0: #c9bfa6; --sd1: #e7cb94; --sd2: var(--color-teal); --sd3: #a8711f; --sd4: #6e470f; }
-  [data-theme="dark"] & { --sd0: #4a4436; --sd1: #5a4520; --sd2: #8a6420; --sd3: #b8862e; --sd4: #e2b25c; }
+  & { --sd0: color-mix(in srgb, var(--color-ink) 22%, var(--color-surface)); --sd1: color-mix(in srgb, var(--accent) 45%, var(--color-surface)); --sd2: var(--accent); --sd3: color-mix(in srgb, var(--accent) 70%, var(--color-inverse)); --sd4: color-mix(in srgb, var(--accent) 45%, var(--color-inverse)); }
+  [data-theme="dark"] & { --sd0: color-mix(in srgb, var(--color-ink) 22%, var(--color-surface)); --sd1: color-mix(in srgb, var(--accent) 50%, var(--color-surface)); --sd2: var(--accent); --sd3: color-mix(in srgb, var(--accent) 70%, var(--color-oninverse)); --sd4: color-mix(in srgb, var(--accent) 45%, var(--color-oninverse)); }
   .bm-bubble { stroke: var(--va-surface); stroke-width: 3; cursor: pointer; transition: r .4s ease, fill .4s ease; }
   .bm-bubble.nm-t0 { fill: var(--nm0); } .bm-bubble.nm-t1 { fill: var(--nm1); } .bm-bubble.nm-t2 { fill: var(--nm2); } .bm-bubble.nm-t3 { fill: var(--nm3); } .bm-bubble.nm-t4 { fill: var(--nm4); }
   .bm-bubble.is-on { stroke: var(--va-ink); stroke-width: 4; }
@@ -484,7 +483,7 @@ html:has(.vi-page) {
 @keyframes vi-hw-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 @keyframes vi-hw3-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @keyframes vi-ring3 { from { opacity: .8; transform: scale(1); } to { opacity: 0; transform: scale(2); } }
-@keyframes vi-fd-pulse { 0% { box-shadow: 0 0 0 0 rgb(63 166 107 / .55); } 100% { box-shadow: 0 0 0 8px rgb(63 166 107 / 0); } }
+@keyframes vi-fd-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--va-ok) 55%, transparent); } 100% { box-shadow: 0 0 0 8px transparent; } }
 @keyframes vi-hear-eq { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
 @keyframes vi-sc-ring { 0%, 100% { opacity: .15; } 50% { opacity: 1; } }
 @keyframes vi-sc-shake { 0%, 60%, 100% { transform: rotate(0); } 10%, 30%, 50% { transform: rotate(-6deg); } 20%, 40% { transform: rotate(6deg); } }
@@ -549,13 +548,13 @@ html:has(.vi-page) {
 }
 .ld-live i {
   width: 7px; height: 7px; border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 0 0 rgb(74 222 128 / .7);
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgb(var(--accent-rgb) / .7);
   animation: ld-pulse 2s ease-out infinite;
 }
 @keyframes ld-pulse {
-  70% { box-shadow: 0 0 0 7px rgb(74 222 128 / 0); }
-  100% { box-shadow: 0 0 0 0 rgb(74 222 128 / 0); }
+  70% { box-shadow: 0 0 0 7px rgb(var(--accent-rgb) / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(var(--accent-rgb) / 0); }
 }
 
 /* The suggested questions are buttons, not decoration: one click asks it. */

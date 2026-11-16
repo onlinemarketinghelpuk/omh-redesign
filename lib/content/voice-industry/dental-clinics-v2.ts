@@ -1244,7 +1244,7 @@ ${pricingSection("bg-surface")}
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
             <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:12</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-inverse/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:12</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1262,7 +1262,7 @@ ${pricingSection("bg-surface")}
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:45%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:75%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:55%"></i><i style="height:30%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:65%"></i></span>
             <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:58</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-inverse/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:58</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1280,7 +1280,7 @@ ${pricingSection("bg-surface")}
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:80%"></i><i style="height:30%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i></span>
             <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:04</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-inverse/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">1:04</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1298,7 +1298,7 @@ ${pricingSection("bg-surface")}
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:35%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:85%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i></span>
             <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:47</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-inverse/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:47</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1316,7 +1316,7 @@ ${pricingSection("bg-surface")}
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:40%"></i></span>
             <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:52</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-inverse/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:52</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1334,7 +1334,7 @@ ${pricingSection("bg-surface")}
             <span class="pointer-events-none absolute -right-6 -top-4 text-ink/10" aria-hidden="true"><svg class="icon !h-[140px] !w-[140px]" aria-hidden="true" focusable="false"><use href="#i-tooth"/></svg></span>
             <span class="vn-wave thumb-wave absolute inset-x-[8%] bottom-10 !h-7 opacity-50" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:75%"></i><i style="height:30%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></span>
             <span class="absolute left-1/2 top-[42%] grid h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-gold text-navy shadow-[0_10px_24px_-8px_rgb(0_0_0/0.55)]" aria-hidden="true"><svg class="icon !h-7 !w-7 translate-x-0.5" aria-hidden="true" focusable="false"><use href="#i-play"/></svg></span>
-            <span class="absolute bottom-3 right-3 rounded-[5px] bg-[#000]/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:39</span>
+            <span class="absolute bottom-3 right-3 rounded-[5px] bg-inverse/85 px-1.5 py-0.5 text-[13px] font-semibold text-white tnum">0:39</span>
           </span></span>
           </button>
           <div class="flex flex-1 flex-col px-2 pb-2 pt-4">
@@ -1718,7 +1718,7 @@ ${pricingSection("bg-surface")}
 
 
 <!-- ===== COMPONENT: VideoModal ===== -->
-<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-[#000]/80">
+<dialog data-component="VideoModal" data-video-modal aria-labelledby="video-modal-title" class="video-modal m-auto w-[min(960px,calc(100vw-32px),calc((100dvh-170px)*16/9))] max-w-none overflow-visible bg-transparent p-0 text-band-ink backdrop:bg-inverse/80">
   <div class="on-band overflow-hidden rounded-[16px] bg-band shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]">
     <div class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
       <div class="min-w-0">
@@ -1728,7 +1728,7 @@ ${pricingSection("bg-surface")}
       </div>
       <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-band-line text-band-ink hover:bg-white/10" data-video-modal-close data-track="testimonial_video_close" aria-label="Close video"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
     </div>
-    <div class="relative aspect-video bg-[#000]" data-video-modal-player></div>
+    <div class="relative aspect-video bg-inverse" data-video-modal-player></div>
   </div>
 </dialog>
 

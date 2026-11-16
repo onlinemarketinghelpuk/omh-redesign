@@ -338,13 +338,13 @@ export const clinicMarkup = String.raw`
         </div>
       </div>
 
-      <div class="brand-phone relative mt-5 rounded-[44px] border border-[rgb(247_246_242/.18)] bg-[#000] p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.8)]">
-        <div class="relative overflow-hidden rounded-[34px] bg-[#f7f6f2] px-4 pb-5 pt-4 text-[#000]">
-          <div class="flex items-center justify-between text-[13px] font-semibold" aria-hidden="true"><span class="tnum">9:41</span><span class="h-[22px] w-[90px] rounded-full bg-[#000]"></span><span class="flex gap-1"><i class="block h-2.5 w-1 rounded-sm bg-[#000]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#000]"></i><i class="block h-2.5 w-1 rounded-sm bg-[#000]/40"></i></span></div>
+      <div class="brand-phone relative mt-5 rounded-[44px] border border-[rgb(247_246_242/.18)] bg-inverse p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.8)]">
+        <div class="relative overflow-hidden rounded-[34px] bg-oninverse px-4 pb-5 pt-4 text-inverse">
+          <div class="flex items-center justify-between text-[13px] font-semibold" aria-hidden="true"><span class="tnum">9:41</span><span class="h-[22px] w-[90px] rounded-full bg-inverse"></span><span class="flex gap-1"><i class="block h-2.5 w-1 rounded-sm bg-inverse"></i><i class="block h-2.5 w-1 rounded-sm bg-inverse"></i><i class="block h-2.5 w-1 rounded-sm bg-inverse/40"></i></span></div>
           <div class="mt-4 flex items-center gap-3">
-            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--color-teal)] font-display text-[18px] font-semibold text-[#000]" aria-hidden="true" data-brand-initials>BC</span>
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--color-teal)] font-display text-[18px] font-semibold text-inverse" aria-hidden="true" data-brand-initials>BC</span>
             <span class="min-w-0"><span class="block truncate font-display text-[17px] font-semibold leading-tight" data-brand-name>Brookfield Clinic</span><span class="block text-[13.5px] text-[rgb(0_0_0/0.68)]"><span class="tnum" data-brand-num>0161 496 0123</span>, <span data-brand-city>Manchester</span></span></span>
-            <span class="ml-auto shrink-0 text-[13px] font-semibold text-[#1c6446]"><span class="mr-1 inline-block h-2 w-2 rounded-full bg-[#1c6446] align-middle"></span><span class="tnum" data-brand-timer>00:00</span></span>
+            <span class="ml-auto shrink-0 text-[13px] font-semibold text-ok"><span class="mr-1 inline-block h-2 w-2 rounded-full bg-ok align-middle"></span><span class="tnum" data-brand-timer>00:00</span></span>
           </div>
           <div class="mt-4 space-y-2.5 text-[14.5px] leading-[1.45]">
             <div class="rounded-[4px_14px_14px_14px] bg-white p-3 shadow-[0_10px_30px_-20px_rgb(0_0_0/0.6)]">
@@ -352,14 +352,14 @@ export const clinicMarkup = String.raw`
               <p class="mt-2 min-h-[64px]" aria-hidden="true">&ldquo;<span data-brand-greeting>Good morning, Brookfield Clinic. I'm Ruth, the clinic's AI assistant. How can I help you today?</span><span class="brand-caret" data-brand-caret></span>&rdquo;</p>
               <p class="sr-only" aria-live="polite" data-brand-live></p>
             </div>
-            <div class="ml-8 rounded-[14px_4px_14px_14px] bg-[#000] p-3 text-[#f7f6f2]" data-brand-line="caller"><span class="block text-[12.5px] font-semibold text-[rgb(247_246_242/0.6)]">Caller</span><span data-brand-caller>I'd like to book a physio assessment for my knee. Do you have anything this week?</span></div>
+            <div class="ml-8 rounded-[14px_4px_14px_14px] bg-inverse p-3 text-oninverse" data-brand-line="caller"><span class="block text-[12.5px] font-semibold text-[rgb(247_246_242/0.6)]">Caller</span><span data-brand-caller>I'd like to book a physio assessment for my knee. Do you have anything this week?</span></div>
             <div class="rounded-[4px_14px_14px_14px] bg-white p-3 shadow-[0_10px_30px_-20px_rgb(0_0_0/0.6)]" data-brand-line="agent"><span class="block text-[12.5px] font-semibold text-[var(--color-amber-deep)]"><span data-brand-agent2>Ruth</span></span><span class="font-semibold" data-brand-reply>Yes. I have Thursday at 9:10 with Sarah. Shall I book it?</span></div>
             <p class="booked !text-[14px]" data-brand-outcome>${icon("check")}<span data-brand-booked>Assessment booked: Thu 09:10</span></p>
             <p class="flex items-center gap-2 rounded-[10px] bg-white/70 px-3 py-2 text-[13.5px]" data-brand-line="summary">${icon("mail", "shrink-0 text-hl")}<span data-brand-summary>Summary sent to reception: new self-pay patient, intake form sent by text</span></p>
           </div>
           <div class="mt-4 flex items-center justify-center gap-6">
-            <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-[#000] text-[#f7f6f2] hover:bg-[#262626]" data-brand-replay data-track="branding_replay" aria-label="Replay the call">${icon("replay")}</button>
-            <span class="grid h-12 w-12 place-items-center rounded-full bg-[#a3352b] text-white" aria-hidden="true">${icon("phone", "rotate-[135deg]")}</span>
+            <button type="button" class="grid h-12 w-12 place-items-center rounded-full bg-inverse text-oninverse hover:bg-amber" data-brand-replay data-track="branding_replay" aria-label="Replay the call">${icon("replay")}</button>
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-miss text-white" aria-hidden="true">${icon("phone", "rotate-[135deg]")}</span>
           </div>
         </div>
       </div>

@@ -19,10 +19,10 @@ function Frame({ children, className = "" }: { children: React.ReactNode; classN
 
 function Shopify() {
   const products = [
-    { name: "Linen shirt", bg: "from-[#f6d6c4] to-[#e7a58a]" },
-    { name: "Canvas tote", bg: "from-[#cfe3f4] to-[#8fb6d9]" },
-    { name: "Field jacket", bg: "from-[#dfe9d5] to-[#9ebb8c]" },
-    { name: "Trail boot", bg: "from-[#ead7f2] to-[#b899cf]" },
+    { name: "Linen shirt", bg: "from-amber/15 to-amber/45" },
+    { name: "Canvas tote", bg: "from-ink/5 to-ink/20" },
+    { name: "Field jacket", bg: "from-amber/25 to-amber/60" },
+    { name: "Trail boot", bg: "from-ink/10 to-ink/30" },
   ];
   return (
     <Frame>

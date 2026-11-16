@@ -63,9 +63,9 @@ ${roiCalculator("any-business")}
         <p class="mt-1.5 text-[16px] leading-snug text-band-muted">Talk to a person on our UK team about your booking and cancellation calls. No sales script.</p>
         <p class="mt-4 text-[15px] font-semibold uppercase tracking-[0.12em] text-band-muted">On the demo, try</p>
         <ol class="mt-2 space-y-1.5 text-[16px] leading-snug">
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#7d5c33]">1</span><span>Book a cut and colour as a new client</span></li>
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#7d5c33]">2</span><span>Cancel tomorrow's appointment and hear what it offers</span></li>
-          <li class="flex gap-2.5"><span class="font-display font-semibold text-[#7d5c33]">3</span><span>Ask something it can't know, and hear what it does</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-amber">1</span><span>Book a cut and colour as a new client</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-amber">2</span><span>Cancel tomorrow's appointment and hear what it offers</span></li>
+          <li class="flex gap-2.5"><span class="font-display font-semibold text-amber">3</span><span>Ask something it can't know, and hear what it does</span></li>
         </ol>
         <ul class="mt-4 space-y-1 text-[16px]">
           <li><a href="tel:+442034893934" class="text-link tnum" data-track="faq_phone_click"><svg class="icon " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>020 3489 3934</a></li>

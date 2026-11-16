@@ -126,7 +126,7 @@ function Stats({ stats }: { stats: NonNullable<CaseStudyPageData["stats"]> }) {
               className={`flex flex-col pr-6 ${i || ruleAll ? "sm:border-l sm:border-oninverse/12 sm:pl-6" : ""}`}
             >
               <dt className="mt-3 text-body leading-snug text-oninverse/70">{item.label}</dt>
-              <dd className="order-first font-sans text-[clamp(34px,26px+1.4vw,48px)] font-semibold leading-none text-[#7d5c33]">
+              <dd className="order-first font-sans text-[clamp(34px,26px+1.4vw,48px)] font-semibold leading-none text-amber">
                 {item.value}
               </dd>
             </div>

@@ -163,7 +163,7 @@ export function AboutAwards() {
             <div className="col-span-6">
               <Eyebrow light>{about.awards.label}</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">
-                <span className="text-[#7d5c33]">{about.awards.titleLead}</span>{" "}
+                <span className="text-amber">{about.awards.titleLead}</span>{" "}
                 {about.awards.titleRest}
               </h2>
               <div className="mt-7 grid gap-5">

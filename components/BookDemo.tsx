@@ -350,7 +350,7 @@ export function BookDemo({ id, eyebrow, heading, thingsToTry = defaultThingsToTr
               >
                 <span
                   aria-hidden
-                  className="grid size-11 shrink-0 place-items-center rounded-[12px] bg-amber/20 text-[#7d5c33] group-aria-selected:bg-amber group-aria-selected:text-white"
+                  className="grid size-11 shrink-0 place-items-center rounded-[12px] bg-amber/20 text-amber group-aria-selected:bg-amber group-aria-selected:text-white"
                 >
                   <p.icon className="size-5" />
                 </span>

@@ -35,7 +35,7 @@ export default function AmazonPpcAdvertisingAgencyUkPage() {
       <AmazonProcess />
       <AmazonPricing />
       <AmazonProofGuide />
-      <SiteTestimonials eventPrefix="amazon" accent="bg-[#ff9900]" />
+      <SiteTestimonials eventPrefix="amazon" accent="bg-amber" />
       <RelatedServices
         eventPrefix="amazon"
         title="Connect marketplace advertising with wider ecommerce growth"

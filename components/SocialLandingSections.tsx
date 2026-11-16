@@ -146,7 +146,7 @@ function InstagramProcess() {
         <ol className="mt-12 grid grid-cols-4 gap-6 max-xl:grid-cols-2 max-sm:grid-cols-1">
           {process.steps.map(([title, body], i) => (
             <li key={title} className="rounded-card border border-oninverse/12 bg-oninverse/[0.04] p-6">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-[#9bc3f3]">Step {i + 1}</p>
+              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-amber-deep">Step {i + 1}</p>
               <h3 className="mt-3 font-sans text-h4 font-semibold text-balance">{title}</h3>
               <p className="mt-3.5 text-body leading-relaxed text-oninverse/72">{body}</p>
             </li>

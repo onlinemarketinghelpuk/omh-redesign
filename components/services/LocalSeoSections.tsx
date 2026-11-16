@@ -20,7 +20,7 @@ import { localSeo as content } from "@/lib/content/local-seo";
 type Package = (typeof content.packages)[number];
 
 function Band({ tone = "white", ...props }: Omit<Parameters<typeof ServiceBand>[0], "accent" | "tone"> & { tone?: ServiceBandTone }) {
-  return <ServiceBand {...props} tone={tone} accent="bg-[#d96847]" />;
+  return <ServiceBand {...props} tone={tone} accent="bg-amber" />;
 }
 
 export function LocalSeoHero() {
@@ -76,7 +76,7 @@ export function LocalSeoFit() {
   return (
     <SharedServiceFitSection
       label="Who this is for"
-      bandAccent="bg-[#d96847]"
+      bandAccent="bg-amber"
       intro={
         <div>
           <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">A useful starting point</p>
@@ -96,7 +96,7 @@ export function LocalSeoBenefits() {
   return (
     <ServiceReasonGrid
       label="Local SEO benefits"
-      bandAccent="bg-[#d96847]"
+      bandAccent="bg-amber"
       title="How local SEO services make your business easier to find, check and contact."
       titleAccent="easier to find, check and contact."
       body="Traffic, leads, maps, reputation, geography and visibility are where local SEO marketing services pay off for small businesses. Here is what each one means in practice."
@@ -110,7 +110,7 @@ export function LocalSeoWorkstreams() {
     <Band label="Local SEO coverage">
       <Reveal>
         <div><h2 className="font-sans text-h2 font-semibold">What local SEO services can include.</h2><p className="mt-5 text-body leading-relaxed text-ink/68">Your local SEO package and written proposal confirm which profile, website, directory, review and reporting tasks are included.</p></div>
-        <div className="mt-12 grid grid-cols-4 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1">{content.workstreams.map((stream, index) => <article key={stream.title} className="surface-card rounded-card border border-[#c4d4e5] bg-surface p-7"><span className="text-body font-semibold tracking-[0.14em] text-amber-deep">0{index + 1}</span><p className="mt-4 text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">{stream.label}</p><h3 className="mt-3 font-sans text-h4 font-semibold">{stream.title}</h3><p className="mt-3 text-body leading-relaxed text-ink/68">{stream.body}</p><ul className="mt-5 border-t border-[#d5e0eb] pt-3">{stream.items.map((item) => <li key={item} className="flex gap-3 py-2 text-body leading-relaxed"><Check className="mt-0.5 size-4 shrink-0 text-[#ee8c67]" />{item}</li>)}</ul></article>)}</div>
+        <div className="mt-12 grid grid-cols-4 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1">{content.workstreams.map((stream, index) => <article key={stream.title} className="surface-card rounded-card border border-line bg-surface p-7"><span className="text-body font-semibold tracking-[0.14em] text-amber-deep">0{index + 1}</span><p className="mt-4 text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">{stream.label}</p><h3 className="mt-3 font-sans text-h4 font-semibold">{stream.title}</h3><p className="mt-3 text-body leading-relaxed text-ink/68">{stream.body}</p><ul className="mt-5 border-t border-line pt-3">{stream.items.map((item) => <li key={item} className="flex gap-3 py-2 text-body leading-relaxed"><Check className="mt-0.5 size-4 shrink-0 text-amber-deep" />{item}</li>)}</ul></article>)}</div>
       </Reveal>
     </Band>
   );
@@ -120,7 +120,7 @@ export function LocalSeoProcess() {
   return (
     <ServiceProcessTimeline
       label="How local SEO is delivered"
-      bandAccent="bg-[#d96847]"
+      bandAccent="bg-amber"
       intro={
         <>
           <h2 className="font-sans text-h3 font-semibold">From local SEO audit to monthly improvement.</h2>
@@ -195,7 +195,7 @@ export function LocalSeoWhyOmh() {
     <ServiceReasonGrid
       label="Why work with OMH"
       tone="white"
-      bandAccent="bg-[#d96847]"
+      bandAccent="bg-amber"
       title="Know who is responsible and what is included in your local SEO package."
       titleAccent="what is included"
       body="The strongest reasons to choose a local SEO consultant are clear access, communication, scope and reporting, not vague claims about being different."
@@ -208,7 +208,7 @@ export function LocalSeoPromise() {
   return (
     <Band label="What we can promise" tone="mist">
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-12 gap-y-8 max-lg:block"><div className="col-span-5 max-lg:mb-8"><p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">An honest replacement for the guarantee</p><h2 className="mt-5 font-sans text-h2 font-semibold">Clear local SEO work and communication, not a guaranteed Google position.</h2></div><div className="col-span-7"><p className="text-body leading-relaxed text-ink/72">Rankings cannot be guaranteed, so no money-back claim is included here. Any future guarantee would need clear, verified terms before publication.</p><ul className="mt-7 grid grid-cols-2 gap-x-8 border-t border-[#c7d7e7] pt-5 max-sm:grid-cols-1">{["The agreed local SEO audit and package tasks", "A named contact and scheduled communication", "Reporting against the agreed measures", "Clear notice when scope or access blocks work"].map((item) => <li key={item} className="flex gap-3 border-b border-[#c7d7e7] py-3 text-body"><Check className="mt-0.5 size-4 shrink-0 text-amber-deep" />{item}</li>)}</ul></div></div>
+        <div className="grid grid-cols-12 gap-x-12 gap-y-8 max-lg:block"><div className="col-span-5 max-lg:mb-8"><p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">An honest replacement for the guarantee</p><h2 className="mt-5 font-sans text-h2 font-semibold">Clear local SEO work and communication, not a guaranteed Google position.</h2></div><div className="col-span-7"><p className="text-body leading-relaxed text-ink/72">Rankings cannot be guaranteed, so no money-back claim is included here. Any future guarantee would need clear, verified terms before publication.</p><ul className="mt-7 grid grid-cols-2 gap-x-8 border-t border-line pt-5 max-sm:grid-cols-1">{["The agreed local SEO audit and package tasks", "A named contact and scheduled communication", "Reporting against the agreed measures", "Clear notice when scope or access blocks work"].map((item) => <li key={item} className="flex gap-3 border-b border-line py-3 text-body"><Check className="mt-0.5 size-4 shrink-0 text-amber-deep" />{item}</li>)}</ul></div></div>
       </Reveal>
     </Band>
   );
@@ -225,7 +225,7 @@ export function LocalSeoFAQ() {
       phoneEvent="local_seo_phone_click"
       headingSize="lg"
       headingMaxWidthClassName=""
-      bandAccent="bg-[#d96847]"
+      bandAccent="bg-amber"
       tone="mist"
     />
   );

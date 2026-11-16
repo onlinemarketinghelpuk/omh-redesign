@@ -58,7 +58,7 @@ export function FinalCta({
             <span className="mb-5 inline-flex rounded-full bg-teal px-3 py-1 text-[14px] font-semibold text-white">{tag}</span>
           )}
           <h2 className="mb-5 font-sans text-h2 font-semibold text-balance">
-            <HighlightedText text={title} highlight={titleAccent} highlightClassName="text-[#7d5c33]" />
+            <HighlightedText text={title} highlight={titleAccent} highlightClassName="text-amber" />
           </h2>
           <p className="mb-9 text-body leading-relaxed text-oninverse/75">{body}</p>
           <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">
@@ -109,7 +109,7 @@ export function FinalCta({
                 <li key={step} className="grid grid-cols-[auto_1fr] items-start gap-4">
                   <span
                     aria-hidden
-                    className="flex size-8 shrink-0 items-center justify-center rounded-full border border-oninverse/25 font-sans text-[18px] font-semibold tabular-nums text-[#7d5c33]"
+                    className="flex size-8 shrink-0 items-center justify-center rounded-full border border-oninverse/25 font-sans text-[18px] font-semibold tabular-nums text-amber"
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>

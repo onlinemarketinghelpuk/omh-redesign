@@ -93,7 +93,7 @@ export function DentalPage() {
       page={path}
       demoHeading={
         <>
-          Book a 30-minute demo <span className="text-[#7d5c33]">for your practice</span>
+          Book a 30-minute demo <span className="text-amber">for your practice</span>
         </>
       }
     >

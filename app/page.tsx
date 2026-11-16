@@ -201,7 +201,7 @@ export default async function Home() {
                 Our programs
               </p>
               <h2 className="mt-5 font-sans text-h2 font-semibold">
-                Digital marketing programs for <span className="text-[#7d5c33]">growing UK businesses</span>
+                Digital marketing programs for <span className="text-amber">growing UK businesses</span>
               </h2>
               <p className="mx-auto mt-5 max-w-[850px] text-body leading-relaxed text-oninverse/68">
                 Pick the starting point that matches your goal. Each program brings paid ads, SEO,
@@ -359,7 +359,7 @@ export default async function Home() {
                   Why choose us
                 </p>
                 <h2 className="mt-6 font-sans text-h2 font-semibold">
-                  Why UK businesses choose <span className="text-[#7d5c33]">a full-service agency</span>
+                  Why UK businesses choose <span className="text-amber">a full-service agency</span>
                 </h2>
                 <p className="mt-6 text-body leading-relaxed text-oninverse/70">
                   When strategy, ads, SEO, design and reporting sit with separate suppliers, things get
@@ -547,7 +547,7 @@ export default async function Home() {
                 </p>
                 <h2 className="mt-6 font-sans text-h2 font-semibold">
                   A digital marketing agency for{" "}
-                  <span className="text-[#7d5c33]">small businesses and growing UK brands</span>
+                  <span className="text-amber">small businesses and growing UK brands</span>
                 </h2>
                 <p className="mt-6 text-body leading-relaxed text-oninverse/70">{whoWeWorkWith.body}</p>
                 <p className="mt-6 border-l-2 border-amber pl-5 text-body leading-relaxed text-oninverse/85">

@@ -86,12 +86,12 @@ function Mock({ mock }: { mock: GrowthMock }) {
               <div className="truncate text-[14px] font-semibold">{mock.title}</div>
               <div className="truncate text-[12px] text-oninverse/55">{mock.sub}</div>
             </div>
-            <span className="rounded-full border border-success/60 px-2.5 py-0.5 text-[12px] font-semibold text-[#7fd1a4]">{mock.badge}</span>
+            <span className="rounded-full border border-oninverse/30 px-2.5 py-0.5 text-[12px] font-semibold text-oninverse">{mock.badge}</span>
           </div>
           <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-oninverse/10 pt-3">
             {mock.checks.map((c) => (
               <span key={c} className="flex items-center gap-1.5 text-[13px] text-oninverse/75">
-                <Check className="size-3.5 text-[#7fd1a4]" aria-hidden="true" />
+                <Check className="size-3.5 text-oninverse" aria-hidden="true" />
                 {c}
               </span>
             ))}
@@ -105,7 +105,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
             <Phone className="size-5 fill-amber text-amber" aria-hidden="true" />
           </span>
           <div className={`${shell} flex flex-1 items-center gap-3 px-3.5 py-2.5`}>
-            <Check className="size-4 shrink-0 text-[#7fd1a4]" aria-hidden="true" />
+            <Check className="size-4 shrink-0 text-oninverse" aria-hidden="true" />
             <div className="min-w-0">
               <div className="truncate text-[14px] font-semibold">{mock.title}</div>
               <div className="truncate text-[12px] text-oninverse/55">{mock.sub}</div>
@@ -134,7 +134,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
           {mock.items.map((item, i) => (
             <li key={item} className="flex flex-1 items-center gap-2">
               <span className={`flex items-center gap-1.5 whitespace-nowrap text-[13px] ${i < mock.done ? "text-oninverse/80" : "font-semibold text-amber"}`}>
-                <span className={`flex size-5 items-center justify-center rounded-full text-[11px] ${i < mock.done ? "bg-[#7fd1a4]/20 text-[#7fd1a4]" : "bg-amber text-white"}`}>
+                <span className={`flex size-5 items-center justify-center rounded-full text-[11px] ${i < mock.done ? "bg-oninverse/20 text-oninverse" : "bg-amber text-white"}`}>
                   {i < mock.done ? <Check className="size-3" aria-hidden="true" /> : i + 1}
                 </span>
                 {item}
@@ -163,7 +163,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
           {mock.items.map((item) => (
             <li key={item.label} className={`${shell} flex items-center justify-between gap-3 px-3.5 py-2`}>
               <span className="flex items-center gap-2.5 text-[14px] font-semibold">
-                <span className={`size-2 rounded-full ${item.live ? "bg-[#7fd1a4]" : "bg-amber"}`} />
+                <span className={`size-2 rounded-full ${item.live ? "bg-oninverse" : "bg-amber"}`} />
                 {item.label}
               </span>
               <span className={ghostPill}>{item.status}</span>
@@ -190,7 +190,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
             ))}
           </div>
           <div className="mt-2.5 flex items-center justify-between gap-3">
-            <span className="flex items-center gap-1.5 text-[12px] text-[#7fd1a4]">
+            <span className="flex items-center gap-1.5 text-[12px] text-oninverse">
               <Check className="size-3.5" aria-hidden="true" />
               {mock.done}
             </span>
@@ -206,7 +206,7 @@ function Mock({ mock }: { mock: GrowthMock }) {
               {i === 0 ? (
                 <div className="flex justify-center gap-0.5">{[0, 1, 2, 3, 4].map((s) => <Star key={s} className="size-3 fill-amber text-amber" aria-hidden="true" />)}</div>
               ) : (
-                <Check className="mx-auto size-4 text-[#7fd1a4]" aria-hidden="true" />
+                <Check className="mx-auto size-4 text-oninverse" aria-hidden="true" />
               )}
               <div className="mt-1.5 text-[12px] font-semibold leading-tight text-oninverse/80">{item}</div>
             </div>
