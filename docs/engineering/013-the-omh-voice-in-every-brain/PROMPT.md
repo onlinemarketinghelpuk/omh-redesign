@@ -21,11 +21,10 @@ roughly 1160 assertions run by `zsh widget/tests/run.sh`.
 
 Then skim, in this order:
 
-3. `../widget/retell/prompt-core.md`, the shared system prompt. **Note the
-   `../`: it is outside this git repository**, at
-   `/Users/rafiulislam/Work/n8n/OHM/widget/retell/`, alongside
-   `prompt-voice.md` and `prompt-outbound.md`. See "The prompts are not in
-   git" below before you touch them.
+3. `widget/retell/prompt-core.md`, the shared system prompt, alongside
+   `prompt-voice.md` and `prompt-outbound.md`. It is tracked here and
+   symlinked into the working copy at `OHM/widget/retell`, so edit either
+   path: they are the same file.
 4. `widget/gates/templates.ts`, every follow-up text and email
 5. `widget/gates/message-text.js`, in particular `validateMessage`
 6. `widget/tests/templates.test.ts` and any suite near it, to see how tests
@@ -40,22 +39,6 @@ full table. Two facts about it change how you work:
 chat agent, `retell/create-agent.py` reads it for the web voice agent, and
 `retell/create-outbound-agent.py` reads it for the callback agent. One edit
 reaches all three. Do not create per-agent copies of the tone section.
-
-**The prompts are not in git, and that is a finding rather than a design.**
-`OHM/widget/retell/` sits outside the `OHM/website` repository. The file that
-defines Melissa for the chat agent, the web voice agent and the callback
-agent is therefore version controlled nowhere: no history, no diff, and no
-copy if the machine is lost. The three `.md` files contain no secrets; only
-the sibling `create-*.py` scripts read credentials, and they read them from
-`.env.local` rather than holding them. So there is no reason the prompts
-cannot be tracked, and there is a good reason to track them before anybody
-rewrites the tone section.
-
-Do not restructure this yourself. It touches `build-workflows.py` and both
-Retell scripts, which resolve the path as `ROOT / "retell"`, and two copies
-that drift would be worse than one copy outside git. Raise it with Rafiul,
-and in the meantime **take a copy of the three files before your first edit**
-so the previous wording can be recovered.
 
 **The knowledge base is out of scope and this is deliberate.** `widget/kb/`
 holds 517 chunks built by `kb/build.py` from `raw.json`, crawled from the

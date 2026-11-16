@@ -98,13 +98,17 @@ The three `.md` files hold no secrets; only the sibling `create-*.py` scripts
 read credentials, and they read them from `.env.local`. So nothing prevents
 tracking them.
 
-Not fixed here, because it touches `build-workflows.py` and both Retell
-scripts, which resolve the path as `ROOT / "retell"`, and two copies that
-drift would be worse than one copy outside git.
+Fixed on 16 November. `build-workflows.py` needed no change at all: its
+`_root()` already searched for `.env.local` rather than assuming a layout.
+The two create scripts did, and now use the same helper.
 
-- [ ] 10. **Rafiul's decision.** Where the Retell prompts should live, and
-      whether moving them into the repo is worth the path change in three
-      files. Until then, copy the three files before editing them.
+- [x] 10. **Decided 16 Nov: into the repo.** `widget/retell/` now lives here
+      and is symlinked into the working copy, the same as `convex/` and
+      `n8n/`. Only the two create scripts needed a change, because Python
+      resolves `__file__` through the symlink and their `HERE.parent` no
+      longer found `.env.local`; they use `build-workflows.py`'s root helper
+      now. All thirteen built workflows are byte identical to before the
+      move.
 
 ## Done, 16 November 2026: what ran and what it found
 
