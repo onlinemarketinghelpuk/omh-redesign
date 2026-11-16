@@ -69,14 +69,19 @@ function GuaranteeBadge() {
       </defs>
       <circle cx="120" cy="120" r="112" fill="none" stroke="var(--accent)" strokeWidth="2" strokeDasharray="3 6" opacity=".7" />
       <circle cx="120" cy="120" r="104" fill="none" stroke="var(--accent)" strokeWidth="1" opacity=".5" />
-      <text fill="var(--accent-light)" fontSize="13" fontWeight="700" letterSpacing="3" fontFamily="var(--font-instrument), sans-serif">
+      {/* The panel is black in both themes: white ring text (brown on black was 3.4:1), and the inner label on
+          two white lines so it fits inside the r=60 ring (one line was wider than the circle). */}
+      <text fill="var(--color-oninverse)" fontSize="13" fontWeight="700" letterSpacing="3" fontFamily="var(--font-instrument), sans-serif">
         <textPath href="#badge-ring" startOffset="2%">MONEY-BACK GUARANTEE • ONLINE MARKETING HELP •</textPath>
       </text>
       <circle cx="120" cy="120" r="68" fill="var(--accent)" />
       <circle cx="120" cy="120" r="60" fill="none" stroke="#000" strokeOpacity=".35" strokeWidth="1.5" />
-      <path d="M120 88l24 9v18c0 16-10 28-24 33-14-5-24-17-24-33V97z" fill="#000" />
-      <path d="M110 120l7 7 14-15" fill="none" stroke="var(--accent)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <text x="120" y="162" textAnchor="middle" fill="#000" fontSize="10.5" fontWeight="700" letterSpacing="2" fontFamily="var(--font-instrument), sans-serif">BACKED BY OUR CEO</text>
+      <path d="M120 76l20 7.5v15c0 13.5-8.5 23.5-20 27.5-11.5-4-20-14-20-27.5V83.5z" fill="#000" />
+      <path d="M111.5 101.5l6 6 11.5-12.5" fill="none" stroke="var(--accent)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+      <text textAnchor="middle" fill="var(--color-oninverse)" fontSize="10" fontWeight="700" letterSpacing="1.6" fontFamily="var(--font-instrument), sans-serif">
+        <tspan x="120" y="147">BACKED BY</tspan>
+        <tspan x="120" y="160">OUR CEO</tspan>
+      </text>
     </svg>
   );
 }
@@ -97,7 +102,7 @@ export function WebsiteDesignsPage() {
             </p>
             <p className="mt-5 text-lead leading-relaxed text-ink/75">{page.lead}</p>
             <div className="mt-9 flex flex-wrap gap-3.5 max-sm:flex-col max-sm:items-stretch">
-              <Button href="/omh-free-consultation" arrow data-event="website_designs_consultation_click">
+              <Button href="/contact" arrow data-event="website_designs_consultation_click">
                 {page.ctas.consultation}
               </Button>
               <Button href="/contact" variant="secondary" arrow data-event="website_designs_contact_click">
@@ -173,30 +178,43 @@ export function WebsiteDesignsPage() {
         <h2 className="font-sans text-h2 font-semibold text-balance">
           {page.gallery.heading}
         </h2>
+        <p className="mt-4 hidden text-body text-muted pointer-fine:block">Hover over a design to scroll through the page.</p>
         <div className="mt-12 flex flex-col gap-14">
           {page.gallery.categories.map((category) => (
             <section key={category.title} aria-label={category.title}>
               <h3 className="flex items-center gap-4 font-sans text-h4 font-semibold">
                 {category.title}
                 <span aria-hidden className="h-px flex-1 bg-line" />
-                <span className="text-bsm font-medium text-muted tabular-nums">
+                <span className="whitespace-nowrap text-bsm font-medium text-muted tabular-nums">
                   {category.images.length} designs
                 </span>
               </h3>
               <ul className="mt-7 grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
-                {category.images.map((image) => (
-                  <li
-                    key={image.file}
-                    className="overflow-hidden rounded-media border border-line bg-surface"
-                  >
-                    <Image
-                      src={`${page.gallery.base}${image.file}`}
-                      alt={image.alt}
-                      width={1024}
-                      height={576}
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                      className="h-auto w-full"
-                    />
+                {category.images.map((image, i) => (
+                  <li key={image.file}>
+                    {/* Browser-window card. On hover the page screenshot (cropped from the mock-up into
+                        pages/) slides up until its bottom meets the frame: 100cqh is the frame height,
+                        min() keeps screenshots shorter than the frame still. */}
+                    <figure className="group overflow-hidden rounded-card border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-ink/30 hover:shadow-[0_28px_60px_-34px_rgb(0_0_0/0.45)]">
+                      <div aria-hidden className="flex items-center gap-1.5 border-b border-line px-4 py-3">
+                        <span className="size-2.5 rounded-full bg-ink/15" />
+                        <span className="size-2.5 rounded-full bg-ink/15" />
+                        <span className="size-2.5 rounded-full bg-ink/15" />
+                        <span className="ml-3 min-w-0 flex-1 truncate rounded-full bg-ink/[0.05] px-3 py-1 text-[14px] text-muted">
+                          {category.title.replace(/ Designs$/, "")} · {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-surface [container-type:size]">
+                        <Image
+                          src={`${page.gallery.base}pages/${image.file.replace(/\.\w+$/, ".jpg")}`}
+                          alt={image.alt}
+                          width={990}
+                          height={1016}
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                          className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:duration-[6000ms] group-hover:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))]"
+                        />
+                      </div>
+                    </figure>
                   </li>
                 ))}
               </ul>
@@ -281,7 +299,7 @@ export function WebsiteDesignsPage() {
             <h3 className="mt-4 font-sans text-h3 font-semibold text-balance">{page.caseStudies.cta.heading}</h3>
             <p className="mt-3 text-body leading-relaxed text-oninverse/70">{page.caseStudies.cta.body}</p>
             <div className="mt-auto pt-8">
-              <Button href="/omh-free-consultation" variant="inverse" arrow data-event="website_designs_case_cta_click">
+              <Button href="/contact" variant="inverse" arrow data-event="website_designs_case_cta_click">
                 {page.caseStudies.cta.label}
               </Button>
             </div>
@@ -296,7 +314,7 @@ export function WebsiteDesignsPage() {
             <h2 className="font-sans text-h2 font-semibold text-balance">{page.contact.heading}</h2>
             <p className="mt-5 text-body leading-relaxed text-oninverse/70">{page.contact.body}</p>
             <div className="mt-8 flex flex-wrap gap-3.5 max-sm:flex-col">
-              <Button href="/omh-free-consultation" variant="inverse" arrow data-event="website_designs_booking_click">
+              <Button href="/contact" variant="inverse" arrow data-event="website_designs_booking_click">
                 {page.consultation.eyebrow}
               </Button>
               <Button href="/contact" variant="ghost-white" arrow data-event="website_designs_contact_band_click">
@@ -358,7 +376,7 @@ export function WebsiteDesignsPage() {
               <Button href="/warranty" arrow data-event="website_designs_warranty_click">
                 Read the guarantee
               </Button>
-              <Button href="/omh-free-consultation" variant="secondary" arrow data-event="website_designs_guarantee_consultation_click">
+              <Button href="/contact" variant="secondary" arrow data-event="website_designs_guarantee_consultation_click">
                 {page.ctas.consultation}
               </Button>
             </div>
@@ -395,7 +413,7 @@ export function WebsiteDesignsPage() {
         titleAccent="your business actually needs."
         body={page.finalCta.body}
         primary={{ label: "Request a Website Quote", href: "/wordpress-development-request-quote", event: "website_designs_final_quote_click" }}
-        secondary={{ label: "Book a Free Consultation", href: "/omh-free-consultation", event: "website_designs_final_consultation_click" }}
+        secondary={{ label: "Book a Free Consultation", href: "/contact", event: "website_designs_final_consultation_click" }}
         contactEvents={{ phone: "website_designs_phone_click", email: "website_designs_email_click" }}
       />
     </main>
