@@ -143,7 +143,7 @@ export function SpendTable({
                     "min-h-9 shrink-0 cursor-pointer rounded-lg border px-2.5 text-[13px] tabular-nums outline-none transition-colors duration-150",
                     "focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-default",
                     has
-                      ? "border-line bg-warm font-semibold text-ink"
+                      ? "border-line bg-warm font-medium text-ink"
                       : "border-dashed border-line text-muted hover:bg-warm hover:text-ink",
                   ].join(" ")}
                 >

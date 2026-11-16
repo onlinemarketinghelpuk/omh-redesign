@@ -80,23 +80,26 @@ export function Palette({ tabs, groups, demo }: { tabs: Tab[]; groups: { key: st
       setAt(0);
       setOpen(true);
     };
+    /* Capture phase, and stop it there: the website's own search
+       (components/layout/SiteSearch.tsx) stays mounted under the dashboard
+       and opens a modal <dialog> on the same shortcut. That dialog took
+       focus and made this palette inert, so typed keys went nowhere.
+       `key` can be undefined on autofill's synthetic keydowns. */
     const onKey = (e: KeyboardEvent) => {
+      if (typeof e.key !== "string") return;
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
+        e.stopImmediatePropagation();
         show();
       }
     };
     window.addEventListener(OPEN, show);
-    window.addEventListener("keydown", onKey);
+    window.addEventListener("keydown", onKey, { capture: true });
     return () => {
       window.removeEventListener(OPEN, show);
-      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("keydown", onKey, { capture: true });
     };
   }, []);
-
-  useEffect(() => {
-    if (open) input.current?.focus();
-  }, [open]);
 
   const found = useMemo(() => {
     const s = q.trim().toLowerCase();
@@ -127,8 +130,12 @@ export function Palette({ tabs, groups, demo }: { tabs: Tab[]; groups: { key: st
       >
         <div className="flex items-center gap-2.5 border-b border-[#141416]/[0.07] px-4">
           <IconSearch className="h-4 w-4 text-[#71717a]" />
+          {/* autoFocus, not an effect: an effect focuses a frame after the
+              palette appears, and keys typed straight after Command-K (as a
+              fast typist does) landed nowhere. Found by driving it. */}
           <input
             ref={input}
+            autoFocus
             value={q}
             onChange={(e) => { setQ(e.target.value); setAt(0); }}
             onKeyDown={(e) => {

@@ -35,9 +35,9 @@ export type EditorEntry = {
 const input =
   "rounded-lg border border-line bg-surface px-3 text-[14px] text-ink outline-none transition-colors focus-visible:border-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]/30";
 const btn =
-  "inline-flex min-h-10 cursor-pointer items-center rounded-lg border border-line px-3 text-[13px] font-semibold text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-10 cursor-pointer items-center rounded-lg border border-line px-3 text-[13px] font-medium text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
 const primary =
-  "inline-flex min-h-11 cursor-pointer items-center rounded-xl bg-inverse px-4 text-[14px] font-semibold text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-11 cursor-pointer items-center rounded-xl bg-inverse px-4 text-[14px] font-medium text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
 
 function times(n: number) {
   return n === 2 ? "twice" : n === 3 ? "three times" : `${n} times`;
@@ -117,11 +117,11 @@ export function MessageEditor({
       {isNew && (
         <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
           <label className="grid min-w-0 grid-cols-1 gap-1.5">
-            <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Message id</span>
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Message id</span>
             <input className={`${input} min-h-10`} value={key} onChange={(e) => setKey(e.target.value.toLowerCase())} placeholder="spring_offer_sms" disabled={!canWrite} />
           </label>
           <label className="grid min-w-0 grid-cols-1 gap-1.5">
-            <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Sent as</span>
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Sent as</span>
             <select className={`${input} min-h-10`} value={channel} onChange={(e) => setChannel(e.target.value)} disabled={!canWrite}>
               <option value="sms">Text</option>
               <option value="email">Email</option>
@@ -132,13 +132,13 @@ export function MessageEditor({
 
       {channel === "email" && (
         <label className="grid min-w-0 grid-cols-1 gap-1.5">
-          <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Subject</span>
+          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Subject</span>
           <input className={`${input} min-h-10`} value={subject} onChange={(e) => setSubject(e.target.value)} disabled={!canWrite} />
         </label>
       )}
 
       <div className="grid min-w-0 grid-cols-1 gap-1.5">
-        <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">
+        <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
           {channel === "call" ? "What the agent is told" : "Words"}
         </span>
         {canWrite && (
@@ -166,7 +166,7 @@ export function MessageEditor({
         />
         {seg && (
           <p id="seg" className="text-[12.5px] text-muted" aria-live="polite">
-            <strong className="font-semibold text-ink">
+            <strong className="font-medium text-ink">
               {seg.segments} {seg.segments === 1 ? "text" : "texts joined"}
             </strong>
             {seg.segments > 1 ? `, so it costs ${times(seg.segments)} a single text` : ""}
@@ -179,15 +179,15 @@ export function MessageEditor({
 
       {/* The preview: what a real person would read. */}
       <section aria-label="Preview" className="rounded-xl border border-line bg-warm/70 p-4">
-        <p className="text-[11px] font-semibold uppercase tracking-[.08em] text-muted">Preview, with example details</p>
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Preview, with example details</p>
         {channel === "email" && out.subject && (
-          <p className="mt-2 text-[13.5px] font-semibold text-ink">{out.subject}</p>
+          <p className="mt-2 text-[13.5px] font-medium text-ink">{out.subject}</p>
         )}
         <p className="mt-2 whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink">{out.body}</p>
         {entry.marketing && (
           <p className="mt-3 flex flex-wrap items-center gap-2 whitespace-pre-wrap text-[13.5px] text-muted/80">
             <span className="opacity-70">{OPT_OUT}</span>
-            <span className="inline-flex items-center gap-1 rounded-md border border-line px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-[.06em]">
+            <span className="font-mono inline-flex items-center gap-1 rounded-md border border-line px-1.5 py-0.5 text-[11px] font-medium uppercase tracking-[0.1em]">
               <IconLock className="h-3 w-3" /> Added automatically
             </span>
           </p>

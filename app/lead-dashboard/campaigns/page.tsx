@@ -83,7 +83,7 @@ export default async function CampaignsPage({
       toolbar={
         <Link
           href={demo ? "/lead-dashboard/campaigns/new?demo=1" : "/lead-dashboard/campaigns/new"}
-          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-inverse px-3 py-1.5 text-[13.5px] font-semibold text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-inverse px-3 py-1.5 text-[13.5px] font-medium text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
           Start a campaign
         </Link>
@@ -108,7 +108,7 @@ export default async function CampaignsPage({
           <div className="pb-5 text-center">
             <Link
               href={demo ? "/lead-dashboard/campaigns/new?demo=1" : "/lead-dashboard/campaigns/new"}
-              className="inline-flex min-h-11 cursor-pointer items-center rounded-lg bg-inverse px-4 text-[14px] font-semibold text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+              className="inline-flex min-h-11 cursor-pointer items-center rounded-lg bg-inverse px-4 text-[14px] font-medium text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
             >
               Start the first one
             </Link>
@@ -119,7 +119,7 @@ export default async function CampaignsPage({
         </Card>
       ) : (
         <>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
             <Kpi
               label="People reached"
               value={String(reachedAll)}
@@ -187,7 +187,7 @@ export default async function CampaignsPage({
                         </Pill>
                         <Link
                           href={`/lead-dashboard/campaigns/${encodeURIComponent(c.id)}${demo ? "?demo=1" : ""}`}
-                          className="whitespace-nowrap rounded-lg border border-line px-2.5 py-1.5 text-[13px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                          className="whitespace-nowrap rounded-lg border border-line px-2.5 py-1.5 text-[13px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                         >
                           Everyone on it
                         </Link>
@@ -195,7 +195,7 @@ export default async function CampaignsPage({
                     }
                   >
                     {say && (
-                      <p className="mb-4 max-w-[70ch] font-sans text-[15.5px] font-semibold leading-snug tracking-[-.01em] text-ink">
+                      <p className="mb-4 max-w-[70ch] font-sans text-[15.5px] font-medium leading-snug tracking-[-.01em] text-ink">
                         {say}
                       </p>
                     )}

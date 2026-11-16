@@ -169,7 +169,7 @@ export default async function Leads({
           {/* items-start: without it the three cards stretch to the height
               of the taller mix card beside them and read as empty boxes. */}
           <div className="mb-4 grid items-start gap-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-            <div className="grid gap-3 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               <Kpi label="Leads captured" value={String(leads.length)} icon={IconLead} accent />
               <Kpi
                 label="Ready to buy"

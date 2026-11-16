@@ -142,7 +142,7 @@ export function OutcomePicker({
         <button
           type="button"
           onClick={() => save("won", amount ? Number(amount) : undefined)}
-          className="min-h-8 cursor-pointer rounded-lg bg-inverse px-2.5 text-[12.5px] font-semibold text-oninverse outline-none hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="min-h-8 cursor-pointer rounded-lg bg-inverse px-2.5 text-[12.5px] font-medium text-oninverse outline-none hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
           Save
         </button>
@@ -212,7 +212,7 @@ export function OutcomePicker({
         "inline-flex min-h-9 cursor-pointer items-center gap-1.5 rounded-lg border px-2.5 text-[13px] outline-none transition-colors duration-150",
         "focus-visible:ring-2 focus-visible:ring-[var(--accent)]",
         won
-          ? "border-[rgb(var(--accent-rgb)/.4)] bg-[rgb(var(--accent-rgb)/.12)] font-semibold text-ink"
+          ? "border-[rgb(var(--accent-rgb)/.4)] bg-[rgb(var(--accent-rgb)/.12)] font-medium text-ink"
           : decided
             ? "border-line bg-warm text-ink"
             : "border-dashed border-line text-muted hover:bg-warm hover:text-ink",

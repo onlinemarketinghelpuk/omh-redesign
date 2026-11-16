@@ -149,7 +149,7 @@ export default async function Overview({
           anybody opening a dashboard has is "is today normal", and a grid of
           numbers answers that only after you have read all of it. */}
       <div
-        className="mb-3 overflow-hidden rounded-2xl bg-inverse text-oninverse"
+        className="mb-3 overflow-hidden rounded-[20px] bg-inverse text-oninverse"
         style={{
           boxShadow: "var(--e2)",
           backgroundImage:
@@ -159,10 +159,10 @@ export default async function Overview({
       >
         <div className="flex flex-col gap-5 px-5 py-5 sm:flex-row sm:items-center sm:gap-8 sm:px-7 sm:py-6">
           <div className="min-w-0 flex-1">
-            <p className="font-sans text-[11px] font-semibold uppercase tracking-[.14em] text-white/55">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-white/55">
               Today
             </p>
-            <p className="mt-2 max-w-[56ch] font-sans text-[19px] font-semibold leading-snug tracking-[-.01em] sm:text-[21px]">
+            <p className="mt-2 max-w-[56ch] font-sans text-[19px] font-medium leading-snug tracking-[-.01em] sm:text-[21px]">
               {day.calls === 0 && leadsToday === 0
                 ? "Nothing has come in yet today."
                 : `${day.calls} ${day.calls === 1 ? "call" : "calls"} and ${leadsToday} ${
@@ -178,13 +178,13 @@ export default async function Overview({
               width. */}
           <dl className="flex shrink-0 gap-7 border-t border-white/12 pt-4 sm:border-0 sm:pt-0">
             <div>
-              <dd className="font-sans text-[30px] font-semibold leading-none tabular-nums">
+              <dd className="font-sans text-[30px] font-medium leading-none tabular-nums">
                 {dueToday.length}
               </dd>
               <dt className="mt-1.5 text-[12px] text-white/55">follow-ups due</dt>
             </div>
             <div>
-              <dd className="font-sans text-[30px] font-semibold leading-none tabular-nums">
+              <dd className="font-sans text-[30px] font-medium leading-none tabular-nums">
                 {upcoming.length}
               </dd>
               <dt className="mt-1.5 text-[12px] text-white/55">appointments ahead</dt>
@@ -193,7 +193,7 @@ export default async function Overview({
         </div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
         <Kpi
           rise={0}
           label="Calls today"
@@ -243,7 +243,7 @@ export default async function Overview({
             <IconHandover className="h-[17px] w-[17px]" />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block font-sans text-[14.5px] font-semibold">
+            <span className="block font-sans text-[14.5px] font-medium">
               {inbox.waiting} {inbox.waiting === 1 ? "person is" : "people are"} waiting
               for an answer
             </span>
@@ -253,7 +253,7 @@ export default async function Overview({
               page.
             </span>
           </span>
-          <span className="shrink-0 font-sans text-[13.5px] font-semibold text-[var(--dash-accent-text)] underline underline-offset-4">
+          <span className="shrink-0 font-sans text-[13.5px] font-medium text-[var(--dash-accent-text)] underline underline-offset-4">
             Open the queue
           </span>
         </Link>
@@ -269,7 +269,7 @@ export default async function Overview({
           style={{ boxShadow: "var(--e1), var(--ring-inset)" }}
         >
           <IconRoute className="h-4 w-4 shrink-0 text-[var(--dash-accent-text)]" />
-          <span className="text-[13.5px] font-semibold text-ink">
+          <span className="text-[13.5px] font-medium text-ink">
             {dueToday.length === 0
               ? `${active.length} being followed up`
               : `${dueToday.length} follow-${dueToday.length === 1 ? "up goes" : "ups go"} out today`}
@@ -310,7 +310,7 @@ export default async function Overview({
           title="Call volume"
           note="Last 14 days"
           action={
-            <span className="font-sans text-[13px] font-semibold tabular-nums">
+            <span className="font-sans text-[13px] font-medium tabular-nums">
               {days.reduce((n, d) => n + d.calls, 0)} calls
             </span>
           }
@@ -345,7 +345,7 @@ export default async function Overview({
               },
             ].map((c) => (
               <div key={c.k}>
-                <dd className="font-sans text-[20px] font-semibold leading-none tabular-nums text-ink">
+                <dd className="font-sans text-[20px] font-medium leading-none tabular-nums text-ink">
                   {c.v}
                 </dd>
                 <dt className="mt-1.5 text-[12.5px] text-muted">{c.k}</dt>
@@ -368,7 +368,7 @@ export default async function Overview({
               <BarCompare unit="leads" bars={channelBars} limit={6} />
               <Link
                 href={demo ? "/lead-dashboard/channels?demo=1" : "/lead-dashboard/channels"}
-                className="mt-4 inline-flex items-center gap-1 text-[13.5px] font-semibold text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                className="mt-4 inline-flex items-center gap-1 text-[13.5px] font-medium text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
               >
                 The full channel report
               </Link>
@@ -443,7 +443,7 @@ export default async function Overview({
               {upcoming.slice(0, 7).map((b) => (
                 <li key={b._id} className={`px-4 py-3 sm:px-5 ${tr}`}>
                   <div className="flex items-baseline justify-between gap-3">
-                    <span className="font-sans text-[14px] font-semibold tabular-nums">
+                    <span className="font-sans text-[14px] font-medium tabular-nums">
                       {b.preferredDate}
                     </span>
                     <span className="text-[13px] tabular-nums text-muted">{b.preferredTime}</span>
@@ -504,7 +504,7 @@ function Summary({
       </span>
       <div>
         <dt className="text-[12.5px] text-muted">{label}</dt>
-        <dd className="font-sans text-[17px] font-semibold tabular-nums">{value}</dd>
+        <dd className="font-sans text-[17px] font-medium tabular-nums">{value}</dd>
       </div>
     </div>
   );

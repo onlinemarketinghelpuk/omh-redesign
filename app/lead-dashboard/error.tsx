@@ -56,10 +56,10 @@ export default function DashboardError({
       <div>
         <main className="mx-auto max-w-[1400px] px-5 py-10 sm:px-7">
           <div className="max-w-[60ch] rounded-xl border border-line bg-surface p-6">
-            <p className="font-sans text-[11px] font-semibold uppercase tracking-[.14em] text-[var(--dash-accent-text)]">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-[var(--dash-accent-text)]">
               AI assistant
             </p>
-            <h1 className="mt-1.5 font-sans text-[24px] font-semibold tracking-[-.02em]">
+            <h1 className="mt-1.5 font-sans text-[24px] font-medium tracking-[-.02em]">
               This screen did not load
             </h1>
             <p className="mt-3 text-[14.5px] leading-relaxed text-muted">
@@ -72,20 +72,20 @@ export default function DashboardError({
                 type="button"
                 disabled={retrying}
                 onClick={() => retry(() => reset())}
-                className="min-h-11 cursor-pointer rounded-lg bg-inverse px-4 text-[14px] font-semibold text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                className="min-h-11 cursor-pointer rounded-lg bg-inverse px-4 text-[14px] font-medium text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
               >
                 {retrying ? "Trying…" : "Try again"}
               </button>
               <Link
                 href="/lead-dashboard"
-                className="inline-flex min-h-11 cursor-pointer items-center rounded-lg border border-line bg-surface px-4 text-[14px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                className="inline-flex min-h-11 cursor-pointer items-center rounded-lg border border-line bg-surface px-4 text-[14px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
               >
                 Go to the overview
               </Link>
             </div>
 
             <div className="mt-6 border-t border-line pt-4">
-              <p className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">
+              <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                 Or go somewhere else
               </p>
               <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">

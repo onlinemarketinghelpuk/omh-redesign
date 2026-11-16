@@ -101,7 +101,7 @@ export function CampaignStart({
     });
   }
 
-  const label = "block text-[12px] font-semibold uppercase tracking-[.08em] text-muted";
+  const label = "block text-[12px] font-medium uppercase tracking-[.08em] text-muted";
   const field =
     "mt-1.5 w-full rounded-lg border border-line bg-surface px-3 py-2 text-[14px] text-ink " +
     "outline-none focus-visible:border-[var(--accent)] focus-visible:ring-2 " +
@@ -111,7 +111,7 @@ export function CampaignStart({
     <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] xl:items-start">
       {/* ------------------------------------------------------ the list */}
       <section className="rounded-xl border border-line bg-surface p-4 sm:p-5">
-        <h2 className="font-sans text-[15px] font-semibold">Who are you writing to?</h2>
+        <h2 className="font-sans text-[15px] font-medium">Who are you writing to?</h2>
         <p className="mt-1 text-[13.5px] leading-relaxed text-muted">
           A CSV with a header row. It must carry{" "}
           <code className="rounded bg-warm px-1 py-0.5 text-[12.5px]">consentBasis</code> and{" "}
@@ -138,7 +138,7 @@ export function CampaignStart({
             type="file"
             accept=".csv,text/csv,text/plain"
             onChange={(e) => onFile(e.target.files?.[0] ?? null)}
-            className="mt-1.5 block w-full text-[13px] text-muted file:mr-3 file:cursor-pointer file:rounded-lg file:border file:border-line file:bg-warm file:px-3 file:py-2 file:text-[13px] file:font-semibold file:text-ink"
+            className="mt-1.5 block w-full text-[13px] text-muted file:mr-3 file:cursor-pointer file:rounded-lg file:border file:border-line file:bg-warm file:px-3 file:py-2 file:text-[13px] file:font-medium file:text-ink"
           />
         </div>
 
@@ -169,7 +169,7 @@ export function CampaignStart({
 
       {/* --------------------------------------------------- the preview */}
       <section className="rounded-xl border border-line bg-surface p-4 sm:p-5">
-        <h2 className="font-sans text-[15px] font-semibold">What would happen</h2>
+        <h2 className="font-sans text-[15px] font-medium">What would happen</h2>
 
         {!read ? (
           <p className="mt-3 text-[13.5px] text-muted">
@@ -228,7 +228,7 @@ export function CampaignStart({
             <div className="mt-5 border-t border-line pt-4">
               {!configured && !demo && (
                 <p className="mb-3 rounded-lg border border-line bg-warm px-3 py-2.5 text-[13px] leading-relaxed text-ink">
-                  <strong className="font-semibold">Not connected yet.</strong> This
+                  <strong className="font-medium">Not connected yet.</strong> This
                   server has no reactivation webhook set, and the workflow on
                   n8n is not active, so nothing can be sent from here. The
                   preview above is still real: it is computed from the same
@@ -239,7 +239,7 @@ export function CampaignStart({
                 type="button"
                 onClick={go}
                 disabled={pending || !accepted.length || !name.trim() || (!canWrite && !demo) || (!configured && !demo)}
-                className="min-h-11 cursor-pointer rounded-lg bg-inverse px-4 text-[14px] font-semibold text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
+                className="min-h-11 cursor-pointer rounded-lg bg-inverse px-4 text-[14px] font-medium text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {pending
                   ? "Starting…"
@@ -289,7 +289,7 @@ function Count({ n, what, tone }: { n: number; what: string; tone?: "good" | "wa
           : "border-line";
   return (
     <li className={`rounded-lg border px-2.5 py-1.5 text-[13px] ${cls}`}>
-      <strong className="font-semibold tabular-nums">{n}</strong>{" "}
+      <strong className="font-medium tabular-nums">{n}</strong>{" "}
       <span className="text-muted">{what}</span>
     </li>
   );
@@ -298,7 +298,7 @@ function Count({ n, what, tone }: { n: number; what: string; tone?: "good" | "wa
 function Table({ title, rows, more }: { title: string; rows: string[][]; more: number }) {
   return (
     <div className="mt-4">
-      <h3 className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">{title}</h3>
+      <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">{title}</h3>
       <ul className="mt-1.5 max-h-[220px] overflow-y-auto rounded-lg border border-line">
         {rows.map((r, i) => (
           <li

@@ -137,7 +137,7 @@ export default async function CampaignPage({
       toolbar={
         <Link
           href={back}
-          className="inline-flex min-h-9 items-center gap-1.5 whitespace-nowrap rounded-lg border border-line bg-surface px-3 text-[13px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="inline-flex min-h-9 items-center gap-1.5 whitespace-nowrap rounded-lg border border-line bg-surface px-3 text-[13px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
           <IconBack className="h-4 w-4" />
           All campaigns
@@ -158,7 +158,7 @@ export default async function CampaignPage({
         <>
           <Card rise={0}>
             {say && (
-              <p className="mb-4 max-w-[70ch] font-sans text-[16px] font-semibold leading-snug tracking-[-.01em] text-ink">
+              <p className="mb-4 max-w-[70ch] font-sans text-[16px] font-medium leading-snug tracking-[-.01em] text-ink">
                 {say}
               </p>
             )}

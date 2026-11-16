@@ -115,7 +115,7 @@ export default async function InboxPage({
         </Card>
       ) : (
         <>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
             <Kpi
               label="Waiting on a person"
               value={String(waiting.length)}
@@ -148,7 +148,7 @@ export default async function InboxPage({
           </div>
 
           <div className="mt-5 flex flex-wrap items-center gap-2">
-            <span className="mr-0.5 font-sans text-[12px] font-semibold uppercase tracking-[.1em] text-muted">
+            <span className="font-mono mr-0.5 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
               Channel
             </span>
             <Link
@@ -217,7 +217,7 @@ function Row({ m, demo, first }: { m: InboxItem; demo: boolean; first: boolean }
 
       <span className="min-w-0 flex-1">
         <span className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
-          <span className="font-sans text-[14px] font-semibold text-ink">
+          <span className="font-sans text-[14px] font-medium text-ink">
             {m.who ?? "Unknown"}
           </span>
           <span className="text-[12.5px] text-muted">
@@ -244,7 +244,7 @@ function Row({ m, demo, first }: { m: InboxItem; demo: boolean; first: boolean }
         </span>
 
         {m.needsPerson && (
-          <span className="mt-1.5 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-[var(--dash-accent-text)]">
+          <span className="mt-1.5 inline-flex items-center gap-1.5 text-[12.5px] font-medium text-[var(--dash-accent-text)]">
             <IconAlert className="h-3.5 w-3.5" />
             Waiting on a person
           </span>

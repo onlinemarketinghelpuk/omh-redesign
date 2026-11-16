@@ -13,7 +13,7 @@ import { IconAlert, IconCheck } from "./icons";
 const input =
   "rounded-lg border border-line bg-surface px-3 text-[14px] text-ink outline-none transition-colors focus-visible:border-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]/30";
 const primary =
-  "inline-flex min-h-11 cursor-pointer items-center rounded-xl bg-inverse px-4 text-[14px] font-semibold text-oninverse transition-opacity duration-150 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-11 cursor-pointer items-center rounded-xl bg-inverse px-4 text-[14px] font-medium text-oninverse transition-opacity duration-150 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-55";
 const DAYS = [
   [1, "Mon"], [2, "Tue"], [3, "Wed"], [4, "Thu"], [5, "Fri"], [6, "Sat"], [0, "Sun"],
 ] as const;
@@ -44,8 +44,8 @@ export function AgentEditor({ initial, canWrite, demo }: { initial: AgentValue; 
 
   return (
     <div className="grid grid-cols-1 gap-5">
-      <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-        <h2 className="font-sans text-[15px] font-semibold text-ink">The number it calls from</h2>
+      <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+        <h2 className="font-sans text-[15px] font-medium text-ink">The number it calls from</h2>
         <input
           className={`${input} mt-3 min-h-10 w-full max-w-sm`}
           value={v.fromNumber}
@@ -62,8 +62,8 @@ export function AgentEditor({ initial, canWrite, demo }: { initial: AgentValue; 
         </p>
       </section>
 
-      <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-        <h2 className="font-sans text-[15px] font-semibold text-ink">When it may call</h2>
+      <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+        <h2 className="font-sans text-[15px] font-medium text-ink">When it may call</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {DAYS.map(([d, l]) => (
             <label key={d} className="flex min-h-10 items-center gap-2 rounded-lg border border-line px-3 text-[13px] text-ink has-[:checked]:border-[var(--accent)] has-[:checked]:bg-[rgb(var(--accent-rgb)/.08)]">
@@ -91,19 +91,19 @@ export function AgentEditor({ initial, canWrite, demo }: { initial: AgentValue; 
         <p className="mt-2 text-[12.5px] text-muted">A call due outside these hours waits for the next window. Texts keep their own hours.</p>
       </section>
 
-      <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-        <h2 className="font-sans text-[15px] font-semibold text-ink">What it says and what it is for</h2>
+      <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+        <h2 className="font-sans text-[15px] font-medium text-ink">What it says and what it is for</h2>
         <label className="mt-3 grid min-w-0 gap-1.5">
-          <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">First thing it says</span>
+          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">First thing it says</span>
           <textarea className={`${input} min-h-20 py-2`} value={v.opening} maxLength={300} disabled={!canWrite} onChange={(e) => set({ opening: e.target.value })} />
           <span className="text-[12px] text-muted">{"{first_name}"} and {"{service}"} are filled in for each person.</span>
         </label>
         <label className="mt-3 grid min-w-0 gap-1.5">
-          <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Its goal</span>
+          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Its goal</span>
           <textarea className={`${input} min-h-16 py-2`} value={v.goal} maxLength={400} disabled={!canWrite} onChange={(e) => set({ goal: e.target.value })} />
         </label>
         <div className="mt-3 rounded-xl bg-warm p-3.5 text-[13px]">
-          <p className="text-[11px] font-semibold uppercase tracking-[.08em] text-muted">Calling Sarah about Google Ads, it opens with</p>
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Calling Sarah about Google Ads, it opens with</p>
           <p className="mt-1.5 text-ink">“{preview.opening}”</p>
         </div>
       </section>

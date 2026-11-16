@@ -160,7 +160,7 @@ export function Mix({
               aria-hidden="true"
             />
             <span className="font-medium">{p.label}</span>
-            <span className="ml-auto font-sans font-semibold tabular-nums">{p.value}</span>
+            <span className="ml-auto font-sans font-medium tabular-nums">{p.value}</span>
             <span className="w-11 text-right text-muted tabular-nums">
               {total > 0 ? Math.round((p.value / total) * 100) : 0}%
             </span>

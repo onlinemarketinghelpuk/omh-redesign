@@ -175,7 +175,7 @@ export default async function ChannelsPage({
         <>
           {headline && (
             <div
-              className="mb-5 overflow-hidden rounded-2xl bg-inverse text-oninverse"
+              className="mb-5 overflow-hidden rounded-[20px] bg-inverse text-oninverse"
               style={{
                 boxShadow: "var(--e2)",
                 backgroundImage:
@@ -189,17 +189,17 @@ export default async function ChannelsPage({
                   width. Column first, row once there is room for both. */}
               <div className="flex flex-col gap-5 px-5 py-5 sm:flex-row sm:items-center sm:gap-8 sm:px-7 sm:py-6">
                 <div className="min-w-0 flex-1">
-                  <p className="font-sans text-[11px] font-semibold uppercase tracking-[.14em] text-white/55">
+                  <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-white/55">
                     What the channels are saying
                   </p>
-                  <p className="mt-2 max-w-[56ch] font-sans text-[19px] font-semibold leading-snug tracking-[-.01em] sm:text-[21px]">
+                  <p className="mt-2 max-w-[56ch] font-sans text-[19px] font-medium leading-snug tracking-[-.01em] sm:text-[21px]">
                     {headline.sentence}
                   </p>
                 </div>
                 <dl className="flex shrink-0 gap-7 border-t border-white/12 pt-4 sm:border-0 sm:pt-0">
                   {headline.figures.map((f) => (
                     <div key={f.label}>
-                      <dd className="font-sans text-[30px] font-semibold leading-none tabular-nums">
+                      <dd className="font-sans text-[30px] font-medium leading-none tabular-nums">
                         {f.value}
                       </dd>
                       <dt className="mt-1.5 text-[12px] text-white/55">{f.label}</dt>
@@ -210,7 +210,7 @@ export default async function ChannelsPage({
             </div>
           )}
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-5">
             <Kpi
               label="Time to first touch"
               value={overallMedian === null ? "not yet" : duration(overallMedian)}
@@ -311,7 +311,7 @@ export default async function ChannelsPage({
                         <th
                           key={h}
                           className={[
-                            "whitespace-nowrap pb-2.5 font-sans text-[11.5px] font-semibold uppercase tracking-[.08em] text-muted",
+                            "whitespace-nowrap pb-2.5 font-sans text-[11.5px] font-medium uppercase tracking-[.08em] text-muted",
                             i === 0 ? "" : "text-right",
                           ].join(" ")}
                         >
@@ -350,7 +350,7 @@ export default async function ChannelsPage({
                           <span
                             className={[
                               "text-[14px] tabular-nums",
-                              slow ? "font-semibold text-ink" : "text-ink",
+                              slow ? "font-medium text-ink" : "text-ink",
                             ].join(" ")}
                           >
                             {g.medianFirstTouch === null ? "not yet" : duration(g.medianFirstTouch)}
@@ -375,7 +375,7 @@ export default async function ChannelsPage({
                           {g.booked}
                         </td>
                         <td className="py-3 text-right">
-                          <span className="text-[14px] font-semibold tabular-nums text-ink">
+                          <span className="text-[14px] font-medium tabular-nums text-ink">
                             {g.decided ? g.won : ""}
                           </span>
                           {g.decided > 0 && (
@@ -384,7 +384,7 @@ export default async function ChannelsPage({
                             </span>
                           )}
                         </td>
-                        <td className="py-3 text-right text-[14px] font-semibold tabular-nums text-ink">
+                        <td className="py-3 text-right text-[14px] font-medium tabular-nums text-ink">
                           {g.value ? money(g.value) : ""}
                         </td>
                         <td className="py-3 text-right text-[13.5px] tabular-nums text-muted">
@@ -406,7 +406,7 @@ export default async function ChannelsPage({
                 return (
                   <li key={g.key} className="rounded-xl border border-line bg-warm/50 p-4">
                     <div className="flex items-baseline justify-between gap-3">
-                      <p className="text-[14.5px] font-semibold text-ink">{g.label}</p>
+                      <p className="text-[14.5px] font-medium text-ink">{g.label}</p>
                       <p className="shrink-0 text-[13px] tabular-nums text-muted">
                         {g.leads} {g.leads === 1 ? "lead" : "leads"}
                       </p>
@@ -422,7 +422,7 @@ export default async function ChannelsPage({
                         { k: "Booked", v: String(g.booked), note: null },
                       ].map((c) => (
                         <div key={c.k}>
-                          <dd className="font-sans text-[16px] font-semibold tabular-nums text-ink">
+                          <dd className="font-sans text-[16px] font-medium tabular-nums text-ink">
                             {c.v}
                           </dd>
                           <dt className="mt-0.5 text-[12px] text-muted">{c.k}</dt>

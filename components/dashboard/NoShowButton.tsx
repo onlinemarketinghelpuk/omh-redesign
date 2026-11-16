@@ -82,7 +82,7 @@ export function NoShowButton({
             }
           });
         }}
-        className="min-h-8 cursor-pointer rounded-lg bg-inverse px-2.5 text-[12.5px] font-semibold text-oninverse outline-none hover:opacity-90 disabled:cursor-wait focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+        className="min-h-8 cursor-pointer rounded-lg bg-inverse px-2.5 text-[12.5px] font-medium text-oninverse outline-none hover:opacity-90 disabled:cursor-wait focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
       >
         {pending ? "Marking…" : "Confirm"}
       </button>

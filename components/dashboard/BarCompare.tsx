@@ -100,7 +100,7 @@ export function BarCompare({
                     {b.label}
                   </span>
                 )}
-                <span className="shrink-0 font-sans text-[15px] font-semibold tabular-nums text-ink">
+                <span className="shrink-0 font-sans text-[15px] font-medium tabular-nums text-ink">
                   {b.display ?? b.value}
                 </span>
               </div>

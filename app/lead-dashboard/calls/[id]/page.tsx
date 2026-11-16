@@ -31,7 +31,7 @@ export default async function CallDetail({
       toolbar={
         <Link
           href={`/lead-dashboard/calls${demo ? "?demo=1" : ""}`}
-          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
           <IconBack className="h-4 w-4" />
           All calls
@@ -94,7 +94,7 @@ export default async function CallDetail({
                 return (
                   <li key={i} className={`flex ${agent ? "justify-start" : "justify-end"}`}>
                     <div className={`max-w-[85%] ${agent ? "" : "text-right"}`}>
-                      <p className="mb-1 flex items-center gap-1.5 font-sans text-[11px] font-semibold uppercase tracking-[.09em] text-muted">
+                      <p className="font-mono mb-1 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                         {agent && <IconMic className="h-3 w-3" />}
                         {agent ? "Assistant" : "Caller"}
                       </p>
@@ -145,7 +145,7 @@ function Fact({
         </span>
         <p className="text-[12.5px] text-muted">{label}</p>
       </div>
-      <p className="mt-2 font-sans text-[19px] font-semibold tracking-[-.02em] tabular-nums">
+      <p className="mt-2 font-sans text-[19px] font-medium tracking-[-.02em] tabular-nums">
         {value}
       </p>
       {sub && (

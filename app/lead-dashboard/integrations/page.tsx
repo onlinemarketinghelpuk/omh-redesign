@@ -137,7 +137,7 @@ export default async function IntegrationsPage({
             <li key={channel} className="flex flex-col gap-3 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="font-sans text-[14.5px] font-semibold text-ink">{label}</p>
+                  <p className="font-sans text-[14.5px] font-medium text-ink">{label}</p>
                   <Pill kind={PILL[status.state]}>{STATE_LABELS[status.state]}</Pill>
                 </div>
                 {status.state === "not_built" ? (
@@ -166,7 +166,7 @@ export default async function IntegrationsPage({
           {out.map((s) => (
             <li key={s.key} className="py-4 first:pt-0 last:pb-0">
               <div className="flex flex-wrap items-center gap-2">
-                <p className="font-sans text-[14.5px] font-semibold text-ink">{s.label}</p>
+                <p className="font-sans text-[14.5px] font-medium text-ink">{s.label}</p>
                 <Pill kind={PILL[s.state]}>{STATE_LABELS[s.state]}</Pill>
               </div>
               <p className="mt-1 text-[13px] text-muted">{s.what}</p>
@@ -273,7 +273,7 @@ export default async function IntegrationsPage({
 
       <p className="mt-5 text-[12.5px] text-muted">
         The number calls come from is set on{" "}
-        <Link href={demo ? "/lead-dashboard/agent?demo=1" : "/lead-dashboard/agent"} className="font-semibold text-ink underline underline-offset-2">
+        <Link href={demo ? "/lead-dashboard/agent?demo=1" : "/lead-dashboard/agent"} className="font-medium text-ink underline underline-offset-2">
           Calling agent
         </Link>
         .

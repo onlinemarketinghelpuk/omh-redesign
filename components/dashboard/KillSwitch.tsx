@@ -63,7 +63,7 @@ export function KillSwitch({
 
         <div className="min-w-0 flex-1">
           {/* State is carried by the words, not only by the colour. */}
-          <p className="font-sans text-[15px] font-semibold text-ink">
+          <p className="font-sans text-[15px] font-medium text-ink">
             {on ? "Automated messages are running" : "Automated messages are stopped"}
           </p>
           <p className="mt-1 max-w-[62ch] text-[13.5px] leading-relaxed text-muted">
@@ -87,7 +87,7 @@ export function KillSwitch({
             type="button"
             onClick={() => apply(false)}
             disabled={pending}
-            className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl bg-[#b42318] px-4 text-[14px] font-semibold text-white transition-[background-color,opacity] duration-150 hover:bg-[#912018] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b42318] disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl bg-[#b42318] px-4 text-[14px] font-medium text-white transition-[background-color,opacity] duration-150 hover:bg-[#912018] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b42318] disabled:cursor-not-allowed disabled:opacity-60"
           >
             <IconPower className="h-4 w-4" />
             {pending ? "Stopping…" : "Stop all outbound now"}
@@ -96,7 +96,7 @@ export function KillSwitch({
         </div>
       ) : confirming ? (
         <div className="rounded-xl border border-line bg-surface p-4 shadow-[var(--e1),var(--ring-inset)]">
-          <p className="font-sans text-[14px] font-semibold text-ink">
+          <p className="font-sans text-[14px] font-medium text-ink">
             Start sending to real people again?
           </p>
           <p className="mt-1 text-[13px] text-muted">
@@ -107,7 +107,7 @@ export function KillSwitch({
               type="button"
               onClick={() => apply(true)}
               disabled={pending}
-              className="min-h-11 cursor-pointer rounded-xl bg-inverse px-4 text-[14px] font-semibold text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:opacity-60"
+              className="min-h-11 cursor-pointer rounded-xl bg-inverse px-4 text-[14px] font-medium text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:opacity-60"
             >
               {pending ? "Starting…" : "Yes, start sending"}
             </button>
@@ -126,7 +126,7 @@ export function KillSwitch({
             type="button"
             onClick={() => setConfirming(true)}
             disabled={pending}
-            className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl bg-inverse px-4 text-[14px] font-semibold text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:opacity-60"
+            className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl bg-inverse px-4 text-[14px] font-medium text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:opacity-60"
           >
             Start sending again
           </button>

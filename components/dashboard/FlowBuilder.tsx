@@ -53,9 +53,9 @@ const COND_WORD: Record<string, string> = { replied: "They replied", booked: "Th
 const input =
   "min-h-10 rounded-lg border border-line bg-surface px-3 text-[14px] text-ink outline-none transition-colors focus-visible:border-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]/30";
 const btn =
-  "inline-flex min-h-10 cursor-pointer items-center gap-1.5 rounded-lg border border-line px-3 text-[13px] font-semibold text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-10 cursor-pointer items-center gap-1.5 rounded-lg border border-line px-3 text-[13px] font-medium text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
 const primary =
-  "inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl bg-inverse px-4 text-[14px] font-semibold text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl bg-inverse px-4 text-[14px] font-medium text-oninverse transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
 
 let seq = 0;
 const newId = () => `n${Date.now().toString(36)}${(seq++).toString(36)}`;
@@ -203,9 +203,9 @@ export function FlowBuilder({
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
       <div className="flex min-w-0 flex-col gap-5">
         {/* ---------------------------------------------------- name, start */}
-        <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+        <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
           <label className="block">
-            <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Name</span>
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Name</span>
             <input
               className={`${input} mt-1.5 w-full`}
               value={name}
@@ -216,7 +216,7 @@ export function FlowBuilder({
           </label>
 
           <fieldset className="mt-5">
-            <legend className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Starts when a lead arrives from</legend>
+            <legend className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Starts when a lead arrives from</legend>
             {(["they_contacted_us", "we_are_contacting_them"] as const).map((b) => (
               <div key={b} className="mt-3">
                 <p className="mb-2 text-[12.5px] text-muted">
@@ -270,7 +270,7 @@ export function FlowBuilder({
 
           <ol className="relative flex flex-col gap-3 before:absolute before:bottom-6 before:left-[19px] before:top-6 before:w-px before:bg-line">
             <li className="relative flex items-center gap-3 pl-0">
-              <span className="z-[1] flex size-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-[11px] font-semibold uppercase tracking-[.06em] text-muted">
+              <span className="font-mono z-[1] flex size-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                 Start
               </span>
               <span className="text-[13px] text-ink">
@@ -303,7 +303,7 @@ export function FlowBuilder({
                     ].join(" ")}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="flex items-center gap-2 font-sans text-[13px] font-semibold text-ink">
+                      <p className="flex items-center gap-2 font-sans text-[13px] font-medium text-ink">
                         {canWrite && (
                           <span
                             draggable
@@ -369,7 +369,7 @@ export function FlowBuilder({
                         {n.message && (
                           <p className="line-clamp-3 rounded-lg bg-warm px-3 py-2 text-[12.5px] leading-relaxed text-muted">
                             {messages.find((m) => m.key === n.message)?.preview}{" "}
-                            <Link href={`/lead-dashboard/messages?key=${encodeURIComponent(n.message)}${demo ? "&demo=1" : ""}`} className="font-semibold text-[var(--dash-accent-text)] underline-offset-2 hover:underline">
+                            <Link href={`/lead-dashboard/messages?key=${encodeURIComponent(n.message)}${demo ? "&demo=1" : ""}`} className="font-medium text-[var(--dash-accent-text)] underline-offset-2 hover:underline">
                               Edit the words
                             </Link>
                           </p>
@@ -439,7 +439,7 @@ export function FlowBuilder({
               className={["relative flex items-center gap-3 rounded-xl", dragOver === nodes.length ? "shadow-[0_-3px_0_0_var(--accent)]" : ""].join(" ")}
               {...dropTarget(nodes.length)}
             >
-              <span className="z-[1] flex size-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-[11px] font-semibold uppercase tracking-[.06em] text-muted">
+              <span className="font-mono z-[1] flex size-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                 End
               </span>
               <span className="text-[13px] text-muted">It stops after the last step.</span>
@@ -476,8 +476,8 @@ export function FlowBuilder({
 
       {/* ----------------------------------------------------------- aside */}
       <aside className="flex min-w-0 flex-col gap-4 lg:sticky lg:top-6 lg:self-start">
-        <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-          <h2 className="font-sans text-[14px] font-semibold text-ink">What a new lead gets</h2>
+        <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+          <h2 className="font-sans text-[14px] font-medium text-ink">What a new lead gets</h2>
           <div className="mt-3" aria-live="polite" data-steps="">
             <FlowSteps flow={{ name, triggers, nodes }} />
           </div>
@@ -502,9 +502,9 @@ export function FlowBuilder({
           {!check.ok && check.canSaveDraft && <p className="mt-3 text-[12.5px] text-muted">Can be saved as a draft. Not ready to switch on.</p>}
         </section>
 
-        <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+        <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
           <p className="text-[13px] text-ink">
-            <span className="font-semibold">{status === "live" ? "On" : status === "paused" ? "Paused" : "Draft"}</span>
+            <span className="font-medium">{status === "live" ? "On" : status === "paused" ? "Paused" : "Draft"}</span>
             <span className="text-muted"> · version {flow.version}{dirty ? ", unsaved changes" : ""}</span>
           </p>
 

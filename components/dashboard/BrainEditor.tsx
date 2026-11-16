@@ -21,7 +21,7 @@ import { IconAlert, IconCheck } from "./icons";
 const input =
   "rounded-lg border border-line bg-surface px-3 text-[14px] text-ink outline-none transition-colors focus-visible:border-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]/30";
 const primary =
-  "inline-flex min-h-11 cursor-pointer items-center rounded-xl bg-inverse px-4 text-[14px] font-semibold text-oninverse transition-opacity duration-150 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-11 cursor-pointer items-center rounded-xl bg-inverse px-4 text-[14px] font-medium text-oninverse transition-opacity duration-150 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-55";
 
 export type BrainValue = {
   enabled: boolean;
@@ -68,10 +68,10 @@ export function BrainEditor({
   return (
     <div className="grid grid-cols-1 gap-5">
       {!only && (
-        <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+        <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h2 className="font-sans text-[15px] font-semibold text-ink">
+              <h2 className="font-sans text-[15px] font-medium text-ink">
                 Automated answering is {v.enabled ? "on" : "off"}
               </h2>
               <p className="mt-1 text-[13px] text-muted">
@@ -98,8 +98,8 @@ export function BrainEditor({
         </section>
       )}
 
-      <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-        <h2 className="font-sans text-[15px] font-semibold text-ink">{only ? "Who answers replies" : "Who answers, per channel"}</h2>
+      <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+        <h2 className="font-sans text-[15px] font-medium text-ink">{only ? "Who answers replies" : "Who answers, per channel"}</h2>
         <ul className="mt-3 grid grid-cols-1 gap-2">
           {channels.map((ch) => (
             <li key={ch} className="flex flex-wrap items-center justify-between gap-2 border-b border-line py-2 last:border-0">
@@ -122,22 +122,22 @@ export function BrainEditor({
       </section>
 
       {!only && (
-        <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-          <h2 className="font-sans text-[15px] font-semibold text-ink">What the assistant is selling</h2>
+        <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+          <h2 className="font-sans text-[15px] font-medium text-ink">What the assistant is selling</h2>
           <p className="mt-1 text-[13px] text-muted">When it answers a reply, it answers the question, explains, and asks for this.</p>
           <div className="mt-4 grid grid-cols-1 gap-3">
             <label className="grid min-w-0 gap-1.5">
-              <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Goal</span>
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Goal</span>
               <input className={`${input} min-h-10`} value={v.sales.goal} maxLength={200} disabled={!canWrite}
                 onChange={(e) => set({ sales: { ...v.sales, goal: e.target.value } })} />
             </label>
             <label className="grid min-w-0 gap-1.5">
-              <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">The offer</span>
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">The offer</span>
               <textarea className={`${input} min-h-20 py-2`} value={v.sales.offer} maxLength={500} disabled={!canWrite}
                 onChange={(e) => set({ sales: { ...v.sales, offer: e.target.value } })} />
             </label>
             <label className="grid min-w-0 gap-1.5">
-              <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-muted">Anything else it should know</span>
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">Anything else it should know</span>
               <textarea className={`${input} min-h-20 py-2`} value={v.sales.notes} maxLength={1500} disabled={!canWrite}
                 placeholder="For example: we only take clients in Essex and London."
                 onChange={(e) => set({ sales: { ...v.sales, notes: e.target.value } })} />
@@ -167,8 +167,8 @@ export function BrainEditor({
       )}
 
       {!only && (
-        <section className="rounded-2xl border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-          <h2 className="font-sans text-[15px] font-semibold text-ink">Try it</h2>
+        <section className="rounded-[20px] border border-line bg-surface p-4 sm:p-5" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+          <h2 className="font-sans text-[15px] font-medium text-ink">Try it</h2>
           <p className="mt-1 text-[13px] text-muted">Type a reply as if you were the lead. Free: no AI is called here.</p>
           <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-[14rem_minmax(0,1fr)]">
             <select className={`${input} min-h-10`} value={tryChannel} onChange={(e) => setTryChannel(e.target.value)} aria-label="Channel">
@@ -177,13 +177,13 @@ export function BrainEditor({
             <input className={`${input} min-h-10`} value={tryText} onChange={(e) => setTryText(e.target.value)} aria-label="Their reply" />
           </div>
           <div className="mt-4 rounded-xl bg-warm p-4" aria-live="polite">
-            <p className="text-[14px] font-semibold text-ink">
+            <p className="text-[14px] font-medium text-ink">
               {d.answer ? "The assistant answers" : d.handOver ? "It goes to a person" : "Nothing answers"}
             </p>
             <p className="mt-1 text-[13px] text-muted">{d.reason}</p>
             {brief && (
               <details className="mt-3">
-                <summary className="cursor-pointer text-[13px] font-semibold text-[var(--dash-accent-text)]">What the assistant is told</summary>
+                <summary className="cursor-pointer text-[13px] font-medium text-[var(--dash-accent-text)]">What the assistant is told</summary>
                 <pre className="mt-2 whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-ink">{brief}</pre>
               </details>
             )}

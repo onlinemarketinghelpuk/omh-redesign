@@ -83,7 +83,7 @@ export default async function SettingsPage({
               The routing store cannot be reached from here, so the switch is
               not shown rather than shown in a state that might be wrong. If
               messages need to stop now, deactivate{" "}
-              <strong className="font-semibold text-ink">
+              <strong className="font-medium text-ink">
                 OHM Assistant, Sequence Worker
               </strong>{" "}
               in n8n.
@@ -141,7 +141,7 @@ export default async function SettingsPage({
               key={r.id}
               className="rounded-xl border border-line bg-warm/60 p-4"
             >
-              <p className="font-sans text-[13px] font-semibold tracking-wide text-[var(--dash-accent-text)]">
+              <p className="font-sans text-[13px] font-medium tracking-wide text-[var(--dash-accent-text)]">
                 {r.id}. {r.name}
               </p>
               <p className="mt-1.5 text-[13px] font-medium leading-snug text-ink">
@@ -152,7 +152,7 @@ export default async function SettingsPage({
               </p>
               {r.note ? (
                 <p className="mt-2 text-[12.5px] leading-relaxed text-muted">
-                  <strong className="font-semibold text-ink">Note. </strong>
+                  <strong className="font-medium text-ink">Note. </strong>
                   {r.note}
                 </p>
               ) : null}

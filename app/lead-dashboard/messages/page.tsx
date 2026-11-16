@@ -75,14 +75,14 @@ export default async function MessagesPage({
           {writable && (
             <Link
               href={`/lead-dashboard/messages?key=new${q}`}
-              className="inline-flex min-h-10 items-center justify-center rounded-lg border border-dashed border-line px-3 text-[13px] font-semibold text-ink transition-colors hover:bg-warm"
+              className="inline-flex min-h-10 items-center justify-center rounded-lg border border-dashed border-line px-3 text-[13px] font-medium text-ink transition-colors hover:bg-warm"
             >
               + Write a new message
             </Link>
           )}
           {[...groups.entries()].map(([g, items]) => (
             <section key={g}>
-              <h2 className="mb-1.5 px-1 text-[11px] font-semibold uppercase tracking-[.08em] text-muted">{g}</h2>
+              <h2 className="font-mono mb-1.5 px-1 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">{g}</h2>
               <ul className="grid gap-1">
                 {items.map((m) => {
                   const on = selected?.key === m.key;
@@ -98,7 +98,7 @@ export default async function MessagesPage({
                       >
                         <span className="flex items-baseline justify-between gap-2">
                           <span className="truncate text-[13.5px] font-medium text-ink">{title(m)}</span>
-                          <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[.06em] text-muted">
+                          <span className="font-mono shrink-0 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                             {CHANNEL_WORD[m.channel] ?? m.channel}
                           </span>
                         </span>
@@ -158,7 +158,7 @@ export default async function MessagesPage({
                   <ol className="grid gap-3">
                     {selected.history.map((h, i) => (
                       <li key={i} className="rounded-xl border border-line bg-warm/60 p-3.5">
-                        <p className="text-[13px] font-semibold text-ink">
+                        <p className="text-[13px] font-medium text-ink">
                           {h.action === "reset" ? "Went back to the original words" : "Saved"}
                           <span className="font-normal text-muted"> · {when(h.at)}{h.by ? ` by ${h.by}` : ""}</span>
                         </p>

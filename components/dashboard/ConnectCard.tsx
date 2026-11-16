@@ -82,13 +82,13 @@ export function ConnectCard({
     "min-h-11 w-full rounded-lg border border-line bg-surface px-3 text-[14px] text-ink outline-none transition-colors " +
     "focus-visible:border-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]/30 disabled:opacity-60";
   const btn =
-    "inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg px-4 text-[13.5px] font-semibold transition-colors duration-150 " +
+    "inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg px-4 text-[13.5px] font-medium transition-colors duration-150 " +
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-60";
 
   return (
     <article className="flex min-w-0 flex-col rounded-xl border border-line bg-surface p-4 shadow-[var(--e1)]">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h3 className="font-sans text-[14.5px] font-semibold text-ink">{label}</h3>
+        <h3 className="font-sans text-[14.5px] font-medium text-ink">{label}</h3>
         <Pill kind={PILL[state]}>{WORDS[state]}</Pill>
       </div>
       <p className="mt-1 text-[13px] leading-snug text-muted">{what}</p>
@@ -111,7 +111,7 @@ export function ConnectCard({
         <dl className="mt-3 grid gap-2">
           {copy.map((c) => (
             <div key={c.label} className="min-w-0">
-              <dt className="text-[11.5px] font-semibold uppercase tracking-[.08em] text-muted">{c.label}</dt>
+              <dt className="font-mono text-[11.5px] font-medium uppercase tracking-[0.1em] text-muted">{c.label}</dt>
               <dd className="mt-0.5 flex min-w-0 items-center gap-2">
                 <code className="min-w-0 flex-1 truncate rounded-md bg-warm px-2 py-1.5 font-mono text-[12px] text-ink">{c.value}</code>
                 <button
@@ -199,7 +199,7 @@ export function ConnectCard({
             const err = result?.errors?.[f.key];
             return (
               <div key={f.key} className="grid gap-1">
-                <label htmlFor={id} className="text-[12.5px] font-semibold text-ink">
+                <label htmlFor={id} className="text-[12.5px] font-medium text-ink">
                   {f.label}{f.required ? "" : " (optional)"}
                 </label>
                 <input

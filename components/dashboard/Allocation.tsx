@@ -108,12 +108,12 @@ export function Allocation({
   return (
     <section className="mt-3" aria-labelledby="alloc-h">
       <div
-        className="overflow-hidden rounded-2xl border border-line bg-surface"
+        className="overflow-hidden rounded-[20px] border border-line bg-surface"
         style={{ boxShadow: "var(--e1), var(--ring-inset)" }}
       >
         <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line px-4 py-3.5 sm:px-5">
           <div className="min-w-0">
-            <h2 id="alloc-h" className="font-sans text-[14px] font-semibold tracking-[-.01em]">
+            <h2 id="alloc-h" className="font-sans text-[14px] font-medium tracking-[-.01em]">
               Channel allocation
             </h2>
             <p className="mt-0.5 text-[12.5px] leading-snug text-muted">
@@ -122,7 +122,7 @@ export function Allocation({
           </div>
           <Link
             href={href("/lead-dashboard/channels")}
-            className="whitespace-nowrap text-[13px] font-semibold text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:no-underline focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+            className="whitespace-nowrap text-[13px] font-medium text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:no-underline focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
           >
             The full channel report
           </Link>
@@ -130,7 +130,7 @@ export function Allocation({
 
         <div className="p-4 sm:p-5">
           {say && (
-            <p className="mb-4 max-w-[72ch] font-sans text-[16px] font-semibold leading-snug tracking-[-.01em] text-ink">
+            <p className="mb-4 max-w-[72ch] font-sans text-[16px] font-medium leading-snug tracking-[-.01em] text-ink">
               {say}
             </p>
           )}
@@ -153,7 +153,7 @@ export function Allocation({
                   },
                 ].map((c) => (
                   <div key={c.k}>
-                    <dd className="font-sans text-[20px] font-semibold leading-none tabular-nums text-ink">
+                    <dd className="font-sans text-[20px] font-medium leading-none tabular-nums text-ink">
                       {c.v}
                     </dd>
                     <dt className="mt-1.5 text-[12.5px] text-muted">{c.k}</dt>
@@ -178,7 +178,7 @@ export function Allocation({
               profit.{" "}
               <Link
                 href={href("/lead-dashboard/settings")}
-                className="font-semibold text-[var(--dash-accent-text)] underline underline-offset-4"
+                className="font-medium text-[var(--dash-accent-text)] underline underline-offset-4"
               >
                 Add what each channel costs
               </Link>{" "}
@@ -248,19 +248,19 @@ function Plot({
         <line x1={PAD.l} y1={midY} x2={W - PAD.r} y2={midY} stroke="var(--color-line)" strokeDasharray="3 3" />
 
         <text x={W - PAD.r - 4} y={PAD.t + 13} textAnchor="end"
-              className="fill-[var(--dash-accent-text)] text-[10px] font-semibold uppercase tracking-[.08em]">
+              className="font-mono fill-[var(--dash-accent-text)] text-[10px] font-medium uppercase tracking-[0.1em]">
           working
         </text>
         <text x={W - PAD.r - 4} y={PAD.t + ih - 5} textAnchor="end"
-              className="fill-[#9a3f1e] text-[10px] font-semibold uppercase tracking-[.08em]">
+              className="font-mono fill-[#9a3f1e] text-[10px] font-medium uppercase tracking-[0.1em]">
           {pitLabel(plotted)}
         </text>
         <text x={PAD.l + 4} y={PAD.t + 13}
-              className="fill-muted text-[10px] font-semibold uppercase tracking-[.08em]">
+              className="font-mono fill-muted text-[10px] font-medium uppercase tracking-[0.1em]">
           starved
         </text>
         <text x={PAD.l + 4} y={PAD.t + ih - 5}
-              className="fill-muted text-[10px] font-semibold uppercase tracking-[.08em]">
+              className="font-mono fill-muted text-[10px] font-medium uppercase tracking-[0.1em]">
           leave it
         </text>
 
@@ -329,7 +329,7 @@ function Table({ rows, noSpend }: { rows: Row[]; noSpend: boolean }) {
         <thead>
           <tr className="border-b border-line">
             {["Channel", "Leads", "Booked", noSpend ? "Of its leads" : "Per booking"].map((h, i) => (
-              <th key={h} className={`whitespace-nowrap pb-2 font-sans text-[11px] font-semibold uppercase tracking-[.08em] text-muted ${i ? "text-right" : ""}`}>
+              <th key={h} className={`whitespace-nowrap pb-2 text-[11.5px] font-medium text-[#52525b] ${i ?"text-right" : ""}`}>
                 {h}
               </th>
             ))}
@@ -358,7 +358,7 @@ function Table({ rows, noSpend }: { rows: Row[]; noSpend: boolean }) {
                     </span>
                   </span>
                 ) : r.costPerBooking !== null ? (
-                  <span className="font-semibold text-ink">{money(r.costPerBooking)}</span>
+                  <span className="font-medium text-ink">{money(r.costPerBooking)}</span>
                 ) : (
                   <span className="text-muted">{r.spend === null ? "add spend" : "none booked"}</span>
                 )}

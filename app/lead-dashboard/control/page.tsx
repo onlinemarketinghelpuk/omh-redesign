@@ -89,7 +89,7 @@ export default async function ControlPage({
 
         <section aria-labelledby="by-channel" className="min-w-0" data-rise="" style={{ ["--i" as string]: 1 }}>
           <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-            <h2 id="by-channel" className="font-sans text-[15px] font-semibold tracking-[-.01em] text-ink">
+            <h2 id="by-channel" className="font-sans text-[15px] font-medium tracking-[-.01em] text-ink">
               By channel
             </h2>
             <p className="text-[12.5px] text-muted">Open a channel to change everything about it.</p>
@@ -98,7 +98,7 @@ export default async function ControlPage({
               points at the screen that knows whether it is connected. */}
           <p className="mb-3 text-[13px] text-muted">
             Whether each channel is actually connected, what is missing, and a switch to pause one, are on{" "}
-            <Link href={`/lead-dashboard/integrations${q}`} className="font-semibold text-ink underline underline-offset-2">
+            <Link href={`/lead-dashboard/integrations${q}`} className="font-medium text-ink underline underline-offset-2">
               Integrations
             </Link>
             .
@@ -124,7 +124,7 @@ export default async function ControlPage({
                   : flowCounts({ name: r.defaultName, triggers: [r.channel], nodes: defaultNodes(r.defaultRoute) });
                 return (
                   <tr key={r.channel} className={tr}>
-                    <th scope="row" className={`${td} text-left font-sans text-[14px] font-semibold`}>
+                    <th scope="row" className={`${td} text-left font-sans text-[14px] font-medium`}>
                       <Link href={href} className="text-ink underline-offset-2 hover:underline">
                         {r.label}
                       </Link>
@@ -141,7 +141,7 @@ export default async function ControlPage({
                     <td className={`${td} text-[13px]`}>
                       {!r.on ? (
                         <span className="text-ink">
-                          <span className="font-semibold">Switched off.</span>{" "}
+                          <span className="font-medium">Switched off.</span>{" "}
                           <span className="text-muted">Nothing automated runs; messages go to a person.</span>
                         </span>
                       ) : r.live ? (
@@ -156,7 +156,7 @@ export default async function ControlPage({
                     <td className={`${td} text-right`}>
                       <Link
                         href={href}
-                        className="inline-flex min-h-9 items-center rounded-lg border border-line px-3 text-[13px] font-semibold text-ink transition-colors hover:bg-warm"
+                        className="inline-flex min-h-9 items-center rounded-lg border border-line px-3 text-[13px] font-medium text-ink transition-colors hover:bg-warm"
                       >
                         Open
                       </Link>
@@ -180,7 +180,7 @@ export default async function ControlPage({
           action={
             <Link
               href={`/lead-dashboard/messages${q}`}
-              className="text-[13px] font-semibold text-[var(--dash-accent-text)] underline-offset-2 hover:underline"
+              className="text-[13px] font-medium text-[var(--dash-accent-text)] underline-offset-2 hover:underline"
             >
               Edit what they say
             </Link>
@@ -189,7 +189,7 @@ export default async function ControlPage({
           {flows.length === 0 ? (
             <p className="text-[13.5px] leading-relaxed text-muted">
               None yet. Every channel is running its default. Press{" "}
-              <strong className="font-semibold text-ink">Make editable</strong> on a channel to start from what it
+              <strong className="font-medium text-ink">Make editable</strong> on a channel to start from what it
               does today.
             </p>
           ) : (
@@ -201,11 +201,11 @@ export default async function ControlPage({
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <Link
                         href={`/lead-dashboard/flows/${f.id}${q}`}
-                        className="font-sans text-[14px] font-semibold text-ink underline-offset-2 hover:underline"
+                        className="font-sans text-[14px] font-medium text-ink underline-offset-2 hover:underline"
                       >
                         {f.name}
                       </Link>
-                      <span className="text-[12px] font-semibold uppercase tracking-[.07em] text-muted">
+                      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                         {f.status === "live" ? "On" : f.status === "paused" ? "Paused" : "Draft"} · v{f.version}
                       </span>
                     </div>

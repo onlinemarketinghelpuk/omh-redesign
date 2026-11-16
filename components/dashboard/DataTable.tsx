@@ -255,7 +255,7 @@ export function DataTable({
           className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-[rgb(var(--accent-rgb)/.5)] bg-[rgb(var(--accent-rgb)/.1)] px-3.5 py-2.5"
           data-rise
         >
-          <p className="font-sans text-[13.5px] font-semibold tabular-nums text-ink">
+          <p className="font-sans text-[13.5px] font-medium tabular-nums text-ink">
             {ids.length} selected
           </p>
           {/* Its own element, with `bulk` as that element's only child.
@@ -296,7 +296,7 @@ export function DataTable({
                 setQ("");
                 setPicked({});
               }}
-              className="mt-4 cursor-pointer rounded-lg border border-line px-3 py-1.5 text-[13.5px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+              className="mt-4 cursor-pointer rounded-lg border border-line px-3 py-1.5 text-[13.5px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
             >
               {q ? "Clear search" : "Clear filters"}
             </button>
@@ -422,7 +422,7 @@ export function DataTable({
               <button
                 type="button"
                 onClick={() => setShown((n) => n + pageSize)}
-                className="cursor-pointer rounded-lg border border-line bg-surface px-4 py-2 text-[13.5px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                className="cursor-pointer rounded-lg border border-line bg-surface px-4 py-2 text-[13.5px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
               >
                 Show {Math.min(pageSize, view.length - shown)} more
                 <span className="ml-1 font-normal text-muted">

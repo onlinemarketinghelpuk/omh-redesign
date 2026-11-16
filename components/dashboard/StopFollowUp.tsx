@@ -64,7 +64,7 @@ export function StopFollowUp({
             setDone({ ok: r.ok, text: r.message ?? "" });
           })
         }
-        className="min-h-9 cursor-pointer rounded-lg bg-[#b42318] px-2.5 text-[12.5px] font-semibold text-white outline-none transition-colors duration-150 hover:bg-[#912018] focus-visible:ring-2 focus-visible:ring-[#b42318] disabled:opacity-60"
+        className="min-h-9 cursor-pointer rounded-lg bg-[#b42318] px-2.5 text-[12.5px] font-medium text-white outline-none transition-colors duration-150 hover:bg-[#912018] focus-visible:ring-2 focus-visible:ring-[#b42318] disabled:opacity-60"
       >
         {pending ? "Stopping…" : "Confirm"}
       </button>

@@ -40,10 +40,10 @@ export default async function LoginPage({
           field below the fold with nothing in between. */}
       <main className="flex items-center justify-center px-5 py-10 sm:px-8 lg:min-h-dvh lg:py-12">
         <div className="w-full max-w-[400px]">
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[.14em] text-[var(--dash-accent-text)]">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-[var(--dash-accent-text)]">
             Client dashboard
           </p>
-          <h1 className="mt-2 font-sans text-[30px] font-semibold leading-[1.1] tracking-[-.03em] sm:text-[34px]">
+          <h1 className="mt-2 font-sans text-[30px] font-medium leading-[1.1] tracking-[-.03em] sm:text-[34px]">
             Sign in
           </h1>
           <p className="mt-2.5 max-w-[42ch] text-[14.5px] leading-relaxed text-muted">
@@ -93,7 +93,7 @@ function Brand() {
         >
           OMH<span style={{ color: "var(--accent)" }}>.</span>
         </Link>
-        <span className="rounded-full border border-white/15 px-2.5 py-1 font-sans text-[10.5px] font-semibold uppercase tracking-[.14em] text-white/60">
+        <span className="font-mono rounded-full border border-white/15 px-2.5 py-1 text-[10.5px] font-medium uppercase tracking-[0.1em] text-white/60">
           Dashboard
         </span>
       </div>
@@ -102,7 +102,7 @@ function Brand() {
           someone else types the password, so they say what the product does
           rather than welcoming anybody. */}
       <div className="mt-8 lg:mt-0 lg:max-w-[30rem]">
-        <h2 className="font-sans text-[26px] font-semibold leading-[1.15] tracking-[-.025em] sm:text-[34px] lg:text-[40px]">
+        <h2 className="font-sans text-[26px] font-medium leading-[1.15] tracking-[-.025em] sm:text-[34px] lg:text-[40px]">
           Everything your AI assistant
           <span className="block" style={{ color: "var(--accent)" }}>
             handled for you.
@@ -116,7 +116,7 @@ function Brand() {
                 <p.icon className="h-[17px] w-[17px]" />
               </span>
               <span className="min-w-0">
-                <span className="block font-sans text-[14.5px] font-semibold">{p.title}</span>
+                <span className="block font-sans text-[14.5px] font-medium">{p.title}</span>
                 <span className="mt-0.5 block text-[13.5px] leading-relaxed text-white/60">
                   {p.body}
                 </span>
@@ -126,7 +126,7 @@ function Brand() {
         </ul>
       </div>
 
-      <p className="mt-9 hidden items-center gap-2 border-t border-white/10 pt-6 font-sans text-[11px] font-semibold uppercase tracking-[.1em] text-white/60 lg:flex">
+      <p className="font-mono mt-9 hidden items-center gap-2 border-t border-white/10 pt-6 text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 lg:flex">
         <span
           aria-hidden="true"
           className="h-1.5 w-1.5 rounded-full"

@@ -84,7 +84,7 @@ export function FollowUpTimeline({
       {live ? (
         <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-[rgb(var(--accent-rgb)/.3)] bg-[rgb(var(--accent-rgb)/.09)] px-4 py-3">
           <IconClock className="h-4 w-4 shrink-0 text-[var(--dash-accent-text)]" />
-          <p className="text-[13.5px] font-semibold text-ink">
+          <p className="text-[13.5px] font-medium text-ink">
             Still being followed up on route {live.route}.
           </p>
           <p className="text-[13.5px] text-muted">
@@ -94,7 +94,7 @@ export function FollowUpTimeline({
       ) : ended ? (
         <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-line bg-warm px-4 py-3">
           <IconCheck className="h-4 w-4 shrink-0 text-muted" />
-          <p className="text-[13.5px] font-semibold text-ink">
+          <p className="text-[13.5px] font-medium text-ink">
             Follow-up finished. {stopReasonLabel(ended.stopReason)}.
           </p>
           <p className="text-[13.5px] text-muted">{routeLabel(ended.route)}</p>
@@ -130,7 +130,7 @@ export function FollowUpTimeline({
 
                 <div className="min-w-0 flex-1 pb-1">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-                    <p className="text-[13.5px] font-semibold text-ink">{headline(e, i === 0)}</p>
+                    <p className="text-[13.5px] font-medium text-ink">{headline(e, i === 0)}</p>
                     <p className="text-[12.5px] tabular-nums text-muted">{clock(e.at)}</p>
                     {/* How long after they first got in touch. This is the
                         measure the whole system is judged on, so it is on

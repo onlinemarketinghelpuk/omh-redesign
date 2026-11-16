@@ -88,7 +88,7 @@ export default async function Conversation({
       toolbar={
         <Link
           href={demo ? "/lead-dashboard/leads?demo=1" : "/lead-dashboard/leads"}
-          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
           <IconBack className="h-4 w-4" />
           All leads
@@ -154,7 +154,7 @@ export default async function Conversation({
                   action={
                     <Link
                       href={`/lead-dashboard/calls/${c.callId}`}
-                      className="font-sans text-[13px] font-semibold text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                      className="font-sans text-[13px] font-medium text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                     >
                       Open the call
                     </Link>
@@ -178,7 +178,7 @@ export default async function Conversation({
                          where nobody would find them. The summary and the
                          recording above it are what most people read. */
                       <div className="rounded-xl border border-line">
-                        <p className="border-b border-line px-3.5 py-2 font-sans text-[11px] font-semibold uppercase tracking-[.08em] text-muted">
+                        <p className="font-mono border-b border-line px-3.5 py-2 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                           Transcript · {c.turns.length} turns
                         </p>
                         <ol
@@ -400,7 +400,7 @@ function Outcome({
                 <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted">{q.question}</p>
                 <Link
                   href="/lead-dashboard/handover"
-                  className="mt-1.5 inline-block font-sans text-[13px] font-semibold text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                  className="mt-1.5 inline-block font-sans text-[13px] font-medium text-[var(--dash-accent-text)] underline underline-offset-4 outline-none hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                 >
                   Answer them
                 </Link>
@@ -548,7 +548,7 @@ function Bubble({
   return (
     <li className={`flex ${visitor ? "justify-end" : "justify-start"}`}>
       <div className={`max-w-[85%] ${visitor ? "text-right" : ""}`}>
-        <p className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-[.09em] text-muted">
+        <p className="font-mono mb-1 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
           {visitor ? "Them" : human ? "A person from the team" : "Assistant"}
           {at && <span className="ml-2 font-normal normal-case tracking-normal">{clock(at)}</span>}
         </p>

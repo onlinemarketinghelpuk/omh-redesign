@@ -33,7 +33,7 @@ export function ViewToggle({ views, active }: { views: View[]; active: string })
             role="tab"
             aria-selected={on}
             className={[
-              "inline-flex min-h-8 items-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[13px] font-semibold outline-none transition-colors duration-150",
+              "inline-flex min-h-8 items-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[13px] font-medium outline-none transition-colors duration-150",
               "focus-visible:ring-2 focus-visible:ring-[var(--accent)]",
               on ? "bg-inverse text-oninverse" : "text-muted hover:bg-warm hover:text-ink",
             ].join(" ")}

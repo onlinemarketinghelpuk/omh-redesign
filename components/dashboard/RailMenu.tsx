@@ -74,7 +74,10 @@ export function RailMenu({
   const current = tabs.find((t) => t.href === active);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#141416]/[0.07] bg-white/90 backdrop-blur-xl lg:hidden">
+    /* No backdrop-filter while open: a filter makes this header the
+       containing block for `fixed` children, so the sheet stopped at the
+       header and the page below showed through undimmed. */
+    <header className={`sticky top-0 z-40 border-b border-[#141416]/[0.07] lg:hidden ${open ? "bg-white" : "bg-white/90 backdrop-blur-xl"}`}>
       <div className="flex h-14 items-center gap-2 px-4">
         <Link href={to("/lead-dashboard")} className="dash-focus flex shrink-0 items-center gap-2 rounded-md">
           <span className="flex h-[26px] w-[26px] items-center justify-center rounded-[7px] bg-[#7d5c33] font-heading text-[13px] font-semibold text-white">O</span>
@@ -98,17 +101,10 @@ export function RailMenu({
 
       {open ? (
         <>
-          <button
-            type="button"
-            aria-label="Close the menu"
-            tabIndex={-1}
-            onClick={() => setOpenOn(null)}
-            className="fixed inset-x-0 bottom-0 top-14 z-30 cursor-default bg-[#1c140b]/30 backdrop-blur-sm"
-          />
           <nav
             id={panelId}
             aria-label="All screens"
-            className="relative z-40 max-h-[80dvh] space-y-3 overflow-y-auto border-t border-[#141416]/[0.07] bg-[#fdfcfa] px-3 py-3"
+            className="nx-view-in fixed inset-x-0 bottom-0 top-14 z-40 space-y-3 overflow-y-auto overscroll-contain border-t border-[#141416]/[0.07] bg-[#fdfcfa] px-3 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]"
           >
             {groups.map((g) => (
               <div key={g.key}>

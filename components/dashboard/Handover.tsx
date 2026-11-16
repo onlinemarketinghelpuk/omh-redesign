@@ -57,7 +57,7 @@ export function Handover({ rows: initial, canReply, lockedReason }: Props) {
   }
 
   return (
-    <div className="grid gap-4 xl:grid-cols-[minmax(320px,380px)_minmax(0,1fr)] xl:items-start">
+    <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(320px,380px)_minmax(0,1fr)] xl:items-start">
       <Queue rows={rows} openId={openId} onOpen={setOpenId} />
       {openId ? (
         <Conversation
@@ -72,7 +72,7 @@ export function Handover({ rows: initial, canReply, lockedReason }: Props) {
           }
         />
       ) : (
-        <div className="flex min-h-[320px] flex-col items-center justify-center rounded-2xl border border-dashed border-line bg-surface px-6 py-16 text-center">
+        <div className="flex min-h-[320px] flex-col items-center justify-center rounded-[20px] border border-dashed border-line bg-surface px-6 py-16 text-center">
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-warm text-muted">
             <IconCheck className="h-6 w-6" />
           </span>
@@ -108,9 +108,9 @@ function Queue({
   );
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-surface">
+    <div className="min-w-0 overflow-hidden rounded-[20px] border border-line bg-surface">
       <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
-        <h2 className="font-sans text-[13px] font-semibold uppercase tracking-[.09em] text-muted">
+        <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.1em] text-muted">
           The queue
         </h2>
         <span className="text-[12.5px] tabular-nums text-muted">
@@ -156,7 +156,7 @@ function Queue({
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline justify-between gap-2">
-                      <span className="truncate font-sans text-[14px] font-semibold">
+                      <span className="truncate font-sans text-[14px] font-medium">
                         {who(r)}
                       </span>
                       <Pill kind={r.state === "waiting" ? "hot" : r.state === "live" ? "warm" : "confirmed"}>
@@ -270,7 +270,7 @@ function Conversation({
 
   if (!thread) {
     return (
-      <div className="min-h-[320px] rounded-2xl border border-line bg-surface p-5">
+      <div className="min-h-[320px] rounded-[20px] border border-line bg-surface p-5">
         <p className="text-[13.5px] text-muted">{note ?? "Opening the conversation…"}</p>
       </div>
     );
@@ -280,10 +280,10 @@ function Conversation({
   const open = thread.questions.filter((q) => !q.handled);
 
   return (
-    <div className="rounded-2xl border border-line bg-surface">
+    <div className="min-w-0 rounded-[20px] border border-line bg-surface">
       <header className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3 border-b border-line px-5 py-4">
         <div className="min-w-0">
-          <h2 className="font-sans text-[17px] font-semibold tracking-[-.01em]">
+          <h2 className="font-sans text-[17px] font-medium tracking-[-.01em]">
             {thread.profile?.name || "Visitor"}
           </h2>
           <p className="mt-1 flex flex-wrap items-center gap-x-2 text-[13px] text-muted">
@@ -317,7 +317,7 @@ function Conversation({
               type="button"
               onClick={() => act(() => takeOver(sessionId))}
               disabled={pending}
-              className="cursor-pointer rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:opacity-50"
+              className="cursor-pointer rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:opacity-50"
             >
               Take over
             </button>
@@ -333,7 +333,7 @@ function Conversation({
               type="button"
               onClick={() => act(() => handBack(sessionId))}
               disabled={pending}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-lg px-3.5 py-2 font-sans text-[13.5px] font-semibold outline-none transition-[filter] duration-150 hover:brightness-[1.04] focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 disabled:opacity-50"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-lg px-3.5 py-2 font-sans text-[13.5px] font-medium outline-none transition-[filter] duration-150 hover:brightness-[1.04] focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 disabled:opacity-50"
               /* White, and a literal rather than a token: the accent is a
                  fixed dark brown in both themes, so the text on it must not
                  follow the theme. */
@@ -349,7 +349,7 @@ function Conversation({
       {/* What the visitor is actually waiting to hear, before anything else. */}
       {open.length > 0 && (
         <div className="border-b border-line px-5 py-4">
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[.09em] text-muted">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
             {open.length === 1 ? "What the assistant could not answer" : "What the assistant could not answer"}
           </p>
           <ul className="mt-2 space-y-2">
@@ -419,7 +419,7 @@ function Conversation({
                 type="button"
                 onClick={send}
                 disabled={pending || !text.trim()}
-                className="inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl bg-inverse px-4 py-3 font-sans text-[14px] font-semibold text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
+                className="inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl bg-inverse px-4 py-3 font-sans text-[14px] font-medium text-oninverse outline-none transition-opacity duration-150 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <IconSend className="h-4 w-4" />
                 {pending ? "Sending…" : "Send"}
@@ -491,7 +491,7 @@ function Bubble({ role, text, at }: { role: string; text: string; at: number }) 
   return (
     <li className={`flex ${visitor ? "justify-end" : "justify-start"}`}>
       <div className={`max-w-[80%] ${visitor ? "text-right" : ""}`}>
-        <p className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-[.09em] text-muted">
+        <p className="font-mono mb-1 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
           {visitor ? "Visitor" : human ? "You" : "Assistant"}
           <span className="ml-2 font-normal normal-case tracking-normal">{clock(at)}</span>
         </p>

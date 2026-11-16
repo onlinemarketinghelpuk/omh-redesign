@@ -126,7 +126,7 @@ export default async function Bookings({
         <Empty>The bookings store could not be reached just now.</Empty>
       ) : (
         <>
-          <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mb-4 grid grid-cols-2 gap-3 xl:grid-cols-4">
             <Kpi label="Booked in total" value={String(bookings.length)} icon={IconCalendar} accent />
             <Kpi label="Still to come" value={String(upcoming)} sub="from today onward" icon={IconCheck} />
             <Kpi
@@ -154,12 +154,12 @@ export default async function Bookings({
                     i === 0 ? "border-[rgb(var(--accent-rgb)/.4)] bg-[rgb(var(--accent-rgb)/.08)]" : "border-line bg-warm/40",
                   ].join(" ")}
                 >
-                  <p className="text-[12.5px] font-semibold text-ink">
+                  <p className="text-[12.5px] font-medium text-ink">
                     {i === 0 ? "Today" : d.label}
                   </p>
                   {/* How full the day is, said in a figure as well as a bar,
                       so it survives greyscale. */}
-                  <p className="font-sans text-[20px] font-semibold leading-none tabular-nums text-ink">
+                  <p className="font-sans text-[20px] font-medium leading-none tabular-nums text-ink">
                     {d.items.length || <span className="text-muted">0</span>}
                   </p>
                   <span className="h-1.5 overflow-hidden rounded-full bg-line/60">

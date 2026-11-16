@@ -66,7 +66,7 @@ export default async function FlowPage({
   const back = (
     <Link
       href={`/lead-dashboard/control${q}`}
-      className="mb-4 inline-flex min-h-9 items-center gap-1.5 text-[13px] font-semibold text-muted underline-offset-2 hover:text-ink hover:underline"
+      className="mb-4 inline-flex min-h-9 items-center gap-1.5 text-[13px] font-medium text-muted underline-offset-2 hover:text-ink hover:underline"
     >
       <IconBack className="h-4 w-4" /> Control panel
     </Link>
@@ -123,7 +123,7 @@ export default async function FlowPage({
           <ol className="grid gap-3">
             {history.map((v) => (
               <li key={v.version} className="rounded-xl border border-line bg-warm/60 p-3.5">
-                <p className="text-[13px] font-semibold text-ink">
+                <p className="text-[13px] font-medium text-ink">
                   Version {v.version}
                   <span className="font-normal text-muted">
                     {" "}· {v.status} · {when(v.at)}{v.by ? ` by ${v.by}` : ""}

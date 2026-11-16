@@ -78,7 +78,7 @@ export function BulkOutcome({
           type="button"
           disabled={pending}
           onClick={() => apply(c)}
-          className="min-h-9 cursor-pointer rounded-lg border border-line bg-surface px-2.5 text-[13px] font-semibold text-ink outline-none transition-colors duration-150 hover:bg-warm disabled:cursor-wait disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="min-h-9 cursor-pointer rounded-lg border border-line bg-surface px-2.5 text-[13px] font-medium text-ink outline-none transition-colors duration-150 hover:bg-warm disabled:cursor-wait disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
           {outcomeLabel(c)}
         </button>

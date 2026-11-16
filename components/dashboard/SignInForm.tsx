@@ -23,7 +23,7 @@ export function SignInForm({ user, next }: { user: string; next: string }) {
       <div>
         <label
           htmlFor="omh-user"
-          className="block font-sans text-[12.5px] font-semibold tracking-[.01em]"
+          className="block font-sans text-[12.5px] font-medium tracking-[.01em]"
         >
           Name
         </label>
@@ -41,7 +41,7 @@ export function SignInForm({ user, next }: { user: string; next: string }) {
       <div>
         <label
           htmlFor="omh-password"
-          className="block font-sans text-[12.5px] font-semibold tracking-[.01em]"
+          className="block font-sans text-[12.5px] font-medium tracking-[.01em]"
         >
           Password
         </label>
@@ -93,7 +93,7 @@ export function SignInForm({ user, next }: { user: string; next: string }) {
            shape you had to look for. The brand accent is the one colour that
            is obviously a button in both themes, and ink on tan measures well
            past the contrast it needs. */
-        className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-3.5 font-sans text-[15px] font-semibold outline-none transition-[filter,opacity] duration-150 hover:brightness-[1.04] focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+        className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-3.5 font-sans text-[15px] font-medium outline-none transition-[filter,opacity] duration-150 hover:brightness-[1.04] focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
         /* White, and a literal rather than a token: the accent is a fixed
            dark brown in both themes, so the text on it must not follow the
            theme. It was ink, which was right while the accent was a light

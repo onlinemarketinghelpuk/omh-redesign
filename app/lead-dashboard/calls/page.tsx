@@ -98,7 +98,7 @@ export default async function Calls({
       lead="Every call the assistant took. Open one to hear the recording and read what was said."
       counts={{ "/lead-dashboard/calls": calls.length }}
     >
-      <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mb-4 grid grid-cols-2 gap-3 xl:grid-cols-4">
         <Kpi label="Calls on record" value={String(calls.length)} icon={IconPhone} accent />
         <Kpi
           label="Last 7 days"

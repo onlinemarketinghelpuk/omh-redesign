@@ -122,14 +122,14 @@ export default async function SequencesPage({
       ) : (
         <>
           {!outbound?.enabled && (
-            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border border-[#b42318]/30 bg-[#b42318]/8 px-4 py-3 dark:border-[#f97066]/30 dark:bg-[#f97066]/10">
+            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-[20px] border border-[#b42318]/30 bg-[#b42318]/8 px-4 py-3 dark:border-[#f97066]/30 dark:bg-[#f97066]/10">
               <IconAlert className="h-4 w-4 shrink-0 text-[#b42318] dark:text-[#f97066]" title="Stopped" />
-              <p className="text-[13.5px] font-semibold text-ink">Automated messages are switched off.</p>
+              <p className="text-[13.5px] font-medium text-ink">Automated messages are switched off.</p>
               <p className="text-[13.5px] text-muted">Nothing below will be sent.</p>
             </div>
           )}
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
             <Kpi
               label="Being followed up"
               value={String(active.length)}
@@ -200,7 +200,7 @@ export default async function SequencesPage({
                   {due.slice(0, 8).map((r, i) => (
                     <li key={r.id}
                       className={["flex items-start gap-3 py-3", i ? "border-t border-line" : ""].join(" ")}>
-                      <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-warm text-[11px] font-semibold uppercase tracking-wide text-muted">
+                      <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-warm text-[11px] font-medium uppercase tracking-wide text-muted">
                         {r.route}
                       </span>
                       <div className="min-w-0 flex-1">

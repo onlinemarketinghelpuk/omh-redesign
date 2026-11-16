@@ -17,7 +17,7 @@ import { IconAlert, IconCheck } from "./icons";
    ========================================================================= */
 
 const btn =
-  "inline-flex min-h-9 cursor-pointer items-center rounded-lg border border-line px-3 text-[13px] font-semibold text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-9 cursor-pointer items-center rounded-lg border border-line px-3 text-[13px] font-medium text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-55";
 
 type Note = { ok: boolean; text: string } | null;
 

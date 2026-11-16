@@ -82,12 +82,12 @@ export function Funnel({ totals: t }: { totals: Totals }) {
     <ol className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
       {stages.map((s) => (
         <li key={s.label} className="min-w-0">
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[.08em] text-muted">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
             {s.label}
           </p>
           <p
             className={[
-              "mt-1 font-sans text-[26px] font-semibold leading-none tabular-nums",
+              "mt-1 font-sans text-[26px] font-medium leading-none tabular-nums",
               s.cost && s.value > 0 ? "text-[#9a3f1e] dark:text-[#e8a583]" : "text-ink",
             ].join(" ")}
           >

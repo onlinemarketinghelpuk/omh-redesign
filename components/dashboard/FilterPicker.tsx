@@ -96,7 +96,7 @@ export function FilterPicker({
           "inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-lg border px-3 text-[13.5px] outline-none transition-colors duration-150",
           "focus-visible:ring-2 focus-visible:ring-[var(--accent)]",
           value
-            ? "border-transparent bg-inverse font-semibold text-oninverse"
+            ? "border-transparent bg-inverse font-medium text-oninverse"
             : "border-line bg-surface text-ink hover:bg-warm",
         ].join(" ")}
       >
@@ -136,7 +136,7 @@ export function FilterPicker({
           {order.map(([family, opts]) => (
             <span key={family} className="block">
               {family && (
-                <span className="mt-1 block border-t border-line px-3 pb-1 pt-2 font-sans text-[11px] font-semibold uppercase tracking-[.1em] text-muted">
+                <span className="font-mono mt-1 block border-t border-line px-3 pb-1 pt-2 text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                   {family}
                 </span>
               )}

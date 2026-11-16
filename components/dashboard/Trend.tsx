@@ -113,7 +113,7 @@ export function Trend({
               x={x(i)}
               y={H - 8}
               textAnchor="middle"
-              className={`font-sans text-[11.5px] ${hover === i ? "fill-ink font-semibold" : "fill-muted"}`}
+              className={`font-sans text-[11.5px] ${hover === i ? "fill-ink font-medium" : "fill-muted"}`}
             >
               {d.label}
             </text>
@@ -144,7 +144,7 @@ export function Trend({
       >
         {active ? (
           <>
-            <span className="font-semibold text-ink">{active.day}</span>
+            <span className="font-medium text-ink">{active.day}</span>
             {": "}
             {active.calls} {active.calls === 1 ? unit.replace(/s$/, "") : unit}
             {active.minutes > 0 && `, ${active.minutes.toFixed(1)} min`}

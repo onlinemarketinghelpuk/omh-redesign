@@ -29,7 +29,7 @@ export default async function NewCampaignPage({
       toolbar={
         <Link
           href={demo ? "/lead-dashboard/campaigns?demo=1" : "/lead-dashboard/campaigns"}
-          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-semibold outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-line bg-surface px-3 py-1.5 text-[13.5px] font-medium outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
           <IconBack className="h-4 w-4" />
           All campaigns

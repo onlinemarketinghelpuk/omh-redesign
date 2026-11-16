@@ -95,7 +95,7 @@ export default async function ChannelPage({
     <Shell active="/lead-dashboard/control" title={label} lead="Everything this channel does, in one place." demo={demo}>
       <Link
         href={`/lead-dashboard/control${q}`}
-        className="mb-4 inline-flex min-h-9 items-center gap-1.5 text-[13px] font-semibold text-muted underline-offset-2 hover:text-ink hover:underline"
+        className="mb-4 inline-flex min-h-9 items-center gap-1.5 text-[13px] font-medium text-muted underline-offset-2 hover:text-ink hover:underline"
       >
         <IconBack className="h-4 w-4" /> All channels
       </Link>
@@ -182,14 +182,14 @@ export default async function ChannelPage({
                   <details className="group rounded-xl border border-line bg-surface open:bg-warm/40">
                     <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-2.5">
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-[13.5px] font-semibold text-ink">{u ? u.step : m.key}</span>
+                        <span className="block truncate text-[13.5px] font-medium text-ink">{u ? u.step : m.key}</span>
                         <span className="block truncate text-[12.5px] text-muted">
                           {renderText(m.override?.body ?? m.original?.body ?? "", EXAMPLE).slice(0, 90)}…
                         </span>
                       </span>
                       <span className="flex shrink-0 items-center gap-2">
                         {m.override ? <Pill kind="warm">Your words</Pill> : null}
-                        <span className="text-[11px] font-semibold uppercase tracking-[.06em] text-muted">
+                        <span className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
                           {CHANNEL_WORD[m.channel] ?? m.channel}
                         </span>
                       </span>
@@ -224,7 +224,7 @@ export default async function ChannelPage({
         className="mt-5"
         rise={3}
         action={
-          <Link href={`/lead-dashboard/sequences${q}`} className="text-[13px] font-semibold text-[var(--dash-accent-text)] underline-offset-2 hover:underline">
+          <Link href={`/lead-dashboard/sequences${q}`} className="text-[13px] font-medium text-[var(--dash-accent-text)] underline-offset-2 hover:underline">
             All follow-ups
           </Link>
         }
@@ -268,7 +268,7 @@ export default async function ChannelPage({
           title="Calls"
           rise={4}
           action={
-            <Link href={`/lead-dashboard/agent${q}`} className="text-[13px] font-semibold text-[var(--dash-accent-text)] underline-offset-2 hover:underline">
+            <Link href={`/lead-dashboard/agent${q}`} className="text-[13px] font-medium text-[var(--dash-accent-text)] underline-offset-2 hover:underline">
               Calling agent
             </Link>
           }
@@ -290,9 +290,9 @@ export default async function ChannelPage({
 
 function Stat({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="min-w-0 rounded-2xl border border-line bg-surface p-4" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
-      <p className="text-[11px] font-semibold uppercase tracking-[.08em] text-muted">{label}</p>
-      <p className="mt-1.5 text-[15px] font-semibold text-ink">{children}</p>
+    <div className="min-w-0 rounded-[20px] border border-line bg-surface p-4" style={{ boxShadow: "var(--e1), var(--ring-inset)" }}>
+      <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-muted">{label}</p>
+      <p className="mt-1.5 text-[15px] font-medium text-ink">{children}</p>
     </div>
   );
 }

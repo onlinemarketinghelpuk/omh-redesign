@@ -47,7 +47,7 @@ export function ChannelSwitch({
   }
 
   const btn =
-    "inline-flex min-h-10 cursor-pointer items-center rounded-lg border px-3 text-[13px] font-semibold transition-colors duration-150 " +
+    "inline-flex min-h-10 cursor-pointer items-center rounded-lg border px-3 text-[13px] font-medium transition-colors duration-150 " +
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-60";
 
   return (
