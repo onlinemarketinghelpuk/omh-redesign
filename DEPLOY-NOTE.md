@@ -1,83 +1,143 @@
-# What to deploy, and what to expect
+# What to deploy, and in what order
 
-Everything below is on `main` at `c765d1c`. Nothing else needs uploading
-anywhere: `onlinemarketinghelp.co.uk` is this Next.js app, so one deploy of
-this repo ships the website, the dashboard, the API routes and the chat
-widget together.
+Everything below is on `main` at `cb99f7d`. `onlinemarketinghelp.co.uk` is
+this Next.js app, so one deploy of this repo ships the website, the dashboard,
+the API routes and the chat widget together.
 
-## The deploy
+**There is one ordering rule, and getting it wrong breaks five screens:**
+deploy Convex before the site. The control panel's screens read Convex
+functions that do not exist on the deployment yet. The site will build
+perfectly and those five pages will fail at request time.
 
-Normal build. Nothing new is required at build time.
+---
+
+## 1. Convex first
+
+The deployment is `cool-ferret-103`. Four new modules (`flows.ts`, `brain.ts`,
+`flowRuntime.ts`, `limits.ts`) and three new tables in `schema.ts`.
+
+To confirm whether it has already gone out, ask the deployment for a function
+that only exists in this commit:
+
+```sh
+curl -s -X POST https://cool-ferret-103.convex.cloud/api/query \
+  -H 'content-type: application/json' \
+  --data '{"path":"flows:list","args":{},"format":"json"}'
+```
+
+`Could not find public function for 'flows:list'` means it has not been
+deployed. Anything else means it has.
+
+> **`cool-ferret-103` is still a development deployment.** Dev deployments are
+> not meant to hold a live client's customer data and carry no production
+> guarantees. Moving it to production is a decision to take before real leads
+> start flowing, not after, and it is not part of this deploy.
+
+## 2. Then the site
+
+Self-hosted on the VPS, in Docker, behind the same Traefik that n8n already
+runs on. There is no CI, so it is a pull and a rebuild on the box:
+
+```sh
+git pull origin main
+docker compose up -d --build
+```
+
+`npm ci && npm run build` is the equivalent if you are not using the compose
+file. `prebuild` rebuilds the chat widget into `public/ohm-assistant.js`, so
+nothing extra is needed for it.
+
+### One environment variable to add
 
 ```
-npm ci
-npm run build
+OHM_LEAD_ROUTER_URL=<the n8n lead router webhook URL>
 ```
 
-The widget is already built and committed at `public/ohm-assistant.js`
-(30,922 bytes). It is served at `/ohm-assistant.js`, which is what the page
-loads. If you want to rebuild it yourself: `node widget/web/embed/build.mjs`,
-then copy `widget/web/embed/dist/ohm-assistant.js` over `public/ohm-assistant.js`.
+Without it the website's own forms still email the team exactly as they do
+today, and nothing errors. With it, every form fill also enters the engagement
+package: a lead row, its attribution, and route B's text and email inside two
+minutes. It is the single variable that connects the marketing site to the
+system, and it is read in `app/api/enquiry/route.ts`.
 
-## One new environment variable, and it is optional
+## 3. n8n, separately
 
+Three workflows have never been pushed (`00-error`, `10-meta`,
+`12-email-inbound`) and the other ten need rebuilding, because they now carry
+an `errorWorkflow` link, the voice workflow has moved to Retell's v3 endpoint,
+and the SMTP credential is read from configuration rather than hardcoded.
+
+```sh
+cd ../widget
+python3 n8n/build-workflows.py
+python3 n8n/push.py
 ```
-OHM_REACTIVATION_WEBHOOK=<the n8n reactivation webhook URL>
-```
 
-Only the "Start a campaign" screen uses it. Without it that screen still
-works and still shows its preview; the start button is disabled and says
-why. Nothing else is affected.
+`push.py` creates workflows **inactive** and its update payload carries no
+`active` field, so nothing starts sending by itself. Activating is a separate
+flag and a separate decision.
+
+---
 
 ## How to tell the deploy worked
 
-Three things that are false on the current live build and true after:
-
-| Check | Now | After |
+| Check | Before | After |
 |---|---|---|
-| `curl -s -o /dev/null -w "%{size_download}" https://onlinemarketinghelp.co.uk/ohm-assistant.js` | 23135 | 30922 |
-| `curl -s -o /dev/null -w "%{http_code}" "https://onlinemarketinghelp.co.uk/api/book-demo?date=2026-11-20"` | 405 | 200 |
-| `/lead-dashboard/campaigns/new` | 404 | loads |
+| `curl -s https://onlinemarketinghelp.co.uk/ohm-assistant.js \| wc -c` | 30922 | 31257 |
+| `/lead-dashboard/control` | 404 after login | loads |
+| The `flows:list` probe above | not found | returns |
+
+Checking `/lead-dashboard/control` from the outside without signing in tells
+you nothing: everything under `/lead-dashboard` redirects to the login page
+whether the route exists or not.
 
 ## What changes for a visitor
 
-- The assistant answers in two to four sentences instead of a page of
-  bulleted packages, and no longer prints asterisks.
-- One greeting on opening the panel instead of two.
-- A returning visitor sees their previous conversation.
-- They can send a photo or a voice note, and the assistant reads or hears it
-  and answers.
-- The booking form reads the diary and strikes out times that are taken.
+- **Filling in any form on the site now reaches the system.** Six forms posted
+  to `/api/enquiry`, which emailed the team and stopped. No lead row, no
+  attribution, no route, no follow-up. Route B was built and tested and
+  nothing fed it. Needs `OHM_LEAD_ROUTER_URL` above.
+- **Voice in the browser works again.** Retell switched off
+  `v2/create-web-call` and returned a warning-shaped body, so nothing failed
+  loudly and it was dead for four days. It is on v3.
+- Somebody who chats on the site and later messages the Facebook Page is now
+  one person rather than two records.
 
 ## What changes for OMH
 
-- A new screen at `/lead-dashboard/campaigns/new` that can start a
-  reactivation campaign, after showing exactly who would and would not be
-  contacted.
-- A lead captured from a form can now have its outcome recorded. Before, any
-  lead with no chat transcript showed "Nothing was recorded" and had no
-  outcome control at all.
+Five new screens, which together are the control panel: `/control` for what
+happens to a lead from each channel, `/messages` for what the messages
+actually say, `/brain` for who answers replies, `/flows` for the order they go
+in, and `/agent` for the calling agent.
 
-## Two things that will NOT work after this deploy, and are not bugs
+The compliance property moved with them and did not become a checkbox. A call
+step exists only on routes where the person contacted us first. On a marketing
+flow the Call node is absent from the palette rather than disabled, Convex
+refuses the whole flow server side whatever produced it, and the test suite
+asserts that over saved flows and not only over the code. PECR regulation 19
+is the reason.
 
-1. **Appointment reminders are scheduled but nothing sends them.**
-   `08-sequence-worker` is inactive on n8n. Activating it also wakes the SMS
-   steps on other routes, which have no Twilio number behind them, so it is
-   a decision rather than a switch.
+Also: the dashboard was reading 25 rows and reporting them as the total. It
+had survived several browser passes because `?demo=1` never reaches the query.
 
-2. **Two people can still book the same slot.** The form now reads
-   availability, but the guarantee is a lock inside the Google Apps Script,
-   and that script has not been redeployed yet. The new version is in
-   `docs/google-calendar-booking.md`; it must go out as a NEW VERSION of the
-   existing deployment so the URL does not change.
+## What still will not work, and is not a bug
 
-Until the script is redeployed the booking form behaves exactly as it does
-today: the availability read returns "could not ask" and every time is
-offered.
+1. **Nothing texts or calls anybody.** There is no Twilio number yet, so
+   `07-router`, `08-sequence-worker`, `09-twilio-inbound` and `11-reactivation`
+   stay inactive. See `../CLIENT-ACCESS-LIVE-CALL.md` and
+   `../pdf/OMH-Switching-On-Your-Channels.pdf`.
+2. **Two people can still book the same slot.** The form reads availability,
+   but the guarantee is a lock inside the Google Apps Script, and that script
+   has not been redeployed. The new version is in
+   `docs/google-calendar-booking.md`, and it must go out as a NEW VERSION of
+   the existing deployment so the URL does not change.
+3. **Facebook and Instagram are not connected.** The routes exist and are
+   tested; the access does not.
 
 ## If something looks wrong
 
 The chat, the dashboard and the widget all read from Convex
-(`cool-ferret-103`) and n8n (`srv1836598`), both of which are already
-deployed and unchanged by this. If the site builds but the assistant is
-silent, it is one of those two, not the deploy.
+(`cool-ferret-103`) and n8n (`srv1836598`). If the site builds but the
+assistant is silent, or a dashboard screen is empty rather than broken, it is
+one of those two and not this deploy. n8n's execution log is worth reading
+before anything else: the voice outage above was visible there and nowhere
+else.
