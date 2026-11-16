@@ -156,8 +156,9 @@ option (498px).
   `cool-ferret-103`. Until `npx convex deploy` (or `convex dev`) is run, the
   two new screens say "cannot be reached" outside demo mode and the engine
   behaves exactly as before. Deploying is Rafiul's call.
-- **Stages 6 and 7** (the Brain, the Outbound Agent): blocked on the open
-  questions in README section 9 and on the UK number.
+- **Stages 6 and 7** (the Brain, the Outbound Agent): built in the second
+  pass below. What still waits: the UK number, `create-outbound-agent.py`,
+  and pushing the four n8n workflows.
 - **Not committed.** The website repo already held uncommitted work from
   earlier workstreams in several of the same files; see LEDGER.md.
 

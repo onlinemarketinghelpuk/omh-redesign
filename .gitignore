@@ -73,3 +73,4 @@ widget/n8n/*.json
 
 # Browser-test screenshots: output, not source.
 widget/web/embed/test/shot-*.png
+.nostop/

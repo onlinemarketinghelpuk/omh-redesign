@@ -111,7 +111,9 @@ hand here. Decisions are taken on Rafiul's behalf and can be reversed.
 ## Blocked
 
 - B1. UK long-code number for Retell (stage 7). Needs a Twilio purchase.
-- B2. Stages 6 and 7 screens: the five open questions in README section 9.
+- B2. Stages 6 and 7: screens and engine built in the second pass. The
+  five open questions in README section 9 still need the client's answers;
+  the defaults stand until then.
 
 ## Findings
 
@@ -120,8 +122,8 @@ hand here. Decisions are taken on Rafiul's behalf and can be reversed.
   only deprecation notice published names `create-web-call` alone. Checked
   2026-11-16 from the docs; no call placed.
 - F2. The same reference offers `idempotency_key` on create-phone-call
-  (safe retry for an hour). Our call node does not send one. A worker that
-  rings, dies before `completeStep` and is re-claimed could dial twice.
+  (safe retry for an hour). Fixed in the second pass: the 08 worker's call
+  node now sends one, so a re-claimed step cannot dial twice.
 - F3 to F5: three bugs fixed, see plan.md "Found on the way". F5 is the
   serious one: every reactivation campaign's first contact was its "second
   and last" text, five days late.

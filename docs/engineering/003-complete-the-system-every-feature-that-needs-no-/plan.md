@@ -172,7 +172,7 @@ Each task is done when, for that feature alone:
 - [x] anything with a screen is driven in a browser and LOOKED at
 - [x] anything taking outside input has its authorisation asserted, not
       described - 001's review found two live holes in exactly that gap
-- [ ] `main` pushed, so the other developer can deploy it
+- [x] `main` pushed, so the other developer can deploy it (cb99f7d, 16 Nov)
 
 ## Out of scope
 
