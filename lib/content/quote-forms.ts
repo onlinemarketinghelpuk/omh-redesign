@@ -547,44 +547,6 @@ export const quoteFormPages: QuoteFormPage[] = [
   websiteRedesignQuestionnaire,
 ];
 
-/* /omh-free-consultation is in the same phase but is not a form page — the live
-   page is a Calendly booking landing page. Its copy lives here so the route file
-   stays a thin wrapper like every other page in this rebuild. */
-export const freeConsultation = {
-  slug: "omh-free-consultation",
-  title: "book your free consultation today!",
-  subtitle: "Leave It to the experts!",
-  intro:
-    "OMH is an online marketing agency that focuses on providing a full range of Online Marketing Services. When we are successful, our clients are successful.",
-  pricingCta: "View Pricing",
-  bookingLabel: "LET US HELP YOU",
-  bookingHeading: "BOOK A CALL AT A TIME CONVENIENT FOR YOU",
-  awardsHeading: "We’re Awarded As",
-  awards: ["Top UK PPC Agencies 2021", "Top UK B2B Companies 2021"],
-  contactHeading: "Get In Touch",
-  contactBody:
-    "Need help with one of our services? Get in contact with our Customer Support Team.",
-  phone: "+44 20 3489 3934",
-  clientsHeading: "Our Happy Clients",
-  clientsIntro:
-    "Our experienced team cover the entire Marketing spectrum and are on hand to ensure your small business is taking full advantage of opportunities.",
-  clients: [
-    {
-      name: "Oak Accounting",
-      body: "Oak Accounting came to Online Marketing Help with the need for a new website, SEO and paid advertising.",
-    },
-    {
-      name: "Max Silver Coaching",
-      body: "Max Silver Coaching came to Online Marketing Help needing a landing page and paid advertising support.",
-    },
-  ],
-  seo: {
-    title: "OMH Free Consultation",
-    description:
-      "Book your free consultation with Online Marketing Help. Pick a time that suits you and talk through websites, SEO, PPC and paid social.",
-  },
-};
-
 /* Every Phase 5 URL, for app/sitemap.ts. Kept out of `readyPages` on purpose:
    funnel pages belong in the sitemap but not in the header nav or site search. */
-export const funnelPaths = [...quoteFormPages.map((p) => `/${p.slug}`), `/${freeConsultation.slug}`, "/get-more-leads"];
+export const funnelPaths = [...quoteFormPages.map((p) => `/${p.slug}`), "/get-more-leads"];

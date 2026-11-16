@@ -227,7 +227,6 @@ export const crumbLabels: Record<string, string> = {
   "/social-media-paid-marketing-request-quote": "Paid Social Quote",
   "/wordpress-development-request-quote": "WordPress Development Quote",
   "/wordpress-website-maintenance-request-quote": "WordPress Maintenance Quote",
-  "/omh-free-consultation": "Free Consultation",
   "/get-more-leads": "Free Growth Review",
   "/design-system": "Design System",
   "/home-2": "Home (preview)",

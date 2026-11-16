@@ -61,6 +61,8 @@ const nextConfig: NextConfig = {
       { source: "/search-engine-optimisation", destination: "/seo-services", permanent: true },
       { source: "/best-local-seo-services", destination: "/local-seo", permanent: true },
       { source: "/web-content-writing-request-quote", destination: "/contact", permanent: true },
+      // 16 Nov 2026 (client): the free consultation landing page is retired; bookings go through Contact.
+      { source: "/omh-free-consultation", destination: "/contact", permanent: true },
       // Search Console 404s (20 Oct 2026): old WordPress URLs still indexed. Each goes to its closest live page; the
       // three blog posts kept their slugs under /insights.
       { source: "/all-services-price-list", destination: "/pricing", permanent: true },

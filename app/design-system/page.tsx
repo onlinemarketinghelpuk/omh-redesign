@@ -5,7 +5,7 @@ import { CaseEvidenceFpo, CaseStudyFeature } from "@/components/ui/Case";
 import { Field } from "@/components/ui/Field";
 import { Eyebrow, Fpo, VerifiedSlot } from "@/components/ui/Proof";
 import Link from "next/link";
-import { freeConsultation, quoteFormPages } from "@/lib/content/quote-forms";
+import { quoteFormPages } from "@/lib/content/quote-forms";
 import { subscriptionThankYou, thankYouPages } from "@/lib/content/thank-you";
 
 export const metadata: Metadata = {
@@ -91,7 +91,7 @@ export default function DesignSystem() {
               </span>
             </p>
             <ul className="flex flex-col">
-              {[...quoteFormPages.map((p) => ({ slug: p.slug, label: p.seo.title })), { slug: freeConsultation.slug, label: freeConsultation.seo.title }].map(
+              {[...quoteFormPages.map((p) => ({ slug: p.slug, label: p.seo.title }))].map(
                 (page) => (
                   <li key={page.slug} className="border-b border-line">
                     <Link
