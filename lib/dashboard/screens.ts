@@ -135,42 +135,51 @@ export const SCREENS: Record<string, Screen> = {
    error.
 
    The comments explaining each choice stay with the rail in Shell.tsx. */
+/* The rail in three groups, so fifteen screens read as three short lists:
+   what happened, who is being chased, and how it is set up. The rail, the
+   phone menu and the error page all read these, so they cannot disagree. */
+export const TAB_GROUPS = [
+  { key: "activity", label: "Activity" },
+  { key: "followup", label: "Follow-up" },
+  { key: "setup", label: "Set up" },
+] as const;
+
 export const TABS = [
-  { href: "/lead-dashboard", label: "Overview" },
+  { href: "/lead-dashboard", label: "Overview", group: "activity" },
   /* Second, directly under Overview: it is the only screen with someone
      waiting on the other end, so it is the one worth seeing first. */
-  { href: "/lead-dashboard/handover", label: "Needs a person" },
+  { href: "/lead-dashboard/handover", label: "Needs a person", group: "activity" },
   /* Every channel in one list. Second after the queue because it is the
      screen a business would leave open all day. */
-  { href: "/lead-dashboard/inbox", label: "Inbox" },
-  { href: "/lead-dashboard/calls", label: "Calls" },
+  { href: "/lead-dashboard/inbox", label: "Inbox", group: "activity" },
+  { href: "/lead-dashboard/calls", label: "Calls", group: "activity" },
   /* Conversations is not a separate entry. It was the same subject as the
      Inbox at a different grain, one row per person instead of one per
      message, and two entries for that read as two screens that happened to
      look alike. It is a toggle inside the Inbox now; the route still works
      and still carries every link pointing at it. */
-  { href: "/lead-dashboard/leads", label: "Leads" },
-  { href: "/lead-dashboard/bookings", label: "Appointments" },
+  { href: "/lead-dashboard/leads", label: "Leads", group: "activity" },
+  { href: "/lead-dashboard/bookings", label: "Appointments", group: "activity" },
   /* The routing screens. Below the record of what happened, because they are
      about what is about to happen, which is checked less often but matters
      more when it is wrong. */
-  { href: "/lead-dashboard/sequences", label: "Follow-ups" },
+  { href: "/lead-dashboard/sequences", label: "Follow-ups", group: "followup" },
   /* Beside Follow-ups rather than beside Channels: a campaign is a batch of
      follow-ups started on purpose, and the two screens are read together when
      one is running. */
-  { href: "/lead-dashboard/campaigns", label: "Campaigns" },
-  { href: "/lead-dashboard/channels", label: "Channels" },
+  { href: "/lead-dashboard/campaigns", label: "Campaigns", group: "followup" },
+  { href: "/lead-dashboard/channels", label: "Channels", group: "followup" },
   /* What the follow-ups do and what they say. Below the reports, above
      Settings: changed less often than a report is read, more often than a
      setting. */
-  { href: "/lead-dashboard/control", label: "Control panel" },
-  { href: "/lead-dashboard/messages", label: "Messages" },
-  { href: "/lead-dashboard/brain", label: "Replies" },
-  { href: "/lead-dashboard/agent", label: "Calling agent" },
+  { href: "/lead-dashboard/control", label: "Control panel", group: "setup" },
+  { href: "/lead-dashboard/messages", label: "Messages", group: "setup" },
+  { href: "/lead-dashboard/brain", label: "Replies", group: "setup" },
+  { href: "/lead-dashboard/agent", label: "Calling agent", group: "setup" },
   /* Next to Settings: it is the other "is the plumbing right" screen, and
      the per-channel switch here is the finer-grained sibling of the kill
      switch there. */
-  { href: "/lead-dashboard/integrations", label: "Integrations" },
-  { href: "/lead-dashboard/settings", label: "Settings" },
+  { href: "/lead-dashboard/integrations", label: "Integrations", group: "setup" },
+  { href: "/lead-dashboard/settings", label: "Settings", group: "setup" },
 ] as const;
 
