@@ -56,8 +56,18 @@ export const INDEXES: Record<string, Record<string, string[]>> = {
   limits: {
     by_key: ["key"],
   },
+  /* Read by functions:recent, which the Leads, Bookings and Overview screens
+     all come from. Declared here so the dashboard-population suite can drive
+     that query; asserted against schema.ts like every other index. */
+  escalations: {
+    by_at: ["at"],
+  },
   suppressions: { by_key: ["key"] },
   settings: { by_key: ["key"] },
+  flows: { by_status: ["status"] },
+  flowVersions: { by_flow_version: ["flowId", "version"] },
+  messageTemplates: { by_key: ["key"] },
+  messageHistory: { by_key_at: ["key", "at"] },
   consentEvents: {
     by_lead: ["leadId"],
     by_phone: ["phoneKey"],

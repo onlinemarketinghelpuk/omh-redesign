@@ -27,6 +27,9 @@ import { NextResponse } from "next/server";
 import { createClient } from "next-sanity";
 import { renderEnquiryEmail } from "@/lib/enquiry-email";
 import nodemailer from "nodemailer";
+/* The same file the tests assert, so the mapping that decides which label
+   is the person and which is the company cannot drift from what is proven. */
+import { enquiryToLead } from "@/widget/gates/enquiry-form.js";
 
 export const runtime = "nodejs";
 
@@ -100,6 +103,18 @@ export async function POST(request: Request) {
 
   if (suspectedSpam) return NextResponse.json({ ok: true });
 
+  /* Before the email, not after it.
+   *
+   * It was written after, which read as the careful order: email the team
+   * first, then do the clever thing. But this route RETURNS EARLY when SMTP
+   * is not configured or rejects, so on a mail outage the enquiry would have
+   * been lost to the system as well as to the inbox: no lead row, no route,
+   * no follow-up, and nobody aware that any of it had happened.
+   *
+   * The lead is the thing that matters most, so it goes first, and it cannot
+   * throw. */
+  await handOverToTheRouter(body, formName);
+
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   if (!user || !pass) {
@@ -145,4 +160,60 @@ export async function POST(request: Request) {
 
   console.log("Enquiry emailed:", formName, "->", TO);
   return NextResponse.json({ ok: true });
+}
+
+/* The step this route did not have, and the largest hole in the product.
+ *
+ * Six forms on this site post here. Until now the whole of what happened to
+ * a submission was: an email to the team. No lead row, so nothing on the
+ * Leads screen; no attribution, so the advert that produced them was lost at
+ * the moment they converted; and no route, so the follow-up never started.
+ *
+ * Route B is named "Website form, or a Google Ads landing page" and promises
+ * a text and an email inside two minutes and a call at fifteen. It was
+ * built, it was tested, and nothing fed it. The client would have found that
+ * out by filling in their own form.
+ *
+ * Two rules this obeys:
+ *
+ * 1. **It cannot fail the visitor's submission.** By the time this runs the
+ *    enquiry is stored and emailed, so the team has it. If the router is
+ *    down, the right outcome is a lead that is followed up by hand, not a
+ *    form that told somebody their message did not send.
+ *
+ * 2. **It is off until it is configured.** With no URL set, nothing is
+ *    attempted and nothing is logged as broken. That keeps local development
+ *    and any deployment without the automation exactly as they are today.
+ */
+async function handOverToTheRouter(body: Payload, formName: string) {
+  const url = process.env.OHM_LEAD_ROUTER_URL;
+  if (!url) return;
+
+  const shaped = enquiryToLead(body as Record<string, unknown>, {});
+  if (!shaped.ok) {
+    /* Spam, or nothing to reply to. Both are deliberate refusals rather than
+       errors: the team still has the email either way. */
+    console.log("Enquiry not routed:", formName, "-", shaped.why);
+    return;
+  }
+
+  try {
+    const r = await fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(shaped.lead),
+      /* A form submission is a person waiting on a spinner. The router does
+         its sending in the background, so this only needs to get the row in;
+         it is not worth holding the page for. */
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!r.ok) {
+      console.error("Lead router refused the enquiry:", formName, r.status, (await r.text()).slice(0, 200));
+      return;
+    }
+    console.log("Enquiry routed:", formName, "->", shaped.lead.sourceChannel);
+  } catch (error) {
+    /* Logged, not thrown. The enquiry is already stored and emailed. */
+    console.error("Lead router unreachable, enquiry emailed only:", formName, error);
+  }
 }

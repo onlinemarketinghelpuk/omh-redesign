@@ -1,7 +1,10 @@
 import { v } from "convex/values";
+import {
+  bump, PER_SESSION, PER_IP, PER_DEPLOYMENT,
+} from "./limits";
 import { mutation, query, internalMutation, internalQuery } from "./_generated/server";
 import { api } from "./_generated/api";
-import { findPerson, phoneKey, emailKey, attributionArg, classifySource, cleanAttribution } from "./visitors";
+import { findPerson, phoneKey, emailKey, attributionArg, classifySource, cleanAttribution, psidFromSession } from "./visitors";
 
 /* =========================================================================
    Everything the assistant can read or write. The HTTP layer in http.ts is
@@ -364,34 +367,19 @@ export const updateProfile = mutation({
   },
 });
 
-/* ---------------------------------------------------------------- limits */
+/* ---------------------------------------------------------------- limits
 
-export const WINDOW_MS = 60 * 60 * 1000;   // one hour
-const PER_SESSION = 30;                     // a real visitor never needs more
-const PER_IP = 60;                          // an office behind one address
-export const PER_DEPLOYMENT = 1500;         // circuit breaker on the whole thing
+   The counters and every ceiling live in ./limits, which imports nothing of
+   ours. They used to live here, and when visitors.ts needed them back the
+   two modules imported each other: an import cycle, which in Convex shows
+   up as `v.optional(undefined)` failing to build and names neither file.
 
-/* Exported so attachments.ts can share this counter rather than keeping a
-   second one. Two rate limiters over the same table, with their own windows
-   and their own idea of what a session is, is how a visitor ends up over one
-   limit and under the other. */
-export async function bump(ctx: any, key: string, max: number, now: number) {
-  const row = await ctx.db
-    .query("limits")
-    .withIndex("by_key", (i: any) => i.eq("key", key))
-    .first();
-  if (!row) {
-    await ctx.db.insert("limits", { key, windowStart: now, count: 1 });
-    return { ok: true, count: 1 };
-  }
-  if (now - row.windowStart > WINDOW_MS) {
-    await ctx.db.patch(row._id, { windowStart: now, count: 1 });
-    return { ok: true, count: 1 };
-  }
-  if (row.count >= max) return { ok: false, count: row.count };
-  await ctx.db.patch(row._id, { count: row.count + 1 });
-  return { ok: true, count: row.count + 1 };
-}
+   Re-exported so existing callers and tests keep working. */
+export {
+  WINDOW_MS, PER_SESSION, PER_IP, PER_DEPLOYMENT,
+  HELLO_PER_SESSION, HELLO_PER_VISITOR, HELLO_PER_DEPLOYMENT,
+  SAY_PER_SESSION, SAY_PER_DEPLOYMENT, bump,
+} from "./limits";
 
 export const checkLimit = mutation({
   args: { sessionId: v.string(), ip: v.optional(v.string()) },
@@ -430,6 +418,12 @@ export const saveLead = mutation({
        Ads lead form) passes it; the widget does not need to, because the
        session already carries what the browser saw. */
     sourceChannel: v.optional(v.string()),
+    /* Meta's per-Page id for this human. Optional, and normally not passed:
+       a Messenger or Instagram thread arrives with `sessionId` already set to
+       `"meta:<psid>"`, and it is read back out of that below. It is accepted
+       explicitly so the DM router can say so directly without inventing a
+       session id for the purpose. */
+    psid: v.optional(v.string()),
     attribution: v.optional(attributionArg),
   },
   handler: async (ctx, a) => {
@@ -446,10 +440,19 @@ export const saveLead = mutation({
       .first();
     const visitorId = session?.visitorId;
 
+    /* The fourth key, and the one that makes a Messenger person and a website
+       person the same person. Derived from the session id when the caller did
+       not say, so no workflow has to remember to pass it and none of them can
+       forget. `psidFromSession` returns nothing for an empty remainder, which
+       matters: `psids` is matched by scanning rows, so an empty key would
+       match the first lead without one. */
+    const psid = a.psid?.trim() || psidFromSession(a.sessionId);
+
     const existing = await findPerson(ctx, {
       visitorId,
       phone: a.phone,
       email: a.email,
+      psid,
     });
 
     const pk = phoneKey(a.phone);
@@ -501,6 +504,14 @@ export const saveLead = mutation({
       const visitorIds = new Set<string>(existing.visitorIds ?? []);
       if (visitorId) visitorIds.add(visitorId);
 
+      /* Added, never replaced. Somebody who reaches the Page from Messenger
+         and from Instagram has two PSIDs, and keeping only the newest would
+         lose the older thread: the next message in it would start a second
+         person, which is the bug this field exists to stop. A Set, so the
+         same thread messaging again does not grow the array. */
+      const psids = new Set<string>(existing.psids ?? []);
+      if (psid) psids.add(psid);
+
       await ctx.db.patch(existing._id, {
         name: fullerName(a.name, existing.name) ?? existing.name,
         email: sameAddress ? existing.email : keep(a.email, existing.email),
@@ -519,6 +530,7 @@ export const saveLead = mutation({
         firstAt: existing.firstAt ?? existing.at,
         visits: (existing.visits ?? 1) + 1,
         visitorIds: [...visitorIds],
+        psids: [...psids],
         phoneKey: pk ?? existing.phoneKey,
         emailKey: ek ?? existing.emailKey,
         /* A returning person is worth looking at again even if the first
@@ -554,6 +566,7 @@ export const saveLead = mutation({
       firstAt: now(),
       visits: 1,
       visitorIds: visitorId ? [visitorId] : [],
+      psids: psid ? [psid] : [],
       phoneKey: pk,
       emailKey: ek,
       status: "new",
@@ -943,13 +956,36 @@ export const markNotified = mutation({
 
 /* ---------------------------------------------------------------- dashboard */
 
+/* How many rows the dashboard reads.
+ *
+ * This was a hard 25, with no argument, and it is the only source for the
+ * Leads screen, the Bookings screen and the Overview's lead figures. The
+ * Channels screen reads `getChannelFacts(undefined, 1000)`. So on real data
+ * Channels reported 329 leads and the Leads screen beside it reported 25,
+ * under the words "Leads captured".
+ *
+ * It was worse than a page size in two ways. Test rows are filtered by the
+ * dashboard AFTER this query, so nine of our own rows in the newest 25 left
+ * the client looking at sixteen leads and being told that was all of them.
+ * And every Channels row links to the Leads screen filtered by channel; the
+ * destination held 25 rows in total.
+ *
+ * So it matches what Channels asks for. It is still a ceiling rather than
+ * `collect()`: a query with no bound is a page that gets slower every week
+ * until it times out, and that failure arrives as a blank dashboard rather
+ * than a slow one. When OMH outgrows it, the screens need paging, and a
+ * number that is visibly a cap is what makes that obvious.
+ */
+export const DASHBOARD_LIMIT = 1000;
+
 export const recent = query({
-  args: {},
-  handler: async (ctx) => {
+  args: { limit: v.optional(v.number()) },
+  handler: async (ctx, { limit }) => {
+    const take = Math.min(Math.max(limit ?? DASHBOARD_LIMIT, 1), DASHBOARD_LIMIT);
     const [leads, bookings, escalations] = await Promise.all([
-      ctx.db.query("leads").withIndex("by_at").order("desc").take(25),
-      ctx.db.query("bookings").withIndex("by_date").order("desc").take(25),
-      ctx.db.query("escalations").withIndex("by_at").order("desc").take(25),
+      ctx.db.query("leads").withIndex("by_at").order("desc").take(take),
+      ctx.db.query("bookings").withIndex("by_date").order("desc").take(take),
+      ctx.db.query("escalations").withIndex("by_at").order("desc").take(take),
     ]);
     return { leads, bookings, escalations };
   },

@@ -50,6 +50,10 @@ export type SequenceRow = {
   sourceChannel: string | null;
   route: string;
   routeName: string;
+  /** The owner's flow this runs, and the version it started on. */
+  flowId?: string | null;
+  flowVersion?: number | null;
+  stepCount?: number | null;
   step: number;
   stepLabel: string | null;
   stepChannel: string | null;
@@ -327,6 +331,135 @@ export const addSuppression = (
   reason = "manual",
   note?: string,
 ) => call<{ key: string; stopped: number }>("/suppress/add", { key, kind, reason, note });
+
+/* ---------------------------------------------------------- control panel
+
+   The owner's flows and messages. Every refusal is decided in Convex
+   (widget/convex/flows.ts); these pass the request and bring the verdict
+   back, so the screens show the server's own words. */
+
+export type FlowRow = {
+  id: string;
+  name: string;
+  basis: string;
+  triggers: string[];
+  nodes: FlowNodeData[];
+  status: "draft" | "live" | "paused" | string;
+  version: number;
+  updatedAt: number;
+  updatedBy: string | null;
+};
+
+/* Kept loose here: the shape is owned and checked by widget/gates/flows.js. */
+export type FlowNodeData = Record<string, unknown> & { id: string; type: string };
+
+export type FlowVersionRow = {
+  version: number;
+  name: string;
+  triggers: string[];
+  nodes: FlowNodeData[];
+  status: string;
+  at: number;
+  by: string | null;
+};
+
+export type ServerError = { code: string; message: string; nodeId?: string; liveOnly?: boolean };
+
+export type SaveFlowResult =
+  | { ok: true; flowId: string; version: number; status: string; basis: string; warnings?: { code: string; message: string }[] }
+  | { ok: false; why: string; errors?: ServerError[]; conflicts?: { id: string; name: string; triggers: string[] }[] };
+
+export type MessageOverride = {
+  key: string;
+  channel: string;
+  subject: string | null;
+  body: string;
+  updatedAt: number;
+  updatedBy: string | null;
+};
+
+export type MessageHistoryRow = {
+  key: string;
+  action: "saved" | "reset" | string;
+  channel: string;
+  subject: string | null;
+  body: string | null;
+  at: number;
+  by: string | null;
+};
+
+export const getFlows = () => call<{ flows: FlowRow[] }>("/flows/list");
+
+export const getFlow = (flowId: string) => call<FlowRow | null>("/flows/get", { flowId });
+
+export const getFlowHistory = (flowId: string) =>
+  call<{ versions: FlowVersionRow[] }>("/flows/history", { flowId });
+
+export const saveFlow = (body: {
+  flowId?: string;
+  name: string;
+  triggers: string[];
+  nodes: unknown[];
+  live?: boolean;
+  replace?: boolean;
+  by?: string;
+}) => call<SaveFlowResult>("/flows/save", body);
+
+export const setFlowStatus = (flowId: string, status: string, replace?: boolean, by?: string) =>
+  call<SaveFlowResult>("/flows/status", { flowId, status, replace, by });
+
+export const getMessages = () =>
+  call<{ messages: MessageOverride[]; history: MessageHistoryRow[] }>("/messages/list");
+
+export const saveMessage = (body: {
+  key: string;
+  channel: string;
+  subject?: string;
+  body: string;
+  by?: string;
+}) =>
+  call<{ ok: boolean; why?: string; errors?: ServerError[]; warnings?: { code: string; message: string }[] }>(
+    "/messages/save",
+    body,
+  );
+
+export const resetMessage = (key: string, by?: string) =>
+  call<{ ok: boolean; why?: string; flows?: string[] }>("/messages/reset", { key, by });
+
+/* ------------------------------------------------- the brain and the agent */
+
+export type BrainSettings = {
+  enabled: boolean;
+  policies: Record<string, string>;
+  sales: { goal: string; offer: string; notes: string };
+  updatedAt: number | null;
+  updatedBy: string | null;
+};
+
+export type AgentSettings = {
+  fromNumber: string;
+  days: number[];
+  start: number;
+  end: number;
+  opening: string;
+  goal: string;
+  updatedAt: number | null;
+  updatedBy: string | null;
+};
+
+export const getBrain = () => call<BrainSettings>("/brain/get");
+
+export const setBrain = (body: {
+  enabled: boolean;
+  policies: Record<string, string>;
+  sales?: { goal: string; offer: string; notes: string };
+  by?: string;
+}) => call<{ ok: boolean; errors?: string[] }>("/brain/set", body);
+
+export const getAgent = () => call<AgentSettings>("/agent/get");
+
+export const setAgent = (body: Omit<AgentSettings, "updatedAt" | "updatedBy"> & { by?: string }) =>
+  call<{ ok: boolean; errors?: string[]; fromNumber?: string }>("/agent/set", body);
 
 /* ----------------------------------------------------------------- shared */
 

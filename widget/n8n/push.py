@@ -82,6 +82,33 @@ if ONLY:
     FILES = [f for f in FILES if ONLY in f.name]
     print(f"  only: {', '.join(f.name for f in FILES) or '(nothing matched)'}")
 
+# The error workflow's id, which only n8n can mint. The generated files carry
+# a sentinel, because the builder cannot know the id; it is resolved here, by
+# name, from the instance.
+#
+# If it cannot be resolved the key is DROPPED rather than sent. An id n8n does
+# not recognise means every future failure tries to start a workflow that does
+# not exist: the report would be missing and the reason for it would be buried
+# in n8n's own logs, which is worse than having no error workflow, because it
+# looks like one is configured.
+ERROR_WF_NAME = "OHM Assistant — Error Handler"
+ERROR_WF_PENDING = "ERROR_WF_PENDING"
+
+
+def resolved_settings(settings):
+    s = dict(settings or {"executionOrder": "v1"})
+    if s.get("errorWorkflow") != ERROR_WF_PENDING:
+        return s                      # already a real id, or not set at all
+    real = by_name.get(ERROR_WF_NAME)
+    if real:
+        s["errorWorkflow"] = real
+    else:
+        s.pop("errorWorkflow")
+        print(f"  note: {ERROR_WF_NAME!r} is not on the instance yet, so "
+              f"errorWorkflow was left unset on this one")
+    return s
+
+
 for f in FILES:
     wf = json.loads(f.read_text())
     name = wf["name"]
@@ -89,7 +116,7 @@ for f in FILES:
         "name": name,
         "nodes": wf["nodes"],
         "connections": wf["connections"],
-        "settings": wf.get("settings", {"executionOrder": "v1"}),
+        "settings": resolved_settings(wf.get("settings")),
     }
     if name in by_name:
         wid = by_name[name]
@@ -99,6 +126,12 @@ for f in FILES:
         st, res = call("POST", "/api/v1/workflows", payload)
         wid = res.get("id") if isinstance(res, dict) else None
         action = "created"
+        # So the twelve that follow can resolve errorWorkflow on this same
+        # run. 00-error sorts first for exactly this reason; without this
+        # line a first push would create it and then leave every other
+        # workflow pointing at nothing.
+        if wid:
+            by_name[name] = wid
 
     if st not in (200, 201):
         print(f"  FAILED {name}\n    {st} {res}")

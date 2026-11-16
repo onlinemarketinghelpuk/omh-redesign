@@ -1,7 +1,7 @@
 import { v } from "convex/values";
 import { mutation, action, internalMutation, query } from "./_generated/server";
 import { api } from "./_generated/api";
-import { bump } from "./functions";
+import { bump } from "./limits";
 import { verifyStored, LIMITS } from "../gates/attachments.js";
 
 /* =========================================================================

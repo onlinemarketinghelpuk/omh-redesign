@@ -19,31 +19,27 @@
    ========================================================================= */
 
 import { ROUTES, type RouteId } from "./routes";
+import { BUSINESS, OPT_OUT, firstName } from "./message-text.js";
 
 export type RenderContext = {
   name?: string;
   service?: string;
+  company?: string;
   message?: string; // what they actually asked, in their words
   reference?: string; // a booking reference
   preferredDate?: string;
   preferredTime?: string;
 };
 
-const PHONE = "020 3489 3934";
-const EMAIL = "support@onlinemarketinghelp.co.uk";
-const BOOK = "https://onlinemarketinghelp.co.uk/omh-free-consultation";
-const TEAM = "Online Marketing Help";
+/* One copy of each, in gates/message-text.js, shared with the messages the
+   owner writes on the dashboard. */
+const PHONE = BUSINESS.phone;
+const EMAIL = BUSINESS.email;
+const BOOK = BUSINESS.booking_link;
+const TEAM = BUSINESS.business;
 
 /** First name only, and nothing at all rather than a wrong guess. */
-function first(name?: string): string {
-  const n = (name || "").trim();
-  if (!n) return "";
-  const head = n.split(/\s+/)[0];
-  /* An all-caps or single-letter token is more likely a form artefact than a
-     name, and "Hi A," reads worse than "Hi,". */
-  if (head.length < 2) return "";
-  return head.charAt(0).toUpperCase() + head.slice(1).toLowerCase();
-}
+const first = firstName;
 
 /** "Hi Sarah," or "Hi," */
 function hello(name?: string): string {
@@ -263,6 +259,28 @@ const TEMPLATES: Record<string, Template> = {
       `. Any questions, reply to this text or ring ${PHONE}.`,
   }),
 
+  /* ---- Route H: booked, and it has not happened yet -------------------
+     These two keys were missing until 2026-11-16, so every reminder that
+     fell due failed to render and nobody was reminded. The flows suite now
+     asserts that every key on every route has a template here. The time
+     comes from the sequence's own anchor, the appointment, so a moved
+     booking is reminded at its new time. */
+
+  h_email_day_before: (c) => ({
+    subject: "A reminder about your appointment",
+    body:
+      `${hello(c.name)}\n\n` +
+      `A reminder that you have an appointment with ${TEAM}` + when_(c) + `.\n\n` +
+      `If you need to move it, reply to this email or ring ${PHONE} and we will find another time.\n\n` +
+      `${TEAM}\n${PHONE}`,
+  }),
+
+  h_sms_same_day: (c) => ({
+    body:
+      `${hello(c.name)} a reminder that you are booked in with ${TEAM}` + when_(c) +
+      `. Reply here if you need to move it.`,
+  }),
+
   /* ---- Route G: booked and did not turn up ---------------------------- */
 
   g_sms_missed: (c) => ({
@@ -315,14 +333,80 @@ export function render(
   ctx: RenderContext,
   route?: RouteId,
 ): Rendered {
+  const marketing = route ? ROUTES[route]?.marketing === true : false;
+  return renderWith(key, ctx, marketing);
+}
+
+/**
+ * The same, with the marketing flag given rather than looked up by route
+ * letter. An owner's flow is marketing or not by its trigger, and has no
+ * letter to look up.
+ */
+export function renderWith(key: string, ctx: RenderContext, marketing: boolean): Rendered {
   const t = TEMPLATES[key];
   if (!t) throw new Error(`No template named "${key}"`);
   const out = t(ctx);
-  const marketing = route ? ROUTES[route]?.marketing : false;
   if (!marketing) return out;
   /* PECR: an opt-out in every marketing message, not only the first. */
   return {
     subject: out.subject,
-    body: `${out.body}\n\nReply STOP to opt out.`,
+    body: `${out.body}\n\n${OPT_OUT}`,
   };
+}
+
+/** Every message a route sends: the ones the Messages screen offers for editing. */
+export function routeMessageKeys(): string[] {
+  const keys = new Set<string>();
+  for (const r of Object.values(ROUTES)) {
+    for (const s of [...r.immediate, ...r.steps]) keys.add(s.key);
+  }
+  return [...keys];
+}
+
+/**
+ * A code template as text with {{variables}}, for the owner to edit.
+ *
+ * Rendered with stand-in values and turned back into variables, so the
+ * function in this file stays the single source and there is no second,
+ * hand-written copy of every message to drift from it. The test asserts the
+ * round trip: saved unchanged, the source sends exactly what the code sends.
+ *
+ * One thing is lost on purpose: route B's first email quotes what they
+ * wrote, when they wrote something. A variable cannot carry "if", so the
+ * editable version says the general sentence to everybody.
+ */
+export function templateSource(
+  key: string,
+): { channel: string; subject?: string; body: string } | null {
+  const t = TEMPLATES[key];
+  if (!t) return null;
+  const out = t({
+    name: "Qqzgreet",
+    service: "qqzservice",
+    company: "qqzcompany",
+    preferredDate: "qqzdate",
+    preferredTime: "qqztime",
+  });
+  const back = (s: string) =>
+    s
+      .split("Hi Qqzgreet,").join("{{greeting}}")
+      .split("for qqzdate at qqztime").join("{{appointment}}")
+      .split("qqzservice").join("{{service}}")
+      .split("qqzcompany").join("{{company}}")
+      .split(BOOK).join("{{booking_link}}")
+      .split(EMAIL).join("{{email}}")
+      .split(PHONE).join("{{phone}}")
+      .split(TEAM).join("{{business}}");
+  const channel = messageChannel(key);
+  return out.subject !== undefined
+    ? { channel, subject: back(out.subject), body: back(out.body) }
+    : { channel, body: back(out.body) };
+}
+
+/** The channel a message is sent on: its route's, or a text for the rest. */
+export function messageChannel(key: string): string {
+  for (const r of Object.values(ROUTES)) {
+    for (const s of [...r.immediate, ...r.steps]) if (s.key === key) return s.channel;
+  }
+  return "sms";
 }

@@ -1,0 +1,43 @@
+{
+  /* The strict check the plans have referred to since workstream 002, which
+     until now did not exist as a file: `tsc -p tsconfig.check.json` failed
+     with "the specified path does not exist", so a documented gate had never
+     once been run.
+
+     It is separate from tsconfig.json for two reasons.
+
+     1. tsconfig.json EXCLUDES `widget`, so the ordinary `tsc --noEmit` has
+        never type-checked the Convex backend at all. Every schema change,
+        every mutation, every handler: unchecked by the project's own gate.
+
+     2. `skipLibCheck` is false here and true there. The point of this check
+        is the generated `_generated/dataModel.d.ts`, which is the schema
+        expressed as types. Skipping library checks skips exactly the file
+        that would catch a handler writing a field the schema does not have,
+        which is the failure this is for. It is slower; it is run on purpose
+        rather than on every keystroke.
+
+     The widget is plain Convex and has no JSX and no Next, so none of the
+     web app's settings apply to it. */
+  "compilerOptions": {
+    "target": "ES2022",
+    /* Convex runs on a web-standard runtime: Request, Response, URL, crypto
+       and Blob are all provided there, so DOM is the right lib even though
+       none of this runs in a browser. Leaving it out made the first run of
+       this check fail on Convex's own type definitions, which told me about
+       my tsconfig and nothing about the code. */
+    "lib": ["esnext", "dom"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": false,
+    /* `process.env` is available in Convex functions. */
+    "types": ["node"]
+  },
+  "include": ["widget/convex/**/*.ts"],
+  "exclude": ["node_modules", "widget/node_modules"]
+}

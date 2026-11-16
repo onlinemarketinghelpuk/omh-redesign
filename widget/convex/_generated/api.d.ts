@@ -9,9 +9,12 @@
  */
 
 import type * as attachments from "../attachments.js";
+import type * as brain from "../brain.js";
 import type * as campaigns from "../campaigns.js";
 import type * as crons from "../crons.js";
 import type * as email from "../email.js";
+import type * as flowRuntime from "../flowRuntime.js";
+import type * as flows from "../flows.js";
 import type * as functions from "../functions.js";
 import type * as handover from "../handover.js";
 import type * as http from "../http.js";
@@ -27,9 +30,12 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   attachments: typeof attachments;
+  brain: typeof brain;
   campaigns: typeof campaigns;
   crons: typeof crons;
   email: typeof email;
+  flowRuntime: typeof flowRuntime;
+  flows: typeof flows;
   functions: typeof functions;
   handover: typeof handover;
   http: typeof http;

@@ -166,11 +166,11 @@ because it is the only one whose value is partly gated on Twilio.
 
 Each task is done when, for that feature alone:
 
-- [ ] its own assertions pass, and the count is stated
-- [ ] `zsh widget/tests/run.sh` still passes whole, with no drop in the total
-- [ ] `npx tsc --noEmit` and `npm run build` clean
-- [ ] anything with a screen is driven in a browser and LOOKED at
-- [ ] anything taking outside input has its authorisation asserted, not
+- [x] its own assertions pass, and the count is stated
+- [x] `zsh widget/tests/run.sh` still passes whole, with no drop in the total
+- [x] `npx tsc --noEmit` and `npm run build` clean
+- [x] anything with a screen is driven in a browser and LOOKED at
+- [x] anything taking outside input has its authorisation asserted, not
       described - 001's review found two live holes in exactly that gap
 - [ ] `main` pushed, so the other developer can deploy it
 
@@ -178,3 +178,19 @@ Each task is done when, for that feature alone:
 
 Twilio, Meta, WhatsApp, inbound email, Retell credit. The Hostinger widget
 file and the Apps Script deployment, which are the other developer's.
+
+## 2026-11-16
+
+Every public entry point now has its authorisation asserted by a running
+test rather than described in a comment:
+
+| Entry point | Suite | Assertions |
+|---|---|---|
+| the visitor routes, whose transcript reads are scoped by the id PAIR | `visitor-auth` | 11 |
+| uploads | `attach-auth` | 19 |
+| the Meta webhook, including the HMAC signature | `meta` | 56 |
+| the ceilings on every public route | `rate-limit` | 39 |
+
+Everything on this checklist is now satisfied except the last line, `main`
+pushed, which is not mine to do. The authorisation item was already asserted
+rather than described; see `visitor-auth.test.ts` and `attach-auth.test.ts`.

@@ -26,10 +26,15 @@ import { mutation, query } from "./_generated/server";
 import type { QueryCtx, MutationCtx } from "./_generated/server";
 import { v } from "convex/values";
 import type { Doc, Id } from "./_generated/dataModel";
-import { ROUTES, nextStep, stepAt, type RouteId } from "../gates/routes";
+import { ROUTES, nextStepIn, type RouteId, type RouteLike } from "../gates/routes";
 import { render } from "../gates/templates";
 import { countsAsReply } from "../gates/email-reply.js";
 import { phoneKey, emailKey } from "./visitors";
+import { londonWall } from "../gates/clock";
+import { routeForEnrolment, routeForSequence, renderStep } from "./flowRuntime";
+import { agentSettings } from "./brain";
+import { inCallingHours, nextCallingAt } from "../gates/calling-hours";
+import { callBrief } from "../gates/agent.js";
 
 const LEASE_MS = 120 * 1000;
 const MAX_ATTEMPTS = 3;
@@ -184,7 +189,9 @@ async function sendable(
   ctx: QueryCtx,
   lead: Doc<"leads">,
   channel: string,
-  route?: RouteId,
+  /* From the route or flow being run, never from the message: an owner's
+     flow has no route letter, and its basis comes from its trigger. */
+  marketing: boolean,
 ): Promise<Sendable> {
   if (!(await outboundOn(ctx))) return { ok: false, why: "kill_switch" };
 
@@ -196,7 +203,6 @@ async function sendable(
   if (!key) return { ok: false, why: isEmail ? "no_email" : "no_phone" };
   if (await suppressed(ctx, key)) return { ok: false, why: "suppressed" };
 
-  const marketing = route ? ROUTES[route]?.marketing === true : false;
   if (!marketing) return { ok: true };
 
   /* From here on it is marketing, and the rules bite. */
@@ -235,7 +241,7 @@ export const checkSendable = query({
     const lead = await ctx.db.get(leadId);
     if (!lead) return { ok: false, why: "no_such_lead" };
     const r = route && isRoute(route) ? route : undefined;
-    return await sendable(ctx, lead, channel, r);
+    return await sendable(ctx, lead, channel, r ? ROUTES[r].marketing : false);
   },
 });
 
@@ -261,7 +267,14 @@ export const enrol = mutation({
     const lead = await ctx.db.get(leadId);
     if (!lead) return { enrolled: false, why: "no_such_lead" };
 
-    const def = ROUTES[route];
+    /* The owner's live flow for this lead's channel, when the caller asked
+       for that channel's default route; otherwise the route from code. See
+       flowRuntime.ts: a flow that fails to compile (above all, a marketing
+       flow with a call in it) is refused here and the code's route runs. */
+    const resolved = await routeForEnrolment(ctx, lead, route);
+    if (!resolved.ok) return { enrolled: false, why: resolved.why };
+    const def = resolved.def;
+    const marketing = resolved.marketing;
     /* Route A finishes in the conversation and starts nothing. Saying so is
        not an error. */
     if (def.steps.length === 0 && def.immediate.length === 0) {
@@ -297,7 +310,11 @@ export const enrol = mutation({
     }
 
     const now = Date.now();
-    const first = nextStep(route, now, 0, now, anchorAt);
+    /* The floor is a moment BEFORE now. A step due at enrolment itself
+       (afterMs 0, route F's opener) is due exactly now, and "strictly after
+       the floor" with the floor at now skipped it: every reactivation
+       campaign's first contact was its second text, five days late. */
+    const first = nextStepIn(def, now, 0, now - 1, anchorAt);
 
     const id = await ctx.db.insert("sequences", {
       leadId,
@@ -311,6 +328,8 @@ export const enrol = mutation({
          moved booking can re-time the whole sequence from the new one. */
       anchorAt,
       campaignId,
+      flowId: resolved.flowId,
+      flowVersion: resolved.flowVersion,
       attempts: 0,
       at: now,
     });
@@ -318,14 +337,14 @@ export const enrol = mutation({
     const immediate: Array<Record<string, unknown>> = [];
     const skipped: Array<{ key: string; channel: string; why: string }> = [];
     for (const step of def.immediate) {
-      const gate = await sendable(ctx, lead, step.channel, route);
+      const gate = await sendable(ctx, lead, step.channel, marketing);
       if (!gate.ok) {
         skipped.push({ key: step.key, channel: step.channel, why: gate.why });
         continue;
       }
       let out;
       try {
-        out = render(step.key, ctxOf(lead), route);
+        out = await renderStep(ctx, step.key, ctxOf(lead, anchorAt), marketing);
       } catch {
         skipped.push({ key: step.key, channel: step.channel, why: "render_failed" });
         continue;
@@ -357,16 +376,41 @@ export const enrol = mutation({
          rather than silently sending one fewer message than the route says. */
       skipped,
       nextDueAt: first ? first.dueAt : null,
+      flowId: resolved.flowId ?? null,
+      flowVersion: resolved.flowVersion ?? null,
+      /* Present only when the channel's live flow was refused and the code's
+         route ran instead. Logged by the router; shown on the dashboard. */
+      flowRefused: resolved.flowRefused,
     };
   },
 });
 
 /** What a template needs to know about a person. */
-function ctxOf(lead: Doc<"leads">) {
+function ctxOf(lead: Doc<"leads">, anchorAt?: number) {
   return {
     name: lead.name,
     service: lead.service,
     message: lead.message,
+    company: lead.company,
+    /* The appointment, for a route counted back from one. Read from the
+       sequence rather than the booking row, because the sequence is what was
+       re-timed when the booking moved. */
+    ...(anchorAt ? appointmentWords(anchorAt) : {}),
+  };
+}
+
+const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+  "August", "September", "October", "November", "December"];
+
+/** "Tuesday 1 December" and "14:00", London wall clock. */
+function appointmentWords(ms: number) {
+  const w = londonWall(ms);
+  const dow = new Date(Date.UTC(w.year, w.month - 1, w.day)).getUTCDay();
+  const pad = (n: number) => (n < 10 ? "0" + n : String(n));
+  return {
+    preferredDate: `${DAYS[dow]} ${w.day} ${MONTHS[w.month - 1]}`,
+    preferredTime: `${pad(w.hour)}:${pad(w.minute)}`,
   };
 }
 
@@ -418,15 +462,24 @@ export const claimDue = mutation({
       }
 
       const route = seq.route;
-      if (!isRoute(route)) {
+      /* The route this sequence started on: the code's, or the version of
+         the owner's flow it was enrolled on, recompiled and re-checked. A
+         version that no longer passes (a marketing flow with a call in it,
+         however it got there) stops the sequence rather than run. */
+      const resolved = await routeForSequence(ctx, seq);
+      if (!resolved.ok) {
         await ctx.db.patch(seq._id, {
           status: "failed",
-          stopReason: "unknown_route",
+          stopReason: resolved.why,
           nextDueAt: undefined,
+          leaseToken: undefined,
+          leaseUntil: undefined,
         });
         skipped++;
         continue;
       }
+      const def = resolved.def;
+      const marketing = resolved.marketing;
 
       const lead = await ctx.db.get(seq.leadId);
       if (!lead) {
@@ -452,7 +505,7 @@ export const claimDue = mutation({
         continue;
       }
 
-      const step = stepAt(route, seq.step);
+      const step = def.steps[seq.step];
       if (!step) {
         await ctx.db.patch(seq._id, {
           status: "completed",
@@ -470,7 +523,7 @@ export const claimDue = mutation({
         if (!unanswered) {
           /* The call was answered, or never happened. Either way this text
              would make no sense, so move past it without sending. */
-          await advance(ctx, seq, route, now, 0);
+          await advance(ctx, seq, def, now, 0);
           skipped++;
           continue;
         }
@@ -478,7 +531,7 @@ export const claimDue = mutation({
 
       /* ---- may we send at all? ---- */
 
-      const gate = await sendable(ctx, lead, step.channel, route);
+      const gate = await sendable(ctx, lead, step.channel, marketing);
       if (!gate.ok) {
         if (
           gate.why === "no_phone" ||
@@ -489,7 +542,7 @@ export const claimDue = mutation({
         ) {
           /* We cannot do this step, but a later one on another channel may
              still be fine: no email does not mean no texting. */
-          await advance(ctx, seq, route, now, 0);
+          await advance(ctx, seq, def, now, 0);
         } else {
           /* Suppressed, or no consent, or the switch is off. Nothing on this
              route is sendable, so stop rather than walking the steps. */
@@ -503,6 +556,33 @@ export const claimDue = mutation({
         }
         skipped++;
         continue;
+      }
+
+      /* ---- a call needs a number, and a time a call is welcome ----
+
+         No number: skip the step, as with no phone. It used to be claimed
+         and posted to Retell with a placeholder from_number, fail, retry,
+         fail three times and leave the whole sequence `failed`, so the texts
+         after the call never went either.
+
+         Outside calling hours: wait for the next window rather than drop
+         it. They asked us to get back to them; the morning still does. */
+      let callExtra: Record<string, unknown> = {};
+      if (step.channel === "call") {
+        const agent = await agentSettings(ctx);
+        if (!agent.fromNumber) {
+          await advance(ctx, seq, def, now, 0);
+          skipped++;
+          continue;
+        }
+        if (!inCallingHours(now, agent)) {
+          const at = nextCallingAt(now, agent);
+          await ctx.db.patch(seq._id, { nextDueAt: at || undefined, leaseToken: undefined, leaseUntil: undefined });
+          skipped++;
+          continue;
+        }
+        const brief = callBrief(agent, { name: lead.name, service: lead.service });
+        callExtra = { fromNumber: agent.fromNumber, opening: brief.opening, goal: brief.goal };
       }
 
       /* ---- did this step already go out? ----
@@ -520,7 +600,7 @@ export const claimDue = mutation({
         .withIndex("by_idem", (q) => q.eq("idempotencyKey", idem))
         .first();
       if (already && already.status !== "failed") {
-        await advance(ctx, seq, route, now, 0);
+        await advance(ctx, seq, def, now, 0);
         skipped++;
         continue;
       }
@@ -530,7 +610,7 @@ export const claimDue = mutation({
       let body: string;
       let subject: string | undefined;
       try {
-        const out = render(step.key, ctxOf(lead), route);
+        const out = await renderStep(ctx, step.key, ctxOf(lead, seq.anchorAt), marketing);
         body = out.body;
         subject = out.subject;
       } catch (e) {
@@ -566,6 +646,8 @@ export const claimDue = mutation({
         /* The worker passes this straight to `recordTouch`. A re-run of the
            same step can therefore never produce a second send. */
         idempotencyKey: idem,
+        /* For a call: our number, and what the Retell agent says and is for. */
+        ...callExtra,
       });
     }
 
@@ -577,11 +659,11 @@ export const claimDue = mutation({
 async function advance(
   ctx: MutationCtx,
   seq: Doc<"sequences">,
-  route: RouteId,
+  def: RouteLike,
   now: number,
   attemptDelta: number,
 ) {
-  const next = nextStep(route, seq.at, seq.step + 1, now, seq.anchorAt);
+  const next = nextStepIn(def, seq.at, seq.step + 1, now, seq.anchorAt);
   if (!next) {
     await ctx.db.patch(seq._id, {
       status: "completed",
@@ -633,11 +715,11 @@ export const completeStep = mutation({
     }
 
     const now = Date.now();
-    const route = seq.route;
-    if (!isRoute(route)) {
+    const resolved = await routeForSequence(ctx, seq);
+    if (!resolved.ok) {
       await ctx.db.patch(sequenceId, {
         status: "failed",
-        stopReason: "unknown_route",
+        stopReason: resolved.why,
         nextDueAt: undefined,
         leaseToken: undefined,
         leaseUntil: undefined,
@@ -680,7 +762,7 @@ export const completeStep = mutation({
     }
 
     /* Sent. */
-    await advance(ctx, seq, route, now, 1);
+    await advance(ctx, seq, resolved.def, now, 1);
     const after = await ctx.db.get(sequenceId);
     return { ok: true, status: after?.status, nextDueAt: after?.nextDueAt ?? null };
   },
@@ -1676,7 +1758,9 @@ export const sequenceBoard = query({
     const out: any[] = [];
     for (const s of rows) {
       const lead = await ctx.db.get(s.leadId);
-      const step = isRoute(s.route) ? stepAt(s.route, s.step) : undefined;
+      const resolved = await routeForSequence(ctx, s);
+      const def = resolved.ok ? resolved.def : null;
+      const step = def ? def.steps[s.step] : undefined;
       out.push({
         id: s._id,
         leadId: s.leadId,
@@ -1686,7 +1770,11 @@ export const sequenceBoard = query({
         sourceChannel: lead?.sourceChannel ?? null,
         email: lead?.email ?? null,
         route: s.route,
-        routeName: isRoute(s.route) ? ROUTES[s.route].name : s.route,
+        routeName: def ? def.name : isRoute(s.route) ? ROUTES[s.route].name : s.route,
+        /* Which of the owner's flows, and which version, when it is one. */
+        flowId: s.flowId ?? null,
+        flowVersion: s.flowVersion ?? null,
+        stepCount: def ? def.steps.length : null,
         step: s.step,
         stepLabel: step?.label ?? null,
         stepChannel: step?.channel ?? null,

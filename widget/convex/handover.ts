@@ -1,5 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
+import { bump, SAY_PER_SESSION, SAY_PER_DEPLOYMENT } from "./limits";
 
 /* =========================================================================
    Handover: the point where the assistant stops and a person takes over.
@@ -116,6 +117,22 @@ export const visitorSay = mutation({
     if (!s || (s.handover !== "waiting" && s.handover !== "live")) {
       return { ok: false, error: "not in handover" };
     }
+
+    /* A ceiling on a public route that appends to a transcript.
+       `not in handover` above already refuses most of what a script could
+       try, so what is left is a flood inside a real handover: unbounded
+       rows in `messages`, and a thread the person reading it cannot use.
+
+       Checked after that refusal on purpose, so a script firing at sessions
+       that are not in handover never consumes the budget of a visitor who
+       is. Deliberately generous: this is somebody mid-conversation with a
+       human, and cutting them off is worse than the rows. */
+    const t0 = now();
+    const room =
+      (await bump(ctx, "say:all", SAY_PER_DEPLOYMENT, t0)).ok &&
+      (await bump(ctx, "say:s:" + sessionId, SAY_PER_SESSION, t0)).ok;
+    if (!room) return { ok: false, error: "too many messages" };
+
     await say(ctx, sessionId, "user", clean, s.channel ?? "chat");
     await ctx.db.patch(s._id, { lastSeenAt: now(), ...(pageUrl ? { pageUrl } : {}) });
     return { ok: true };

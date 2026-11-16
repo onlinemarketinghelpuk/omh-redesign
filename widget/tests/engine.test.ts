@@ -21,8 +21,25 @@ const call = (fn: any, c: any, args: any) => fn._handler(c, args);
 
 /* ---------------------------------------------------------------- fixtures */
 
+/* A calling number, and calling hours round the clock, in every store this
+   suite builds. This suite is about the lease, the gates and consent, and
+   its call steps must be claimable whatever time it runs. Written straight
+   into the store because the validator refuses 24-hour calling, which is
+   right for real use; agent.test.ts covers the hours and the no-number skip. */
+function calling() {
+  const w = ctx();
+  w.db.tables.settings = w.db.tables.settings ?? [];
+  w.db.tables.settings.push({
+    _id: "settings:agent", _creationTime: 0, __table: "settings", key: "agent",
+    value: { fromNumber: "+442034893934", days: [0, 1, 2, 3, 4, 5, 6], start: 0, end: 24,
+             opening: "Hi {first_name}", goal: "Book the consultation." },
+    updatedAt: 0,
+  });
+  return w;
+}
+
 function world() {
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   return { db, c };
 }
 
@@ -487,7 +504,7 @@ console.log("\n== the inline path is gated too, not just the queue ==");
      immediately, inside two minutes. That path reaches a phone faster than
      any other, so an ungated shortcut here would be the one that actually
      texts somebody who opted out. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db);
   await call(R.suppress, c, { key: "+447700900123", kind: "phone", reason: "stop_reply" });
 
@@ -498,7 +515,7 @@ console.log("\n== the inline path is gated too, not just the queue ==");
 }
 {
   /* Suppressed by EMAIL only. The texts are still fine; the email is not. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db, { phone: "+447700900555", phoneKey: "+447700900555" });
   await call(R.suppress, c, { key: "smoke@example.com", kind: "email", reason: "complaint" });
   const r = await call(R.enrol, c, { leadId, route: "B" });
@@ -507,7 +524,7 @@ console.log("\n== the inline path is gated too, not just the queue ==");
 {
   /* Route F, marketing, with no consent on file. The queued steps already
      stop; the immediate ones must never be handed out either. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db, { sourceChannel: "reactivation" });
   const r = await call(R.enrol, c, { leadId, route: "F" });
   ok("F enrols (its first text is queued, not inline)", r.enrolled === true, r);
@@ -516,7 +533,7 @@ console.log("\n== the inline path is gated too, not just the queue ==");
 {
   /* No email address at all: the email touch is dropped, the text still goes,
      and the router is TOLD rather than left to wonder. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db, { email: undefined, emailKey: undefined });
   const r = await call(R.enrol, c, { leadId, route: "B" });
   eq("only the text is handed back", r.immediate.map((i: any) => i.channel), ["sms"]);
@@ -526,7 +543,7 @@ console.log("\n== the inline path is gated too, not just the queue ==");
 }
 {
   /* The kill switch covers the inline path as well. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db);
   await call(R.setOutbound, c, { enabled: false, by: "smoke" });
   const r = await call(R.enrol, c, { leadId, route: "B" });
@@ -541,7 +558,7 @@ console.log("\n== a step that already went out is never handed out again ==");
      claimable again, which is correct. Sending the text again is not.
      `recordTouch` is idempotent, but the log is written AFTER the send, so
      only a check before handing the work out stops the second text. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db);
   const e = await call(R.enrol, c, { leadId, route: "B" });
   await db.patch(e.sequenceId, { nextDueAt: Date.now() - 1000 });
@@ -567,7 +584,7 @@ console.log("\n== a step that already went out is never handed out again ==");
 {
   /* But a step whose send FAILED must be retried, or a transient Twilio
      error would silently drop a message. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db);
   const e = await call(R.enrol, c, { leadId, route: "B" });
   await db.patch(e.sequenceId, { nextDueAt: Date.now() - 1000 });
@@ -584,7 +601,7 @@ console.log("\n== a step that already went out is never handed out again ==");
 
 console.log("\n== booking confirmations ==");
 {
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const sessionId = "smoke-conf";
   const leadId = await makeLead(db, { sessionId });
   const bookingId = await db.insert("bookings", {
@@ -616,7 +633,7 @@ console.log("\n== booking confirmations ==");
 {
   /* Somebody who told us to stop does not get a confirmation text either.
      The booking details are in their email and the team can ring them. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const sessionId = "smoke-conf-stop";
   await makeLead(db, { sessionId });
   const bookingId = await db.insert("bookings", {
@@ -635,7 +652,7 @@ console.log("\n== booking confirmations ==");
 }
 {
   /* The kill switch covers confirmations too. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   await db.insert("bookings", {
     reference: "OMH-CONF03", sessionId: "smoke-conf-kill", name: "Smoke Tester",
     phone: "+447700900123", service: "Local SEO",
@@ -650,7 +667,7 @@ console.log("\n== booking confirmations ==");
 {
   /* A booking with no phone number cannot be texted, and must not jam the
      queue by being returned every minute with nothing to send to. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   await db.insert("bookings", {
     reference: "OMH-CONF04", sessionId: "smoke-conf-nophone", name: "Smoke Tester",
     phone: "", service: "Local SEO",
@@ -668,7 +685,7 @@ console.log("\n== a confirmation has a shelf life ==");
      confirmed, because the feature did not exist when they were made. Texting
      somebody about a booking from a fortnight ago, for a date that has already
      passed, is worse than saying nothing. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const sessionId = "smoke-conf-old";
   await makeLead(db, { sessionId });
   const old = await db.insert("bookings", {
@@ -694,7 +711,7 @@ console.log("\n== a confirmation has a shelf life ==");
 {
   /* A number that is not a number cannot be texted. Marked, not retried, so
      it does not come back every minute with nowhere to send to. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const ids = [];
   for (const [ref, phone] of [["OMH-BAD1", ""], ["OMH-BAD2", "n/a"], ["OMH-BAD3", "12"]]) {
     ids.push(await db.insert("bookings", {
@@ -730,7 +747,7 @@ console.log("\n== backfilling the match keys on older leads ==");
   /* Leads written before phoneKey existed have a number but nothing to match
      it against, so an inbound text from them finds nobody: their reply does
      not stop the follow-up and does not reach their timeline. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const legacy = await db.insert("leads", {
     sessionId: "smoke-legacy", name: "Legacy Lead",
     phone: "07700 900654", email: "Legacy@Example.com",
@@ -757,7 +774,7 @@ console.log("\n== backfilling the match keys on older leads ==");
 
 console.log("\n== what came of a lead, set by a person ==");
 {
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db);
 
   eq("an invented outcome is refused",
@@ -791,7 +808,7 @@ console.log("\n== somebody booked and did not turn up ==");
      simply did not arrive left no trace at all, so the diary could not tell
      a kept appointment from an empty hour and the channel report counted the
      no-show as a success. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db, { sessionId: "smoke-ns" });
   await db.insert("bookings", {
     reference: "OMH-NS01", sessionId: "smoke-ns", name: "Sarah", phone: "+447700900123",
@@ -821,7 +838,7 @@ console.log("\n== somebody booked and did not turn up ==");
 }
 {
   /* An unknown reference does not quietly succeed. */
-  const { ctx: c } = ctx();
+  const { ctx: c } = calling();
   const r = await call(F.manageBooking, c, { reference: "OMH-NOPE", action: "no_show" });
   ok("an unknown booking is refused", r.ok !== true, JSON.stringify(r));
 }
@@ -835,7 +852,7 @@ console.log("\n== every outcome change leaves a record ==");
      It goes in `touches` rather than a table of its own, because `touches`
      already IS the per-lead history the timeline reads. A second history
      would have to be merged with the first every time anybody looked. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const leadId = await makeLead(db, { sessionId: "smoke-audit" });
   const notes = async () =>
     (await db.query("touches").collect()).filter((t: any) => t.channel === "dashboard");
@@ -875,7 +892,7 @@ console.log("\n== every outcome change leaves a record ==");
 }
 {
   /* A bulk change writes one record per lead, not one for the batch. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const a = await makeLead(db, { sessionId: "smoke-b1" });
   const b = await makeLead(db, { sessionId: "smoke-b2", phone: "+447700900555", phoneKey: "+447700900555" });
   await call(R.setOutcomeMany, c, { leadIds: [a, b], outcome: "unqualified", by: "owner" });
@@ -887,7 +904,7 @@ console.log("\n== every outcome change leaves a record ==");
 {
   /* The whole point: the channel report can now rank on business, not on
      volume. */
-  const { db, ctx: c } = ctx();
+  const { db, ctx: c } = calling();
   const g = await makeLead(db, { sessionId: "smoke-g", sourceChannel: "google_ads" });
   const f = await makeLead(db, { sessionId: "smoke-f", sourceChannel: "facebook_ads", phone: "+447700900222", phoneKey: "+447700900222" });
   await call(R.setOutcome, c, { leadId: g, outcome: "won", valueGbp: 1800 });

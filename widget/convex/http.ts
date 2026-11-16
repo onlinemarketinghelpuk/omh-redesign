@@ -1015,4 +1015,148 @@ http.route({
    knows which messages have one; a second route per photo would be the same
    answer, fetched again, behind the same secret. */
 
+/* ------------------------------------------------------- the control panel
+
+   Read and written by the dashboard's Control Panel, Flow Builder and
+   Messages screens, server side, behind the secret like everything else.
+   The refusals live in convex/flows.ts, not here: these routes pass the
+   request through and pass the verdict back, so the API cannot be a way
+   round the validator. Only the named fields are forwarded; a `basis` in
+   the body never reaches the mutation. */
+
+http.route({
+  path: "/flows/list",
+  method: "POST",
+  handler: route(async (ctx) => ctx.runQuery(api.flows.listFlows, {})),
+});
+
+http.route({
+  path: "/flows/get",
+  method: "POST",
+  handler: route(async (ctx, b) => ctx.runQuery(api.flows.getFlow, { flowId: b.flowId })),
+});
+
+http.route({
+  path: "/flows/history",
+  method: "POST",
+  handler: route(async (ctx, b) => ctx.runQuery(api.flows.flowHistory, { flowId: b.flowId })),
+});
+
+http.route({
+  path: "/flows/save",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.flows.saveFlow, {
+      flowId: b.flowId || undefined,
+      name: String(b.name ?? ""),
+      triggers: Array.isArray(b.triggers) ? b.triggers.map(String) : [],
+      nodes: Array.isArray(b.nodes) ? b.nodes : [],
+      live: typeof b.live === "boolean" ? b.live : undefined,
+      replace: b.replace === true ? true : undefined,
+      by: b.by || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/flows/status",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.flows.setFlowStatus, {
+      flowId: b.flowId,
+      status: String(b.status ?? ""),
+      replace: b.replace === true ? true : undefined,
+      by: b.by || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/messages/list",
+  method: "POST",
+  handler: route(async (ctx) => ctx.runQuery(api.flows.listMessages, {})),
+});
+
+http.route({
+  path: "/messages/save",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.flows.saveMessage, {
+      key: String(b.key ?? ""),
+      channel: String(b.channel ?? ""),
+      subject: typeof b.subject === "string" ? b.subject : undefined,
+      body: String(b.body ?? ""),
+      by: b.by || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/messages/reset",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.flows.resetMessage, { key: String(b.key ?? ""), by: b.by || undefined }),
+  ),
+});
+
+/* ------------------------------------------------- the brain and the agent
+
+   /brain/decide is called by 09-twilio-inbound for every text reply that is
+   not an opt-out. The rest are the dashboard's. */
+
+http.route({
+  path: "/brain/decide",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runQuery(api.brain.decide, {
+      leadId: b.leadId || undefined,
+      text: String(b.text ?? ""),
+      channel: b.channel || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/brain/get",
+  method: "POST",
+  handler: route(async (ctx) => ctx.runQuery(api.brain.getBrain, {})),
+});
+
+http.route({
+  path: "/brain/set",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.brain.setBrain, {
+      enabled: b.enabled === true,
+      policies: b.policies && typeof b.policies === "object" ? b.policies : {},
+      sales: b.sales && typeof b.sales === "object"
+        ? { goal: String(b.sales.goal ?? ""), offer: String(b.sales.offer ?? ""), notes: String(b.sales.notes ?? "") }
+        : undefined,
+      by: b.by || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/agent/get",
+  method: "POST",
+  handler: route(async (ctx) => ctx.runQuery(api.brain.getAgent, {})),
+});
+
+http.route({
+  path: "/agent/set",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.brain.setAgent, {
+      fromNumber: String(b.fromNumber ?? ""),
+      days: Array.isArray(b.days) ? b.days.map(Number) : [],
+      start: Number(b.start),
+      end: Number(b.end),
+      opening: String(b.opening ?? ""),
+      goal: String(b.goal ?? ""),
+      by: b.by || undefined,
+    }),
+  ),
+});
+
 export default http;

@@ -1,0 +1,1 @@
+1794759351	Audit F-01 and F-02: move the Twilio credential id and the IMAP credential block into .env.local. Config plumbing only, no logic; the built output must stay byte-identical today, which is asserted by hashing all 12 workflows before and after. Approved by Rafiul.

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Shell } from "@/components/dashboard/Shell";
 import { Card, Empty, ShowExample } from "@/components/dashboard/ui";
 import { Kpi } from "@/components/dashboard/Stats";
@@ -8,6 +9,12 @@ import {
   type ChannelFact, canonicalSource } from "@/lib/dashboard/routing";
 import { isDemo, demoChannelFacts } from "@/lib/dashboard/demo";
 import { isTestRow } from "@/lib/dashboard/test-rows";
+/* The same floor the allocation section uses, imported rather than retyped.
+   This screen named a "worst" channel on two leads while the Overview, one
+   click away and over the same data, said "not ranked, under 8 leads each".
+   Two verdicts from one dataset is worse than either alone, and the reason
+   was a 2 typed here instead of the constant that already existed. */
+import { FLOOR } from "@/widget/gates/allocation.js";
 
 export const dynamic = "force-dynamic";
 
@@ -102,10 +109,16 @@ export default async function ChannelsPage({
      it in the table. It is only shown when there is actually something to
      say: with one channel, or none booked anywhere, a "best channel" claim
      would be noise dressed up as insight. */
-  const ranked = [...groups].filter((g) => g.leads > 0);
+  /* The floor applies to BOTH ends. Naming a best channel on one lead is the
+     same mistake as naming a worst one on two: one lead either way swings
+     the rate twenty points, and somebody moves real money onto a
+     coincidence. This used to filter on `leads > 0`, so a channel with a
+     single lead and a single booking could be announced as the best thing
+     the client has. */
+  const ranked = [...groups].filter((g) => g.leads >= FLOOR);
   const best = [...ranked].sort((a, b) => b.booked - a.booked)[0];
   const worst = [...ranked]
-    .filter((g) => g.key !== best?.key && g.leads >= 2)
+    .filter((g) => g.key !== best?.key)
     .sort((a, b) => a.booked / a.leads - b.booked / b.leads)[0];
 
   const headline =
@@ -116,8 +129,15 @@ export default async function ChannelsPage({
             : `${best.label} produced ${best.booked} of the ${booked} appointments booked.`,
           figures: [
             { label: "channels", value: String(ranked.length) },
+            /* The denominator is part of the figure, not decoration. "82%"
+               alone invites the reader to supply their own idea of what it
+               is a percentage of, and on this screen the obvious guesses
+               (of appointments, of the channels above) are both wrong: it is
+               of every lead. Four out of five reads as a result; four out of
+               five hundred reads as a problem, and the percentage alone
+               cannot tell them apart. */
             {
-              label: "answered inside 2 min",
+              label: `of ${rows.length} leads answered inside 2 min`,
               value: `${Math.round(
                 (rows.filter((r) => (r.msToFirstTouch ?? Infinity) <= TARGET.firstTouchMs).length /
                   Math.max(rows.length, 1)) * 100,
@@ -209,7 +229,18 @@ export default async function ChannelsPage({
             <Kpi
               label="Text reply rate"
               value={smsOut ? `${Math.round((smsIn / smsOut) * 100)}%` : "no texts yet"}
-              sub="target 15 to 30 per cent"
+              /* The two numbers behind the percentage, and the target second.
+                 A rate with only a target under it cannot be checked, and
+                 this one can read above 100: it counts replies against texts
+                 sent, and one person answering a single text twice is two
+                 replies to one text. Printed as "47 of 32 texts" that is a
+                 fact somebody can reason about; printed as "147%" it looks
+                 like a broken dashboard. */
+              sub={
+                smsOut
+                  ? `${smsIn} of ${smsOut} ${smsOut === 1 ? "text" : "texts"}, target 15 to 30 per cent`
+                  : "target 15 to 30 per cent"
+              }
               icon={IconChat}
               rise={2}
             />
@@ -242,7 +273,9 @@ export default async function ChannelsPage({
               sub={
                 emailIn === 0 && emailOut > 0
                   ? "nothing reads the mailbox yet"
-                  : "replies that were a person"
+                  : emailOut
+                    ? `${emailIn} of ${emailOut} ${emailOut === 1 ? "email" : "emails"}`
+                    : "replies that were a person"
               }
               icon={IconSend}
               rise={2}
@@ -295,9 +328,22 @@ export default async function ChannelsPage({
                     const replyRate = g.smsOut ? g.smsIn / g.smsOut : null;
                     return (
                       <tr key={g.key} className="border-b border-line last:border-0">
+                        {/* The report says "Facebook ad produced 3
+                            appointments from 34 leads"; this is where those
+                            34 are. Without it the only route is to open Leads
+                            and rebuild the filter by hand, which means the
+                            number on this row and the list they end up
+                            reading are not provably the same set. */}
                         <td className="py-3 pr-4">
-                          <p className="text-[14px] font-medium text-ink">{g.label}</p>
-                          <p className="mt-0.5 text-[12.5px] text-muted">{g.family}</p>
+                          <Link
+                            href={`/lead-dashboard/leads?source=${encodeURIComponent(g.key)}${demo ? "&demo=1" : ""}`}
+                            className="group block rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                          >
+                            <p className="text-[14px] font-medium text-ink underline decoration-line decoration-1 underline-offset-[3px] transition-colors duration-150 group-hover:decoration-[var(--accent)]">
+                              {g.label}
+                            </p>
+                            <p className="mt-0.5 text-[12.5px] text-muted">{g.family}</p>
+                          </Link>
                         </td>
                         <td className="py-3 text-right text-[14px] tabular-nums text-ink">{g.leads}</td>
                         <td className="py-3 text-right">
@@ -407,6 +453,10 @@ export default async function ChannelsPage({
                 bars={groups.map((g) => ({
                   key: g.key,
                   label: g.label,
+                  /* The same destination as the table row above. A bar that
+                     names a channel and cannot show you its leads is the
+                     same dead end, one panel further down. */
+                  href: `/lead-dashboard/leads?source=${encodeURIComponent(g.key)}${demo ? "&demo=1" : ""}`,
                   value: g.replied,
                   display: g.leads ? `${g.replied} of ${g.leads}` : undefined,
                   sub:
@@ -428,6 +478,10 @@ export default async function ChannelsPage({
                 bars={groups.map((g) => ({
                   key: g.key,
                   label: g.label,
+                  /* The same destination as the table row above. A bar that
+                     names a channel and cannot show you its leads is the
+                     same dead end, one panel further down. */
+                  href: `/lead-dashboard/leads?source=${encodeURIComponent(g.key)}${demo ? "&demo=1" : ""}`,
                   value: wonTotal ? g.won : g.booked,
                   display: wonTotal && g.value ? `${g.won} · ${money(g.value)}` : undefined,
                   sub:

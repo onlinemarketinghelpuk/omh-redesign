@@ -62,6 +62,27 @@ export const remindAbout = mutation({
        makes a moved booking re-time instead of doubling up. */
     await stop(ctx, leadId, "moved");
 
+    /* And stop the chase. Somebody who has booked is not a lead going cold,
+       and while their route B was still active, enrol refused the reminder
+       as "already_active". The engine would have stopped B anyway, at its
+       next claim, for the reason "booked"; this is the same decision taken
+       at the moment it becomes true, before the reminder is refused. */
+    const chasing = await ctx.db
+      .query("sequences")
+      .withIndex("by_lead", (i: any) => i.eq("leadId", leadId))
+      .collect();
+    for (const r of chasing) {
+      if (r.route === "H") continue;
+      if (r.status !== "active" && r.status !== "paused") continue;
+      await ctx.db.patch(r._id, {
+        status: "stopped",
+        stopReason: "booked",
+        nextDueAt: undefined,
+        leaseToken: undefined,
+        leaseUntil: undefined,
+      });
+    }
+
     const r = (await ctx.runMutation(api.routing.enrol, {
       leadId: leadId as never,
       route: "H",

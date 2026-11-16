@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import { Pill } from "./ui";
 import { FilterPicker } from "./FilterPicker";
@@ -92,7 +93,38 @@ export function DataTable({
      Google Ads and Facebook means either. Across facets they are AND, which
      is what people expect from a filter row and is the only combination that
      narrows rather than widens. */
-  const [picked, setPicked] = useState<Record<string, string[]>>({});
+  /* Seeded from the URL, so a screen can be linked to already filtered.
+     Channels says "Facebook ad produced 34 leads" and the obvious next click
+     is those 34; without this there is nowhere for that link to point, and
+     somebody has to rebuild the filter by hand and hope it matches.
+
+     Only keys this table actually has a facet for are read. An unknown query
+     param is ignored rather than becoming a filter nothing can clear. */
+  const sp = useSearchParams();
+  const [picked, setPicked] = useState<Record<string, string[]>>(() => {
+    const seed: Record<string, string[]> = {};
+    /* `picker` as well as `facets`. On Leads the channel is the picker, not
+       a chip, because it has twenty values, and it is the one filter a link
+       from the Channels report actually needs. Reading only `facets` would
+       have left this doing nothing on the screen it was built for. */
+    for (const f of [...(facets ?? []), ...(picker ? [picker] : [])]) {
+      const v = sp?.get(f.key);
+      if (!v) continue;
+      /* Comma separated, because one facet holds several values at once. */
+      const vals = v.split(",").map((x) => x.trim()).filter(Boolean);
+      /* A value this table has no option for is still applied, so it matches
+         nothing and the table comes back empty.
+
+         The first version dropped it instead, and that was worse in the one
+         way that matters here: a link from the Channels report with a stale
+         or mistyped source would have shown EVERY lead, under a heading that
+         said it was one channel. "Facebook ad" would have read as 329 leads.
+         An empty table is obviously empty, and "Clear filters" is on screen
+         because something is picked, so there is always a way out. */
+      if (vals.length) seed[f.key] = vals;
+    }
+    return seed;
+  });
   const [sort, setSort] = useState<{ key: string; dir: "asc" | "desc" } | null>(null);
   const [shown, setShown] = useState(pageSize);
 

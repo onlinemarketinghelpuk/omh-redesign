@@ -71,11 +71,18 @@ export default async function SequencesPage({
             href: `/lead-dashboard/conversations/${encodeURIComponent(r.sessionId)}${demo ? "?demo=1" : ""}`,
             sub: r.phone ?? r.email ?? undefined }
         : { t: "text", v: r.name ?? "Unknown", strong: true, sub: r.phone ?? undefined },
-      { t: "text", v: routeLabel(r.route) },
+      /* On an owner's flow, the flow's name and the version the person
+         started on: that is the proof the Control Panel did what it said. */
+      r.flowId
+        ? { t: "text", v: r.routeName, sub: `Your flow, version ${r.flowVersion ?? "?"}` }
+        : { t: "text", v: routeLabel(r.route) },
       { t: "text", v: sourceLabel(r.sourceChannel) },
       r.status === "active"
         ? { t: "text", v: r.stepLabel ?? `Step ${r.step + 1}`,
-            sub: r.stepChannel ? CHANNEL_WORD[r.stepChannel] ?? r.stepChannel : undefined }
+            sub: [
+              r.stepCount ? `step ${r.step + 1} of ${r.stepCount}` : null,
+              r.stepChannel ? CHANNEL_WORD[r.stepChannel] ?? r.stepChannel : null,
+            ].filter(Boolean).join(" · ") || undefined }
         : { t: "text", v: stopReasonLabel(r.stopReason) || "Finished" },
       { t: "text", v: r.status === "active" ? when(r.nextDueAt) : "Nothing due", nowrap: true },
     ],
@@ -199,7 +206,9 @@ export default async function SequencesPage({
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-[13.5px] font-medium text-ink">{r.name ?? "Unknown"}</p>
                         <p className="mt-0.5 text-[12.5px] leading-snug text-muted">
+                          {r.flowId ? `${r.routeName} v${r.flowVersion ?? "?"} · ` : ""}
                           {r.stepLabel ?? `Step ${r.step + 1}`}
+                          {r.stepCount ? `, ${r.step + 1} of ${r.stepCount}` : ""}
                           {r.stepChannel ? ` · ${CHANNEL_WORD[r.stepChannel] ?? r.stepChannel}` : ""}
                         </p>
                       </div>

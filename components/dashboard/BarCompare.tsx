@@ -23,6 +23,8 @@
    rank, which the order already carries, so losing it costs nothing.
    ========================================================================= */
 
+import Link from "next/link";
+
 export type Bar = {
   key: string;
   label: string;
@@ -32,6 +34,12 @@ export type Bar = {
   display?: string;
   /** A second line under the label, for context like "2 of 3 replied". */
   sub?: string;
+  /* Where this bar's rows live, if they live anywhere. The bar says
+     "Facebook ad produced 7 of 34"; this is where those 34 are. Optional,
+     because a bar is not always a filter somebody can apply: an aggregate
+     across channels has no single honest destination, and a link that
+     silently lands on everything is worse than no link. */
+  href?: string;
 };
 
 export function BarCompare({
@@ -75,9 +83,23 @@ export function BarCompare({
           return (
             <li key={b.key} className="grid gap-1.5">
               <div className="flex items-baseline justify-between gap-4">
-                <span className="truncate text-[13.5px] font-medium text-ink">
-                  {b.label}
-                </span>
+                {b.href ? (
+                  <Link
+                    href={b.href}
+                    /* `py-1.5 -my-1.5` grows the tap target without moving
+                       anything: a bar label is one line of text, about 20px
+                       tall, which is a hard thing to hit with a thumb. The
+                       negative margin gives the padding back to the layout,
+                       so the chart is drawn exactly where it was. */
+                    className="-my-1.5 truncate rounded-sm py-1.5 text-[13.5px] font-medium text-ink underline decoration-line decoration-1 underline-offset-[3px] outline-none transition-colors duration-150 hover:decoration-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                  >
+                    {b.label}
+                  </Link>
+                ) : (
+                  <span className="truncate text-[13.5px] font-medium text-ink">
+                    {b.label}
+                  </span>
+                )}
                 <span className="shrink-0 font-sans text-[15px] font-semibold tabular-nums text-ink">
                   {b.display ?? b.value}
                 </span>

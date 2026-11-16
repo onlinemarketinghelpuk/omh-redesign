@@ -122,7 +122,21 @@ const PROFILES: Record<string, Profile> = {
   reactivation:   { leads: 24, firstTouch: 180,  replies: 3,  books: 2, wins: 1, optOuts: 2, value: 1200, route: "F", campaign: "Dormant clients, 2025" },
 
   organic:        { leads: 32, firstTouch: 61,   replies: 4,  books: 2, wins: 1, optOuts: 0, value: 1700, route: "B", campaign: null },
-  referral:       { leads: 10, firstTouch: 50,   replies: 7,  books: 5, wins: 4, optOuts: 0, value: 3100, route: "B", campaign: null },
+  /* Six leads, and the reason this number is six.
+
+     Every other channel here clears the ranking floor of eight, so "too
+     early to say" was a state the allocation section could describe and had
+     never once drawn. The client whose newest or smallest channel is the one
+     they most want an opinion about would have been the first person to see
+     it, with nothing tested behind it.
+
+     Referral is the right channel to show it on, because it is the one that
+     most tempts the mistake: four bookings from six leads is sixty-seven per
+     cent and would rank first on this screen. One lead either way swings
+     that by eleven points. The floor refusing to rank it is the product
+     working, and now the example shows that happening instead of only
+     claiming it would. */
+  referral:       { leads: 6,  firstTouch: 50,   replies: 5,  books: 4, wins: 3, optOuts: 0, value: 3100, route: "B", campaign: null },
   direct:         { leads: 13, firstTouch: 59,   replies: 4,  books: 2, wins: 1, optOuts: 0, value: 1800, route: "B", campaign: null },
 };
 
@@ -362,6 +376,23 @@ export function demoSequenceBoard(): SequenceBoard {
       leased: false,
     };
   }).filter((r) => r.route !== "A");
+
+  /* Google Ads leads run the owner's example flow ("Google Ads, faster",
+     version 3, in control-panel.ts), so the Follow-ups screen shows what a
+     flow looks like there: the flow's name, its version, and how far
+     through it somebody is. */
+  for (const r of rows) {
+    if (r.sourceChannel !== "google_ads" || r.route !== "B") continue;
+    r.flowId = "demo-flow-ads";
+    r.flowVersion = 3;
+    r.routeName = "Google Ads, faster";
+    r.stepCount = 3;
+    if (r.status === "active") {
+      r.step = 1;
+      r.stepLabel = "Text saying we tried";
+      r.stepChannel = "sms";
+    }
+  }
 
   return {
     rows,

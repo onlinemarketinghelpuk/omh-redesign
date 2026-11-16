@@ -184,5 +184,59 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Could not add the booking to the calendar." }, { status: 502 });
   }
 
+  /* And into the system, so the client can see it.
+   *
+   * Until now a demo booked on this page existed in one place: Google
+   * Calendar. The dashboard's Bookings screen reads Convex, and the only
+   * thing that ever wrote a booking there was the assistant's own
+   * `book_consultation` tool. So somebody who booked by talking to the
+   * assistant appeared, and somebody who booked on the booking page did
+   * not, on the screen the client uses to count what the system produced.
+   *
+   * After the calendar write, never before: the slot in the diary is the
+   * thing the visitor is promised, and it is already theirs by this point.
+   * A failure here costs a row on a dashboard, so it is logged and the
+   * visitor is still told yes. Off entirely until configured. */
+  await recordTheBooking({ date, time, name, email, business, phone: text("phone"), page: text("page") });
+
   return NextResponse.json({ ok: true });
+}
+
+async function recordTheBooking(b: {
+  date: string; time: string; name: string; email: string;
+  business: string; phone: string; page: string;
+}) {
+  const site = process.env.OHM_WIDGET_CONVEX_SITE;
+  const secret = process.env.OHM_WIDGET_SECRET;
+  if (!site || !secret) return;
+
+  try {
+    const r = await fetch(`${site.replace(/\/$/, "")}/bookAppointment`, {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-ohm-secret": secret },
+      body: JSON.stringify({
+        /* Its own session, prefixed so the origin of the row is obvious in
+           the data as well as on the screen. */
+        sessionId: `book-${Date.now().toString(36)}`,
+        name: b.name,
+        phone: b.phone,
+        email: b.email,
+        service: "Free 30 minute consultation",
+        preferredDate: b.date,
+        preferredTime: b.time,
+        notes: [b.business && `Business: ${b.business}`, b.page && `Booked from: ${b.page}`]
+          .filter(Boolean)
+          .join("\n"),
+        channel: "website_form",
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!r.ok) {
+      console.error("Convex refused the booking:", r.status, (await r.text()).slice(0, 200));
+      return;
+    }
+    console.log("Booking recorded for the dashboard:", b.date, b.time);
+  } catch (error) {
+    console.error("Could not record the booking for the dashboard:", error);
+  }
 }

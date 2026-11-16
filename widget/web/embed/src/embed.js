@@ -73,7 +73,7 @@ import { checkAttachment, LIMITS } from "../../../gates/attachments.js";
      itself. It is pulled in on demand, so a visitor who never opens the Voice
      tab never downloads it. */
   var RETELL_SDK =
-    data.retellSdk || "https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.5/+esm";
+    data.retellSdk || "https://cdn.jsdelivr.net/npm/retell-client-js-sdk@3.0.4/+esm";
 
   var PHONE = "020 3489 3934";
   var TEL = "+442034893934";
@@ -746,15 +746,27 @@ button,input{font:inherit;color:inherit;margin:0}
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ sessionId: sess, visitorId: visitor, text: clean, pageUrl: location.href }),
-      }).catch(function () {
-        state.msgs.push({
-          role: "system",
-          text:
-            "That message may not have reached us. If it is urgent, call " +
-            PHONE + ".",
+      })
+        /* The route answers 200 with `{ ok: false }` when it will not take
+           the message: the conversation is no longer in handover, or the
+           rate limit refused it. Only the network failure was handled here,
+           so a refusal rendered as sent and was then silently dropped: the
+           visitor watches their own message sit in the thread believing a
+           person is reading it. The reason is not shown, because to the
+           visitor it is the same fact either way. */
+        .then(function (r) {
+          return r.json().catch(function () { return { ok: true }; });
+        })
+        .then(function (d) { if (!d || d.ok === false) throw new Error("refused"); })
+        .catch(function () {
+          state.msgs.push({
+            role: "system",
+            text:
+              "That message may not have reached us. If it is urgent, call " +
+              PHONE + ".",
+          });
+          render();
         });
-        render();
-      });
       input.focus();
       return;
     }
@@ -1203,7 +1215,21 @@ button,input{font:inherit;color:inherit;margin:0}
               }
               throw new Error("token");
             }
-            return { Client: Client, token: d.access_token };
+            /* Everything the SDK's transports need, not just the token.
+               Retell's v3 answers with transport "gateway", and the gateway
+               transport throws "callId is required" without the call id and
+               builds its RTCPeerConnection from ice_servers. The livekit
+               transport needs only the token, which is why this used to be
+               enough and quietly stopped being so. Each is passed through
+               as it arrives: absent stays absent, so the SDK falls back to
+               its own default rather than being handed undefined. */
+            return {
+              Client: Client,
+              token: d.access_token,
+              callId: d.call_id,
+              transport: d.transport,
+              iceServers: d.ice_servers,
+            };
           });
         });
       })
@@ -1250,7 +1276,14 @@ button,input{font:inherit;color:inherit;margin:0}
           renderThread();
         });
 
-        return client.startCall({ accessToken: o.token });
+        /* Only the keys we actually got. The SDK reads `transport` and
+           falls back to its own default when it is missing, so sending an
+           explicit undefined is not the same thing as sending nothing. */
+        var opts = { accessToken: o.token };
+        if (o.callId) opts.callId = o.callId;
+        if (o.transport) opts.transport = o.transport;
+        if (o.iceServers && o.iceServers.length) opts.iceServers = o.iceServers;
+        return client.startCall(opts);
       })
       .catch(function (e) {
         state.voice = "error";

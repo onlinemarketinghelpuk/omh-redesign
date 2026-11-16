@@ -137,6 +137,35 @@ eq("F sends nothing immediately (quiet hours apply to its first text)", ROUTES.F
 eq("F channels are text only", channelsUsed("F"), ["sms"]);
 eq("F stops after two", ROUTES.F.steps.length, 2);
 
+console.log("\n== route F's opening text is actually sent, and inside sending hours ==");
+{
+  /* Found 2026-11-16 by control-panel.test.ts. The opening text is due AT
+     enrolment (afterMs 0), and nextStep only takes a step strictly after the
+     floor, which at enrolment IS enrolment. So the opener was skipped every
+     time and a reactivation campaign's first contact was its "second and
+     last" text, five days later, referring to a first one nobody got.
+
+     And had it been sent: a delay under an hour skips quiet hours, which is
+     right for somebody who just rang us and wrong for a list we are working.
+     The route's own comment promises a batch started at 23:00 goes at 08:00.
+     The tests below hold it to that. */
+  const ten = londonInstant({ year: 2026, month: 11, day: 17, hour: 10, minute: 0, second: 0 });
+  const first = nextStep("F", ten, 0, ten - 1)!;
+  eq("enrolled at 10:00, the first step is the opener", first?.step.key, "f_sms_first");
+  eq("and it is due straight away", first?.dueAt, ten);
+
+  const late = londonInstant({ year: 2026, month: 11, day: 17, hour: 23, minute: 0, second: 0 });
+  const lf = nextStep("F", late, 0, late - 1)!;
+  eq("enrolled at 23:00, it is still the opener", lf?.step.key, "f_sms_first");
+  eq("but it waits for 08:00", (() => { const w = londonWall(lf.dueAt); return [w.day, w.hour, w.minute]; })(), [18, 8, 0]);
+
+  /* The exception stays where it belongs: route E's callback to somebody
+     who rang at 02:00 is still five minutes later, not six hours. */
+  const two = londonInstant({ year: 2026, month: 11, day: 17, hour: 2, minute: 0, second: 0 });
+  const e = nextStep("E", two, 0, two - 1)!;
+  eq("a reply route's short delay still ignores quiet hours", (() => { const w = londonWall(e.dueAt); return [w.hour, w.minute]; })(), [2, 5]);
+}
+
 console.log("\n== stepAt bounds ==");
 eq("past the end is undefined", stepAt("B", 99), undefined);
 eq("a bad route id does not throw", stepAt("Z" as any, 0), undefined);

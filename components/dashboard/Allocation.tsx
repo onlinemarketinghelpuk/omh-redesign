@@ -42,6 +42,26 @@ const QUADRANT: Record<string, { title: string; say: string }> = {
   leave: { title: "Leave it", say: "small, not converting" },
 };
 
+/* "Costing you" is a claim about money, and the quadrant is computed from
+   leads and conversion alone. Over the demo data it lands on `organic` and
+   `website_form`, which have no spend figure at all: the chart tells the
+   client that something they are not paying for is costing them.
+
+   ADR-008 says profit is not claimed without spend. The table cell is
+   already careful and prints "volume, not converting". The chart's region
+   label was not, and the chart is the part that gets screenshotted into a
+   meeting.
+
+   So the label says only what is measured. Every channel sitting in that
+   region has to have a spend figure before the region can make a cost
+   claim; one without is enough to fall back, because the label covers all
+   of them at once. */
+function pitLabel(rows: { quadrant: string | null; spend: number | null }[]) {
+  const inPit = rows.filter((r) => r.quadrant === "money_pit");
+  const allPriced = inPit.length > 0 && inPit.every((r) => r.spend !== null);
+  return allPriced ? "costing you" : "not converting";
+}
+
 const pct = (n: number | null) => (n === null ? "" : `${Math.round(n * 100)}%`);
 
 export function Allocation({
@@ -233,7 +253,7 @@ function Plot({
         </text>
         <text x={W - PAD.r - 4} y={PAD.t + ih - 5} textAnchor="end"
               className="fill-[#9a3f1e] text-[10px] font-semibold uppercase tracking-[.08em]">
-          costing you
+          {pitLabel(plotted)}
         </text>
         <text x={PAD.l + 4} y={PAD.t + 13}
               className="fill-muted text-[10px] font-semibold uppercase tracking-[.08em]">

@@ -1,5 +1,11 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
+import {
+  bump,
+  HELLO_PER_SESSION,
+  HELLO_PER_VISITOR,
+  HELLO_PER_DEPLOYMENT,
+} from "./limits";
 
 /* =========================================================================
    Who the visitor is, across visits.
@@ -60,9 +66,29 @@ type LeadDoc = any;
  * exists for everybody; phone and email only exist once they have told us,
  * and are what merge a second device into the same person.
  */
+/** The PSID buried in a Meta thread's session id, or nothing.
+ *
+ *  A Messenger or Instagram conversation arrives as `"meta:<psid>"`, which is
+ *  the only identity Meta gives us for that person: no name, no phone, no
+ *  email, and no browser id, because they never came to the site. So the id
+ *  is read back out here rather than plumbed separately through the chat
+ *  agent's tool call, where one caller forgetting it would quietly split a
+ *  person in two.
+ *
+ *  It is a PREFIX match, and an empty remainder yields nothing. Both matter:
+ *  `psids` is matched by scanning rows, so an empty-string key would match
+ *  the first lead that has no psids and hand a stranger's record to whoever
+ *  writes to the Page next.
+ */
+export function psidFromSession(sessionId?: string): string | undefined {
+  if (!sessionId || !sessionId.startsWith("meta:")) return undefined;
+  const psid = sessionId.slice("meta:".length).trim();
+  return psid || undefined;
+}
+
 export async function findPerson(
   ctx: any,
-  keys: { visitorId?: string; phone?: string; email?: string },
+  keys: { visitorId?: string; phone?: string; email?: string; psid?: string },
 ): Promise<LeadDoc | null> {
   const pk = phoneKey(keys.phone);
   const ek = emailKey(keys.email);
@@ -81,14 +107,28 @@ export async function findPerson(
       .first();
     if (hit) return hit;
   }
-  if (keys.visitorId) {
-    /* No index here: visitorIds is an array, and Convex cannot index into
-       one. The lead table is small and this runs only when someone is
-       captured, which is rare compared with messages. If leads ever reach
-       the tens of thousands, give visitors their own table keyed by id. */
+  /* Both of the remaining keys live in arrays, and Convex cannot index into
+     one, so they are matched by scanning the most recent leads. One scan
+     serves both: two would double the read for no benefit, and the browser
+     id and the Meta id are never both present anyway (a DM has no browser,
+     a website visit has no PSID).
+
+     The lead table is small and this runs only when somebody is captured,
+     which is rare compared with messages. If leads ever reach the tens of
+     thousands, give visitors their own table keyed by id. */
+  if (keys.visitorId || keys.psid) {
     const all = await ctx.db.query("leads").withIndex("by_at").order("desc").take(500);
-    const hit = all.find((l: LeadDoc) => (l.visitorIds ?? []).includes(keys.visitorId));
-    if (hit) return hit;
+    if (keys.visitorId) {
+      const hit = all.find((l: LeadDoc) => (l.visitorIds ?? []).includes(keys.visitorId));
+      if (hit) return hit;
+    }
+    /* Checked after the browser id, and after phone and email above. Those
+       are things a human typed and confirmed; a PSID is what a platform
+       assigned. When they disagree, the human's answer is the one to trust. */
+    if (keys.psid) {
+      const hit = all.find((l: LeadDoc) => (l.psids ?? []).includes(keys.psid));
+      if (hit) return hit;
+    }
   }
   return null;
 }
@@ -264,6 +304,39 @@ export const hello = mutation({
     attribution: v.optional(attributionArg),
   },
   handler: async (ctx, a) => {
+    /* Before any write. This is a public route with no secret, and every
+       call through it can create a session row and touch a person row, so
+       without a ceiling one script is unbounded table growth and a
+       dashboard counting whatever it decided to send.
+
+       Checked widest-first: a flood using fresh ids every time walks past
+       the per-session and per-visitor counters by construction, and only
+       the deployment counter sees it. Refused calls still cost one counter
+       write, which is one row patched, not one row inserted.
+
+       It returns the normal shape rather than an error. The widget calls
+       this on page load and uses the answer to decide whether to greet by
+       name; an error here would be a broken panel. `limited` is there so a
+       caller that wants to know can, and so this is visible in a log
+       instead of looking like a visitor nobody has ever met. */
+    const t0 = now();
+    const room =
+      (await bump(ctx, "hello:all", HELLO_PER_DEPLOYMENT, t0)).ok &&
+      (await bump(ctx, "hello:v:" + a.visitorId, HELLO_PER_VISITOR, t0)).ok &&
+      (await bump(ctx, "hello:s:" + a.sessionId, HELLO_PER_SESSION, t0)).ok;
+    if (!room) {
+      return {
+        ok: true,
+        limited: true,
+        handover: "none",
+        withPerson: false,
+        returning: false,
+        conversations: 0,
+        name: null,
+        known: false,
+      };
+    }
+
     const channel = a.channel ?? "chat";
     const attribution = cleanAttribution(a.attribution);
     const sourceChannel = classifySource(
@@ -341,6 +414,9 @@ export const hello = mutation({
 
     return {
       ok: true,
+      /* Same key on both paths, so a caller never has to tell "not limited"
+         from "this version did not say". */
+      limited: false,
       /* Whether this conversation is already with a person. A page can load
          into the middle of a handover: the visitor refreshed, or the escalation
          came from a call rather than from something they typed here. Without

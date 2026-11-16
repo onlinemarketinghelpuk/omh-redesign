@@ -61,7 +61,22 @@ OPENROUTER_KEY = env["OPENROUTER_API_KEY"]
 # voice work. Nova-3 pre-recorded, billed by the minute.
 DEEPGRAM_KEY = env["DEEPGRAM_API_KEY"]
 
-CHAT_MODEL = "anthropic/claude-haiku-5.5"      # $0.10 / $0.50 per 1M, 1M context
+# Who the automated email comes from. This used to be typed into three nodes
+# by hand, which meant the address a lead sees was a code edit away from the
+# address the mailbox actually is. The fallback is the account that has been
+# sending until now, so nothing changes until MAIL_FROM is set; once OMH gives
+# us a mailbox on their own domain this is a one line config change.
+#
+# It matters more than it looks: a lead's first automated contact arriving
+# from a personal gmail address, with no SPF or DKIM behind it, is both a
+# credibility problem and a spam folder problem.
+MAIL_FROM = env.get("MAIL_FROM", "videoeditoromh@gmail.com")
+assert "@" in MAIL_FROM, f"MAIL_FROM is not an address: {MAIL_FROM!r}"
+
+CHAT_MODEL = "anthropic/claude-sonnet-5.5"     # $2.00 / $10.00 per 1M, 1M context.
+                                               # 20x Haiku on both input and output:
+                                               # a reply costs ~$0.0014 instead of
+                                               # ~$0.00007. Priced into the packages.
 CHAT_MODEL_FALLBACK = "openai/gpt-4o-mini"     # different vendor, so one outage is not both
 
 AGENT_ID = "AGENT_ID_PENDING"
@@ -93,7 +108,11 @@ def gate_source(module):
     is what a Code node can run.
     """
     import subprocess
-    esb = ROOT.parent / "website" / "node_modules" / ".bin" / "esbuild"
+    # The widget's own esbuild, for the same reason tests/run.sh uses it:
+    # it is declared in widget/package.json, where this depends on it.
+    esb = ROOT / "node_modules" / ".bin" / "esbuild"
+    if not esb.exists():
+        esb = ROOT.parent / "website" / "node_modules" / ".bin" / "esbuild"
     out = subprocess.run(
         [str(esb), str(GATES / module), "--bundle", "--format=iife",
          "--global-name=GATE", "--platform=neutral", "--target=es2020",
@@ -286,7 +305,12 @@ def build_chat():
             "try { photo = $('Describe The Photo').first().json.note || ''; } catch (e) { photo = ''; }\n"
             "try { if (!photo) photo = $('Write Down The Voice Note').first().json.note || ''; } catch (e) {}\n"
             "if (photo) photo += '\\n\\n';\n"
-            "return [{ json: { chat_input: hint + page + photo + 'Visitor says: ' + (wh.message || '') } }];"
+            "// A sales brief, from the Brain, when this turn is the assistant\n"
+            "// answering a reply to one of our follow-up texts. Honoured ONLY\n"
+            "// with the server-side token: this webhook is public, and a brief\n"
+            "// from a stranger would be somebody else's instructions.\n"
+            "const brief = (wh.brief && wh.brief_token === '" + TOOL_TOKEN + "') ? String(wh.brief) + '\\n\\n' : '';\n"
+            "return [{ json: { chat_input: brief + hint + page + photo + 'Visitor says: ' + (wh.message || '') } }];"
         )},
          "id": "build_ctx", "name": "Build Context",
          "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-380, 0]},
@@ -522,7 +546,7 @@ def build_chat():
         conns[name] = {"ai_tool": [[{"node": "Melissa", "type": "ai_tool", "index": 0}]]}
 
     return {"name": "OHM Assistant — Chat", "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 # =========================================================================
@@ -549,7 +573,17 @@ def build_voice():
 
         {"parameters": {
             "method": "POST",
-            "url": "https://api.retellai.com/v2/create-web-call",
+            # v3, not v2. Retell switched v2 off rather than merely
+            # deprecating it, and the error it returns is a *warning*-level
+            # body with a 200-shaped failure, so the widget simply got no
+            # token and the Voice tab did nothing. Every call since at least
+            # 12 November failed this way, silently, because nothing was
+            # watching n8n executions. That is also why 00-error exists.
+            #
+            # The body is unchanged between v2 and v3. The RESPONSE is not:
+            # it now carries `transport` and `ice_servers`, and the browser
+            # needs both, plus `call_id`. See "Respond Token" below.
+            "url": "https://api.retellai.com/v3/create-web-call",
             "sendHeaders": True,
             "headerParameters": {"parameters": [
                 {"name": "Authorization", "value": f"Bearer {RETELL_KEY}"}]},
@@ -560,7 +594,14 @@ def build_voice():
          "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2, "position": [-580, -300]},
 
         {"parameters": {"respondWith": "json",
-                        "responseBody": "={{ JSON.stringify({ access_token: $json.access_token, call_id: $json.call_id }) }}",
+                        # All four, because the browser SDK needs all four.
+                        # v3 answers with transport "gateway", and the gateway
+                        # transport REFUSES to connect without `callId` and
+                        # builds its peer connection from `ice_servers`.
+                        # Returning only the token, as this did, would leave
+                        # the call failing in the browser even once the
+                        # endpoint was right.
+                        "responseBody": "={{ JSON.stringify({ access_token: $json.access_token, call_id: $json.call_id, transport: $json.transport, ice_servers: $json.ice_servers }) }}",
                         "options": {}},
          "id": "resp_tok", "name": "Respond Token",
          "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.1, "position": [-340, -300]},
@@ -647,7 +688,7 @@ def build_voice():
 
     return {"name": "OHM Assistant — Voice (Retell tools + web call token)",
             "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 # =========================================================================
@@ -685,6 +726,31 @@ def build_events():
                     "={{ JSON.stringify({ sessionId: ($json.body.call && $json.body.call.metadata && $json.body.call.metadata.session_id) || $json.body.call.call_id, role: 'system', channel: 'voice', text: 'VOICE CALL TRANSCRIPT\\n' + ($json.body.call.transcript || '(none)'), retellCallId: $json.body.call.call_id }) }}",
                     -40, -90),
 
+        # How an OUTBOUND call ended. The worker recorded the touch under
+        # Retell's call_id when it dialled; this marks it answered or not,
+        # which is what decides whether "a text saying we tried" goes.
+        {"parameters": {"jsCode": (
+            gate_inline("agent.js") + "\n"
+            "const call = ($input.first().json.body || {}).call || {};\n"
+            "const ours = call.direction === 'outbound' && call.metadata && call.metadata.leadId;\n"
+            "return [{ json: { ours: Boolean(ours), callId: call.call_id || '', status: retellOutcome(call) } }];"
+        )},
+         "id": "ev_out", "name": "Read An Outbound Call",
+         "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-40, 270]},
+
+        {"parameters": {"conditions": {"options": {"caseSensitive": True, "version": 2},
+                                       "conditions": [{"leftValue": "={{ $json.ours }}",
+                                                       "rightValue": True,
+                                                       "operator": {"type": "boolean", "operation": "true", "singleValue": True}}],
+                                       "combinator": "and"},
+                        "options": {}},
+         "id": "ev_out_if", "name": "Was It One Of Ours",
+         "type": "n8n-nodes-base.if", "typeVersion": 2.2, "position": [180, 270]},
+
+        convex_http("ev_out_status", "Mark Answered Or Not", "/touch/status",
+                    "={{ JSON.stringify({ providerId: $json.callId, status: $json.status }) }}",
+                    400, 250),
+
         convex_http("ev_prof", "Carry Details Into Profile", "/updateProfile",
                     "={{ JSON.stringify({ sessionId: ($json.body.call && $json.body.call.metadata && $json.body.call.metadata.session_id) || $json.body.call.call_id, notes: 'From voice call ' + $json.body.call.call_id + ': ' + (($json.body.call.call_analysis && $json.body.call.call_analysis.call_summary) || '') }) }}",
                     -40, 90),
@@ -693,10 +759,13 @@ def build_events():
         "Retell Events": {"main": [[{"node": "Check Token", "type": "main", "index": 0}]]},
         "Check Token": {"main": [[{"node": "Only call_analyzed", "type": "main", "index": 0}], []]},
         "Only call_analyzed": {"main": [[{"node": "Log Call Transcript", "type": "main", "index": 0},
-                                         {"node": "Carry Details Into Profile", "type": "main", "index": 0}], []]},
+                                         {"node": "Carry Details Into Profile", "type": "main", "index": 0},
+                                         {"node": "Read An Outbound Call", "type": "main", "index": 0}], []]},
+        "Read An Outbound Call": {"main": [[{"node": "Was It One Of Ours", "type": "main", "index": 0}]]},
+        "Was It One Of Ours": {"main": [[{"node": "Mark Answered Or Not", "type": "main", "index": 0}], []]},
     }
     return {"name": "OHM Assistant — Retell Events", "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 # =========================================================================
@@ -789,7 +858,7 @@ def build_calendar():
         "Event Created": {"main": [[{"node": "Attach Calendar Event", "type": "main", "index": 0}], []]},
     }
     return {"name": "OHM Assistant — Calendar Sync", "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 # =========================================================================
@@ -797,9 +866,165 @@ def build_calendar():
 #     capturing it, so this pulls what is new every five minutes and emails it.
 # =========================================================================
 
-SMTP_CRED = {"smtp": {"id": "I7yvfVmEpZslNAxV",
-                      "name": "Gmail SMTP — Ads System (app pw 2026-08-04)"}}
+# The mailbox read by 12-email-inbound. Same story as TWILIO_CRED_ID: n8n owns
+# the id once the credential exists, so it is read from .env.local rather than
+# typed here.
+IMAP_CRED = {"imap": {"id": env.get("IMAP_CRED_ID", "IMAP_CRED_PENDING"),
+                      "name": "IMAP — OMH replies"}}
+
+# The account the mail is *sent through*, which is not the same thing as
+# MAIL_FROM, the address a lead sees. Gmail refuses to send as an address the
+# authenticated account does not own, so setting MAIL_FROM to OMH's new mailbox
+# while this still authenticates as ours would have been rejected at the SMTP
+# handshake, or silently rewritten back to our address. The two move together.
+SMTP_CRED_ID = env.get("SMTP_CRED_ID", "I7yvfVmEpZslNAxV")
+SMTP_CRED_NAME = env.get("SMTP_CRED_NAME",
+                         "Gmail SMTP — Ads System (app pw 2026-08-04)")
+SMTP_CRED = {"smtp": {"id": SMTP_CRED_ID, "name": SMTP_CRED_NAME}}
+assert (SMTP_CRED_ID == "I7yvfVmEpZslNAxV") == (MAIL_FROM == "videoeditoromh@gmail.com"), (
+    f"MAIL_FROM is {MAIL_FROM!r} but the SMTP credential is {SMTP_CRED_NAME!r}. "
+    "Gmail will not send as an address the authenticated mailbox does not own. "
+    "Set SMTP_CRED_ID and SMTP_CRED_NAME alongside MAIL_FROM in .env.local.")
 NOTIFY_TO = "support@onlinemarketinghelp.co.uk"
+
+
+# =========================================================================
+# 0 · The error handler, and the settings that point every workflow at it.
+#
+#     Until this existed, a failed execution was invisible. n8n records it,
+#     nothing reads the record, and the lead that execution was carrying is
+#     gone with no trace: no email, no row, nothing to notice. That is the
+#     one failure mode where the system looks fine and the client loses a
+#     customer, which is why it is numbered 00 and built first.
+# =========================================================================
+
+ERROR_WF_NAME = "OHM Assistant — Error Handler"
+
+# n8n owns the id, and it only exists once the workflow is on the instance.
+# So the generated files carry a sentinel and push.py resolves the real id by
+# name at push time. The sentinel is never sent: push.py substitutes it, or
+# drops the key entirely if it cannot. A bogus id would make n8n try to run a
+# workflow that does not exist on every failure.
+ERROR_WF_PENDING = "ERROR_WF_PENDING"
+ERROR_WORKFLOW_ID = env.get("ERROR_WORKFLOW_ID", ERROR_WF_PENDING)
+
+
+def wf_settings(handles_own_errors=False):
+    """Workflow settings, including who to call when this workflow fails.
+
+    `handles_own_errors` is for 00-error itself. An error workflow pointed at
+    itself calls itself when it fails, and the thing most likely to fail in
+    it is the email send, so that is a loop that ends in a rate-limited
+    mailbox rather than in a report.
+
+    Only the keys in n8n's public API schema go in here: that schema is
+    `additionalProperties: false`, so one unknown key rejects the whole PUT.
+    """
+    s = {"executionOrder": "v1"}
+    if not handles_own_errors:
+        s["errorWorkflow"] = ERROR_WORKFLOW_ID
+    return s
+
+
+def build_error():
+    nodes = [
+        {"parameters": {},
+         "id": "e_trigger", "name": "Something Failed",
+         "type": "n8n-nodes-base.errorTrigger", "typeVersion": 1,
+         "position": [-520, 0]},
+
+        {"parameters": {"jsCode": (
+            "// n8n sends two different shapes here and the difference matters.\n"
+            "//\n"
+            "//   a node threw      -> { execution: { id, url, error, lastNodeExecuted }, workflow }\n"
+            "//   a trigger threw   -> { trigger:   { error, mode },                      workflow }\n"
+            "//\n"
+            "// The second has no execution at all, so reading $json.execution.error\n"
+            "// would itself throw, inside the error handler, which is the one place\n"
+            "// a crash is invisible. Both shapes are read, and anything missing is\n"
+            "// reported as missing rather than assumed.\n"
+            "const d = $input.first().json || {};\n"
+            "const wf = d.workflow || {};\n"
+            "const ex = d.execution || {};\n"
+            "const tg = d.trigger || {};\n"
+            "const err = ex.error || tg.error || {};\n"
+            "\n"
+            "const name = wf.name || 'an unnamed workflow';\n"
+            "const where = ex.lastNodeExecuted || (tg.mode ? 'the trigger' : 'not reported');\n"
+            "const msg = String(err.message || 'no message').slice(0, 500);\n"
+            "const when = new Date().toISOString();\n"
+            "\n"
+            "// A cron that fails every minute would otherwise send 1440 emails a day\n"
+            "// and get the mailbox throttled, which also silences the notify emails\n"
+            "// that share it. So the same failure is reported once per window and\n"
+            "// counted after that. Keyed on workflow AND message, because a second,\n"
+            "// different failure in the same workflow is news.\n"
+            "const WINDOW_MS = 15 * 60 * 1000;\n"
+            "const key = (wf.id || name) + '|' + msg.slice(0, 120);\n"
+            "let seen = {};\n"
+            "try { seen = $getWorkflowStaticData('global').seen || {}; } catch (e) { seen = {}; }\n"
+            "const prev = seen[key];\n"
+            "const t = Date.now();\n"
+            "let repeats = 0;\n"
+            "if (prev && t - prev.at < WINDOW_MS) {\n"
+            "  prev.n = (prev.n || 1) + 1;\n"
+            "  try { $getWorkflowStaticData('global').seen = seen; } catch (e) {}\n"
+            "  // Nothing downstream: the failure is counted, not emailed again.\n"
+            "  return [];\n"
+            "}\n"
+            "repeats = prev ? prev.n || 0 : 0;\n"
+            "seen[key] = { at: t, n: 1 };\n"
+            "// Keep the store small. Anything older than an hour cannot suppress\n"
+            "// anything, so it is only taking up space.\n"
+            "for (const k of Object.keys(seen)) {\n"
+            "  if (t - seen[k].at > 4 * WINDOW_MS) delete seen[k];\n"
+            "}\n"
+            "try { $getWorkflowStaticData('global').seen = seen; } catch (e) {}\n"
+            "\n"
+            "const L = [];\n"
+            "L.push(`${name} failed.`);\n"
+            "L.push('');\n"
+            "L.push(`  what broke : ${where}`);\n"
+            "L.push(`  error      : ${msg}`);\n"
+            "L.push(`  when       : ${when}`);\n"
+            "if (ex.id) L.push(`  execution  : ${ex.id}`);\n"
+            "if (ex.mode || tg.mode) L.push(`  mode       : ${ex.mode || tg.mode}`);\n"
+            "if (ex.retryOf) L.push(`  retry of   : ${ex.retryOf}`);\n"
+            "if (ex.url) L.push('', `  open it    : ${ex.url}`);\n"
+            "if (repeats > 1) {\n"
+            "  L.push('', `This same failure happened ${repeats} times in the last 15 minutes`);\n"
+            "  L.push('and was reported once. It is still happening.');\n"
+            "}\n"
+            "L.push('');\n"
+            "L.push('Whatever that execution was carrying did not finish. If it was a');\n"
+            "L.push('lead, it has not been contacted.');\n"
+            "\n"
+            "return [{ json: {\n"
+            "  subject: `n8n FAILED: ${name}`.slice(0, 120),\n"
+            "  body: L.join('\\n'),\n"
+            "  workflowName: name, node: where, message: msg, repeats,\n"
+            "} }];"
+        )},
+         "id": "e_fmt", "name": "Describe The Failure",
+         "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-280, 0]},
+
+        {"parameters": {"fromEmail": MAIL_FROM,
+                        "toEmail": NOTIFY_TO,
+                        "subject": "={{ $json.subject }}",
+                        "emailFormat": "text",
+                        "text": "={{ $json.body }}",
+                        "options": {}},
+         "id": "e_mail", "name": "Tell The Team",
+         "type": "n8n-nodes-base.emailSend", "typeVersion": 2.1,
+         "position": [-40, 0], "credentials": SMTP_CRED},
+    ]
+    conns = {
+        "Something Failed": {"main": [[{"node": "Describe The Failure", "type": "main", "index": 0}]]},
+        "Describe The Failure": {"main": [[{"node": "Tell The Team", "type": "main", "index": 0}]]},
+    }
+    # It reports on the other twelve and must not report on itself.
+    return {"name": ERROR_WF_NAME, "nodes": nodes, "connections": conns,
+            "settings": wf_settings(handles_own_errors=True)}
 
 
 def build_notify():
@@ -865,7 +1090,7 @@ def build_notify():
          "id": "n_fmt", "name": "Compose Email",
          "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-300, 60]},
 
-        {"parameters": {"fromEmail": "videoeditoromh@gmail.com",
+        {"parameters": {"fromEmail": MAIL_FROM,
                         "toEmail": NOTIFY_TO,
                         "subject": "={{ $json.subject }}",
                         "emailFormat": "text",
@@ -890,7 +1115,7 @@ def build_notify():
         "Email The Team": {"main": [[{"node": "Mark As Told", "type": "main", "index": 0}]]},
     }
     return {"name": "OHM Assistant — Notify", "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 def build_roi():
@@ -966,7 +1191,7 @@ def build_roi():
     }
     return {"name": "OHM Assistant \u2014 ROI Calculator Leads",
             "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 # =========================================================================
@@ -981,17 +1206,34 @@ def build_roi():
 # so these generate and validate but cannot send until both exist.
 # =========================================================================
 
+# The credential is created on srv1836598 once the Twilio account exists, and
+# n8n then owns its id. That id is read from .env.local like every other value
+# this build needs, rather than being typed in here.
+#
+# It was a literal until the 2026-11-15 audit. Every other thing tomorrow needs
+# lives in .env.local, so the documented path, "put the values in .env.local,
+# rebuild, push", silently did not cover this one: three workflows would have
+# pushed with a credential reference pointing at nothing. It fails loudly
+# rather than sending anything wrong, but the repair is a code edit discovered
+# on the day, and the obvious workaround is to fix it in the n8n UI, which the
+# next rebuild then overwrites.
+TWILIO_CRED_ID = env.get("TWILIO_CRED_ID", "TWILIO_CRED_PENDING")
 TWILIO_CRED = {
-    # Created on srv1836598 when the account exists. Until then the node is
-    # present and correct but unauthenticated, which fails loudly on a send
-    # rather than quietly doing nothing.
-    "twilioApi": {"id": "TWILIO_CRED_PENDING", "name": "Twilio — OMH"}
+    "twilioApi": {"id": TWILIO_CRED_ID, "name": "Twilio — OMH"}
 }
 # A UK domestic long code, not an alphanumeric sender id: routes B, C and E
 # all depend on the person being able to reply, and an alphanumeric sender
 # cannot receive one.
 TWILIO_FROM = env.get("TWILIO_FROM_NUMBER", "TWILIO_NUMBER_PENDING")
-RETELL_FROM = env.get("RETELL_FROM_NUMBER", TWILIO_FROM)
+RETELL_FROM = env.get("RETELL_FROM_NUMBER", TWILIO_FROM)  # no longer used by the call node: the number comes from Convex
+
+# The booking agent that rings people back, created by
+# widget/retell/create-outbound-agent.py. Same tools as the site's voice
+# agent; told it is calling them back about their own enquiry, to book.
+OUTBOUND_AGENT_ID = "OUTBOUND_AGENT_PENDING"
+_out_file = ROOT / "retell" / "outbound-agent.json"
+if _out_file.exists():
+    OUTBOUND_AGENT_ID = json.loads(_out_file.read_text()).get("agent_id", OUTBOUND_AGENT_ID)
 
 ROUTER_PATH = "ohm-lead-router"
 GOOGLE_FORM_PATH = "ohm-google-lead-form"
@@ -1215,7 +1457,7 @@ def build_router():
         twilio_sms("r_sms", "Send The Text",
                    "={{ $json.to }}", "={{ $json.body }}", 320, -120),
 
-        {"parameters": {"fromEmail": "videoeditoromh@gmail.com",
+        {"parameters": {"fromEmail": MAIL_FROM,
                         "toEmail": "={{ $json.to }}",
                         "subject": "={{ $json.subject }}",
                         "emailFormat": "text",
@@ -1283,7 +1525,7 @@ def build_router():
     }
     return {"name": "OHM Assistant — Lead Router",
             "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 def build_worker():
@@ -1364,7 +1606,7 @@ def build_worker():
 
         twilio_sms("w_sms", "Text Them", "={{ $json.to }}", "={{ $json.body }}", -120, -140),
 
-        {"parameters": {"fromEmail": "videoeditoromh@gmail.com",
+        {"parameters": {"fromEmail": MAIL_FROM,
                         "toEmail": "={{ $json.to }}",
                         "subject": "={{ $json.subject }}",
                         "emailFormat": "text",
@@ -1395,13 +1637,25 @@ def build_worker():
                         **hdr("Authorization", f"Bearer {RETELL_KEY}"),
                         "sendBody": True, "specifyBody": "json",
                         "jsonBody": (
-                            "={{ JSON.stringify({ from_number: '" + RETELL_FROM + "', "
+                            # Our number from the dashboard's Outbound agent
+                            # screen (Convex only claims a call when there is
+                            # one), the booking agent, and an idempotency key
+                            # so a worker that dies after dialling and is
+                            # re-claimed cannot ring the same person twice.
+                            "={{ JSON.stringify({ from_number: $json.fromNumber, "
                             "to_number: $json.to, "
+                            # Left out until the booking agent exists, so a
+                            # placeholder id can never fail every call.
+                            + ("override_agent_id: '" + OUTBOUND_AGENT_ID + "', "
+                               if OUTBOUND_AGENT_ID != "OUTBOUND_AGENT_PENDING" else "")
+                            + "idempotency_key: $json.idempotencyKey, "
                             "metadata: { leadId: $json.leadId, sessionId: $json.sessionId, "
                             "route: $json.route, step: $json.step }, "
                             "retell_llm_dynamic_variables: { session_id: String($json.sessionId || ''), "
                             "caller_name: String($json.name || ''), "
-                            "about: String($json.body || '') }, "
+                            "about: String($json.body || ''), "
+                            "opening_line: String($json.opening || ''), "
+                            "call_goal: String($json.goal || '') }, "
                             # Retell's own do-not-call list, as a second belt
                             # beside our suppression check.
                             "honor_internal_dnc: true }) }}"),
@@ -1493,7 +1747,7 @@ def build_worker():
     }
     return {"name": "OHM Assistant — Sequence Worker",
             "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 def build_inbound():
@@ -1578,8 +1832,36 @@ def build_inbound():
                     "={{ JSON.stringify({ leadId: $('Whose Number Is It').item.json.leadId, "
                     "reason: 'replied' }) }}", 0, -80),
 
+        # THE BRAIN. Who answers this reply is the owner's choice, per
+        # channel, on the dashboard's Brain screen. Convex decides (gates/
+        # brain.js); this only does what it says. Asked AFTER the reply is
+        # logged and the chase stopped, so whatever the answer, nobody is
+        # still being followed up who has written back.
+        convex_http("i_brain", "Ask The Brain", "/brain/decide",
+                    "={{ JSON.stringify({ leadId: $('Whose Number Is It').item.json.leadId, "
+                    "text: $('Read The Text').item.json.text }) }}", 220, -80),
+
+        {"parameters": {"conditions": {"options": {"caseSensitive": True, "version": 2},
+                                       "conditions": [{"leftValue": "={{ $json.answer }}",
+                                                       "rightValue": True,
+                                                       "operator": {"type": "boolean", "operation": "true", "singleValue": True}}],
+                                       "combinator": "and"},
+                        "options": {}},
+         "id": "i_brain_if", "name": "Does The Assistant Answer",
+         "type": "n8n-nodes-base.if", "typeVersion": 2.2, "position": [440, -80]},
+
+        # Not the assistant: a person. The same queue a chat hand-over lands
+        # in, so Needs a person shows texts and chats side by side.
+        convex_http("i_handover", "Hand It To A Person", "/handover/request",
+                    "={{ JSON.stringify({ sessionId: $('Ask The Brain').item.json.sessionId "
+                    "|| ('sms-' + $('Read The Text').item.json.from), "
+                    "reason: $('Ask The Brain').item.json.reason, "
+                    "question: $('Read The Text').item.json.text, channel: 'sms' }) }}",
+                    660, 40),
+
         # Their reply still needs answering. It goes to the same assistant the
-        # website widget uses, so there is one brain and one knowledge base.
+        # website widget uses, so there is one brain and one knowledge base,
+        # carrying the Brain's sales brief: answer, explain, book.
         {"parameters": {"method": "POST",
                         "url": f"{env.get('N8N_BASE_URL', 'http://localhost:5678').rstrip('/')}/webhook/ohm-chat",
                         "sendBody": True, "specifyBody": "json",
@@ -1587,15 +1869,17 @@ def build_inbound():
                                      "session_id: $('Whose Number Is It').item.json.sessionId "
                                      "|| ('sms-' + $('Read The Text').item.json.from), "
                                      "message: $('Read The Text').item.json.text, "
-                                     "page_url: 'sms' }) }}"),
+                                     "page_url: 'sms', "
+                                     "brief: $('Ask The Brain').item.json.brief || '', "
+                                     "brief_token: '" + TOOL_TOKEN + "' }) }}"),
                         "options": {}},
          "id": "i_ask", "name": "Ask The Assistant",
          "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2,
-         "position": [220, -80], "onError": "continueRegularOutput"},
+         "position": [660, -200], "onError": "continueRegularOutput"},
 
         twilio_sms("i_reply", "Answer Them",
                    "={{ $('Read The Text').item.json.from }}",
-                   "={{ $json.reply }}", 440, -80),
+                   "={{ $json.reply }}", 880, -200),
 
         {"parameters": {"respondWith": "text", "responseBody": "", "options": {}},
          "id": "i_ok", "name": "Twilio OK",
@@ -1678,7 +1962,13 @@ def build_inbound():
         "Do Not Contact": {"main": [[{"node": "Log The Opt Out", "type": "main", "index": 0}]]},
         "Log The Opt Out": {"main": [[{"node": "Twilio OK", "type": "main", "index": 0}]]},
         "Log Their Reply": {"main": [[{"node": "Stop Chasing Them", "type": "main", "index": 0}]]},
-        "Stop Chasing Them": {"main": [[{"node": "Ask The Assistant", "type": "main", "index": 0}]]},
+        "Stop Chasing Them": {"main": [[{"node": "Ask The Brain", "type": "main", "index": 0}]]},
+        "Ask The Brain": {"main": [[{"node": "Does The Assistant Answer", "type": "main", "index": 0}]]},
+        "Does The Assistant Answer": {"main": [
+            [{"node": "Ask The Assistant", "type": "main", "index": 0}],
+            [{"node": "Hand It To A Person", "type": "main", "index": 0}],
+        ]},
+        "Hand It To A Person": {"main": [[{"node": "Twilio OK", "type": "main", "index": 0}]]},
         "Ask The Assistant": {"main": [[{"node": "Answer Them", "type": "main", "index": 0}]]},
         "Answer Them": {"main": [[{"node": "Twilio OK", "type": "main", "index": 0}]]},
 
@@ -1692,11 +1982,25 @@ def build_inbound():
     }
     return {"name": "OHM Assistant — Twilio Inbound",
             "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 
 REACTIVATION_PATH = "ohm-reactivation"
+
+# ------------------------------------------------------------------- Meta
+# One URL carries Facebook lead ads, Messenger DMs and Instagram DMs, and
+# Meta insists the verification GET and the event POST arrive at the same
+# address, so the node listens on both methods rather than there being two.
+META_PATH = "ohm-meta"
+# Our own string, echoed back during the subscription handshake. It proves to
+# Meta that the URL is ours; it is not a secret in the signing sense.
+META_VERIFY_TOKEN = env.get("META_VERIFY_TOKEN", "META_VERIFY_PENDING")
+# The app secret, which signs every POST. This one IS the lock.
+META_APP_SECRET = env.get("META_APP_SECRET", "META_APP_SECRET_PENDING")
+# The Page access token used to send a reply back into the thread.
+META_PAGE_TOKEN = env.get("META_PAGE_TOKEN", "META_PAGE_TOKEN_PENDING")
+META_GRAPH = "https://graph.facebook.com/v21.0"
 
 
 def build_email_inbound():
@@ -1717,6 +2021,14 @@ def build_email_inbound():
                         "options": {"customEmailConfig": '["UNSEEN"]'}},
          "id": "mail_in", "name": "New Mail",
          "type": "n8n-nodes-base.emailReadImap", "typeVersion": 2,
+         # Every other node that needs a credential carries one. This was the
+         # only one that did not, found by the 2026-11-15 audit: the IMAP
+         # password could arrive, a credential be created, and pushing this
+         # workflow would still produce a node bound to nothing. Somebody
+         # would then bind it in the n8n UI, and the next push.py run would
+         # silently revert it, which is precisely what the "never touch the
+         # UI" rule exists to prevent.
+         "credentials": IMAP_CRED,
          "position": [-720, 0]},
 
         {"parameters": {"jsCode": (
@@ -1772,7 +2084,302 @@ def build_email_inbound():
         "Tell Convex": {"main": [[{"node": "What It Was", "type": "main", "index": 0}]]},
     }
     return {"name": "OHM Assistant — Email Inbound", "nodes": nodes,
-            "connections": conns, "settings": {"executionOrder": "v1"}}
+            "connections": conns, "settings": wf_settings()}
+
+
+def build_meta():
+    """Facebook lead ads, Messenger DMs and Instagram DMs, into routes C and D.
+
+    One webhook carries all three, because Meta insists the verification GET
+    and the event POST arrive at the same URL. The node therefore listens on
+    both methods rather than there being two nodes fighting over one path.
+
+    **This workflow cannot be activated until three values exist in
+    .env.local**: META_VERIFY_TOKEN (our own string, echoed during the
+    handshake), META_APP_SECRET (signs every POST, and is the only lock on a
+    public URL), and META_PAGE_TOKEN (sends the reply back into the thread).
+    Until then the gate refuses every request rather than accepting them,
+    which is the failure direction that does not fill a client's lead table
+    with invented people.
+
+    The DM is answered by the website's own assistant, reached through the
+    ohm-chat webhook, so there is one brain and one knowledge base rather
+    than a second agent to keep in step.
+    """
+    chat_url = f"{env.get('N8N_BASE_URL', 'http://localhost:5678').rstrip('/')}/webhook/ohm-chat"
+
+    nodes = [
+        {"parameters": {"multipleMethods": True,
+                        "httpMethod": ["GET", "POST"],
+                        "path": META_PATH,
+                        "responseMode": "responseNode",
+                        # The signature is computed over the bytes Meta sent.
+                        # Re-serialising the parsed JSON changes key order and
+                        # whitespace, and the digest stops matching for reasons
+                        # that look like a Meta bug rather than our own.
+                        "options": {"rawBody": True}},
+         "id": "mt_wh", "name": "Meta Webhook",
+         "type": "n8n-nodes-base.webhook", "typeVersion": 2, "position": [-1060, 0],
+         # Meta retries anything that did not answer, and a retried lead ad is
+         # a second text to a real person.
+         "onError": "continueRegularOutput"},
+
+        {"parameters": {"jsCode": (
+            gate_inline("meta.js") + "\n"
+            "// Bundled from widget/gates/meta.js, the same file the tests\n"
+            "// import: do not edit here.\n"
+            "//\n"
+            "// THIS IS A PUBLIC URL. The signature is the only thing between\n"
+            "// the internet and rows in the client's lead table, so it is\n"
+            "// checked before the body is read, and a missing app secret\n"
+            "// refuses everything rather than accepting everything.\n"
+            "const crypto = require('crypto');\n"
+            "const hmacHex = (raw, secret) =>\n"
+            "  crypto.createHmac('sha256', secret).update(raw, 'utf8').digest('hex');\n"
+            "\n"
+            f"const VERIFY = {json.dumps(META_VERIFY_TOKEN)};\n"
+            f"const SECRET = {json.dumps(META_APP_SECRET)};\n"
+            "\n"
+            "const item = $input.first().json || {};\n"
+            "const method = String(item.method || '').toUpperCase();\n"
+            "\n"
+            "// ---- the subscription handshake --------------------------\n"
+            "if (method === 'GET') {\n"
+            "  const v = verifyChallenge(item.query || {}, VERIFY);\n"
+            "  // Answer with the challenge and ONLY the challenge. Anything\n"
+            "  // else and the subscription silently never activates, which\n"
+            "  // looks exactly like 'Meta is not sending us anything'.\n"
+            "  return [{ json: { kind: v.ok ? 'verify' : 'refused',\n"
+            "                    body: v.ok ? v.challenge : '',\n"
+            "                    why: v.why || '' } }];\n"
+            "}\n"
+            "\n"
+            "// ---- a real event ----------------------------------------\n"
+            "// rawBody arrives as a Buffer on this node. Falling back to a\n"
+            "// re-serialised body can only produce a FALSE NEGATIVE, never a\n"
+            "// false accept, because the digest still has to match.\n"
+            "let raw = item.rawBody;\n"
+            "if (raw && raw.type === 'Buffer' && Array.isArray(raw.data)) {\n"
+            "  raw = Buffer.from(raw.data).toString('utf8');\n"
+            "} else if (Buffer.isBuffer(raw)) {\n"
+            "  raw = raw.toString('utf8');\n"
+            "} else if (typeof raw !== 'string') {\n"
+            "  raw = JSON.stringify(item.body || {});\n"
+            "}\n"
+            "\n"
+            "const headers = item.headers || {};\n"
+            "const sig = headers['x-hub-signature-256'] || headers['X-Hub-Signature-256'] || '';\n"
+            "const s = signatureOk(raw, sig, SECRET, hmacHex);\n"
+            "if (!s.ok) return [{ json: { kind: 'refused', body: '', why: s.why } }];\n"
+            "\n"
+            "let body;\n"
+            "try { body = typeof raw === 'string' ? JSON.parse(raw) : (item.body || {}); }\n"
+            "catch (e) { return [{ json: { kind: 'refused', body: '', why: 'bad_json' } }]; }\n"
+            "\n"
+            "const read = readMetaEvent(body);\n"
+            "if (!read.ok) {\n"
+            "  // Still a 200. A non-200 makes Meta retry for days and\n"
+            "  // eventually disable the subscription, and a read receipt is\n"
+            "  // not something worth losing the subscription over.\n"
+            "  return [{ json: { kind: 'ignored', body: '', why: read.why,\n"
+            "                    skipped: read.skipped || [] } }];\n"
+            "}\n"
+            "\n"
+            "// One item per event: Meta batches, and returning only the first\n"
+            "// drops messages exactly when the client is busiest.\n"
+            "return read.events.map(e => ({ json: Object.assign({ kind: e.kind }, e) }));"
+        )},
+         "id": "mt_gate", "name": "Verify And Read",
+         "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-820, 0]},
+
+        {"parameters": {"rules": {"values": [
+            {"conditions": {"options": {"caseSensitive": True, "version": 2},
+                            "conditions": [{"leftValue": "={{ $json.kind }}",
+                                            "rightValue": "leadgen",
+                                            "operator": {"type": "string", "operation": "equals"}}],
+                            "combinator": "and"},
+             "outputKey": "Lead Form"},
+            {"conditions": {"options": {"caseSensitive": True, "version": 2},
+                            "conditions": [{"leftValue": "={{ $json.kind }}",
+                                            "rightValue": "message",
+                                            "operator": {"type": "string", "operation": "equals"}}],
+                            "combinator": "and"},
+             "outputKey": "A Message"},
+        ]}, "options": {"fallbackOutput": "extra", "renameFallbackOutput": "Nothing To Do"}},
+         "id": "mt_sw", "name": "What Came In",
+         "type": "n8n-nodes-base.switch", "typeVersion": 3.2, "position": [-560, 0]},
+
+        # ---- lead ad form ------------------------------------------------
+        # THE WEBHOOK DOES NOT CONTAIN THE PERSON. It carries a leadgen_id and
+        # no name, phone or email, so they are fetched here. Skipping this
+        # creates a lead that is on time, correctly attributed and completely
+        # empty, which then enters a sequence with nobody to text.
+        {"parameters": {"method": "GET",
+                        "url": "={{ '" + META_GRAPH + "/' + $json.leadgenId + "
+                               "'?fields=field_data,created_time,ad_id,form_id' }}",
+                        **hdr("Authorization", f"Bearer {META_PAGE_TOKEN}"),
+                        "options": {}},
+         "id": "mt_fetch", "name": "Fetch The Lead",
+         "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2,
+         "position": [-300, -200], "onError": "continueRegularOutput"},
+
+        # The webhook carries ad_id and adgroup_id but NOT campaign_id, so the
+        # campaign and ad set names need a second Graph call. Without it the
+        # channel report can only show an id, which nobody can act on.
+        {"parameters": {"method": "GET",
+                        "url": "={{ '" + META_GRAPH + "/' + "
+                               "($('Verify And Read').item.json.adId || '0') + "
+                               "'?fields=name,campaign{id,name},adset{id,name}' }}",
+                        **hdr("Authorization", f"Bearer {META_PAGE_TOKEN}"),
+                        "options": {}},
+         "id": "mt_ad", "name": "Name The Advert",
+         "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2,
+         "position": [-60, -200],
+         # A lead must still be saved when the Graph call fails. An unnamed
+         # advert is a reporting gap; a lost lead is a lost customer.
+         "onError": "continueRegularOutput"},
+
+        {"parameters": {"jsCode": (
+            gate_inline("meta.js") + "\n"
+            "// Meta's field_data pairs into the shape the router already\n"
+            "// takes. Bundled from widget/gates/meta.js: do not edit here.\n"
+            "const ev = $('Verify And Read').item.json;\n"
+            "const lead = $('Fetch The Lead').item.json || {};\n"
+            "const ad = $input.first().json || {};\n"
+            "const f = leadFields(lead.field_data);\n"
+            "return [{ json: {\n"
+            "  sessionId: 'meta:' + ev.leadgenId,\n"
+            "  name: f.name || '', phone: f.phone || '', email: f.email || '',\n"
+            "  company: f.company || '', message: f.message || '',\n"
+            "  sourceChannel: ev.sourceChannel,\n"
+            "  idempotencyKey: ev.idem,\n"
+            "  attribution: {\n"
+            "    adId: ev.adId || null,\n"
+            "    adGroup: (ad.adset && ad.adset.name) || ev.adgroupId || null,\n"
+            "    campaign: (ad.campaign && ad.campaign.name) || null,\n"
+            "    campaignId: (ad.campaign && ad.campaign.id) || null,\n"
+            "    formId: ev.formId || null,\n"
+            "    firstTouchAt: ev.createdAt || null,\n"
+            "  },\n"
+            "} }];"
+        )},
+         "id": "mt_shapelead", "name": "Shape The Lead",
+         "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [180, -200]},
+
+        # Through the SAME router every other channel uses, rather than a
+        # Convex route of its own. The router already saves the lead,
+        # classifies it to route C, applies the consent gate and sends the
+        # immediate touch. A second path here would be a second copy of all
+        # of that, drifting quietly out of step with the tested one.
+        {"parameters": {"method": "POST",
+                        "url": f"{env.get('N8N_BASE_URL', 'http://localhost:5678').rstrip('/')}/webhook/{ROUTER_PATH}",
+                        "sendBody": True, "specifyBody": "json",
+                        "jsonBody": "={{ JSON.stringify($json) }}",
+                        "options": {}},
+         "id": "mt_lead", "name": "Send To The Router",
+         "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2,
+         "position": [420, -200], "onError": "continueRegularOutput"},
+
+        # ---- a message ---------------------------------------------------
+        # The same assistant the website widget uses. One brain, one knowledge
+        # base, one set of tools. The session is keyed on the PSID so the
+        # thread has a memory across days.
+        {"parameters": {"method": "POST", "url": chat_url,
+                        "sendBody": True, "specifyBody": "json",
+                        "jsonBody": ("={{ JSON.stringify({ "
+                                     "session_id: 'meta:' + $json.psid, "
+                                     "message: $json.text, "
+                                     "page_url: $json.surface }) }}"),
+                        "options": {}},
+         "id": "mt_ask", "name": "Ask The Assistant",
+         "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2,
+         "position": [-300, 160], "onError": "continueRegularOutput"},
+
+        {"parameters": {"jsCode": (
+            gate_inline("meta.js") + "\n"
+            "// Whether we may still answer for free, and what to send.\n"
+            "//\n"
+            "// The window is measured from THEIR last message, which is the\n"
+            "// event we are answering right now, so it is open by definition\n"
+            "// here. The check stays because this node is the one place that\n"
+            "// decides to send, and a silent send outside the window is an\n"
+            "// error from Meta rather than a dropped message.\n"
+            "const ev = $('Verify And Read').item.json;\n"
+            "const reply = String(($input.first().json || {}).reply || '').trim();\n"
+            "if (!reply) return [{ json: { send: false, why: 'no_reply' } }];\n"
+            "const w = windowOpen(ev.at || Date.now(), Date.now());\n"
+            "if (!w.open) return [{ json: { send: false, why: w.why } }];\n"
+            "const body = sendBody(ev.psid, reply, ev.surface);\n"
+            "return [{ json: { send: true, surface: body._surface, body: body } }];"
+        )},
+         "id": "mt_shape", "name": "Can We Answer",
+         "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-60, 160]},
+
+        {"parameters": {"method": "POST",
+                        "url": "={{ '" + META_GRAPH + "/' + "
+                               "$('Verify And Read').item.json.pageId + '/messages' }}",
+                        **hdr("Authorization", f"Bearer {META_PAGE_TOKEN}"),
+                        "sendBody": True, "specifyBody": "json",
+                        "jsonBody": "={{ JSON.stringify($json.body) }}",
+                        "options": {}},
+         "id": "mt_send", "name": "Answer In The Thread",
+         "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2,
+         "position": [180, 160], "onError": "continueRegularOutput"},
+
+        convex_http("mt_touch", "Record The Touch", "/touch/record",
+                    "={{ JSON.stringify({ "
+                    "sessionId: 'meta:' + $('Verify And Read').item.json.psid, "
+                    "direction: 'in', "
+                    "channel: $('Verify And Read').item.json.surface, "
+                    "body: $('Verify And Read').item.json.text, "
+                    "idempotencyKey: $('Verify And Read').item.json.idem }) }}",
+                    420, 160),
+
+        # ---- the response ------------------------------------------------
+        # Meta gets a 200 whatever happened. A non-200 makes it retry for days
+        # and eventually disable the subscription, and "we ignored a read
+        # receipt" is not worth losing the subscription over. The challenge is
+        # returned as plain text because Meta compares it byte for byte and a
+        # JSON-quoted string fails the handshake.
+        {"parameters": {"respondWith": "text",
+                        "responseBody": "={{ $json.kind === 'verify' ? $json.body : 'EVENT_RECEIVED' }}",
+                        "options": {}},
+         "id": "mt_resp", "name": "Meta OK",
+         "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.1,
+         "position": [-680, 0]},
+    ]
+
+    conns = {
+        "Meta Webhook": {"main": [[{"node": "Verify And Read", "type": "main", "index": 0}]]},
+        # Answer Meta FIRST, then do the work, in a straight line rather than
+        # fanning out.
+        #
+        # Two reasons, both found by validating this before pushing it. A
+        # fan-out puts the respond node beside the processing branch, and
+        # "Verify And Read" emits ONE ITEM PER EVENT: Meta batches, so three
+        # DMs in one POST would call the respond node three times for a
+        # response that can only be sent once. Chaining it means it responds
+        # once, with the first item, and passes everything through.
+        #
+        # It is also the faster shape. Meta has its 200 before the Graph call
+        # and the assistant have taken their time, which is what keeps the
+        # subscription healthy.
+        "Verify And Read": {"main": [[{"node": "Meta OK", "type": "main", "index": 0}]]},
+        "Meta OK": {"main": [[{"node": "What Came In", "type": "main", "index": 0}]]},
+        "What Came In": {"main": [
+            [{"node": "Fetch The Lead", "type": "main", "index": 0}],
+            [{"node": "Ask The Assistant", "type": "main", "index": 0}],
+            [],
+        ]},
+        "Fetch The Lead": {"main": [[{"node": "Name The Advert", "type": "main", "index": 0}]]},
+        "Name The Advert": {"main": [[{"node": "Shape The Lead", "type": "main", "index": 0}]]},
+        "Shape The Lead": {"main": [[{"node": "Send To The Router", "type": "main", "index": 0}]]},
+        "Ask The Assistant": {"main": [[{"node": "Can We Answer", "type": "main", "index": 0}]]},
+        "Can We Answer": {"main": [[{"node": "Answer In The Thread", "type": "main", "index": 0}]]},
+        "Answer In The Thread": {"main": [[{"node": "Record The Touch", "type": "main", "index": 0}]]},
+    }
+    return {"name": "OHM Assistant — Meta", "nodes": nodes,
+            "connections": conns, "settings": wf_settings()}
 
 
 def build_reactivation():
@@ -1939,10 +2546,12 @@ def build_reactivation():
     }
     return {"name": "OHM Assistant — Reactivation",
             "nodes": nodes, "connections": conns,
-            "settings": {"executionOrder": "v1"}}
+            "settings": wf_settings()}
 
 
 OUT = {
+    # First, so push.py creates it before the twelve that name it.
+    "00-error.json": build_error(),
     "01-chat.json": build_chat(),
     "02-voice.json": build_voice(),
     "03-events.json": build_events(),
@@ -1952,6 +2561,7 @@ OUT = {
     "07-router.json": build_router(),
     "08-sequence-worker.json": build_worker(),
     "09-twilio-inbound.json": build_inbound(),
+    "10-meta.json": build_meta(),
     "11-reactivation.json": build_reactivation(),
     "12-email-inbound.json": build_email_inbound(),
 }

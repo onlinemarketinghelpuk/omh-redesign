@@ -143,6 +143,23 @@ export const IconPower = (p: P) => (
   </Svg>
 );
 
+/* Lucide "workflow": two boxes joined by a line, which is what a flow is. */
+export const IconFlow = (p: P) => (
+  <Svg {...p}>
+    <rect x="3" y="3" width="8" height="8" rx="2" />
+    <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+    <rect x="13" y="13" width="8" height="8" rx="2" />
+  </Svg>
+);
+
+/* Lucide "message-square-text". */
+export const IconMessage = (p: P) => (
+  <Svg {...p}>
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    <path d="M13 8H7M17 12H7" />
+  </Svg>
+);
+
 export const NAV_ICON = {
   "/lead-dashboard": IconOverview,
   "/lead-dashboard/handover": IconHandover,
@@ -154,5 +171,9 @@ export const NAV_ICON = {
   "/lead-dashboard/sequences": IconRoute,
   "/lead-dashboard/campaigns": IconSend,
   "/lead-dashboard/channels": IconChannels,
+  "/lead-dashboard/control": IconFlow,
+  "/lead-dashboard/messages": IconMessage,
+  "/lead-dashboard/brain": IconChat,
+  "/lead-dashboard/agent": IconPhone,
   "/lead-dashboard/settings": IconSettings,
 } as const;

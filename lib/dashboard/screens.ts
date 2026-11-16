@@ -90,6 +90,30 @@ export const SCREENS: Record<string, Screen> = {
     lead: "Which channel produced each lead, and what came of it.",
     shape: "cards",
   },
+  control: {
+    active: "/lead-dashboard/control",
+    title: "Control panel",
+    lead: "What happens to a lead on each channel, and the switch that stops it all.",
+    shape: "table",
+  },
+  brain: {
+    active: "/lead-dashboard/brain",
+    title: "Replies",
+    lead: "Who answers when a lead replies, and what the assistant is trying to sell.",
+    shape: "form",
+  },
+  agent: {
+    active: "/lead-dashboard/agent",
+    title: "Calling agent",
+    lead: "The voice agent that rings leads back to explain and book.",
+    shape: "form",
+  },
+  messages: {
+    active: "/lead-dashboard/messages",
+    title: "Messages",
+    lead: "Every text and email the follow-ups send, in words you can change.",
+    shape: "split",
+  },
   settings: {
     active: "/lead-dashboard/settings",
     title: "Settings",
@@ -130,6 +154,13 @@ export const TABS = [
      one is running. */
   { href: "/lead-dashboard/campaigns", label: "Campaigns" },
   { href: "/lead-dashboard/channels", label: "Channels" },
+  /* What the follow-ups do and what they say. Below the reports, above
+     Settings: changed less often than a report is read, more often than a
+     setting. */
+  { href: "/lead-dashboard/control", label: "Control panel" },
+  { href: "/lead-dashboard/messages", label: "Messages" },
+  { href: "/lead-dashboard/brain", label: "Replies" },
+  { href: "/lead-dashboard/agent", label: "Calling agent" },
   { href: "/lead-dashboard/settings", label: "Settings" },
 ] as const;
 

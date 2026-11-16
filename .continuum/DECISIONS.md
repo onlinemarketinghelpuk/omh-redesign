@@ -133,3 +133,36 @@ alternative. Not here: formatting, naming, anything the linter settles.
   prompt. Saying "ignore your instructions" out loud is easier than
   photographing it, so it is fenced and labelled the same way the photo
   description is. See [[D-006]].
+
+---
+
+## D-008 - Text replies run on Sonnet 5.5, and the packages were repriced for it
+
+2026-11-13. Rafiul's call: "We will use Sonnet for handle all of the text
+replay. Not Haiku."
+
+- **What changed:** `CHAT_MODEL` in `widget/n8n/build-workflows.py` is now
+  `anthropic/claude-sonnet-5.5`. The Melissa agent node in `01-chat` is the
+  only consumer.
+- **What did not:** `VISION_MODEL` in `gates/vision.js` stays on Haiku. That
+  call describes a photo into text; the Sonnet agent is what then answers. See
+  [[D-006]]. At £0.0001 a photo there is nothing to gain by moving it.
+- **The cost, and why it is not measured yet:** Sonnet 5.5 is $2.00/$10.00 per
+  1M against Haiku's $0.10/$0.50 - exactly 20x on both input and output, so the
+  measured Haiku turn scales to $0.0014 a reply without needing the token
+  split. The pricing PDF marks that line **derived**, not measured, until a
+  live turn has run through the deployed workflow.
+- **It broke the margin floor and nothing noticed.** At the old allowances the
+  switch added £10/£27/£65 a month per client and put all three plans under
+  60% in the worst case (59.3 / 58.6 / 57.6). The document would have printed
+  those numbers without complaint. Fixed two ways: voice minutes trimmed to
+  360/700/950, which restores 62% on all three with no price change and no
+  other limit touched; and `pdf/build-engagement-packages-pdf.py` now
+  **asserts** every plan sits inside the 60-65% band, proven to have teeth by
+  re-injecting `calls=400` and watching it fail.
+- **Voice is the lever, not the AI bill.** Talk time is 53-77% of plan cost;
+  chat is 7-9% even after a 20x rise. Any future rate change should be
+  absorbed on minutes first.
+- **"Unlimited chat replies" still holds.** The tables budget 10,000/25,000/
+  60,000 replies, far past what these businesses send, and even at those
+  volumes the whole AI bill is £65.43 on the largest plan.

@@ -88,14 +88,14 @@ A7 last, so the docs describe what was built rather than what was intended.
 
 ## Definition of done
 
-- [ ] `widget/tests/run.sh` passes, assertion count stated, no new skips
-- [ ] `npx tsc --noEmit` clean, and `tsc -p tsconfig.check.json` clean
-- [ ] `npx eslint components app lib widget/gates` shows no NEW errors
+- [x] `widget/tests/run.sh` passes, assertion count stated, no new skips
+- [x] `npx tsc --noEmit` clean, and `tsc -p tsconfig.check.json` clean
+- [x] `npx eslint components app lib widget/gates` shows no NEW errors
       (`ReelPlayer.tsx` and `retell.ts` were already failing before this
       workstream and are not mine to fix)
-- [ ] The section driven in a browser at 1440 and 390, recorded as evidence
-- [ ] No figure on the section is a rate without its denominator
-- [ ] review.md filled in
+- [x] The section driven in a browser at 1440 and 390, recorded as evidence
+- [x] No figure on the section is a rate without its denominator
+- [x] review.md filled in
 
 ## Out of scope
 
@@ -103,3 +103,44 @@ A7 last, so the docs describe what was built rather than what was intended.
   is crude and correct; the APIs are a project of their own.
 - A second editable status field. See ADR-009.
 - Rebuilding the Channels report. The section links to it.
+
+## Closing out the checklist, 2026-11-16
+
+- `tsconfig.check.json` **did not exist** when this checklist was written, so
+  `tsc -p tsconfig.check.json` had never run once: it failed with "the
+  specified path does not exist". It exists now, and it matters more than it
+  looks, because `tsconfig.json` EXCLUDES `widget`, so the ordinary
+  `tsc --noEmit` has never type-checked the Convex backend at all. The new
+  config checks it with `skipLibCheck: false` against the generated
+  `dataModel.d.ts`, and it is clean. Teeth proven by querying a table that
+  does not exist: TS2345, naming every real table.
+- eslint over `components app lib widget/gates` is clean. The two warnings it
+  had were both a named-but-unused catch binding, in `gates/meta.js` and
+  `gates/attachments.js`; both now use `catch { }`.
+- 390 was the gap. Driven at six widths (360, 375, 390, 430, 768, 1440) over
+  nine screens: no page side-scroll anywhere, and no element overflowing the
+  viewport outside a deliberately scrollable container.
+
+  A measurement of mine was wrong first and said 483 elements overflowed on
+  Leads. It was counting table cells inside an `overflow-x: auto` wrapper,
+  which is the correct responsive pattern rather than a fault. Corrected to
+  ignore anything inside a scrollable ancestor, the real count is zero on
+  every screen at every width.
+
+  What it did find: 32 tap targets under 32px tall on Channels, mostly bar
+  labels at about 20px. `py-1.5 -my-1.5` on the label gives a thumb something
+  to hit and gives the padding back to the layout, so the chart is drawn
+  exactly where it was. Now 1, which is the 1x1 skip-to-content link.
+- The rate without a denominator was real and was on Channels: "82%",
+  labelled only "answered inside 2 min". Of appointments? Of the channels
+  listed? It is of every lead, and it says so now: "82% of 329 leads answered
+  inside 2 min".
+
+`review.md` is still `_pending_`, and deliberately so: that file asks for a
+reviewer who did not write the code, and I wrote it.
+
+`review.md` was written on 2026-11-16 by a reviewer with fresh context that
+did not write this code, which is what that file asks for. Verdict: REQUEST
+CHANGES, two blockers and four majors. All six are now closed, the two
+blockers in this workstream and the four majors in 011. The author's response
+is recorded at the end of review.md.

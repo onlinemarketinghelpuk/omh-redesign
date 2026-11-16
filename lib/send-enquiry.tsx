@@ -30,7 +30,12 @@ export async function sendEnquiry(form: HTMLFormElement, formName: string): Prom
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         form: formName,
-        page: window.location.pathname,
+        /* pathname AND search. It was the pathname alone, which threw the
+           query away: the gclid and the utm_ values are on the URL of the
+           page they landed on, so the advert that produced a lead was lost
+           at the exact moment they became one. Every form on the site posts
+           through here, so this one line is every form's attribution. */
+        page: window.location.pathname + window.location.search,
         hp: String(data.get("hp") ?? ""), // honeypot
         fields,
       }),

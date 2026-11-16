@@ -235,8 +235,43 @@ function Attribution({ timeline }: { timeline: NonNullable<Awaited<ReturnType<ty
       .map(([k, v]) => [k.replace(/([A-Z])/g, " $1").toLowerCase(), String(v)] as [string, string]),
   ];
 
+  /* How to reach them.
+     This page is where somebody decides to ring a lead back, and it was the
+     one screen in the product that did not show the number. It was on the
+     Leads list they arrived from, so the move was: open the person, read
+     what they want, go back, find the row again, copy the number. The
+     contact details are the point of a lead.
+
+     Rendered as `tel:` and `mailto:` so a click dials or composes, and only
+     when we actually hold the detail: an empty row labelled "Phone" reads
+     as a system fault rather than as somebody who never gave one. */
+  const reach: [string, string, string][] = [
+    ...(l.phone ? [["Phone", l.phone, `tel:${String(l.phone).replace(/\s+/g, "")}`] as [string, string, string]] : []),
+    ...(l.email ? [["Email", l.email, `mailto:${l.email}`] as [string, string, string]] : []),
+  ];
+
   return (
     <div className="grid gap-3">
+      {reach.length > 0 && (
+        <Card title="How to reach them" rise={1}>
+          <dl className="space-y-2.5">
+            {reach.map(([k, v, href]) => (
+              <div key={k} className="flex items-baseline justify-between gap-4">
+                <dt className="shrink-0 text-[13px] text-muted">{k}</dt>
+                <dd className="min-w-0 text-right">
+                  <a
+                    href={href}
+                    className="-my-1 inline-block break-all rounded-sm py-1 text-[13px] font-medium text-ink underline decoration-line decoration-1 underline-offset-[3px] outline-none transition-colors duration-150 hover:decoration-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                  >
+                    {v}
+                  </a>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Card>
+      )}
+
       <Card title="Where they came from" rise={1}>
         <dl className="space-y-2.5">
           {rows.map(([k, v]) => (

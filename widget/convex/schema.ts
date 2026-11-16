@@ -193,6 +193,17 @@ export default defineSchema({
        matched on: a number typed as "07700 900123" and "+447700900123" is the
        same number and has to compare equal. */
     visitorIds: v.optional(v.array(v.string())),
+    /* The same idea for Meta. A PSID is Facebook's per-Page id for a human,
+       and for somebody who writes to the Page it is the ONLY identity we get:
+       no name, no number, no browser, because they never came to the site.
+       Without this, a person who DMed on Messenger and later filled in the
+       website form was two rows with nothing to join them.
+
+       An array, like `visitorIds`, because one person can reach the Page from
+       Messenger and from Instagram and that is two PSIDs. Not indexed, for
+       the reason stated against `visitorIds`: Convex cannot index into an
+       array, so both are matched by one scan in findPerson. */
+    psids: v.optional(v.array(v.string())),
     phoneKey: v.optional(v.string()),
     emailKey: v.optional(v.string()),
     /* When they first appeared, where `at` is the most recent time. */
@@ -383,6 +394,12 @@ export default defineSchema({
        set of unrelated sequence rows that happen to share an afternoon. */
     campaignId: v.optional(v.id("campaigns")),
 
+    /* The owner's flow this sequence runs, and which version of it. Absent
+       for a sequence on a route from code. The version is fixed at
+       enrolment: a person who started on version 3 finishes on version 3. */
+    flowId: v.optional(v.id("flows")),
+    flowVersion: v.optional(v.number()),
+
     attempts: v.number(),
     at: v.number(),
   })
@@ -518,5 +535,79 @@ export default defineSchema({
   })
     .index("by_at", ["at"])
     .index("by_status", ["status"]),
+
+  /* =======================================================================
+     The Control Panel. The owner's flows and messages.
+
+     The routes in gates/routes.ts stay the DEFAULT: a channel with no live
+     flow behaves exactly as it always has. A flow compiles to the same
+     Route shape (gates/flows.js) and the engine runs it unchanged.
+
+     The legal basis is stored, but it is never taken from the caller: the
+     server derives it from the triggers on every save, and the engine
+     recomputes it again before running anything. See docs/engineering/
+     012-the-control-panel.
+     ======================================================================= */
+
+  flows: defineTable({
+    name: v.string(),
+    /* they_contacted_us | we_are_contacting_them. Derived from `triggers`
+       by the server; there is no argument that sets it. */
+    basis: v.string(),
+    /* Channels, from the fifteen in gates/flows.js. Not indexed: Convex
+       cannot index into an array, and live flows are a handful, so the
+       engine scans `by_status` for "live" instead. */
+    triggers: v.array(v.string()),
+    nodes: v.array(v.any()),
+    status: v.string(),                 // draft | live | paused
+    version: v.number(),
+    updatedAt: v.number(),
+    updatedBy: v.optional(v.string()),
+  }).index("by_status", ["status"]),
+
+  /* Append-only. Every save of every flow, including the current one, with
+     the route it compiled to. A sequence carries the version it started on
+     and runs that version to the end, so changing a flow this morning does
+     not retime somebody who started on it yesterday. And when somebody asks
+     in three weeks why a lead got four texts, the answer is the flow as it
+     was that day. */
+  flowVersions: defineTable({
+    flowId: v.id("flows"),
+    version: v.number(),
+    name: v.string(),
+    basis: v.string(),
+    triggers: v.array(v.string()),
+    nodes: v.array(v.any()),
+    /* The Route shape, or absent for an unfinished draft. */
+    compiled: v.optional(v.any()),
+    status: v.string(),
+    at: v.number(),
+    by: v.optional(v.string()),
+  }).index("by_flow_version", ["flowId", "version"]),
+
+  /* The owner's words for a message. A key with no row here uses the code's
+     template in gates/templates.ts, which is also what a deleted row falls
+     back to, so a half-finished edit can never leave a step with nothing to
+     send. Whether a message carries the opt-out is NOT stored: it follows
+     the flow that sends it. */
+  messageTemplates: defineTable({
+    key: v.string(),
+    channel: v.string(),                // sms | email | call | messenger
+    subject: v.optional(v.string()),
+    body: v.string(),
+    updatedAt: v.number(),
+    updatedBy: v.optional(v.string()),
+  }).index("by_key", ["key"]),
+
+  /* Append-only. Who changed which message, when, and to what. */
+  messageHistory: defineTable({
+    key: v.string(),
+    action: v.string(),                 // saved | reset
+    channel: v.string(),
+    subject: v.optional(v.string()),
+    body: v.optional(v.string()),
+    at: v.number(),
+    by: v.optional(v.string()),
+  }).index("by_key_at", ["key", "at"]),
 });
 

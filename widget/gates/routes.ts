@@ -84,6 +84,9 @@ export type Route = {
 
 export type RouteId = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H";
 
+/** A route held as data: one of the eight above, or an owner's compiled flow. */
+export type RouteLike = Omit<Route, "id"> & { id: string };
+
 /* ------------------------------------------------------------------------ */
 
 const NOW: StepWhen = { afterMs: 0 };
@@ -477,9 +480,33 @@ export function nextStep(
   floor: number,
   anchorAt?: number,
 ): { index: number; dueAt: number; step: Step } | null {
-  const steps = ROUTES[route]?.steps ?? [];
+  const r = ROUTES[route];
+  return r ? nextStepIn(r, enrolledAt, fromIndex, floor, anchorAt) : null;
+}
+
+/**
+ * The same walk, over a route held as data rather than named by letter.
+ *
+ * This is what lets an owner's flow run on the engine unchanged: a saved flow
+ * compiles to this shape (gates/flows.js), and from here on it is scheduled
+ * by exactly the code that schedules the eight routes in this file. One walk,
+ * so the two cannot disagree about when a step is due.
+ */
+export function nextStepIn(
+  route: RouteLike,
+  enrolledAt: number,
+  fromIndex: number,
+  floor: number,
+  anchorAt?: number,
+): { index: number; dueAt: number; step: Step } | null {
+  const steps = route?.steps ?? [];
   for (let i = fromIndex; i < steps.length; i++) {
-    const at = dueAt(enrolledAt, steps[i].when, anchorAt);
+    let at = dueAt(enrolledAt, steps[i].when, anchorAt);
+    /* Marketing gets no short-delay exception. That exception exists for
+       somebody who just rang us at 02:00 and is awake; a list we chose to
+       contact is nobody's 02:00 call, so its every step waits for sending
+       hours, the opener included. */
+    if (route.marketing && at !== 0) at = nextSendableAt(at);
     /* 0 means "there is no moment for this": an anchored step with no
        appointment, or one whose moment has already gone. Skipped rather
        than fired. */

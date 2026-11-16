@@ -24,7 +24,18 @@ if [ -z "${ZSH_VERSION:-}" ]; then
 fi
 
 HERE="${0:A:h}"
-ESB="$HERE/../../node_modules/.bin/esbuild"
+# The widget's OWN esbuild, declared in widget/package.json.
+#
+# This used to point at ../../node_modules, the website's tree, where esbuild
+# only ever existed as somebody else's transitive dependency. Upgrading Next
+# from 16.2.10 to 16.4.6 dropped it, and the whole test runner died with "no
+# such file or directory" on a path nobody had chosen. A test runner must not
+# depend on a package it did not ask for.
+ESB="$HERE/../node_modules/.bin/esbuild"
+if [ ! -x "$ESB" ]; then
+  echo "esbuild missing at $ESB. Run: (cd ${0:A:h}/.. && npm install)" >&2
+  exit 2
+fi
 
 run_one() {
   local name="${1:t:r}"

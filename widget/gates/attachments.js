@@ -140,7 +140,8 @@ function checkRemote(att, bytes) {
     var u = new URL(String(att.url));
     host = u.hostname.toLowerCase();
     protocol = u.protocol;
-  } catch (e) {
+  } catch {
+    /* Binding omitted: any URL that will not parse is the same refusal. */
     return { ok: false, why: "bad_url" };
   }
 

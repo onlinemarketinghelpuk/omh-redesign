@@ -1,6 +1,6 @@
 import { ctx } from "./convex-mock";
 import { remindAbout, cancelReminders } from "../convex/reminders";
-import { enrol } from "../convex/routing";
+import { enrol, claimDue } from "../convex/routing";
 
 /* =========================================================================
    Putting a booking on the reminder route, and taking it off again.
@@ -125,6 +125,49 @@ console.log("\n== a booking with nobody to remind ==");
   });
   eq("it refuses rather than throwing", r.enrolled, false);
   eq("no sequence is left behind", db.all("sequences").length, 0);
+}
+
+
+console.log("\n== THE REMINDER ACTUALLY RENDERS (it never had a template) ==");
+{
+  /* Found on 2026-11-16 by the flows suite, which asserts that every route's
+     step keys have a template. Route H's two did not, so the moment a
+     reminder fell due `render` threw, claimDue marked the sequence
+     `render_failed`, and nobody was ever reminded. Every assertion above
+     passed throughout, because none of them let a reminder come due. */
+  const { db, c, leadId } = await seeded();
+  await db.patch(leadId, { email: "jane@example.com", emailKey: "jane@example.com" });
+  const f = future();
+  await call(remindAbout, c, { leadId, sessionId: "s1", preferredDate: f.date, preferredTime: f.time });
+  const seq = db.all("sequences").find((s: any) => s.route === "H");
+  /* Bring the first reminder due now. */
+  await db.patch(seq._id, { nextDueAt: Date.now() - 1000 });
+  const r = await call(claimDue, c, {});
+  const after = db.all("sequences").find((s: any) => s._id === seq._id);
+  eq("the sequence did not fail", after.status, "active");
+  eq("one reminder claimed", r.claimed.length, 1);
+  const m = r.claimed[0] ?? {};
+  eq("it is the day-before email", m.stepKey, "h_email_day_before");
+  ok("it has a subject", Boolean(m.subject), JSON.stringify(m));
+  ok("it says when the appointment is, in words", String(m.body).includes("at 14:00"), String(m.body));
+}
+
+console.log("\n== a lead still being chased on B who books gets reminders ==");
+{
+  /* The commonest way to book is to be on route B: fill the form, get the
+     text, book. B was still active at that moment, `remindAbout` cleared
+     only route H, and enrol answered "already_active". The booking stopped
+     B a minute later at the next claim, for the reason "booked", by which
+     time the reminder had already been refused. So the people most likely
+     to book were the people never reminded. */
+  const { db, c, leadId } = await seeded();
+  await db.insert("sequences", { leadId, sessionId: "s1", route: "B", step: 0, status: "active",
+    nextDueAt: Date.now() + 60_000, attempts: 0, at: Date.now() });
+  const f = future();
+  const r = await call(remindAbout, c, { leadId, sessionId: "s1", preferredDate: f.date, preferredTime: f.time });
+  eq("it enrols on the reminder route", r.enrolled, true);
+  const b = db.all("sequences").find((s: any) => s.route === "B");
+  eq("the chase stops, for the reason the engine would have given", [b.status, b.stopReason], ["stopped", "booked"]);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
