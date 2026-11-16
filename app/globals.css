@@ -170,6 +170,11 @@
   /* Type (brief §16) — fonts wired to next/font variables in app/layout.tsx */
   --font-sans: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
   --font-body: var(--font-source-sans), Arial, sans-serif;
+  /* The client dashboard's faces (plan 016). The variables are only set by
+     app/lead-dashboard/layout.tsx, so elsewhere each falls back inside the
+     var() and the site's own type is untouched. */
+  --font-heading: var(--font-geist, var(--font-instrument)), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains, ui-monospace), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Fluid scale (responsive plan, 16 Nov 2026). Each size runs from a phone minimum at 320px to exactly the
      value the old scale had at 1280px, so desktop is unchanged and only phones and tablets get smaller.

@@ -1,8 +1,12 @@
 import { IconInbox } from "./icons";
 
-/* The small pieces every dashboard screen is built from. Each one exists
-   because it was repeated on three screens, not because a design system
-   ought to have it. */
+/* The small pieces every dashboard screen is built from, in the Ecomsixx
+   dashboard's design (plan 016). Same props as before, so no screen had to
+   change to take the new look: what changed is what they draw.
+
+   Card is Ecomsixx's: 20px radius, a brand-tinted hairline and four-layer
+   shadow, a Geist title row with no divider. Pill is its status chip. The
+   table header is its 11.5px muted row. Empty sits on the dot grid. */
 
 export function Card({
   children,
@@ -26,60 +30,52 @@ export function Card({
     <section
       /* min-w-0: a grid item defaults to min-width:auto, so without this the
          card grows to its longest unbroken line and pushes the page sideways. */
-      className={`min-w-0 rounded-2xl border border-line bg-surface ${className}`}
+      className={`min-w-0 rounded-[20px] bg-white ${className}`}
       data-rise={rise === undefined ? undefined : ""}
       style={{
-        /* The layered elevation plus the inset hairline, both defined in
-           dashboard/layout as tokens: an edge with two tones rather than one
-           flat 1px line. */
-        boxShadow: "var(--e1), var(--ring-inset)",
+        border: "1px solid var(--nx-line)",
+        boxShadow: "var(--nx-shadow-card)",
         ...(rise === undefined ? {} : ({ "--i": rise } as React.CSSProperties)),
       }}
     >
       {title && (
-        /* Wraps rather than squeezes. With the action held at its natural
-             width by `shrink-0`, a long title beside two controls on a phone
-             was compressed into a four-word column while the buttons kept
-             every pixel they asked for. The basis gives the title a width it
-             will not go below, so the action drops to its own line instead of
-             the heading turning into a stack of single words. */
-        <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b border-line px-4 py-3.5 sm:px-5">
+        /* Wraps rather than squeezes: the action drops to its own line
+           before the title turns into a column of single words. */
+        <header className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2 px-5 pb-3 pt-5 sm:px-7 sm:pt-6">
           <div className="min-w-0 flex-1 basis-[min(100%,14rem)]">
-            <h2 className="font-sans text-[14px] font-semibold tracking-[-.01em]">{title}</h2>
-            {note && <p className="mt-0.5 text-[12.5px] leading-snug text-muted">{note}</p>}
+            <h2 className="font-heading text-[16px] font-medium tracking-[-0.01em] text-[color:var(--nx-ink)]">{title}</h2>
+            {note && <p className="mt-1 text-[12.5px] leading-snug text-[color:var(--nx-ink-70)]">{note}</p>}
           </div>
           {action}
         </header>
       )}
-      <div className={pad ? "p-4 sm:p-5" : ""}>{children}</div>
+      <div className={pad ? (title ? "px-5 pb-5 sm:px-7 sm:pb-6" : "p-5 sm:p-6") : ""}>{children}</div>
     </section>
   );
 }
 
-/** A status word. Never colour alone: the word itself carries the meaning. */
+/** A status word, as Ecomsixx's status chip. The word carries the meaning; the colour agrees. */
 export function Pill({ kind, children }: { kind?: string; children?: React.ReactNode }) {
   const label = children ?? kind ?? "";
-  const map: Record<string, string> = {
-    hot: "border-[#c4572f]/45 bg-[#c4572f]/12 text-[#9a3f1e] dark:text-[#e8a583]",
-    warm: "border-[rgb(var(--accent-rgb)/.6)] bg-[rgb(var(--accent-rgb)/.18)] text-[var(--dash-accent-text)]",
-    cold: "border-line bg-warm text-muted",
-    voice: "border-line bg-warm text-muted",
-    chat: "border-line bg-warm text-muted",
-    confirmed: "border-[#067647]/35 bg-[#067647]/10 text-[#067647] dark:text-[#6ec49b]",
-    cancelled: "border-line bg-warm text-muted line-through",
+  const map: Record<string, [string, string]> = {
+    hot: ["bg-[#fdf3e1] text-[#a14b00]", "bg-amber-500"],
+    warm: ["bg-[#f3eee7] text-[#7d5c33]", "bg-[#7d5c33]"],
+    cold: ["bg-[#faf8f5] text-[#141416]", "bg-[#52525b]"],
+    voice: ["bg-[#faf8f5] text-[#141416]", "bg-[#52525b]"],
+    chat: ["bg-[#faf8f5] text-[#141416]", "bg-[#52525b]"],
+    confirmed: ["bg-[#e7f8ef] text-[#047857]", "bg-emerald-500"],
+    cancelled: ["bg-[#faf8f5] text-[#52525b] line-through", "bg-[#a1a1aa]"],
   };
+  const [cls, dot] = map[String(kind)] || map.cold;
   return (
-    <span
-      className={`inline-flex items-center whitespace-nowrap rounded-md border px-2 py-[3px] font-sans text-[11px] font-semibold uppercase tracking-[.07em] ${
-        map[String(kind)] || map.cold
-      }`}
-    >
+    <span className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-0.5 text-[11.5px] font-medium ${cls}`}>
+      <span className={`h-1.5 w-1.5 rounded-full ${dot}`} aria-hidden />
       {label}
     </span>
   );
 }
 
-/** An empty state with a reason and, where there is one, a next step. */
+/** An empty state with a reason and, where there is one, a next step: Ecomsixx's drawn panel. */
 export function Empty({
   children,
   action,
@@ -88,11 +84,17 @@ export function Empty({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center rounded-xl border border-dashed border-line bg-surface px-6 py-12 text-center">
-      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-warm text-muted">
+    <div
+      className="nx-canvas-grid flex flex-col items-center rounded-[12px] bg-white px-6 py-12 text-center"
+      style={{ border: "1px solid var(--nx-line)", boxShadow: "var(--nx-shadow-card)" }}
+    >
+      <span
+        className="flex h-11 w-11 items-center justify-center rounded-xl"
+        style={{ background: "var(--nx-warm)", color: "var(--nx-brand)", boxShadow: "inset 0 0 0 1px rgb(94 69 38 / .12)" }}
+      >
         <IconInbox className="h-5 w-5" />
       </span>
-      <p className="mt-3 max-w-[46ch] text-[14px] leading-relaxed text-muted">{children}</p>
+      <p className="mt-3 max-w-[46ch] text-pretty text-[13px] leading-[1.55] text-[color:var(--nx-ink-70)]">{children}</p>
       {action && <div className="mt-4">{action}</div>}
     </div>
   );
@@ -102,41 +104,36 @@ export function Empty({
 export function Table({ children, minWidth = 760 }: { children: React.ReactNode; minWidth?: number }) {
   return (
     /* overflow-x-auto makes this div a scroll container, and a sticky <th> then
-       sticks to the div rather than the page, so it never engages. Above xl the table fits and the wrapper goes back to visible, which
-       hands the sticky headers to the viewport where they belong. Below it the
-       wrapper scrolls sideways and the headers simply scroll with it. */
+       sticks to the div rather than the page. Above xl the table fits and the
+       wrapper goes back to visible, which hands the sticky headers to the
+       viewport. Below it the wrapper scrolls sideways. */
     <div
-      className="overflow-x-auto xl:overflow-x-visible rounded-2xl border border-line bg-surface"
-      style={{ boxShadow: "var(--e1), var(--ring-inset)" }}
+      className="overflow-x-auto rounded-[20px] bg-white xl:overflow-x-visible"
+      style={{ border: "1px solid var(--nx-line)", boxShadow: "var(--nx-shadow-card)" }}
     >
-      <table className="w-full border-collapse text-[14px]" style={{ minWidth }}>
+      <table className="w-full border-collapse text-left text-[13px]" style={{ minWidth }}>
         {children}
       </table>
     </div>
   );
 }
 
-/* A sticky header passes over the rows beneath it, so it needs its own ground
-   rather than the card's: backdrop-blur with a near-opaque surface keeps the
-   column labels legible while a hint of the row underneath still moves, which
-   is what tells you the table is scrolling and not the page. */
+/* Ecomsixx's table: an 11.5px muted header row on a near-opaque ground so it
+   stays legible as rows pass under it; 13px cells; a hairline between rows. */
 export const th =
-  "sticky top-0 z-10 border-b border-line bg-[color-mix(in_oklab,var(--color-surface)_88%,transparent)] px-4 py-3 text-left font-sans text-[11px] font-semibold uppercase tracking-[.08em] text-muted backdrop-blur-sm";
-export const td = "border-b border-line px-4 py-3 align-top";
+  "sticky top-0 z-10 whitespace-nowrap border-b border-[#141416]/[0.06] bg-white/95 px-4 py-2.5 text-left text-[11.5px] font-medium text-[#52525b] backdrop-blur-sm first:rounded-tl-[20px] last:rounded-tr-[20px]";
+export const td = "border-b border-[#141416]/[0.05] px-4 py-2.5 align-top";
 /** Rows light up under the pointer, which is how a long list stays readable. */
-export const tr = "transition-colors duration-150 hover:bg-warm";
+export const tr = "transition-colors duration-150 hover:bg-[#faf8f5] [&:last-child>td]:border-0";
 export const num = "tabular-nums text-right";
 
-/* "Nothing yet" plus a way to see what full looks like.
-
-   An empty screen and a broken screen look identical, and a dashboard that
-   has not run yet is mostly empty screens. This is how somebody tells the
-   difference without reading the code. */
+/* "Nothing yet" plus a way to see what full looks like. An empty screen and a
+   broken one look identical; this is how somebody tells them apart. */
 export function ShowExample({ href }: { href: string }) {
   return (
     <a
       href={href}
-      className="mt-4 inline-flex min-h-9 cursor-pointer items-center rounded-lg border border-line px-3 text-[13px] font-semibold text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+      className="dash-focus mt-4 inline-flex h-9 cursor-pointer items-center rounded-[10px] border border-[color:var(--nx-line)] bg-white px-3 text-[13px] font-medium text-[color:var(--nx-ink)] transition-colors duration-150 hover:bg-[color:var(--nx-tint)]"
     >
       See it with example data
     </a>

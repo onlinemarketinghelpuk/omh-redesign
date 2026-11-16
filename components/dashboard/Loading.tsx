@@ -39,7 +39,7 @@ import type { Screen } from "@/lib/dashboard/screens";
 export function DashboardLoading({ screen }: { screen: Screen }) {
   const { active, title, lead, shape } = screen;
   return (
-    <div id="omh-dashboard" className="min-h-dvh bg-warm text-ink">
+    <div id="omh-dashboard" className="min-h-dvh bg-white text-[#141416]">
       {/* Inert.
 
           The rail is the real one, but during the skeleton it cannot know
@@ -53,29 +53,18 @@ export function DashboardLoading({ screen }: { screen: Screen }) {
         <Rail active={active} counts={{}} urgent={[]} demo={false} />
       </div>
 
-      <div className="lg:pl-[248px]">
-        <header className="border-b border-line">
-          <div className="mx-auto flex max-w-[1400px] flex-wrap items-end justify-between gap-x-6 gap-y-3 px-5 py-6 sm:px-7 sm:py-7">
-            <div className="min-w-0">
-              <p className="font-sans text-[11px] font-semibold uppercase tracking-[.14em] text-[var(--dash-accent-text)]">
-                AI assistant
-              </p>
-              <h1 className="mt-1.5 font-sans text-[26px] font-semibold leading-[1.1] tracking-[-.025em] sm:text-[30px]">
-                {title}
-              </h1>
-              <p className="mt-2 max-w-[68ch] text-[14px] leading-relaxed text-muted">{lead}</p>
-            </div>
-          </div>
-        </header>
-
-        {/* aria-busy and a polite status, so a screen reader is told the
-            page is still arriving instead of being read an empty one. The
-            blocks themselves are hidden from it: forty grey rectangles
-            announced one by one is noise. */}
+      {/* The same frame as Shell, so nothing moves when the page lands:
+          232px sidebar, the 56px top bar, the 24px title and its line. */}
+      <div className="pb-16 lg:pb-0 lg:pl-[232px]">
+        <div className="hidden h-14 border-b border-[#141416]/[0.07] lg:block" aria-hidden="true" />
         <main
           aria-busy="true"
-          className="mx-auto max-w-[1400px] px-5 py-6 sm:px-7 sm:py-7"
+          className="mx-auto w-full max-w-[1320px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8"
         >
+          <div className="pb-5">
+            <h1 className="font-heading text-[22px] font-medium leading-[1.1] tracking-[-0.01em] text-[color:var(--nx-ink)] sm:text-[24px]">{title}</h1>
+            <p className="mt-2 max-w-2xl text-[13px] leading-[1.55] text-[color:var(--nx-ink-70)]">{lead}</p>
+          </div>
           <p className="sr-only" role="status">
             Loading {title}.
           </p>
@@ -95,7 +84,7 @@ export function DashboardLoading({ screen }: { screen: Screen }) {
    looked fine in the markup and the screenshot showed an empty page.
    bg-line is a real token, it is defined for both themes, and the rest of
    the dashboard already uses it. */
-const BLOCK = "animate-pulse bg-line motion-reduce:animate-none";
+const BLOCK = "dash-skel";
 
 function Bar({ w, h = 11 }: { w: string; h?: number }) {
   return <div className={`${BLOCK} rounded`} style={{ width: w, height: h }} />;
@@ -104,8 +93,8 @@ function Bar({ w, h = 11 }: { w: string; h?: number }) {
 function Panel({ h, children }: { h?: number; children?: React.ReactNode }) {
   return (
     <div
-      className="rounded-xl border border-line bg-surface p-4"
-      style={h ? { height: h } : undefined}
+      className="rounded-[20px] bg-white p-5"
+      style={{ border: "1px solid var(--nx-line)", boxShadow: "var(--nx-shadow-card)", ...(h ? { height: h } : {}) }}
     >
       {children}
     </div>

@@ -3,22 +3,25 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { NavItem, type Tab } from "./NavItem";
+import { NAV_ICON } from "./icons";
+import { PaletteButton } from "./Palette";
+import type { Tab } from "./NavItem";
 
 /* =========================================================================
-   The navigation below 1024px.
+   The navigation below 1024px, in the Ecomsixx dashboard's design (plan 016):
+   a light bar that stays at the top (the mark, the current screen, search,
+   the menu), and a sheet with every screen in its group. The bottom tab bar
+   opens the same sheet from its "More" button, through a window event.
 
-   It used to be the desktop rail laid sideways: one row of fifteen tabs that
-   scrolled. On a 900px window six were visible, nothing said there were nine
-   more, and Integrations sat 800px off the right edge. Sign out was hidden
-   below 1024px altogether, so on a phone there was no way to sign out.
-
-   Now: a bar that stays at the top while the page scrolls, saying which
-   screen you are on, with a Menu button. The menu shows every screen at
-   once, in the same three groups as the rail, with Sign out kept apart at
-   the bottom. It closes on Escape, on the backdrop, on its own Close button,
-   and when a screen is chosen.
+   It closes on Escape (focus back to the button), on the backdrop, and on
+   arriving at a new screen: the sheet remembers which screen it was opened
+   on, so a new pathname means closed, with no effect needed.
    ========================================================================= */
+
+const OPEN = "omh:menu";
+export function openMenu() {
+  window.dispatchEvent(new Event(OPEN));
+}
 
 export function RailMenu({
   tabs,
@@ -39,19 +42,17 @@ export function RailMenu({
   children?: React.ReactNode;
 }) {
   const pathname = usePathname();
-  /* The menu remembers which screen it was opened on, so arriving on a new
-     screen closes it whatever caused the navigation, with no effect needed. */
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
-  const setOpen = (next: boolean | ((was: boolean) => boolean)) =>
-    setOpenOn((prev) => {
-      const was = prev === pathname;
-      const v = typeof next === "function" ? next(was) : next;
-      return v ? pathname : null;
-    });
   const button = useRef<HTMLButtonElement>(null);
   const panelId = useId();
   const to = (href: string) => (demo ? `${href}?demo=1` : href);
+
+  useEffect(() => {
+    const show = () => setOpenOn(window.location.pathname);
+    window.addEventListener(OPEN, show);
+    return () => window.removeEventListener(OPEN, show);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -62,99 +63,83 @@ export function RailMenu({
       }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
   }, [open]);
 
   const current = tabs.find((t) => t.href === active);
-  /* Somebody waiting is the one thing worth seeing with the menu shut, so
-     the urgent figure is carried onto the bar itself. */
-  const waiting = urgent.reduce((n, h) => n + (counts[h] ?? 0), 0);
 
   return (
-    <div className="sticky top-0 z-40 lg:hidden">
-      <div className="flex min-h-14 items-center gap-3 border-b border-white/10 bg-inverse px-4">
-        <Link
-          href="/"
-          className="font-sans text-[20px] font-bold tracking-[-.025em] text-oninverse outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-        >
-          OMH<span style={{ color: "var(--accent)" }}>.</span>
+    <header className="sticky top-0 z-40 border-b border-[#141416]/[0.07] bg-white/90 backdrop-blur-xl lg:hidden">
+      <div className="flex h-14 items-center gap-2 px-4">
+        <Link href={to("/lead-dashboard")} className="dash-focus flex shrink-0 items-center gap-2 rounded-md">
+          <span className="flex h-[26px] w-[26px] items-center justify-center rounded-[7px] bg-[#7d5c33] font-heading text-[13px] font-semibold text-white">O</span>
         </Link>
-        <span className="min-w-0 flex-1 truncate font-sans text-[14px] font-medium text-white/70">
-          {current?.label ?? "Dashboard"}
-        </span>
-        {waiting > 0 ? (
-          <Link
-            href={to("/lead-dashboard/handover")}
-            className="inline-flex min-h-9 items-center gap-1.5 rounded-full px-2.5 font-sans text-[12px] font-semibold text-[var(--color-inverse)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-            style={{ background: "var(--accent)" }}
-          >
-            {waiting} waiting
-          </Link>
-        ) : null}
+        <span className="min-w-0 flex-1 truncate text-[14px] font-medium text-[#141416]">{current?.label ?? "Dashboard"}</span>
+        <PaletteButton variant="icon" />
         <button
           ref={button}
           type="button"
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => setOpenOn(open ? null : pathname)}
           aria-expanded={open}
           aria-controls={panelId}
-          className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/15 px-3 font-sans text-[13.5px] font-semibold text-oninverse outline-none transition-colors duration-150 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          className="dash-focus inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-[#141416] transition-colors hover:bg-[#faf8f5]"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
-            {open ? (
-              <path d="M6 6l12 12M18 6 6 18" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
+          <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
+            {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
           </svg>
-          {open ? "Close" : "Menu"}
         </button>
       </div>
 
       {open ? (
         <>
-          {/* The page behind, dimmed; pressing it closes the menu. */}
           <button
             type="button"
             aria-label="Close the menu"
             tabIndex={-1}
-            onClick={() => setOpen(false)}
-            className="fixed inset-0 top-14 z-0 cursor-default bg-black/45"
+            onClick={() => setOpenOn(null)}
+            className="fixed inset-x-0 bottom-0 top-14 z-30 cursor-default bg-[#1c140b]/30 backdrop-blur-sm"
           />
-          <div
+          <nav
             id={panelId}
-            className="absolute inset-x-0 top-full z-10 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b border-white/10 bg-inverse px-3 pb-5 pt-3 text-oninverse shadow-[0_24px_48px_-12px_rgb(0_0_0/.5)]"
+            aria-label="All screens"
+            className="relative z-40 max-h-[80dvh] space-y-3 overflow-y-auto border-t border-[#141416]/[0.07] bg-[#fdfcfa] px-3 py-3"
           >
-            <div className="mx-auto grid max-w-[960px] gap-4">
-              {groups.map((g) => {
-                const items = tabs.filter((t) => t.group === g.key);
-                return (
-                  <section key={g.key} aria-label={g.label}>
-                    <p className="px-3 pb-1.5 font-sans text-[11px] font-semibold uppercase tracking-[.12em] text-white/45">
-                      {g.label}
-                    </p>
-                    <ul className="grid grid-cols-1 gap-1 min-[520px]:grid-cols-2 md:grid-cols-3">
-                      {items.map((t) => (
-                        <li key={t.href}>
-                          <NavItem
-                            tab={t}
-                            href={to(t.href)}
-                            active={t.href === active}
-                            count={counts[t.href]}
-                            urgent={urgent.includes(t.href)}
-                            onNavigate={() => setOpen(false)}
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                );
-              })}
-              {/* Sign out and the example switch, apart from the screens. */}
-              <div className="flex flex-wrap items-center gap-2 border-t border-white/10 px-1 pt-3">{children}</div>
-            </div>
-          </div>
+            {groups.map((g) => (
+              <div key={g.key}>
+                <div className="dash-eyebrow mb-1 px-3">{g.label}</div>
+                <div className="grid grid-cols-1 gap-0.5 min-[520px]:grid-cols-2">
+                  {tabs.filter((t) => t.group === g.key).map((t) => {
+                    const Icon = NAV_ICON[t.href as keyof typeof NAV_ICON];
+                    const n = counts[t.href];
+                    const isUrgent = urgent.includes(t.href);
+                    const show = typeof n === "number" && !(isUrgent && n === 0);
+                    return (
+                      <Link
+                        key={t.href}
+                        href={to(t.href)}
+                        onClick={() => setOpenOn(null)}
+                        aria-current={t.href === active ? "page" : undefined}
+                        className={`dash-nav dash-focus min-h-11 ${t.href === active ? "dash-nav-active" : ""}`}
+                      >
+                        {Icon ? <Icon /> : null}
+                        <span className="flex-1">{t.label}</span>
+                        {show ? <span className={`dash-count ${isUrgent && (n ?? 0) > 0 ? "dash-count-urgent" : ""}`}>{(n ?? 0) > 99 ? "99+" : n}</span> : null}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+            <div className="flex flex-wrap items-center gap-2 border-t border-[#141416]/[0.07] px-1 pt-3">{children}</div>
+          </nav>
         </>
       ) : null}
-    </div>
+    </header>
   );
 }

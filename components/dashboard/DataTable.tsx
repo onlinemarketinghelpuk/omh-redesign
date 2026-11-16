@@ -278,7 +278,7 @@ export function DataTable({
       )}
 
       {view.length === 0 ? (
-        <div className="flex flex-col items-center rounded-xl border border-dashed border-line bg-surface px-6 py-12 text-center">
+        <div className="nx-canvas-grid flex flex-col items-center rounded-[12px] bg-white px-6 py-12 text-center" style={{ border: "1px solid var(--nx-line)", boxShadow: "var(--nx-shadow-card)" }}>
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-warm text-muted">
             <IconInbox className="h-5 w-5" />
           </span>
@@ -319,16 +319,16 @@ export function DataTable({
                sideways instead, which is the one thing the wrapper exists to
                prevent. The number is the width at which it actually fits, not
                the nearest named breakpoint. */
-            className="overflow-x-auto min-[1400px]:overflow-x-visible rounded-2xl border border-line bg-surface"
-            style={{ boxShadow: "var(--e1), var(--ring-inset)" }}
+            className="overflow-x-auto min-[1400px]:overflow-x-visible rounded-[20px] bg-white"
+            style={{ border: "1px solid var(--nx-line)", boxShadow: "var(--nx-shadow-card)" }}
           >
-            <table className="w-full border-collapse text-[14px]" style={{ minWidth }}>
+            <table className="w-full border-collapse text-[13px]" style={{ minWidth }}>
               <thead>
                 <tr>
                   {selectable && (
                     <th
                       scope="col"
-                      className="sticky top-0 z-10 w-9 border-b border-line bg-[color-mix(in_oklab,var(--color-surface)_88%,transparent)] px-3 py-3 backdrop-blur-sm"
+                      className="sticky top-0 z-10 w-9 border-b border-[#141416]/[0.06] bg-white/95 px-3 py-2.5 backdrop-blur-sm"
                     >
                       <Tick
                         on={allHere}
@@ -351,7 +351,7 @@ export function DataTable({
                         aria-sort={on ? (sort!.dir === "asc" ? "ascending" : "descending") : undefined}
                         /* Near-opaque and blurred rather than solid: see the
                            `th` note in ui.tsx. */
-                        className={`sticky top-0 z-10 whitespace-nowrap border-b border-line bg-[color-mix(in_oklab,var(--color-surface)_88%,transparent)] px-4 py-3 font-sans text-[11px] font-semibold uppercase tracking-[.08em] text-muted backdrop-blur-sm ${
+                        className={`sticky top-0 z-10 whitespace-nowrap border-b border-[#141416]/[0.06] bg-white/95 px-4 py-2.5 text-[11.5px] font-medium text-[#52525b] backdrop-blur-sm ${
                           c.align === "right" ? "text-right" : "text-left"
                         }`}
                       >
@@ -366,16 +366,10 @@ export function DataTable({
                                   : { key, dir: "asc" },
                               );
                             }}
-                            /* `uppercase` repeated here although the `th`
-                               already has it. Preflight sets
-                               `text-transform: none` on `button` to undo a
-                               Firefox quirk, and a rule on the element beats
-                               the value inherited from its cell, so every
-                               sortable heading was quietly in sentence case
-                               while every unsortable one was in capitals. In
-                               a table where most columns sort, the odd one
-                               out looked like the mistake. */
-                            className={`inline-flex cursor-pointer items-center gap-1 rounded uppercase tracking-[.08em] outline-none transition-colors duration-150 hover:text-ink focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
+                            /* Ecomsixx's table header is in normal case (plan
+                               016), so the sortable and unsortable headings
+                               now agree without forcing capitals on both. */
+                            className={`dash-focus inline-flex cursor-pointer items-center gap-1 rounded outline-none transition-colors duration-150 hover:text-ink focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
                               on ? "text-ink" : ""
                             } ${c.align === "right" ? "flex-row-reverse" : ""}`}
                           >
@@ -394,12 +388,12 @@ export function DataTable({
                 {page.map((r) => (
                   <tr
                     key={r.id}
-                    className={`transition-colors duration-150 hover:bg-warm ${
+                    className={`transition-colors duration-150 hover:bg-[#faf8f5] ${
                       sel.has(r.id) ? "bg-[rgb(var(--accent-rgb)/.07)]" : ""
                     }`}
                   >
                     {selectable && (
-                      <td className="border-b border-line px-3 py-3 align-top">
+                      <td className="border-b border-[#141416]/[0.05] px-3 py-2.5 align-top">
                         <Tick
                           on={sel.has(r.id)}
                           onChange={() => toggleOne(r.id)}
@@ -410,7 +404,7 @@ export function DataTable({
                     {r.cells.map((cell, i) => (
                       <td
                         key={i}
-                        className={`border-b border-line px-4 py-3 align-top ${
+                        className={`border-b border-[#141416]/[0.05] px-4 py-2.5 align-top ${
                           columns[i]?.align === "right" ? "text-right tabular-nums" : ""
                         }`}
                       >

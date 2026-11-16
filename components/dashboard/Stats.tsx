@@ -1,4 +1,5 @@
 import { IconUp, IconDown, IconFlat } from "./icons";
+import { CountUp, Spark } from "./kit";
 
 /* A number on its own says very little. "26 calls" is only useful next to
    what it was before, and next to the shape of how it got there. So every
@@ -36,75 +37,41 @@ export function Kpi({
   /** Position in the entrance wave. See the keyframes in dashboard/layout. */
   rise?: number;
 }) {
+  /* Ecomsixx's KPI card (plan 016): a white 20px card, the label in mono
+     uppercase beside its icon, a Geist figure that counts up, the change and
+     the line under it, and the sparkline full width at the foot. `accent` is
+     kept so every caller compiles; Ecomsixx marks no card above another. */
+  void accent;
+  const plain = /^\d+%?$/.test(value);
   return (
     <div
       data-rise={rise === undefined ? undefined : ""}
-      className={`group relative min-w-0 overflow-hidden rounded-2xl border p-4 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-px sm:p-[18px] ${
-        accent
-          ? "border-[rgb(var(--accent-rgb)/.55)] bg-[rgb(var(--accent-rgb)/.1)]"
-          : "border-line bg-surface"
-      }`}
+      className="group relative min-w-0 rounded-[20px] bg-white px-5 pb-4 pt-4 transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-px"
       style={
         {
-          boxShadow: "var(--e1), var(--ring-inset)",
+          border: "1px solid var(--nx-line)",
+          boxShadow: "var(--nx-shadow-card)",
           ...(rise === undefined ? {} : { "--i": rise }),
         } as React.CSSProperties
       }
     >
-      {/* The figure that matters most on the screen gets a hairline of brand
-          tan along its top edge. One card, one rule: a marker only works while
-          it is still rare. */}
-      {accent && (
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-[2px]"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, var(--accent) 22%, var(--accent) 78%, transparent)",
-          }}
-        />
-      )}
-
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <span
-              className={`flex h-7 w-7 items-center justify-center rounded-[9px] ${
-                accent ? "bg-[rgb(var(--accent-rgb)/.35)] text-ink" : "bg-warm text-muted"
-              }`}
-            >
-              <Icon className="h-[15px] w-[15px]" />
-            </span>
-            {/* Muted grey lands at 4.33:1 on the tan tint, just under the 4.5
-                this size needs, so the accent card uses the brand's deep tan
-                instead of a lighter grey. */}
-            <p
-              className={`truncate font-sans text-[11px] font-semibold uppercase tracking-[.085em] ${
-                accent ? "text-[var(--dash-accent-text)]" : "text-muted"
-              }`}
-            >
-              {label}
-            </p>
-          </div>
-          {/* 34px, tight tracking, lining figures. A dashboard's numbers are
-              its typography: at 30px with default tracking they read as body
-              copy that happens to be a digit. */}
-          <p className="mt-3 font-sans text-[34px] font-semibold leading-[1.05] tracking-[-.035em] tabular-nums">
-            {value}
-          </p>
-          <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
-            {delta && <DeltaChip delta={delta} goodWhenUp={goodWhenUp} />}
-            {sub && (
-              <span className={`text-[12.5px] ${accent ? "text-[var(--dash-accent-text)]" : "text-muted"}`}>{sub}</span>
-            )}
-          </div>
-        </div>
-
-        {/* A flat line along the bottom says less than no line at all. */}
-        {series && series.length > 1 && series.some((v) => v > 0) && (
-          <Sparkline values={series} className="mt-1 shrink-0" />
-        )}
+      <p className="flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-[color:var(--nx-ink-45)]">
+        <Icon className="h-3.5 w-3.5 shrink-0" />
+        <span className="truncate">{label}</span>
+      </p>
+      <p className="tnum mt-1.5 font-heading text-[28px] font-medium leading-[1.1] tracking-[-0.01em] text-[color:var(--nx-ink)] sm:text-[30px]">
+        {plain ? <CountUp value={value} /> : value}
+      </p>
+      <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+        {delta && <DeltaChip delta={delta} goodWhenUp={goodWhenUp} />}
+        {sub && <span className="text-[12px] leading-snug text-[color:var(--nx-ink-70)]">{sub}</span>}
       </div>
+      {/* A flat line along the bottom says less than no line at all. */}
+      {series && series.length > 1 && series.some((v) => v > 0) && (
+        <div className="mt-3">
+          <Spark vals={series} />
+        </div>
+      )}
     </div>
   );
 }
@@ -118,10 +85,10 @@ function DeltaChip({ delta, goodWhenUp }: { delta: NonNullable<Delta>; goodWhenU
     good === null
       ? "text-muted"
       : good
-        ? "text-[#067647] dark:text-[#6ec49b]"
-        : "text-[#b42318] dark:text-[#f09b92]";
+        ? "text-[#047857]"
+        : "text-[#b91c1c]";
   return (
-    <span className={`inline-flex items-center gap-0.5 text-[12.5px] font-semibold tabular-nums ${tone}`}>
+    <span className={`inline-flex items-center gap-0.5 text-[12px] font-medium tabular-nums ${tone}`}>
       <Icon className="h-3.5 w-3.5" />
       {delta.pct > 0 ? "+" : ""}
       {delta.pct}%
