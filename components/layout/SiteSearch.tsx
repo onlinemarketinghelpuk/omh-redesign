@@ -53,7 +53,7 @@ export function SiteSearch({ entries }: { entries: SearchEntry[] }) {
       <button
         type="button"
         onClick={() => dialogRef.current?.showModal()}
-        className="group flex h-10 cursor-pointer items-center gap-2.5 rounded-button border border-line px-3 text-muted transition-colors hover:border-ink/25 hover:text-ink max-lg:size-10 max-lg:justify-center max-lg:px-0"
+        className="group flex h-10 cursor-pointer items-center gap-2.5 rounded-button border border-line px-3 text-muted transition-colors hover:border-ink/25 hover:text-ink max-lg:size-11 max-lg:justify-center max-lg:px-0"
       >
         <Search className="size-[18px]" aria-hidden />
         <span className="sr-only">Search the site</span>

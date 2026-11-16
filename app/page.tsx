@@ -591,7 +591,7 @@ export default async function Home() {
                 </h2>
                 <p className="mt-5 text-body leading-relaxed text-ink/70">
                   Still have a question? Call{" "}
-                  <a href="tel:+442034893934" className="font-semibold text-amber-deep underline underline-offset-4" data-event="home_faq_phone_click">
+                  <a href="tel:+442034893934" className="tap-target font-semibold text-amber-deep underline underline-offset-4" data-event="home_faq_phone_click">
                     020 3489 3934
                   </a>
                   .

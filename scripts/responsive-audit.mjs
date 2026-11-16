@@ -202,6 +202,8 @@ function rects() {
   const key = (el) => { const parts = []; for (let e = el; e && e !== d.body; e = e.parentElement) { let i = 1; for (let s = e.previousElementSibling; s; s = s.previousElementSibling) if (s.tagName === e.tagName) i++; parts.unshift(e.tagName.toLowerCase() + (e.id ? "#" + e.id : "") + ":" + i); } return parts.join(">"); };
   for (const root of d.querySelectorAll("body > header, header:not(main header), main, footer")) for (const el of [root, ...root.querySelectorAll("*")]) {
     if (el.ownerSVGElement) continue;
+    // The body of a closed <details> is not shown, but Chrome sometimes still reports a box for it: skip it.
+    if (el.closest("details:not([open])") && el.tagName !== "DETAILS" && !el.closest("summary")) continue;
     const r = el.getBoundingClientRect(); if (!r.width && !r.height) continue;
     out[key(el)] = [r.left, r.top + scrollY, r.width, r.height].map((v) => Math.round(v * 2) / 2);
   }
@@ -276,8 +278,9 @@ if (mode === "diff-rects") {
     const A = JSON.parse(readFileSync(join(a, f), "utf8")), B = JSON.parse(readFileSync(join(b, f), "utf8"));
     if (A.textHash !== B.textHash) { textChanged++; console.log(`TEXT CHANGED ${A.page}@${A.w} (${A.textLength} -> ${B.textLength} chars)`); }
     const diffs = [];
-    for (const [k, ra] of Object.entries(A.rects)) { const rb = B.rects[k]; if (!rb) { diffs.push(`gone ${k}`); continue; } if (ra.some((v, i) => Math.abs(v - rb[i]) > tol)) diffs.push(`${k} [${ra}] -> [${rb}]`); }
-    for (const k of Object.keys(B.rects)) if (!A.rects[k]) diffs.push(`new ${k}`);
+    const hiddenDetails = (k) => /details:\d+>(?!summary)/.test(k); // closed accordion bodies (dumps made before this rule)
+    for (const [k, ra] of Object.entries(A.rects)) { if (hiddenDetails(k)) continue; const rb = B.rects[k]; if (!rb) { diffs.push(`gone ${k}`); continue; } if (ra.some((v, i) => Math.abs(v - rb[i]) > tol)) diffs.push(`${k} [${ra}] -> [${rb}]`); }
+    for (const k of Object.keys(B.rects)) if (!A.rects[k] && !hiddenDetails(k)) diffs.push(`new ${k}`);
     if (diffs.length) { moved++; console.log(`${A.page}@${A.w}: ${diffs.length} changed`); diffs.slice(0, 5).forEach((x) => console.log("   " + x.slice(-160))); }
   }
   console.log(`pages-widths with layout changes: ${moved}; text changes: ${textChanged}; missing: ${missing}`);

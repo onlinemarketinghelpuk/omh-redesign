@@ -264,3 +264,33 @@ One-off class ratchet at the start (`scripts/design-ratchet.json`): 3,850 `text-
 
 `scripts/responsive-audit.mjs` (audit, rects, diff-rects), `scripts/check-design.mjs` + ratchet,
 `npm run audit:responsive` / `check:design`, this plan and the responsive rules (design-rules 4b).
+
+### Phase 1, 16 Nov 2026: tokens and site-wide phone fixes
+
+- `app/globals.css`: type scale and section padding are now variables (`--section-sm/md/lg`, `--hero-pt/pb`,
+  `--gutter`) with lower phone minimums; every value equals the old one at 1280px. `wide` breakpoint (1152px).
+  `overflow-wrap: break-word` on headings and running text. `tap-target` utility (invisible 44px touch area).
+- Header: 44px phone buttons, logo 116px under 360px (the row was 8px too wide at 320px). Footer links 44px on
+  phones. Breadcrumbs, closing-band contact links, `TextLink` and standalone amber links use `tap-target`.
+  Testimonial dots hidden below 1024px (arrows and the "01 / 08" counter stay). Band labels: tighter tracking,
+  balanced lines and no hairline on phones. `/cookies` sideways scroll fixed. Voice sticky bar hidden on
+  screens under 481px tall.
+- Quote-form titles use `text-h1` (listed desktop change, plan 2.4): at the display size one long word was
+  wider than the 5/12 column at every width (537px of text in 465px at 1280px).
+- Desktop gate: across 59 pages at 1280, 1366, 1440 and 1920 only the 8 quote-form title columns moved; no other
+  element and no page text changed. (The rects tool now ignores closed `<details>` bodies, which Chrome
+  sometimes reports a box for.)
+
+| Check | 320 | 390 | 768 | 820 | 1024 | 1280 |
+|---|---|---|---|---|---|---|
+| Text outside its box | 46 → 35 | 3 → 2 | 11 | 13 | 24 → 16 | 17 → 13 |
+| Squeezed text | 159 → 63 | 24 → 18 | 15 | 3 | 113 → 99 | 66 |
+| Most h1 lines | 7 | 6 | 4 | 4 | 7 | 5 |
+| Labels over 2 lines | 15 → 14 | 5 → 2 | 28 | 28 | 8 | 3 |
+| Small tap targets | 1892 → 232 | 2040 → 234 | 1646 → 242 | 1703 → 218 | 1950 → 1831 | 1968 → 1839 |
+| Median page (screens) | 28 → 27 | 24 | 18 | 18 → 17 | 14 | 13 |
+
+Distinct heading and padding sizes went up by 1-2 at most widths: the React pages moved onto the new scale and the
+voice pages still use their own sizes (32.2px `h2`, 40px `h1` on phones). That closes in Phase 4. Still open for
+later phases: the voice `h1`s (6-7 lines at 320px), the hero stats labels wrapping at tablet widths (14 service
+pages, Phase 3 hero), and voice-only tap targets (Phase 4).

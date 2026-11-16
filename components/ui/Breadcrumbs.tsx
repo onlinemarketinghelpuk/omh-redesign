@@ -24,7 +24,7 @@ export function Breadcrumbs({ items, center = false, className = "" }: { items: 
                   {c.name}
                 </span>
               ) : c.href ? (
-                <Link href={c.href} className="inline-flex items-center gap-1.5 transition-colors hover:text-amber-deep">
+                <Link href={c.href} className="tap-target inline-flex items-center gap-1.5 transition-colors hover:text-amber-deep">
                   {i === 0 && <House aria-hidden className="size-4 shrink-0" />}
                   <span className={i === 0 ? "max-sm:sr-only" : ""}>{c.name}</span>
                 </Link>

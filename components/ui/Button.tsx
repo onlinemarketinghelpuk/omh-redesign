@@ -59,7 +59,7 @@ export function TextLink({
     <Link
       href={href}
       {...props}
-      className={`group inline-flex items-center gap-2 font-semibold text-amber-deep transition-colors duration-500 hover:text-amber-deep hover:underline underline-offset-4 ${props.className ?? ""}`}
+      className={`tap-target group inline-flex items-center gap-2 font-semibold text-amber-deep transition-colors duration-500 hover:text-amber-deep hover:underline underline-offset-4 ${props.className ?? ""}`}
     >
       {children}
       <ArrowRight className="size-4 transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-0.5" />

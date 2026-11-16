@@ -116,10 +116,11 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
         }`}
       >
         {/* Sized by width: the two exports differ in proportion, so matching
-            widths keeps the strapline the same size in both themes. */}
-        <Link href="/" aria-label="Online Marketing Help, home" className="shrink-0">
-          <Image src="/images/logo-dark.png" alt="" width={140} height={36} priority className="h-auto w-[140px] lg:max-[1420px]:w-[120px] dark:hidden" />
-          <Image src="/images/logo-white.png" alt="" width={140} height={36} priority className="hidden h-auto w-[140px] lg:max-[1420px]:w-[120px] dark:block" />
+            widths keeps the strapline the same size in both themes. Under 360px the
+            logo drops to 116px so it fits beside three 44px buttons (320px phones). */}
+        <Link href="/" aria-label="Online Marketing Help, home" className="shrink-0 max-lg:py-1.5 max-[359px]:py-2">
+          <Image src="/images/logo-dark.png" alt="" width={140} height={36} priority className="h-auto w-[140px] max-[359px]:w-[116px] lg:max-[1420px]:w-[120px] dark:hidden" />
+          <Image src="/images/logo-white.png" alt="" width={140} height={36} priority className="hidden h-auto w-[140px] max-[359px]:w-[116px] lg:max-[1420px]:w-[120px] dark:block" />
         </Link>
 
         <nav aria-label="Primary" className="ml-auto flex items-center gap-0.5 max-lg:hidden min-[1420px]:gap-1">
@@ -239,7 +240,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="hidden size-10 cursor-pointer items-center justify-center rounded-button border border-line max-lg:flex"
+            className="hidden size-11 cursor-pointer items-center justify-center rounded-button border border-line max-lg:flex"
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="size-5" aria-hidden>

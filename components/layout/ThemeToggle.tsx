@@ -38,7 +38,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-pressed={isDark}
-      className="flex size-10 cursor-pointer items-center justify-center rounded-button border border-line text-muted transition-colors hover:border-ink/25 hover:text-ink"
+      className="flex size-10 max-lg:size-11 cursor-pointer items-center justify-center rounded-button border border-line text-muted transition-colors hover:border-ink/25 hover:text-ink"
     >
       <span className="sr-only">{isDark ? "Switch to light theme" : "Switch to dark theme"}</span>
       {isDark ? <Sun className="size-[18px]" aria-hidden /> : <Moon className="size-[18px]" aria-hidden />}

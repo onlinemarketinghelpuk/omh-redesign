@@ -66,7 +66,7 @@ function SocialIcon({ name }: { name: string }) {
 }
 
 const linkClass =
-  "footer-link block py-1 text-label leading-snug text-oninverse/62 transition-colors hover:text-oninverse focus-visible:text-oninverse";
+  "footer-link block py-1 max-lg:py-2.5 text-label leading-snug text-oninverse/62 transition-colors hover:text-oninverse focus-visible:text-oninverse";
 const headingClass =
   "mb-4 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-oninverse";
 
@@ -90,7 +90,7 @@ export function Footer() {
             </p>
             <a
               href={company.phoneHref}
-              className="mt-3 block font-sans text-[clamp(28px,22px+1.4vw,40px)] font-semibold leading-none transition-colors hover:text-amber"
+              className="mt-3 block font-sans text-[clamp(28px,22px+1.4vw,40px)] font-semibold leading-none transition-colors hover:text-amber max-lg:-my-2 max-lg:py-2"
             >
               {company.phoneDisplay}
             </a>
@@ -101,7 +101,7 @@ export function Footer() {
             </p>
             <a
               href={`mailto:${company.email}`}
-              className="mt-3 inline-flex items-center gap-3 break-all font-sans text-[clamp(19px,17px+0.5vw,24px)] font-semibold transition-colors hover:text-amber"
+              className="mt-3 inline-flex items-center gap-3 break-all font-sans text-[clamp(19px,17px+0.5vw,24px)] font-semibold transition-colors hover:text-amber max-lg:-my-2 max-lg:py-2"
             >
               {company.email}
               <ArrowRight className="size-5 shrink-0 max-sm:hidden" />
@@ -226,7 +226,7 @@ export function Footer() {
           </span>
           <span className="flex flex-wrap gap-x-6 gap-y-2">
             {legalLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="transition-colors hover:text-oninverse">
+              <Link key={link.href} href={link.href} className="transition-colors hover:text-oninverse max-lg:-my-2 max-lg:inline-block max-lg:py-2">
                 {link.label}
               </Link>
             ))}

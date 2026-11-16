@@ -35,7 +35,7 @@ export default function ContactPage() {
             <ContactForm />
             <p className="mt-5 text-bsm text-muted">
               Prefer email? Write to{" "}
-              <Link href={`mailto:${company.email}`} className="font-semibold text-amber-deep underline underline-offset-4">
+              <Link href={`mailto:${company.email}`} className="tap-target font-semibold text-amber-deep underline underline-offset-4">
                 {company.email}
               </Link>
               .

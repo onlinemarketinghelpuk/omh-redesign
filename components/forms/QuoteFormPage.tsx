@@ -219,7 +219,7 @@ function Sent({ onReset }: { onReset: () => void }) {
       <button
         type="button"
         onClick={onReset}
-        className="mt-6 cursor-pointer text-body font-semibold text-amber-deep underline underline-offset-4"
+        className="tap-target mt-6 cursor-pointer text-body font-semibold text-amber-deep underline underline-offset-4"
       >
         Send another enquiry
       </button>
@@ -230,7 +230,9 @@ function Sent({ onReset }: { onReset: () => void }) {
 function HeroCopy({ page }: { page: PageData }) {
   return (
     <>
-      <h1 className="font-sans text-display font-semibold text-balance"><AccentTitle text={page.title} /></h1>
+      {/* text-h1, not text-display: in this 5/12 column one long word ("Maintenance", "Questionnaire") at the
+          display size was wider than the column at every width from 1024px (537px of text in 465px at 1280). */}
+      <h1 className="font-sans text-h1 font-semibold text-balance"><AccentTitle text={page.title} /></h1>
       <p className="mt-6 text-lead leading-relaxed text-ink/75">{page.intro}</p>
       <p className="mt-7 font-sans text-h4 font-semibold text-balance">
         <Link href={company.phoneHref} className="hover:text-amber-deep">

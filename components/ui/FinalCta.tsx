@@ -76,11 +76,11 @@ export function FinalCta({
             )}
           </div>
           {contactEvents && (
-            <p className="mt-8 flex flex-wrap items-center gap-x-2.5 gap-y-2 text-body text-oninverse/65">
+            <p className="mt-8 flex flex-wrap items-center gap-x-2.5 gap-y-2 text-body text-oninverse/65 max-sm:gap-y-4">
               <Link
                 href={company.phoneHref}
                 data-event={contactEvents.phone}
-                className="underline underline-offset-4 hover:text-oninverse"
+                className="tap-target underline underline-offset-4 hover:text-oninverse"
               >
                 {company.phoneDisplay}
               </Link>
@@ -90,7 +90,7 @@ export function FinalCta({
               <Link
                 href={`mailto:${company.email}`}
                 data-event={contactEvents.email}
-                className="break-all underline underline-offset-4 hover:text-oninverse max-sm:basis-full"
+                className="tap-target break-all underline underline-offset-4 hover:text-oninverse max-sm:basis-full"
               >
                 {company.email}
               </Link>

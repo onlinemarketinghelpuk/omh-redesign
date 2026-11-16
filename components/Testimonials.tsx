@@ -135,7 +135,8 @@ export function ServiceTestimonials({
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2" aria-label="Choose a testimonial">
+            {/* Below 1024px the arrows and the "01 / 08" counter do this job: 6px dots cannot be 44px touch targets. */}
+            <div className="mt-6 flex flex-wrap gap-2 max-lg:hidden" aria-label="Choose a testimonial">
               {testimonials.map((item, index) => (
                 <button
                   key={`${item.name}-${index}`}

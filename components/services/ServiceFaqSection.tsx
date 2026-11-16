@@ -65,7 +65,7 @@ export function ServiceFaqSection({
                   <Link
                     href={company.phoneHref}
                     data-event={phoneEvent}
-                    className="font-semibold text-amber-deep underline underline-offset-4"
+                    className="tap-target font-semibold text-amber-deep underline underline-offset-4"
                   >
                     {company.phoneDisplay}
                   </Link>

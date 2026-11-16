@@ -53,7 +53,8 @@ export function ServiceBand({
   children: ReactNode;
 }) {
   const dark = darkTones.includes(tone);
-  const caps = `text-[14px] font-semibold uppercase tracking-[0.17em] ${dark ? "text-oninverse/55" : "text-muted"}`;
+  // Phones: tighter tracking and balanced lines keep a long label to two lines (it wrapped to three at 360px).
+  const caps = `text-[14px] font-semibold uppercase tracking-[0.17em] max-sm:tracking-[0.1em] text-balance ${dark ? "text-oninverse/55" : "text-muted"}`;
   const hair = dark ? "bg-oninverse/12" : "bg-line";
   const border = dark ? "border-oninverse/25" : "border-line";
   const accentText = dark ? "text-oninverse/70" : "text-amber-deep";
@@ -66,7 +67,7 @@ export function ServiceBand({
             <div className={`flex items-center gap-4 ${caps}`}>
               <span aria-hidden className={`h-0.5 w-7 shrink-0 ${accent}`} />
               <span className="min-w-0">{label}</span>
-              <span aria-hidden className={`h-px flex-1 ${hair}`} />
+              <span aria-hidden className={`h-px flex-1 max-sm:hidden ${hair}`} />
             </div>
           )}
 
@@ -100,10 +101,10 @@ export function ServiceBand({
           )}
 
           {labelStyle === "centered" && (
-            <div className={`flex items-center gap-5 ${caps}`}>
-              <span aria-hidden className={`h-px flex-1 ${hair}`} />
+            <div className={`flex items-center justify-center gap-5 text-center ${caps}`}>
+              <span aria-hidden className={`h-px flex-1 max-sm:hidden ${hair}`} />
               <span className="min-w-0">{label}</span>
-              <span aria-hidden className={`h-px flex-1 ${hair}`} />
+              <span aria-hidden className={`h-px flex-1 max-sm:hidden ${hair}`} />
             </div>
           )}
 

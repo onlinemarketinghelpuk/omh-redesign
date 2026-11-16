@@ -48,7 +48,7 @@ function breadcrumbHtml(graph: object | undefined, page: string) {
     if (i === list.length - 1)
       return `<li class="flex min-w-0 items-center gap-1.5">${sep}<span aria-current="page" class="max-w-[26ch] truncate font-semibold text-ink sm:max-w-[60ch]">${esc(c.name)}</span></li>`;
     const label = i === 0 ? `${house}<span class="max-sm:sr-only">${esc(c.name)}</span>` : `<span>${esc(c.name)}</span>`;
-    return `<li class="flex min-w-0 items-center gap-1.5">${sep}<a href="${c.item.replace(SITE, "") || "/"}" class="inline-flex items-center gap-1.5 transition-colors hover:text-amber-deep">${label}</a></li>`;
+    return `<li class="flex min-w-0 items-center gap-1.5">${sep}<a href="${c.item.replace(SITE, "") || "/"}" class="tap-target inline-flex items-center gap-1.5 transition-colors hover:text-amber-deep">${label}</a></li>`;
   });
   // pb, not mb: the v4 hero wrapper (.v4l) zeroes mb-* utilities.
   return `<nav aria-label="Breadcrumb" class="pb-6 text-[14px] leading-6"><ol class="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-muted">${items.join("")}</ol></nav>`;

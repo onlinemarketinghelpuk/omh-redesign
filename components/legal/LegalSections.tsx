@@ -29,7 +29,8 @@ function Block({ block }: { block: LegalBlock }) {
   return (
     <ul className="mt-4 flex list-none flex-col gap-2.5 first:mt-0">
       {block.list.map((item) => (
-        <li key={item} className="flex gap-3 text-body leading-relaxed text-ink/75">
+        // anywhere, not break-word: the text is a flex item, which cannot shrink below a bare URL otherwise.
+        <li key={item} className="flex gap-3 text-body leading-relaxed text-ink/75 [overflow-wrap:anywhere]">
           <span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-amber" />
           {item}
         </li>

@@ -86,11 +86,16 @@ html:has(.va-page dialog[open]) {
 /* The mobile booking bar takes the bottom of the screen: lift the site
    assistant's pill (components/layout/SiteAssistant.tsx) above it, and the
    back-to-top button above that. */
-@media (max-width: 767px) {
+@media (max-width: 767px) and (min-height: 481px) {
   body:has(.va-page [data-sticky-bar].is-visible) {
     #ohm-assistant-root { --omh-fab-lift: 76px; }
     .scroll-top { bottom: 156px; }
   }
+}
+/* A phone on its side (under 481px tall): header plus bar would cover a third of the screen, and the bar's
+   two buttons are already in the hero, so the bar stays hidden and nothing needs lifting. */
+@media (max-height: 480px) {
+  .va-page [data-sticky-bar] { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html:has(.va-page) {

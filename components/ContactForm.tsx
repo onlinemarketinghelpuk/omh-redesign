@@ -45,7 +45,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-6 text-body font-semibold text-amber-deep underline underline-offset-4"
+          className="tap-target mt-6 text-body font-semibold text-amber-deep underline underline-offset-4"
         >
           Send another enquiry
         </button>
