@@ -22,11 +22,15 @@ that only exists in this commit:
 ```sh
 curl -s -X POST https://cool-ferret-103.convex.cloud/api/query \
   -H 'content-type: application/json' \
-  --data '{"path":"flows:list","args":{},"format":"json"}'
+  --data '{"path":"flows:listFlows","args":{},"format":"json"}'
 ```
 
-`Could not find public function for 'flows:list'` means it has not been
-deployed. Anything else means it has.
+`Could not find public function for 'flows:listFlows'` means it has not
+been deployed. `{"status":"success"...}` means it has.
+
+**Deployed on 16 November 2026**, which added the `flows`, `flowVersions`,
+`messageTemplates` and `messageHistory` indexes. The five control panel
+screens came out of read-only mode in the same minute.
 
 > **`cool-ferret-103` is still a development deployment.** Dev deployments are
 > not meant to hold a live client's customer data and carry no production
@@ -84,7 +88,7 @@ flag and a separate decision.
 |---|---|---|
 | `curl -s https://onlinemarketinghelp.co.uk/ohm-assistant.js \| wc -c` | 30922 | 31257 |
 | `/lead-dashboard/control` | 404 after login | loads |
-| The `flows:list` probe above | not found | returns |
+| The `flows:listFlows` probe above | not found | returns |
 
 Checking `/lead-dashboard/control` from the outside without signing in tells
 you nothing: everything under `/lead-dashboard` redirects to the login page
