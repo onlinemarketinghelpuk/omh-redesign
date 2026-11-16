@@ -31,6 +31,20 @@
   --accent-deep: #7d5c33;   /* OLD #8f5a0e (link + eyebrow text, 5.6:1 on warm) */
   --accent-light: #7d5c33;  /* TAN #e0c6a0, OLD #f5d394 (text on dark sections, dark-mode links) */
   --accent-rgb: 125 92 51;  /* TAN 210 180 140, OLD 215 154 55 (glows, shadows, grid) */
+
+  /* Layout tokens (responsive plan, docs/responsive-plan.md). One source for the gutter and the section
+     rhythm, read by container-omh, the section-* utilities and the voice stylesheets. */
+  --gutter: clamp(20px, 8.4px + 3.09vw, 48px);
+  --section-sm: clamp(40px, 29.327px + 3.3354vw, 72px);
+  --section-md: clamp(48px, 29.341px + 5.831vw, 104px);
+  --section-lg: clamp(64px, 37.335px + 8.3329vw, 144px);
+  --hero-pt: clamp(48px, 34px + 2.3vw, 80px);
+  --hero-pb: clamp(56px, 38px + 2.9vw, 88px);
+}
+
+/* `wide` (1152px) sits between lg and xl: rows with a narrow 4/12 column go side by side from here. */
+@theme {
+  --breakpoint-wide: 72rem;
 }
 
 @theme {
@@ -98,17 +112,20 @@
   --font-sans: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
   --font-body: var(--font-source-sans), Arial, sans-serif;
 
-  /* Fluid scale hits the brief's desktop/tablet/mobile stops (72/58/42 etc.) */
-  --text-display: clamp(2.625rem, 1.85rem + 3.31vw, 4.5rem);
+  /* Fluid scale (responsive plan, 16 Nov 2026). Each size runs from a phone minimum at 320px to exactly the
+     value the old scale had at 1280px, so desktop is unchanged and only phones and tablets get smaller.
+     OLD display clamp(2.625rem, 1.85rem + 3.31vw, 4.5rem), h1 clamp(2.375rem, 1.81rem + 2.43vw, 3.75rem),
+     h2 clamp(2rem, 1.69rem + 1.33vw, 2.75rem), h3 clamp(1.5rem, 1.34rem + 0.66vw, 1.875rem). */
+  --text-display: clamp(2.125rem, 1.334rem + 3.955vw, 4.5rem); /* 34px at 320, 37 at 390, 72 from 1280 */
   --text-display--line-height: 1.04;
   --text-display--letter-spacing: 0;
-  --text-h1: clamp(2.375rem, 1.81rem + 2.43vw, 3.75rem);
+  --text-h1: clamp(2rem, 1.4153rem + 2.9233vw, 3.75rem); /* 32 at 320, 60 from 1280 */
   --text-h1--line-height: 1.06;
   --text-h1--letter-spacing: 0;
-  --text-h2: clamp(2rem, 1.69rem + 1.33vw, 2.75rem);
+  --text-h2: clamp(1.75rem, 1.4153rem + 1.6733vw, 2.75rem); /* 28 at 320, 29 at 390, 44 from 1280 */
   --text-h2--line-height: 1.12;
   --text-h2--letter-spacing: 0;
-  --text-h3: clamp(1.5rem, 1.34rem + 0.66vw, 1.875rem);
+  --text-h3: clamp(1.375rem, 1.2107rem + 0.8217vw, 1.875rem); /* 22 at 320, 29.9 at 1280 as before */
   --text-h3--line-height: 1.2;
   --text-h3--letter-spacing: 0;
   --text-h4: clamp(1.25rem, 1.2rem + 0.22vw, 1.375rem);
@@ -137,16 +154,38 @@
   width: 100%;
   max-width: calc(1440px + 2 * 48px);
   margin-inline: auto;
-  padding-inline: clamp(20px, 8.4px + 3.09vw, 48px);
+  padding-inline: var(--gutter);
 }
+/* Section rhythm (responsive plan, 16 Nov 2026): the variables are in :root so the voice stylesheets use
+   the same scale. Phone minimums dropped (md 64 -> 48, lg 80 -> 64, sm 48 -> 40); the 1280px values are
+   unchanged. OLD lg clamp(80px, 53.5px + 7.07vw, 144px), md clamp(64px, 47.4px + 4.42vw, 104px),
+   sm clamp(48px, 38.1px + 2.65vw, 72px). */
 @utility section-lg {
-  padding-block: clamp(80px, 53.5px + 7.07vw, 144px);
+  padding-block: var(--section-lg);
 }
 @utility section-md {
-  padding-block: clamp(64px, 47.4px + 4.42vw, 104px);
+  padding-block: var(--section-md);
 }
 @utility section-sm {
-  padding-block: clamp(48px, 38.1px + 2.65vw, 72px);
+  padding-block: var(--section-sm);
+}
+@utility section-hero {
+  padding-block: var(--hero-pt) var(--hero-pb);
+}
+/* A 44x44px touch area for a small link or icon without moving anything: an invisible layer centred on
+   the element. Use on standalone links only (not on links stacked closer than 44px, whose areas would
+   overlap; give those padding instead). The responsive audit counts an element with this as 44px. */
+@utility tap-target {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    translate: -50% -50%;
+  }
 }
 /* Hatched "for position only" ground for unverified imagery (brief §1) */
 @utility fpo-hatch {
@@ -226,6 +265,19 @@ body {
      titles keep their auto margins so the cap doesn't push them left. */
   h2 {
     max-width: 30ch;
+  }
+  /* A word too long for its line (a bare URL in /cookies, a long compound in a narrow card) wraps instead of
+     pushing the page sideways. Only words that cannot fit are broken; everything else wraps as before. */
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  li,
+  dd,
+  blockquote,
+  figcaption {
+    overflow-wrap: break-word;
   }
   h2:is(.text-center, .text-center *) {
     margin-inline: auto;
