@@ -754,6 +754,36 @@ http.route({
   }),
 });
 
+/* What was connected from the dashboard (plan 015). Full values, because
+   the dashboard server needs them to reverse a patch and the builder needs
+   them to rebuild; both hold the secret. Redaction happens in the dashboard
+   server before anything reaches a browser. */
+http.route({
+  path: "/integrations/get",
+  method: "POST",
+  handler: route(async (ctx) => ctx.runQuery(api.integrations.getIntegrations, {})),
+});
+
+http.route({
+  path: "/integrations/save",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.integrations.saveIntegration, {
+      key: String(b.key ?? ""),
+      value: b.value ?? {},
+      by: b.by || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/integrations/clear",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.integrations.clearIntegration, { key: String(b.key ?? ""), by: b.by || undefined }),
+  ),
+});
+
 /* A switch per channel (plan 014). One route for both, like the kill switch
    above: `channel` with `on` present means write, nothing means read. */
 http.route({

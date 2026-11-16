@@ -11,6 +11,7 @@
 import type * as attachments from "../attachments.js";
 import type * as brain from "../brain.js";
 import type * as campaigns from "../campaigns.js";
+import type * as channelSwitch from "../channelSwitch.js";
 import type * as crons from "../crons.js";
 import type * as email from "../email.js";
 import type * as flowRuntime from "../flowRuntime.js";
@@ -18,6 +19,7 @@ import type * as flows from "../flows.js";
 import type * as functions from "../functions.js";
 import type * as handover from "../handover.js";
 import type * as http from "../http.js";
+import type * as integrations from "../integrations.js";
 import type * as limits from "../limits.js";
 import type * as reminders from "../reminders.js";
 import type * as routing from "../routing.js";
@@ -33,6 +35,7 @@ declare const fullApi: ApiFromModules<{
   attachments: typeof attachments;
   brain: typeof brain;
   campaigns: typeof campaigns;
+  channelSwitch: typeof channelSwitch;
   crons: typeof crons;
   email: typeof email;
   flowRuntime: typeof flowRuntime;
@@ -40,6 +43,7 @@ declare const fullApi: ApiFromModules<{
   functions: typeof functions;
   handover: typeof handover;
   http: typeof http;
+  integrations: typeof integrations;
   limits: typeof limits;
   reminders: typeof reminders;
   routing: typeof routing;
