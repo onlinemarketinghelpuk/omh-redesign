@@ -41,6 +41,43 @@ for line in (ROOT / ".env.local").read_text().splitlines():
 
 CONVEX = env["OHM_WIDGET_CONVEX_SITE"]
 SECRET = env["OHM_WIDGET_SECRET"]
+
+
+# What the owner connected from the dashboard (plan 015) comes FIRST, before
+# .env.local. Connect writes the values straight into the live workflows; if
+# this builder did not read them too, the next build and push would quietly
+# put every *_PENDING placeholder back and disconnect the channel. Nothing is
+# connected, or Convex cannot be reached: .env.local and the placeholders, as
+# before, and it says so.
+CONNECTED_TO_ENV = {
+    "twilio": {"credentialId": "TWILIO_CRED_ID", "fromNumber": "TWILIO_FROM_NUMBER"},
+    "meta": {"pageToken": "META_PAGE_TOKEN", "appSecret": "META_APP_SECRET", "verifyToken": "META_VERIFY_TOKEN"},
+    "google_lead_form": {"key": "GOOGLE_LEAD_FORM_KEY"},
+    "imap": {"credentialId": "IMAP_CRED_ID"},
+    "smtp": {"credentialId": "SMTP_CRED_ID", "credentialName": "SMTP_CRED_NAME", "from": "MAIL_FROM"},
+}
+
+
+def _connected():
+    import urllib.request
+    try:
+        req = urllib.request.Request(f"{CONVEX}/integrations/get", data=b"{}", method="POST",
+                                     headers={"content-type": "application/json", "x-ohm-secret": SECRET})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return json.load(r).get("config") or {}
+    except Exception as e:  # noqa: BLE001 - any failure means "use .env.local", said out loud
+        print(f"  note: could not read what was connected from the dashboard ({str(e)[:80]}); using .env.local only")
+        return {}
+
+
+_from_dashboard = []
+for _key, _vals in (_connected() or {}).items():
+    for _field, _envname in CONNECTED_TO_ENV.get(_key, {}).items():
+        if _vals.get(_field) not in (None, ""):
+            env[_envname] = str(_vals[_field])
+            _from_dashboard.append(_envname)
+if _from_dashboard:
+    print(f"  from the dashboard: {', '.join(sorted(_from_dashboard))}")
 TOOL_TOKEN = env["OHM_RETELL_TOOL_TOKEN"]
 RETELL_KEY = env["RETELL_API_KEY"]
 # The OHM and Anthropic keys both ran out of credit, so the agent thinks through

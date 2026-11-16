@@ -94,12 +94,12 @@ it created, and clears the Convex value.
 - [x] 3. Convex: the `integrations` setting, a write route, and a read route
       that redacts secrets for the dashboard and gives them in full only to
       the builder.
-- [ ] 4. `lib/dashboard/connect.ts`: the provider tests, n8n credential
+- [x] 4. `lib/dashboard/connect.ts`: the provider tests, n8n credential
       create and delete, the workflow patch, and a dry run that does
       everything except write.
 - [ ] 5. The cards on the Integrations screen, Ecomsixx's pattern: steps,
       fields, Connect, two-step Disconnect, the URLs to copy.
-- [ ] 6. `build-workflows.py` reads the Convex values first.
+- [x] 6. `build-workflows.py` reads the Convex values first.
 - [ ] 7. The site reads the booking script from Convex before its env.
 - [ ] 8. Prove it: the dry run against the live workflows finds every
       placeholder it should; the full suite; the screen at phone and desktop

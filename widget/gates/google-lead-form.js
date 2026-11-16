@@ -37,8 +37,10 @@ function fromGoogleLeadForm(body, key) {
 
   /* Before anything else.
 
-     A placeholder counts as no key. The builder bakes
-     GOOGLE_LEAD_FORM_KEY_PENDING in until a real one exists, and without
+     A placeholder counts as no key. The builder bakes a placeholder ending
+     in PENDING in until a real one exists (its whole name is deliberately not
+     written here: this text is inlined into the workflow, where a whole
+     placeholder name reads as one more slot to fill), and without
      this line anybody who read the workflow, or simply guessed the obvious
      string, could post leads into the client's table. Fail closed. */
   if (!key || String(key).indexOf("PENDING") !== -1) {

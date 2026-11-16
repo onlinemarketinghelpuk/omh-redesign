@@ -177,6 +177,14 @@ console.log("\n== 6. shaped for n8n and Convex ==");
   ok("no import statement", !/^\s*import\s/m.test(src));
   eq("one export line", src.split("\n").filter((l) => /^\s*export\b/.test(l)).length, 1);
   eq("no whole placeholder token in its text", pendingTokens(src), []);
+  /* Every gate is inlined into some workflow. A whole placeholder name in
+     one, even in a comment, becomes one more place the 014 screen sees a
+     placeholder and the patch writes a secret into. Found twice on
+     2026-11-16: the integrations table, then a comment in the Google gate. */
+  for (const f of readdirSync(new URL("../gates/", import.meta.url)).filter((x) => x.endsWith(".js"))) {
+    const text = readFileSync(new URL(`../gates/${f}`, import.meta.url), "utf8");
+    eq(`gates/${f} spells out no whole placeholder name`, pendingTokens(text), []);
+  }
   ok("connector() finds by key", connector("smtp")?.label === "Sending mailbox");
 }
 
