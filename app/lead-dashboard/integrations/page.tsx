@@ -2,6 +2,9 @@ import Link from "next/link";
 import { Shell } from "@/components/dashboard/Shell";
 import { Card, Pill } from "@/components/dashboard/ui";
 import { ChannelSwitch } from "@/components/dashboard/ChannelSwitch";
+import { ConnectCard } from "@/components/dashboard/ConnectCard";
+import { connectedForScreen } from "@/lib/dashboard/connect";
+import { CONNECTORS } from "@/widget/gates/connectors.js";
 import { canWrite } from "@/lib/dashboard/routing";
 import { dashboardLocked } from "@/lib/dashboard/auth";
 import { isDemo } from "@/lib/dashboard/demo";
@@ -24,10 +27,10 @@ export const dynamic = "force-dynamic";
    widget/gates/integrations.js. A source that cannot be reached is shown as
    "Could not check" with the reason. It is never shown as connected.
 
-   It is not a form for pasting credentials. n8n owns the Twilio, mailbox and
-   Meta credentials, and refers to them by an id only n8n can create; a token
-   typed into this page could not become one. So each gap says what is
-   missing and who supplies it, plainly.
+   Plan 015 adds "Connect a channel": the owner enters a channel's values,
+   the provider checks them, and they go into n8n through its own API (see
+   lib/dashboard/connect.ts). The statuses above are still measured, so a
+   Connect shows here only once n8n actually holds it.
    ========================================================================= */
 
 /* Pill colours. The word carries the meaning; the colour only agrees. */
@@ -84,9 +87,13 @@ export default async function IntegrationsPage({
   searchParams: Promise<{ demo?: string }>;
 }) {
   const demo = isDemo(await searchParams);
-  const [facts, sw]: [Facts, Switches] = demo
-    ? [exampleFacts(), { known: true, switches: { whatsapp: false }, updatedAt: null, updatedBy: "owner" }]
-    : await Promise.all([gatherFacts(), readSwitches()]);
+  const [facts, sw, connected]: [Facts, Switches, Record<string, Record<string, unknown>> | null] = demo
+    ? [exampleFacts(), { known: true, switches: { whatsapp: false }, updatedAt: null, updatedBy: "owner" }, {}]
+    : await Promise.all([gatherFacts(), readSwitches(), connectedForScreen()]);
+  /* Not a secret: the address the owner pastes into Meta and Google. */
+  const n8nBase = (process.env.N8N_BASE_URL || "").replace(/\/+$/, "");
+  const wfOff = (name: string) =>
+    (facts.n8n.workflows ?? []).some((w) => w.name.endsWith("\u2014 " + name) && !w.active);
   const checkedAt = new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" });
   const writable = !demo && canWrite && dashboardLocked && sw.known;
 
@@ -170,13 +177,106 @@ export default async function IntegrationsPage({
         </ul>
       </Card>
 
+      <Card
+        title="Connect a channel"
+        note="Each one is checked with the provider before anything is saved. Passwords and tokens go to n8n or are stored out of reach of this page, and are never shown again."
+        className="mt-5"
+        rise={2}
+      >
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-3">
+          {CONNECTORS.map((c) => {
+            const st = integrationStatus(c.integration, facts);
+            const v = (connected ?? {})[c.key] as Record<string, unknown> | undefined;
+            const secret = (x: unknown) => (x && typeof x === "object" && (x as { set?: boolean }).set ? `set, ends in ${(x as { last4: string }).last4}` : "not set");
+            const summary: string[] = [];
+            if (v) {
+              if (c.key === "twilio") summary.push(`Texts from ${v.fromNumber}`, `Account ending ${v.accountSidLast4}`);
+              if (c.key === "meta") summary.push(`Page: ${v.pageName || v.pageId}`, `Page token ${secret(v.pageToken)}`, `App secret ${secret(v.appSecret)}`);
+              if (c.key === "imap") summary.push(`Reading ${v.user} on ${v.host}`);
+              if (c.key === "smtp") summary.push(`Sending as ${v.from}`);
+              if (c.key === "booking") summary.push(`Script secret ${secret(v.secret)}`);
+              if (v.by) summary.push(`Connected by ${v.by}`);
+            }
+            const copy: { label: string; value: string }[] = [];
+            if (c.key === "meta" && v) {
+              copy.push({ label: "Callback URL", value: n8nBase ? `${n8nBase}/webhook/ohm-meta` : "(n8n address not set on the website)" });
+              copy.push({ label: "Verify token", value: String(v.verifyToken ?? "") });
+            }
+            if (c.key === "google_lead_form" && v) {
+              copy.push({ label: "Webhook URL", value: n8nBase ? `${n8nBase}/webhook/ohm-google-lead-form` : "(n8n address not set on the website)" });
+              copy.push({ label: "Key", value: String(v.key ?? "") });
+            }
+            /* Offered only when the workflow being off is the LAST thing
+               missing. Switching the Sequence Worker on while Twilio is a
+               placeholder would only make every queued text fail. */
+            const onlyThis = (wf: string, key: string) => {
+              const m = integrationStatus(key, facts).missing;
+              return m.length > 0 && m.every((x) => x.what.includes(`The ${wf} workflow is switched off`));
+            };
+            /* The Sequence Worker sends EVERY follow-up, texts and emails
+               alike, so it is offered only when both are otherwise ready:
+               switching it on with Twilio still a placeholder would email
+               real people and fail every text. */
+            const followUpsReady = onlyThis("Sequence Worker", "texts") && onlyThis("Sequence Worker", "email_followups");
+            const activate =
+              (c.key === "twilio" || c.key === "smtp") && wfOff("Sequence Worker") && followUpsReady ? "Sequence Worker"
+              : c.key === "imap" && wfOff("Email Inbound") && onlyThis("Email Inbound", "email_replies") ? "Email Inbound"
+              : undefined;
+            return (
+              <ConnectCard
+                key={c.key}
+                connectorKey={c.key}
+                label={c.label}
+                what={c.what}
+                steps={c.steps}
+                fields={c.fields}
+                state={st.state}
+                missing={st.missing}
+                summary={summary}
+                copy={copy}
+                connected={Boolean(v)}
+                activate={activate}
+                canWrite={!demo && canWrite && dashboardLocked}
+              />
+            );
+          })}
+          <ConnectCard
+            connectorKey="outbound_calls"
+            label="Outbound calls"
+            what="The assistant ringing people back about their own enquiry."
+            steps={[]}
+            fields={[]}
+            state={integrationStatus("outbound_calls", facts).state}
+            missing={integrationStatus("outbound_calls", facts).missing}
+            summary={[]}
+            copy={[]}
+            connected={false}
+            canWrite={false}
+            notYet="Set up by us, not here yet: it needs a number imported into Retell and the outbound agent created, which have a cost to agree first."
+          />
+          <ConnectCard
+            connectorKey="whatsapp"
+            label="WhatsApp"
+            what="Answering WhatsApp messages."
+            steps={[]}
+            fields={[]}
+            state="not_connected"
+            missing={[]}
+            summary={[]}
+            copy={[]}
+            connected={false}
+            canWrite={false}
+            notYet="Nothing has been built for WhatsApp yet."
+          />
+        </div>
+      </Card>
+
       <p className="mt-5 text-[12.5px] text-muted">
         The number calls come from is set on{" "}
         <Link href={demo ? "/lead-dashboard/agent?demo=1" : "/lead-dashboard/agent"} className="font-semibold text-ink underline underline-offset-2">
           Calling agent
         </Link>
-        . Everything else listed as missing is supplied by OMH or set up in n8n, and is not something this page
-        can save.
+        .
       </p>
     </Shell>
   );

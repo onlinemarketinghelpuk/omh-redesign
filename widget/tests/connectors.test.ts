@@ -207,5 +207,20 @@ console.log("\n== 7. the Convex setting ==");
   ok("disconnect clears it", !("meta" in (await call(IN.getIntegrations, {})).config));
 }
 
+/* ===================================================================== */
+console.log("\n== 8. the browser boundary, in the code that crosses it ==");
+{
+  /* A page is a server component, so what it passes to a client component
+     is sent to the browser. It must only ever hold the redacted config. */
+  const page = readFileSync(new URL("../../app/lead-dashboard/integrations/page.tsx", import.meta.url), "utf8");
+  ok("the page reads the redacted config", page.includes("connectedForScreen()"));
+  ok("and never the full one", !/storedConfig\s*\(/.test(page));
+  const lib = readFileSync(new URL("../../lib/dashboard/connect.ts", import.meta.url), "utf8");
+  ok("connectedForScreen redacts before returning", /export async function connectedForScreen[\s\S]{0,200}redactConfig\(/.test(lib));
+  const actions = readFileSync(new URL("../../app/lead-dashboard/integrations/connect-actions.ts", import.meta.url), "utf8");
+  ok("the actions build their answer field by field, never by spreading the result", /function forScreen[\s\S]{0,400}ok: r\.ok,\s*message: r\.message/.test(actions) && !/\.\.\.r\b/.test(actions));
+  ok("every action checks the dashboard password", (actions.match(/assertCanWrite\(\)/g) || []).length === 3);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

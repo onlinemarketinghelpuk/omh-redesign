@@ -97,16 +97,70 @@ it created, and clears the Convex value.
 - [x] 4. `lib/dashboard/connect.ts`: the provider tests, n8n credential
       create and delete, the workflow patch, and a dry run that does
       everything except write.
-- [ ] 5. The cards on the Integrations screen, Ecomsixx's pattern: steps,
+- [x] 5. The cards on the Integrations screen, Ecomsixx's pattern: steps,
       fields, Connect, two-step Disconnect, the URLs to copy.
 - [x] 6. `build-workflows.py` reads the Convex values first.
-- [ ] 7. The site reads the booking script from Convex before its env.
-- [ ] 8. Prove it: the dry run against the live workflows finds every
+- [x] 7. The site reads the booking script from Convex before its env.
+- [x] 8. Prove it: the dry run against the live workflows finds every
       placeholder it should; the full suite; the screen at phone and desktop
       sizes.
 
+## Done, 16 November 2026: what ran and what it found
+
+Evidence from real runs. Nothing was written to n8n, Convex or any provider.
+
+- **connectors.test.ts, 149, red first** (the gate moved aside). The patch is
+  run on the real built workflows: it removes exactly its own placeholders,
+  keeps every other one and every node, never sends `active`, and
+  disconnect restores the original byte for byte. No rule changes the chat
+  or voice workflow. A Page token with a quote in it is refused. Redaction
+  holds, and the page, the library and the actions are held at source to
+  pass only redacted values to the browser. Teeth: disconnect without the
+  builder's credential name failed 4 (a real bug, found that way); an
+  unredacted Page token fails 3.
+- **Dry run against the live systems:** the Google key's slot found in the
+  live Lead Router and nothing written; made-up Twilio keys refused by Twilio;
+  a made-up Page token refused by Facebook ("Malformed access token"); bad
+  values refused before any provider was asked.
+- **In a real browser, signed in:** bad values give errors under each field
+  and ask no provider; made-up Twilio keys come back "Twilio did not accept
+  that Account SID and Auth Token"; the token box is emptied after every
+  attempt; secret fields are password inputs; no page errors; no horizontal
+  scroll at 390. Screenshots looked at.
+- **The builder:** with a stub answering like `/integrations/get`, every
+  connected value reached the built workflows and their placeholders were
+  gone. With Convex unreachable (today) it says so and uses `.env.local`.
+- **The booking form** behaves exactly as before while nothing is connected
+  (`not_configured`, 503).
+- Full suite 2378, every suite passed. Lint and source typecheck clean;
+  the Convex folder typechecks apart from one existing `process` type.
+
+### Found while building it
+
+- **Whole placeholder names inside gate code.** The integrations gate's own
+  table, once inlined into Chat and Voice, made those workflows look as if
+  they held every placeholder; a comment in the Google gate made the Lead
+  Router look as if it held its key twice, and the patch would have written
+  the webhook key into the comment. Both fixed; the suite now holds every
+  `gates/*.js` file to no whole placeholder name.
+- **Switching the Sequence Worker on is offered only when it is the last
+  thing missing for BOTH texts and email,** and asks first. It sends every
+  follow-up, so switching it on with Twilio still a placeholder would email
+  real people and fail every text. Today it is not offered, correctly.
+
+### Not built, and said so on their cards
+
+Outbound calls (a Retell number import and the outbound agent, with a cost
+to agree) and WhatsApp (nothing built).
+
 ## What needs Rafiul before it is live
 
-- The Convex push and the site deploy, as for 014.
+- The Convex push (`integrations` module and routes, with 014's) and the
+  site deploy. Until then Connect gets as far as the provider and n8n, then
+  reports "connected only in part: the record of it in the routing store".
+  Do not use Connect before the push.
+- The website needs `N8N_BASE_URL` and `N8N_API_KEY` where it is deployed.
+  Connect writes through that key, so it is an admin key on the web server:
+  the same decision as for 014, with more riding on it.
 - The first real Connect writes to live n8n. It should be done by the owner
   with OMH's real values, not by a test.

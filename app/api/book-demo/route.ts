@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { demoTimes } from "@/lib/book-demo";
 import { freeSlots } from "@/widget/gates/availability.js";
+import { bookingScript } from "@/lib/booking-script";
 
 /*
   Puts a demo request in OMH's Google Calendar at the slot the visitor picked in
@@ -16,11 +17,8 @@ import { freeSlots } from "@/widget/gates/availability.js";
 
 const DAY = 864e5;
 
-function script() {
-  const webhook = process.env.GOOGLE_BOOKING_WEBHOOK;
-  const secret = process.env.GOOGLE_BOOKING_SECRET;
-  return webhook && secret ? { webhook, secret } : null;
-}
+/* The dashboard's connected script first, then the environment (plan 015). */
+const script = bookingScript;
 
 /**
  * Which of the offered times are still free on a date.
@@ -62,7 +60,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ asked: true, times: [], reason: "outside the window" });
   }
 
-  const cfg = script();
+  const cfg = await script();
   /* Not configured is not the same as nothing free. The booking POST already
      refuses in this state, so saying so here keeps the form honest instead
      of showing six times that cannot be booked. */
@@ -100,8 +98,9 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const webhook = process.env.GOOGLE_BOOKING_WEBHOOK;
-  const secret = process.env.GOOGLE_BOOKING_SECRET;
+  const cfg = await script();
+  const webhook = cfg?.webhook;
+  const secret = cfg?.secret;
   if (!webhook || !secret) {
     console.error("GOOGLE_BOOKING_WEBHOOK/GOOGLE_BOOKING_SECRET are not set — demo not added to the calendar.");
     return NextResponse.json({ error: "Calendar is not configured." }, { status: 503 });

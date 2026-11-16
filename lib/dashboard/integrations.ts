@@ -22,6 +22,7 @@ import "server-only";
 
 import { workflowFacts } from "@/widget/gates/integrations.js";
 import { getAgent, getChannelSwitches } from "./routing";
+import { bookingScript } from "@/lib/booking-script";
 
 /** No single check may hold the page up for longer than this. */
 const CEILING_MS = 8_000;
@@ -135,12 +136,14 @@ function nextWeekday(now = new Date()): string {
 }
 
 async function booking(): Promise<Facts["booking"]> {
-  const webhook = process.env.GOOGLE_BOOKING_WEBHOOK;
-  const secret = process.env.GOOGLE_BOOKING_SECRET;
+  /* The same lookup the public booking form uses: what was connected from
+     the dashboard, then the environment. */
+  const cfg = await bookingScript();
   /* Not set is a definite answer, not an unknown one. */
-  if (!webhook || !secret) {
-    return { checked: true, ok: false, why: "GOOGLE_BOOKING_WEBHOOK and GOOGLE_BOOKING_SECRET are not set on the website" };
+  if (!cfg) {
+    return { checked: true, ok: false, why: "The booking calendar has not been connected" };
   }
+  const { webhook, secret } = cfg;
   try {
     /* The same read-only call /api/book-demo makes to offer free times. It
        reads the diary and writes nothing. */
