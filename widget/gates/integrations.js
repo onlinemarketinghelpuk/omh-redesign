@@ -44,17 +44,25 @@ var FROM = {
 };
 
 /* The placeholders the builder bakes in, and what each one means in words.
-   ERROR_WF_PENDING is not here: push.py resolves it by name at push time,
+   The error workflow's sentinel is not here: push.py resolves it by name at push time,
    so it never describes a missing integration. */
-var PLACEHOLDERS = {
-  TWILIO_CRED_PENDING: { what: "Twilio is not connected to n8n (TWILIO_CRED_ID)", from: FROM.twilio },
-  TWILIO_NUMBER_PENDING: { what: "There is no number to text from (TWILIO_FROM_NUMBER)", from: FROM.twilio },
-  GOOGLE_LEAD_FORM_KEY_PENDING: { what: "Google Ads lead forms have no key, so their leads are refused (GOOGLE_LEAD_FORM_KEY)", from: FROM.google },
-  META_PAGE_TOKEN_PENDING: { what: "There is no Facebook Page token, so nothing can be read or replied to (META_PAGE_TOKEN)", from: FROM.meta },
-  META_APP_SECRET_PENDING: { what: "There is no Meta app secret, so Meta's messages cannot be verified (META_APP_SECRET)", from: FROM.meta },
-  META_VERIFY_PENDING: { what: "Meta's webhook has not been verified (META_VERIFY_TOKEN)", from: FROM.meta },
-  IMAP_CRED_PENDING: { what: "There is no login for the reply mailbox (IMAP_CRED_ID)", from: FROM.mailbox },
-};
+/* The placeholder names are joined at run time, never written out whole.
+   This file is inlined into the chat and voice workflows, and a whole token
+   written here would then sit inside those workflows as text: the screen
+   would report placeholders in Chat that are only this table, and a patch
+   that fills them would rewrite this code. The suite asserts the inlined
+   text holds no whole token. */
+var PENDING = "_" + "PENDING";
+function token(name) { return name + PENDING; }
+
+var PLACEHOLDERS = {};
+PLACEHOLDERS[token("TWILIO_CRED")] = { what: "Twilio is not connected to n8n (TWILIO_CRED_ID)", from: FROM.twilio };
+PLACEHOLDERS[token("TWILIO_NUMBER")] = { what: "There is no number to text from (TWILIO_FROM_NUMBER)", from: FROM.twilio };
+PLACEHOLDERS[token("GOOGLE_LEAD_FORM_KEY")] = { what: "Google Ads lead forms have no key, so their leads are refused (GOOGLE_LEAD_FORM_KEY)", from: FROM.google };
+PLACEHOLDERS[token("META_PAGE_TOKEN")] = { what: "There is no Facebook Page token, so nothing can be read or replied to (META_PAGE_TOKEN)", from: FROM.meta };
+PLACEHOLDERS[token("META_APP_SECRET")] = { what: "There is no Meta app secret, so Meta's messages cannot be verified (META_APP_SECRET)", from: FROM.meta };
+PLACEHOLDERS[token("META_VERIFY")] = { what: "Meta's webhook has not been verified (META_VERIFY_TOKEN)", from: FROM.meta };
+PLACEHOLDERS[token("IMAP_CRED")] = { what: "There is no login for the reply mailbox (IMAP_CRED_ID)", from: FROM.mailbox };
 
 var INTEGRATIONS = [
   { key: "chat", group: "in", label: "Website chat", what: "The chat box on the website, answered by the assistant." },
@@ -108,7 +116,7 @@ var SITE_AGENT = "OMH Site Assistant";
 function pendingTokens(text) {
   var found = {}, re = /\b[A-Z][A-Z_]*_PENDING\b/g, m;
   var s = String(text == null ? "" : text);
-  while ((m = re.exec(s))) if (m[0] !== "ERROR_WF_PENDING") found[m[0]] = true;
+  while ((m = re.exec(s))) if (m[0] !== token("ERROR_WF")) found[m[0]] = true;
   return Object.keys(found).sort();
 }
 
@@ -257,21 +265,21 @@ function bookingAnswers(facts) {
 }
 
 var TWILIO = [
-  noPlaceholder("Twilio Inbound", "TWILIO_CRED_PENDING"), noPlaceholder("Twilio Inbound", "TWILIO_NUMBER_PENDING"),
-  noPlaceholder("Sequence Worker", "TWILIO_CRED_PENDING"), noPlaceholder("Sequence Worker", "TWILIO_NUMBER_PENDING"),
+  noPlaceholder("Twilio Inbound", token("TWILIO_CRED")), noPlaceholder("Twilio Inbound", token("TWILIO_NUMBER")),
+  noPlaceholder("Sequence Worker", token("TWILIO_CRED")), noPlaceholder("Sequence Worker", token("TWILIO_NUMBER")),
 ];
 
 var CHECKS = {
   chat: [workflowOn("Chat")],
   voice: [workflowOn("Voice"), retellAgent(SITE_AGENT)],
   lead_router: [siteSetting("OHM_LEAD_ROUTER_URL", "leadRouterUrl"), workflowOn("Lead Router")],
-  google_lead_forms: [workflowOn("Lead Router"), noPlaceholder("Lead Router", "GOOGLE_LEAD_FORM_KEY_PENDING")],
-  meta: [workflowOn("Meta"), noPlaceholder("Meta", "META_PAGE_TOKEN_PENDING"),
-         noPlaceholder("Meta", "META_APP_SECRET_PENDING"), noPlaceholder("Meta", "META_VERIFY_PENDING")],
+  google_lead_forms: [workflowOn("Lead Router"), noPlaceholder("Lead Router", token("GOOGLE_LEAD_FORM_KEY"))],
+  meta: [workflowOn("Meta"), noPlaceholder("Meta", token("META_PAGE_TOKEN")),
+         noPlaceholder("Meta", token("META_APP_SECRET")), noPlaceholder("Meta", token("META_VERIFY"))],
   texts: [workflowOn("Twilio Inbound"), followUpsRun].concat(TWILIO),
   outbound_calls: [followUpsRun].concat(TWILIO, [outboundNumber, outboundAgent]),
   email_followups: [followUpsRun, sender],
-  email_replies: [workflowOn("Email Inbound"), noPlaceholder("Email Inbound", "IMAP_CRED_PENDING")],
+  email_replies: [workflowOn("Email Inbound"), noPlaceholder("Email Inbound", token("IMAP_CRED"))],
   appointments: [bookingAnswers],
 };
 

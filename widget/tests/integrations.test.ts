@@ -276,6 +276,9 @@ console.log("\n== 12. which channel a chat turn belongs to, for its switch ==");
     const wf = JSON.parse(readFileSync(u, "utf8"));
     const n = wf.nodes.find((x: any) => x.name === node);
     ok(`${file}: ${node} inlines integrations.js byte for byte`, Boolean(n) && n.parameters.jsCode.includes(gate));
+    /* Found 2026-11-16: the gate's own placeholder table, inlined here, made
+       Chat and Voice look as if they held every placeholder. */
+    eq(`${file}: and the inlined gate holds no whole placeholder token`, pendingTokens(n?.parameters?.jsCode ?? ""), []);
     const first = wf.connections[from]?.main?.[0]?.map((c: any) => c.node) ?? [];
     ok(`${file}: the switch is read before anything answers`, first.includes("Read The Switches"), first);
   }
