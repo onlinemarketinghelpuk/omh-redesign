@@ -294,3 +294,13 @@ Distinct heading and padding sizes went up by 1-2 at most widths: the React page
 voice pages still use their own sizes (32.2px `h2`, 40px `h1` on phones). That closes in Phase 4. Still open for
 later phases: the voice `h1`s (6-7 lines at 320px), the hero stats labels wrapping at tablet widths (14 service
 pages, Phase 3 hero), and voice-only tap targets (Phase 4).
+
+### Phase 2a, 16 Nov 2026: tokens in the existing shared components
+
+- Rhythm tokens `--gap-label`, `--gap-header`, `--gap-stack`, `--gap-grid` as spacing utilities (`mb-label`,
+  `mt-header`, `mb-stack`, `gap-grid`), each equal to the old desktop value at 1280px.
+- `ServiceBand` label gap uses `mb-label`. The four rows with a narrow 4/12 sticky side column
+  (`ServiceFaqSection`, `ServiceProcessTimeline`, `RelatedServices`, `Testimonials`) stack until 1152px (`wide`)
+  instead of 1024px. `ServiceReasonGrid` is two-up from 768px. Related-service cards are two-up on tablets.
+- Audit against Phase 1: no page scrolls sideways at any width (was 1 page), squeezed text at 1024px 99 -> 53,
+  stretched one-column grids at 768-912px -8, small phone tap targets 234 -> 147. Nothing worse.

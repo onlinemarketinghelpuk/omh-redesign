@@ -45,9 +45,9 @@ export function ServiceFaqSection({
   return (
     <ServiceBand label={label} tone={tone} accent={bandAccent}>
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-12 gap-y-8 max-lg:block">
-          <div className="col-span-4 max-lg:mb-8">
-            <div className={sticky ? "lg:sticky lg:top-24" : undefined}>
+        <div className="grid grid-cols-12 gap-x-12 gap-y-8 max-wide:block">
+          <div className="col-span-4 max-wide:mb-stack">
+            <div className={sticky ? "wide:sticky wide:top-24" : undefined}>
               <ServiceSectionIntro
                 size={headingSize}
                 title={title}

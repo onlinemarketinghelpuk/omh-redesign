@@ -40,6 +40,53 @@
   --section-lg: clamp(64px, 37.335px + 8.3329vw, 144px);
   --hero-pt: clamp(48px, 34px + 2.3vw, 80px);
   --hero-pb: clamp(56px, 38px + 2.9vw, 88px);
+
+  /* In-section rhythm, as spacing utilities (mb-label, mt-header, mb-stack). Each equals today's desktop value
+     at 1280px and tightens on phones. label: band label to content (was mb-11, 44px). header: section header
+     to its content (mt-12, 48px). stack: between two columns once a row has stacked (mb-10, 40px). */
+  --gap-label: clamp(24px, 17.333px + 2.0833vw, 44px);
+  --gap-header: clamp(28px, 21.333px + 2.0833vw, 48px);
+  --gap-stack: clamp(28px, 24px + 1.25vw, 40px);
+  --gap-grid: clamp(16px, 14.667px + 0.4167vw, 20px); /* card grids (was gap-5, 20px) */
+}
+
+@theme inline {
+  --spacing-label: var(--gap-label);
+  --spacing-header: var(--gap-header);
+  --spacing-stack: var(--gap-stack);
+  --spacing-grid: var(--gap-grid);
+}
+
+/* Two-column row used by <Split> (components/ui/Split.tsx). Stacked: one column, rows apart by the stack gap.
+   Side by side (`md:split-on`, `lg:split-on`, `wide:split-on`): two tracks sized exactly like col-span-A and
+   col-span-B of a 12-column grid with --split-gap gutters, so a migrated row lands on the same pixels as before;
+   when A + B < 12 the spare columns open up between them (the old col-start-N). */
+@utility split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--gap-stack);
+}
+@utility split-on {
+  --split-c: calc((100% - 11 * var(--split-gap, 3rem)) / 12);
+  grid-template-columns:
+    calc(var(--split-c) * var(--split-a) + (var(--split-a) - 1) * var(--split-gap, 3rem))
+    calc(var(--split-c) * var(--split-b) + (var(--split-b) - 1) * var(--split-gap, 3rem));
+  justify-content: space-between;
+  column-gap: 0;
+}
+
+/* The small-caps label (eyebrows, kickers, stat labels). One letter spacing; tighter on phones so a long label
+   keeps to two lines. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-wrap: balance;
+  @media (width < 40rem) {
+    letter-spacing: 0.1em;
+  }
 }
 
 /* `wide` (1152px) sits between lg and xl: rows with a narrow 4/12 column go side by side from here. */
@@ -138,6 +185,9 @@
   --text-bsm--line-height: 1.5;
   --text-label: 1.125rem;
   --text-label--line-height: 1.43;
+  /* Package and plan prices (was text-[32px] in tables and text-[34px] on cards). */
+  --text-price: 2.125rem;
+  --text-price--line-height: 1;
 
   /* Radius (brief §17) */
   --radius-button: 10px;

@@ -32,9 +32,9 @@ export function ServiceProcessTimeline({
   return (
     <ServiceBand label={label} tone={tone} accent={bandAccent}>
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-10 gap-y-10 max-lg:block">
-          <div className="col-span-4 max-lg:mb-10">
-            <div className="lg:sticky lg:top-24">
+        <div className="grid grid-cols-12 gap-x-10 gap-y-10 max-wide:block">
+          <div className="col-span-4 max-wide:mb-stack">
+            <div className="wide:sticky wide:top-24">
               {intro ??
                 (title ? (
                   <ServiceSectionIntro

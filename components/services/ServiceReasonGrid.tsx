@@ -26,7 +26,7 @@ export function ServiceReasonGrid({
     <ServiceBand label={label} tone={tone} accent={bandAccent}>
       <Reveal>
         <ServiceSectionIntro title={title} accent={titleAccent} body={body} />
-        <div className="mt-12 grid grid-cols-2 gap-x-12 max-lg:grid-cols-1">
+        <div className="mt-header grid grid-cols-2 gap-x-12 max-md:grid-cols-1">
           {reasons.map(([reasonTitle, reasonBody]) => (
             <article
               key={reasonTitle}

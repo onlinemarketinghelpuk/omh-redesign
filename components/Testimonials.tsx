@@ -73,11 +73,11 @@ export function ServiceTestimonials({
           aria-label={`${label}: ${count} testimonials`}
           tabIndex={0}
           onKeyDown={onKeyDown}
-          className="grid grid-cols-12 gap-x-12 gap-y-10 outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 max-lg:block"
+          className="grid grid-cols-12 gap-x-12 gap-y-10 outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 max-wide:block"
         >
           {/* Band label straight into the heading, like every other band: a second eyebrow here repeated it. Site
               accent only (client, 15 Nov 2026): the blue eyebrow, quote mark and dot were pre-monochrome leftovers. */}
-          <div className="col-span-4 max-lg:mb-10">
+          <div className="col-span-4 max-wide:mb-stack">
             <h2 id={headingId} className="font-sans text-h2 font-semibold">{title}</h2>
             <p className={`mt-5 text-body leading-relaxed ${secondary}`}>{body}</p>
             <div className={`mt-8 flex items-center gap-3 border-t pt-5 ${rule}`}>

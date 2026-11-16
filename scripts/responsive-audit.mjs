@@ -8,8 +8,9 @@
 //       --strict fails when a final target in TARGETS is missed (the end state in docs/responsive-plan.md).
 //   node scripts/responsive-audit.mjs rects [--base URL] [--pages ...] [--widths 1280,1366,1440,1920] --out DIR
 //       Saves the position and size of every element in header/main/footer plus a hash of the page text.
-//   node scripts/responsive-audit.mjs diff-rects BEFORE_DIR AFTER_DIR [--tol 0.5]
+//   node scripts/responsive-audit.mjs diff-rects BEFORE_DIR AFTER_DIR [--tol 0.5] [--anchors]
 //       The desktop gate: lists elements that moved or resized more than --tol px, and pages whose text changed.
+//       --anchors compares text and images by content instead of DOM path (use it when wrappers changed).
 //
 // Pages default to every code-built page in /sitemap.xml plus a few templates the sitemap does not list.
 import { spawn } from "node:child_process";
@@ -207,8 +208,22 @@ function rects() {
     const r = el.getBoundingClientRect(); if (!r.width && !r.height) continue;
     out[key(el)] = [r.left, r.top + scrollY, r.width, r.height].map((v) => Math.round(v * 2) / 2);
   }
+  // Anchors: every element with its own text, and every image, keyed by what it shows rather than where it sits
+  // in the DOM. A refactor that adds or removes wrapper elements keeps these keys, so they are the desktop gate
+  // for migrations (diff-rects --anchors).
+  const anchors = {}, seen = {};
+  for (const el of d.querySelectorAll("body > header *, main *, footer *")) {
+    if (el.ownerSVGElement || (el.closest("details:not([open])") && !el.closest("summary"))) continue;
+    let own = ""; for (const n of el.childNodes) if (n.nodeType === 3) own += n.textContent;
+    own = own.replace(/\s+/g, " ").trim();
+    const what = el.tagName === "IMG" ? "img|" + (el.getAttribute("src") || "").split("?")[0].split("/").pop() : own ? own.slice(0, 60) : null;
+    if (!what) continue;
+    const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue;
+    const k = `${what}#${(seen[what] = (seen[what] || 0) + 1)}`;
+    anchors[k] = [r.left, r.top + scrollY, r.width, r.height].map((v) => Math.round(v * 2) / 2);
+  }
   const text = (d.querySelector("main")?.innerText || "").replace(/\s+/g, " ").trim();
-  return { rects: out, text };
+  return { rects: out, anchors, text };
 }
 
 // ------------------------------------------------------------------ main
@@ -260,7 +275,7 @@ if (mode === "rects") {
       for (const w of widths) {
         await c.open(BASE + p, w);
         const r = await c.evaluate(`(${rects.toString()})()`);
-        writeFileSync(join(out, `${slug(p)}@${w}.json`), JSON.stringify({ page: p, w, textHash: createHash("sha1").update(r.text).digest("hex"), textLength: r.text.length, rects: r.rects }));
+        writeFileSync(join(out, `${slug(p)}@${w}.json`), JSON.stringify({ page: p, w, textHash: createHash("sha1").update(r.text).digest("hex"), textLength: r.text.length, rects: r.rects, anchors: r.anchors }));
       }
       process.stdout.write(`${i + 1}/${pages.length} ${p}\n`);
     } catch (e) { process.stdout.write(`${i + 1}/${pages.length} ${p} FAILED ${e.message}\n`); }
@@ -278,9 +293,13 @@ if (mode === "diff-rects") {
     const A = JSON.parse(readFileSync(join(a, f), "utf8")), B = JSON.parse(readFileSync(join(b, f), "utf8"));
     if (A.textHash !== B.textHash) { textChanged++; console.log(`TEXT CHANGED ${A.page}@${A.w} (${A.textLength} -> ${B.textLength} chars)`); }
     const diffs = [];
-    const hiddenDetails = (k) => /details:\d+>(?!summary)/.test(k); // closed accordion bodies (dumps made before this rule)
-    for (const [k, ra] of Object.entries(A.rects)) { if (hiddenDetails(k)) continue; const rb = B.rects[k]; if (!rb) { diffs.push(`gone ${k}`); continue; } if (ra.some((v, i) => Math.abs(v - rb[i]) > tol)) diffs.push(`${k} [${ra}] -> [${rb}]`); }
-    for (const k of Object.keys(B.rects)) if (!A.rects[k] && !hiddenDetails(k)) diffs.push(`new ${k}`);
+    // --anchors compares what is shown (text and images) wherever it sits in the DOM; the default compares every
+    // element by DOM path, which is stricter but breaks as soon as a refactor adds or removes a wrapper.
+    const field = has("anchors") ? "anchors" : "rects";
+    if (!A[field] || !B[field]) { console.log(`no ${field} in ${f}`); missing++; continue; }
+    const hiddenDetails = (k) => field === "rects" && /details(#[^:>]*)?:\d+>(?!summary)/.test(k); // closed accordion bodies (old dumps)
+    for (const [k, ra] of Object.entries(A[field])) { if (hiddenDetails(k)) continue; const rb = B[field][k]; if (!rb) { diffs.push(`gone ${k}`); continue; } if (ra.some((v, i) => Math.abs(v - rb[i]) > tol)) diffs.push(`${k} [${ra}] -> [${rb}]`); }
+    for (const k of Object.keys(B[field])) if (!A[field][k] && !hiddenDetails(k)) diffs.push(`new ${k}`);
     if (diffs.length) { moved++; console.log(`${A.page}@${A.w}: ${diffs.length} changed`); diffs.slice(0, 5).forEach((x) => console.log("   " + x.slice(-160))); }
   }
   console.log(`pages-widths with layout changes: ${moved}; text changes: ${textChanged}; missing: ${missing}`);

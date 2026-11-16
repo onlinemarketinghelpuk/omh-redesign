@@ -27,8 +27,8 @@ export function RelatedServices({
     <section className="border-y border-line bg-surface" aria-labelledby={`${eventPrefix}-related-title`}>
       <div className="container-omh section-md">
         <Reveal>
-          <div className="grid grid-cols-12 gap-x-10 gap-y-8 max-lg:block">
-            <div className="col-span-4 max-lg:mb-10">
+          <div className="grid grid-cols-12 gap-x-10 gap-y-8 max-wide:block">
+            <div className="col-span-4 max-wide:mb-stack">
               <p className="flex items-center gap-2.5 text-[14px] font-semibold uppercase tracking-[0.16em] text-muted before:h-0.5 before:w-5 before:bg-amber before:content-['']">
                 {label}
               </p>
@@ -37,7 +37,9 @@ export function RelatedServices({
               </h2>
               {body && <p className="mt-5 text-body leading-relaxed text-ink/70">{body}</p>}
             </div>
-            <div className={`col-span-8 grid gap-5 max-md:grid-cols-1 ${links.length === 4 ? "grid-cols-2" : "grid-cols-3"}`}>
+            {/* Phones one column, tablets two (an odd last card spans both), three from 1024px. At 820px three
+                columns left 183px of text per card. */}
+            <div className={`col-span-8 grid gap-5 max-sm:grid-cols-1 sm:max-lg:[&>:last-child:nth-child(odd)]:col-span-2 ${links.length === 4 ? "grid-cols-2" : "grid-cols-3 max-lg:grid-cols-2"}`}>
               {links.map((link, index) => (
                 <Link
                   key={link.href}

@@ -62,7 +62,7 @@ export function ServiceBand({
   return (
     <section id={id} className={[toneClass[tone], className].filter(Boolean).join(" ") || undefined}>
       <div className="container-omh section-md">
-        <div className={labelStyle === "none" ? undefined : "mb-11"}>
+        <div className={labelStyle === "none" ? undefined : "mb-label"}>
           {labelStyle === "rule" && (
             <div className={`flex items-center gap-4 ${caps}`}>
               <span aria-hidden className={`h-0.5 w-7 shrink-0 ${accent}`} />
