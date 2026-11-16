@@ -138,13 +138,32 @@ never appears in the JSON because the builder leaves the field out.
   `lib/dashboard/screens.ts`, so the entry is there, with its icon in
   `NAV_ICON`.
 
-### The open question below, decided for the run
+### The open question below: answered by Rafiul, 16 November 2026
 
-The switch stops **new follow-ups only**. The assistant still answers people
-on a switched-off channel, and anyone part way through a sequence finishes
-it. The plan already defines off as "no new enrolments", and an unanswered
-message is worse than an unchased one. Rafiul can reverse this; it would be
-a change to the chat and inbound workflows, not to `enrol`.
+"Switch off mean everything off." The run had decided "follow-ups only";
+that is reversed. Off now means everything automated on that channel stops:
+
+| | Where it is enforced |
+|---|---|
+| No new enrolments | `enrol` refuses with `channel_off` (unchanged) |
+| People part way through are **paused**, not stopped, and resume when the channel is switched back on | `setChannel` pauses `active` sequences with `stopReason: "channel_off"`, and on resumes only those; a sequence paused for another reason stays paused |
+| The assistant does not answer a text reply; a person does | `brain.decide` passes the switch to `decideReply`, which hands over |
+| The assistant does not answer website chat or a Facebook or Instagram DM; the message goes to Needs a person with a one-line holding reply | 01-chat reads the switches before `Load Profile` (`chatChannel()` in `gates/integrations.js`, inlined) |
+| Website voice gives no call token, so the widget says the voice line is unavailable | 02-voice reads the switches before creating the web call |
+
+Two choices made while building it, both reversible: a message on a switched
+off channel is handed to a person rather than dropped, and gets one holding
+reply ("Thanks for your message. I have passed it to the team, and a person
+will reply to you here."), so the visitor is not left looking at nothing. If
+the switches cannot be read, chat and voice answer as before, because a
+Convex hiccup must not silence the website.
+
+Evidence: engine.test 221 (pause, no claim while paused, resume, overdue step
+next run, a manual pause left alone, `decide` hands over; teeth: decide
+ignoring the switch fails 3). brain.test 59. integrations.test 79 (chat
+channel per caller, the holding reply in the guide's voice, both workflows
+inline the gate byte for byte and read the switch first). The new Code nodes
+run through `new Function` for each case. Full suite 2227, every suite passed.
 
 ### Evidence
 

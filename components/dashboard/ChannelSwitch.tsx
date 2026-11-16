@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useTransition } from "react";
 import { setChannelAction } from "@/app/lead-dashboard/integrations/actions";
 import { attempt } from "@/lib/dashboard/attempt";
@@ -10,12 +9,13 @@ import { IconAlert, IconCheck } from "./icons";
    One channel's switch.
 
    Same asymmetry as the kill switch on Settings, for the same reason.
-   Switching OFF stops new follow-ups starting: one press, because the only
-   cost of a mistake is a few enquiries waiting for a person. Switching ON
-   starts following people up again, so it asks first.
+   Switching OFF stops everything automated on the channel: one press,
+   because the cost of a mistake is a few messages waiting for a person, and
+   it is undone by switching back on. Switching ON starts answering and
+   following people up again, so it asks first.
 
-   It always says what happened, including the part that is easy to miss:
-   people already part way through a follow-up are NOT stopped by this.
+   It always says what happened, in numbers: how many people were paused, or
+   carried on.
    ========================================================================= */
 
 export function ChannelSwitch({
@@ -31,7 +31,7 @@ export function ChannelSwitch({
 }) {
   const [on, setOn] = useState(initial);
   const [confirming, setConfirming] = useState(false);
-  const [note, setNote] = useState<{ ok: boolean; text: string; running?: number } | null>(null);
+  const [note, setNote] = useState<{ ok: boolean; text: string } | null>(null);
   const [pending, start] = useTransition();
 
   function apply(next: boolean) {
@@ -42,7 +42,7 @@ export function ChannelSwitch({
          `on`: the switch then keeps showing what it showed, which is the
          last state we know to be true. */
       if (r.ok && "on" in r && typeof r.on === "boolean") setOn(r.on);
-      setNote({ ok: r.ok, text: r.message ?? "", running: "running" in r ? r.running : undefined });
+      setNote({ ok: r.ok, text: r.message ?? "" });
     });
   }
 
@@ -66,7 +66,7 @@ export function ChannelSwitch({
         </button>
       ) : confirming ? (
         <div className="flex flex-wrap items-center gap-2 sm:justify-end">
-          <span className="text-[12.5px] text-ink">Follow up new {label} enquiries again?</span>
+          <span className="text-[12.5px] text-ink">Answer and follow up {label} again?</span>
           <button
             type="button"
             onClick={() => apply(true)}
@@ -104,17 +104,7 @@ export function ChannelSwitch({
           ].join(" ")}
         >
           {note.ok ? <IconCheck className="mt-0.5 h-3.5 w-3.5 shrink-0" /> : <IconAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />}
-          <span>
-            {note.text}
-            {note.ok && !on && (note.running ?? 0) > 0 ? (
-              <>
-                {" "}
-                <Link href="/lead-dashboard/sequences" className="font-semibold underline underline-offset-2">
-                  Open Follow-ups
-                </Link>
-              </>
-            ) : null}
-          </span>
+          <span>{note.text}</span>
         </p>
       ) : null}
     </div>

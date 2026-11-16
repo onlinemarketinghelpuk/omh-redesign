@@ -356,6 +356,34 @@ function channelStatus(channel, facts, switches) {
   return { channel: c, on: on, state: state, integrations: needs, missing: missing, unchecked: unchecked };
 }
 
+/* ------------------------------------------------- the switch, in n8n
+
+   The chat workflow inlines this file (gate_inline) to obey the switch, so
+   these run inside a Code node as well as in the tests. */
+
+/**
+ * Which channel a call to the chat webhook belongs to, for its switch.
+ *
+ * Three callers share that webhook. The website widget (website_chat); the
+ * Meta workflow for a Facebook or Instagram DM, which sends a session id of
+ * "meta:<psid>" and the surface as page_url; and Twilio Inbound for a text
+ * reply, page_url "sms", which the reply brain has ALREADY judged against
+ * the switch, so it returns null and is not judged twice.
+ */
+function chatChannel(body) {
+  var b = body || {};
+  var sid = String(b.session_id || "");
+  var page = String(b.page_url || "");
+  if (page === "sms") return null;
+  if (sid.indexOf("meta:") === 0) return page === "instagram" ? "instagram" : "facebook";
+  return "website_chat";
+}
+
+/** What somebody reads when they write on a switched-off channel. */
+function switchedOffReply() {
+  return "Thanks for your message. I have passed it to the team, and a person will reply to you here.";
+}
+
 var STATE_LABELS = {
   connected: "Connected",
   partial: "Partly connected",
@@ -365,4 +393,4 @@ var STATE_LABELS = {
   not_built: "Not built yet",
 };
 
-export { INTEGRATIONS, CHANNEL_NEEDS, MERGED, PLACEHOLDERS, STAND_IN_SENDER, STATE_LABELS, SITE_AGENT, pendingTokens, workflowFacts, integrationStatus, channelStatus, isOn };
+export { INTEGRATIONS, CHANNEL_NEEDS, MERGED, PLACEHOLDERS, STAND_IN_SENDER, STATE_LABELS, SITE_AGENT, pendingTokens, workflowFacts, integrationStatus, channelStatus, isOn, chatChannel, switchedOffReply };

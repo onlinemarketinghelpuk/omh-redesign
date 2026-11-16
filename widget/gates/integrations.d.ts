@@ -44,3 +44,6 @@ export declare function workflowFacts(raw: unknown): WorkflowFacts;
 export declare function integrationStatus(key: string, facts: unknown): IntegrationStatus;
 export declare function channelStatus(channel: string, facts: unknown, switches: Record<string, boolean> | null | undefined): ChannelStatus;
 export declare function isOn(switches: Record<string, boolean> | null | undefined, channel: string): boolean;
+
+export declare function chatChannel(body: { session_id?: string; page_url?: string } | null | undefined): string | null;
+export declare function switchedOffReply(): string;

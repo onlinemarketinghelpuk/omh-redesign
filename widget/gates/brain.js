@@ -105,6 +105,11 @@ function decideReply(input) {
 
   if (intent === "opt_out") return out(false, false, "An opt-out. It is handled by suppression, which stops everything; nothing answers it here.");
   if (brain.enabled === false) return out(false, true, "Automated answering is off, so every reply goes to a person.");
+  /* The owner's per-channel switch (plan 014): off means everything
+     automated on that channel stops, the assistant included. The reply is
+     handed to a person rather than dropped. Only an explicit false counts,
+     so a caller that does not know the switch changes nothing. */
+  if (x.channelOn === false) return out(false, true, "This channel is switched off on the dashboard, so a person answers.");
 
   if (policy === "owner_only") return out(false, true, "This channel is set to: you answer.");
   if (policy === "assistant_until_reply") return out(false, true, "They replied, and this channel hands a reply to a person.");

@@ -36,6 +36,7 @@ import { agentSettings } from "./brain";
 import { inCallingHours, nextCallingAt } from "../gates/calling-hours";
 import { callBrief } from "../gates/agent.js";
 import { canonicalTrigger, TRIGGER_ORDER } from "../gates/flows.js";
+import { CHANNEL_SWITCH, CHANNEL_OFF, channelSwitchRow, channelSwitchMap, enrolmentChannel } from "./channelSwitch";
 import { isOn } from "../gates/integrations.js";
 
 const LEASE_MS = 120 * 1000;
@@ -75,35 +76,15 @@ async function outboundOn(ctx: QueryCtx): Promise<boolean> {
 
 /* ------------------------------------------------ a switch per channel
 
-   docs/engineering/014-integrations-and-a-switch-per-channel/plan.md.
+   docs/engineering/014-integrations-and-a-switch-per-channel/plan.md, with
+   Rafiul's ruling of 16 November 2026: OFF MEANS EVERYTHING ON THAT CHANNEL
+   STOPS. No new enrolments (enrol, below); people part way through a
+   sequence are paused, and resumed when the channel is switched back on
+   (setChannel, below); and the assistant does not answer there, a person
+   does (brain.ts decide, and the chat and voice workflows).
 
-   Stored as { [channel]: false } under settings key "channelSwitch". A
-   channel absent from it is ON, so a fresh deployment and every channel
-   added later start on, which is what they did before this existed.
-
-   OFF MEANS NO NEW ENROLMENTS, nothing more. A sequence already running for
-   that channel carries on: abandoning somebody halfway through a
-   conversation is worse than finishing it. The assistant still answers on
-   that channel too. Stopping the people already on a sequence is a
-   separate, deliberate action on the dashboard. */
-
-const CHANNEL_SWITCH = "channelSwitch";
-
-async function channelSwitchMap(ctx: QueryCtx): Promise<Record<string, boolean>> {
-  const row = await setting(ctx, CHANNEL_SWITCH);
-  const v = (row?.value ?? {}) as Record<string, unknown>;
-  const out: Record<string, boolean> = {};
-  for (const [k, on] of Object.entries(v)) if (on === false) out[k] = false;
-  return out;
-}
-
-/** The channel an enrolment counts under, for its switch. */
-function enrolmentChannel(lead: Doc<"leads">, route: string): string {
-  /* A reactivation campaign is the reactivation channel, whatever page the
-     person first came in on two years ago. */
-  if (route === "F") return "reactivation";
-  return canonicalTrigger(lead.sourceChannel);
-}
+   The reading lives in ./channelSwitch.ts, shared with brain.ts without an
+   import cycle. */
 
 /** Is this phone or email on the do-not-contact list? */
 async function suppressed(ctx: QueryCtx, key?: string): Promise<boolean> {
@@ -1074,7 +1055,7 @@ export const setOutbound = mutation({
 export const channelSwitches = query({
   args: {},
   handler: async (ctx) => {
-    const row = await setting(ctx, CHANNEL_SWITCH);
+    const row = await channelSwitchRow(ctx);
     const switches = await channelSwitchMap(ctx);
     return {
       switches,
@@ -1088,9 +1069,10 @@ export const channelSwitches = query({
 /**
  * Switch one channel on or off.
  *
- * Returns how many people are part way through a sequence on that channel,
- * because they are not stopped by this, and the screen says so: "off" that
- * quietly carried on texting twelve people would be a lie by omission.
+ * Off pauses everybody part way through a sequence on that channel; on
+ * resumes exactly those, and no others (a sequence paused for any other
+ * reason stays paused). The counts come back so the screen can say what
+ * happened in numbers rather than in general.
  */
 export const setChannel = mutation({
   args: { channel: v.string(), on: v.boolean(), by: v.optional(v.string()) },
@@ -1098,7 +1080,7 @@ export const setChannel = mutation({
     const c = canonicalTrigger(channel);
     if (!(TRIGGER_ORDER as string[]).includes(c)) return { ok: false as const, why: "unknown_channel" };
 
-    const row = await setting(ctx, CHANNEL_SWITCH);
+    const row = await channelSwitchRow(ctx);
     const next = { ...(await channelSwitchMap(ctx)) };
     if (on) delete next[c];
     else next[c] = false;
@@ -1106,18 +1088,33 @@ export const setChannel = mutation({
     if (row) await ctx.db.patch(row._id, { value: next, updatedAt: at, updatedBy: by });
     else await ctx.db.insert("settings", { key: CHANNEL_SWITCH, value: next, updatedAt: at, updatedBy: by });
 
-    let running = 0;
-    for (const status of ["active", "paused"]) {
-      const rows = await ctx.db
-        .query("sequences")
-        .withIndex("by_due", (q) => q.eq("status", status))
-        .collect();
-      for (const s of rows) {
-        const lead = await ctx.db.get(s.leadId);
-        if (lead && enrolmentChannel(lead, s.route) === c) running++;
+    let paused = 0;
+    let resumed = 0;
+    const from = on ? "paused" : "active";
+    const rows = await ctx.db
+      .query("sequences")
+      .withIndex("by_due", (q) => q.eq("status", from))
+      .collect();
+    for (const s of rows) {
+      if (on && s.stopReason !== CHANNEL_OFF) continue;
+      const lead = await ctx.db.get(s.leadId);
+      if (!lead || enrolmentChannel(lead, s.route) !== c) continue;
+      if (on) {
+        /* nextDueAt was kept, so an overdue step goes on the next run, as
+           it does when the kill switch is switched back on. */
+        await ctx.db.patch(s._id, { status: "active", stopReason: undefined });
+        resumed++;
+      } else {
+        await ctx.db.patch(s._id, {
+          status: "paused",
+          stopReason: CHANNEL_OFF,
+          leaseToken: undefined,
+          leaseUntil: undefined,
+        });
+        paused++;
       }
     }
-    return { ok: true as const, channel: c, on, running, at };
+    return { ok: true as const, channel: c, on, paused, resumed, at };
   },
 });
 

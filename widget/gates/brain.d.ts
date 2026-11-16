@@ -13,7 +13,7 @@ export declare function isOptOut(text: unknown): boolean;
 export declare function quickIntent(text: unknown): Intent;
 export declare function policyFor(brain: Brain | null | undefined, channel: string): Policy;
 export declare function policyLabel(p: string): string;
-export declare function decideReply(input: { brain?: Brain | null; channel: string; text: string }): Decision;
+export declare function decideReply(input: { brain?: Brain | null; channel: string; text: string; channelOn?: boolean }): Decision;
 export declare function validateBrain(v: unknown): { ok: boolean; errors: string[] };
 export declare const DEFAULT_SALES: Sales;
 export declare function salesBrief(input: { brain?: Brain | null; channel: string; lead?: { name?: string; service?: string } }): string;

@@ -122,7 +122,7 @@ export default async function IntegrationsPage({
 
       <Card
         title="Where leads come in"
-        note="Switching a channel off stops new follow-ups starting on it. People already part way through one finish it, and the assistant still answers anyone who writes in."
+        note="Switching a channel off stops everything automated on it. The assistant stops answering there and anything new goes to Needs a person; anyone part way through a follow-up is paused, and carries on when you switch it back on."
         rise={0}
       >
         <ul className="divide-y divide-line">

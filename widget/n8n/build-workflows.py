@@ -270,9 +270,58 @@ def build_chat():
                     "={{ JSON.stringify({ sessionId: $json.body.session_id, role: 'user', text: $json.body.message, channel: 'chat', pageUrl: $json.body.page_url }) }}",
                     -600, -160),
 
+        # By name, not $json: the switch check now sits between the webhook
+        # and this node, so $json here is the switch's answer.
         convex_http("load_profile", "Load Profile", "/getProfile",
-                    "={{ JSON.stringify({ sessionId: $json.body.session_id }) }}",
+                    "={{ JSON.stringify({ sessionId: $('Chat Webhook').item.json.body.session_id }) }}",
                     -600, 0),
+
+        # ---- the per-channel switch (plan 014) ---------------------------
+        # Off means everything on that channel stops, the assistant
+        # included: the message goes to a person instead. Website chat, and
+        # Facebook and Instagram DMs (which the Meta workflow sends here).
+        # A text reply (page_url "sms") was already judged by the Brain.
+        # If the switches cannot be read the chat answers as it always has:
+        # a Convex hiccup must not silence the website.
+        convex_http("chan_sw", "Read The Switches", "/settings/channels",
+                    "={{ JSON.stringify({}) }}", -1040, 160),
+
+        {"parameters": {"jsCode": (
+            gate_inline("integrations.js") + "\n"
+            "const body = $('Chat Webhook').first().json.body || {};\n"
+            "const ch = chatChannel(body);\n"
+            "const sw = ($input.first().json || {}).switches;\n"
+            "const on = ch === null || !sw || isOn(sw, ch);\n"
+            "return [{ json: { on, channel: ch, reply: switchedOffReply() } }];"
+        )},
+         "id": "chan_on", "name": "Is The Channel On",
+         "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-820, 160]},
+
+        {"parameters": {"conditions": {"options": {"caseSensitive": True, "version": 2},
+                                       "conditions": [{"leftValue": "={{ $json.on }}",
+                                                       "rightValue": True,
+                                                       "operator": {"type": "boolean", "operation": "true", "singleValue": True}}],
+                                       "combinator": "and"},
+                        "options": {}},
+         "id": "chan_if", "name": "Channel On",
+         "type": "n8n-nodes-base.if", "typeVersion": 2.2, "position": [-820, 0]},
+
+        convex_http("chan_handover", "Hand It To A Person", "/handover/request",
+                    "={{ JSON.stringify({ sessionId: $('Chat Webhook').item.json.body.session_id, "
+                    "reason: 'This channel is switched off on the dashboard, so a person answers.', "
+                    "question: $('Chat Webhook').item.json.body.message, "
+                    "channel: $('Is The Channel On').item.json.channel }) }}",
+                    -600, 320),
+
+        convex_http("chan_log", "Log The Holding Reply", "/logMessage",
+                    "={{ JSON.stringify({ sessionId: $('Chat Webhook').item.json.body.session_id, role: 'assistant', text: $('Is The Channel On').item.json.reply, channel: 'chat' }) }}",
+                    -380, 440),
+
+        {"parameters": {"respondWith": "json",
+                        "responseBody": "={{ JSON.stringify({ reply: $('Is The Channel On').item.json.reply, session_id: $('Chat Webhook').item.json.body.session_id, handedOver: true }) }}",
+                        "options": {}},
+         "id": "chan_resp", "name": "Respond Switched Off",
+         "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.1, "position": [-380, 320]},
 
         {"parameters": {"jsCode": (
             "// What we already know about this visitor is prepended to the turn so\n"
@@ -526,7 +575,13 @@ def build_chat():
 
     conns = {
         "Chat Webhook": {"main": [[{"node": "Log User Message", "type": "main", "index": 0},
-                                   {"node": "Load Profile", "type": "main", "index": 0}]]},
+                                   {"node": "Read The Switches", "type": "main", "index": 0}]]},
+        "Read The Switches": {"main": [[{"node": "Is The Channel On", "type": "main", "index": 0}]]},
+        "Is The Channel On": {"main": [[{"node": "Channel On", "type": "main", "index": 0}]]},
+        "Channel On": {"main": [[{"node": "Load Profile", "type": "main", "index": 0}],
+                                [{"node": "Hand It To A Person", "type": "main", "index": 0}]]},
+        "Hand It To A Person": {"main": [[{"node": "Respond Switched Off", "type": "main", "index": 0},
+                                          {"node": "Log The Holding Reply", "type": "main", "index": 0}]]},
         "Load Profile": {"main": [[{"node": "What Did They Send", "type": "main", "index": 0}]]},
         # Three ways out: a photo, a voice note, or an ordinary turn. All
         # three end at Build Context, which asks for whichever ran by name.
@@ -599,7 +654,8 @@ def build_voice():
             "headerParameters": {"parameters": [
                 {"name": "Authorization", "value": f"Bearer {RETELL_KEY}"}]},
             "sendBody": True, "specifyBody": "json",
-            "jsonBody": "={{ JSON.stringify({ agent_id: '" + AGENT_ID + "', metadata: { session_id: $json.body.session_id, page_url: $json.body.page_url }, retell_llm_dynamic_variables: { session_id: $json.body.session_id, now_uk: $now.setZone('Europe/London').toFormat('cccc d LLLL yyyy, HH:mm') } }) }}",
+            # The webhook by name: the switch check now sits in between.
+            "jsonBody": "={{ JSON.stringify({ agent_id: '" + AGENT_ID + "', metadata: { session_id: $('Voice Token Webhook').item.json.body.session_id, page_url: $('Voice Token Webhook').item.json.body.page_url }, retell_llm_dynamic_variables: { session_id: $('Voice Token Webhook').item.json.body.session_id, now_uk: $now.setZone('Europe/London').toFormat('cccc d LLLL yyyy, HH:mm') } }) }}",
             "options": {}},
          "id": "mk_call", "name": "Create Retell Web Call",
          "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2, "position": [-580, -300]},
@@ -616,6 +672,37 @@ def build_voice():
                         "options": {}},
          "id": "resp_tok", "name": "Respond Token",
          "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.1, "position": [-340, -300]},
+
+        # --- the per-channel switch (plan 014) ------------------------------
+        # Website voice switched off: no call token, so no call. The widget
+        # already says "The voice line is not available at the moment. Chat
+        # still works, or you can ring" the office. Unreadable switches mean
+        # on: a Convex hiccup must not take the voice line down.
+        convex_http("vsw", "Read The Switches", "/settings/channels",
+                    "={{ JSON.stringify({}) }}", -820, -480),
+
+        {"parameters": {"jsCode": (
+            gate_inline("integrations.js") + "\n"
+            "const sw = ($input.first().json || {}).switches;\n"
+            "return [{ json: { on: !sw || isOn(sw, 'website_voice') } }];"
+        )},
+         "id": "v_on", "name": "Is Voice On",
+         "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [-700, -480]},
+
+        {"parameters": {"conditions": {"options": {"caseSensitive": True, "version": 2},
+                                       "conditions": [{"leftValue": "={{ $json.on }}",
+                                                       "rightValue": True,
+                                                       "operator": {"type": "boolean", "operation": "true", "singleValue": True}}],
+                                       "combinator": "and"},
+                        "options": {}},
+         "id": "v_if", "name": "Voice On",
+         "type": "n8n-nodes-base.if", "typeVersion": 2.2, "position": [-580, -480]},
+
+        {"parameters": {"respondWith": "json",
+                        "responseBody": "={{ JSON.stringify({ error: 'voice_off' }) }}",
+                        "options": {}},
+         "id": "v_off", "name": "Respond Voice Off",
+         "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.1, "position": [-340, -480]},
 
         # --- tool router ---------------------------------------------------
         {"parameters": {"httpMethod": "POST", "path": "ohm-retell-tool",
@@ -656,7 +743,11 @@ def build_voice():
     ]
 
     conns = {
-        "Voice Token Webhook": {"main": [[{"node": "Create Retell Web Call", "type": "main", "index": 0}]]},
+        "Voice Token Webhook": {"main": [[{"node": "Read The Switches", "type": "main", "index": 0}]]},
+        "Read The Switches": {"main": [[{"node": "Is Voice On", "type": "main", "index": 0}]]},
+        "Is Voice On": {"main": [[{"node": "Voice On", "type": "main", "index": 0}]]},
+        "Voice On": {"main": [[{"node": "Create Retell Web Call", "type": "main", "index": 0}],
+                              [{"node": "Respond Voice Off", "type": "main", "index": 0}]]},
         "Create Retell Web Call": {"main": [[{"node": "Respond Token", "type": "main", "index": 0}]]},
         "Retell Tool Webhook": {"main": [[{"node": "Check Tool Token", "type": "main", "index": 0}]]},
         "Check Tool Token": {"main": [[{"node": "Route Tool", "type": "main", "index": 0}],

@@ -147,5 +147,24 @@ console.log("\n== stored in Convex, and decided there ==");
   eq("who changed it is recorded", (await call(B.getBrain, c, {})).updatedBy, "owner");
 }
 
+console.log("\n== a channel switched off: a person answers, never the assistant ==");
+{
+  /* Plan 014, Rafiul's ruling of 16 November 2026: off means everything on
+     that channel stops, the assistant included. The reply still has to reach
+     somebody, so it is handed to a person rather than dropped. */
+  const d = decideReply({ brain: on({ facebook: "assistant_only" }), channel: "facebook", text: "How much is SEO?", channelOn: false });
+  eq("the assistant does not answer", d.answer, false);
+  eq("it goes to a person", d.handOver, true);
+  ok("and says the channel is switched off", /switched off/i.test(d.reason), d.reason);
+
+  const o = decideReply({ brain: on({}), channel: "facebook", text: "STOP", channelOn: false });
+  eq("an opt-out is still an opt-out, not a hand-over", [o.answer, o.handOver, o.intent], [false, false, "opt_out"]);
+
+  const u = decideReply({ brain: on({}), channel: "facebook", text: "How much is SEO?" });
+  eq("with the switch not given, nothing changes", u.answer, true);
+  const t = decideReply({ brain: on({}), channel: "facebook", text: "How much is SEO?", channelOn: true });
+  eq("switched on, nothing changes", t.answer, true);
+}
+
 console.log("\n" + (fail ? "FAILED " + fail : "all " + pass + " assertions pass"));
 process.exit(fail ? 1 : 0);

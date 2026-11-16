@@ -142,7 +142,7 @@ export default async function ControlPage({
                       {!r.on ? (
                         <span className="text-ink">
                           <span className="font-semibold">Switched off.</span>{" "}
-                          <span className="text-muted">New enquiries are not followed up.</span>
+                          <span className="text-muted">Nothing automated runs; messages go to a person.</span>
                         </span>
                       ) : r.live ? (
                         <span className="text-ink">{r.live.name}</span>

@@ -1,9 +1,10 @@
 import {
   INTEGRATIONS, CHANNEL_NEEDS, MERGED, STAND_IN_SENDER, workflowFacts, pendingTokens,
-  integrationStatus, channelStatus, isOn,
+  integrationStatus, channelStatus, isOn, chatChannel, switchedOffReply,
 } from "../gates/integrations.js";
 import { TRIGGER_ORDER, MERGED as FLOW_MERGED } from "../gates/flows.js";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
+import { toneIssues } from "../gates/tone.js";
 import { channelRows } from "../../lib/dashboard/control-panel.ts";
 
 /* =========================================================================
@@ -252,6 +253,36 @@ console.log("\n== 11. the Control panel and this screen cannot disagree ==");
   eq("the Control panel marks the switched-off channels", offRows, ["facebook", "reactivation"]);
   eq("exactly the ones this screen reports as off", offRows, offHere);
   ok("with no switches given, every row is on", channelRows([]).every((r: any) => r.on === true));
+}
+
+/* ===================================================================== */
+console.log("\n== 12. which channel a chat turn belongs to, for its switch ==");
+{
+  /* The chat webhook is called by the website widget, by the Meta workflow
+     for Facebook and Instagram DMs, and by Twilio Inbound for a text reply
+     the brain has already allowed. Only the first two are judged here. */
+  eq("the website widget", chatChannel({ session_id: "abc123", page_url: "https://onlinemarketinghelp.co.uk/seo" }), "website_chat");
+  eq("a Messenger DM", chatChannel({ session_id: "meta:9911", page_url: "messenger" }), "facebook");
+  eq("an Instagram DM", chatChannel({ session_id: "meta:9912", page_url: "instagram" }), "instagram");
+  eq("a text reply: the brain already decided, so not judged again", chatChannel({ session_id: "sms-+4477", page_url: "sms" }), null);
+  eq("nothing at all", chatChannel(null as any), "website_chat");
+
+  /* The built workflows obey it, from the same text the tests import. */
+  const gate = readFileSync(new URL("../gates/integrations.js", import.meta.url), "utf8")
+    .split("\n").filter((l) => !l.startsWith("export {")).join("\n").trimEnd() + "\n";
+  for (const [file, node, from] of [["01-chat.json", "Is The Channel On", "Chat Webhook"], ["02-voice.json", "Is Voice On", "Voice Token Webhook"]]) {
+    const u = new URL(`../n8n/${file}`, import.meta.url);
+    if (!existsSync(u)) { console.log(`  NOT CHECKED: ${file} is not built here`); continue; }
+    const wf = JSON.parse(readFileSync(u, "utf8"));
+    const n = wf.nodes.find((x: any) => x.name === node);
+    ok(`${file}: ${node} inlines integrations.js byte for byte`, Boolean(n) && n.parameters.jsCode.includes(gate));
+    const first = wf.connections[from]?.main?.[0]?.map((c: any) => c.node) ?? [];
+    ok(`${file}: the switch is read before anything answers`, first.includes("Read The Switches"), first);
+  }
+
+  const r = switchedOffReply();
+  eq("the holding reply is in the guide's voice", toneIssues(r), []);
+  ok("and says a person will reply", /person/i.test(r) && /reply/i.test(r), r);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { ctx, INDEXES } from "./convex-mock.ts";
 import * as R from "../convex/routing.ts";
 import * as F from "../convex/functions.ts";
+import * as BR from "../convex/brain.ts";
 import { ROUTES } from "../gates/routes.ts";
 import { londonInstant } from "../gates/clock.ts";
 
@@ -923,14 +924,16 @@ console.log("\n== every outcome change leaves a record ==");
 }
 
 
-console.log("\n== a switch per channel: off means no NEW enrolments ==");
+console.log("\n== a switch per channel: off means EVERYTHING on that channel stops ==");
 {
   /* docs/engineering/014-integrations-and-a-switch-per-channel/plan.md.
-     Enforced here, in enrol, not on the screen: a switch that only hides a
-     button lets the router carry on enrolling while the owner believes they
-     stopped it. And off means no NEW enrolments: somebody already on a
-     sequence keeps theirs, because abandoning them mid-conversation is worse
-     than finishing. */
+     Enforced here, not on the screen: a switch that only hides a button lets
+     the router carry on enrolling while the owner believes they stopped it.
+
+     Off means everything automated on that channel stops (Rafiul, 16
+     November 2026): no new enrolments, and the people part way through a
+     sequence are PAUSED, like the kill switch pauses them, so switching the
+     channel back on picks them up where they were. */
   const { db, ctx: c } = calling();
   const seqs = () => (db.tables.sequences ?? []) as any[];
 
@@ -941,7 +944,7 @@ console.log("\n== a switch per channel: off means no NEW enrolments ==");
 
   const set = await call(R.setChannel, c, { channel: "facebook", on: false, by: "smoke" });
   eq("switching Facebook off is saved", set.on, false);
-  eq("and says how many people keep the sequence they are on", set.running, 1);
+  eq("and says how many people part way through were paused", set.paused, 1);
   eq("the switches read back", (await call(R.channelSwitches, c, {})).off, ["facebook"]);
 
   const n = seqs().length;
@@ -959,12 +962,13 @@ console.log("\n== a switch per channel: off means no NEW enrolments ==");
   const web = await makeLead(db, { sourceChannel: "website_form" });
   eq("the website form, still on, enrols as normal", (await call(R.enrol, c, { leadId: web, route: "B" })).enrolled, true);
 
-  /* The one already running: still active, and its next step still goes. */
+  /* The one already running: paused, and nothing of it is handed out. */
   const running = seqs().find((s) => s.leadId === before);
-  eq("the sequence that was already running is still active", running?.status, "active");
+  eq("the sequence that was already running is paused", running?.status, "paused");
+  eq("and says why", running?.stopReason, "channel_off");
   await db.patch(running._id, { nextDueAt: Date.now() - 1000 });
   const claimed = await call(R.claimDue, c, { limit: 25 });
-  ok("and its next step is still handed out", claimed.claimed.some((x: any) => x.sequenceId === running._id), claimed);
+  ok("so its next step is NOT handed out", !claimed.claimed.some((x: any) => x.sequenceId === running._id), claimed);
 
   /* A reactivation campaign is the reactivation channel, whatever page the
      person first came in on. */
@@ -972,11 +976,34 @@ console.log("\n== a switch per channel: off means no NEW enrolments ==");
   const lapsed = await makeLead(db, { sourceChannel: "website_form", smsConsent: "explicit" });
   eq("reactivation off: route F refuses even a website lead", (await call(R.enrol, c, { leadId: lapsed, route: "F" })).why, "channel_off");
 
+  const on = await call(R.setChannel, c, { channel: "facebook", on: true, by: "smoke" });
+  eq("switched back on, the paused ones are resumed", on.resumed, 1);
+  const again = seqs().find((s) => s.leadId === before);
+  eq("the paused sequence is active again", again?.status, "active");
+  eq("with no stop reason left on it", again?.stopReason, undefined);
+  const claimed2 = await call(R.claimDue, c, { limit: 25 });
+  ok("and its overdue step goes on the next run", claimed2.claimed.some((x: any) => x.sequenceId === again._id), claimed2);
+  /* Only the ones the switch paused: a sequence paused for another reason
+     stays paused. */
+  const other = await makeLead(db, { sourceChannel: "facebook" });
+  await db.insert("sequences", { leadId: other, route: "D", step: 0, status: "paused", stopReason: "manual", attempts: 0, at: Date.now() });
+  await call(R.setChannel, c, { channel: "facebook", on: false, by: "smoke" });
   await call(R.setChannel, c, { channel: "facebook", on: true, by: "smoke" });
+  eq("a sequence paused for another reason is left paused", seqs().find((s) => s.leadId === other)?.stopReason, "manual");
   const back = await makeLead(db, { sourceChannel: "facebook" });
   eq("switched back on, Facebook enrols again", (await call(R.enrol, c, { leadId: back, route: "D" })).enrolled, true);
 
   eq("an unknown channel cannot be switched", (await call(R.setChannel, c, { channel: "myspace", on: false })).ok, false);
+
+  /* The reply brain reads the same switch, for the same lead. */
+  const asker = await makeLead(db, { sourceChannel: "instagram" });
+  eq("on: the assistant answers an Instagram lead's reply", (await call(BR.decide, c, { leadId: asker, text: "How much is SEO?" })).answer, true);
+  await call(R.setChannel, c, { channel: "instagram", on: false, by: "smoke" });
+  const d = await call(BR.decide, c, { leadId: asker, text: "How much is SEO?" });
+  eq("off: it does not", d.answer, false);
+  eq("a person does", d.handOver, true);
+  eq("and no sales brief is built for an answer nobody will write", d.brief, null);
+  await call(R.setChannel, c, { channel: "instagram", on: true, by: "smoke" });
 
   /* The kill switch still outranks everything, and says so first. */
   await call(R.setOutbound, c, { enabled: false, by: "smoke" });

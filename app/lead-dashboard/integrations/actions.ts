@@ -12,7 +12,7 @@ import * as routing from "@/lib/dashboard/routing";
    this only records the owner's decision; it is not what makes it true.
    ========================================================================= */
 
-export type ChannelResult = { ok: boolean; on?: boolean; message: string; running?: number };
+export type ChannelResult = { ok: boolean; on?: boolean; message: string; paused?: number; resumed?: number };
 
 export async function setChannelAction(channel: string, on: boolean): Promise<ChannelResult> {
   const auth = await assertCanWrite();
@@ -28,19 +28,25 @@ export async function setChannelAction(channel: string, on: boolean): Promise<Ch
 
   revalidatePath("/lead-dashboard/integrations");
   revalidatePath("/lead-dashboard/control");
+  revalidatePath("/lead-dashboard/sequences");
 
+  const people = (n: number) => (n === 1 ? "1 person" : `${n} people`);
+  const are = (n: number) => (n === 1 ? "is" : "are");
   if (res.on) {
-    return { ok: true, on: true, running: res.running, message: "Switched on. New enquiries on this channel are followed up again." };
+    return {
+      ok: true, on: true, resumed: res.resumed,
+      message:
+        res.resumed > 0
+          ? `Switched on. The assistant answers here again, and ${people(res.resumed)} paused part way through a follow-up ${res.resumed === 1 ? "carries" : "carry"} on from where they were.`
+          : "Switched on. The assistant answers here again, and new enquiries are followed up.",
+    };
   }
-  const n = res.running;
-  const people = n === 1 ? "1 person is" : `${n} people are`;
   return {
-    ok: true,
-    on: false,
-    running: n,
+    ok: true, on: false, paused: res.paused,
     message:
-      n > 0
-        ? `Switched off. No new follow-ups start on this channel. ${people} part way through one and will finish it; stop them on Follow-ups if you need to.`
-        : "Switched off. No new follow-ups start on this channel, and nobody is part way through one.",
+      (res.paused > 0
+        ? `Switched off. ${people(res.paused)} part way through a follow-up ${are(res.paused)} paused until you switch it back on. `
+        : "Switched off. ") +
+      "Nothing automated runs on this channel now, and anything new that arrives goes to Needs a person.",
   };
 }

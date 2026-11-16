@@ -18,6 +18,8 @@ import { v } from "convex/values";
 import type { Id } from "./_generated/dataModel";
 import { decideReply, validateBrain, salesBrief, DEFAULT_SALES, type Brain } from "../gates/brain.js";
 import { DEFAULT_AGENT, validateAgent, normaliseNumber, type Agent } from "../gates/agent.js";
+import { isOn } from "../gates/integrations.js";
+import { channelSwitchMap, enrolmentChannel } from "./channelSwitch";
 
 async function row(ctx: QueryCtx, key: string) {
   return await ctx.db.query("settings").withIndex("by_key", (q) => q.eq("key", key)).unique();
@@ -81,7 +83,14 @@ export const decide = query({
     const brain = await brainSettings(ctx);
     const lead = leadId ? await ctx.db.get(leadId as Id<"leads">) : null;
     const ch = channel ?? lead?.sourceChannel ?? "unknown";
-    const d = decideReply({ brain, channel: ch, text });
+    /* The channel's switch. For a lead, the channel it counts under (its
+       source, or reactivation for a route F lead), the same rule enrol uses. */
+    const seq = lead
+      ? await ctx.db.query("sequences").withIndex("by_lead", (q) => q.eq("leadId", lead._id)).order("desc").first()
+      : null;
+    const switchChannel = lead ? enrolmentChannel(lead, seq?.route ?? "") : ch;
+    const channelOn = isOn(await channelSwitchMap(ctx), switchChannel);
+    const d = decideReply({ brain, channel: ch, text, channelOn });
     return {
       ...d,
       sessionId: lead?.sessionId ?? null,
