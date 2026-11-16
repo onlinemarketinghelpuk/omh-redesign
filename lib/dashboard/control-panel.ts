@@ -12,6 +12,7 @@ import {
   TRIGGER_ORDER, TRIGGERS, defaultRouteFor, routeToNodes, describeFlow,
 } from "@/widget/gates/flows.js";
 import { ROUTES } from "@/widget/gates/routes";
+import { isOn } from "@/widget/gates/integrations.js";
 import { routeMessageKeys, templateSource, messageChannel } from "@/widget/gates/templates";
 import type { FlowRow, MessageOverride, MessageHistoryRow } from "./routing";
 
@@ -26,6 +27,8 @@ export type ChannelRow = {
   live: FlowRow | null;
   /** Drafts and paused flows that list this channel, for "edit" links. */
   others: FlowRow[];
+  /** The owner's switch (plan 014). Off: no new follow-ups start here. */
+  on: boolean;
 };
 
 /** The sentence for a code route, as it runs for this channel. */
@@ -36,7 +39,10 @@ export function routeSentence(routeId: string, channel: string): string {
   return describeFlow({ name: r.name, triggers: [channel], nodes: routeToNodes(r) });
 }
 
-export function channelRows(flows: FlowRow[]): ChannelRow[] {
+/* `switches` is the same { channel: false } map the Integrations screen and
+   Convex's enrol read, judged by the same isOn(), so the two screens cannot
+   disagree about which channels are off. */
+export function channelRows(flows: FlowRow[], switches: Record<string, boolean> = {}): ChannelRow[] {
   return TRIGGER_ORDER.map((channel) => {
     const t = TRIGGERS[channel];
     const route = defaultRouteFor(channel) ?? "B";
@@ -53,6 +59,7 @@ export function channelRows(flows: FlowRow[]): ChannelRow[] {
       defaultSentence: routeSentence(route, channel),
       live,
       others: mine.filter((f) => f !== live),
+      on: isOn(switches, channel),
     };
   });
 }

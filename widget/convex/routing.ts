@@ -35,6 +35,8 @@ import { routeForEnrolment, routeForSequence, renderStep } from "./flowRuntime";
 import { agentSettings } from "./brain";
 import { inCallingHours, nextCallingAt } from "../gates/calling-hours";
 import { callBrief } from "../gates/agent.js";
+import { canonicalTrigger, TRIGGER_ORDER } from "../gates/flows.js";
+import { isOn } from "../gates/integrations.js";
 
 const LEASE_MS = 120 * 1000;
 const MAX_ATTEMPTS = 3;
@@ -69,6 +71,38 @@ async function outboundOn(ctx: QueryCtx): Promise<boolean> {
   const row = await setting(ctx, "outbound");
   if (!row) return true;
   return (row.value as any)?.enabled !== false;
+}
+
+/* ------------------------------------------------ a switch per channel
+
+   docs/engineering/014-integrations-and-a-switch-per-channel/plan.md.
+
+   Stored as { [channel]: false } under settings key "channelSwitch". A
+   channel absent from it is ON, so a fresh deployment and every channel
+   added later start on, which is what they did before this existed.
+
+   OFF MEANS NO NEW ENROLMENTS, nothing more. A sequence already running for
+   that channel carries on: abandoning somebody halfway through a
+   conversation is worse than finishing it. The assistant still answers on
+   that channel too. Stopping the people already on a sequence is a
+   separate, deliberate action on the dashboard. */
+
+const CHANNEL_SWITCH = "channelSwitch";
+
+async function channelSwitchMap(ctx: QueryCtx): Promise<Record<string, boolean>> {
+  const row = await setting(ctx, CHANNEL_SWITCH);
+  const v = (row?.value ?? {}) as Record<string, unknown>;
+  const out: Record<string, boolean> = {};
+  for (const [k, on] of Object.entries(v)) if (on === false) out[k] = false;
+  return out;
+}
+
+/** The channel an enrolment counts under, for its switch. */
+function enrolmentChannel(lead: Doc<"leads">, route: string): string {
+  /* A reactivation campaign is the reactivation channel, whatever page the
+     person first came in on two years ago. */
+  if (route === "F") return "reactivation";
+  return canonicalTrigger(lead.sourceChannel);
 }
 
 /** Is this phone or email on the do-not-contact list? */
@@ -283,6 +317,14 @@ export const enrol = mutation({
 
     if (!(await outboundOn(ctx))) {
       return { enrolled: false, why: "kill_switch" };
+    }
+
+    /* The owner's switch for this one channel. After the kill switch, so
+       that when everything is off the answer is "everything is off", and
+       before anything is written, so a refused lead leaves no row behind. */
+    const channel = enrolmentChannel(lead, route);
+    if (!isOn(await channelSwitchMap(ctx), channel)) {
+      return { enrolled: false, why: "channel_off", channel };
     }
 
     /* Do not contact means do not contact, including on a brand new enquiry.
@@ -1025,6 +1067,57 @@ export const setOutbound = mutation({
       });
     }
     return { enabled, at };
+  },
+});
+
+/** Which channels the owner has switched off. Every other channel is on. */
+export const channelSwitches = query({
+  args: {},
+  handler: async (ctx) => {
+    const row = await setting(ctx, CHANNEL_SWITCH);
+    const switches = await channelSwitchMap(ctx);
+    return {
+      switches,
+      off: Object.keys(switches).sort(),
+      updatedAt: row?.updatedAt ?? null,
+      updatedBy: row?.updatedBy ?? null,
+    };
+  },
+});
+
+/**
+ * Switch one channel on or off.
+ *
+ * Returns how many people are part way through a sequence on that channel,
+ * because they are not stopped by this, and the screen says so: "off" that
+ * quietly carried on texting twelve people would be a lie by omission.
+ */
+export const setChannel = mutation({
+  args: { channel: v.string(), on: v.boolean(), by: v.optional(v.string()) },
+  handler: async (ctx, { channel, on, by }) => {
+    const c = canonicalTrigger(channel);
+    if (!(TRIGGER_ORDER as string[]).includes(c)) return { ok: false as const, why: "unknown_channel" };
+
+    const row = await setting(ctx, CHANNEL_SWITCH);
+    const next = { ...(await channelSwitchMap(ctx)) };
+    if (on) delete next[c];
+    else next[c] = false;
+    const at = Date.now();
+    if (row) await ctx.db.patch(row._id, { value: next, updatedAt: at, updatedBy: by });
+    else await ctx.db.insert("settings", { key: CHANNEL_SWITCH, value: next, updatedAt: at, updatedBy: by });
+
+    let running = 0;
+    for (const status of ["active", "paused"]) {
+      const rows = await ctx.db
+        .query("sequences")
+        .withIndex("by_due", (q) => q.eq("status", status))
+        .collect();
+      for (const s of rows) {
+        const lead = await ctx.db.get(s.leadId);
+        if (lead && enrolmentChannel(lead, s.route) === c) running++;
+      }
+    }
+    return { ok: true as const, channel: c, on, running, at };
   },
 });
 

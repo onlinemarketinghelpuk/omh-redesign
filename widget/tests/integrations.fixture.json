@@ -1,0 +1,120 @@
+{
+  "_about": "Live n8n (srv1836598), read 2026-11-16 with GET /api/v1/workflows. Reduced to the facts the integrations screen uses: the raw workflows carry the Convex secret, so they are never written to disk.",
+  "workflows": [
+    {
+      "name": "OHM Assistant \u2014 Calendar Sync",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Chat",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Email Inbound",
+      "active": false,
+      "pending": [
+        "IMAP_CRED_PENDING"
+      ],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Error Handler",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": [
+        "videoeditoromh@gmail.com"
+      ]
+    },
+    {
+      "name": "OHM Assistant \u2014 Lead Router",
+      "active": true,
+      "pending": [
+        "GOOGLE_LEAD_FORM_KEY_PENDING",
+        "TWILIO_CRED_PENDING",
+        "TWILIO_NUMBER_PENDING"
+      ],
+      "agentOverride": false,
+      "senders": [
+        "videoeditoromh@gmail.com"
+      ]
+    },
+    {
+      "name": "OHM Assistant \u2014 Meta",
+      "active": true,
+      "pending": [
+        "META_APP_SECRET_PENDING",
+        "META_PAGE_TOKEN_PENDING",
+        "META_VERIFY_PENDING"
+      ],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Notify",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": [
+        "videoeditoromh@gmail.com"
+      ]
+    },
+    {
+      "name": "OHM Assistant \u2014 ROI Calculator Leads",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Reactivation",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Retell Events",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Sequence Worker",
+      "active": false,
+      "pending": [
+        "TWILIO_CRED_PENDING",
+        "TWILIO_NUMBER_PENDING"
+      ],
+      "agentOverride": false,
+      "senders": [
+        "videoeditoromh@gmail.com"
+      ]
+    },
+    {
+      "name": "OHM Assistant \u2014 Twilio Inbound",
+      "active": true,
+      "pending": [
+        "TWILIO_CRED_PENDING",
+        "TWILIO_NUMBER_PENDING"
+      ],
+      "agentOverride": false,
+      "senders": []
+    },
+    {
+      "name": "OHM Assistant \u2014 Voice (Retell tools + web call token)",
+      "active": true,
+      "pending": [],
+      "agentOverride": false,
+      "senders": []
+    }
+  ]
+}

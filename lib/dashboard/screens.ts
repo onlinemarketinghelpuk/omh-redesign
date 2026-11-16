@@ -114,6 +114,12 @@ export const SCREENS: Record<string, Screen> = {
     lead: "Every text and email the follow-ups send, in words you can change.",
     shape: "split",
   },
+  integrations: {
+    active: "/lead-dashboard/integrations",
+    title: "Integrations",
+    lead: "Every channel, whether it is really connected, what is missing, and a switch for each.",
+    shape: "table",
+  },
   settings: {
     active: "/lead-dashboard/settings",
     title: "Settings",
@@ -161,6 +167,10 @@ export const TABS = [
   { href: "/lead-dashboard/messages", label: "Messages" },
   { href: "/lead-dashboard/brain", label: "Replies" },
   { href: "/lead-dashboard/agent", label: "Calling agent" },
+  /* Next to Settings: it is the other "is the plumbing right" screen, and
+     the per-channel switch here is the finer-grained sibling of the kill
+     switch there. */
+  { href: "/lead-dashboard/integrations", label: "Integrations" },
   { href: "/lead-dashboard/settings", label: "Settings" },
 ] as const;
 

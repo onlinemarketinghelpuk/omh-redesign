@@ -754,6 +754,23 @@ http.route({
   }),
 });
 
+/* A switch per channel (plan 014). One route for both, like the kill switch
+   above: `channel` with `on` present means write, nothing means read. */
+http.route({
+  path: "/settings/channels",
+  method: "POST",
+  handler: route(async (ctx, b) => {
+    if (typeof b.channel === "string" && typeof b.on === "boolean") {
+      return await ctx.runMutation(api.routing.setChannel, {
+        channel: b.channel,
+        on: b.on,
+        by: b.by || undefined,
+      });
+    }
+    return await ctx.runQuery(api.routing.channelSwitches, {});
+  }),
+});
+
 http.route({
   path: "/lead/outcome",
   method: "POST",

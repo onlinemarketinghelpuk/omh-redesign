@@ -143,6 +143,16 @@ export const IconPower = (p: P) => (
   </Svg>
 );
 
+/* Lucide "plug": the thing a channel is or is not connected by. */
+export const IconPlug = (p: P) => (
+  <Svg {...p}>
+    <path d="M12 22v-5" />
+    <path d="M9 8V2" />
+    <path d="M15 8V2" />
+    <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" />
+  </Svg>
+);
+
 /* Lucide "workflow": two boxes joined by a line, which is what a flow is. */
 export const IconFlow = (p: P) => (
   <Svg {...p}>
@@ -175,5 +185,6 @@ export const NAV_ICON = {
   "/lead-dashboard/messages": IconMessage,
   "/lead-dashboard/brain": IconChat,
   "/lead-dashboard/agent": IconPhone,
+  "/lead-dashboard/integrations": IconPlug,
   "/lead-dashboard/settings": IconSettings,
 } as const;

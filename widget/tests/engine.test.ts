@@ -923,5 +923,67 @@ console.log("\n== every outcome change leaves a record ==");
 }
 
 
+console.log("\n== a switch per channel: off means no NEW enrolments ==");
+{
+  /* docs/engineering/014-integrations-and-a-switch-per-channel/plan.md.
+     Enforced here, in enrol, not on the screen: a switch that only hides a
+     button lets the router carry on enrolling while the owner believes they
+     stopped it. And off means no NEW enrolments: somebody already on a
+     sequence keeps theirs, because abandoning them mid-conversation is worse
+     than finishing. */
+  const { db, ctx: c } = calling();
+  const seqs = () => (db.tables.sequences ?? []) as any[];
+
+  /* Somebody from Facebook, enrolled while the channel is on. */
+  const before = await makeLead(db, { sourceChannel: "facebook" });
+  const first = await call(R.enrol, c, { leadId: before, route: "D" });
+  eq("on: a Facebook lead is enrolled", first.enrolled, true);
+
+  const set = await call(R.setChannel, c, { channel: "facebook", on: false, by: "smoke" });
+  eq("switching Facebook off is saved", set.on, false);
+  eq("and says how many people keep the sequence they are on", set.running, 1);
+  eq("the switches read back", (await call(R.channelSwitches, c, {})).off, ["facebook"]);
+
+  const n = seqs().length;
+  const after = await makeLead(db, { sourceChannel: "facebook" });
+  const r = await call(R.enrol, c, { leadId: after, route: "D" });
+  eq("off: a new Facebook lead is refused", r.enrolled, false);
+  eq("with the reason", r.why, "channel_off");
+  eq("naming the channel", r.channel, "facebook");
+  eq("no sequence is created for them", seqs().length, n);
+  ok("and nothing is handed to the router to send", !r.immediate || r.immediate.length === 0, r);
+
+  const old = await makeLead(db, { sourceChannel: "facebook_dm" });
+  eq("an old channel name is the same channel", (await call(R.enrol, c, { leadId: old, route: "D" })).why, "channel_off");
+
+  const web = await makeLead(db, { sourceChannel: "website_form" });
+  eq("the website form, still on, enrols as normal", (await call(R.enrol, c, { leadId: web, route: "B" })).enrolled, true);
+
+  /* The one already running: still active, and its next step still goes. */
+  const running = seqs().find((s) => s.leadId === before);
+  eq("the sequence that was already running is still active", running?.status, "active");
+  await db.patch(running._id, { nextDueAt: Date.now() - 1000 });
+  const claimed = await call(R.claimDue, c, { limit: 25 });
+  ok("and its next step is still handed out", claimed.claimed.some((x: any) => x.sequenceId === running._id), claimed);
+
+  /* A reactivation campaign is the reactivation channel, whatever page the
+     person first came in on. */
+  await call(R.setChannel, c, { channel: "reactivation", on: false, by: "smoke" });
+  const lapsed = await makeLead(db, { sourceChannel: "website_form", smsConsent: "explicit" });
+  eq("reactivation off: route F refuses even a website lead", (await call(R.enrol, c, { leadId: lapsed, route: "F" })).why, "channel_off");
+
+  await call(R.setChannel, c, { channel: "facebook", on: true, by: "smoke" });
+  const back = await makeLead(db, { sourceChannel: "facebook" });
+  eq("switched back on, Facebook enrols again", (await call(R.enrol, c, { leadId: back, route: "D" })).enrolled, true);
+
+  eq("an unknown channel cannot be switched", (await call(R.setChannel, c, { channel: "myspace", on: false })).ok, false);
+
+  /* The kill switch still outranks everything, and says so first. */
+  await call(R.setOutbound, c, { enabled: false, by: "smoke" });
+  const k = await makeLead(db, { sourceChannel: "reactivation" });
+  eq("with outbound off too, the kill switch is the reason given", (await call(R.enrol, c, { leadId: k, route: "B" })).why, "kill_switch");
+}
+
+
 console.log("\n" + (fail ? "FAILED " + fail + " of " + (pass + fail) : "all " + pass + " assertions pass"));
 process.exit(fail ? 1 : 0);

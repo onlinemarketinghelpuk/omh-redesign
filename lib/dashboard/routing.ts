@@ -271,6 +271,18 @@ export const findLead = (phone?: string, email?: string) =>
 export const setOutbound = (enabled: boolean, by: string) =>
   call<{ enabled: boolean; at: number }>("/settings/outbound", { enabled, by });
 
+/* A switch per channel (plan 014). Off stops NEW enrolments on that channel
+   only; Convex enforces it in enrol, so it holds whatever calls enrol. */
+export const getChannelSwitches = () =>
+  call<{ switches: Record<string, boolean>; off: string[]; updatedAt: number | null; updatedBy: string | null }>(
+    "/settings/channels",
+  );
+
+export const setChannel = (channel: string, on: boolean, by: string) =>
+  call<{ ok: true; channel: string; on: boolean; running: number; at: number } | { ok: false; why: string }>(
+    "/settings/channels", { channel, on, by },
+  );
+
 export const setLeadOutcome = (
   leadId: string,
   outcome: string,

@@ -4,7 +4,7 @@ import { Card, Table, th, td, tr } from "@/components/dashboard/ui";
 import { KillSwitch } from "@/components/dashboard/KillSwitch";
 import { flowCounts } from "@/components/dashboard/FlowSteps";
 import { IconLock } from "@/components/dashboard/icons";
-import { getOutbound, getFlows, canWrite, when } from "@/lib/dashboard/routing";
+import { getOutbound, getFlows, getChannelSwitches, canWrite, when } from "@/lib/dashboard/routing";
 import { dashboardLocked } from "@/lib/dashboard/auth";
 import { isDemo } from "@/lib/dashboard/demo";
 import { channelRows, demoFlows } from "@/lib/dashboard/control-panel";
@@ -37,14 +37,19 @@ export default async function ControlPage({
   searchParams: Promise<{ demo?: string }>;
 }) {
   const demo = isDemo(await searchParams);
-  const [outbound, flowsRaw] = demo
-    ? [{ enabled: true, updatedAt: null, updatedBy: "owner" }, { flows: demoFlows() }]
-    : await Promise.all([getOutbound(), getFlows()]);
+  /* The example switches match the Integrations screen's example, so the
+     two demo screens agree with each other as the real ones must. */
+  const [outbound, flowsRaw, switchesRaw] = demo
+    ? [{ enabled: true, updatedAt: null, updatedBy: "owner" }, { flows: demoFlows() }, { switches: { whatsapp: false } }]
+    : await Promise.all([getOutbound(), getFlows(), getChannelSwitches()]);
 
   const writable = !demo && canWrite && dashboardLocked;
   const reachable = flowsRaw !== null;
   const flows = flowsRaw?.flows ?? [];
-  const rows = channelRows(flows);
+  /* Unreadable switches are treated as all on here, which is the state
+     that holds whenever none has ever been set; the Integrations screen is
+     the one that says plainly when they could not be read. */
+  const rows = channelRows(flows, switchesRaw?.switches ?? {});
   const q = demo ? "?demo=1" : "";
 
   return (
@@ -89,6 +94,15 @@ export default async function ControlPage({
             </h2>
             <p className="text-[12.5px] text-muted">Open a channel to change everything about it.</p>
           </div>
+          {/* Where somebody looks first when a channel goes quiet, so it
+              points at the screen that knows whether it is connected. */}
+          <p className="mb-3 text-[13px] text-muted">
+            Whether each channel is actually connected, what is missing, and a switch to pause one, are on{" "}
+            <Link href={`/lead-dashboard/integrations${q}`} className="font-semibold text-ink underline underline-offset-2">
+              Integrations
+            </Link>
+            .
+          </p>
           {/* A list, not a report. Each channel opens its own page, where
               everything about it is: its steps, its messages, its people. */}
           <Table minWidth={720}>
@@ -125,7 +139,12 @@ export default async function ControlPage({
                       )}
                     </td>
                     <td className={`${td} text-[13px]`}>
-                      {r.live ? (
+                      {!r.on ? (
+                        <span className="text-ink">
+                          <span className="font-semibold">Switched off.</span>{" "}
+                          <span className="text-muted">New enquiries are not followed up.</span>
+                        </span>
+                      ) : r.live ? (
                         <span className="text-ink">{r.live.name}</span>
                       ) : flow ? (
                         <span className="text-muted">Default · {flow.name} ({flow.status})</span>
