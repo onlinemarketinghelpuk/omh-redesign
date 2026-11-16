@@ -477,10 +477,21 @@ def build_chat():
             # sentence loses the part that mattered and tells the visitor
             # nothing was removed. Length is the system prompt's job; this
             # only records when the prompt is losing.
+            #
+            # gates/tone.js, also verbatim, is the decidable half of OMH's
+            # tone of voice (docs/tone-of-voice.md): em dashes, the never-use
+            # words, US dates, prices without "+ VAT", exclamation marks,
+            # American spelling. Like `overlong` it REPORTS and never edits:
+            # rewriting a model's sentence after the fact can change a fact
+            # in it, and a price is the one thing that must arrive exactly as
+            # the knowledge base has it. The codes ride along on the item so
+            # the execution log shows when the prompt is losing.
             gate_inline("reply-shape.js") + "\n"
+            + gate_inline("tone.js") + "\n"
             "let t = tidy($input.first().json.output || '');\n"
             "if (!t) t = \"Sorry, I didn't catch that. Could you say it again?\";\n"
-            "return [{ json: { reply: t, overlong: looksOverlong(t) } }];"
+            "return [{ json: { reply: t, overlong: looksOverlong(t),\n"
+            "  tone: toneIssues(t).map(function (i) { return i.code; }) } }];"
         )},
          "id": "clean", "name": "Clean Reply",
          "type": "n8n-nodes-base.code", "typeVersion": 2, "position": [120, 0]},

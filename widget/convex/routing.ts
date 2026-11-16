@@ -403,14 +403,47 @@ const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July",
   "August", "September", "October", "November", "December"];
 
-/** "Tuesday 1 December" and "14:00", London wall clock. */
-function appointmentWords(ms: number) {
+/** 1st, 2nd, 3rd, 4th, 11th, 12th, 13th, 21st, 22nd, 23rd, 31st. */
+function ordinal(n: number): string {
+  const teen = n % 100 >= 11 && n % 100 <= 13;
+  const end = teen ? "th" : n % 10 === 1 ? "st" : n % 10 === 2 ? "nd" : n % 10 === 3 ? "rd" : "th";
+  return n + end;
+}
+
+/**
+ * "Tuesday 1st December", the way OMH writes a date (docs/tone-of-voice.md,
+ * house style). It was "Tuesday 1 December" until 2026-11-16, which the
+ * guide's own examples ("Tuesday 13th October") do not do.
+ */
+function dayWords(year: number, month: number, day: number): string {
+  const dow = new Date(Date.UTC(year, month - 1, day)).getUTCDay();
+  return `${DAYS[dow]} ${ordinal(day)} ${MONTHS[month - 1]}`;
+}
+
+/** "Tuesday 1st December" and "14:00", London wall clock. */
+export function appointmentWords(ms: number) {
   const w = londonWall(ms);
-  const dow = new Date(Date.UTC(w.year, w.month - 1, w.day)).getUTCDay();
   const pad = (n: number) => (n < 10 ? "0" + n : String(n));
   return {
-    preferredDate: `${DAYS[dow]} ${w.day} ${MONTHS[w.month - 1]}`,
+    preferredDate: dayWords(w.year, w.month, w.day),
     preferredTime: `${pad(w.hour)}:${pad(w.minute)}`,
+  };
+}
+
+/**
+ * A booking row's date in words.
+ *
+ * The row stores YYYY-MM-DD, and booking_confirmed used to be rendered with
+ * it as stored, so the confirmation text read "booked for 2026-12-01 at
+ * 10:00". The date is already London local (it is what the person picked),
+ * so this only rewrites it; there is no timezone to convert. Anything that
+ * is not YYYY-MM-DD is passed through untouched rather than guessed at.
+ */
+export function bookingWords(b: { preferredDate?: string; preferredTime?: string }) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(b.preferredDate || "");
+  return {
+    preferredDate: m ? dayWords(+m[1], +m[2], +m[3]) : b.preferredDate,
+    preferredTime: b.preferredTime,
   };
 }
 
@@ -1405,8 +1438,7 @@ export const pendingConfirmations = mutation({
           name: b.name,
           service: b.service,
           reference: b.reference,
-          preferredDate: b.preferredDate,
-          preferredTime: b.preferredTime,
+          ...bookingWords(b),
         }).body;
       } catch {
         continue;

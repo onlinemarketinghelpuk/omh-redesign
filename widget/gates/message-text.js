@@ -1,9 +1,17 @@
 /* =========================================================================
    Messages the owner writes: variables, the opt-out, and what a text costs.
 
-   Plain JavaScript, no imports, one export line. Rendered in Convex when a
-   step is sent, previewed in the dashboard as the owner types, and asserted
-   by widget/tests/message-text.test.ts, all from this one text.
+   Plain JavaScript, one export line. Rendered in Convex when a step is
+   sent, previewed in the dashboard as the owner types, and asserted by
+   widget/tests/message-text.test.ts, all from this one text.
+
+   ONE IMPORT, AND WHY IT IS SAFE. Unlike the rest of gates/, this file
+   imports tone.js, so the owner's words are checked against the OMH tone of
+   voice by the same rules the tests hold the code's templates to. That is
+   fine here because every consumer bundles (Convex, the Next dashboard,
+   esbuild in the tests). It would be a syntax error inside an n8n Code
+   node, so this file must never go through gate_inline(); tone.test.ts
+   asserts that build-workflows.py does not do it.
 
    THE OPT-OUT. On a marketing message it is appended here, by the renderer,
    after everything the owner wrote. There is no variable for it, no setting
@@ -16,6 +24,8 @@
    Word being the usual one. Past one part, each part holds 153 or 67. The
    screen shows it as they type, because nobody finds out until the invoice.
    ========================================================================= */
+
+import { toneIssues } from "./tone.js";
 
 var OPT_OUT = "Reply STOP to opt out.";
 
@@ -35,7 +45,7 @@ var VARIABLES = [
   { key: "name", label: "Full name", example: "Sarah Whitfield", fallback: "there" },
   { key: "company", label: "Their company", example: "Whitfield Plumbing", fallback: "your business" },
   { key: "service", label: "What they asked about", example: "Google Ads management", fallback: "your enquiry" },
-  { key: "appointment", label: "Their appointment", example: "for Tuesday 1 December at 10:00", fallback: "(left out)" },
+  { key: "appointment", label: "Their appointment", example: "for Tuesday 1st December at 10:00", fallback: "(left out)" },
   { key: "business", label: "Business name", example: BUSINESS.business, fallback: BUSINESS.business },
   { key: "phone", label: "Our phone number", example: BUSINESS.phone, fallback: BUSINESS.phone },
   { key: "email", label: "Our email", example: BUSINESS.email, fallback: BUSINESS.email },
@@ -46,7 +56,7 @@ var EXAMPLE = {
   name: "Sarah Whitfield",
   service: "Google Ads management",
   company: "Whitfield Plumbing",
-  preferredDate: "Tuesday 1 December",
+  preferredDate: "Tuesday 1st December",
   preferredTime: "10:00",
 };
 
@@ -206,6 +216,17 @@ function validateMessage(m, opts) {
 
   if (body.indexOf("Reply STOP") !== -1) {
     warnings.push({ code: "opt_out_added", message: "You do not need to write the opt-out. On marketing messages it is added automatically, at the end, every time." });
+  }
+
+  /* The OMH tone of voice, its decidable half (gates/tone.js). Judged on
+     what the owner TYPED, with {{variables}} left out, never on the example
+     values filled in for the preview: those are ours, not theirs. Always a
+     warning and never an error, because the guide is a standard to write
+     to, and the owner may have a reason the rule cannot see. */
+  var said = (typeof x.subject === "string" && x.channel === "email" ? x.subject + "\n" : "") + body;
+  var tone = toneIssues(said);
+  for (var ti = 0; ti < tone.length; ti++) {
+    warnings.push({ code: "tone_" + tone[ti].code, message: tone[ti].message });
   }
 
   if (x.channel === "sms" && body.trim()) {
