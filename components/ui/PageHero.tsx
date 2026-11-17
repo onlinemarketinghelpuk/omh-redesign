@@ -45,7 +45,7 @@ export function PageHero({
             <div className="mb-9 text-lead leading-relaxed text-ink/75 [&>p+p]:mt-4">{typeof body === "string" ? <p>{body}</p> : body}</div>
             <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">{actions}</div>
             {stats && (
-              <dl className={`mt-10 border-t border-line pt-7 ${statsStyle === "divided" ? "grid max-w-[690px] gap-5 sm:grid-cols-3 sm:gap-0" : "flex flex-wrap gap-x-10 gap-y-5"}`}>
+              <dl className={`mt-10 border-t border-line pt-7 ${statsStyle === "divided" ? "grid max-w-[690px] items-end gap-5 sm:grid-cols-3 sm:gap-0" : "flex flex-wrap gap-x-10 gap-y-5"}`}>
                 {stats.map(([label, value]) => (
                   <div key={label} className={statsStyle === "divided" ? "sm:border-l sm:border-line sm:pl-5 sm:first:border-l-0 sm:first:pl-0" : undefined}>
                     <dt className="eyebrow text-muted">{label}</dt>

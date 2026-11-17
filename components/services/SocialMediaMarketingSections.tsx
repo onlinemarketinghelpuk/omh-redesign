@@ -3,9 +3,15 @@ import { Reveal } from "@/components/Reveal";
 import { FinalCta, type CtaAction } from "@/components/ui/FinalCta";
 import { ServiceFaqSection } from "@/components/services/ServiceFaqSection";
 import { ServiceBand, type ServiceBandTone } from "@/components/services/ServiceBand";
-import { CheckIcon as Check, HighlightedText, withLinks } from "@/components/services/ServicePrimitives";
+import { HighlightedText, withLinks } from "@/components/services/ServicePrimitives";
+import { PlanCards } from "@/components/services/PlanCards";
+import { CardGrid } from "@/components/ui/CardGrid";
+import { NumberedList } from "@/components/ui/NumberedList";
+import { PageHero } from "@/components/ui/PageHero";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Split } from "@/components/ui/Split";
 import { Button } from "@/components/ui/Button";
-import { Eyebrow, ReviewProof, type ServiceProofId } from "@/components/ui/Proof";
+import { ReviewProof, type ServiceProofId } from "@/components/ui/Proof";
 import { SiteTestimonials } from "@/components/Testimonials";
 import { socialMediaMarketing as content } from "@/lib/content/social-media-marketing";
 
@@ -101,42 +107,25 @@ export function SocialHero({
   proofHeading?: string;
 }) {
   return (
-    <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
-      <div className="container-omh pb-[clamp(56px,38px+2.9vw,88px)] pt-[clamp(48px,34px+2.3vw,80px)]">
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-12 max-lg:block">
-          <Reveal className="col-span-7 max-lg:mb-12">
-            <Eyebrow>{eyebrow}</Eyebrow>
-            <h1 className="mb-6 mt-7 font-sans text-display font-semibold text-balance">
-              <HighlightedText text={title} highlight={highlight} />
-            </h1>
-            <p className="mb-9 text-body leading-relaxed text-ink/75">{body}</p>
-            <div className="flex flex-wrap gap-3.5 max-sm:flex-col">
-              <Button href="/contact" arrow data-event={primary.event}>
-                {primary.label}
-              </Button>
-              <Button href="#packages" variant="secondary" data-event={secondary.event}>
-                {secondary.label}
-              </Button>
-            </div>
-            <dl className="mt-10 grid max-w-[650px] grid-cols-3 items-end border-t border-line pt-7 max-sm:grid-cols-1 max-sm:gap-5">
-              {stats.map(([label, value]) => (
-                <div
-                  key={label}
-                  className="border-l border-line pl-5 first:border-l-0 first:pl-0 max-sm:border-l-0 max-sm:pl-0"
-                >
-                  <dt className="text-[14px] font-semibold uppercase tracking-[0.13em] text-muted">{label}</dt>
-                  <dd className="mt-1.5 font-sans text-h4 font-semibold">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-          <Reveal className="col-span-5">
-            {visual}
-            <ReviewProof serviceId={proofId} heading={proofHeading} className="mt-6" />
-          </Reveal>
-        </div>
-      </div>
-    </section>
+    <PageHero
+      eyebrow={eyebrow}
+      title={<HighlightedText text={title} highlight={highlight} />}
+      body={body}
+      actions={
+        <>
+          <Button href="/contact" arrow data-event={primary.event}>
+            {primary.label}
+          </Button>
+          <Button href="#packages" variant="secondary" data-event={secondary.event}>
+            {secondary.label}
+          </Button>
+        </>
+      }
+      stats={stats}
+      statsStyle="divided"
+      media={visual}
+      proof={<ReviewProof serviceId={proofId} heading={proofHeading} />}
+    />
   );
 }
 
@@ -158,21 +147,17 @@ export function SocialGoals({
   return (
     <Band label={label} id="need-help" tone="navy">
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-12 gap-y-10 max-lg:block">
-          <div className="col-span-5 max-lg:mb-10">
-            <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">{eyebrow}</p>
-            <h2 className="mt-5 font-sans text-h2 font-semibold">{title}</h2>
-            <p className="mt-5 text-body leading-relaxed text-oninverse/68">{body}</p>
-          </div>
-          <ol className="col-span-7 grid grid-cols-2 gap-4 max-md:grid-cols-1">
+        <Split ratio="5/7">
+          <SectionHeader inverse kicker={eyebrow} title={title} body={body} />
+          <CardGrid as="ol" cols={2}>
             {goals.map((goal, index) => (
-              <li key={goal} className="rounded-card border border-oninverse/12 bg-oninverse/[0.04] p-6">
-                <span className="text-body font-semibold text-amber-deep">0{index + 1}</span>
+              <li key={goal} className="rounded-card border border-oninverse/12 bg-oninverse/[0.04] p-card">
+                <span className="text-body font-semibold text-amber-deep">{String(index + 1).padStart(2, "0")}</span>
                 <p className="mt-4 text-body leading-relaxed text-oninverse/82">{goal}</p>
               </li>
             ))}
-          </ol>
-        </div>
+          </CardGrid>
+        </Split>
         <div className="mt-10 flex flex-wrap items-center justify-between gap-5 border-t border-oninverse/12 pt-6">
           <p className="text-body leading-relaxed text-oninverse/62">{note}</p>
           <Button href="/contact" variant="ghost-white" small>
@@ -198,19 +183,8 @@ export function SocialSupport({
   return (
     <Band label={label} id="how-can-help" tone="mist">
       <Reveal>
-        <div>
-          <h2 className="font-sans text-h2 font-semibold">{title}</h2>
-          {body && <p className="mt-5 text-body leading-relaxed text-ink/68">{body}</p>}
-        </div>
-        <div className="mt-11 grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-md:grid-cols-1">
-          {items.map((item, index) => (
-            <article key={item.title} className="surface-card rounded-card border border-line bg-surface p-7">
-              <span className="text-body font-semibold text-amber-deep">0{index + 1}</span>
-              <h3 className="mt-4 font-sans text-h4 font-semibold">{item.title}</h3>
-              <p className="mt-3 text-body leading-relaxed text-ink/70">{item.body}</p>
-            </article>
-          ))}
-        </div>
+        <SectionHeader title={title} body={body || undefined} />
+        <NumberedList variant="card" cols={3} items={items} className="mt-header" />
       </Reveal>
     </Band>
   );
@@ -235,41 +209,20 @@ export function SocialPricing({
   return (
     <Band label={label} id="packages">
       <Reveal>
-        <div>
-          <h2 className="font-sans text-h2 font-semibold">{title}</h2>
-          <p className="mt-5 text-body leading-relaxed text-ink/68">{body}</p>
-        </div>
-        <div className="mt-11 grid grid-cols-3 gap-6 max-lg:grid-cols-1">
-          {content.packages.map((pkg, index) => (
-            <article
-              key={pkg.name}
-              className={`rounded-card border p-7 ${index === 1 ? "border-amber bg-tint-rose" : "border-line bg-surface"}`}
-            >
-              <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">
-                0{index + 1} · Social media marketing
-              </p>
-              <h3 className="mt-4 font-sans text-h3 font-semibold">{pkg.name}</h3>
-              <p className="mt-2 text-body leading-relaxed text-muted">{pkg.bestFor}</p>
-              <p className="mt-6 border-y border-line py-5 font-sans text-[36px] font-semibold">
-                {pkg.price}
-                <span className="ml-1 text-body font-normal text-muted">published price</span>
-              </p>
-              <ul className="mt-5 grid gap-2.5">
-                {pkg.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 text-body leading-relaxed text-ink/74">
-                    <Check className="mt-0.5 size-4 shrink-0 text-amber-deep" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-7">
-                <Button href="/contact" small data-event={`${event}_package_select`} data-package={pkg.name}>
-                  Discuss {pkg.name} Package
-                </Button>
-              </div>
-            </article>
-          ))}
-        </div>
+        <SectionHeader title={title} body={body} />
+        <PlanCards
+          className="mt-header"
+          plans={content.packages}
+          kicker="Social media marketing"
+          price={(pkg) => (
+            <p className="mt-6 border-y border-line py-5 font-sans text-price font-semibold">
+              {pkg.price}
+              <span className="ml-1 text-body font-normal text-muted">published price</span>
+            </p>
+          )}
+          cta={(pkg) => `Discuss ${pkg.name} Package`}
+          event={`${event}_package_select`}
+        />
         <div className="mt-8 rounded-card border border-line bg-warm p-6 text-body leading-relaxed text-muted">
           {notes.map((note, i) => (
             <p key={note} className={i ? "mt-3" : undefined}>
@@ -312,48 +265,41 @@ export function SocialGuaranteeAndReporting({
     <>
       <Band label={guarantee?.label ?? "Guarantee"} tone="navy">
         <Reveal>
-          <div className="grid grid-cols-12 gap-x-12 gap-y-9 max-lg:block">
-            <div className="col-span-5 max-lg:mb-8">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">
-                Don’t just take our word for it
-              </p>
-              <h2 className="mt-5 font-sans text-h2 font-semibold">
-                {guarantee?.title ?? "A published money-back promise, ready for final terms."}
-              </h2>
-            </div>
-            <div className="col-span-7">
+          <Split ratio="5/7">
+            <SectionHeader
+              inverse
+              kicker="Don’t just take our word for it"
+              title={guarantee?.title ?? "A published money-back promise, ready for final terms."}
+            />
+            <div>
               {guaranteeBody.map((paragraph, i) => (
                 <p key={paragraph} className={`text-body leading-relaxed text-oninverse/72 ${i ? "mt-4" : ""}`}>
                   {paragraph}
                 </p>
               ))}
             </div>
-          </div>
+          </Split>
         </Reveal>
       </Band>
       <Band label={reporting?.label ?? "Resources"} tone="mist">
         <Reveal>
-          <div className="grid grid-cols-12 gap-x-12 gap-y-9 max-lg:block">
-            <div className="col-span-4 max-lg:mb-8">
-              {eyebrow && (
-                <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-amber-deep">{eyebrow}</p>
-              )}
-              <h2 className={`font-sans text-h2 font-semibold ${eyebrow ? "mt-5" : ""}`}>
-                {reporting?.title ?? "Reporting that stays tied to your goals."}
-              </h2>
-              {reporting?.intro && <p className="mt-5 text-body leading-relaxed text-ink/70">{reporting.intro}</p>}
-            </div>
-            <div className="col-span-8 space-y-5 text-body leading-relaxed text-ink/70">
+          <Split ratio="4/8">
+            <SectionHeader
+              kicker={eyebrow}
+              title={reporting?.title ?? "Reporting that stays tied to your goals."}
+              body={reporting?.intro}
+            />
+            <div className="space-y-5 text-body leading-relaxed text-ink/70">
               {reporting?.items
                 ? reporting.items.map((item) => (
-                    <div key={item.term} className="rounded-card border border-line bg-surface p-7">
+                    <div key={item.term} className="rounded-card border border-line bg-surface p-card">
                       <h3 className="font-sans text-h4 font-semibold text-ink">{item.term}</h3>
                       <p className="mt-3">{item.body}</p>
                     </div>
                   ))
                 : reportingBody.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
-          </div>
+          </Split>
         </Reveal>
       </Band>
     </>
