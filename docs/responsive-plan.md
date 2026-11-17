@@ -392,3 +392,16 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
 - Phase 3 is done: every code-built page is either on the shared components or measured clean. Left for Phase 4:
   the 16 voice pages, /ai-services and the voice plan cards on /pricing. Phase 5: phone length (home is 26 screens at
   390px, Website Designs 34, About 27).
+
+### Phase 4a, 17 Nov 2026: voice pages, CSS only
+
+- `voice-agents.css` (@layer base) and `landing-v4.css`: h1/h2 on `--text-display`/`--text-h2`; `.v4l .section` on
+  `--section-md`. New unlayered block at the end of `voice-agents.css` (it has to beat the markup's Tailwind classes):
+  three-column card rows two-up at 768-1023px (two-column rows left alone, their cards are image-beside-text), voice
+  plans on /pricing two-up until 1280px, plan fact labels 14px, London widgets fit at 320px.
+- Results: /pricing squeezed@1024 20 -> 0; London spill@320 15 -> 5; one stretched tablet grid fewer per voice page;
+  desktop moves 2.5px at most; no audit check worse.
+- Left as they are: the literal `py-14 lg:py-20` section paddings (one consistent voice rhythm, 56/80px), h3/h4 sizes
+  (27.8px/20px vs the site's 30/22 at 1280; changing them reflows desktop), the lead-flow diagram labels, and the
+  remaining "stretched" tablet grids, which are intro-plus-content stacks, the phone mock-up and video cards.
+- Next: voice body text 15-17px -> 18px (user decision), piloted on /ai-voice-agents before the 12 industry files.
