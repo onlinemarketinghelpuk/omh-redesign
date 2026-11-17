@@ -339,3 +339,14 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
   Maintenance 25,702 -> 24,131. No audit check worse on any of the four.
 - Desktop: comparison tables 74-128px shorter on Shopify, WordPress and Maintenance (row labels wrap less);
   Local SEO moves at most 20px (check-list rows on the shared spacing). Google Ads unchanged.
+
+### Phase 3, 17 Nov 2026: social family (3fac3c5)
+
+- Social media marketing (scaffold shared with Facebook and Instagram), paid social and the Facebook/Instagram-only
+  bands on the shared components. New `PlanCards` for the two published-plan grids (three-up from 1024px, two-up
+  on tablets, five feature rows then "Show everything included" on phones).
+- Instagram's 9:16 creative frame is capped at 20rem while stacked (it ran full width on tablets).
+- Phone pages at 390px 1,400-2,200px shorter (Instagram 24,813 -> 23,134px); one-column grids at 768-912px gone on
+  all four; no audit check worse. Text differs only by the three phone-only buttons per page.
+- Desktop: card gap 16 -> 20px and card padding 24 -> 28px move later sections by up to 36px; Instagram 74px
+  (two process cards wrap one more line).
