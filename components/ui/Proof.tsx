@@ -125,13 +125,9 @@ export function Fpo({ ratio, tag, title, source, alt, className = "" }: {
 
 export function Eyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
   return (
-    <p
-      className={`flex items-center text-[14px] font-semibold uppercase ${
-        light
-          ? "gap-3 tracking-[0.15em] text-oninverse/60"
-          : "gap-2.5 tracking-[0.16em] text-muted"
-      }`}
-    >
+    // The shared small-caps style (globals.css `eyebrow`: 0.14em, tighter on phones). OLD tracking 0.16em
+    // (0.15em on dark grounds), unified 17 Nov 2026 with the user's OK for small desktop shifts.
+    <p className={`eyebrow flex items-center ${light ? "gap-3 text-oninverse/60" : "gap-2.5 text-muted"}`}>
       <span aria-hidden className={`h-0.5 w-5 ${light ? "bg-amber" : "bg-amber"}`} />
       {children}
     </p>

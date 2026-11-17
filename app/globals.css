@@ -84,7 +84,8 @@
 /* The small-caps label (eyebrows, kickers, stat labels). One letter spacing; tighter on phones so a long label
    keeps to two lines. */
 @utility eyebrow {
-  font-family: var(--font-sans);
+  /* No font-family: labels keep the font of their element (Source Sans on p/dt, Instrument Sans on headings),
+     as the hand-written labels did. */
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
