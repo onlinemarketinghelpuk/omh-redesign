@@ -181,6 +181,7 @@ export function WebsiteDesignsPage() {
           {page.gallery.heading}
         </h2>
         <p className="mt-4 hidden text-body text-muted pointer-fine:block">Hover over a design to scroll through the page.</p>
+        <p className="mt-4 hidden text-body text-muted pointer-coarse:block">Tap a design to scroll through the page.</p>
         <div className="mt-12 flex flex-col gap-14">
           {page.gallery.categories.map((category) => (
             <section key={category.title} aria-label={category.title}>
@@ -197,8 +198,9 @@ export function WebsiteDesignsPage() {
                   <li key={image.file}>
                     {/* Browser-window card. On hover the page screenshot (cropped from the mock-up into
                         pages/) slides up until its bottom meets the frame: 100cqh is the frame height,
-                        min() keeps screenshots shorter than the frame still. */}
-                    <figure className="group overflow-hidden rounded-card border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-ink/30 hover:shadow-[0_28px_60px_-34px_rgb(0_0_0/0.45)]">
+                        min() keeps screenshots shorter than the frame still. Focus does the same, so a tap
+                        scrolls it on touch screens (no hover there) and keyboard users get it too. */}
+                    <figure tabIndex={0} className="group overflow-hidden rounded-card border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-ink/30 hover:shadow-[0_28px_60px_-34px_rgb(0_0_0/0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber">
                       <div aria-hidden className="flex items-center gap-1.5 border-b border-line px-4 py-3">
                         <span className="size-2.5 rounded-full bg-ink/15" />
                         <span className="size-2.5 rounded-full bg-ink/15" />
@@ -214,7 +216,7 @@ export function WebsiteDesignsPage() {
                           width={990}
                           height={1016}
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                          className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:duration-[6000ms] group-hover:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))]"
+                          className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:duration-[6000ms] group-hover:ease-in-out group-focus:duration-[6000ms] group-focus:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))] motion-safe:group-focus:translate-y-[min(0px,calc(100cqh-100%))]"
                         />
                       </div>
                     </figure>
