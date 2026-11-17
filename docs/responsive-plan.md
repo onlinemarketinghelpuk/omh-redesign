@@ -309,3 +309,21 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
   instead of 1024px. `ServiceReasonGrid` is two-up from 768px. Related-service cards are two-up on tablets.
 - Audit against Phase 1: no page scrolls sideways at any width (was 1 page), squeezed text at 1024px 99 -> 53,
   stretched one-column grids at 768-912px -8, small phone tap targets 234 -> 147. Nothing worse.
+
+### Phase 2b, 17 Nov 2026: shared section components (bc637ac)
+
+- New: `components/ui/{Split,CardGrid,SectionHeader,NumberedList,CheckList,ShowMore,PageHero}.tsx` and
+  `components/services/PackageComparison.tsx`; `ServiceSectionIntro` is now an alias of `SectionHeader`. Each one
+  is shown in every variant on `/design-system`, which passes the audit at every width (no overflow, no spill).
+- Desktop unchanged on the 8 service pages that already used `ServiceSectionIntro`.
+
+### Phase 3 pilot, 17 Nov 2026: Google Ads page (9004c16)
+
+- `GoogleAdsPpcSections.tsx` rebuilt from the shared components (287 -> 205 lines); copy unchanged.
+- The `eyebrow` utility no longer sets a font (it made the hero stat labels wider and wrap at 1440px);
+  `Eyebrow` in `Proof.tsx` uses it, so hero labels are 0.14em everywhere (was 0.16em, 0.15em on dark).
+- Phone page 25,416 -> 23,734px (30.1 -> 28.1 screens); tablet 18,872 -> 18,143px; stretched one-column grids
+  at 768-912px 3 -> 1 (the pricing notes list). No audit check got worse.
+- Desktop shifts (allowed 17 Nov): feature panel padding 40 -> 36px, check-list rows +4.5px each, table prices
+  32 -> 34px with the columns rebalancing; at most 31px vertical at 1280px, 8px at 1440px. Page text differs
+  only by the four phone-only "Show everything included" buttons. Before/after screenshots sent to the user.
