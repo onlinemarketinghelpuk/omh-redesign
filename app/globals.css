@@ -1406,20 +1406,22 @@ body {
     padding-inline: 16px;
   }
 
+  /* Phones: icon above the label (side by side, "WooCommerce" ran into the tile edge), rows grow for two-line labels. */
   .recognition-masonry {
-    grid-auto-rows: 96px;
+    grid-auto-rows: minmax(104px, auto);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .recognition-tile-2 {
     grid-row: span 1;
-    flex-direction: row;
   }
 
   .recognition-tile {
+    flex-direction: column;
     gap: 8px;
-    padding: 12px;
+    padding: 14px 10px;
     font-size: 18px;
+    line-height: 1.25;
   }
 
   .hero-grid::after {

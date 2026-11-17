@@ -72,7 +72,7 @@ const whoIcons: LucideIcon[] = [Store, ShoppingBag, Layers3, Users];
 
 function StarRating({ label }: { label: string }) {
   return (
-    <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-body font-semibold text-ink shadow-[0_12px_28px_-24px_rgb(0_0_0/0.55)]">
+    <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-body font-semibold text-ink shadow-[0_12px_28px_-24px_rgb(0_0_0/0.55)] max-sm:gap-1.5 max-sm:px-3.5 max-sm:text-base max-[359px]:rounded-2xl max-[359px]:text-balance">
       {/* ponytail: no star glyphs — five stars next to no rating reads as a
           review score, which brief §6/§33 forbids inventing. Restore only
           alongside a real, attributed rating. */}
@@ -163,7 +163,7 @@ export default async function Home() {
           </div>
 
           <div className="hero-in hero-in-2 relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[760px]">
-            <Pointer className="hero-media relative mb-9">
+            <Pointer className="hero-media relative">
               <div className="pointer-parallax relative">
               <div className="image-hover-frame media-shine relative aspect-[4/5] overflow-hidden rounded-[8px] bg-inverse shadow-[0_36px_90px_-42px_rgb(0_0_0/0.48)] max-lg:aspect-[16/10] max-sm:aspect-[4/5]">
                 <Image
@@ -179,11 +179,11 @@ export default async function Home() {
                   Decisions grounded in the campaign, the website, and the numbers.
                 </p>
               </div>
-              <div className="absolute -bottom-7 -left-8 w-[250px] rounded-[8px] border border-oninverse/15 bg-inverse p-5 text-oninverse shadow-[0_24px_60px_-24px_rgb(0_0_0/0.65)] max-sm:-bottom-10 max-sm:left-4">
-                <p className="text-[14px] font-semibold uppercase tracking-[0.12em] text-amber">Connected delivery</p>
+              <div className="absolute bottom-7 left-7 w-[250px] max-w-[calc(100%-3.5rem)] rounded-[8px] border border-oninverse/15 bg-inverse p-5 text-oninverse shadow-[0_24px_60px_-24px_rgb(0_0_0/0.65)] max-sm:bottom-5 max-sm:left-5">
+                <p className="eyebrow text-amber">Connected delivery</p>
                 <p className="mt-2 text-body font-semibold">Plan &rarr; Build &rarr; Measure</p>
               </div>
-              <div className="absolute -right-5 top-9 flex size-24 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_20px_45px_-22px_rgb(var(--accent-rgb)/0.75)] max-sm:right-3 max-sm:top-4 max-sm:size-20">
+              <div className="absolute right-7 top-7 flex size-24 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_20px_45px_-22px_rgb(var(--accent-rgb)/0.75)] max-sm:right-5 max-sm:top-5 max-sm:size-20">
                 <Gauge className="mb-1 size-7" aria-hidden />
                 <span className="text-[14px] font-semibold">Growth ready</span>
               </div>
@@ -347,7 +347,7 @@ export default async function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute bottom-5 right-2 flex size-28 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_0_42px_rgb(var(--accent-rgb)/0.42)] max-sm:bottom-4 max-sm:size-20">
+                <div className="absolute bottom-0 right-0 flex size-28 flex-col items-center justify-center rounded-[8px] bg-teal text-center text-white shadow-[0_0_42px_rgb(var(--accent-rgb)/0.42)] max-sm:size-20">
                   <span className="font-sans text-[26px] font-semibold">One</span>
                   <span className="mt-1 text-[14px] font-semibold uppercase tracking-[0.1em] text-inverse/70">joined-up team</span>
                 </div>

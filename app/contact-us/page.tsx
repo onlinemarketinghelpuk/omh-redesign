@@ -41,9 +41,9 @@ export default function ContactUsPage() {
                     <Icon className="size-5" strokeWidth={1.75} />
                   </span>
                   <span className="mt-5 block eyebrow text-muted">{label}</span>
-                  <span className={`mt-1.5 block break-words font-sans font-semibold ${long ? "text-lead" : "text-h4"}`}>
+                  <span className="mt-1.5 block break-words font-sans text-h4 font-semibold">
                     {/* An email breaks after the @ on phones, never inside the domain. */}
-                    {long ? <>{value.split("@")[0]}@<wbr />{value.split("@")[1]}</> : value}
+                    {long ? <>{value.split("@")[0]}@<wbr />{value.split("@")[1]}</> : value.replace(/ (\d[A-Z]{2})$/, "\u00a0$1")}
                   </span>
                 </>
               );

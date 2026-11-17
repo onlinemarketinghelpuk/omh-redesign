@@ -2,7 +2,7 @@
  "one-off font size text-[Npx]": {
   "app/design-system/page.tsx": 5,
   "app/get-more-leads/page.tsx": 1,
-  "app/page.tsx": 22,
+  "app/page.tsx": 21,
   "components/about/AboutTabs.tsx": 2,
   "components/BookDemo.tsx": 12,
   "components/case-studies/CaseStudyArchive.tsx": 25,

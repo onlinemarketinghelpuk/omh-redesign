@@ -127,8 +127,8 @@ export function Eyebrow({ children, light = false }: { children: ReactNode; ligh
   return (
     // The shared small-caps style (globals.css `eyebrow`: 0.14em, tighter on phones). OLD tracking 0.16em
     // (0.15em on dark grounds), unified 17 Nov 2026 with the user's OK for small desktop shifts.
-    <p className={`eyebrow flex items-center ${light ? "gap-3 text-oninverse/60" : "gap-2.5 text-muted"}`}>
-      <span aria-hidden className={`h-0.5 w-5 ${light ? "bg-amber" : "bg-amber"}`} />
+    <p className={`eyebrow flex items-start ${light ? "gap-3 text-oninverse/60" : "gap-2.5 text-muted"}`}>
+      <span aria-hidden className="mt-[calc(0.7em-1px)] h-0.5 w-5 shrink-0 bg-amber" />
       {children}
     </p>
   );

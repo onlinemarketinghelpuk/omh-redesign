@@ -114,7 +114,7 @@ export function PriceTables({ voicePricingHtml }: { voicePricingHtml: string }) 
         <nav aria-label="Pricing categories" className="lg:sticky lg:top-28">
           <p className="mb-4 font-sans text-xl font-semibold text-ink">Find your service</p>
           <ul className="grid grid-cols-2 gap-x-5 lg:grid-cols-1">
-            {groups.map(group => <li key={group.id}><a href={`#${group.id}`} className="block min-h-12 border-b border-line py-4 text-body font-medium leading-relaxed text-ink transition-colors hover:text-amber-deep focus-visible:outline-2 focus-visible:outline-amber">{group.title}</a></li>)}
+            {groups.map(group => <li key={group.id}><a href={`#${group.id}`} className="flex h-full min-h-12 items-center border-b border-line py-4 text-body font-medium leading-relaxed text-ink transition-colors hover:text-amber-deep focus-visible:outline-2 focus-visible:outline-amber">{group.title}</a></li>)}
           </ul>
           <p className="mt-5 text-body leading-relaxed text-muted">Open a service to compare packages. Prices, contract lengths and extra costs are listed together.</p>
         </nav>
@@ -128,11 +128,11 @@ export function PriceTables({ voicePricingHtml }: { voicePricingHtml: string }) 
                   // AI voice agents: the same plan cards as /ai-voice-agents, in the voice page's own styles.
                   if (id === "ai-voice-agents") return (
                     <details key={id} id={id} name="pricing-service" className="group/service scroll-mt-28 min-w-0 border-b border-line bg-surface">
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 max-sm:flex-wrap transition-colors hover:bg-warm focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-amber group-open/service:bg-warm [&::-webkit-details-marker]:hidden sm:p-6">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-0 py-5 max-sm:flex-wrap transition-colors focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-amber [&::-webkit-details-marker]:hidden sm:p-6 sm:hover:bg-warm sm:group-open/service:bg-warm">
                         <span className="min-w-0"><span className="block font-sans text-[19px] font-semibold leading-snug text-ink">AI Voice Agents</span><span className="mt-1 block text-body text-muted">3 plans to compare, billed monthly</span></span>
                         <span className="flex shrink-0 items-center gap-3 max-sm:w-full max-sm:justify-between sm:gap-5"><span className="text-right max-sm:text-left"><span className="block text-body text-muted">Starting from</span><span className="block font-sans text-xl font-semibold text-amber-deep">£249 a month</span></span><ChevronDown className="size-5 text-amber-deep transition-transform group-open/service:rotate-180 motion-reduce:transition-none" aria-hidden /></span>
                       </summary>
-                      <div className="border-t border-line p-4 sm:p-6">
+                      <div className="border-t border-line px-0 py-4 sm:p-6">
                         <p className="text-body leading-relaxed text-ink/75">Three plans, billed monthly, no minimum contract. Every plan includes a managed agent, a British voice, a summary of every call and a monthly report. Prices exclude VAT.</p>
                         <div id="va-page" className="va-page" dangerouslySetInnerHTML={{ __html: voicePricingHtml }} />
                         <div className="mt-5 flex flex-wrap items-center justify-between gap-4"><p className="text-body text-muted">See what it sounds like before choosing a plan.</p><Button href="/ai-voice-agents" data-event="pricing_service_enquiry" data-service={id}>See AI voice agents</Button></div>
@@ -144,11 +144,11 @@ export function PriceTables({ voicePricingHtml }: { voicePricingHtml: string }) 
                   const importantNotes = table.notes.filter(note => /Monthly Payment|advertising spend|cost of Shopify|minimum 3 month/i.test(note));
                   return (
                     <details key={id} id={id} name="pricing-service" className="group/service scroll-mt-28 min-w-0 border-b border-line bg-surface">
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 max-sm:flex-wrap transition-colors hover:bg-warm focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-amber group-open/service:bg-warm [&::-webkit-details-marker]:hidden sm:p-6">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-0 py-5 max-sm:flex-wrap transition-colors focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-amber [&::-webkit-details-marker]:hidden sm:p-6 sm:hover:bg-warm sm:group-open/service:bg-warm">
                         <span className="min-w-0"><span className="block font-sans text-[19px] font-semibold leading-snug text-ink">{table.title}</span><span className="mt-1 block text-body text-muted">{table.tiers.length ? `${table.tiers.length} packages to compare` : "A design tailored to your project"}</span></span>
                         <span className="flex shrink-0 items-center gap-3 max-sm:w-full max-sm:justify-between sm:gap-5"><span className="text-right max-sm:text-left"><span className="block text-body text-muted">{pricing ? "Starting from" : "Bespoke pricing"}</span><span className="block font-sans text-xl font-semibold text-amber-deep">{pricing ? pricing.values[0] : "Custom quote"}</span></span><ChevronDown className="size-5 text-amber-deep transition-transform group-open/service:rotate-180 motion-reduce:transition-none" aria-hidden /></span>
                       </summary>
-                      <div className="border-t border-line p-4 sm:p-6">
+                      <div className="border-t border-line px-0 py-4 sm:p-6">
                         {pricing ? <ComparisonTable table={table} /> : <div className=""><h3 className="font-sans text-h4 font-semibold">Let’s scope your website design</h3><p className="mt-3 text-body leading-relaxed text-ink/75">There is no fixed package price for this service. Share your requirements and we’ll help you choose a design and prepare a quote.</p><Link href="/website-designs" className="mt-4 inline-block font-semibold text-amber-deep underline underline-offset-4">Browse website designs</Link></div>}
                         {importantNotes.length > 0 && <div className="mt-5 rounded-lg border-l-2 border-amber bg-warm p-4"><p className="mb-2 text-body font-semibold text-ink">Pricing notes</p>{importantNotes.map(note => <p key={note} className="mt-1 text-body leading-relaxed text-ink/75">{note}</p>)}</div>}
                         <details className="mt-5 border-b border-line pb-5">
