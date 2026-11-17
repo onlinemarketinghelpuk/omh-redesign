@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { BookDemo } from "@/components/BookDemo";
 import { FinalCta } from "@/components/ui/FinalCta";
 import { Eyebrow } from "@/components/ui/Proof";
+import { Split } from "@/components/ui/Split";
 import { about } from "@/lib/content/about";
 
 /*
@@ -26,8 +27,8 @@ export function AboutHero() {
         <Reveal>
           <Eyebrow>{about.hero.eyebrow}</Eyebrow>
 
-          <div className="mt-9 grid grid-cols-12 items-center gap-x-12 gap-y-12 max-lg:block">
-            <div className="col-span-7">
+          <Split ratio="7/5" align="center" className="mt-9">
+            <div>
               <h1 className="font-sans text-display font-semibold text-balance">
                 <span className="text-amber-deep">{about.hero.titleLead}</span>{" "}
                 {about.hero.titleRest}
@@ -50,7 +51,7 @@ export function AboutHero() {
             </div>
 
             {/* The people are the point of this page, so they open it. */}
-            <div className="col-span-5 max-lg:mt-12">
+            <div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-media border border-line bg-soft">
                   <Image
@@ -88,9 +89,9 @@ export function AboutHero() {
                 ))}
               </div>
             </div>
-          </div>
+          </Split>
 
-          <div className="mt-14 grid grid-cols-3 gap-x-10 gap-y-8 border-t border-line pt-9 max-sm:grid-cols-1">
+          <div className="mt-14 grid gap-x-10 gap-y-8 border-t border-line pt-9 sm:grid-cols-3">
             {[
               [Users, `${faces.length} specialists`, "Marketing, development, creative and support in one team"],
               [Trees, "2,000+ trees", "Planted through the One Tree Planted initiative"],
@@ -121,8 +122,8 @@ export function AboutStory() {
     <section className="border-b border-line bg-surface">
       <div className="container-omh section-md">
         <Reveal>
-          <div className="grid grid-cols-12 items-start gap-x-12 gap-y-10 max-lg:block">
-            <div className="col-span-5 max-lg:mb-10">
+          <Split ratio="5/6" align="start">
+            <div>
               <div className="relative aspect-[4/5] overflow-hidden rounded-media border border-line bg-soft max-lg:aspect-[16/10]">
                 <Image
                   src="/images/Solutions/2.jpg"
@@ -134,7 +135,7 @@ export function AboutStory() {
               </div>
             </div>
 
-            <div className="col-span-6 col-start-7">
+            <div>
               <Eyebrow>Our story</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">
                 Built after struggling to find a transparent agency.
@@ -147,7 +148,7 @@ export function AboutStory() {
                 ))}
               </div>
             </div>
-          </div>
+          </Split>
         </Reveal>
       </div>
     </section>
@@ -159,8 +160,8 @@ export function AboutAwards() {
     <section className="dark-grid border-b border-line bg-inverse text-oninverse">
       <div className="container-omh section-md">
         <Reveal>
-          <div className="grid grid-cols-12 items-center gap-x-12 gap-y-10 max-lg:block">
-            <div className="col-span-6">
+          <Split ratio="6/5" align="center">
+            <div>
               <Eyebrow light>{about.awards.label}</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">
                 <span className="text-amber">{about.awards.titleLead}</span>{" "}
@@ -178,8 +179,9 @@ export function AboutAwards() {
               </div>
             </div>
 
-            <div className="col-span-5 col-start-8 max-lg:mt-10">
-              <div className="grid grid-cols-2 gap-4">
+            {/* Four portraits: two-up while stacked would run 1,400px tall on tablets, so four-up there. */}
+            <div>
+              <div className="grid grid-cols-2 gap-4 md:max-lg:grid-cols-4">
                 {faces.slice(2, 6).map((member) => (
                   <div
                     key={member.name}
@@ -196,7 +198,7 @@ export function AboutAwards() {
                 ))}
               </div>
             </div>
-          </div>
+          </Split>
         </Reveal>
       </div>
     </section>
@@ -210,14 +212,14 @@ export function AboutSustainability() {
         <Reveal>
           {/* items-start, not items-end: bottom-aligning the heading left a tall
               empty column beside the copy. */}
-          <div className="grid grid-cols-12 items-start gap-x-12 gap-y-8 max-lg:block">
-            <div className="col-span-5">
+          <Split ratio="5/6" align="start">
+            <div>
               <Eyebrow>{about.sustainability.label}</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">
                 {about.sustainability.title}
               </h2>
             </div>
-            <div className="col-span-6 col-start-7 max-lg:mt-8">
+            <div>
               <div className="grid gap-5">
                 {about.sustainability.body.map((paragraph) => (
                   <p key={paragraph} className="text-body leading-relaxed text-ink/72">
@@ -226,7 +228,7 @@ export function AboutSustainability() {
                 ))}
               </div>
             </div>
-          </div>
+          </Split>
         </Reveal>
 
         <Reveal className="mt-16">
@@ -244,8 +246,8 @@ export function AboutCharity() {
     <section className="border-b border-line bg-surface">
       <div className="container-omh section-md">
         <Reveal>
-          <div className="grid grid-cols-12 items-start gap-x-12 gap-y-10 max-lg:block">
-            <div className="col-span-6">
+          <Split ratio="6/6" from="lg" align="start">
+            <div>
               <Eyebrow>{about.charity.label}</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">
                 <span className="text-amber-deep">{about.charity.titleLead}</span>{" "}
@@ -257,7 +259,7 @@ export function AboutCharity() {
                 {about.charity.causes.map((cause) => (
                   <li
                     key={cause.name}
-                    className="flex gap-4 rounded-card border border-line bg-surface p-6"
+                    className="flex gap-4 rounded-card border border-line bg-surface p-card"
                   >
                     <HandHeart
                       className="mt-0.5 size-6 shrink-0 text-amber-deep"
@@ -273,7 +275,7 @@ export function AboutCharity() {
               </ul>
             </div>
 
-            <div className="col-span-6 max-lg:mt-10">
+            <div>
               <div className="grid gap-5">
                 {rest.map((paragraph) => (
                   <p key={paragraph} className="text-body leading-relaxed text-ink/72">
@@ -287,7 +289,7 @@ export function AboutCharity() {
                 </Button>
               </div>
             </div>
-          </div>
+          </Split>
         </Reveal>
       </div>
     </section>
@@ -299,15 +301,15 @@ export function AboutTeam() {
     <section className="border-b border-line bg-surface">
       <div className="container-omh section-md">
         <Reveal>
-          <div className="grid grid-cols-12 items-start gap-x-12 gap-y-8 max-lg:block">
-            <div className="col-span-5">
+          <Split ratio="5/6" align="start">
+            <div>
               <Eyebrow>{about.team.label}</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">
                 <span className="text-amber-deep">{about.team.titleLead}</span>{" "}
                 {about.team.titleRest}
               </h2>
             </div>
-            <div className="col-span-6 col-start-7 max-lg:mt-8">
+            <div>
               {about.team.body.map((paragraph) => (
                 <p
                   key={paragraph}
@@ -317,7 +319,7 @@ export function AboutTeam() {
                 </p>
               ))}
             </div>
-          </div>
+          </Split>
         </Reveal>
 
         <Reveal>

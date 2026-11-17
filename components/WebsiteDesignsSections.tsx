@@ -26,6 +26,7 @@ import { ServiceHeroArt } from "@/components/services/ServiceHeroArt";
 import { AccentTitle, CheckIcon } from "@/components/services/ServicePrimitives";
 import { ArrowRight, Button, TextLink } from "@/components/ui/Button";
 import { FinalCta } from "@/components/ui/FinalCta";
+import { Split } from "@/components/ui/Split";
 import { Eyebrow } from "@/components/ui/Proof";
 import { caseStudies } from "@/lib/content/case-studies";
 import { company } from "@/lib/content/nav";
@@ -93,9 +94,9 @@ export function WebsiteDesignsPage() {
   return (
     <main>
       <ServiceBand label={page.title} tone="warm" accent={ACCENT} labelStyle="plain" className="hero-grid">
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-11 max-lg:block">
-          {/* CSS-only entrance, not <Reveal>: the hero paints before hydration. */}
-          <div className="hero-in col-span-6">
+        {/* CSS-only entrance, not <Reveal>: the hero paints before hydration. */}
+        <Split ratio="6/6" from="lg" align="center">
+          <div className="hero-in">
             <h1 className="font-sans text-display font-semibold text-balance"><AccentTitle text={page.heading} /></h1>
             <p className="mt-5 font-sans text-h3 font-semibold text-amber-deep text-balance">
               {page.standfirst}
@@ -110,24 +111,24 @@ export function WebsiteDesignsPage() {
               </Button>
             </div>
           </div>
-          <div className="hero-in hero-in-2 col-span-6 max-lg:mt-11">
+          <div className="hero-in hero-in-2">
             <ServiceHeroArt variant="designs" />
           </div>
-        </div>
+        </Split>
 
-        <div className="mt-14 grid grid-cols-12 gap-x-12 gap-y-8 max-lg:block">
-          <div className="col-span-5">
+        <Split ratio="5/6" className="mt-14">
+          <div>
             <Eyebrow>{page.statEyebrow}</Eyebrow>
             <h2 className="mt-5 font-sans text-h3 font-semibold text-balance">{page.statHeading}</h2>
           </div>
-          <div className="col-span-6 col-start-7 max-lg:mt-8">
+          <div>
             {page.intro.map((paragraph) => (
               <p key={paragraph} className="mt-5 text-body leading-relaxed text-ink/75 first:mt-0">
                 {paragraph}
               </p>
             ))}
           </div>
-        </div>
+        </Split>
       </ServiceBand>
 
       <ServiceBand
@@ -137,10 +138,10 @@ export function WebsiteDesignsPage() {
         accent={ACCENT}
         labelStyle={LABEL}
       >
-        <div className="grid grid-cols-12 items-end gap-x-12 gap-y-6 max-lg:block">
-          <h2 className="col-span-6 font-sans text-h2 font-semibold text-balance">{page.help.heading}</h2>
-          <p className="col-span-6 text-body leading-relaxed text-ink/75 max-lg:mt-5">{page.help.intro}</p>
-        </div>
+        <Split ratio="6/6" from="lg" align="end">
+          <h2 className="font-sans text-h2 font-semibold text-balance">{page.help.heading}</h2>
+          <p className="text-body leading-relaxed text-ink/75">{page.help.intro}</p>
+        </Split>
         <ul className="mt-10 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
           {page.help.sectors.map((sector) => {
             const Icon = sectorIcons[sector.replace(/ Websites$/, "")] ?? HardHat;
@@ -154,12 +155,12 @@ export function WebsiteDesignsPage() {
             );
           })}
         </ul>
-        <div className="mt-6 grid grid-cols-12 items-center gap-x-10 gap-y-6 rounded-card border border-line bg-warm/55 p-7 max-lg:block max-sm:p-5">
-          <div className="col-span-4">
+        <Split ratio="4/8" gap={10} align="center" className="mt-6 rounded-card border border-line bg-warm/55 p-card">
+          <div>
             <h3 className="font-sans text-h4 font-semibold">{page.help.tradesTitle}</h3>
             <p className="mt-3 text-body leading-relaxed text-ink/75">{page.help.tradesLead}</p>
           </div>
-          <ul className="col-span-8 flex flex-wrap items-center gap-2.5 max-lg:mt-6">
+          <ul className="flex flex-wrap items-center gap-2.5">
             {page.help.trades.map((trade) => (
               <li key={trade} className="rounded-full border border-line bg-surface px-4 py-2 text-body text-ink/75">
                 {trade}
@@ -171,7 +172,7 @@ export function WebsiteDesignsPage() {
               </Button>
             </li>
           </ul>
-        </div>
+        </Split>
       </ServiceBand>
 
       <ServiceBand label={page.gallery.eyebrow} tone="mist" accent={ACCENT} labelStyle={LABEL}>
@@ -224,27 +225,27 @@ export function WebsiteDesignsPage() {
       </ServiceBand>
 
       <ServiceBand label={page.pricing.eyebrow} tone="warm" accent={ACCENT} labelStyle={LABEL}>
-        <div className="grid grid-cols-12 gap-x-12 gap-y-8 max-lg:block">
-          <h2 className="col-span-5 font-sans text-h2 font-semibold text-balance">
+        <Split ratio="5/6">
+          <h2 className="font-sans text-h2 font-semibold text-balance">
             {page.pricing.heading}
           </h2>
-          <div className="col-span-6 col-start-7 max-lg:mt-8">
+          <div>
             {page.pricing.body.map((paragraph) => (
               <p key={paragraph} className="mt-6 text-body leading-relaxed text-ink/75 first:mt-0">
                 {paragraph}
               </p>
             ))}
           </div>
-        </div>
+        </Split>
         {/* The published WordPress website packages, so "transparent pricing" shows a price. */}
         <ul className="mt-12 grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
           {wordpressDevelopment.packages.map((pkg) => (
             <li key={pkg.name} className="surface-card flex flex-col rounded-card border border-line bg-surface p-6">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">{pkg.stage}</p>
+              <p className="eyebrow text-muted">{pkg.stage}</p>
               <h3 className="mt-2 font-sans text-h4 font-semibold">{pkg.name}</h3>
-              <p className="mt-3 font-sans text-[34px] font-semibold leading-none tracking-[-0.02em]">
+              <p className="mt-3 font-sans text-price font-semibold tracking-[-0.02em]">
                 {pkg.price}
-                <span className="ml-2 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">from</span>
+                <span className="eyebrow ml-2 text-muted">from</span>
               </p>
               <p className="mt-4 text-bsm leading-relaxed text-ink/70">{pkg.bestFor}</p>
             </li>
@@ -309,8 +310,8 @@ export function WebsiteDesignsPage() {
       )}
 
       <ServiceBand label={page.contact.eyebrow} tone="navy" accent={ACCENT} labelStyle={LABEL}>
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-8 max-lg:block">
-          <div className="col-span-6">
+        <Split ratio="6/5" align="center">
+          <div>
             <h2 className="font-sans text-h2 font-semibold text-balance">{page.contact.heading}</h2>
             <p className="mt-5 text-body leading-relaxed text-oninverse/70">{page.contact.body}</p>
             <div className="mt-8 flex flex-wrap gap-3.5 max-sm:flex-col">
@@ -322,8 +323,8 @@ export function WebsiteDesignsPage() {
               </Button>
             </div>
           </div>
-          <div className="col-span-5 col-start-8 rounded-card border border-oninverse/15 bg-oninverse/[0.05] p-7 max-lg:mt-10 max-sm:p-5">
-            <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-oninverse/55">{page.consultation.heading}</p>
+          <div className="rounded-card border border-oninverse/15 bg-oninverse/[0.05] p-card">
+            <p className="eyebrow text-oninverse/55">{page.consultation.heading}</p>
             <ul className="mt-5 divide-y divide-oninverse/12">
               <li className="py-4">
                 <Link href={company.phoneHref} data-event="website_designs_phone_click" className="group flex items-center gap-4 text-oninverse">
@@ -345,15 +346,15 @@ export function WebsiteDesignsPage() {
               </li>
             </ul>
           </div>
-        </div>
+        </Split>
       </ServiceBand>
 
       <ServiceBand label={page.guarantee.eyebrow} tone="warm" accent={ACCENT} labelStyle={LABEL}>
-        <div className="grid grid-cols-12 overflow-hidden rounded-card border border-line bg-surface max-lg:block">
-          <div className="col-span-5 flex items-center bg-[radial-gradient(circle_at_50%_30%,#262626_0%,#000_70%)] p-10 max-sm:p-7">
+        <div className="grid overflow-hidden rounded-card border border-line bg-surface lg:grid-cols-12">
+          <div className="flex items-center lg:col-span-5 bg-[radial-gradient(circle_at_50%_30%,#262626_0%,#000_70%)] p-10 max-sm:p-7">
             <GuaranteeBadge />
           </div>
-          <div className="col-span-7 p-10 max-sm:p-6">
+          <div className="p-10 max-sm:p-6 lg:col-span-7">
             <h2 className="font-sans text-h2 font-semibold text-balance">{page.guarantee.heading}</h2>
             <p className="mt-5 text-body leading-relaxed text-ink/75">{page.guarantee.body[0]}</p>
             <ul className="mt-7 grid gap-3">

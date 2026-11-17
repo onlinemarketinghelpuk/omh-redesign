@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { BookDemo } from "@/components/BookDemo";
 import { FinalCta } from "@/components/ui/FinalCta";
 import { Eyebrow } from "@/components/ui/Proof";
+import { Split } from "@/components/ui/Split";
 import { faqPage } from "@/lib/content/faq-page";
 
 function slug(heading: string) {
@@ -19,23 +20,21 @@ export function FaqHero() {
       <div className="container-omh section-md">
         <Reveal>
           <Eyebrow>{faqPage.eyebrow}</Eyebrow>
-          <div className="mt-8 grid grid-cols-12 items-center gap-x-12 gap-y-10 max-lg:block">
-            <div className="col-span-7">
+          <Split ratio="7/5" align="center" className="mt-8">
+            <div>
               <h1 className="font-sans text-display font-semibold text-balance">
                 Most Common <span className="text-amber-deep">Questions</span>
               </h1>
               {/* A contents list, not a stock paragraph — on a page this long the
                   useful thing at the top is a way to reach the right group. */}
               <nav aria-label="Question categories" className="mt-9">
-                <p className="mb-4 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-                  Jump to
-                </p>
+                <p className="eyebrow mb-4 text-muted">Jump to</p>
                 <ul className="flex flex-wrap gap-2">
                   {faqPage.groups.map((group) => (
                     <li key={group.heading}>
                       <a
                         href={`#${slug(group.heading)}`}
-                        className="inline-block rounded-full border border-line bg-surface px-3.5 py-1.5 text-[18px] text-ink/75 transition-colors hover:border-teal hover:text-ink"
+                        className="tap-target inline-block rounded-full border border-line bg-surface px-3.5 py-1.5 text-body text-ink/75 transition-colors hover:border-teal hover:text-ink"
                       >
                         {group.heading}
                       </a>
@@ -44,15 +43,13 @@ export function FaqHero() {
                 </ul>
               </nav>
             </div>
-            <div className="col-span-5 max-lg:mt-10">
-              <MediaFrame
+            <MediaFrame
                 kind="image"
                 theme="wordpress"
                 ratio="4/3"
                 title="The questions we get asked most"
                 note="Add a short video answering the three most common questions." source="/images/home/agency-collaboration.webp" alt="Agency team discussing a project" />
-            </div>
-          </div>
+          </Split>
         </Reveal>
       </div>
     </section>
@@ -77,15 +74,11 @@ export function FaqGroups() {
             labelStyle="none"
           >
             <Reveal>
-              <div className="grid grid-cols-12 gap-x-12 gap-y-7 max-lg:block">
-                <div className="col-span-4">
-                  <div className="lg:sticky lg:top-24">
-                    <h2 className="font-sans text-h2 font-semibold text-balance">
-                      {group.heading}
-                    </h2>
-                  </div>
-                </div>
-                <div className="col-span-8 max-lg:mt-7">
+              <Split ratio="4/8" sticky>
+                <h2 className="font-sans text-h2 font-semibold text-balance">
+                  {group.heading}
+                </h2>
+                <div>
                   <Accordion
                     group={slug(group.heading)}
                     items={group.items.map((item) => ({
@@ -98,7 +91,7 @@ export function FaqGroups() {
                     }))}
                   />
                 </div>
-              </div>
+              </Split>
             </Reveal>
           </ServiceBand>
         </div>
@@ -111,8 +104,8 @@ function FaqMediaBreak() {
   return (
     <ServiceBand label="How we work" tone="dark" accent="bg-amber" labelStyle="pill">
       <Reveal>
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-10 max-lg:block">
-          <div className="col-span-5">
+        <Split ratio="5/7" align="center">
+          <div>
             <h2 className="font-sans text-h2 font-semibold text-balance">
               Rather see it than read it?
             </h2>
@@ -127,8 +120,8 @@ function FaqMediaBreak() {
             ratio="16/9"
             title="Project walkthrough"
             note="Replace with a consultation-to-launch screen recording."
-            className="col-span-7 max-lg:mt-10" source="/images/Services/wordpress development.jpg" alt="Website development workspace" />
-        </div>
+            source="/images/Services/wordpress development.jpg" alt="Website development workspace" />
+        </Split>
       </Reveal>
     </ServiceBand>
   );
@@ -138,8 +131,8 @@ export function FaqPricingLink() {
   return (
     <section className="border-y border-line bg-surface">
       <div className="container-omh section-md">
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-6 max-lg:block">
-          <div className="col-span-7">
+        <Split ratio="7/5" align="center">
+          <div>
             <h2 className="font-sans text-h2 font-semibold">
               Prefer to see the numbers before you ask?
             </h2>
@@ -147,12 +140,12 @@ export function FaqPricingLink() {
               Every package and price we quote is published in full, service by service.
             </p>
           </div>
-          <div className="col-span-5 max-lg:mt-7 lg:justify-self-end">
+          <div className="lg:justify-self-end">
             <Button href="/pricing" data-event="faq_pricing_click">
               See the full price list
             </Button>
           </div>
-        </div>
+        </Split>
       </div>
     </section>
   );

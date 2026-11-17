@@ -40,7 +40,7 @@ export default function ContactUsPage() {
                   <span aria-hidden className="flex size-11 items-center justify-center rounded-full border border-line bg-warm text-amber-deep">
                     <Icon className="size-5" strokeWidth={1.75} />
                   </span>
-                  <span className="mt-5 block text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">{label}</span>
+                  <span className="mt-5 block eyebrow text-muted">{label}</span>
                   <span className={`mt-1.5 block break-words font-sans font-semibold ${long ? "text-lead" : "text-h4"}`}>
                     {/* An email breaks after the @ on phones, never inside the domain. */}
                     {long ? <>{value.split("@")[0]}@<wbr />{value.split("@")[1]}</> : value}
@@ -73,7 +73,7 @@ export default function ContactUsPage() {
 
           <aside className="grid content-start gap-6 lg:col-span-5">
             <div className="rounded-card bg-inverse p-8 text-oninverse max-sm:p-6">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-oninverse/70">Planning your growth?</p>
+              <p className="eyebrow text-oninverse/70">Planning your growth?</p>
               <h2 className="mt-4 font-sans text-h3 font-semibold">Book a Growth Consultation instead</h2>
               <p className="mt-4 text-body leading-relaxed text-oninverse/75">
                 For advice on your website, ads or SEO, book a free 30-minute consultation and we&apos;ll come back
@@ -84,7 +84,7 @@ export default function ContactUsPage() {
               </Button>
             </div>
             <div className="rounded-card border border-line p-8 max-sm:p-6">
-              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">Follow us</p>
+              <p className="eyebrow text-muted">Follow us</p>
               <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
                 {company.socials.map((s) => (
                   <li key={s.label}>

@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/Button";
 import { BookDemo } from "@/components/BookDemo";
 import { FinalCta } from "@/components/ui/FinalCta";
 import { Eyebrow } from "@/components/ui/Proof";
+import { CardGrid } from "@/components/ui/CardGrid";
+import { Split } from "@/components/ui/Split";
 import { warranty } from "@/lib/content/warranty";
 
 export function WarrantyHero() {
@@ -15,8 +17,8 @@ export function WarrantyHero() {
       <div className="container-omh section-md">
         <Reveal>
           <Eyebrow>{warranty.eyebrow}</Eyebrow>
-          <div className="mt-9 grid grid-cols-12 items-center gap-x-12 gap-y-10 max-lg:block">
-            <div className="col-span-6">
+          <Split ratio="6/6" from="lg" align="center" className="mt-9">
+            <div>
               <h1 className="font-sans text-display font-semibold text-balance">
                 Dedicated to <span className="text-amber-deep">Customer Care</span>
               </h1>
@@ -29,7 +31,7 @@ export function WarrantyHero() {
                 </Button>
               </div>
             </div>
-            <div className="col-span-6 max-lg:mt-10">
+            <div>
               <MediaFrame
                 kind="image"
                 theme="maintenance"
@@ -40,7 +42,7 @@ export function WarrantyHero() {
                 alt="Miniature maintenance figures at work on a laptop keyboard, standing in for the ongoing repair work covered by the warranty."
               />
             </div>
-          </div>
+          </Split>
         </Reveal>
       </div>
     </section>
@@ -74,12 +76,11 @@ export function WarrantyCoverage() {
   return (
     <ServiceBand label="What it covers" tone="mist" accent="bg-amber" labelStyle="underline">
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-12 gap-y-10 max-lg:block">
-          <div className="col-span-5">
-            <div className="lg:sticky lg:top-24">
-              <h2 className="font-sans text-h2 font-semibold text-balance">
-                The warranty covers the following aspects
-              </h2>
+        <Split ratio="5/7" sticky>
+          <div>
+            <h2 className="font-sans text-h2 font-semibold text-balance">
+              The warranty covers the following aspects
+            </h2>
               <MediaFrame
                 kind="screen"
                 theme="seo"
@@ -90,13 +91,12 @@ export function WarrantyCoverage() {
                 alt="A website showing an under-construction screen while fixes are carried out, with the job notes beside it."
                 className="mt-8"
               />
-            </div>
           </div>
-          <div className="col-span-7 max-lg:mt-10">
+          <div>
             <div className="border-t border-inverse/15">
               {warranty.covers.map((item, index) => (
                 <div key={item} className="flex items-baseline gap-6 border-b border-inverse/15 py-5">
-                  <span className="font-sans text-[18px] font-semibold tabular-nums text-amber-deep">
+                  <span className="font-sans text-body font-semibold tabular-nums text-amber-deep">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <p className="text-body leading-relaxed text-ink/80">{item}</p>
@@ -104,7 +104,7 @@ export function WarrantyCoverage() {
               ))}
             </div>
           </div>
-        </div>
+        </Split>
       </Reveal>
     </ServiceBand>
   );
@@ -114,39 +114,39 @@ export function WarrantyPricing() {
   return (
     <ServiceBand label="Warranty pricing" tone="navy" accent="bg-amber" labelStyle="underline">
       <Reveal>
-        <h2 className="mb-11 font-sans text-h2 font-semibold text-balance">
+        <h2 className="font-sans text-h2 font-semibold text-balance">
           Choose the term that fits how you use your website
         </h2>
-        <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-1">
+        <CardGrid cols={3} className="mt-header">
           {warranty.pricing.map((plan, index) => (
             <div
               key={plan.term}
-              className="flex flex-col rounded-card border border-oninverse/15 bg-oninverse/[0.04] p-8 max-sm:p-6"
+              className="flex flex-col rounded-card border border-oninverse/15 bg-oninverse/[0.04] p-card-lg"
             >
-              <span aria-hidden className="text-[18px] font-semibold tabular-nums text-amber">
+              <span aria-hidden className="text-body font-semibold tabular-nums text-amber">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <p className="mt-4 text-[14px] font-semibold uppercase tracking-[0.14em] text-oninverse/60">
+              <p className="eyebrow mt-4 text-oninverse/60">
                 {plan.term}
               </p>
               <p className="mt-4 font-sans text-[clamp(34px,28px+1.4vw,46px)] font-semibold leading-none">
                 {plan.price}
               </p>
-              <p className="mt-6 border-t border-oninverse/15 pt-5 text-[18px] leading-relaxed text-oninverse/70">
+              <p className="mt-6 border-t border-oninverse/15 pt-5 text-body leading-relaxed text-oninverse/70">
                 {plan.note}
               </p>
             </div>
           ))}
-        </div>
+        </CardGrid>
 
         <div className="mt-10 flex flex-wrap items-center gap-3 border-t border-oninverse/15 pt-8">
-          <span className="text-[14px] font-semibold uppercase tracking-[0.14em] text-oninverse/55">
+          <span className="eyebrow text-oninverse/55">
             Exclusions
           </span>
           {warranty.exclusions.map((item) => (
             <span
               key={item}
-              className="rounded-full border border-oninverse/25 px-3.5 py-1.5 text-[18px] text-oninverse/75"
+              className="rounded-full border border-oninverse/25 px-3.5 py-1.5 text-body text-oninverse/75"
             >
               {item}
             </span>
@@ -162,8 +162,8 @@ export function WarrantyGuarantee() {
     <section className="border-y border-line bg-surface">
       <div className="container-omh section-md">
         <Reveal>
-          <div className="grid grid-cols-12 items-center gap-x-12 gap-y-9 max-lg:block">
-            <div className="col-span-7">
+          <Split ratio="7/5" align="center">
+            <div>
               <Eyebrow>Guarantee</Eyebrow>
               <h2 className="mt-6 font-sans text-h2 font-semibold text-balance">
                 {warranty.guarantee.heading}
@@ -172,7 +172,7 @@ export function WarrantyGuarantee() {
                 {warranty.guarantee.body}
               </p>
             </div>
-            <div className="col-span-5 max-lg:mt-9">
+            <div>
               <MediaFrame
                 kind="image"
                 theme="maintenance"
@@ -180,7 +180,7 @@ export function WarrantyGuarantee() {
                 title="What the guarantee means in practice"
                 note="Add a short message from the team explaining the guarantee." source="/images/Services/website maintenance.jpg" alt="Website support and maintenance" />
             </div>
-          </div>
+          </Split>
         </Reveal>
       </div>
     </section>

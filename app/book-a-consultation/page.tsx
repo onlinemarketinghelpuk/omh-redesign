@@ -52,7 +52,7 @@ export default function BookConsultationPage() {
 
             <dl className="mt-9 grid gap-5 border-t border-line pt-8">
               <div>
-                <dt className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
+                <dt className="eyebrow text-muted">
                   Call
                 </dt>
                 <dd className="mt-1.5">
@@ -66,7 +66,7 @@ export default function BookConsultationPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
+                <dt className="eyebrow text-muted">
                   Email
                 </dt>
                 <dd className="mt-1.5">
@@ -80,7 +80,7 @@ export default function BookConsultationPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
+                <dt className="eyebrow text-muted">
                   Where we are
                 </dt>
                 <dd className="mt-1.5 text-body text-ink/80">
@@ -90,7 +90,7 @@ export default function BookConsultationPage() {
             </dl>
 
             <div className="mt-9 rounded-card border border-line bg-warm/60 p-6">
-              <p className="mb-5 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
+              <p className="mb-5 eyebrow text-muted">
                 What happens next
               </p>
               <ol className="grid gap-4">
@@ -98,7 +98,7 @@ export default function BookConsultationPage() {
                   <li key={step} className="grid grid-cols-[auto_1fr] items-start gap-3.5">
                     <span
                       aria-hidden
-                      className="flex size-7 items-center justify-center rounded-full border border-line bg-surface font-sans text-[18px] font-semibold tabular-nums text-amber-deep"
+                      className="flex size-7 items-center justify-center rounded-full border border-line bg-surface font-sans text-body font-semibold tabular-nums text-amber-deep"
                     >
                       {i + 1}
                     </span>

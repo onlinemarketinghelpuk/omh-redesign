@@ -99,7 +99,7 @@ export default function GetMoreLeadsPage() {
           {stats.map((stat, index) => {
             const StatIcon = statIcons[index];
             return (
-              <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-lg:odd:pl-0 max-sm:py-8 max-sm:pr-3">
+              <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-lg:odd:pl-0 max-sm:py-8 max-sm:pr-3 lg:max-xl:px-5 lg:max-xl:first:pl-0">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-teal/15 text-amber-deep" aria-hidden>
                   <StatIcon className="size-6" strokeWidth={1.7} />
                 </span>
@@ -149,11 +149,11 @@ export default function GetMoreLeadsPage() {
           </h2>
           <div className="mt-10 grid grid-cols-4 gap-5 max-xl:grid-cols-2 max-sm:grid-cols-1">
             {offers.map((offer) => (
-              <Link key={offer.title} href={offer.href} className="surface-card group flex flex-col rounded-card border border-line bg-surface p-7">
+              <Link key={offer.title} href={offer.href} className="surface-card group flex flex-col rounded-card border border-line bg-surface p-card">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-teal/15 text-amber-deep" aria-hidden>
                   <offer.icon className="size-6" strokeWidth={1.7} />
                 </span>
-                <p className="mt-6 text-[14px] font-semibold uppercase tracking-[0.16em] text-amber-deep">{offer.tag}</p>
+                <p className="eyebrow mt-6 text-amber-deep">{offer.tag}</p>
                 <h3 className="mt-2 font-sans text-h4 font-semibold">{offer.title}</h3>
                 <p className="mb-6 mt-3 text-body leading-relaxed text-ink/70">{offer.body}</p>
                 <ArrowRight className="mt-auto size-5 text-amber-deep transition-transform duration-500 group-hover:translate-x-1" />
