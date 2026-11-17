@@ -10,7 +10,9 @@ import { fmtDate } from "@/lib/dashboard/convex";
 
 import { FollowUpTimeline } from "@/components/dashboard/FollowUpTimeline";
 import { OutcomePicker } from "@/components/dashboard/OutcomePicker";
-import { getLeadTimeline, canWrite, sourceLabel } from "@/lib/dashboard/routing";
+import { LeadNotes } from "@/components/dashboard/LeadNotes";
+import { getLeadTimeline, canWrite, sourceLabel, getLeadNotes } from "@/lib/dashboard/routing";
+import { dashboardUser } from "@/lib/dashboard/auth";
 import { isDemo, demoTimeline, demoThread } from "@/lib/dashboard/demo";
 
 export const dynamic = "force-dynamic";
@@ -69,6 +71,14 @@ export default async function Conversation({
     : leadId
       ? await getLeadTimeline(leadId)
       : null;
+  /* Notes on the lead are loaded here, server-side, so the page lands with
+     them already on screen. Append-only: the control adds and removes rows
+     through server actions and nothing else is read from here. */
+  const notes = demo
+    ? []
+    : leadId
+      ? ((await getLeadNotes(leadId)) ?? [])
+      : [];
 
   const reachable = thread !== null || demo;
   const messages = thread?.messages ?? [];
@@ -204,6 +214,22 @@ export default async function Conversation({
           {thread && (
             <div className="grid gap-3">
               <Outcome thread={thread} demo={demo} />
+              {/* Notes go here: on the conversation page, where there is
+                  vertical room beside the transcript rather than inside a
+                  table cell of sixty rows. Loaded server-side so the panel
+                  lands with content on first paint. Hidden when there is no
+                  lead to attach notes to. */}
+              {leadId && (
+                <Card title="Notes">
+                  <LeadNotes
+                    leadId={leadId}
+                    initial={notes}
+                    canWrite={canWrite && !demo}
+                    demo={demo}
+                    authorHint={canWrite ? dashboardUser : undefined}
+                  />
+                </Card>
+              )}
               {/* These two reach Convex per render and have nothing to show
                   on example data, so they stay off it. The outcome card does
                   not: it is the control being demonstrated. */}
@@ -365,6 +391,9 @@ function Outcome({
                     leadId={l.id}
                     outcome={l.outcome ?? null}
                     valueGbp={l.valueGbp ?? null}
+                    serviceKey={l.serviceKey ?? null}
+                    packageLabel={l.packageLabel ?? null}
+                    valueBasis={l.valueBasis ?? null}
                     canWrite={canWrite && !demo}
                     demo={demo}
                   />

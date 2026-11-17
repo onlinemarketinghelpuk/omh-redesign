@@ -104,6 +104,10 @@ export type Thread = {
     hot: boolean;
     outcome: string | null;
     valueGbp: number | null;
+    serviceKey: string | null;
+    packageLabel: string | null;
+    valueBasis: string | null;
+    noteCount: number;
     channel: string;
     at: number;
   }[];

@@ -12,21 +12,64 @@ import * as routing from "@/lib/dashboard/routing";
 
 export type Result = { ok: boolean; message?: string; outcome?: string };
 
+export type OutcomeService = {
+  serviceKey?: string;
+  packageLabel?: string;
+  monthlyGbp?: number;
+  months?: number;
+  /* "monthly" the client confirmed the monthly figure as the value.
+     "term"    the client confirmed the whole-contract total.
+     "custom"  the figure was hand-typed; the catalogue must not overwrite it
+               on the next save. */
+  valueBasis?: "monthly" | "term" | "custom";
+};
+
 export async function setLeadOutcome(
   leadId: string,
   outcome: string,
   valueGbp?: number,
+  service?: OutcomeService,
 ): Promise<Result> {
   const auth = await assertCanWrite();
   if (!auth.ok) return { ok: false, message: auth.why };
 
-  const res = await routing.setLeadOutcome(leadId, outcome, valueGbp, auth.who);
+  const res = await routing.setLeadOutcome(leadId, outcome, valueGbp, auth.who, service);
   if (!res) return { ok: false, message: "Could not reach the lead store." };
   if (!res.ok) return { ok: false, message: res.why ?? "That did not save." };
 
   revalidatePath("/lead-dashboard/leads");
   revalidatePath("/lead-dashboard/channels");
   return { ok: true, outcome };
+}
+
+export async function addLeadNote(
+  leadId: string,
+  body: string,
+): Promise<Result & { noteId?: string }> {
+  const auth = await assertCanWrite();
+  if (!auth.ok) return { ok: false, message: auth.why };
+  if (!body.trim()) return { ok: false, message: "A note has to have some words." };
+
+  const res = await routing.addLeadNote(leadId, body, auth.who);
+  if (!res) return { ok: false, message: "Could not reach the lead store." };
+  if (!res.ok) return { ok: false, message: res.why ?? "That did not save." };
+
+  revalidatePath("/lead-dashboard/leads");
+  revalidatePath(`/lead-dashboard/sessions`);
+  return { ok: true, noteId: res.noteId };
+}
+
+export async function deleteLeadNote(noteId: string): Promise<Result> {
+  const auth = await assertCanWrite();
+  if (!auth.ok) return { ok: false, message: auth.why };
+
+  const res = await routing.deleteLeadNote(noteId, auth.who);
+  if (!res) return { ok: false, message: "Could not reach the lead store." };
+  if (!res.ok) return { ok: false, message: res.why ?? "That did not delete." };
+
+  revalidatePath("/lead-dashboard/leads");
+  revalidatePath(`/lead-dashboard/sessions`);
+  return { ok: true };
 }
 
 /**

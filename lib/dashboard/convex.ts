@@ -40,6 +40,17 @@ export type Lead = {
   /* Set by a person on the dashboard, never by the assistant. */
   outcome?: string;
   valueGbp?: number;
+  /* Alongside `valueGbp` when a win was recorded through the service picker:
+     which service and package was chosen, the figure the catalogue offered
+     and the contract length. `valueBasis` is which of the two offered
+     figures the person confirmed, or `custom` when they typed their own. */
+  serviceKey?: string;
+  packageLabel?: string;
+  monthlyGbp?: number;
+  months?: number;
+  valueBasis?: string;
+  /* How many notes staff have added. Maintained by addLeadNote / delete. */
+  noteCount?: number;
   attribution?: {
     campaign?: string;
     adId?: string;

@@ -289,13 +289,46 @@ export const setLeadOutcome = (
   outcome: string,
   valueGbp?: number,
   by?: string,
+  service?: {
+    serviceKey?: string;
+    packageLabel?: string;
+    monthlyGbp?: number;
+    months?: number;
+    valueBasis?: string;
+  },
 ) =>
   call<{ ok: boolean; why?: string; outcome?: string }>("/lead/outcome", {
     leadId,
     outcome,
     valueGbp,
     by,
+    serviceKey: service?.serviceKey,
+    packageLabel: service?.packageLabel,
+    monthlyGbp: service?.monthlyGbp,
+    months: service?.months,
+    valueBasis: service?.valueBasis,
   });
+
+export type LeadNote = {
+  id: string;
+  leadId: string;
+  body: string;
+  by: string | null;
+  at: number;
+};
+
+export const getLeadNotes = (leadId: string, limit?: number) =>
+  call<LeadNote[]>("/lead/notes", { leadId, limit });
+
+export const addLeadNote = (leadId: string, body: string, by?: string) =>
+  call<{ ok: boolean; why?: string; noteId?: string }>("/lead/note/add", {
+    leadId,
+    body,
+    by,
+  });
+
+export const deleteLeadNote = (noteId: string, by?: string) =>
+  call<{ ok: boolean; why?: string }>("/lead/note/delete", { noteId, by });
 
 export const setLeadOutcomes = (leadIds: string[], outcome: string, by?: string) =>
   call<{ ok: boolean; why?: string; changed?: number; refused?: string[] }>(

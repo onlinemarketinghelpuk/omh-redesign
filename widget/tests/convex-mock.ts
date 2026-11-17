@@ -68,6 +68,7 @@ export const INDEXES: Record<string, Record<string, string[]>> = {
   flowVersions: { by_flow_version: ["flowId", "version"] },
   messageTemplates: { by_key: ["key"] },
   messageHistory: { by_key_at: ["key", "at"] },
+  leadNotes: { by_lead: ["leadId", "at"] },
   consentEvents: {
     by_lead: ["leadId"],
     by_phone: ["phoneKey"],

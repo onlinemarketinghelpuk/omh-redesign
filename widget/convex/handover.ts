@@ -379,6 +379,10 @@ export const thread = query({
            is the moment they actually know the answer. */
         outcome: l.outcome ?? null,
         valueGbp: l.valueGbp ?? null,
+        serviceKey: l.serviceKey ?? null,
+        packageLabel: l.packageLabel ?? null,
+        valueBasis: l.valueBasis ?? null,
+        noteCount: l.noteCount ?? 0,
         channel: l.channel,
         at: l.at,
       })),

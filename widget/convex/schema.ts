@@ -272,6 +272,27 @@ export default defineSchema({
     lostReason: v.optional(v.string()),
     outcomeAt: v.optional(v.number()),
     outcomeBy: v.optional(v.string()),
+
+    /* The parts of the figure, so the number can be explained a month later.
+
+       `valueGbp` is still the single field every channel and dashboard report
+       reads: the Channels page needs no change. These describe what was
+       chosen: which service, which package, what the monthly figure was, how
+       many months the contract was for, and whether the person confirmed the
+       monthly figure, the term total or typed their own number. "custom"
+       means do-not-overwrite on the next save. A lost lead is allowed to
+       carry a service too, so "which service do we lose most" is answerable
+       without a migration later. */
+    serviceKey: v.optional(v.string()),
+    packageLabel: v.optional(v.string()),
+    monthlyGbp: v.optional(v.number()),
+    months: v.optional(v.number()),
+    valueBasis: v.optional(v.string()), // monthly | term | custom
+
+    /* How many notes this lead has. A counter on the row so the Leads table
+       can say "has notes" without reading the `leadNotes` table for every
+       row it renders. Maintained by addLeadNote and deleteLeadNote. */
+    noteCount: v.optional(v.number()),
   })
     .index("by_at", ["at"])
     .index("by_status", ["status"])
@@ -609,5 +630,18 @@ export default defineSchema({
     at: v.number(),
     by: v.optional(v.string()),
   }).index("by_key_at", ["key", "at"]),
+
+  /* Notes staff type on a lead. Append-only, one row per note, with `by` and
+     `at`. The same shape as touches, consentEvents and messageHistory for the
+     same reason: two people on the same dashboard would otherwise silently
+     overwrite each other, and the note that is lost is the one somebody typed
+     after a phone call. The author may delete their own row; `leads.noteCount`
+     is kept in sync so the Leads table does not read this table per row. */
+  leadNotes: defineTable({
+    leadId: v.id("leads"),
+    body: v.string(),
+    by: v.optional(v.string()),
+    at: v.number(),
+  }).index("by_lead", ["leadId", "at"]),
 });
 

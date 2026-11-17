@@ -813,6 +813,49 @@ http.route({
         : undefined,
       lostReason: b.lostReason || undefined,
       by: b.by || undefined,
+      serviceKey: b.serviceKey || undefined,
+      packageLabel: b.packageLabel || undefined,
+      monthlyGbp: b.monthlyGbp !== undefined && b.monthlyGbp !== null && b.monthlyGbp !== ""
+        ? Number(b.monthlyGbp)
+        : undefined,
+      months: b.months !== undefined && b.months !== null && b.months !== ""
+        ? Number(b.months)
+        : undefined,
+      valueBasis: b.valueBasis || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/lead/notes",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runQuery(api.routing.leadNotes, {
+      leadId: b.leadId,
+      limit: b.limit ? Number(b.limit) : undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/lead/note/add",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.routing.addLeadNote, {
+      leadId: b.leadId,
+      body: String(b.body ?? ""),
+      by: b.by || undefined,
+    }),
+  ),
+});
+
+http.route({
+  path: "/lead/note/delete",
+  method: "POST",
+  handler: route(async (ctx, b) =>
+    ctx.runMutation(api.routing.deleteLeadNote, {
+      noteId: b.noteId,
+      by: b.by || undefined,
     }),
   ),
 });

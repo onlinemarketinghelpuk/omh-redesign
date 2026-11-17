@@ -60,7 +60,14 @@ export default async function Leads({
         t: "link",
         v: l.name || "No name given",
         href: `/lead-dashboard/conversations/${encodeURIComponent(l.sessionId)}${demo ? "?demo=1" : ""}`,
-        sub: l.company || undefined,
+        /* Show notes beside the company line, as a small count, so staff can
+           see which rows carry context without reading every conversation.
+           The link is the row's existing link to the conversation page,
+           where the notes actually live. */
+        sub:
+          (l.noteCount ?? 0) > 0
+            ? `${l.company ? l.company + " · " : ""}${l.noteCount} ${l.noteCount === 1 ? "note" : "notes"}`
+            : l.company || undefined,
       },
       {
         t: "text",
@@ -105,6 +112,9 @@ export default async function Leads({
             leadId={l._id}
             outcome={l.outcome ?? null}
             valueGbp={l.valueGbp ?? null}
+            serviceKey={l.serviceKey ?? null}
+            packageLabel={l.packageLabel ?? null}
+            valueBasis={l.valueBasis ?? null}
             canWrite={canWrite && !demo}
             demo={demo}
           />

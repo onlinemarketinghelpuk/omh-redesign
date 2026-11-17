@@ -294,6 +294,23 @@ export default async function ChannelsPage({
               icon={IconCheck}
               rise={4}
             />
+            {/* Revenue as its own tile so the figure is scannable rather
+                than tucked under the deals count. Headline-weight because
+                "which channel produced business" is answered in pounds, not
+                in count: a channel that produced one deal worth £3,300 is
+                not the same as one that produced three at £450. */}
+            <Kpi
+              label="Revenue"
+              value={valueTotal ? money(valueTotal) : "—"}
+              sub={
+                wonTotal
+                  ? `across ${wonTotal} ${wonTotal === 1 ? "deal" : "deals"}`
+                  : "no deals recorded yet"
+              }
+              icon={IconCheck}
+              accent={valueTotal > 0}
+              rise={5}
+            />
           </div>
 
           <Card
@@ -306,10 +323,10 @@ export default async function ChannelsPage({
               <table className="w-full border-collapse text-left" style={{ minWidth: 880 }}>
                 <thead>
                   <tr className="border-b border-line">
-                    {["Channel", "Leads", "First touch", "Replied", "Booked", "Won", "Value", "Opted out"].map(
+                    {["Channel", "Leads", "First touch", "Replied", "Booked", "Won", "Value", "Opted out", ""].map(
                       (h, i) => (
                         <th
-                          key={h}
+                          key={h || `col-${i}`}
                           className={[
                             "whitespace-nowrap pb-2.5 font-sans text-[11.5px] font-medium uppercase tracking-[.08em] text-muted",
                             i === 0 ? "" : "text-right",
@@ -390,6 +407,20 @@ export default async function ChannelsPage({
                         <td className="py-3 text-right text-[13.5px] tabular-nums text-muted">
                           {g.optedOut || ""}
                         </td>
+                        {/* A real button with words on it, as well as the
+                            underlined channel-name link above. The link was
+                            there since workstream 007; staff looking for a
+                            "See all" button did not recognise an underlined
+                            cell as one. Same destination, two affordances. */}
+                        <td className="py-3 pl-4 text-right">
+                          <Link
+                            href={`/lead-dashboard/leads?source=${encodeURIComponent(g.key)}${demo ? "&demo=1" : ""}`}
+                            aria-label={`See all ${g.leads} ${g.leads === 1 ? "lead" : "leads"} from ${g.label}`}
+                            className="inline-flex min-h-8 cursor-pointer items-center rounded-lg border border-line bg-surface px-2.5 text-[12.5px] font-medium text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                          >
+                            See all
+                          </Link>
+                        </td>
                       </tr>
                     );
                   })}
@@ -430,6 +461,23 @@ export default async function ChannelsPage({
                         </div>
                       ))}
                     </dl>
+                    {/* The findability fix on a phone too. The underlined
+                        channel name above is the same link; the button is a
+                        second affordance for the same destination. */}
+                    <div className="mt-3 flex items-center justify-between gap-3">
+                      {g.value ? (
+                        <p className="text-[13px] font-medium tabular-nums text-ink">{money(g.value)}</p>
+                      ) : (
+                        <span />
+                      )}
+                      <Link
+                        href={`/lead-dashboard/leads?source=${encodeURIComponent(g.key)}${demo ? "&demo=1" : ""}`}
+                        aria-label={`See all ${g.leads} ${g.leads === 1 ? "lead" : "leads"} from ${g.label}`}
+                        className="inline-flex min-h-9 cursor-pointer items-center rounded-lg border border-line bg-surface px-3 text-[13px] font-medium text-ink outline-none transition-colors duration-150 hover:bg-warm focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                      >
+                        See all
+                      </Link>
+                    </div>
                   </li>
                 );
               })}

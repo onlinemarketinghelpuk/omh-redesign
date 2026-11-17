@@ -1012,5 +1012,103 @@ console.log("\n== a switch per channel: off means EVERYTHING on that channel sto
 }
 
 
+console.log("\n== notes on a lead are append-only, with author and time ==");
+{
+  const { db, ctx: c } = calling();
+  const leadId = await makeLead(db, { sessionId: "smoke-notes" });
+
+  const empty = await call(R.leadNotes, c, { leadId });
+  eq("no notes to begin with", empty, []);
+
+  const a = await call(R.addLeadNote, c, {
+    leadId, body: "Called at 10:02, left a voicemail.", by: "owner",
+  });
+  ok("a note saves", a.ok === true, a);
+  const after1 = (await db.get(leadId)) as any;
+  eq("the counter on the lead ticks up", after1.noteCount, 1);
+  eq("valueGbp is untouched", after1.valueGbp, undefined);
+
+  await call(R.addLeadNote, c, { leadId, body: "They called back at 10:15.", by: "owner" });
+  const two = await call(R.leadNotes, c, { leadId });
+  eq("two notes now", two.length, 2);
+  ok("newest first", two[0].at >= two[1].at);
+  ok("each row carries its author", two.every((n: any) => n.by === "owner"));
+
+  /* Empty text is refused. The field is a real one, not a nudge. */
+  eq("an empty note is refused", (await call(R.addLeadNote, c, { leadId, body: "  ", by: "owner" })).why, "empty_note");
+
+  /* Author deletes their own. Someone else cannot. */
+  const first = two[1];
+  eq("another staffer cannot delete it", (await call(R.deleteLeadNote, c, { noteId: first.id, by: "other" })).why, "not_author");
+  const d = await call(R.deleteLeadNote, c, { noteId: first.id, by: "owner" });
+  ok("the author can", d.ok === true, d);
+  const after2 = (await db.get(leadId)) as any;
+  eq("counter ticks down", after2.noteCount, 1);
+  const one = await call(R.leadNotes, c, { leadId });
+  eq("one note left", one.length, 1);
+}
+
+console.log("\n== a service and package are stored beside the figure ==");
+{
+  const { db, ctx: c } = calling();
+  const leadId = await makeLead(db, { sessionId: "smoke-svc" });
+
+  await call(R.setOutcome, c, {
+    leadId, outcome: "won", valueGbp: 450, by: "owner",
+    serviceKey: "smm:0", packageLabel: "Seed Social Media Marketing",
+    monthlyGbp: 450, months: 3, valueBasis: "monthly",
+  });
+  const won = (await db.get(leadId)) as any;
+  eq("monthly figure recorded", won.valueGbp, 450);
+  eq("serviceKey stored", won.serviceKey, "smm:0");
+  eq("packageLabel stored", won.packageLabel, "Seed Social Media Marketing");
+  eq("monthlyGbp stored", won.monthlyGbp, 450);
+  eq("months stored", won.months, 3);
+  eq("valueBasis stored", won.valueBasis, "monthly");
+
+  /* Moving off won clears the lot, the same way valueGbp is already cleared.
+     A report must not read a service from a lead that is lost, because the
+     service there is "what we lost them on" and the figures beside it are
+     the reason for a number nobody confirmed. */
+  await call(R.setOutcome, c, { leadId, outcome: "lost", lostReason: "price" });
+  const lost = (await db.get(leadId)) as any;
+  eq("lost: valueGbp cleared", lost.valueGbp, undefined);
+  eq("lost: serviceKey cleared", lost.serviceKey, undefined);
+  eq("lost: packageLabel cleared", lost.packageLabel, undefined);
+  eq("lost: monthlyGbp cleared", lost.monthlyGbp, undefined);
+  eq("lost: months cleared", lost.months, undefined);
+  eq("lost: valueBasis cleared", lost.valueBasis, undefined);
+}
+
+console.log("\n== a custom typed number survives the next catalogue save ==");
+{
+  /* The invariant: when a user typed their own number ("custom") and the
+     dropdown is re-opened and re-saved, the typed number must not be
+     silently overwritten by the catalogue's monthly figure. The UI prefills
+     the existing value on open and re-sends it verbatim; the server's job
+     here is to round-trip "custom" without losing it. */
+  const { db, ctx: c } = calling();
+  const leadId = await makeLead(db, { sessionId: "smoke-custom" });
+
+  await call(R.setOutcome, c, {
+    leadId, outcome: "won", valueGbp: 1234, by: "owner",
+    serviceKey: "smm:0", packageLabel: "Seed Social Media Marketing",
+    monthlyGbp: 450, months: 3, valueBasis: "custom",
+  });
+  const first = (await db.get(leadId)) as any;
+  eq("custom value stored", first.valueGbp, 1234);
+  eq("basis recorded as custom", first.valueBasis, "custom");
+
+  /* The dropdown saves again at the same outcome with the same figure. */
+  await call(R.setOutcome, c, {
+    leadId, outcome: "won", valueGbp: 1234, by: "owner",
+    serviceKey: "smm:0", packageLabel: "Seed Social Media Marketing",
+    monthlyGbp: 450, months: 3, valueBasis: "custom",
+  });
+  const again = (await db.get(leadId)) as any;
+  eq("custom value still stored", again.valueGbp, 1234);
+  eq("custom basis preserved", again.valueBasis, "custom");
+}
+
 console.log("\n" + (fail ? "FAILED " + fail + " of " + (pass + fail) : "all " + pass + " assertions pass"));
 process.exit(fail ? 1 : 0);

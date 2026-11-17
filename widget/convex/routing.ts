@@ -1647,6 +1647,13 @@ async function applyOutcome(
   valueGbp: number | undefined,
   lostReason: string | undefined,
   by: string | undefined,
+  service: {
+    serviceKey?: string;
+    packageLabel?: string;
+    monthlyGbp?: number;
+    months?: number;
+    valueBasis?: string; // monthly | term | custom
+  } = {},
 ): Promise<{ ok: boolean; why?: string; outcome?: string; changed?: boolean }> {
   if (!OUTCOMES.has(outcome)) return { ok: false, why: "unknown_outcome" };
   const lead = await ctx.db.get(leadId);
@@ -1663,12 +1670,23 @@ async function applyOutcome(
   const nowValue = outcome === "won" ? (valueGbp ?? null) : null;
   const changed = was !== outcome || wasValue !== nowValue;
 
+  /* Service fields follow `valueGbp`. The parts of the figure only make
+     sense alongside the figure itself: `monthlyGbp` without `valueGbp` is
+     the reason for a number nobody confirmed, and `valueBasis` is the kind
+     of confirmation. Clear them together, the way `valueGbp` is already
+     cleared, so a report cannot read a service from a lead that is lost. */
+  const won = outcome === "won";
   await ctx.db.patch(leadId, {
     outcome,
     /* A value only belongs on a won deal. Leaving a figure behind on a lead
        that later went to "lost" would quietly inflate every revenue total
        that groups by channel. */
-    valueGbp: outcome === "won" ? valueGbp : undefined,
+    valueGbp: won ? valueGbp : undefined,
+    serviceKey: won ? service.serviceKey : undefined,
+    packageLabel: won ? service.packageLabel : undefined,
+    monthlyGbp: won ? service.monthlyGbp : undefined,
+    months: won ? service.months : undefined,
+    valueBasis: won ? service.valueBasis : undefined,
     lostReason: outcome === "lost" ? lostReason : undefined,
     outcomeAt: Date.now(),
     outcomeBy: by,
@@ -1719,9 +1737,24 @@ export const setOutcome = mutation({
     valueGbp: v.optional(v.number()),
     lostReason: v.optional(v.string()),
     by: v.optional(v.string()),
+    /* Which service and package the figure came from, and whether the number
+       is the monthly price, the whole contract or a hand-typed override.
+       Stored so the figure can be explained a month later; `valueGbp` stays
+       the single field every channel report already reads, so the channels
+       page needs no change. */
+    serviceKey: v.optional(v.string()),
+    packageLabel: v.optional(v.string()),
+    monthlyGbp: v.optional(v.number()),
+    months: v.optional(v.number()),
+    valueBasis: v.optional(v.string()), // monthly | term | custom
   },
-  handler: (ctx, { leadId, outcome, valueGbp, lostReason, by }) =>
-    applyOutcome(ctx, leadId, outcome, valueGbp, lostReason, by),
+  handler: (
+    ctx,
+    { leadId, outcome, valueGbp, lostReason, by, serviceKey, packageLabel, monthlyGbp, months, valueBasis },
+  ) =>
+    applyOutcome(ctx, leadId, outcome, valueGbp, lostReason, by, {
+      serviceKey, packageLabel, monthlyGbp, months, valueBasis,
+    }),
 });
 
 /**
@@ -1766,6 +1799,87 @@ export const setOutcomeMany = mutation({
       else refused.push(leadId);
     }
     return { ok: true, changed, refused, outcome };
+  },
+});
+
+/* =========================================================================
+   Notes on a lead.
+
+   One row per note, append-only, with `by` and `at`. Every other record of
+   what happened in this system is append-only for the same reason: two
+   people on the same dashboard would otherwise silently overwrite each
+   other, and the note that is lost is the one somebody typed after a phone
+   call.
+
+   `leads.noteCount` is maintained here, so the Leads table can show that a
+   lead has notes without reading the notes table once per row.
+   ========================================================================= */
+
+const NOTE_MAX = 4000;
+
+export const addLeadNote = mutation({
+  args: {
+    leadId: v.id("leads"),
+    body: v.string(),
+    by: v.optional(v.string()),
+  },
+  handler: async (ctx, { leadId, body, by }) => {
+    const text = body.trim();
+    if (!text) return { ok: false, why: "empty_note" };
+    if (text.length > NOTE_MAX) return { ok: false, why: "too_long" };
+    const lead = await ctx.db.get(leadId);
+    if (!lead) return { ok: false, why: "no_such_lead" };
+    const id = await ctx.db.insert("leadNotes", {
+      leadId,
+      body: text,
+      by,
+      at: Date.now(),
+    });
+    await ctx.db.patch(leadId, { noteCount: (lead.noteCount ?? 0) + 1 });
+    return { ok: true, noteId: id };
+  },
+});
+
+export const deleteLeadNote = mutation({
+  args: {
+    noteId: v.id("leadNotes"),
+    by: v.optional(v.string()),
+  },
+  handler: async (ctx, { noteId, by }) => {
+    const note = await ctx.db.get(noteId);
+    if (!note) return { ok: false, why: "no_such_note" };
+    /* Author may delete their own row. An unnamed caller (no `by`) is not an
+       author, so they cannot delete anyone's. */
+    if (!by || note.by !== by) return { ok: false, why: "not_author" };
+    const lead = await ctx.db.get(note.leadId);
+    await ctx.db.delete(noteId);
+    if (lead) {
+      const n = Math.max(0, (lead.noteCount ?? 1) - 1);
+      await ctx.db.patch(note.leadId, { noteCount: n });
+    }
+    return { ok: true };
+  },
+});
+
+export const leadNotes = query({
+  args: {
+    leadId: v.id("leads"),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, { leadId, limit }) => {
+    const cap = Math.min(limit ?? 50, 200);
+    const rows = await ctx.db
+      .query("leadNotes")
+      .withIndex("by_lead", (q) => q.eq("leadId", leadId))
+      .order("desc")
+      .take(cap);
+    return rows.map((r) => ({
+      id: r._id,
+      leadId: r.leadId,
+      body: r.body,
+      by: r.by ?? null,
+      at: r.at,
+    }));
   },
 });
 
