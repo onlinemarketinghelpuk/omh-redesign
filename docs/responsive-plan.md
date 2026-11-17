@@ -359,3 +359,17 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
 - Desktop: Ecommerce SEO unchanged; SEO moves 4px (its narrow stat card keeps 32px padding from 1024px, the
   shared 36px made its text wrap more); Amazon's hero figures align to the bottom when a label wraps (22px at
   1280px only).
+
+### Phase 3, 17 Nov 2026: Solutions, About, FAQ, Warranty, Website Designs, Get More Leads (c4cd148, 6f1397f)
+
+- Re-baselined on the button session's commit (e4f69f1) first, so its button changes are not counted here.
+- Solutions template: outcome rows and comparison cards two-up on tablets; the 4/12 and 5/12 intros stack until
+  1152px (their h2 ran 8-9 characters a line at 1024px). About, FAQ, Warranty and Website Designs rows on `Split`;
+  Warranty prices two-up on tablets; About's four portraits four-up on tablets. Get More Leads stats fit at
+  1024-1279px. FAQ "Jump to" links have 44px tap areas.
+- Contact Us (new, from the button session): headline and intro caps removed per design rules 8 and 9 (content moves
+  up 30px at 1440px).
+- Every flagged item fixed except one 1152px heading on one Solutions page; no audit check worse; no text changed.
+  Desktop unchanged except About and Warranty card padding (12px).
+- Not changed on purpose: the Pricing page's flags are all inside the AI voice plan cards (Phase 4); the booking and
+  About h1s count as "squeezed" at display size in their approved columns.
