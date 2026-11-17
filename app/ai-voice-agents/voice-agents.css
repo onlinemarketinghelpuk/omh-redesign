@@ -118,8 +118,9 @@ html:has(.va-page dialog[open]) {
     overflow-x: clip;
 
     :where(h1, h2, h3, h4) { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
-    h1 { font-size: clamp(2.625rem, 1.85rem + 3.31vw, 4.5rem); line-height: 1.04; letter-spacing: -0.03em; }
-    h2 { font-size: clamp(2rem, 1.69rem + 1.33vw, 2.75rem); line-height: 1.12; }
+    /* h1 and h2 on the site's type tokens (17 Nov 2026): the same size from 1280px, smaller on phones (42 -> 34px, 32 -> 28px). */
+    h1 { font-size: var(--text-display); line-height: 1.04; letter-spacing: -0.03em; }
+    h2 { font-size: var(--text-h2); line-height: 1.12; }
     h3 { font-size: clamp(25px, 22px + .45vw, 31px); line-height: 1.25; }
     h4 { font-size: 20px; line-height: 1.3; letter-spacing: -0.01em; }
     p { text-wrap: pretty; }
@@ -1147,4 +1148,41 @@ html:has(.va-page dialog[open]) {
 #va-page .ind-card:has(.ind-card-link:focus-visible) .ind-card-go { background: var(--color-teal); border-color: var(--color-teal); color: #fff; }
 @media (prefers-reduced-motion: reduce) {
   #va-page .ind-card, #va-page .ind-card svg, #va-page .ind-card-go .icon { transition: none; }
+}
+
+/* Responsive rebuild, Phase 4 (docs/responsive-plan.md, 17 Nov 2026). Unlayered on purpose: these rules have to beat
+   the Tailwind classes written into the voice markup strings and the compiled .v4l layer, and new margin or padding
+   classes do nothing inside .v4l (its reset), so tablet and phone fixes for these pages live here. */
+
+/* Card rows that only had a desktop three-column layout ran as one stretched column on tablets: two-up from 768px,
+   an odd last card spans both. Rows that already set sm:/md: columns are left alone, and so are the two-column rows:
+   their cards (industries) are image-beside-text already, and two-up left ~100px for the text. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  :is(#va-page, .v4l) .grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  :is(#va-page, .v4l) .grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]) > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+/* /pricing shows the voice plans inside a narrow column beside the category list: three-up only from 1280px. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  details #va-page .grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  details #va-page .grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]) > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Plan fact labels ("Included", "Setup", "Live in") in the site's 14px label size; at 16px they wrapped in the tiles. */
+:is(#va-page, .v4l) .plan-facts dt { font-size: 14px; letter-spacing: 0.1em; }
+
+/* London pages on the smallest phones: segmented buttons, the before/after toggle and the month axis fit. */
+@media (max-width: 639.98px) {
+  #va-page [role="group"].inline-grid { display: grid; width: 100%; }
+}
+@media (max-width: 379.98px) {
+  #va-page [role="group"].grid-cols-3 > button[aria-pressed] { padding-inline: 4px; font-size: 14px; }
+  #va-page [aria-hidden="true"].grid-cols-12 > span:nth-child(even) { visibility: hidden; }
 }
