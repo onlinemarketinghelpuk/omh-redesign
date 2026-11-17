@@ -21,9 +21,12 @@
   --vi-mint-2: color-mix(in srgb, var(--color-teal) 16%, var(--va-paper));
 }
 
-/* Site header (69px scrolled) + the sticky section menu. */
-html:has(.vi-page) {
-  scroll-padding-top: 136px;
+/* Site header (69px scrolled) + the sticky section menu. A margin on the targets, not scroll-padding on <html>:
+   see the note in voice-agents.css (17 Nov 2026). */
+@layer components {
+  :where(.vi-page, .vi-page *) {
+    scroll-margin-top: 136px;
+  }
 }
 
 /* The script marks <html>, as in the design file. */

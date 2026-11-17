@@ -49,6 +49,9 @@ export default async function RootLayout({
     <html
       lang="en-GB"
       className={`${instrument.variable} ${sourceSans.variable} h-full antialiased`}
+      // The voice pages give <html> smooth scrolling. This tells Next to turn it off while it resets the scroll on a
+      // page change; without it the reset animated and the new page could land on the demo form (17 Nov 2026).
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>

@@ -78,7 +78,15 @@
 
 html:has(.va-page) {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+}
+/* In-page jumps stop 88px down, under the sticky header. This was scroll-padding-top on <html>, but Next reads
+   that padding when it resets the scroll on a page change: the page top (85px, under the header) then counted as
+   off-screen and Next scrolled every top-level element into view in turn, so a page switch could land on the
+   demo form (17 Nov 2026). A margin on the targets gives in-page jumps the same offset without that. */
+@layer components {
+  :where(#va-page, #va-page *, .va-page, .va-page *) {
+    scroll-margin-top: 88px;
+  }
 }
 html:has(.va-page dialog[open]) {
   overflow: hidden;
