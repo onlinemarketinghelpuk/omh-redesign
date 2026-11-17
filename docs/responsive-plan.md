@@ -405,3 +405,15 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
   (27.8px/20px vs the site's 30/22 at 1280; changing them reflows desktop), the lead-flow diagram labels, and the
   remaining "stretched" tablet grids, which are intro-plus-content stacks, the phone mock-up and video cards.
 - Next: voice body text 15-17px -> 18px (user decision), piloted on /ai-voice-agents before the 12 industry files.
+
+### Phase 4b, 17 Nov 2026: voice body text 18px (one CSS rule)
+
+- Unlayered rule at the end of `voice-agents.css`: any element in `#va-page`/`.v4l` written at text-[16px], 16.5px,
+  17px or `.t-card` goes to 18px, except spans, `.uppercase` labels, buttons/tabs/summaries/labels/inputs, headings,
+  `[role="img"]` and `.brand-phone` mock-ups. No markup edits, so all 16 voice pages, /ai-services and the voice plans
+  on /pricing changed together. `md:grid-cols-3` voice card rows now two-up at 768-1023px too.
+- Pages +3-4% at 390px, +1-3% at 1280px. Audit: squeezed text at 768px back to 0; the remaining "capsWrap" flags are
+  dt/th cells stretched by taller neighbours (measured: one line each); one nested list on /ai-services at 320px
+  runs 17 characters a line.
+- Phase 4 left: the "16px gutter bleed" from the plan was not seen in this round's measurements. Next: Phase 5
+  (phone length: voice pages 31-40 screens, Website Designs 34, About 27, home 26).
