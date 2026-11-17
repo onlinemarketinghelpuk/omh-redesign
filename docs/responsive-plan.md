@@ -383,3 +383,12 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
 - Measurement trap: another session runs `next build` in this checkout. Mid-run rebuilds make the preview serve HTML
   for missing CSS (pages measure unstyled, e.g. 1,200px images). Check `.next/BUILD_ID` is unchanged across a run.
 - Phase 3 left: the home page.
+
+### Phase 3 complete, 17 Nov 2026: home page (a613e28)
+
+- Services list drops its decorative numbers under 360px; the client quote uses the h3 size on phones; the
+  who-we-work-with cards go one-up at 1024-1279px and the stats strip fits there. Squeezed text at 320px 13 -> 1 and
+  at 1024px 5 -> 1 (the h1 at display size is the remaining one on both), spill fixed, desktop unchanged.
+- Phase 3 is done: every code-built page is either on the shared components or measured clean. Left for Phase 4:
+  the 16 voice pages, /ai-services and the voice plan cards on /pricing. Phase 5: phone length (home is 26 screens at
+  390px, Website Designs 34, About 27).
