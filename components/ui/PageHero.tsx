@@ -12,25 +12,34 @@ export function PageHero({
   eyebrow,
   title,
   titleSize = "display",
+  subtitle,
   body,
   actions,
   stats,
   statsStyle = "inline",
+  statsNote,
   media,
   proof,
+  after,
   className = "",
 }: {
   eyebrow: ReactNode;
   title: ReactNode;
   titleSize?: "display" | "h1";
+  /** A second, smaller headline line under the h1 (not part of it). */
+  subtitle?: ReactNode;
   body: ReactNode;
   /** The button row (Button elements). */
   actions: ReactNode;
   stats?: ReadonlyArray<HeroStat>;
   /** inline: stats wrap in a row. divided: three equal columns with hairlines between them (one-up on phones). */
   statsStyle?: "inline" | "divided";
+  /** Small print under the stats. */
+  statsNote?: ReactNode;
   media?: ReactNode;
   proof?: ReactNode;
+  /** Full-width content under both columns, inside the hero (e.g. a row of claims). */
+  after?: ReactNode;
   className?: string;
 }) {
   return (
@@ -41,7 +50,8 @@ export function PageHero({
               and delayed the largest paint. */}
           <div className="hero-in">
             <Eyebrow>{eyebrow}</Eyebrow>
-            <h1 className={`mb-6 mt-7 font-sans font-semibold text-balance ${titleSize === "h1" ? "text-h1" : "text-display"}`}>{title}</h1>
+            <h1 className={`mt-7 font-sans font-semibold text-balance ${subtitle ? "" : "mb-6"} ${titleSize === "h1" ? "text-h1" : "text-display"}`}>{title}</h1>
+            {subtitle && <p className="mb-6 mt-4 font-sans text-h3 font-semibold text-balance">{subtitle}</p>}
             <div className="mb-9 text-lead leading-relaxed text-ink/75 [&>p+p]:mt-4">{typeof body === "string" ? <p>{body}</p> : body}</div>
             <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">{actions}</div>
             {stats && (
@@ -54,6 +64,7 @@ export function PageHero({
                 ))}
               </dl>
             )}
+            {stats && statsNote && <p className="mt-3 text-bsm text-muted">{statsNote}</p>}
           </div>
           {(media || proof) && (
             <div className="hero-in hero-in-2 md:max-lg:grid md:max-lg:grid-cols-2 md:max-lg:items-start md:max-lg:gap-6">
@@ -62,6 +73,7 @@ export function PageHero({
             </div>
           )}
         </Split>
+        {after}
       </div>
     </section>
   );

@@ -18,7 +18,11 @@ import {
   withLinks,
 } from "@/components/services/ServicePrimitives";
 import { ArrowRight, Button } from "@/components/ui/Button";
-import { Eyebrow, ReviewProof } from "@/components/ui/Proof";
+import { ReviewProof } from "@/components/ui/Proof";
+import { CardGrid } from "@/components/ui/CardGrid";
+import { NumberedList } from "@/components/ui/NumberedList";
+import { PageHero } from "@/components/ui/PageHero";
+import { Split } from "@/components/ui/Split";
 import { caseStudies } from "@/lib/content/case-studies";
 import { ecommerceSeo as page } from "@/lib/content/ecommerce-seo";
 import { CASE_STUDIES_LIVE } from "@/lib/flags";
@@ -32,45 +36,27 @@ const event = "ecommerce_seo";
 export function EcommerceSeoHero() {
   const h = page.hero;
   return (
-    <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
-      <div className="container-omh pb-[clamp(56px,38px+2.9vw,88px)] pt-[clamp(48px,34px+2.3vw,80px)]">
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-12 max-lg:block">
-          <div className="col-span-7 max-lg:mb-12">
-            {/* CSS-only entrance, not <Reveal>: the hero paints before hydration. */}
-            <div className="hero-in">
-              <Eyebrow>{h.eyebrow}</Eyebrow>
-              <h1 className="mb-6 mt-7 font-sans text-display font-semibold text-balance">
-                <HighlightedText text={h.title} highlight={h.titleAccent} />
-              </h1>
-              <p className="mb-9 text-lead leading-relaxed text-ink/75">{h.body}</p>
-              <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">
-                <Button href={h.primary.href} arrow data-event={`${event}_hero_cta_click`}>{h.primary.label}</Button>
-                <Button href={h.secondary.href} variant="secondary" arrow data-event={`${event}_view_packages_click`}>{h.secondary.label}</Button>
-              </div>
-              {CASE_STUDIES_LIVE && (<>
-              <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-line pt-7">
-                {h.stats.map(([label, value]) => (
-                  <div key={label}>
-                    <dt className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">{label}</dt>
-                    <dd className="mt-1.5 font-sans text-h4 font-semibold">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="mt-3 text-bsm text-muted">{h.statsNote}</p>
-              </>)}
-            </div>
+    <PageHero
+      eyebrow={h.eyebrow}
+      title={<HighlightedText text={h.title} highlight={h.titleAccent} />}
+      body={h.body}
+      actions={
+        <>
+          <Button href={h.primary.href} arrow data-event={`${event}_hero_cta_click`}>{h.primary.label}</Button>
+          <Button href={h.secondary.href} variant="secondary" arrow data-event={`${event}_view_packages_click`}>{h.secondary.label}</Button>
+        </>
+      }
+      stats={CASE_STUDIES_LIVE ? h.stats : undefined}
+      statsNote={h.statsNote}
+      media={
+        <Pointer>
+          <div className="pointer-parallax" role="img" aria-label={h.visualLabel}>
+            <ServiceHeroArt variant="ecommerce-seo" />
           </div>
-          <div className="hero-in hero-in-2 col-span-5 col-start-8">
-            <Pointer>
-              <div className="pointer-parallax" role="img" aria-label={h.visualLabel}>
-                <ServiceHeroArt variant="ecommerce-seo" />
-              </div>
-            </Pointer>
-            <ReviewProof serviceId="ecommerce-seo" heading="Ecommerce SEO backed by verified client trust" className="mt-6" />
-          </div>
-        </div>
-      </div>
-    </section>
+        </Pointer>
+      }
+      proof={<ReviewProof serviceId="ecommerce-seo" heading="Ecommerce SEO backed by verified client trust" />}
+    />
   );
 }
 
@@ -79,14 +65,12 @@ export function EcommerceSeoWhy() {
   return (
     <Band label={w.eyebrow}>
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-10 gap-y-10 max-lg:block">
-          <div className="col-span-6 max-lg:mb-10">
-            <SectionIntro title={w.title} accent={w.titleAccent} body={w.body} bodyClassName="text-body" />
-          </div>
-          <div className="col-span-6 grid gap-5 self-center">
+        <Split ratio="6/6" gap={10}>
+          <SectionIntro title={w.title} accent={w.titleAccent} body={w.body} bodyClassName="text-body" />
+          <div className="grid gap-5 self-center">
             {w.cards.map(([title, body], index) => (
-              <article key={title} className="surface-card grid grid-cols-[auto_1fr] gap-x-5 rounded-card border border-line bg-surface p-7">
-                <span className="font-sans text-[18px] font-semibold tabular-nums tracking-[0.1em] text-amber">{String(index + 1).padStart(2, "0")}</span>
+              <article key={title} className="surface-card grid grid-cols-[auto_1fr] gap-x-5 rounded-card border border-line bg-surface p-card">
+                <span className="font-sans text-body font-semibold tabular-nums tracking-[0.1em] text-amber">{String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="font-sans text-h4 font-semibold">{title}</h3>
                   <p className="mt-2.5 text-body leading-relaxed text-ink/75">{body}</p>
@@ -94,7 +78,7 @@ export function EcommerceSeoWhy() {
               </article>
             ))}
           </div>
-        </div>
+        </Split>
       </Reveal>
     </Band>
   );
@@ -165,24 +149,10 @@ export function EcommerceSeoProblems() {
   return (
     <Band label={p.eyebrow} tone="warm">
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-10 gap-y-10 max-lg:block">
-          <div className="col-span-4 max-lg:mb-10">
-            <div className="lg:sticky lg:top-24">
-              <SectionIntro size="md" title={p.title} accent={p.titleAccent} />
-            </div>
-          </div>
-          <div className="col-span-8 grid grid-cols-2 gap-x-8 max-md:grid-cols-1">
-            {p.items.map(([title, body], index) => (
-              <article key={title} className="group border-t border-line px-3 py-6 transition-colors hover:border-teal/50 hover:bg-surface">
-                <div className="flex items-baseline gap-4">
-                  <span className="font-sans text-body font-semibold tracking-[0.1em] text-muted group-hover:text-amber">{String(index + 1).padStart(2, "0")}</span>
-                  <h3 className="font-sans text-h4 font-semibold">{title}</h3>
-                </div>
-                <p className="mt-2.5 pl-10 text-body leading-relaxed text-ink/75">{body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
+        <Split ratio="4/8" gap={10} sticky>
+          <SectionIntro size="md" title={p.title} accent={p.titleAccent} />
+          <NumberedList variant="ruled" items={p.items} />
+        </Split>
       </Reveal>
     </Band>
   );
@@ -198,18 +168,18 @@ export function EcommerceSeoConsultant() {
   return (
     <Band label={c.eyebrow} tone="navy">
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-12 gap-y-10 max-lg:block">
-          <div className="col-span-7 max-lg:mb-10">
+        <Split ratio="7/5">
+          <div>
             <h2 className="font-sans text-h2 font-semibold text-balance">
               <HighlightedText text={c.title} highlight={c.titleAccent} highlightClassName="text-[var(--accent-light)]" />
             </h2>
             <p className="mt-5 text-body leading-relaxed text-oninverse/72">{c.body}</p>
           </div>
-          <div className="col-span-5 self-end rounded-card border border-oninverse/15 bg-oninverse/[0.05] p-7">
-            <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-oninverse/60">Experience</p>
+          <div className="self-end rounded-card border border-oninverse/15 bg-oninverse/[0.05] p-card">
+            <p className="eyebrow text-oninverse/60">Experience</p>
             <p className="mt-4 text-body leading-relaxed text-oninverse/85">{c.brands}</p>
           </div>
-        </div>
+        </Split>
       </Reveal>
     </Band>
   );
@@ -221,15 +191,15 @@ export function EcommerceSeoPlatforms() {
     <Band label={p.eyebrow} tone="white">
       <Reveal>
         <SectionIntro title={p.title} accent={p.titleAccent} body={p.body} bodyClassName="text-body" />
-        <div className="mt-12 grid grid-cols-3 gap-5 max-md:grid-cols-1">
+        <CardGrid cols={3} className="mt-header">
           {p.items.map(([letter, title, body]) => (
-            <article key={title} className="surface-card rounded-card border border-line bg-surface p-7">
+            <article key={title} className="surface-card rounded-card border border-line bg-surface p-card">
               <span className="flex size-11 items-center justify-center rounded-[10px] bg-soft font-sans text-[20px] font-semibold text-amber-deep" aria-hidden="true">{letter}</span>
               <h3 className="mt-5 font-sans text-h4 font-semibold">{title}</h3>
               <p className="mt-3 text-body leading-relaxed text-ink/75">{withLinks(body)}</p>
             </article>
           ))}
-        </div>
+        </CardGrid>
       </Reveal>
     </Band>
   );
@@ -255,14 +225,14 @@ export function EcommerceSeoPackages() {
     <Band label={p.eyebrow} id="packages" tone="warm">
       <div data-event={`${event}_pricing_view`}>
         <SectionIntro title={p.title} accent={p.titleAccent} body={p.body} bodyClassName="text-body" />
-        <div className="mt-12 grid grid-cols-3 gap-6 max-lg:grid-cols-1">
+        <CardGrid cols={3} className="mt-header">
           {p.items.map((pkg) => (
             <article key={pkg.name} className="surface-card flex flex-col overflow-hidden rounded-card border border-line bg-surface">
               <div className="border-b border-line bg-soft/50 p-6">
-                <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">{pkg.stage}</p>
+                <p className="eyebrow text-muted">{pkg.stage}</p>
                 <h3 className="mt-2 font-sans text-h3 font-semibold">{pkg.name}</h3>
                 {pkg.price ? (
-                  <p className="mt-3 font-sans text-[34px] font-semibold leading-none tracking-[-0.02em]">{pkg.price}</p>
+                  <p className="mt-3 font-sans text-price font-semibold tracking-[-0.02em]">{pkg.price}</p>
                 ) : (
                   <p className="mt-3 font-sans text-h4 font-semibold text-amber-deep">{p.pendingPrice}</p>
                 )}
@@ -283,7 +253,7 @@ export function EcommerceSeoPackages() {
               </div>
             </article>
           ))}
-        </div>
+        </CardGrid>
         <p className="mt-6 text-bsm text-muted">{p.note}</p>
       </div>
     </Band>
@@ -336,19 +306,17 @@ export function EcommerceSeoPromise() {
   return (
     <Band label={p.eyebrow} tone="mist">
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-12 gap-y-8 max-lg:block">
-          <div className="col-span-6 max-lg:mb-8">
-            <SectionIntro title={p.title} accent={p.titleAccent} body={p.body} bodyClassName="text-body" />
-          </div>
-          <ul className="col-span-6 self-center rounded-card border border-line bg-surface p-7">
+        <Split ratio="6/6">
+          <SectionIntro title={p.title} accent={p.titleAccent} body={p.body} bodyClassName="text-body" />
+          <ul className="self-center rounded-card border border-line bg-surface p-card">
             {p.items.map((item) => (
-              <li key={item} className="flex gap-3.5 border-b border-line py-3.5 font-sans text-[18px] font-semibold leading-snug last:border-b-0">
+              <li key={item} className="flex gap-3.5 border-b border-line py-3.5 font-sans text-body font-semibold leading-snug last:border-b-0">
                 <Check className="mt-1 size-4 shrink-0 text-amber-deep" />
                 {item}
               </li>
             ))}
           </ul>
-        </div>
+        </Split>
       </Reveal>
     </Band>
   );
