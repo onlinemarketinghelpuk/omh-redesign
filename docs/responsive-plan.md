@@ -428,3 +428,30 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
 - Not collapsed on purpose: voice FAQ ("Open all" and the result count would disagree with a collapsed list),
   plan cards, lead-flow and day-of-calls sections. Voice pages stay long because every section is kept (client).
 - Next: Phase 6 device pass (real phones on the Vercel preview; the user is already sending screenshots from one).
+
+### Phase 6, 17 Nov 2026: final pass and hand-over
+
+- Final audit of every code-built page (52 now; the button session removed /contact and 8 quote forms) at 12 widths
+  against the 16 Nov baseline (`audit/final-audit`):
+
+| Check | Baseline | Now |
+|---|---|---|
+| Pages that scroll sideways (320-430px) | 2 | 0 at every width |
+| Text outside its box at 320 / 360 / 390px | 46 / 11 / 3 | 17 / 5 / 0 |
+| Squeezed text at 320 / 768 / 1024px | 159 / 15 / 113 | 51 / 2 / 13 |
+| One-column grids 600px+ at 768-912px | 118-127 | 86-95 (mostly intro-plus-content stacks, forms, mock-ups) |
+| Small tap targets on phones (320-912px) | ~1,650-2,040 | ~120-190 |
+| Median phone page, same 50 pages (390px) | 30.2 screens | 28.2 screens |
+| Desktop 1280px+ | approved | unchanged except the small shifts the user allowed (17 Nov) |
+
+- Landscape phone (844x390, voice page): header 69px, sticky bar hidden as designed, only scroll-to-top floats.
+- Portfolio previews now scroll on tap/focus as well as hover (8823004).
+- Dark mode: the new components use the same tokens as the rest of the site. Open question for the client: since
+  the 16 Nov colour pass `--accent-light` is the same brown as `--accent`, so brown text on dark grounds (links,
+  "Show all", eyebrows in dark mode) is about 2.8:1; a lighter tan in dark mode only would fix it.
+- Not done here (needs real hardware): an iPhone, a small Android, an iPad both ways and a 13-inch laptop on the
+  Vercel preview, 200% text zoom. The user is already reviewing on a phone and sending screenshots.
+- Remaining known flags: 33 "capsWrap" cells that are stretched by taller neighbours (one line each, measured),
+  display-size h1s that count as "squeezed" in their approved columns, the lead-flow diagram labels, one nested
+  list on /ai-services at 320px.
+

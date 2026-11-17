@@ -127,6 +127,18 @@ Agreed with the user when planning the responsive rebuild; the full plan and its
     "Show all" control below 640px; every word stays in the HTML.
 25. **Floating UI never overlaps** on a phone: sticky bar at the bottom, the assistant pill above it,
     scroll-to-top above that, all clear of the safe area.
+26. **Build sections from the shared components** (17 Nov 2026): `PageHero`, `Split`, `SectionHeader`,
+    `CardGrid`, `NumberedList`, `CheckList`, `ShowMore` (`components/ui/`), `PackageComparison` and
+    `PlanCards` (`components/services/`). They carry the tier rules above, so a page file only passes content
+    and props; every variant is on `/design-system`. Long phone lists use `ShowMore` in React and
+    `components/voice-agents/PhoneCollapse.tsx` on the voice pages.
+27. **Voice pages are fixed in CSS, not in their markup.** The voice sections are HTML strings in
+    `lib/content/voice-*` (12+ copies), and `.v4l` resets margin and padding on everything inside it, so
+    responsive and type fixes for them go in the unlayered block at the end of
+    `app/ai-voice-agents/voice-agents.css` (it has to beat the Tailwind classes in the strings). Body copy
+    there is 18px through one rule; spans, small-caps labels, controls and mock-ups keep their sizes.
+28. **Hover effects need a touch equivalent.** Anything that only happens on hover (the portfolio page
+    previews) also happens on focus, so a tap starts it on a phone and Tab starts it on a keyboard.
 
 *Check:* `npm run audit:responsive` (budgets in `docs/responsive-plan.md` section 5) at 320-1280px,
 and `diff-rects` for the desktop gate. Both are described at the top of the plan.
