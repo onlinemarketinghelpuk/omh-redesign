@@ -350,3 +350,12 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
   all four; no audit check worse. Text differs only by the three phone-only buttons per page.
 - Desktop: card gap 16 -> 20px and card padding 24 -> 28px move later sections by up to 36px; Instagram 74px
   (two process cards wrap one more line).
+
+### Phase 3, 17 Nov 2026: Amazon PPC, SEO, Ecommerce SEO (5146d85)
+
+- All 12 service pages are now on the shared components. `PageHero` gains `subtitle`, `statsNote` and `after`.
+- Tablets 520-760px shorter; Ecommerce SEO's stretched one-column grid gone; phones 250-350px shorter. No audit
+  check worse; no text changed.
+- Desktop: Ecommerce SEO unchanged; SEO moves 4px (its narrow stat card keeps 32px padding from 1024px, the
+  shared 36px made its text wrap more); Amazon's hero figures align to the bottom when a label wraps (22px at
+  1280px only).
