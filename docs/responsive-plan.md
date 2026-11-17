@@ -327,3 +327,15 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
 - Desktop shifts (allowed 17 Nov): feature panel padding 40 -> 36px, check-list rows +4.5px each, table prices
   32 -> 34px with the columns rebalancing; at most 31px vertical at 1280px, 8px at 1440px. Page text differs
   only by the four phone-only "Show everything included" buttons. Before/after screenshots sent to the user.
+
+### Phase 3, 17 Nov 2026: pricing family (179bd2e)
+
+- Local SEO, Shopify, WordPress development and WordPress maintenance on the shared components
+  (1,866 -> 1,211 lines; copy unchanged). Formatting-only commit for the three single-line files first (9dfc595).
+- `PageHero` uses the CSS `hero-in` entrance on every page (the pilot had put Google Ads on `Reveal`); new
+  `statsStyle="divided"`. `PackageComparison`: 280px label column for three packages, 240px for four; `cardCta`
+  keeps per-page button copy.
+- Phone pages at 390px: Local SEO 25,743 -> 24,288px, Shopify 28,682 -> 25,323, WordPress 30,124 -> 26,422,
+  Maintenance 25,702 -> 24,131. No audit check worse on any of the four.
+- Desktop: comparison tables 74-128px shorter on Shopify, WordPress and Maintenance (row labels wrap less);
+  Local SEO moves at most 20px (check-list rows on the shared spacing). Google Ads unchanged.
