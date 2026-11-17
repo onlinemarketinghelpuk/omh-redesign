@@ -455,3 +455,12 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
   display-size h1s that count as "squeezed" in their approved columns, the lead-flow diagram labels, one nested
   list on /ai-services at 320px.
 
+
+### Follow-up, 17 Nov 2026: last overflows (a58e4e0)
+
+- Found and fixed a Phase 2a regression: `--spacing-grid` made Tailwind generate `inline-grid { inline-size }`, so
+  `display:inline-grid` elements (the London pages' toggle) shrank to ~20px. `gap-grid` is now an `@utility`; never
+  name a spacing key after a utility that already exists (grid, flex, block, table...).
+- FAQ email links break after the @; London routing buttons and month axis fit at 320px; Maintenance mock-up tiles
+  stack under 380px; the audit no longer counts invisible tap areas as spill.
+- Final audit (`audit/final-audit-3`), 52 pages x 12 widths: 0 pages scroll sideways, 0 spilled text.
