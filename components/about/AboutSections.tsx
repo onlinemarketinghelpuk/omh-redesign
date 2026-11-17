@@ -40,7 +40,7 @@ export function AboutHero() {
               </p>
               <p className="mt-8 text-lead leading-relaxed text-ink/75">{lead}</p>
               <div className="mt-10 flex flex-wrap gap-3.5 max-sm:flex-col max-sm:items-stretch">
-                <Button href="/contact" arrow data-event="about_hero_cta_click">
+                <Button href="/contact-us" data-event="about_hero_cta_click">
                   Talk to the Team
                 </Button>
                 <Button href="/case-studies" variant="secondary" data-event="about_hero_work_click">
@@ -282,7 +282,7 @@ export function AboutCharity() {
                 ))}
               </div>
               <div className="mt-9">
-                <Button href="/contact" variant="secondary" arrow data-event="about_charity_cta_click">
+                <Button href="/contact-us" variant="secondary" data-event="about_charity_cta_click">
                   Tell Us About a Charity
                 </Button>
               </div>

@@ -33,7 +33,7 @@ export const ecommerceSeo = {
     title: "Ecommerce SEO services UK that grow online sales",
     titleAccent: "grow online sales",
     body: "Our ecommerce SEO services help online stores get found for the searches that lead to orders. As a UK ecommerce SEO agency, we work through your categories, product pages, site speed, structured data and content, then report on organic revenue as well as rankings.",
-    primary: { label: "Get My Ecommerce SEO Audit", href: "/contact" },
+    primary: { label: "Get My Ecommerce SEO Audit", href: "/book-a-consultation" },
     secondary: { label: "See Ecommerce SEO Packages", href: "#packages" },
     stats: [ // shown only while CASE_STUDIES_LIVE (EcommerceSeoHero)
       ["Organic traffic", "+73%"],

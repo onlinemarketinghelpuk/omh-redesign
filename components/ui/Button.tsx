@@ -3,45 +3,25 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { isHiddenHref } from "@/lib/flags";
 
 // Future Elementor widget: "OMH Button"
-type Variant = "primary" | "secondary" | "inverse" | "ghost-white";
-
-/* Every variant sets its own border colour. The base used to declare
-   `border-transparent`, which collides with `border-ink` at equal specificity —
-   stylesheet order decided the winner and the secondary button rendered with an
-   invisible border, so it read as bare text with no affordance. */
-const styles: Record<Variant, string> = {
-  primary: "border-transparent bg-teal text-white hover:bg-teal-dark hover:text-white",
-  secondary: "border-ink text-ink hover:bg-ink/5",
-  // Sits on the dark CTA ground, so it pins to the fixed light/dark pair. Hover is the full accent
-  // (client audit, 26 Oct 2026: the pale soft-dark tint barely read as a change on dark sections).
-  inverse: "border-transparent bg-oninverse text-inverse hover:bg-teal hover:text-white",
-  "ghost-white": "border-oninverse/55 text-oninverse hover:border-oninverse hover:bg-oninverse/10",
-};
+// The site has two buttons (client, 17 Nov 2026). Their look is `.btn-primary` / `.btn-secondary` in globals.css,
+// shared with form submits and the voice pages; this only adds the lift on hover. The arrow is drawn by the CSS.
+// OLD variants inverse (white on black) and ghost-white became primary and secondary; `small` and `arrow` went.
+type Variant = "primary" | "secondary";
 
 export function Button({
   href,
   variant = "primary",
-  arrow = false,
-  small = false,
   children,
   ...props
 }: {
   href: string;
   variant?: Variant;
-  arrow?: boolean;
-  small?: boolean;
   children: ReactNode;
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href">) {
   if (isHiddenHref(href)) return null;
   return (
-    <Link
-      href={href}
-      {...props}
-      className={`button-motion group inline-flex items-center gap-2 rounded-button border-[1.5px] font-semibold leading-none
-        ${small ? "px-4.5 py-3 text-label" : "px-7 py-4 text-body"} ${styles[variant]} ${props.className ?? ""}`}
-    >
+    <Link href={href} {...props} className={`button-motion btn-${variant} ${props.className ?? ""}`}>
       {children}
-      {arrow && <ArrowRight className="size-4 transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-0.5" />}
     </Link>
   );
 }

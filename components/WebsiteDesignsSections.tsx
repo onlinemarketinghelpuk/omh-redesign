@@ -102,10 +102,10 @@ export function WebsiteDesignsPage() {
             </p>
             <p className="mt-5 text-lead leading-relaxed text-ink/75">{page.lead}</p>
             <div className="mt-9 flex flex-wrap gap-3.5 max-sm:flex-col max-sm:items-stretch">
-              <Button href="/contact" arrow data-event="website_designs_consultation_click">
+              <Button href="/book-a-consultation" data-event="website_designs_consultation_click">
                 {page.ctas.consultation}
               </Button>
-              <Button href="/contact" variant="secondary" arrow data-event="website_designs_contact_click">
+              <Button href="/contact-us" variant="secondary" data-event="website_designs_contact_click">
                 {page.ctas.contact}
               </Button>
             </div>
@@ -166,7 +166,7 @@ export function WebsiteDesignsPage() {
               </li>
             ))}
             <li>
-              <Button href="/contact" small arrow data-event="website_designs_trades_contact_click">
+              <Button href="/contact-us" data-event="website_designs_trades_contact_click">
                 {page.help.tradesCta}
               </Button>
             </li>
@@ -251,7 +251,7 @@ export function WebsiteDesignsPage() {
           ))}
         </ul>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <Button href="/pricing" arrow data-event="website_designs_pricing_click">
+          <Button href="/pricing" data-event="website_designs_pricing_click">
             View the price list
           </Button>
           <TextLink href="/wordpress-development#packages" data-event="website_designs_packages_click">Compare what each package includes</TextLink>
@@ -299,7 +299,7 @@ export function WebsiteDesignsPage() {
             <h3 className="mt-4 font-sans text-h3 font-semibold text-balance">{page.caseStudies.cta.heading}</h3>
             <p className="mt-3 text-body leading-relaxed text-oninverse/70">{page.caseStudies.cta.body}</p>
             <div className="mt-auto pt-8">
-              <Button href="/contact" variant="inverse" arrow data-event="website_designs_case_cta_click">
+              <Button href="/book-a-consultation" data-event="website_designs_case_cta_click">
                 {page.caseStudies.cta.label}
               </Button>
             </div>
@@ -314,10 +314,10 @@ export function WebsiteDesignsPage() {
             <h2 className="font-sans text-h2 font-semibold text-balance">{page.contact.heading}</h2>
             <p className="mt-5 text-body leading-relaxed text-oninverse/70">{page.contact.body}</p>
             <div className="mt-8 flex flex-wrap gap-3.5 max-sm:flex-col">
-              <Button href="/contact" variant="inverse" arrow data-event="website_designs_booking_click">
+              <Button href="/book-a-consultation" data-event="website_designs_booking_click">
                 {page.consultation.eyebrow}
               </Button>
-              <Button href="/contact" variant="ghost-white" arrow data-event="website_designs_contact_band_click">
+              <Button href="/contact-us" variant="secondary" data-event="website_designs_contact_band_click">
                 {page.ctas.contact}
               </Button>
             </div>
@@ -373,10 +373,10 @@ export function WebsiteDesignsPage() {
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3.5 max-sm:flex-col">
-              <Button href="/warranty" arrow data-event="website_designs_warranty_click">
+              <Button href="/warranty" data-event="website_designs_warranty_click">
                 Read the guarantee
               </Button>
-              <Button href="/contact" variant="secondary" arrow data-event="website_designs_guarantee_consultation_click">
+              <Button href="/book-a-consultation" variant="secondary" data-event="website_designs_guarantee_consultation_click">
                 {page.ctas.consultation}
               </Button>
             </div>
@@ -412,8 +412,8 @@ export function WebsiteDesignsPage() {
         title={page.finalCta.title}
         titleAccent="your business actually needs."
         body={page.finalCta.body}
-        primary={{ label: "Request a Website Quote", href: "/wordpress-development-request-quote", event: "website_designs_final_quote_click" }}
-        secondary={{ label: "Book a Free Consultation", href: "/contact", event: "website_designs_final_consultation_click" }}
+        primary={{ label: "Book a Free Consultation", event: "website_designs_final_consultation_click" }}
+        secondary={{ label: page.ctas.contact, event: "website_designs_final_contact_click" }}
         contactEvents={{ phone: "website_designs_phone_click", email: "website_designs_email_click" }}
       />
     </main>

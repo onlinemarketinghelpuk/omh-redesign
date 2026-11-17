@@ -47,7 +47,7 @@ export function ServiceProcessTimeline({
                   />
                 ) : null)}
               <div className="mt-8">
-                <TextLink href={action.href ?? "/contact"} data-event={action.event}>
+                <TextLink href={action.href ?? "/book-a-consultation"} data-event={action.event}>
                   {action.label}
                 </TextLink>
               </div>

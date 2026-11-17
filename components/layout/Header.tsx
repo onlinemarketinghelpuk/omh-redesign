@@ -197,7 +197,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
                       {item.cta && (
                         <div className="mt-4 flex items-center justify-between gap-6 border-t border-line px-2.5 pt-4">
                           <p className="text-[16px] text-muted">{item.cta.text}</p>
-                          <Button href={item.cta.href} small arrow onClick={() => setMenu(null)} className="whitespace-nowrap">
+                          <Button href={item.cta.href} onClick={() => setMenu(null)} className="whitespace-nowrap">
                             {item.cta.label}
                           </Button>
                         </div>
@@ -226,7 +226,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
           <SiteSearch entries={searchEntries} />
           <ThemeToggle />
           <span className="max-md:hidden">
-            <Button href="/contact" small className="whitespace-nowrap max-[1420px]:px-3.5">
+            <Button href="/book-a-consultation" className="whitespace-nowrap px-4.5 py-3 max-[1420px]:px-3.5">
               {/* With the desktop nav, the full label only fits from ~1330px: at
                   1024 it pushed the header 65px past its container and the page
                   scrolled sideways. Below 1360 the short label keeps some slack. */}
@@ -281,7 +281,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
                     {item.cta && (
                       <div className="mt-3 rounded-card border border-line bg-surface p-4">
                         <p className="text-[16px] text-muted">{item.cta.text}</p>
-                        <Button href={item.cta.href} small arrow onClick={() => setOpen(false)} className="mt-3">
+                        <Button href={item.cta.href} onClick={() => setOpen(false)} className="mt-3">
                           {item.cta.label}
                         </Button>
                       </div>
@@ -303,7 +303,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
               );
             })}
             <div className="flex flex-col gap-3 py-5">
-              <Button href="/contact" onClick={() => setOpen(false)}>
+              <Button href="/book-a-consultation" onClick={() => setOpen(false)}>
                 Book a Growth Consultation
               </Button>
               <a

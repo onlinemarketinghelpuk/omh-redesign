@@ -51,7 +51,7 @@ export function PlanCards<P extends Plan>({
             ))}
           </ShowMore>
           <div className="mt-7">
-            <Button href="/contact" small data-event={event} data-package={plan.name}>
+            <Button href="/book-a-consultation" data-event={event} data-package={plan.name}>
               {cta(plan)}
             </Button>
           </div>

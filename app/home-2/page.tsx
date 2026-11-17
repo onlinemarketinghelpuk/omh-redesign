@@ -139,7 +139,7 @@ export default async function Home2() {
               {hero.standfirst}
             </p>
             <div className="flex flex-wrap items-center gap-4 max-sm:flex-col max-sm:items-stretch">
-              <Button href={hero.primaryCta.href} arrow>
+              <Button href={hero.primaryCta.href}>
                 {hero.primaryCta.label}
               </Button>
               <Button href={hero.secondaryCta.href} variant="secondary">
@@ -257,7 +257,7 @@ export default async function Home2() {
                 content and website work came together to grow traffic and enquiries for UK businesses.
               </p>
               <div className="mt-8">
-                <Button href="/case-studies" variant="secondary" arrow>
+                <Button href="/case-studies" variant="secondary">
                   View all client work
                 </Button>
               </div>
@@ -367,7 +367,7 @@ export default async function Home2() {
                   ))}
                 </div>
                 <div className="mt-9">
-                  <Button href="/about-us" variant="inverse" arrow>
+                  <Button href="/about-us">
                     Learn about OMH
                   </Button>
                 </div>
@@ -411,7 +411,7 @@ export default async function Home2() {
                 {withLinks("Never miss a call again with an [AI voice agent](/ai-voice-agents) that answers, books and follows up for you.")}
               </p>
               <div className="mt-8">
-                <Button href="/pricing" variant="secondary" arrow>
+                <Button href="/pricing" variant="secondary">
                   Explore all services
                 </Button>
               </div>
@@ -494,7 +494,7 @@ export default async function Home2() {
                   ))}
                 </div>
                 <div className="mt-8">
-                  <Button href="/about-us" variant="secondary" arrow>
+                  <Button href="/about-us" variant="secondary">
                     Learn about our approach
                   </Button>
                 </div>
@@ -535,7 +535,7 @@ export default async function Home2() {
                   {whoWeWorkWith.closing}
                 </p>
                 <div className="mt-9">
-                  <Button href={whoWeWorkWith.cta.href} variant="inverse" arrow data-event="home_who_cta_click">
+                  <Button href={whoWeWorkWith.cta.href} data-event="home_who_cta_click">
                     {whoWeWorkWith.cta.label}
                   </Button>
                 </div>

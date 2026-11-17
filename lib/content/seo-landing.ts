@@ -161,7 +161,7 @@ export const bestSeoServices: SeoLanding = {
     body: "Find out exactly where your website stands and what it would take to rank higher. Our free SEO audit covers technical health, on-page optimisation, content gaps, and backlink profile. You get a clear, prioritised action plan, whether you work with us or not.",
     // The brief's offer line ("Free SEO Audit (worth £200) + SEO Checklist (worth £100) =
     // £300 value, yours free") is typeset as the receipt beside this copy, from `checklist`.
-    secondary: { label: "Book a Growth Consultation", href: "/contact" },
+    secondary: { label: "Contact Us", href: "/contact-us" },
   },
   services: [
     {

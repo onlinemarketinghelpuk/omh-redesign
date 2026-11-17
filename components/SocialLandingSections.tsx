@@ -40,7 +40,7 @@ const pages = {
     heroAlt: "A social media team reviewing campaign charts on tablets, with Facebook, Twitter and LinkedIn icons on the table.",
     proofHeading: "Facebook marketing backed by verified client trust",
     related: facebookLanding.solutions.links,
-    cta: { body: facebookLanding.consultation.body, secondary: { label: "Start the Facebook Ads Questionnaire", href: "/facebook-paid-ads-questionnaire" } },
+    cta: { body: facebookLanding.consultation.body, secondary: { label: "Send a Campaign Brief", href: "/contact-us" } },
   },
   instagram: {
     content: instagramLanding,
@@ -49,7 +49,7 @@ const pages = {
     heroAlt: "A phone's social media folder with the Instagram app beside X, TikTok, LinkedIn and YouTube, and Instagram open on a screen behind.",
     proofHeading: "Instagram marketing backed by verified client trust",
     related: instagramLanding.solutions.links,
-    cta: { body: instagramLanding.standfirst, secondary: { label: "Request an Instagram Ads Quote", href: "/social-media-paid-marketing-request-quote" } },
+    cta: { body: instagramLanding.standfirst, secondary: { label: "Request an Instagram Ads Quote", href: "/contact-us" } },
   },
 } as const;
 

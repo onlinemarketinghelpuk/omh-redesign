@@ -30,7 +30,7 @@ export function PpcHero() {
       body={content.hero.body}
       actions={
         <>
-          <Button href={content.hero.primary.href} arrow data-event="ppc_hero_cta_click">{content.hero.primary.label}</Button>
+          <Button href={content.hero.primary.href} data-event="ppc_hero_cta_click">{content.hero.primary.label}</Button>
           <Button href={content.hero.secondary.href} variant="secondary" data-event="ppc_view_packages_click">{content.hero.secondary.label}</Button>
         </>
       }
@@ -189,7 +189,7 @@ export function PpcFinalCTA() {
       primary={{ label: "Discuss Google Ads Management", event: "ppc_final_cta_click" }}
       secondary={{
         label: "Send a Campaign Brief",
-        href: "/ppc-request-quote",
+        href: "/contact-us",
         event: "ppc_form_start",
       }}
       phoneEvent="ppc_phone_click"

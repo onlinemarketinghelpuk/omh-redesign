@@ -1,6 +1,5 @@
 import { caseStudies } from "@/lib/content/case-studies";
 import { readyPages } from "@/lib/content/nav";
-import { quoteFormPages } from "@/lib/content/quote-forms";
 import { getInsightSearchEntries } from "@/lib/sanity/insights";
 import { CASE_STUDIES_LIVE } from "@/lib/flags";
 
@@ -18,13 +17,6 @@ export async function getSearchIndex(): Promise<SearchEntry[]> {
 
   return [
     ...readyPages.map((page) => ({ title: page.label, href: page.href, group: "Page" as const })),
-    // Funnel pages are deliberately out of `readyPages`, but someone searching
-    // "quote" should still find them.
-    ...quoteFormPages.map((page) => ({
-      title: page.seo.title,
-      href: `/${page.slug}`,
-      group: "Page" as const,
-    })),
     { title: "Free Growth Review", href: "/get-more-leads", group: "Page" as const },
     ...(CASE_STUDIES_LIVE ? caseStudies : []).map((study) => ({
       title: study.shortTitle,

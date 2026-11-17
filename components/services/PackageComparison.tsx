@@ -23,7 +23,7 @@ export function PackageComparison({
   groups,
   notes,
   event,
-  ctaHref = "/contact",
+  ctaHref = "/book-a-consultation",
   tableLabel = "Compare packages",
   cardCta = "Discuss this package",
 }: {
@@ -88,7 +88,7 @@ export function PackageComparison({
               <th scope="row" className="sticky left-0 z-10 bg-surface p-6 font-semibold">Next step</th>
               {packages.map((pkg) => (
                 <td key={pkg.name} className="border-l border-line p-5">
-                  <Button href={ctaHref} small data-event={event} data-package={pkg.name}>Discuss package</Button>
+                  <Button href={ctaHref} data-event={event} data-package={pkg.name}>Discuss package</Button>
                 </td>
               ))}
             </tr>
@@ -124,7 +124,7 @@ export function PackageComparison({
               </ShowMore>
             </div>
             <div className="px-6 pb-6">
-              <Button href={ctaHref} small className="min-h-11 w-full justify-center" data-event={event} data-package={pkg.name}>{cardCta}</Button>
+              <Button href={ctaHref} className="min-h-11 w-full justify-center" data-event={event} data-package={pkg.name}>{cardCta}</Button>
             </div>
           </article>
         ))}

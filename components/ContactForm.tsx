@@ -2,7 +2,6 @@
 
 import { useId, useState } from "react";
 import { Field } from "@/components/ui/Field";
-import { ArrowRight } from "@/components/ui/Button";
 import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
 
 const controlCls =
@@ -146,10 +145,9 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={sending}
-        className="button-motion group mt-7 inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-button border-[1.5px] border-transparent bg-teal px-6 py-4 text-body font-semibold leading-none text-white hover:bg-teal-dark max-sm:w-full max-sm:justify-center"
+        className="button-motion btn-primary mt-7 max-sm:w-full"
       >
         {sending ? "Sending…" : "Send enquiry"}
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </button>
       {error && (
         <p role="alert" className="mt-4 text-body font-medium text-error">

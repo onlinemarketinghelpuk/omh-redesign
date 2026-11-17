@@ -65,7 +65,7 @@ export function ThankYouPage({ page }: { page: PageData }) {
           )}
 
           <div className="mt-10 flex flex-wrap gap-3.5 max-sm:flex-col max-sm:items-stretch">
-            <Button href="/case-studies" arrow data-event={`${page.slug}_case_studies_click`}>
+            <Button href="/case-studies" data-event={`${page.slug}_case_studies_click`}>
               See recent work
             </Button>
             <Button href="/insights" variant="secondary" data-event={`${page.slug}_insights_click`}>
@@ -91,7 +91,7 @@ export function ThankYouPage({ page }: { page: PageData }) {
               full price list, so this links there instead of showing a shorter copy of it.
             </p>
             <div className="mt-8">
-              <Button href="/pricing" arrow data-event={`${page.slug}_pricing_click`}>
+              <Button href="/pricing" data-event={`${page.slug}_pricing_click`}>
                 View the price list
               </Button>
             </div>

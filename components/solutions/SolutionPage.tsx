@@ -25,10 +25,10 @@ function SolutionHero({ content }: { content: SolutionPageContent }) {
           </h1>
           <p className="mt-7 text-body leading-relaxed text-ink/75">{content.intro}</p>
           <div className="mt-9 flex flex-wrap gap-3 max-sm:flex-col">
-            <Button href="#enquire" arrow data-event={`${content.slug}_hero_primary_click`}>
+            <Button href="#enquire" data-event={`${content.slug}_hero_primary_click`}>
               {content.primaryCta}
             </Button>
-            <Button href="#approach" variant="secondary" arrow data-event={`${content.slug}_hero_secondary_click`}>
+            <Button href="#approach" variant="secondary" data-event={`${content.slug}_hero_secondary_click`}>
               {content.secondaryCta}
             </Button>
           </div>
@@ -369,7 +369,7 @@ function ProofSection({ content }: { content: SolutionPageContent }) {
               <p className="text-body leading-relaxed text-ink/68">{content.proof.body}</p>
               <div className="mt-7 flex flex-wrap gap-3 max-sm:flex-col">
                 {content.proof.links.map((link, index) => (
-                  <Button key={link.href} href={link.href} variant={index === 0 ? "primary" : "secondary"} arrow data-event={`${content.slug}_proof_${index === 0 ? "primary" : "secondary"}_click`}>
+                  <Button key={link.href} href={link.href} variant={index === 0 ? "primary" : "secondary"} data-event={`${content.slug}_proof_${index === 0 ? "primary" : "secondary"}_click`}>
                     {link.label}
                   </Button>
                 ))}

@@ -3,7 +3,7 @@ export const amazonPpc = {
   hero: {
     eyebrow: "UK Amazon Advertising Management",
     body: "We are a UK Amazon PPC agency for brands that want tighter control of search terms, bids, product targeting and the link between ad spend and attributed sales. We plan, build and optimise Sponsored Products, Sponsored Brands, Sponsored Display and Amazon DSP campaigns alongside the listings shoppers actually reach.",
-    primary: { label: "Discuss Your Amazon Ads", href: "/contact" },
+    primary: { label: "Discuss Your Amazon Ads", href: "/book-a-consultation" },
     secondary: { label: "Compare Packages", href: "#packages" },
   },
   problems: [

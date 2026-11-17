@@ -5,7 +5,7 @@ export const shopifyDevelopment = {
     // Sans has no glyph for it, so it would render in the fallback font.
     title: "Shopify development company for high-\u2060performing stores",
     body: "Whether you're launching a new store, refreshing an existing one, or switching over from another platform, we build Shopify stores around your products, your customers, and the way your team actually works. We care as much about how the store runs after launch as how it looks on day one.",
-    primary: { label: "Discuss Your Shopify Project", href: "/contact" },
+    primary: { label: "Discuss Your Shopify Project", href: "/book-a-consultation" },
     secondary: { label: "View Website Packages", href: "#packages" },
   },
   needs: [

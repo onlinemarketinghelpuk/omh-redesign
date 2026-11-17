@@ -3,7 +3,7 @@ export const wordpressMaintenance = {
     eyebrow: "WordPress Maintenance for UK Businesses",
     title: "WordPress maintenance packages that keep your website under control",
     body: "Updates, backups, monitoring and technical fixes should not depend on someone remembering them after a problem appears. We provide WordPress website maintenance packages for UK businesses that need a clearer support route, published allowances and a more reliable website.",
-    primary: { label: "Discuss Maintenance Packages", href: "/contact" },
+    primary: { label: "Discuss Maintenance Packages", href: "/book-a-consultation" },
     secondary: { label: "View Maintenance Packages", href: "#packages" },
   },
   issues: [

@@ -2,7 +2,7 @@ export const googleAdsPpc = {
   hero: {
     eyebrow: "Google Ads management services for UK businesses",
     body: "OMH is a Google Ads agency for UK businesses that treats every campaign as a route to a real enquiry, booking or sale. Our Google Ads and PPC management services cover Search, Shopping, Display and remarketing, planned around the actions your business actually needs. We combine account structure, conversion tracking, landing-page advice and ongoing optimisation, so your ad spend stays easier to understand and control.",
-    primary: { label: "Discuss Your Google Ads", href: "/contact" },
+    primary: { label: "Discuss Your Google Ads", href: "/book-a-consultation" },
     secondary: { label: "View PPC Packages", href: "#packages" },
   },
   problems: [

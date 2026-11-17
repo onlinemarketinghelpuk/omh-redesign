@@ -42,8 +42,8 @@ export function EcommerceSeoHero() {
       body={h.body}
       actions={
         <>
-          <Button href={h.primary.href} arrow data-event={`${event}_hero_cta_click`}>{h.primary.label}</Button>
-          <Button href={h.secondary.href} variant="secondary" arrow data-event={`${event}_view_packages_click`}>{h.secondary.label}</Button>
+          <Button href={h.primary.href} data-event={`${event}_hero_cta_click`}>{h.primary.label}</Button>
+          <Button href={h.secondary.href} variant="secondary" data-event={`${event}_view_packages_click`}>{h.secondary.label}</Button>
         </>
       }
       stats={CASE_STUDIES_LIVE ? h.stats : undefined}
@@ -247,7 +247,7 @@ export function EcommerceSeoPackages() {
                 ))}
               </ul>
               <div className="px-6 pb-6">
-                <Button href="/contact" small arrow className="min-h-11 w-full justify-center" data-event={`${event}_package_select`} data-package={pkg.name}>
+                <Button href="/book-a-consultation" className="min-h-11 w-full justify-center" data-event={`${event}_package_select`} data-package={pkg.name}>
                   {pkg.cta}
                 </Button>
               </div>
@@ -346,8 +346,8 @@ export function EcommerceSeoFinalCTA() {
       title={f.title}
       titleAccent={f.titleAccent}
       body={f.body}
-      primary={{ label: f.primary, href: "/contact", event: `${event}_final_cta_click` }}
-      secondary={{ label: f.secondary, href: "/contact", event: `${event}_final_secondary_click` }}
+      primary={{ label: f.primary, href: "/book-a-consultation", event: `${event}_final_cta_click` }}
+      secondary={{ label: f.secondary, event: `${event}_final_secondary_click` }}
       phoneEvent={`${event}_phone_click`}
       emailEvent={`${event}_email_click`}
       steps={f.steps}

@@ -43,10 +43,10 @@ export function ServiceHero() {
       body={content.hero.body}
       actions={
         <>
-          <Button href={content.hero.primary.href} arrow data-event="wpdev_hero_cta_click">
+          <Button href={content.hero.primary.href} data-event="wpdev_hero_cta_click">
             {content.hero.primary.label}
           </Button>
-          <Button href={content.hero.secondary.href} variant="secondary" arrow data-event="wpdev_view_packages_click">
+          <Button href={content.hero.secondary.href} variant="secondary" data-event="wpdev_view_packages_click">
             {content.hero.secondary.label}
           </Button>
         </>
@@ -152,7 +152,7 @@ export function ServiceCapabilityGrid() {
         title: featured.title,
         body: featured.body,
         detail: ["Structure planned before design", "Built to be edited without a developer", "Set up for tracking from day one", "Speed, security and schema basics in the build"],
-        primary: { label: "Start a project", href: "/wordpress-development-request-quote", event: "wpdev_build_start_click" },
+        primary: { label: "Start a project", href: "/contact-us", event: "wpdev_build_start_click" },
         secondary: { label: "See the packages", href: "#packages", event: "wpdev_build_packages_click" },
         aside: CASE_STUDIES_LIVE && (
           <Link href={`/case-studies/${recent.slug}`} data-event="wpdev_build_case_study_click" className="group block rounded-[10px] border border-oninverse/12 bg-oninverse/[0.06] p-4 transition-colors hover:bg-oninverse/[0.1]">
@@ -357,7 +357,7 @@ export function FinalCTA() {
       primary={{ label: "Book a WordPress Consultation", event: "wpdev_final_cta_click" }}
       secondary={{
         label: "Send a Website Brief",
-        href: "/wordpress-development-request-quote",
+        href: "/contact-us",
         event: "wpdev_form_start",
       }}
       phoneEvent="wpdev_phone_click"

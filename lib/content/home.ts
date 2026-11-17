@@ -18,7 +18,7 @@ export const hero = {
   headline: "Full-service digital marketing agency for UK businesses",
   standfirst:
     "Online Marketing Help is a full-service digital marketing agency for service businesses and ecommerce brands across the UK. We plan, build and run your Google Ads, Meta Ads, SEO and website under one roof, then show you clearly what each pound brings back. You run the business. We handle the strategy, delivery, tracking and reporting.",
-  primaryCta: { label: "Book a Growth Consultation", href: "/contact" },
+  primaryCta: { label: "Book a Growth Consultation", href: "/book-a-consultation" },
   secondaryCta: { label: "View Client Results", href: "#proof" },
 };
 
@@ -184,7 +184,7 @@ export const whoWeWorkWith = {
   ],
   closing:
     "If you are comparing marketing companies in the UK, we are happy to look at what you are doing now and tell you honestly where the quickest wins are.",
-  cta: { label: "Book a Growth Consultation", href: "/contact" },
+  cta: { label: "Book a Growth Consultation", href: "/book-a-consultation" },
 };
 
 // Rendered in the page HTML (closed <details>, not fetched on click) and published
@@ -201,6 +201,6 @@ export const homeFaqs = [
 export const finalCta = {
   headline: "Ready to work with a full-service digital marketing agency?",
   body: "Tell us what you are doing now, what is not working and what you want to improve. We will review it and recommend the clearest next step for your business.",
-  primary: { label: "Book a Growth Consultation", href: "/contact" },
-  secondary: { label: "Send a Project Brief", href: "/contact" },
+  primary: { label: "Book a Growth Consultation", href: "/book-a-consultation" },
+  secondary: { label: "Send a Project Brief", href: "/contact-us" },
 };

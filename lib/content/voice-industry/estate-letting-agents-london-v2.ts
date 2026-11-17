@@ -230,7 +230,7 @@ export const markup = String.raw`
         <p class="mt-6 text-body text-muted">Your branch closes at six. London keeps ringing. Your AI receptionist answers every enquiry, books viewings and valuations, and sends offers and tenant emergencies to your team.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="elv2_hero_book">Book a London demo</a>
-          <a href="#try" class="btn btn-secondary !bg-surface" data-track="elv2_hero_try"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Try a call</a>
+          <a href="#try" class="btn btn-secondary" data-track="elv2_hero_try"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Try a call</a>
         </div>
         <p class="mt-6 text-[15px] text-muted">Built and managed by OMH, a UK team based in Hullbridge, Essex.</p>
       </div>
@@ -721,8 +721,8 @@ export const markup = String.raw`
       <label for="ba-range" class="sr-only">Drag to show more of the morning without or with an agent</label>
       <input id="ba-range" type="range" min="15" max="85" value="50" class="ba-range mt-4 w-full max-sm:hidden" data-ba-range data-track="elv2_monday_drag">
       <div class="mt-2 flex justify-between gap-3 max-sm:hidden">
-        <button type="button" class="btn btn-secondary !min-h-[44px] !bg-surface" data-ba-set="85" data-track="elv2_monday_before">Without an agent</button>
-        <button type="button" class="btn btn-secondary !min-h-[44px] !bg-surface" data-ba-set="15" data-track="elv2_monday_after">With an agent</button>
+        <button type="button" class="btn btn-secondary !min-h-[44px]" data-ba-set="85" data-track="elv2_monday_before">Without an agent</button>
+        <button type="button" class="btn btn-secondary !min-h-[44px]" data-ba-set="15" data-track="elv2_monday_after">With an agent</button>
       </div>
       <p class="mt-3 text-[13.5px] text-muted">An illustrative example. The branch and figures are fictional.</p>
     </div>
@@ -856,7 +856,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
             <p class="mt-3 text-[14px] text-band-muted">[Name], Lettings director</p>
           </div>
         </div>
-        <button type="button" class="btn btn-secondary mt-3 w-full !min-h-[44px] !bg-surface" aria-pressed="false" data-cf-flip data-track="elv2_case_flip" data-track-name="Thameside Lettings"><span data-cf-label>See the result</span></button>
+        <button type="button" class="btn btn-secondary mt-3 w-full !min-h-[44px]" aria-pressed="false" data-cf-flip data-track="elv2_case_flip" data-track-name="Thameside Lettings"><span data-cf-label>See the result</span></button>
       </li>
       <li class="cf" data-cf>
         <div class="cf-inner relative">
@@ -872,7 +872,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
             <p class="mt-3 text-[14px] text-band-muted">[Name], Branch manager</p>
           </div>
         </div>
-        <button type="button" class="btn btn-secondary mt-3 w-full !min-h-[44px] !bg-surface" aria-pressed="false" data-cf-flip data-track="elv2_case_flip" data-track-name="Northgate &amp; Co"><span data-cf-label>See the result</span></button>
+        <button type="button" class="btn btn-secondary mt-3 w-full !min-h-[44px]" aria-pressed="false" data-cf-flip data-track="elv2_case_flip" data-track-name="Northgate &amp; Co"><span data-cf-label>See the result</span></button>
       </li>
       <li class="cf" data-cf>
         <div class="cf-inner relative">
@@ -888,7 +888,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
             <p class="mt-3 text-[14px] text-band-muted">[Name], Director</p>
           </div>
         </div>
-        <button type="button" class="btn btn-secondary mt-3 w-full !min-h-[44px] !bg-surface" aria-pressed="false" data-cf-flip data-track="elv2_case_flip" data-track-name="Common Lane Estates"><span data-cf-label>See the result</span></button>
+        <button type="button" class="btn btn-secondary mt-3 w-full !min-h-[44px]" aria-pressed="false" data-cf-flip data-track="elv2_case_flip" data-track-name="Common Lane Estates"><span data-cf-label>See the result</span></button>
       </li>
     </ul>
   </div>
@@ -1152,7 +1152,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
       </div>
     </div>
 
-    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
+    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact-us?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
   </div>
 </section>
 

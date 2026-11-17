@@ -5,8 +5,8 @@ import { Eyebrow } from "@/components/ui/Proof";
 import { company } from "@/lib/content/nav";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  alternates: { canonical: "https://onlinemarketinghelp.co.uk/contact" },
+  title: "Book a Growth Consultation",
+  alternates: { canonical: "https://onlinemarketinghelp.co.uk/book-a-consultation" },
   description:
     "Tell us what you need your website or marketing to do and we'll recommend the most practical next step. UK-based, marketing and development under one roof.",
 };
@@ -17,7 +17,8 @@ const steps = [
   "You receive a clear recommendation on the next step.",
 ];
 
-export default function ContactPage() {
+// "Book a Growth Consultation" (client, 17 Nov 2026): this was /contact. General contact is /contact-us.
+export default function BookConsultationPage() {
   return (
     <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
       <div className="container-omh section-md">
@@ -25,7 +26,7 @@ export default function ContactPage() {
             column stacks the title over the rest and the form spans both rows on the right. */}
         <div className="grid gap-y-10 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-0">
           <div className="lg:col-span-5">
-            <Eyebrow>Contact</Eyebrow>
+            <Eyebrow>Book a Growth Consultation</Eyebrow>
             <h1 className="mt-6 font-sans text-display font-semibold text-balance">
               Tell us what you need and we&apos;ll recommend <span className="text-amber-deep">the next step</span>
             </h1>

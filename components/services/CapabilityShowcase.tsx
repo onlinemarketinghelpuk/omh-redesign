@@ -58,12 +58,12 @@ export function CapabilityShowcase({
               {(featured.primary || featured.secondary) && (
                 <div className="mt-8 flex flex-wrap gap-3 max-sm:flex-col">
                   {featured.primary && (
-                    <Button href={featured.primary.href} variant="inverse" arrow data-event={featured.primary.event}>
+                    <Button href={featured.primary.href} data-event={featured.primary.event}>
                       {featured.primary.label}
                     </Button>
                   )}
                   {featured.secondary && (
-                    <Button href={featured.secondary.href} variant="ghost-white" arrow data-event={featured.secondary.event}>
+                    <Button href={featured.secondary.href} variant="secondary" data-event={featured.secondary.event}>
                       {featured.secondary.label}
                     </Button>
                   )}

@@ -38,7 +38,7 @@ export function LocalSeoHero() {
       body={content.hero.body}
       actions={
         <>
-          <Button href={content.hero.primary.href} arrow data-event="local_seo_hero_cta_click">
+          <Button href={content.hero.primary.href} data-event="local_seo_hero_cta_click">
             {content.hero.primary.label}
           </Button>
           <Button href={content.hero.secondary.href} variant="secondary" data-event="local_seo_support_click">
@@ -315,7 +315,7 @@ export function LocalSeoFinalCTA() {
       primary={{ label: "Check My Local Visibility", event: "local_seo_final_cta_click" }}
       secondary={{
         label: "Discuss Local SEO Services",
-        href: "/seo-request-quote",
+        href: "/contact-us",
         event: "local_seo_brief_start",
       }}
       contactEvents={{ phone: "local_seo_phone_click", email: "local_seo_email_click" }}

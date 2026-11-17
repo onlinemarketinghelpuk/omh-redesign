@@ -513,7 +513,7 @@ export function CaseStudyPage({ study }: { study: CaseStudyPageData }) {
         body="Tell us what you want to improve. We’ll review your website, SEO or Google Ads and send back practical next steps."
         primary={{
           label: "Get a free marketing review",
-          href: "/contact",
+          href: "/book-a-consultation",
           event: "case_study_cta_click",
         }}
         secondary={{

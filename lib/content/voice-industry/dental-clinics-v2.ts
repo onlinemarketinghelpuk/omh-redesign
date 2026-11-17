@@ -255,7 +255,7 @@ export const markup = String.raw`
         <p class="mt-6 text-body text-muted">It answers every patient call, books check-ups and fills cancellations, and leaves anything clinical to your team. Built and managed for your practice by OMH.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="dental2_hero_book">Book a practice demo</a>
-          <a href="#amy" class="btn btn-secondary !bg-surface" data-track="dental2_hero_amy"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Meet Amy, your AI receptionist</a>
+          <a href="#amy" class="btn btn-secondary" data-track="dental2_hero_amy"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Meet Amy, your AI receptionist</a>
         </div>
       </div>
       <figure class="relative mx-auto w-full max-w-[560px]">
@@ -916,8 +916,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=london" class="btn btn-primary" data-track="dental_city_click" data-track-name="London">Talk to us about London</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=london" data-future-href="/ai-voice-agents/dentists/london" class="text-link" data-track="dental_city_page" data-track-name="London">Dental AI receptionist in London<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=london" class="btn btn-primary" data-track="dental_city_click" data-track-name="London">Talk to us about London</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=london" data-future-href="/ai-voice-agents/dentists/london" class="text-link" data-track="dental_city_page" data-track-name="London">Dental AI receptionist in London<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-birmingham" data-area-panel="birmingham" hidden role="tabpanel" aria-labelledby="area-tab-birmingham" tabindex="0">
@@ -936,8 +936,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=birmingham" class="btn btn-primary" data-track="dental_city_click" data-track-name="Birmingham">Talk to us about Birmingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=birmingham" data-future-href="/ai-voice-agents/dentists/birmingham" class="text-link" data-track="dental_city_page" data-track-name="Birmingham">Dental AI receptionist in Birmingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=birmingham" class="btn btn-primary" data-track="dental_city_click" data-track-name="Birmingham">Talk to us about Birmingham</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=birmingham" data-future-href="/ai-voice-agents/dentists/birmingham" class="text-link" data-track="dental_city_page" data-track-name="Birmingham">Dental AI receptionist in Birmingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-manchester" data-area-panel="manchester" hidden role="tabpanel" aria-labelledby="area-tab-manchester" tabindex="0">
@@ -956,8 +956,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=manchester" class="btn btn-primary" data-track="dental_city_click" data-track-name="Manchester">Talk to us about Manchester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=manchester" data-future-href="/ai-voice-agents/dentists/manchester" class="text-link" data-track="dental_city_page" data-track-name="Manchester">Dental AI receptionist in Manchester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=manchester" class="btn btn-primary" data-track="dental_city_click" data-track-name="Manchester">Talk to us about Manchester</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=manchester" data-future-href="/ai-voice-agents/dentists/manchester" class="text-link" data-track="dental_city_page" data-track-name="Manchester">Dental AI receptionist in Manchester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leeds" data-area-panel="leeds" hidden role="tabpanel" aria-labelledby="area-tab-leeds" tabindex="0">
@@ -976,8 +976,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leeds" class="btn btn-primary" data-track="dental_city_click" data-track-name="Leeds">Talk to us about Leeds</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leeds" data-future-href="/ai-voice-agents/dentists/leeds" class="text-link" data-track="dental_city_page" data-track-name="Leeds">Dental AI receptionist in Leeds<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leeds" class="btn btn-primary" data-track="dental_city_click" data-track-name="Leeds">Talk to us about Leeds</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leeds" data-future-href="/ai-voice-agents/dentists/leeds" class="text-link" data-track="dental_city_page" data-track-name="Leeds">Dental AI receptionist in Leeds<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-liverpool" data-area-panel="liverpool" hidden role="tabpanel" aria-labelledby="area-tab-liverpool" tabindex="0">
@@ -996,8 +996,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=liverpool" class="btn btn-primary" data-track="dental_city_click" data-track-name="Liverpool">Talk to us about Liverpool</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=liverpool" data-future-href="/ai-voice-agents/dentists/liverpool" class="text-link" data-track="dental_city_page" data-track-name="Liverpool">Dental AI receptionist in Liverpool<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=liverpool" class="btn btn-primary" data-track="dental_city_click" data-track-name="Liverpool">Talk to us about Liverpool</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=liverpool" data-future-href="/ai-voice-agents/dentists/liverpool" class="text-link" data-track="dental_city_page" data-track-name="Liverpool">Dental AI receptionist in Liverpool<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-bristol" data-area-panel="bristol" hidden role="tabpanel" aria-labelledby="area-tab-bristol" tabindex="0">
@@ -1016,8 +1016,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=bristol" class="btn btn-primary" data-track="dental_city_click" data-track-name="Bristol">Talk to us about Bristol</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=bristol" data-future-href="/ai-voice-agents/dentists/bristol" class="text-link" data-track="dental_city_page" data-track-name="Bristol">Dental AI receptionist in Bristol<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=bristol" class="btn btn-primary" data-track="dental_city_click" data-track-name="Bristol">Talk to us about Bristol</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=bristol" data-future-href="/ai-voice-agents/dentists/bristol" class="text-link" data-track="dental_city_page" data-track-name="Bristol">Dental AI receptionist in Bristol<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-sheffield" data-area-panel="sheffield" hidden role="tabpanel" aria-labelledby="area-tab-sheffield" tabindex="0">
@@ -1036,8 +1036,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=sheffield" class="btn btn-primary" data-track="dental_city_click" data-track-name="Sheffield">Talk to us about Sheffield</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=sheffield" data-future-href="/ai-voice-agents/dentists/sheffield" class="text-link" data-track="dental_city_page" data-track-name="Sheffield">Dental AI receptionist in Sheffield<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=sheffield" class="btn btn-primary" data-track="dental_city_click" data-track-name="Sheffield">Talk to us about Sheffield</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=sheffield" data-future-href="/ai-voice-agents/dentists/sheffield" class="text-link" data-track="dental_city_page" data-track-name="Sheffield">Dental AI receptionist in Sheffield<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-nottingham" data-area-panel="nottingham" hidden role="tabpanel" aria-labelledby="area-tab-nottingham" tabindex="0">
@@ -1056,8 +1056,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=nottingham" class="btn btn-primary" data-track="dental_city_click" data-track-name="Nottingham">Talk to us about Nottingham</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=nottingham" data-future-href="/ai-voice-agents/dentists/nottingham" class="text-link" data-track="dental_city_page" data-track-name="Nottingham">Dental AI receptionist in Nottingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=nottingham" class="btn btn-primary" data-track="dental_city_click" data-track-name="Nottingham">Talk to us about Nottingham</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=nottingham" data-future-href="/ai-voice-agents/dentists/nottingham" class="text-link" data-track="dental_city_page" data-track-name="Nottingham">Dental AI receptionist in Nottingham<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-leicester" data-area-panel="leicester" hidden role="tabpanel" aria-labelledby="area-tab-leicester" tabindex="0">
@@ -1076,8 +1076,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leicester" class="btn btn-primary" data-track="dental_city_click" data-track-name="Leicester">Talk to us about Leicester</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leicester" data-future-href="/ai-voice-agents/dentists/leicester" class="text-link" data-track="dental_city_page" data-track-name="Leicester">Dental AI receptionist in Leicester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leicester" class="btn btn-primary" data-track="dental_city_click" data-track-name="Leicester">Talk to us about Leicester</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=leicester" data-future-href="/ai-voice-agents/dentists/leicester" class="text-link" data-track="dental_city_page" data-track-name="Leicester">Dental AI receptionist in Leicester<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
         <div class="area-panel" id="area-panel-newcastle" data-area-panel="newcastle" hidden role="tabpanel" aria-labelledby="area-tab-newcastle" tabindex="0">
@@ -1096,8 +1096,8 @@ export const markup = String.raw`
             <li class="flex gap-2.5"><svg class="icon mt-[3px] text-hl" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>NHS and private booking rules for your practice</span></li>
           </ul>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=newcastle" class="btn btn-primary" data-track="dental_city_click" data-track-name="Newcastle">Talk to us about Newcastle</a>
-            <a href="/contact?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=newcastle" data-future-href="/ai-voice-agents/dentists/newcastle" class="text-link" data-track="dental_city_page" data-track-name="Newcastle">Dental AI receptionist in Newcastle<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=newcastle" class="btn btn-primary" data-track="dental_city_click" data-track-name="Newcastle">Talk to us about Newcastle</a>
+            <a href="/book-a-consultation?service=ai-voice-agents&amp;industry=dental-clinics&amp;city=newcastle" data-future-href="/ai-voice-agents/dentists/newcastle" class="text-link" data-track="dental_city_page" data-track-name="Newcastle">Dental AI receptionist in Newcastle<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
       </div>
@@ -1693,7 +1693,7 @@ ${pricingSection("bg-surface")}
       </div>
     </div>
 
-    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
+    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact-us?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
   </div>
 </section>
 

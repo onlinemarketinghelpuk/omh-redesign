@@ -83,7 +83,7 @@ export function PriceListHero() {
             <p className="mt-5 text-lead leading-relaxed text-ink/70">Choose a service below to see its packages, prices and what’s included. Compare only what you need.</p>
           </div>
           <div className="shrink-0 max-md:mt-7">
-            <Button href="/contact" arrow data-event="pricing_hero_cta_click">Help me choose</Button>
+            <Button href="/book-a-consultation" data-event="pricing_hero_cta_click">Help me choose</Button>
             <p className="mt-3 text-body text-muted">Free 30-minute consultation</p>
           </div>
         </div>
@@ -157,7 +157,7 @@ export function PriceTables({ voicePricingHtml }: { voicePricingHtml: string }) 
                             {table.notes.filter(note => !importantNotes.includes(note) && note !== "As part of your services, we will:").map(note => <li key={note}>{note}</li>)}
                           </ul>
                         </details>
-                        <div className="mt-5 flex flex-wrap items-center justify-between gap-4"><p className="text-body text-muted">Discuss your requirements before choosing a package.</p><Button href="/contact" data-event="pricing_service_enquiry" data-service={id}>{pricing ? "Discuss this service" : "Request a quote"}</Button></div>
+                        <div className="mt-5 flex flex-wrap items-center justify-between gap-4"><p className="text-body text-muted">Discuss your requirements before choosing a package.</p><Button href="/book-a-consultation" data-event="pricing_service_enquiry" data-service={id}>{pricing ? "Discuss this service" : "Request a quote"}</Button></div>
                       </div>
                     </details>
                   );
@@ -179,7 +179,7 @@ export function PriceListFinalCta() {
           <h2 className="font-sans text-h3 font-semibold">Need help choosing a service?</h2>
           <p className="mt-4 text-body leading-relaxed text-ink/75">Tell us what you want to achieve. We’ll explain the options and costs in a free 30-minute consultation.</p>
         </div>
-        <Button href="/contact" data-event="pricing_final_cta_click">Book a free consultation</Button>
+        <Button href="/book-a-consultation" data-event="pricing_final_cta_click">Book a free consultation</Button>
       </div>
     </section>
   );

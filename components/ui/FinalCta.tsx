@@ -62,13 +62,13 @@ export function FinalCta({
           </h2>
           <p className="mb-9 text-body leading-relaxed text-oninverse/75">{body}</p>
           <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">
-            <Button href={primary.href ?? "/contact"} variant="inverse" arrow data-event={primary.event}>
+            <Button href={primary.href ?? "/book-a-consultation"} data-event={primary.event}>
               {primary.label}
             </Button>
             {secondary && (
               <Button
-                href={secondary.href ?? "/contact"}
-                variant="ghost-white"
+                href={secondary.href ?? "/contact-us"}
+                variant="secondary"
                 data-event={secondary.event}
               >
                 {secondary.label}

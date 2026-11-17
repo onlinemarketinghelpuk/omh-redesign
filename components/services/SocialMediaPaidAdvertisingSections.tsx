@@ -77,7 +77,7 @@ export function PaidSocialHero() {
       body={content.hero.body}
       actions={
         <>
-          <Button href="/contact" arrow data-event="paid_social_hero_cta_click">
+          <Button href="/book-a-consultation" data-event="paid_social_hero_cta_click">
             Request a Paid Social Review
           </Button>
           <Button href="#packages" variant="secondary" data-event="paid_social_packages_click">

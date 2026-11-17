@@ -3,8 +3,8 @@ export const localSeo = {
   hero: {
     eyebrow: "Local SEO services for UK businesses",
     body: "Local SEO services for small businesses that need to be found by people nearby. We connect your Google Business Profile, website, business details, local landing pages, directories, reviews and measurement into one practical local SEO programme.",
-    primary: { label: "Check My Local Visibility", href: "/contact" },
-    secondary: { label: "Discuss Local SEO Services", href: "/contact" },
+    primary: { label: "Check My Local Visibility", href: "/book-a-consultation" },
+    secondary: { label: "Discuss Local SEO Services", href: "/contact-us" },
   },
   signals: [
     ["You are missing from map results", "Your business does not appear reliably when nearby customers search for the service you provide."],

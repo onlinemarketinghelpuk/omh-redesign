@@ -171,7 +171,7 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
                     <p className="mt-4 font-sans text-h3 font-semibold text-balance">Talk it through with the team before you change anything.</p>
                     <p className="mt-4 text-body leading-relaxed text-oninverse/72">A free consultation call. We look at what you have in place now and suggest the clearest next step, whether or not you work with us.</p>
                     <div className="mt-7 flex flex-wrap items-center gap-4">
-                      <Button href="/contact" variant="inverse" small arrow data-event="insight_inline_cta_click">Book a Growth Consultation</Button>
+                      <Button href="/book-a-consultation" data-event="insight_inline_cta_click">Book a Growth Consultation</Button>
                       <span className="text-[15px] text-oninverse/55">Keep reading below</span>
                     </div>
                   </aside>

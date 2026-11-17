@@ -24,7 +24,7 @@ export function WarrantyHero() {
                 {lead}
               </p>
               <div className="mt-9">
-                <Button href="/contact" arrow data-event="warranty_hero_cta_click">
+                <Button href="/book-a-consultation" data-event="warranty_hero_cta_click">
                   Request My Free Consultation
                 </Button>
               </div>
@@ -194,7 +194,7 @@ export function WarrantyFinalCta() {
         title="Need help with one of our services?"
         titleAccent="one of our services?"
         body="Book a call at a time convenient for you and we will talk through which warranty term fits how you use your website."
-        primary={{ label: "Book a Call", href: "/contact", event: "warranty_final_cta_click" }}
+        primary={{ label: "Book a Call", href: "/book-a-consultation", event: "warranty_final_cta_click" }}
         contactEvents={{ phone: "warranty_phone_click", email: "warranty_email_click" }}
       />
       <BookDemo />

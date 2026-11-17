@@ -52,8 +52,6 @@ html:has(.vi-page) {
   .wl2-c { transition-delay: .3s; }
   .wl2-neg [data-wl2-out="margin"] { color: var(--va-miss); }
 
-  .on-band [data-bk-form] .btn-secondary { border-color: var(--va-line-strong); color: var(--va-ink); }
-  .on-band [data-bk-form] .btn-secondary:hover { border-color: var(--va-ink); background: color-mix(in srgb, var(--va-ink) 5%, transparent); }
   .on-band [data-bk-panel] .flag { border-color: var(--va-line-strong); color: var(--va-muted); }
   .on-band [data-bk-panel] :focus-visible { outline-color: var(--va-hl); }
   @media (prefers-reduced-motion: no-preference) { .ind-panel:not([hidden]) { animation: vi-panel-in .3s ease; } .ind-tab[aria-selected="true"] .il-bubble { animation: va-il-float 1.6s ease-in-out infinite; } }

@@ -113,7 +113,7 @@ export function SocialHero({
       body={body}
       actions={
         <>
-          <Button href="/contact" arrow data-event={primary.event}>
+          <Button href="/book-a-consultation" data-event={primary.event}>
             {primary.label}
           </Button>
           <Button href="#packages" variant="secondary" data-event={secondary.event}>
@@ -160,7 +160,7 @@ export function SocialGoals({
         </Split>
         <div className="mt-10 flex flex-wrap items-center justify-between gap-5 border-t border-oninverse/12 pt-6">
           <p className="text-body leading-relaxed text-oninverse/62">{note}</p>
-          <Button href="/contact" variant="ghost-white" small>
+          <Button href="/book-a-consultation" variant="secondary">
             Talk Through Your Goals
           </Button>
         </div>
@@ -363,7 +363,7 @@ export function SocialFinalCTA({
   primaryLabel = "Discuss Social Media Support",
   secondary = {
     label: "Request a Paid Social Quote",
-    href: "/social-media-paid-marketing-request-quote",
+    href: "/contact-us",
     event: "social_quote_start",
   },
   stepsHeading,

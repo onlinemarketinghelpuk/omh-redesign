@@ -48,7 +48,7 @@ export function AmazonPpcHero() {
       body={content.hero.body}
       actions={
         <>
-          <Button href={content.hero.primary.href} arrow data-event="amazon_hero_cta_click">{content.hero.primary.label}</Button>
+          <Button href={content.hero.primary.href} data-event="amazon_hero_cta_click">{content.hero.primary.label}</Button>
           <Button href={content.hero.secondary.href} variant="secondary" data-event="amazon_packages_click">{content.hero.secondary.label}</Button>
         </>
       }
@@ -71,7 +71,7 @@ export function AmazonAccountDiagnosis() {
               title="Six signs your Amazon PPC account needs attention"
               body="Dozens of tasks sit under Amazon PPC. This diagnosis groups them around the problems a seller can actually recognise."
             />
-            <div className="mt-8"><TextLink href="/contact" data-event="amazon_account_review_click">Request an account review</TextLink></div>
+            <div className="mt-8"><TextLink href="/book-a-consultation" data-event="amazon_account_review_click">Request an account review</TextLink></div>
           </div>
           <div className="grid border-l border-t border-line md:grid-cols-2">
             {content.problems.map(([title, body], index) => (
@@ -171,7 +171,7 @@ function PackageCard({ pkg, index }: { pkg: Package; index: number }) {
           ))}
         </div>
       </details>
-      <div className="p-6"><Button href="/contact" small className="w-full justify-center" data-event="amazon_package_select" data-package={pkg.name}>Discuss this package</Button></div>
+      <div className="p-6"><Button href="/book-a-consultation" className="w-full justify-center" data-event="amazon_package_select" data-package={pkg.name}>Discuss this package</Button></div>
     </article>
   );
 }
@@ -246,9 +246,7 @@ export function AmazonFinalCTA() {
       primary={{ label: "Discuss Amazon PPC", event: "amazon_final_cta_click" }}
       secondary={{
         label: "Send an Account Brief",
-        // No Amazon-specific quote form exists on the live site; the PPC one
-        // is the nearest real destination.
-        href: "/ppc-request-quote",
+        href: "/contact-us",
         event: "amazon_brief_start",
       }}
       contactEvents={{ phone: "amazon_phone_click", email: "amazon_email_click" }}

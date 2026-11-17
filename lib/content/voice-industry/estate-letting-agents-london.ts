@@ -214,7 +214,7 @@ export const markup = String.raw`
         <p class="mt-6 text-body text-muted">An AI receptionist for London real estate and letting agents. It answers every enquiry on the first ring, books viewings and valuations, and routes offers and tenant emergencies to your team, day and night.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="london_hero_book">Book a demo for your London branch</a>
-          <a href="#call" class="btn btn-secondary !bg-surface" data-track="london_hero_hear"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a London call</a>
+          <a href="#call" class="btn btn-secondary" data-track="london_hero_hear"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a London call</a>
         </div>
         <p class="mt-6 text-[15px] text-muted">Built and managed by OMH, a UK team based in Hullbridge, Essex. Set-up is by video call and phone.</p>
       </div>
@@ -1090,7 +1090,7 @@ ${roiCalculator("real-estate", "bg-paper border-t border-line")}
       </div>
     </div>
 
-    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
+    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact-us?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
   </div>
 </section>
 

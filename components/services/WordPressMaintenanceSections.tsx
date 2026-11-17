@@ -32,10 +32,10 @@ export function MaintenanceHero() {
       body={content.hero.body}
       actions={
         <>
-          <Button href={content.hero.primary.href} arrow data-event="maintenance_hero_cta_click">
+          <Button href={content.hero.primary.href} data-event="maintenance_hero_cta_click">
             {content.hero.primary.label}
           </Button>
-          <Button href={content.hero.secondary.href} variant="secondary" arrow data-event="maintenance_view_packages_click">
+          <Button href={content.hero.secondary.href} variant="secondary" data-event="maintenance_view_packages_click">
             {content.hero.secondary.label}
           </Button>
         </>
@@ -111,7 +111,7 @@ export function MaintenanceCapabilityGrid() {
         body: featured.body,
         detail: featured.detail,
         primary: { label: "See the packages", href: "#packages", event: "maintenance_care_packages_click" },
-        secondary: { label: "Talk to us", href: "/contact", event: "maintenance_care_contact_click" },
+        secondary: { label: "Talk to us", href: "/contact-us", event: "maintenance_care_contact_click" },
         aside: <MonitorMock />,
       }}
       items={rest.map((item, i) => ({ ...item, icon: icons[i] ?? Activity }))}
@@ -258,7 +258,7 @@ export function MaintenanceFinalCTA() {
       primary={{ label: "Discuss WordPress Maintenance Packages", event: "maintenance_final_cta_click" }}
       secondary={{
         label: "Send a Website Brief",
-        href: "/wordpress-website-maintenance-request-quote",
+        href: "/contact-us",
         event: "maintenance_form_start",
       }}
       phoneEvent="maintenance_phone_click"

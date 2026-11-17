@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { readyPages } from "@/lib/content/nav";
 import { allCaseStudyPages } from "@/lib/content/case-study-pages";
 import { getInsightsIndex } from "@/lib/sanity/insights";
-import { funnelPaths } from "@/lib/content/quote-forms";
 import { SITE } from "@/lib/schema";
 import { CASE_STUDIES_LIVE } from "@/lib/flags";
 
@@ -15,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = [
     ...readyPages.map((p) => p.href),
     ...(CASE_STUDIES_LIVE ? allCaseStudyPages : []).map((c) => `/case-studies/${c.slug}`),
-    ...funnelPaths,
+    "/get-more-leads", // ad landing page, outside the menu
   ];
 
   return [

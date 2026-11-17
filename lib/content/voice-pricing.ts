@@ -168,7 +168,7 @@ ${p.features.map((f) => `          <li class="flex gap-2.5">${icon("check", "tex
         <ul class="mb-8 mt-2 space-y-2 text-[16px] leading-snug text-muted">
 ${p.excluded.map((f) => `          <li class="flex gap-2.5">${icon("x")}<span>${f}</span></li>`).join("\n")}
         </ul>
-        <a href="/contact?service=ai-voice-agents&amp;plan=${p.id}" class="btn ${p.popular ? "btn-primary" : "btn-secondary"} mt-auto" data-track="pricing_book_demo" data-track-name="${p.name}">Book a demo for the ${p.name} plan</a>
+        <a href="/book-a-consultation?service=ai-voice-agents&amp;plan=${p.id}" class="btn ${p.popular ? "btn-primary" : "btn-secondary"} mt-auto" data-track="pricing_book_demo" data-track-name="${p.name}">Book a demo for the ${p.name} plan</a>
       </article>`;
 
 /** The pricing band. `bg` is the section background class, so it can sit between any two bands.

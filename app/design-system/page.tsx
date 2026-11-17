@@ -14,7 +14,6 @@ import { Split } from "@/components/ui/Split";
 import { PackageComparison } from "@/components/services/PackageComparison";
 import { googleAdsPpc } from "@/lib/content/google-ads-ppc";
 import Link from "next/link";
-import { quoteFormPages } from "@/lib/content/quote-forms";
 import { subscriptionThankYou, thankYouPages } from "@/lib/content/thank-you";
 
 export const metadata: Metadata = {
@@ -94,13 +93,11 @@ export default function DesignSystem() {
         <div className="grid grid-cols-2 gap-10 max-md:grid-cols-1">
           <div>
             <p className="mb-4 text-label font-semibold text-ink">
-              Quote forms &amp; questionnaires
-              <span className="ml-2 font-normal text-muted">
-                (also in the &ldquo;Get a Quote&rdquo; menu)
-              </span>
+              Booking and contact
+              <span className="ml-2 font-normal text-muted">(every booking and contact button goes to one of these)</span>
             </p>
             <ul className="flex flex-col">
-              {[...quoteFormPages.map((p) => ({ slug: p.slug, label: p.seo.title }))].map(
+              {[{ slug: "book-a-consultation", label: "Book a Growth Consultation" }, { slug: "contact-us", label: "Contact Us" }].map(
                 (page) => (
                   <li key={page.slug} className="border-b border-line">
                     <Link
@@ -183,13 +180,13 @@ export default function DesignSystem() {
 
       <Spec title="Buttons & links">
         <div className="flex flex-wrap items-center gap-4">
-          <Button href="#" arrow>Primary</Button>
+          <Button href="#">Primary</Button>
           <Button href="#" variant="secondary">Secondary</Button>
-          <span className="rounded-card bg-inverse p-3">
-            <Button href="#" variant="inverse" small>On ink</Button>
+          <span className="rounded-card bg-inverse p-3 text-oninverse">
+            <Button href="#">Primary on ink</Button>
           </span>
-          <span className="rounded-card bg-inverse p-3">
-            <Button href="#" variant="ghost-white" small>Ghost on ink</Button>
+          <span className="rounded-card bg-inverse p-3 text-oninverse">
+            <Button href="#" variant="secondary">Secondary on ink</Button>
           </span>
           <TextLink href="#">Text link with a specific label</TextLink>
         </div>
@@ -312,7 +309,7 @@ export default function DesignSystem() {
           eyebrow={googleAdsPpc.hero.eyebrow}
           title={<>Google Ads agency&nbsp;UK: PPC management built around <span className="text-amber-deep">measurable action</span></>}
           body={googleAdsPpc.hero.body}
-          actions={<><Button href="/contact" arrow>Discuss Your Google Ads</Button><Button href="#packages" variant="secondary">View PPC Packages</Button></>}
+          actions={<><Button href="/book-a-consultation">Discuss Your Google Ads</Button><Button href="#packages" variant="secondary">View PPC Packages</Button></>}
           stats={[["Published packages from", "£750"], ["Required ad spend from", "£500"], ["Published set-up time", "14 days"]]}
           media={<Fpo ratio="16/11" tag="Screen" title="Hero media" note="" source="/images/Services/Images on the pages/Account baseline Before.png" alt="Illustrative account view" />}
           proof={<p className="text-body text-ink/75">Review proof sits here (ReviewProof on live pages).</p>}

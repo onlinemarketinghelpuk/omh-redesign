@@ -129,7 +129,7 @@ export const primaryNav: NavItem[] = [
         heading: "About OMH",
         links: [
           { label: "FAQ", href: "/faq", ready: true },
-          { label: "Contact", href: "/contact", ready: true },
+          { label: "Contact Us", href: "/contact-us", ready: true },
           { label: "About Us", href: "/about-us", ready: true },
         ],
       },
@@ -161,7 +161,8 @@ export const readyPages: NavLink[] = [
   { label: "About", href: "/about-us", ready: true },
   ...(CASE_STUDIES_LIVE ? [{ label: "Case Studies", href: "/case-studies", ready: true }] : []),
   { label: "Insights", href: "/insights", ready: true },
-  { label: "Contact", href: "/contact", ready: true },
+  { label: "Contact Us", href: "/contact-us", ready: true },
+  { label: "Book a Growth Consultation", href: "/book-a-consultation", ready: true },
   { label: "Generate More Qualified Leads", href: "/solutions/generate-qualified-leads", ready: true },
   { label: "Increase Ecommerce Sales", href: "/solutions/increase-ecommerce-sales", ready: true },
   { label: "Improve Website Conversion", href: "/solutions/improve-website-conversion", ready: true },
@@ -196,7 +197,7 @@ export const readyPages: NavLink[] = [
 
 // href → friendly label, so the coming-soon page can title itself correctly.
 export const navLabels: Record<string, string> = (() => {
-  const out: Record<string, string> = { "/": "Home", "/contact": "Contact" };
+  const out: Record<string, string> = { "/": "Home", "/book-a-consultation": "Book a Growth Consultation" };
   for (const item of primaryNav) {
     if (item.href) out[item.href] = item.label;
     for (const col of item.columns ?? []) {
@@ -219,14 +220,6 @@ export const crumbLabels: Record<string, string> = {
   "/subscription-thank-you": "Thank you",
   "/wordpress-development-thank-you": "Thank you",
   "/wordpress-maintenance-thank-you-page": "Thank you",
-  "/facebook-paid-ads-questionnaire": "Facebook Ads Questionnaire",
-  "/new-website-development-quotation-questionnaire": "Website Quotation Questionnaire",
-  "/website-redesign-project-questionnaire": "Website Redesign Questionnaire",
-  "/ppc-request-quote": "PPC Quote",
-  "/seo-request-quote": "SEO Quote",
-  "/social-media-paid-marketing-request-quote": "Paid Social Quote",
-  "/wordpress-development-request-quote": "WordPress Development Quote",
-  "/wordpress-website-maintenance-request-quote": "WordPress Maintenance Quote",
   "/get-more-leads": "Free Growth Review",
   "/design-system": "Design System",
   "/home-2": "Home (preview)",

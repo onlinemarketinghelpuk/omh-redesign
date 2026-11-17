@@ -772,7 +772,7 @@ ${whyTable}
 
     <div class="lg:pt-2">
       <div class="rounded-[20px] bg-surface p-6 text-ink shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] dark:border dark:border-[var(--va-line-strong)] sm:p-8" data-demo data-demo-form-name="AI services consultation">
-        <form action="/contact" method="post" novalidate data-demo-form>
+        <form action="/book-a-consultation" method="post" novalidate data-demo-form>
           <div aria-hidden="true" class="absolute left-[-9999px] h-px w-px overflow-hidden"><label>Leave this field empty <input type="text" name="hp" tabindex="-1" autocomplete="off" readonly></label></div>
           <div class="flex items-start justify-between gap-4">
             <div>
@@ -803,7 +803,7 @@ ${whyTable}
           <p id="demo-consent-err" class="mt-1 text-[14px] font-semibold text-miss" data-demo-error hidden></p>
           <button type="submit" class="btn btn-primary mt-6 w-full" data-track="final_book_consultation">Book an AI Consultation${icon("i-arrow-right")}</button>
           <p class="mt-3 text-center text-[14px] font-semibold text-miss" role="alert" data-demo-send-error hidden></p>
-          <p class="mt-4 text-center text-[15px] text-muted">Prefer to write it all down? <a href="/contact?type=brief&amp;service=ai-services" class="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a Project Brief</a></p>
+          <p class="mt-4 text-center text-[15px] text-muted">Prefer to write it all down? <a href="/contact-us?type=brief&amp;service=ai-services" class="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a Project Brief</a></p>
         </form>
         <div class="py-6 text-center" data-demo-success hidden tabindex="-1">
           <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ok text-surface" aria-hidden="true">${icon("i-check", "!h-8 !w-8")}</span>

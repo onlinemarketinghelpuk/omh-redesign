@@ -30,7 +30,7 @@ export default async function ComingSoon({ params }: { params: Promise<{ slug: s
         <p className="font-sans text-[clamp(48px,24px+6.5vw,120px)] font-semibold leading-none text-amber-deep">Coming soon</p>
         <h1 className="mt-6 font-sans text-h2 font-semibold">{titleFor(slug)}</h1>
         <p className="mb-9 mt-4 text-body text-ink/75">We&rsquo;re still working on this page. Please check back soon.</p>
-        <Button href="/" arrow>
+        <Button href="/">
           Back to home
         </Button>
       </div>

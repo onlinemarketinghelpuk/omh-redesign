@@ -60,13 +60,19 @@ const nextConfig: NextConfig = {
       // Oct 2026: retired services. Their URLs pass to the closest live page.
       { source: "/search-engine-optimisation", destination: "/seo-services", permanent: true },
       { source: "/best-local-seo-services", destination: "/local-seo", permanent: true },
-      { source: "/web-content-writing-request-quote", destination: "/contact", permanent: true },
-      // 16 Nov 2026 (client): the free consultation landing page is retired; bookings go through Contact.
-      { source: "/omh-free-consultation", destination: "/contact", permanent: true },
+      { source: "/web-content-writing-request-quote", destination: "/book-a-consultation", permanent: true },
+      // 16 Nov 2026 (client): the free consultation landing page is retired; bookings go through the booking page.
+      { source: "/omh-free-consultation", destination: "/book-a-consultation", permanent: true },
+      // 17 Nov 2026 (client): booking and contact are two pages. /contact was the booking page; it moved to
+      // /book-a-consultation and /contact-us is the Contact Us page again. The quote forms and questionnaires that
+      // only a button linked to were removed; their URLs go to the booking page.
+      { source: "/contact", destination: "/contact-us", permanent: true },
+      ...["ppc-request-quote", "seo-request-quote", "wordpress-development-request-quote", "wordpress-website-maintenance-request-quote",
+        "social-media-paid-marketing-request-quote", "facebook-paid-ads-questionnaire", "new-website-development-quotation-questionnaire",
+        "website-redesign-project-questionnaire"].map((slug) => ({ source: `/${slug}`, destination: "/book-a-consultation", permanent: true })),
       // Search Console 404s (20 Oct 2026): old WordPress URLs still indexed. Each goes to its closest live page; the
       // three blog posts kept their slugs under /insights.
       { source: "/all-services-price-list", destination: "/pricing", permanent: true },
-      { source: "/contact-us", destination: "/contact", permanent: true },
       { source: "/website-maintenance", destination: "/wordpress-website-maintenance", permanent: true },
       {
         source: "/advance-tips-to-increase-conversion-rate-in-email-marketing",

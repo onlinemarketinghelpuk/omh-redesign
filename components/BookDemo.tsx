@@ -50,10 +50,8 @@ const messages: Record<string, string> = {
   Consent: "Tick the box so we can contact you about the demo.",
 };
 
-const btnPrimary =
-  "button-motion group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-button border-[1.5px] border-transparent bg-teal px-7 py-4 text-body font-semibold leading-none text-white hover:bg-teal-dark disabled:cursor-wait disabled:opacity-70";
-const btnSecondary =
-  "button-motion inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-button border-[1.5px] border-ink px-7 py-4 text-body font-semibold leading-none text-ink hover:bg-ink/5";
+const btnPrimary = "button-motion btn-primary disabled:cursor-wait disabled:opacity-70";
+const btnSecondary = "button-motion btn-secondary";
 const slotCls =
   "flex cursor-pointer items-center justify-center rounded-[10px] border-[1.5px] border-line leading-tight transition-colors hover:border-ink/50 aria-checked:border-ink aria-checked:bg-ink aria-checked:text-surface";
 const panelCls = "rounded-[20px] bg-surface text-ink dark:border dark:border-oninverse/12";
@@ -464,7 +462,6 @@ export function BookDemo({ id, eyebrow, heading, thingsToTry = defaultThingsToTr
                     className={`${btnPrimary} mt-7 max-sm:w-full`}
                   >
                     Next: your details
-                    <ArrowRight className="size-4" />
                   </button>
                 </fieldset>
 

@@ -117,7 +117,7 @@ function Featured() {
           </dl>
           <p className="mt-6 text-[14px] text-oninverse/55">Website design and build by Online Marketing Help.</p>
           <div className="mt-8">
-            <Button href="/case-studies/komfort-partitioning" variant="inverse" arrow data-event="case_studies_featured_click">
+            <Button href="/case-studies/komfort-partitioning" data-event="case_studies_featured_click">
               Read the case study
             </Button>
           </div>
@@ -239,7 +239,7 @@ function ClosingCard({ after }: { after: number }) {
         quickest wins are.
       </p>
       <div className="mt-7">
-        <Button href="/contact" variant="inverse" arrow data-event="case_studies_card_cta_click">
+        <Button href="/book-a-consultation" data-event="case_studies_card_cta_click">
           Get a free marketing review
         </Button>
       </div>
@@ -444,7 +444,7 @@ export function CaseStudyArchive() {
                 sourced, and every project shows the work we delivered.
               </p>
               <div className="mt-9 flex flex-wrap gap-3.5 max-sm:flex-col">
-                <Button href="/contact" arrow data-event="case_studies_hero_review_click">
+                <Button href="/book-a-consultation" data-event="case_studies_hero_review_click">
                   Get a free marketing review
                 </Button>
                 <Button href="#projects" variant="secondary" data-event="case_studies_hero_browse_click">
@@ -541,13 +541,13 @@ export function CaseStudyArchive() {
         title="Have a similar growth challenge?"
         titleAccent="growth challenge?"
         body="Tell us what you want to improve. We'll review your Google Ads, SEO or website and send back three practical improvements, whether you work with us or not."
-        primary={{ label: "Request my free review", href: "/contact", event: "case_studies_hub_cta_click" }}
+        primary={{ label: "Request my free review", href: "/book-a-consultation", event: "case_studies_hub_cta_click" }}
         secondary={{ label: company.phoneDisplay, href: company.phoneHref, event: "case_studies_phone_click" }}
         steps={["We review your current position", "We define the commercial objective with you", "We agree the work and how it's measured"]}
         note={
           <>
             Prefer email? Send us your brief from the{" "}
-            <Link href="/contact" className="underline underline-offset-4 hover:text-oninverse">
+            <Link href="/book-a-consultation" className="underline underline-offset-4 hover:text-oninverse">
               contact page
             </Link>
             .

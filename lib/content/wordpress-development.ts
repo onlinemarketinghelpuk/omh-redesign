@@ -3,7 +3,7 @@ export const wordpressDevelopment = {
     eyebrow: "WordPress Development for UK Businesses",
     title: "WordPress development services that drive growth",
     body: "Fast, secure and easy to manage: websites designed around the enquiries, sales and actions you want visitors to take. New builds, redesigns and technical improvements for UK businesses.",
-    primary: { label: "Book a WordPress Consultation", href: "/contact" },
+    primary: { label: "Book a WordPress Consultation", href: "/book-a-consultation" },
     secondary: { label: "View Website Packages", href: "#packages" },
   },
   pains: [

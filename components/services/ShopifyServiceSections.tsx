@@ -27,10 +27,10 @@ export function ShopifyHero() {
       body={content.hero.body}
       actions={
         <>
-          <Button href={content.hero.primary.href} arrow data-event="shopify_hero_cta_click">
+          <Button href={content.hero.primary.href} data-event="shopify_hero_cta_click">
             {content.hero.primary.label}
           </Button>
-          <Button href={content.hero.secondary.href} variant="secondary" arrow data-event="shopify_view_packages_click">
+          <Button href={content.hero.secondary.href} variant="secondary" data-event="shopify_view_packages_click">
             {content.hero.secondary.label}
           </Button>
         </>
@@ -112,7 +112,7 @@ export function ShopifyCapabilityGrid() {
         body: featured.body,
         detail: featured.detail,
         primary: { label: "Explore store development", href: "#packages", event: "shopify_build_packages_click" },
-        secondary: { label: "Talk to us", href: "/contact", event: "shopify_build_contact_click" },
+        secondary: { label: "Talk to us", href: "/contact-us", event: "shopify_build_contact_click" },
         aside: <StorefrontMock />,
       }}
       items={rest.map((item, i) => ({ ...item, icon: icons[i] ?? Blocks }))}
@@ -227,7 +227,7 @@ export function ShopifyFinalCTA() {
       primary={{ label: "Discuss Your Shopify Project", event: "shopify_final_cta_click" }}
       secondary={{
         label: "Send a Store Brief",
-        href: "/new-website-development-quotation-questionnaire",
+        href: "/contact-us",
         event: "shopify_form_start",
       }}
       phoneEvent="shopify_phone_click"

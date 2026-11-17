@@ -130,19 +130,15 @@ html:has(.va-page dialog[open]) {
     .on-band .hl { color: var(--va-band-hl); }
     .icon { width: 1.2em; height: 1.2em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
+    /* The look is the site's .btn-primary / .btn-secondary (globals.css, 17 Nov 2026); this only keeps the
+       shared box so a bare .btn still lines up. OLD 17px Instrument Sans, .7rem 1.35rem, grey secondary outline. */
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
-      min-height: 50px; padding: .7rem 1.35rem;
-      border-radius: var(--radius-btn); border: 1.5px solid transparent;
-      font-family: var(--font-display); font-weight: 600; font-size: 17px; line-height: 1.2;
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      min-height: 50px; padding: var(--btn-pad);
+      border-radius: var(--radius-button); border-width: 1.5px; border-style: solid; /* colour from .btn-primary / .btn-secondary */
+      font-family: var(--font-body); font-weight: 600; font-size: var(--text-body); line-height: 1;
       text-align: center; transition: background-color .18s ease, border-color .18s ease;
     }
-    .btn-primary { background: var(--color-teal); color: #fff; }
-    .btn-primary:hover { background: var(--va-btn-hover); }
-    .btn-secondary { border-color: var(--va-line-strong); color: var(--va-ink); }
-    .btn-secondary:hover { border-color: var(--va-ink); background: color-mix(in srgb, var(--va-ink) 5%, transparent); }
-    .on-band .btn-secondary { border-color: rgb(247 246 242 / .5); color: var(--va-band-ink); }
-    .on-band .btn-secondary:hover { border-color: var(--va-band-ink); background: rgb(247 246 242 / .08); }
 
     .text-link {
       display: inline-flex; align-items: center; gap: .4rem; min-height: 44px;
@@ -314,8 +310,6 @@ html:has(.va-page dialog[open]) {
   /* Light card inside a dark band (final CTA form) */
   .on-band [data-demo] .flag { border-color: var(--va-line-strong); color: var(--va-muted); }
   .on-band [data-demo] :focus-visible { outline-color: var(--va-hl); }
-  .on-band [data-demo] .btn-secondary { border-color: var(--va-line-strong); color: var(--va-ink); }
-  .on-band [data-demo] .btn-secondary:hover { border-color: var(--va-ink); background: color-mix(in srgb, var(--va-ink) 5%, transparent); }
 
 
   /* ---------- Sector illustrations ---------- */
@@ -546,8 +540,6 @@ html:has(.va-page dialog[open]) {
 #va-page [data-industry]:hover .il-bubble { animation: va-il-float 1.6s ease-in-out infinite; }
 /* Buttons match the header's "Book a Growth Consultation": gold with white text, darker gold on hover. One subtle
    motion for every button: a 1px lift with a soft shadow, plus a slight pull toward the cursor (VoiceMotion.tsx). */
-#va-page .btn-primary, #va-page .on-band .btn-primary { background: var(--color-teal); border-color: var(--color-teal); color: #fff; }
-#va-page .btn-primary:hover, #va-page .on-band .btn-primary:hover { background: var(--color-teal-dark); border-color: var(--color-teal-dark); color: #fff; }
 #va-page :is(.btn, .va-car-btn, .cap-tab, .brand-chip, .day-seg, .filter-btn, [data-faq-filter], [data-cmp-opt], [data-brand-opt], [data-tab]) {
   transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .3s ease, transform .3s cubic-bezier(.2, .8, .2, 1), translate .45s cubic-bezier(.2, .8, .2, 1);
 }

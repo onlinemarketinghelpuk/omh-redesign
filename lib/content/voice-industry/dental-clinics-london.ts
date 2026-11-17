@@ -206,7 +206,7 @@ export const markup = String.raw`
         <p class="mt-6 text-body text-muted">An AI receptionist for London dental practices. It answers every call on the first ring, books check-ups and new patients, and sends urgent calls to your team, day and night. It never gives clinical advice.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="#book-demo" class="btn btn-primary" data-track="london_dental_hero_book">Book a demo for your London practice</a>
-          <a href="#call" class="btn btn-secondary !bg-surface" data-track="london_dental_hero_hear"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a London call</a>
+          <a href="#call" class="btn btn-secondary" data-track="london_dental_hero_hear"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>Hear a London call</a>
         </div>
         <p class="mt-6 text-[15px] text-muted">Built and managed by OMH, a UK team based in Hullbridge, Essex. Set-up is by video call and phone.</p>
       </div>
@@ -917,7 +917,7 @@ export const markup = String.raw`
       </div>
       <div class="mt-6 flex flex-col items-start justify-between gap-4 rounded-[18px] bg-sand p-5 sm:flex-row sm:items-center sm:p-6">
         <p class="text-[16.5px]"><strong class="font-semibold">You don't have to choose one.</strong> Many practices keep their team on the front desk and let the agent take the 8am rush, lunchtimes, evenings and weekends.</p>
-        <a href="/ai-voice-agents/dentists#pricing" class="btn btn-secondary !min-h-[44px] shrink-0 !bg-surface" data-track="london_dental_compare_pricing">See plans and pricing</a>
+        <a href="/ai-voice-agents/dentists#pricing" class="btn btn-secondary !min-h-[44px] shrink-0" data-track="london_dental_compare_pricing">See plans and pricing</a>
       </div>
     </div>
   </div>
@@ -1160,7 +1160,7 @@ ${roiCalculator("dental", "bg-paper border-t border-line")}
       </div>
     </div>
 
-    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
+    <p class="mt-8 text-center text-[15px] text-band-muted">Prefer to write it down? <a href="/contact-us?type=brief&amp;service=ai-voice-agents" class="font-semibold text-band-ink underline decoration-gold decoration-2 underline-offset-4" data-track="final_send_brief">Send a project brief</a>. UK team based in Hullbridge, Essex.</p>
   </div>
 </section>
 

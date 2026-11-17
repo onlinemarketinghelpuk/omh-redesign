@@ -34,8 +34,8 @@ export function SeoHero() {
       body={page.standfirst}
       actions={
         <>
-          <Button href="#checklist" arrow data-event={`${event}_checklist_click`}>{page.ctas.checklist}</Button>
-          <Button href="/contact" variant="secondary" data-event={`${event}_audit_click`}>{page.ctas.audit}</Button>
+          <Button href="#checklist" data-event={`${event}_checklist_click`}>{page.ctas.checklist}</Button>
+          <Button href="/book-a-consultation" variant="secondary" data-event={`${event}_audit_click`}>{page.ctas.audit}</Button>
         </>
       }
       stats={stats}
@@ -205,7 +205,7 @@ export function SeoFinalCTA() {
       title={page.cta.title}
       titleAccent={page.cta.accent}
       body={page.cta.body}
-      primary={{ label: page.cta.submit, href: "/contact", event: `${event}_final_cta_click` }}
+      primary={{ label: page.cta.submit, href: "/book-a-consultation", event: `${event}_final_cta_click` }}
       secondary={{ ...page.cta.secondary!, event: `${event}_consultation_click` }}
       steps={page.process!.steps.map(([title]) => title)}
       contactEvents={{ phone: `${event}_footer_phone_click`, email: `${event}_footer_email_click` }}

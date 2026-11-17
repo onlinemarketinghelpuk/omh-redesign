@@ -148,7 +148,7 @@ export function FaqPricingLink() {
             </p>
           </div>
           <div className="col-span-5 max-lg:mt-7 lg:justify-self-end">
-            <Button href="/pricing" arrow data-event="faq_pricing_click">
+            <Button href="/pricing" data-event="faq_pricing_click">
               See the full price list
             </Button>
           </div>
@@ -165,7 +165,7 @@ export function FaqFinalCta() {
         title="Still have a question we haven't answered?"
         titleAccent="we haven't answered?"
         body="Book a 30 minute consultation at a time convenient for you and we will talk it through."
-        primary={{ label: "Book a Call", href: "/contact", event: "faq_final_cta_click" }}
+        primary={{ label: "Book a Call", href: "/book-a-consultation", event: "faq_final_cta_click" }}
         contactEvents={{ phone: "faq_phone_click", email: "faq_email_click" }}
       />
       <BookDemo />

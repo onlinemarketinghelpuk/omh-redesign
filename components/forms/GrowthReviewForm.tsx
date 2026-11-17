@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "@/components/ui/Button";
 import { Field } from "@/components/ui/Field";
 import { company } from "@/lib/content/nav";
 import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
@@ -63,10 +62,9 @@ export function GrowthReviewForm() {
       <button
         type="submit"
         disabled={sending}
-        className="button-motion group mt-7 inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-button border-[1.5px] border-transparent bg-teal px-6 py-4 text-body font-semibold leading-none text-white hover:bg-teal-dark disabled:cursor-wait disabled:opacity-70"
+        className="button-motion btn-primary mt-7 w-full disabled:cursor-wait disabled:opacity-70"
       >
         {sending ? "Sending…" : "Book a Growth Consultation"}
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </button>
       {error && (
         <p role="alert" className="mt-4 text-body font-medium text-error">
