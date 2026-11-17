@@ -48,6 +48,10 @@
   --gap-header: clamp(28px, 21.333px + 2.0833vw, 48px);
   --gap-stack: clamp(28px, 24px + 1.25vw, 40px);
   --gap-grid: clamp(16px, 14.667px + 0.4167vw, 20px); /* card grids (was gap-5, 20px) */
+  /* Card padding, two sizes (17 Nov 2026: one value per size instead of p-6 ... p-10). card: 20 -> 28px (p-7);
+     card-lg, feature panels: 24 -> 36px (p-9). */
+  --card-pad: clamp(20px, 17.333px + 0.8333vw, 28px);
+  --card-pad-lg: clamp(24px, 20px + 1.25vw, 36px);
 }
 
 @theme inline {
@@ -55,6 +59,8 @@
   --spacing-header: var(--gap-header);
   --spacing-stack: var(--gap-stack);
   --spacing-grid: var(--gap-grid);
+  --spacing-card: var(--card-pad);
+  --spacing-card-lg: var(--card-pad-lg);
 }
 
 /* Two-column row used by <Split> (components/ui/Split.tsx). Stacked: one column, rows apart by the stack gap.

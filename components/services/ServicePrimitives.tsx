@@ -1,27 +1,10 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { isHiddenHref } from "@/lib/flags";
+import { HighlightedText, SectionHeader } from "@/components/ui/SectionHeader";
 
-export function HighlightedText({
-  text,
-  highlight,
-  highlightClassName = "text-amber-deep",
-}: {
-  text: string;
-  highlight?: string;
-  highlightClassName?: string;
-}) {
-  if (!highlight || !text.includes(highlight)) return <>{text}</>;
-
-  const start = text.indexOf(highlight);
-  return (
-    <>
-      {text.slice(0, start)}
-      <span className={highlightClassName}>{highlight}</span>
-      {text.slice(start + highlight.length)}
-    </>
-  );
-}
+// Moved to components/ui/SectionHeader.tsx; re-exported so existing imports keep working.
+export { HighlightedText, SectionHeader as ServiceSectionIntro };
 
 /**
  * A page title with its closing phrase in the amber accent, as on the homepage
@@ -41,48 +24,6 @@ export function AccentTitle({ text }: { text: string }) {
   );
 }
 
-export function ServiceSectionIntro({
-  title,
-  accent,
-  body,
-  size = "lg",
-  className = "",
-  headingMaxWidthClassName = "",
-  headingClassName = "",
-  bodyClassName = "",
-  accentClassName = "text-amber-deep",
-}: {
-  title: string;
-  accent?: string;
-  body?: ReactNode;
-  size?: "lg" | "md";
-  className?: string;
-  headingMaxWidthClassName?: string;
-  headingClassName?: string;
-  bodyClassName?: string;
-  accentClassName?: string;
-}) {
-  return (
-    <div className={className}>
-      <h2
-        className={`${headingMaxWidthClassName} font-sans font-semibold text-balance ${
-          size === "md" ? "text-h3" : "text-h2"
-        } ${headingClassName}`}
-      >
-        <HighlightedText
-          text={title}
-          highlight={accent}
-          highlightClassName={accentClassName}
-        />
-      </h2>
-      {body && (
-        <p className={`mt-5 text-lead leading-relaxed text-ink/75 ${bodyClassName}`}>
-          {body}
-        </p>
-      )}
-    </div>
-  );
-}
 
 export function CheckIcon({ className = "" }: { className?: string }) {
   return (

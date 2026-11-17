@@ -200,9 +200,12 @@ function compare(sum, base) {
 // ------------------------------------------------------------------ rects (desktop gate)
 function rects() {
   const out = {}, d = document;
+  // The booking widget's day and time buttons change every day ("Mon 16 Nov" -> "Tue 17 Nov"); its tab panels
+  // are left out so runs on different days compare cleanly. The widget's own frame is still measured.
+  const dated = (el) => !!el.closest('[aria-label="Book a demo"] [role="tabpanel"], [id$="-panel-call"], [id$="-panel-demo"]');
   const key = (el) => { const parts = []; for (let e = el; e && e !== d.body; e = e.parentElement) { let i = 1; for (let s = e.previousElementSibling; s; s = s.previousElementSibling) if (s.tagName === e.tagName) i++; parts.unshift(e.tagName.toLowerCase() + (e.id ? "#" + e.id : "") + ":" + i); } return parts.join(">"); };
   for (const root of d.querySelectorAll("body > header, header:not(main header), main, footer")) for (const el of [root, ...root.querySelectorAll("*")]) {
-    if (el.ownerSVGElement) continue;
+    if (el.ownerSVGElement || dated(el)) continue;
     // The body of a closed <details> is not shown, but Chrome sometimes still reports a box for it: skip it.
     if (el.closest("details:not([open])") && el.tagName !== "DETAILS" && !el.closest("summary")) continue;
     const r = el.getBoundingClientRect(); if (!r.width && !r.height) continue;
@@ -213,7 +216,7 @@ function rects() {
   // for migrations (diff-rects --anchors).
   const anchors = {}, seen = {};
   for (const el of d.querySelectorAll("body > header *, main *, footer *")) {
-    if (el.ownerSVGElement || (el.closest("details:not([open])") && !el.closest("summary"))) continue;
+    if (el.ownerSVGElement || dated(el) || (el.closest("details:not([open])") && !el.closest("summary"))) continue;
     let own = ""; for (const n of el.childNodes) if (n.nodeType === 3) own += n.textContent;
     own = own.replace(/\s+/g, " ").trim();
     const what = el.tagName === "IMG" ? "img|" + (el.getAttribute("src") || "").split("?")[0].split("/").pop() : own ? own.slice(0, 60) : null;
@@ -222,7 +225,9 @@ function rects() {
     const k = `${what}#${(seen[what] = (seen[what] || 0) + 1)}`;
     anchors[k] = [r.left, r.top + scrollY, r.width, r.height].map((v) => Math.round(v * 2) / 2);
   }
-  const text = (d.querySelector("main")?.innerText || "").replace(/\s+/g, " ").trim();
+  const main = d.querySelector("main")?.cloneNode(true);
+  main?.querySelectorAll('[aria-label="Book a demo"] [role="tabpanel"], [id$="-panel-call"], [id$="-panel-demo"]').forEach((p) => p.remove());
+  const text = (main?.textContent || "").replace(/\s+/g, " ").trim();
   return { rects: out, anchors, text };
 }
 

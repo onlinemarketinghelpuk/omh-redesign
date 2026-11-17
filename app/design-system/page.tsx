@@ -4,6 +4,15 @@ import { Button, TextLink } from "@/components/ui/Button";
 import { CaseEvidenceFpo, CaseStudyFeature } from "@/components/ui/Case";
 import { Field } from "@/components/ui/Field";
 import { Eyebrow, Fpo, VerifiedSlot } from "@/components/ui/Proof";
+import { CardGrid } from "@/components/ui/CardGrid";
+import { CheckList } from "@/components/ui/CheckList";
+import { NumberedList } from "@/components/ui/NumberedList";
+import { PageHero } from "@/components/ui/PageHero";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ShowMore } from "@/components/ui/ShowMore";
+import { Split } from "@/components/ui/Split";
+import { PackageComparison } from "@/components/services/PackageComparison";
+import { googleAdsPpc } from "@/lib/content/google-ads-ppc";
 import Link from "next/link";
 import { quoteFormPages } from "@/lib/content/quote-forms";
 import { subscriptionThankYou, thankYouPages } from "@/lib/content/thank-you";
@@ -239,6 +248,75 @@ export default function DesignSystem() {
             ]}
           />
         </div>
+      </Spec>
+
+      {/* Responsive rebuild (docs/responsive-plan.md, Phase 2): every shared component in its main variants, so
+          `npm run audit:responsive -- --pages /design-system` checks them at every width before pages use them. */}
+      <Spec title="Split">
+        <div className="grid gap-10">
+          {(["7/5", "5/7", "4/8", "6/6"] as const).map((ratio) => (
+            <Split key={ratio} ratio={ratio}>
+              <div className="rounded-card border border-line bg-soft/50 p-6 text-body">
+                <b className="font-sans">Split {ratio}</b>: side by side from {ratio === "4/8" ? "1152px (wide)" : ratio === "6/6" ? "768px" : "1024px"}, stacked below.
+              </div>
+              <div className="rounded-card border border-line bg-surface p-6 text-body text-ink/75">The second column. Widths match col-span classes of the old 12-column grid exactly.</div>
+            </Split>
+          ))}
+          <Split ratio="5/7" reverse>
+            <div className="rounded-card border border-line bg-soft/50 p-6 text-body"><b className="font-sans">reverse</b>: first in the source, shown on the right once side by side.</div>
+            <div className="rounded-card border border-line bg-surface p-6 text-body text-ink/75">Second in the source, shown on the left.</div>
+          </Split>
+        </div>
+      </Spec>
+
+      <Spec title="SectionHeader">
+        <div className="grid gap-12">
+          <SectionHeader kicker="Kicker (hidden on phones)" title="A section title with its closing phrase in the accent" accent="in the accent" body="The description sits under the title, 18px, full width. One component for every band." />
+          <Split ratio="4/8" sticky>
+            <SectionHeader size="md" title="A narrow-column title" accent="title" body="size=md: h3 size once the row is side by side, h2 when stacked." />
+            <CheckList divided items={["Sticky intro on the left from 1152px", "Stacked with the stack gap below that", "No classes needed on the columns"]} />
+          </Split>
+        </div>
+      </Spec>
+
+      <Spec title="CardGrid and NumberedList">
+        <div className="grid gap-12">
+          <NumberedList variant="ruled" items={googleAdsPpc.problems} />
+          <NumberedList variant="card" cols={3} items={googleAdsPpc.capabilities.slice(0, 5).map((c) => [c.title, c.body] as const)} />
+          <div className="rounded-card bg-inverse p-9 text-oninverse max-sm:p-6">
+            <NumberedList variant="card" cols={2} inverse items={googleAdsPpc.warnings} />
+          </div>
+          <CardGrid cols={4}>
+            {["One", "Two", "Three", "Four", "Five"].map((n) => <div key={n} className="rounded-card border border-line bg-surface p-6 text-body">Card {n} (4 columns from 1280px, 2 from 640px, odd last card spans)</div>)}
+          </CardGrid>
+        </div>
+      </Spec>
+
+      <Spec title="CheckList and ShowMore">
+        <div className="grid gap-10 md:grid-cols-2">
+          <CheckList items={googleAdsPpc.fit.good} />
+          <div>
+            <ShowMore limit={3} noun="points" className="grid gap-2 text-body text-ink/75">
+              {googleAdsPpc.pricingNotes.map((note) => <li key={note}>{note}</li>)}
+            </ShowMore>
+          </div>
+        </div>
+      </Spec>
+
+      <Spec title="PackageComparison">
+        <PackageComparison caption="Google Ads PPC package comparison (gallery)" packages={googleAdsPpc.packages} groups={googleAdsPpc.packageGroups} notes={googleAdsPpc.pricingNotes} event="ds_package_select" />
+      </Spec>
+
+      <Spec title="PageHero">
+        <PageHero
+          eyebrow={googleAdsPpc.hero.eyebrow}
+          title={<>Google Ads agency&nbsp;UK: PPC management built around <span className="text-amber-deep">measurable action</span></>}
+          body={googleAdsPpc.hero.body}
+          actions={<><Button href="/contact" arrow>Discuss Your Google Ads</Button><Button href="#packages" variant="secondary">View PPC Packages</Button></>}
+          stats={[["Published packages from", "£750"], ["Required ad spend from", "£500"], ["Published set-up time", "14 days"]]}
+          media={<Fpo ratio="16/11" tag="Screen" title="Hero media" note="" source="/images/Services/Images on the pages/Account baseline Before.png" alt="Illustrative account view" />}
+          proof={<p className="text-body text-ink/75">Review proof sits here (ReviewProof on live pages).</p>}
+        />
       </Spec>
 
       <Spec title="Motion tokens">

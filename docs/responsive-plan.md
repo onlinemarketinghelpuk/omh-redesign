@@ -130,6 +130,11 @@ Layout variety (client rule: no two pages share one layout) is kept. Pages keep 
 4. Quote-form `h1` gets smaller so it fits its column.
 5. Open question, not changed until answered: small-caps labels are 14px on service pages but 18px on the home and voice pages. Both sizes stay as tokens for now.
 
+**Decision, 17 Nov 2026 (user): small desktop shifts are allowed** so shared components carry one set of values:
+same-purpose gaps unify (moves of up to 8px), one letter spacing for the small-caps labels (0.14em), one card
+padding per card size, one price size. Columns, layout and content stay as approved. Every page that shifts gets
+before/after screenshots; the desktop gate for migrated pages is `diff-rects --anchors` with the shifts listed.
+
 ## 3. Phases
 
 Each phase is shippable alone, measured before and after, committed in small commits of my own files, and pushed only when the user says so.
