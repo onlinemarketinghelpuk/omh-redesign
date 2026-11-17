@@ -1154,14 +1154,15 @@ html:has(.va-page dialog[open]) {
    the Tailwind classes written into the voice markup strings and the compiled .v4l layer, and new margin or padding
    classes do nothing inside .v4l (its reset), so tablet and phone fixes for these pages live here. */
 
-/* Card rows that only had a desktop three-column layout ran as one stretched column on tablets: two-up from 768px,
-   an odd last card spans both. Rows that already set sm:/md: columns are left alone, and so are the two-column rows:
-   their cards (industries) are image-beside-text already, and two-up left ~100px for the text. */
+/* Card rows that only had a desktop three-column layout ran as one stretched column on tablets, and rows that went
+   three-up at 768px left ~150px of text per card: both two-up from 768px to 1023px, an odd last card spans both.
+   Left alone: rows with their own sm:/md: two-column step, and the two-column rows, whose cards (industries) are
+   image-beside-text already (two-up left ~100px for the text). */
 @media (min-width: 768px) and (max-width: 1023.98px) {
-  :is(#va-page, .v4l) .grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]) {
+  :is(#va-page, .v4l) :is(.grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]), .grid.md\:grid-cols-3:not([class*="lg:grid-cols"])) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  :is(#va-page, .v4l) .grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]) > :last-child:nth-child(odd) {
+  :is(#va-page, .v4l) :is(.grid.lg\:grid-cols-3:not([class*="sm:grid-cols"]):not([class*="md:grid-cols"]), .grid.md\:grid-cols-3:not([class*="lg:grid-cols"])) > :last-child:nth-child(odd) {
     grid-column: 1 / -1;
   }
 }
@@ -1190,3 +1191,11 @@ html:has(.va-page dialog[open]) {
 /* The industry strip's title beside its pause button: centred and balanced when it wraps on phones (it ran left-aligned
    with one short second line). */
 .v4l #strip-title { text-align: center; text-wrap: balance; }
+
+/* Voice body text at 18px, the site's body size (user decision, 16 Nov 2026): the 16-17px copy written into the voice
+   markup (paragraphs, list items, answers, table cells, card copy). Left as they are: spans (price suffixes, badges),
+   small-caps labels, controls, the what-is phone and other drawn mock-ups, headings, and the 15px small print. Carousel copies are
+   included so a looping row never mixes sizes. */
+:is(#va-page, .v4l) :is([class*="text-[16px]"], [class*="text-[16.5px]"], [class*="text-[17px]"], .t-card):not(span, button, button *, [role="tab"], [role="tab"] *, summary, summary *, label, label *, [role="img"] *, .brand-phone *, select, input, h1, h2, h3, h4, .uppercase) {
+  font-size: 18px;
+}
