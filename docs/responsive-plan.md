@@ -373,3 +373,13 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
   Desktop unchanged except About and Warranty card padding (12px).
 - Not changed on purpose: the Pricing page's flags are all inside the AI voice plan cards (Phase 4); the booking and
   About h1s count as "squeezed" at display size in their approved columns.
+
+### Phase 3, 17 Nov 2026: insights, legal, thank-you pages (this commit and the one before)
+
+- Measured the hub, four articles, privacy, cookies, terms, AI services, three thank-you pages and the 404. The only
+  real problem was the related-articles (and case-study) cards: one stretched column on tablets, now two-up.
+  Every article is ~760px shorter at 820px; desktop unchanged. Legal, thank-you and 404 pages were already clean.
+- AI services is voice markup (Phase 4). Quote forms were removed by the button session (e4f69f1).
+- Measurement trap: another session runs `next build` in this checkout. Mid-run rebuilds make the preview serve HTML
+  for missing CSS (pages measure unstyled, e.g. 1,200px images). Check `.next/BUILD_ID` is unchanged across a run.
+- Phase 3 left: the home page.
