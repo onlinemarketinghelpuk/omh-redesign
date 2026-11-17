@@ -82,7 +82,7 @@ export function ServiceCaseStudies({
           </div>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-3 gap-6 max-lg:grid-cols-1">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:max-lg:[&>:last-child:nth-child(odd)]:col-span-2">
           {studies.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />
           ))}
