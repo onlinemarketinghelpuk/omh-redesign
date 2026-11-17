@@ -241,7 +241,7 @@ export default async function Home() {
           {stats.map((stat, index) => {
             const StatIcon = statIcons[index] ?? Users;
             return (
-              <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-lg:odd:pl-0 max-sm:py-8 max-sm:pr-3">
+              <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-lg:odd:pl-0 max-sm:py-8 max-sm:pr-3 lg:max-xl:px-5 lg:max-xl:first:pl-0">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-teal/15 text-amber-deep" aria-hidden>
                   <StatIcon className="size-6" strokeWidth={1.7} />
                 </span>
@@ -396,9 +396,10 @@ export default async function Home() {
                 <Link
                   key={service.label}
                   href={service.href}
-                  className="service-row group grid grid-cols-[72px_1fr_auto] items-center gap-5 border-b border-line py-6 max-sm:grid-cols-[36px_1fr_auto] max-sm:gap-3"
+                  className="service-row group grid grid-cols-[72px_1fr_auto] items-center gap-5 border-b border-line py-6 max-sm:gap-3 min-[360px]:max-sm:grid-cols-[36px_1fr_auto] max-[359px]:grid-cols-[1fr_auto]"
                 >
-                  <span className="font-sans text-body font-semibold text-amber-deep">
+                  {/* Under 360px the number column left ~148px for the description. */}
+                  <span className="font-sans text-body font-semibold text-amber-deep max-[359px]:hidden">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span>
@@ -451,7 +452,7 @@ export default async function Home() {
             <div className="grid grid-cols-[1.1fr_0.9fr] gap-6 max-lg:grid-cols-1">
               <figure className="quote-feature group relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[8px] bg-inverse p-[clamp(28px,4vw,56px)] text-oninverse max-sm:min-h-[420px]">
                 <Quote className="size-12 text-oninverse/22 transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:-translate-y-1 group-hover:rotate-[-4deg]" strokeWidth={1.5} aria-hidden />
-                <blockquote className="my-12 font-body text-[clamp(30px,25px+1.3vw,44px)] leading-tight">
+                <blockquote className="my-12 font-body text-[clamp(30px,25px+1.3vw,44px)] leading-tight max-sm:text-h3">
                   &ldquo;{testimonials[0].quote}&rdquo;
                 </blockquote>
                 <figcaption className="text-body font-semibold text-oninverse/75">
@@ -559,7 +560,7 @@ export default async function Home() {
                   </Button>
                 </div>
               </div>
-              <ul className="grid grid-cols-2 gap-5 max-sm:grid-cols-1">
+              <ul className="grid grid-cols-2 gap-5 max-sm:grid-cols-1 lg:max-xl:grid-cols-1">
                 {whoWeWorkWith.items.map((item, index) => {
                   const WhoIcon = whoIcons[index] ?? Store;
                   return (
