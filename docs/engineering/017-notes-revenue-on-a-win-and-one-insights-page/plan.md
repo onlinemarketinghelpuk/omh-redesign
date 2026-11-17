@@ -189,7 +189,7 @@ deal value could not be undone and would put false revenue into the client's
 own channel report. The win box was driven in `?demo=1` instead, which says it
 saves nothing. **This is still owed on a test row once one exists.**
 
-### Defect found while driving it: the win box is clipped below 1400px
+### Defect found while driving it: the win box overhangs the table
 
 Measured, not eyeballed. On the Leads table at a 1280px viewport:
 
@@ -197,22 +197,49 @@ Measured, not eyeballed. On the Leads table at a 1280px viewport:
 |---|---|
 | The win panel | x 1034 to 1426, 392px wide |
 | Its clipping ancestor | the table wrapper, `overflow-x-auto min-[1400px]:overflow-x-visible`, ending at x 1248 |
-| Clipped off | 178px of the panel |
-| **Cancel** | x 1232 to 1289, so almost entirely past the clip edge and past the 1280 viewport |
+| Overhanging | 178px of the panel, including both "use this figure" buttons and Cancel |
 
-The class says it plainly: the wrapper only stops clipping at 1400px and up.
-Below that the panel is cut off by the horizontally scrolling table it sits
-inside, and on a 1280px laptop the owner can press Save but not Cancel.
+**Correcting an earlier version of this note**, which said the owner could
+press Save but not Cancel. That was wrong and the correction matters, because
+it changes how bad this is. The wrapper is `overflow-x-auto` and can scroll a
+further 311px, so the whole panel is reachable. Nothing is unreachable.
 
-This matters more than it sounds. `docs/design-rules.md` and the request for
-this dashboard both describe a laptop in a client meeting, and 1280 is that
-laptop. It is also the one control this entire workstream exists for.
+What is true: the panel opens with 178px of itself outside the visible table,
+so the owner has to scroll the table sideways, in the middle of recording a
+deal, to see the two figure buttons and Cancel. It is a usability fault on the
+one control the workstream exists for, at the 1280px laptop width
+`docs/design-rules.md` is written around, not a blocker.
 
-Two ways out, and the second is the real fix: give the panel a portal so it
-escapes the scroll container, as `OutcomePicker`'s own menu already does with
-its measured flip; or open the win box somewhere that is not inside a
-horizontally scrolling table. Not fixed here, because 017 is in flight in
-another session and this file is how that session finds out.
+### Fixed, 17 November 2026
+
+The fix is the one `OutcomePicker`'s own outcome menu already uses: measure at
+the last moment the anchor button exists, then open in the direction there is
+room for. Three parts, because the first two were not enough:
+
+1. The box is positioned rather than in flow, and opens leftward when the room
+   to its right is under 400px.
+2. The room is `min(scrolling container, window)`. The container alone said
+   there was room on a phone, where the table is wider than the screen.
+3. Below 640px no direction works, because the cell it anchors to can itself
+   be half off screen after the sideways scroll needed to reach the Outcome
+   column. There it becomes a small centred dialog instead of a popover.
+
+Measured after, opening the box and reading the panel against the window:
+
+| Viewport | Panel | Clear of the right edge by | Page scroll |
+|---|---|---|---|
+| 1512 | 845 to 1237 | 275px | 0 |
+| 1440 | 773 to 1165 | 275px | 0 |
+| 1280 | 691 to 1083 | 197px | 0 |
+| 1024 | 357 to 749 | 275px | 0 |
+| 768 | 109 to 501 | 267px | 0 |
+| 390 | 16 to 374 | 16px | 0 |
+| 320 | 16 to 304 | 16px | 0 |
+
+Screenshots looked at at 1280 and 390: the box opens leftward on the laptop
+with Save and Cancel both in view, and sits centred with a 16px gutter on the
+phone. No page errors at any width. Suite unchanged at 1732, every suite
+passed.
 
 ## Before it can be called done
 

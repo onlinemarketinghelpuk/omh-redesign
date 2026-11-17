@@ -133,10 +133,52 @@ export function OutcomePicker({
   );
   const pickedTerm = picked ? termTotalGbp(picked) : null;
 
+  /* Which way the WIN BOX opens, measured here rather than where it is used.
+
+     By the time the box is showing, the anchor button has been replaced by
+     the box itself, so there is nothing left to measure against. This is the
+     last moment the button exists.
+
+     It matters because this table scrolls sideways below 1400px, and the
+     Outcome column sits at its right edge. Opening a 390px panel rightward
+     from there put 178px of it, both figure buttons and Cancel, outside the
+     visible table: reachable by scrolling, but only by scrolling the table
+     sideways in the middle of recording a deal. */
+  const [boxLeftward, setBoxLeftward] = useState(false);
+  /* On a phone there is no direction that works. The Outcome column sits
+     inside a table the reader has already had to scroll sideways to reach,
+     so the cell this box anchors to can itself be half off the screen, and
+     anchoring to it inherits that. Below 640px the box stops being a popover
+     and becomes a small centred dialog, which is the only position that does
+     not depend on where the cell ended up. */
+  const [phone, setPhone] = useState(false);
+
+  /* The right edge the box has to stay inside: whichever of the scrolling
+     container and the window comes first. On a phone the table is wider than
+     the screen, so the container alone would say there was room when there
+     is not. */
+  function roomRightOf(el: Element): number {
+    let n: Element | null = el.parentElement;
+    while (n && n !== document.body) {
+      const s = getComputedStyle(n);
+      if (/auto|scroll|hidden/.test(s.overflowX + s.overflow)) {
+        return Math.min(n.getBoundingClientRect().right, window.innerWidth);
+      }
+      n = n.parentElement;
+    }
+    return window.innerWidth;
+  }
+
   function openMenu() {
     const box = anchor.current?.getBoundingClientRect();
     /* Five options plus padding. Flip when there is not room for them. */
     if (box) setUp(window.innerHeight - box.bottom < 230);
+    if (anchor.current && box) {
+      /* The widest the win box gets, measured: 392px at 1280. */
+      const WIN_BOX = 400;
+      setBoxLeftward(roomRightOf(anchor.current) - box.left < WIN_BOX);
+      setPhone(window.innerWidth < 640);
+    }
     setOpen(true);
   }
 
@@ -188,7 +230,18 @@ export function OutcomePicker({
      numbers should still be able to record the win. */
   if (asking) {
     return (
-      <div className="flex min-w-[260px] flex-col gap-2.5 rounded-xl border border-line bg-surface p-3 text-left" style={{ boxShadow: "var(--e2)" }}>
+      <span className="relative inline-flex">
+      <div
+        className={[
+          /* Capped against the window as well as given a minimum: the box
+             renders 392px wide, which is wider than a 390px phone. */
+          "z-30 flex min-w-[260px] max-w-[calc(100vw-2rem)] flex-col gap-2.5 rounded-xl border border-line bg-surface p-3 text-left",
+          phone
+            ? "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2"
+            : `absolute top-0 ${boxLeftward ? "right-0" : "left-0"}`,
+        ].join(" ")}
+        style={{ boxShadow: "var(--e2)" }}
+      >
         {/* Service and package dropdown, grouped by service. Grouped so
             "SEO Seed" under SEO and the same name under Local SEO are not
             next to each other in a single flat list. */}
@@ -301,6 +354,7 @@ export function OutcomePicker({
           </button>
         </span>
       </div>
+      </span>
     );
   }
 
