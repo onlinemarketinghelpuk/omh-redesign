@@ -58,9 +58,14 @@
   --spacing-label: var(--gap-label);
   --spacing-header: var(--gap-header);
   --spacing-stack: var(--gap-stack);
-  --spacing-grid: var(--gap-grid);
   --spacing-card: var(--card-pad);
   --spacing-card-lg: var(--card-pad-lg);
+}
+
+/* The card-grid gap is its own utility, not a spacing key: a spacing key named "grid" also generated
+   `inline-grid { inline-size: ... }`, which squashed every display:inline-grid element to ~20px (17 Nov 2026). */
+@utility gap-grid {
+  gap: var(--gap-grid);
 }
 
 /* Two-column row used by <Split> (components/ui/Split.tsx). Stacked: one column, rows apart by the stack gap.

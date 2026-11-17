@@ -95,7 +95,8 @@ function Maintenance() {
             ))}
           </ul>
         </div>
-        <div className="mt-4 grid grid-cols-3 gap-2.5">
+        {/* Under 380px three tiles were 64px wide ("Scheduled" spilled): one row each instead. */}
+        <div className="mt-4 grid grid-cols-3 gap-2.5 max-[379px]:grid-cols-1 max-[379px]:gap-1.5">
           {[
             [Activity, "Uptime", "Monitored"],
             [ShieldCheck, "Security", "Scanned"],
@@ -103,9 +104,9 @@ function Maintenance() {
           ].map(([Icon, label, value]) => {
             const I = Icon as typeof Activity;
             return (
-              <div key={label as string} className="rounded-[8px] bg-soft px-3 py-2.5 md:max-lg:px-2">
+              <div key={label as string} className="rounded-[8px] bg-soft px-3 py-2.5 md:max-lg:px-2 max-[379px]:flex max-[379px]:items-center max-[379px]:gap-2 max-[379px]:py-2">
                 <I className="size-4 text-amber-deep" aria-hidden="true" />
-                <div className="mt-1.5 text-[12px] text-ink/60">{label as string}</div>
+                <div className="mt-1.5 text-[12px] text-ink/60 max-[379px]:mt-0 max-[379px]:flex-1">{label as string}</div>
                 <div className="text-[13px] font-semibold">{value as string}</div>
               </div>
             );

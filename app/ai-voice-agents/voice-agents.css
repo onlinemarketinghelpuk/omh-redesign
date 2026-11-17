@@ -1179,13 +1179,19 @@ html:has(.va-page dialog[open]) {
 /* Plan fact labels ("Included", "Setup", "Live in") in the site's 14px label size; at 16px they wrapped in the tiles. */
 :is(#va-page, .v4l) .plan-facts dt { font-size: 14px; letter-spacing: 0.1em; }
 
-/* London pages on the smallest phones: segmented buttons, the before/after toggle and the month axis fit. */
+/* London pages: the before/after toggle runs full width on phones. The three-way routing buttons get 4px side padding
+   and 14px text ("Maintenance" did not fit at 1024px or on phones). Under 380px the routing options stack and the
+   month axis shows every other month. */
+#va-page [role="group"].grid-cols-3 > button[aria-pressed] { padding-inline: 4px; font-size: 14px; }
 @media (max-width: 639.98px) {
-  #va-page [role="group"].inline-grid { display: grid; width: 100%; }
+  #va-page [role="group"].inline-grid { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 379.98px) {
-  #va-page [role="group"].grid-cols-3 > button[aria-pressed] { padding-inline: 4px; font-size: 14px; }
-  #va-page [aria-hidden="true"].grid-cols-12 > span:nth-child(even) { visibility: hidden; }
+  /* "Maintenance" needs ~82px and a third of the group is 73px here: the three options stack. */
+  #va-page #routing [role="group"].grid-cols-3 { grid-template-columns: minmax(0, 1fr); }
+  /* Twelve month labels in ~14px columns: six columns of every other month, each starting under its own bar. */
+  #va-page #calendar [aria-hidden="true"].grid-cols-12 { grid-template-columns: repeat(6, minmax(0, 1fr)); text-align: left; }
+  #va-page #calendar [aria-hidden="true"].grid-cols-12 > span:nth-child(even) { display: none; }
 }
 
 /* The industry strip's title beside its pause button: centred and balanced when it wraps on phones (it ran left-aligned

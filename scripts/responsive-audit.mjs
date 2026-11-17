@@ -115,7 +115,13 @@ function measure() {
     if (!cs.display.startsWith("inline")) {
       const cw = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
       if (chars >= 40 && cw > 0 && cw / (fs * 0.5) < 18) push(out.squeezed, sig(el) + " cw=" + Math.round(cw) + " fs=" + fs);
-      if (el.scrollWidth > el.clientWidth + 2 && cs.overflowX === "visible") push(out.spill, sig(el) + " " + el.clientWidth + "/" + el.scrollWidth);
+      // scrollWidth also counts absolutely positioned pseudo-elements (the invisible 44px tap areas of `tap-target` and
+      // the voice pages' `link-tap`), so confirm with the rendered text and child boxes before calling it a spill.
+      if (el.scrollWidth > el.clientWidth + 2 && cs.overflowX === "visible") {
+        const range = d.createRange(); range.selectNodeContents(el);
+        const edge = r.right - parseFloat(cs.borderRightWidth) + 2;
+        if ([...range.getClientRects()].some((x) => x.width > 0 && x.right > edge)) push(out.spill, sig(el) + " " + el.clientWidth + "/" + el.scrollWidth);
+      }
       const lines = Math.round((r.height - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom)) / lh);
       if (cs.textTransform === "uppercase" && parseFloat(cs.letterSpacing) > 0.8 && lines >= 3 && chars < 70) push(out.capsWrap, sig(el) + " lines=" + lines);
     }

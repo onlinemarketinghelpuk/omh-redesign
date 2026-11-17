@@ -106,7 +106,9 @@ export function withLinks(text: string) {
     <>
       {parts.map((part, i) => {
         if (part.includes("@") && !part.startsWith("[")) {
-          return <a key={i} href={`mailto:${part}`} className={linkClass}>{part}</a>;
+          // The address may break after the @ (on 320px phones it is wider than the column), never inside the domain.
+          const [user, domain] = part.split("@");
+          return <a key={i} href={`mailto:${part}`} className={linkClass}>{user}@<wbr />{domain}</a>;
         }
         if (/^(?:\+44|0)[\d\s-]+$/.test(part)) {
           const digits = part.replace(/[\s-]/g, "").replace(/^0/, "+44");
