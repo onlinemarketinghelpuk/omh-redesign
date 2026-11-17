@@ -108,12 +108,13 @@ export function Allocation({
   return (
     <section className="mt-3" aria-labelledby="alloc-h">
       <div
-        className="overflow-hidden rounded-[20px] border border-line bg-surface"
-        style={{ boxShadow: "var(--e1), var(--ring-inset)" }}
+        className="overflow-hidden rounded-[20px] bg-surface"
+        style={{ border: "1px solid var(--nx-line)", boxShadow: "var(--nx-shadow-card)" }}
       >
-        <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line px-4 py-3.5 sm:px-5">
+        {/* The Card header from ui.tsx: Geist title, no divider (plan 016). */}
+        <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-5 pt-5 sm:px-7 sm:pt-6">
           <div className="min-w-0">
-            <h2 id="alloc-h" className="font-sans text-[14px] font-medium tracking-[-.01em]">
+            <h2 id="alloc-h" className="font-heading text-[16px] font-medium tracking-[-.01em] text-ink">
               Channel allocation
             </h2>
             <p className="mt-0.5 text-[12.5px] leading-snug text-muted">
@@ -128,7 +129,7 @@ export function Allocation({
           </Link>
         </header>
 
-        <div className="p-4 sm:p-5">
+        <div className="px-5 pb-5 pt-4 sm:px-7 sm:pb-6">
           {say && (
             <p className="mb-4 max-w-[72ch] font-sans text-[16px] font-medium leading-snug tracking-[-.01em] text-ink">
               {say}

@@ -71,7 +71,7 @@ export async function Shell({
 
       <div className="pb-16 lg:pb-0 lg:pl-[232px]">
         {/* The desktop top bar. */}
-        <div className="sticky top-0 z-30 hidden h-14 items-center gap-3 border-b border-[#141416]/[0.07] bg-white/90 px-6 backdrop-blur-xl lg:flex">
+        <div className="sticky top-0 z-30 hidden h-14 items-center gap-3 border-b border-[#141416]/[0.07] bg-white/90 px-8 backdrop-blur-xl lg:flex">
           <Breadcrumbs active={active} title={title} demo={demo} />
           <div className="ml-auto flex items-center gap-2">
             <PaletteButton variant="topbar" />

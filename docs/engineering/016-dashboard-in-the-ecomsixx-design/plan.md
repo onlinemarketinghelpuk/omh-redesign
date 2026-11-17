@@ -69,11 +69,34 @@ bronze tints; the brand-tinted shadows are tinted bronze.
 - [x] 1. Tokens and fonts, scoped
 - [x] 2. `components/dashboard/kit.tsx`
 - [x] 3. `ui.tsx` to the kit's look
-- [ ] 4. Shell: sidebar, top bar, ⌘K palette, phone bar, pill row, tab bar
-- [ ] 5. Screens onto the kit
-- [ ] 6. Proof: measurements, sweep, side-by-side screenshots
+- [x] 4. Shell: sidebar, top bar, ⌘K palette, phone bar, pill row, tab bar
+- [x] 5. Screens onto the kit
+- [x] 6. Proof: measurements, sweep, side-by-side screenshots
 
 ## Not changing
 
 What any screen says or does, its data, its routes, or anything outside
 `/lead-dashboard`.
+
+## Evidence (2026-11-17)
+
+- Computed styles, signed in, 1440: dashboard root Inter 16px #141416;
+  h1 Geist 500 24px, -0.24px; nav link Inter 13px 500, 6px radius, active
+  #f3eee7; fonts on the overview: Inter 602, JetBrains Mono 38, Geist 16.
+  Card radius 20px. Same values measured on Ecomsixx (:3222).
+- Side by side at 1440 with Ecomsixx: overview, integrations, leads, control.
+  Breadcrumbs now start at the content edge (264px) as in Ecomsixx.
+- Interactions driven in Chromium, 17 checks, 0 problems, three runs:
+  Cmd-K, filtering, Enter, Escape, search pill, sidebar current screen,
+  user menu, phone sheet (15 screens, every target 44px+), More, tab bar.
+- Sweep: 15 screens x 1440 and 390, all 200, 0 overflow, 0 page errors.
+- Full suite 2378 ok, 0 failed. Lint clean. Source typecheck clean.
+
+Found on the way and fixed:
+- The website's search dialog also bound Cmd-K and stole focus.
+- The phone header's backdrop-filter trapped the fixed sheet inside it.
+- `--color-warm` set to white hid 68 tinted callouts and icon tiles.
+- The dashboard inherited the site's 18px body size.
+
+Known, not done: on a phone the group pill row does not scroll the
+current screen's pill into view when it sits past the right edge.

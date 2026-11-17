@@ -52,7 +52,7 @@ export default function DashboardError({
   const [retrying, retry] = useTransition();
 
   return (
-    <div id="omh-dashboard" className="min-h-dvh bg-warm text-ink">
+    <div id="omh-dashboard" className="min-h-dvh bg-white text-ink">
       <div>
         <main className="mx-auto max-w-[1400px] px-5 py-10 sm:px-7">
           <div className="max-w-[60ch] rounded-xl border border-line bg-surface p-6">

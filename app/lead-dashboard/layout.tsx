@@ -48,6 +48,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
            =============================================================== */
         #omh-dashboard {
           color-scheme: light;
+          /* Ecomsixx's body is 16px; the website's is 18px and was being
+             inherited by any text without a size of its own. */
+          font-size: 16px;
+          line-height: 1.5;
 
           /* The fonts every existing font-sans / font-body class uses,
              pointed at Inter here and nowhere else. */
@@ -64,7 +68,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           --color-ink: #141416;
           --color-muted: #52525b;
           --color-line: #e7e2db;
-          --color-warm: #ffffff;
+          /* The soft tint behind callouts, icon tiles and quiet rows
+             (68 uses). Not white: as white they disappeared. Ecomsixx's
+             equivalent is its pale brand tint. */
+          --color-warm: #faf8f5;
           --color-surface: #ffffff;
           --color-soft: #f3eee7;
           --color-soft-dark: #e9e0d3;

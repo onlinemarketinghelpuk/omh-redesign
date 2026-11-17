@@ -269,17 +269,21 @@ export default async function Overview({
           style={{ boxShadow: "var(--e1), var(--ring-inset)" }}
         >
           <IconRoute className="h-4 w-4 shrink-0 text-[var(--dash-accent-text)]" />
-          <span className="text-[13.5px] font-medium text-ink">
-            {dueToday.length === 0
-              ? `${active.length} being followed up`
-              : `${dueToday.length} follow-${dueToday.length === 1 ? "up goes" : "ups go"} out today`}
-          </span>
-          {nextOut && (
-            <span className="text-[13.5px] text-muted">
-              Next: {nextOut.stepLabel ?? "a message"} to {nextOut.name ?? "a lead"},{" "}
-              {when(nextOut.nextDueAt)}.
+          {/* One text block, so "See all" keeps its place on the right
+              instead of wrapping under the line in a half-width cell. */}
+          <span className="min-w-0 flex-1 text-[13.5px]">
+            <span className="font-medium text-ink">
+              {dueToday.length === 0
+                ? `${active.length} being followed up`
+                : `${dueToday.length} follow-${dueToday.length === 1 ? "up goes" : "ups go"} out today`}
             </span>
-          )}
+            {nextOut && (
+              <span className="block text-muted">
+                Next: {nextOut.stepLabel ?? "a message"} to {nextOut.name ?? "a lead"},{" "}
+                {when(nextOut.nextDueAt)}.
+              </span>
+            )}
+          </span>
           <span className="ml-auto shrink-0 text-[13.5px] font-medium text-[var(--dash-accent-text)] underline underline-offset-4">
             See all
           </span>

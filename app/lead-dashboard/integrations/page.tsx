@@ -1,6 +1,25 @@
 import Link from "next/link";
 import { Shell } from "@/components/dashboard/Shell";
 import { Card, Pill } from "@/components/dashboard/ui";
+import { IconChat, IconMic, IconMessage, IconPhone, IconSend, IconCalendar, IconPlug } from "@/components/dashboard/icons";
+
+/* The tile beside each channel, as Ecomsixx's integration cards have
+   (plan 016). In OHM's bronze, not each platform's own colour. */
+function ChannelIcon({ label }: { label: string }) {
+  const l = label.toLowerCase();
+  const Icon = /voice|call/.test(l) ? IconMic
+    : /chat/.test(l) ? IconChat
+    : /phone/.test(l) ? IconPhone
+    : /message|dm|sms|text|email/.test(l) ? IconMessage
+    : /\bads?\b|form/.test(l) ? IconSend
+    : /calendar|\bbook/.test(l) ? IconCalendar
+    : IconPlug;
+  return (
+    <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-[#f3eee7] text-[#7d5c33] ring-1 ring-inset ring-[#7d5c33]/15">
+      <Icon className="h-[17px] w-[17px]" />
+    </span>
+  );
+}
 import { ChannelSwitch } from "@/components/dashboard/ChannelSwitch";
 import { ConnectCard } from "@/components/dashboard/ConnectCard";
 import { connectedForScreen } from "@/lib/dashboard/connect";
@@ -121,7 +140,7 @@ export default async function IntegrationsPage({
       </p>
 
       {!sw.known && !demo ? (
-        <p className="mb-5 rounded-xl bg-warm px-4 py-3 text-[13.5px] text-muted">
+        <p role="status" className="mb-5 rounded-xl border border-[#b45309]/20 bg-[#fffbeb] px-4 py-3 text-[13.5px] text-[#78350f]">
           The switches could not be read from the routing store, so they are not shown rather than shown in a
           state that might be wrong.
         </p>
@@ -135,7 +154,9 @@ export default async function IntegrationsPage({
         <ul className="divide-y divide-line">
           {channels.map(({ channel, label, status }) => (
             <li key={channel} className="flex flex-col gap-3 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:justify-between">
-              <div className="min-w-0 flex-1">
+              <div className="flex min-w-0 flex-1 gap-3">
+              <ChannelIcon label={label} />
+              <div className="min-w-0 flex-1 pt-1.5">
                 <div className="flex flex-wrap items-center gap-2">
                   <p className="font-sans text-[14.5px] font-medium text-ink">{label}</p>
                   <Pill kind={PILL[status.state]}>{STATE_LABELS[status.state]}</Pill>
@@ -147,6 +168,7 @@ export default async function IntegrationsPage({
                   <p className="mt-1.5 text-[12.5px] text-muted">Before switching it back on, note:</p>
                 ) : null}
                 <MissingList missing={status.missing} unchecked={status.unchecked} />
+              </div>
               </div>
               {sw.known || demo ? (
                 <ChannelSwitch channel={channel} label={label} on={status.on} canWrite={writable} />
