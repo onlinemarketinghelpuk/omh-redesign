@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/ui/Proof";
 import { Split } from "@/components/ui/Split";
 
@@ -16,6 +15,7 @@ export function PageHero({
   body,
   actions,
   stats,
+  statsStyle = "inline",
   media,
   proof,
   className = "",
@@ -27,6 +27,8 @@ export function PageHero({
   /** The button row (Button elements). */
   actions: ReactNode;
   stats?: ReadonlyArray<HeroStat>;
+  /** inline: stats wrap in a row. divided: three equal columns with hairlines between them (one-up on phones). */
+  statsStyle?: "inline" | "divided";
   media?: ReactNode;
   proof?: ReactNode;
   className?: string;
@@ -35,27 +37,29 @@ export function PageHero({
     <section className={`hero-grid overflow-x-clip border-b border-line bg-warm ${className}`}>
       <div className="container-omh section-hero">
         <Split ratio="7/5" align="center">
-          <Reveal>
+          {/* CSS-only entrance, not <Reveal>: the JS-gated reveal held the headline at opacity 0 until hydration
+              and delayed the largest paint. */}
+          <div className="hero-in">
             <Eyebrow>{eyebrow}</Eyebrow>
             <h1 className={`mb-6 mt-7 font-sans font-semibold text-balance ${titleSize === "h1" ? "text-h1" : "text-display"}`}>{title}</h1>
             <div className="mb-9 text-lead leading-relaxed text-ink/75 [&>p+p]:mt-4">{typeof body === "string" ? <p>{body}</p> : body}</div>
             <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">{actions}</div>
             {stats && (
-              <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-line pt-7">
+              <dl className={`mt-10 border-t border-line pt-7 ${statsStyle === "divided" ? "grid max-w-[690px] gap-5 sm:grid-cols-3 sm:gap-0" : "flex flex-wrap gap-x-10 gap-y-5"}`}>
                 {stats.map(([label, value]) => (
-                  <div key={label}>
+                  <div key={label} className={statsStyle === "divided" ? "sm:border-l sm:border-line sm:pl-5 sm:first:border-l-0 sm:first:pl-0" : undefined}>
                     <dt className="eyebrow text-muted">{label}</dt>
                     <dd className="mt-1.5 font-sans text-h4 font-semibold">{value}</dd>
                   </div>
                 ))}
               </dl>
             )}
-          </Reveal>
+          </div>
           {(media || proof) && (
-            <Reveal className="md:max-lg:grid md:max-lg:grid-cols-2 md:max-lg:items-start md:max-lg:gap-6">
+            <div className="hero-in hero-in-2 md:max-lg:grid md:max-lg:grid-cols-2 md:max-lg:items-start md:max-lg:gap-6">
               {media}
               {proof && <div className="mt-6 md:max-lg:mt-0">{proof}</div>}
-            </Reveal>
+            </div>
           )}
         </Split>
       </div>

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Link from "next/link";
 import { Megaphone, Puzzle, RefreshCw, ShieldCheck, Zap } from "lucide-react";
 import { CaseStudyVisual } from "@/components/case-studies/CaseStudyVisual";
@@ -14,17 +13,17 @@ import { ServiceProcessTimeline } from "@/components/services/ServiceProcessTime
 import { ServiceReasonGrid } from "@/components/services/ServiceReasonGrid";
 import {
   CheckIcon as Check,
-  FeatureValue,
   HighlightedText,
   ServiceSectionIntro as SectionIntro,
 } from "@/components/services/ServicePrimitives";
 import { ArrowRight, Button, TextLink } from "@/components/ui/Button";
 import { Eyebrow, Fpo, ReviewProof } from "@/components/ui/Proof";
 import { ServiceBand as Band } from "@/components/services/ServiceBand";
+import { PackageComparison } from "@/components/services/PackageComparison";
+import { PageHero } from "@/components/ui/PageHero";
+import { Split } from "@/components/ui/Split";
 import { wordpressDevelopment as content } from "@/lib/content/wordpress-development";
 import { CASE_STUDIES_LIVE } from "@/lib/flags";
-
-type Package = (typeof content.packages)[number];
 
 /*
   Each section uses a different structural device on purpose — ruled editorial
@@ -38,57 +37,34 @@ type Package = (typeof content.packages)[number];
 // Future Elementor widget: "OMH Service Hero"
 export function ServiceHero() {
   return (
-    <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
-      <div className="container-omh pb-[clamp(56px,38px+2.9vw,88px)] pt-[clamp(48px,34px+2.3vw,80px)]">
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-12 max-lg:block">
-          <div className="col-span-7 max-lg:mb-12">
-            {/* CSS-only entrance, not <Reveal>: the JS-gated reveal held the headline at opacity 0 until hydration and delayed LCP. */}
-            <div className="hero-in">
-              <Eyebrow>{content.hero.eyebrow}</Eyebrow>
-              {/* text-h1, not text-display: 72px in a 7-col measure wrapped to six
-                  lines and pushed the hero past the fold. */}
-              <h1 className="mb-6 mt-7 font-sans text-display font-semibold text-balance">
-                <HighlightedText text={content.hero.title} highlight="drive growth" />
-              </h1>
-              <p className="mb-9 text-lead leading-relaxed text-ink/75">
-                {content.hero.body}
-              </p>
-              <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">
-                <Button href={content.hero.primary.href} arrow data-event="wpdev_hero_cta_click">
-                  {content.hero.primary.label}
-                </Button>
-                <Button href={content.hero.secondary.href} variant="secondary" arrow data-event="wpdev_view_packages_click">
-                  {content.hero.secondary.label}
-                </Button>
-              </div>
-              <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-line pt-7">
-                {[
-                  ["Packages from", "£200"],
-                  ["Turnaround from", "4 weeks"],
-                  ["Based in", "Essex, UK"],
-                ].map(([label, value]) => (
-                  <div key={label}>
-                    <dt className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-                      {label}
-                    </dt>
-                    <dd className="mt-1.5 font-sans text-h4 font-semibold">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+    <PageHero
+      eyebrow={content.hero.eyebrow}
+      title={<HighlightedText text={content.hero.title} highlight="drive growth" />}
+      body={content.hero.body}
+      actions={
+        <>
+          <Button href={content.hero.primary.href} arrow data-event="wpdev_hero_cta_click">
+            {content.hero.primary.label}
+          </Button>
+          <Button href={content.hero.secondary.href} variant="secondary" arrow data-event="wpdev_view_packages_click">
+            {content.hero.secondary.label}
+          </Button>
+        </>
+      }
+      stats={[
+        ["Packages from", "£200"],
+        ["Turnaround from", "4 weeks"],
+        ["Based in", "Essex, UK"],
+      ]}
+      media={
+        <Pointer>
+          <div className="pointer-parallax">
+            <ServiceHeroArt variant="wordpress" />
           </div>
-
-          <div className="hero-in hero-in-2 col-span-5 col-start-8">
-            <Pointer>
-              <div className="pointer-parallax">
-                <ServiceHeroArt variant="wordpress" />
-              </div>
-            </Pointer>
-            <ReviewProof serviceId="wordpress" heading="Proven WordPress experience" className="mt-6" />
-          </div>
-        </div>
-      </div>
-    </section>
+        </Pointer>
+      }
+      proof={<ReviewProof serviceId="wordpress" heading="Proven WordPress experience" />}
+    />
   );
 }
 
@@ -98,26 +74,22 @@ export function PainPointSection() {
   return (
     <Band label="Problems">
       <Reveal>
-        <div className="grid grid-cols-12 gap-x-10 gap-y-10 max-lg:block">
-          <div className="col-span-5 max-lg:mb-10">
-            <div className="lg:sticky lg:top-24">
-              <SectionIntro title="A WordPress website can look fine and still hold the business back" accent="business back" />
-              {/* Serif pull quote — the direction's editorial accent, used once */}
-              <p className="mt-7 border-l-2 border-amber pl-5 text-body leading-snug text-ink/85">
-                Most businesses do not come to us because the website failed. They come
-                because it is slow, hard to update, or quietly costing them enquiries.
-              </p>
-              <div className="mt-8 max-lg:max-w-md">
-                <Fpo
-                  ratio="4/3"
-                  tag="Annotated screen"
-                  title="Website issue snapshot"
-                  note="Add a real annotated screenshot from a reviewed WordPress site." source="/images/Services/Images on the pages/WordPress Development.png" alt="Illustrative WordPress development screen" />
-              </div>
+        <Split ratio="5/7" gap={10} sticky>
+          <div>
+            <SectionIntro title="A WordPress website can look fine and still hold the business back" accent="business back" />
+            <p className="mt-7 border-l-2 border-amber pl-5 text-body leading-snug text-ink/85">
+              Most businesses do not come to us because the website failed. They come
+              because it is slow, hard to update, or quietly costing them enquiries.
+            </p>
+            <div className="mt-8 max-lg:max-w-md">
+              <Fpo
+                ratio="4/3"
+                tag="Annotated screen"
+                title="Website issue snapshot"
+                note="Add a real annotated screenshot from a reviewed WordPress site." source="/images/Services/Images on the pages/WordPress Development.png" alt="Illustrative WordPress development screen" />
             </div>
           </div>
-
-          <ol className="col-span-7 col-start-6 border-t border-line">
+          <ol className="border-t border-line">
             {content.pains.map((pain, index) => (
               <li
                 key={pain}
@@ -125,7 +97,7 @@ export function PainPointSection() {
               >
                 <span
                   aria-hidden
-                  className="font-sans text-[18px] font-semibold tabular-nums tracking-[0.1em] text-muted transition-colors group-hover:text-amber"
+                  className="font-sans text-body font-semibold tabular-nums tracking-[0.1em] text-muted transition-colors group-hover:text-amber"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -135,7 +107,7 @@ export function PainPointSection() {
               </li>
             ))}
           </ol>
-        </div>
+        </Split>
       </Reveal>
     </Band>
   );
@@ -221,51 +193,6 @@ export function ProcessSteps() {
 }
 
 // ── Section 6: Packages ─────────────────────────────────────────────────────
-function PackageCard({ pkg }: { pkg: Package }) {
-  return (
-    <article className="overflow-hidden rounded-card border border-line bg-surface">
-      <div className="border-b border-line bg-soft/50 p-6">
-        <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-          {pkg.stage}
-        </p>
-        <h3 className="mt-2 font-sans text-h3 font-semibold">{pkg.name}</h3>
-        <p className="mt-3 font-sans text-[34px] font-semibold leading-none tracking-[-0.02em]">
-          {pkg.price}
-        </p>
-        <p className="mt-4 text-bsm leading-relaxed text-ink/70">{pkg.bestFor}</p>
-      </div>
-      <dl className="p-6 text-bsm">
-        {content.packageGroups.map((group) => (
-          <div key={group.label} className="border-b border-line py-4 first:pt-0 last:border-b-0">
-            <p className="mb-1 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted/80">
-              {group.label}
-            </p>
-            {group.rows.map(([label, key]) => (
-              <div key={label} className="flex items-baseline justify-between gap-6 py-2">
-                <dt className="text-muted">{label}</dt>
-                <dd className="text-right font-semibold text-ink">
-                  <FeatureValue value={pkg.features[key]} />
-                </dd>
-              </div>
-            ))}
-          </div>
-        ))}
-      </dl>
-      <div className="px-6 pb-6">
-        <Button
-          href="/contact"
-          small
-          className="min-h-11 w-full justify-center"
-          data-event="wpdev_package_select"
-          data-package={pkg.name}
-        >
-          Discuss this package
-        </Button>
-      </div>
-    </article>
-  );
-}
-
 // Future Elementor widget: "OMH Pricing Comparison"
 export function PricingPackages() {
   return (
@@ -285,104 +212,13 @@ export function PricingPackages() {
             </p>
           </div>
 
-          {/* Comparison table only from xl: its 1000px minimum forced horizontal
-              scrolling on the essential pricing content between 1024 and 1279,
-              where the stacked cards read better anyway. */}
-          <div className="mt-12 hidden overflow-x-auto rounded-card border border-line bg-surface xl:block">
-            <table className="w-full min-w-[1000px] border-collapse text-left text-bsm">
-              <caption className="sr-only">
-                WordPress website package comparison by inclusion and price
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col" className="sticky left-0 z-10 w-[220px] bg-surface p-6 align-bottom">
-                    <span className="text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-                      Compare packages
-                    </span>
-                  </th>
-                  {content.packages.map((pkg) => (
-                    <th key={pkg.name} scope="col" className="border-l border-line bg-soft/40 p-6 align-bottom">
-                      <span className="block text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-                        {pkg.stage}
-                      </span>
-                      <span className="mt-2 block font-sans text-h4 font-semibold">{pkg.name}</span>
-                      <span className="mt-4 block font-sans text-[34px] font-semibold leading-none tracking-[-0.02em]">
-                        {pkg.price}
-                      </span>
-                    </th>
-                  ))}
-                </tr>
-                <tr>
-                  <th scope="col" className="sticky left-0 z-10 bg-surface" />
-                  {content.packages.map((pkg) => (
-                    <td
-                      key={pkg.name}
-                      className="border-l border-b-2 border-b-ink border-line bg-soft/40 px-6 pb-6 align-top text-body font-normal leading-snug text-ink/70"
-                    >
-                      {pkg.bestFor}
-                    </td>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {content.packageGroups.map((group) => (
-                  <Fragment key={group.label}>
-                    <tr>
-                      <th
-                        scope="colgroup"
-                        colSpan={5}
-                        className="border-b border-t border-line bg-warm/50 px-6 py-2.5 text-left text-[14px] font-semibold uppercase tracking-[0.14em] text-muted"
-                      >
-                        {group.label}
-                      </th>
-                    </tr>
-                    {group.rows.map(([label, key]) => (
-                      <tr key={label} className="border-b border-line transition-colors hover:bg-warm/60">
-                        <th scope="row" className="sticky left-0 z-10 bg-surface p-6 py-4 font-semibold">
-                          {label}
-                        </th>
-                        {content.packages.map((pkg) => (
-                          <td key={pkg.name} className="border-l border-line p-6 py-4 text-ink/80">
-                            <FeatureValue value={pkg.features[key]} />
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </Fragment>
-                ))}
-                <tr>
-                  <th scope="row" className="sticky left-0 z-10 bg-surface p-6 font-semibold">
-                    Next step
-                  </th>
-                  {content.packages.map((pkg) => (
-                    <td key={pkg.name} className="border-l border-line p-6">
-                      <Button
-                        href="/contact"
-                        small
-                        data-event="wpdev_package_select"
-                        data-package={pkg.name}
-                      >
-                        Discuss package
-                      </Button>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Mobile / tablet stacked cards */}
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:hidden">
-            {content.packages.map((pkg) => (
-              <PackageCard key={pkg.name} pkg={pkg} />
-            ))}
-          </div>
-
-          <ul className="mt-8 grid gap-2 border-l-2 border-line pl-5 text-body leading-relaxed text-muted">
-            {content.pricingNotes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
+          <PackageComparison
+            caption="WordPress website package comparison by inclusion and price"
+            packages={content.packages}
+            groups={content.packageGroups}
+            notes={content.pricingNotes}
+            event="wpdev_package_select"
+          />
         </div>
       </div>
     </Band>
@@ -404,13 +240,13 @@ export function IncludedFeatures() {
           {content.included.map(([title, blurb, items]) => (
             <div
               key={title}
-              className="grid grid-cols-12 gap-x-10 gap-y-4 border-b border-line py-8 px-6 transition-colors duration-200 hover:bg-surface max-lg:block"
+              className="grid gap-y-5 border-b border-line py-8 px-6 transition-colors duration-200 hover:bg-surface lg:grid-cols-12 lg:gap-x-10"
             >
-              <div className="col-span-4">
+              <div className="lg:col-span-4">
                 <h3 className="font-sans text-h4 font-semibold">{title}</h3>
                 <p className="mt-2 text-bsm leading-relaxed text-muted">{blurb}</p>
               </div>
-              <ul className="col-span-8 flex flex-wrap content-start gap-2.5 max-lg:mt-5">
+              <ul className="flex flex-wrap content-start gap-2.5 lg:col-span-8">
                 {items.map((item) => (
                   <li
                     key={item}

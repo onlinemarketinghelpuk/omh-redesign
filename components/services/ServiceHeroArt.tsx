@@ -103,7 +103,7 @@ function Maintenance() {
           ].map(([Icon, label, value]) => {
             const I = Icon as typeof Activity;
             return (
-              <div key={label as string} className="rounded-[8px] bg-soft px-3 py-2.5">
+              <div key={label as string} className="rounded-[8px] bg-soft px-3 py-2.5 md:max-lg:px-2">
                 <I className="size-4 text-amber-deep" aria-hidden="true" />
                 <div className="mt-1.5 text-[12px] text-ink/60">{label as string}</div>
                 <div className="text-[13px] font-semibold">{value as string}</div>

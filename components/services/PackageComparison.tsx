@@ -25,6 +25,7 @@ export function PackageComparison({
   event,
   ctaHref = "/contact",
   tableLabel = "Compare packages",
+  cardCta = "Discuss this package",
 }: {
   /** Screen-reader caption for the table. */
   caption: string;
@@ -35,6 +36,8 @@ export function PackageComparison({
   event: string;
   ctaHref?: string;
   tableLabel?: string;
+  /** Button text on the cards (copy is verbatim per page). */
+  cardCta?: string;
 }) {
   return (
     <>
@@ -43,7 +46,7 @@ export function PackageComparison({
           <caption className="sr-only">{caption}</caption>
           <thead>
             <tr>
-              <th scope="col" className="sticky left-0 z-10 w-[240px] bg-surface p-6 align-bottom">
+              <th scope="col" className={`sticky left-0 z-10 bg-surface p-6 align-bottom ${packages.length > 3 ? "w-[240px]" : "w-[280px]"}`}>
                 <span className="eyebrow text-muted">{tableLabel}</span>
               </th>
               {packages.map((pkg) => (
@@ -121,7 +124,7 @@ export function PackageComparison({
               </ShowMore>
             </div>
             <div className="px-6 pb-6">
-              <Button href={ctaHref} small className="min-h-11 w-full justify-center" data-event={event} data-package={pkg.name}>Discuss this package</Button>
+              <Button href={ctaHref} small className="min-h-11 w-full justify-center" data-event={event} data-package={pkg.name}>{cardCta}</Button>
             </div>
           </article>
         ))}
