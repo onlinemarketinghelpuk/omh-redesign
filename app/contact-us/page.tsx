@@ -26,10 +26,10 @@ export default function ContactUsPage() {
       <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
         <div className="container-omh section-hero">
           <Eyebrow>Contact Us</Eyebrow>
-          <h1 className="mt-7 max-w-[18ch] font-sans text-display font-semibold text-balance">
+          <h1 className="mt-7 font-sans text-display font-semibold text-balance">
             Get in touch with <span className="text-amber-deep">Online Marketing Help</span>
           </h1>
-          <p className="mt-6 max-w-[62ch] text-lead leading-relaxed text-ink/75">
+          <p className="mt-6 text-lead leading-relaxed text-ink/75">
             A question, help with an existing project or something else: call, email or send us a message and a real
             person will reply.
           </p>

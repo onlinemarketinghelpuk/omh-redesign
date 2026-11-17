@@ -1,8 +1,7 @@
 {
  "one-off font size text-[Npx]": {
-  "app/contact/page.tsx": 5,
   "app/design-system/page.tsx": 5,
-  "app/get-more-leads/page.tsx": 2,
+  "app/get-more-leads/page.tsx": 1,
   "app/page.tsx": 22,
   "components/about/AboutTabs.tsx": 2,
   "components/BookDemo.tsx": 12,
@@ -10,7 +9,6 @@
   "components/case-studies/CaseStudyPage.tsx": 21,
   "components/case-studies/CaseStudyVisual.tsx": 1,
   "components/CaseStudies.tsx": 3,
-  "components/faq/FaqPageSections.tsx": 2,
   "components/forms/GrowthReviewForm.tsx": 1,
   "components/insights/ArchiveRow.tsx": 1,
   "components/insights/DraftInsightsList.tsx": 1,
@@ -39,7 +37,7 @@
   "components/services/SocialMediaPaidAdvertisingSections.tsx": 7,
   "components/services/WordPressServiceSections.tsx": 4,
   "components/solutions/GrowthPath.tsx": 27,
-  "components/solutions/SolutionPage.tsx": 15,
+  "components/solutions/SolutionPage.tsx": 11,
   "components/Testimonials.tsx": 3,
   "components/ui/Breadcrumbs.tsx": 1,
   "components/ui/Case.tsx": 1,
@@ -48,8 +46,7 @@
   "components/voice-agents/ReelPlayer.tsx": 2,
   "components/voice-agents/VoiceAgentsScript.tsx": 2,
   "components/voice-agents/VoiceLanding.tsx": 1,
-  "components/WarrantySections.tsx": 6,
-  "components/WebsiteDesignsSections.tsx": 11,
+  "components/WebsiteDesignsSections.tsx": 7,
   "lib/content/ai-services-markup.ts": 87,
   "lib/content/ai-voice-agents-landing-v4.ts": 1,
   "lib/content/ai-voice-agents-legacy.ts": 93,
@@ -166,11 +163,8 @@
  },
  "desktop-first stacked row max-lg:block": {
   "app/page.tsx": 1,
-  "components/about/AboutSections.tsx": 6,
   "components/about/AboutTabs.tsx": 1,
   "components/CaseStudies.tsx": 1,
-  "components/faq/FaqPageSections.tsx": 4,
-  "components/forms/QuoteFormPage.tsx": 1,
   "components/insights/InsightArticle.tsx": 3,
   "components/insights/InsightsArchive.tsx": 1,
   "components/insights/InsightsHub.tsx": 2,
@@ -182,10 +176,9 @@
   "components/services/ShopifyServiceSections.tsx": 1,
   "components/services/WordPressMaintenanceSections.tsx": 1,
   "components/services/WordPressServiceSections.tsx": 1,
-  "components/solutions/SolutionPage.tsx": 5,
+  "components/solutions/SolutionPage.tsx": 1,
   "components/ui/FinalCta.tsx": 1,
-  "components/WarrantySections.tsx": 3,
-  "components/WebsiteDesignsSections.tsx": 8
+  "components/WebsiteDesignsSections.tsx": 1
  },
  "hex colour class": {
   "components/case-studies/CaseStudyArchive.tsx": 2,
