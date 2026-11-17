@@ -27,13 +27,12 @@ function FeaturedStories({ posts }: { posts: InsightIndexEntry[] }) {
   if (!lead) return null;
 
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <div className="mb-10 flex items-center gap-4 text-[14px] font-semibold uppercase tracking-[0.17em] text-muted">
             <span className="h-0.5 w-7 bg-amber" />
             Featured insight
-            <span className="h-px flex-1 bg-line" />
           </div>
           <Link
             href={insightHref(lead)}
@@ -117,7 +116,7 @@ export async function InsightsHub({ topic = "", query = "", page = 1 }: { topic?
 
   return (
     <>
-      <section className="hero-grid relative overflow-hidden border-b border-line bg-warm">
+      <section className="hero-grid relative overflow-hidden bg-warm">
         <div className="container-omh section-md">
           <Reveal>
             <Eyebrow>Insights</Eyebrow>
@@ -130,7 +129,7 @@ export async function InsightsHub({ topic = "", query = "", page = 1 }: { topic?
                   Plain-English guidance on websites, SEO, paid media and digital growth, written
                   to help you judge options, ask better questions and choose the clearest next step.
                 </p>
-                <p className="mt-8 flex items-center gap-4 border-t border-line pt-7 text-body leading-relaxed text-ink/75">
+                <p className="mt-8 flex items-center gap-4 text-body leading-relaxed text-ink/75">
                   <span aria-hidden className="h-px w-10 shrink-0 bg-amber" />
                   Useful when you are planning the work, and when you need to challenge it.
                 </p>

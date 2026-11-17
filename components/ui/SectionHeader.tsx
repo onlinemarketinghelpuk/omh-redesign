@@ -43,8 +43,9 @@ export function SectionHeader({
 }: {
   title: string;
   accent?: string;
-  /** Small-caps line above the title. Hidden on phones unless kickerOnPhones, because the band label already
-      sits above it there (one label per section on phones, design rule 22). */
+  /** Small-caps line above the title. Not shown unless kickerOnPhones: the band label already sits above every
+      header, and two labels in a row read as repetition (one label per section on every screen, client
+      17 Nov 2026; on phones since 16 Nov). Pass kickerOnPhones only where no band label is shown. */
   kicker?: ReactNode;
   kickerOnPhones?: boolean;
   body?: ReactNode;
@@ -62,10 +63,8 @@ export function SectionHeader({
 }) {
   return (
     <div className={`${align === "center" ? "text-center" : ""} ${className}`.trim() || undefined}>
-      {kicker && (
-        <p className={`eyebrow mb-5 ${inverse ? "text-oninverse/55" : "text-amber-deep"} ${kickerOnPhones ? "" : "max-sm:hidden"}`}>
-          {kicker}
-        </p>
+      {kicker && kickerOnPhones && (
+        <p className={`eyebrow mb-5 ${inverse ? "text-oninverse/55" : "text-amber-deep"}`}>{kicker}</p>
       )}
       <h2
         id={id}

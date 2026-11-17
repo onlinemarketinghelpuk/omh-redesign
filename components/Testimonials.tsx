@@ -80,7 +80,7 @@ export function ServiceTestimonials({
           <div className="col-span-4 max-wide:mb-stack">
             <h2 id={headingId} className="font-sans text-h2 font-semibold">{title}</h2>
             <p className={`mt-5 text-body leading-relaxed ${secondary}`}>{body}</p>
-            <div className={`mt-8 flex items-center gap-3 border-t pt-5 ${rule}`}>
+            <div className="mt-8 flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => show(current - 1)}

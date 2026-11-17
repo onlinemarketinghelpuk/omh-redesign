@@ -20,7 +20,7 @@ const steps = [
 // "Book a Growth Consultation" (client, 17 Nov 2026): this was /contact. General contact is /contact-us.
 export default function BookConsultationPage() {
   return (
-    <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
+    <section className="hero-grid overflow-x-clip bg-warm">
       <div className="container-omh section-md">
         {/* Phones (client, 2 Nov 2026): title, then the form, then the intro, details and next steps. From lg the left
             column stacks the title over the rest and the form spans both rows on the right. */}
@@ -50,7 +50,7 @@ export default function BookConsultationPage() {
               hard sell.
             </p>
 
-            <dl className="mt-9 grid gap-5 border-t border-line pt-8">
+            <dl className="mt-9 grid gap-5">
               <div>
                 <dt className="eyebrow text-muted">
                   Call

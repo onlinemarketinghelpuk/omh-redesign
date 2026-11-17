@@ -187,7 +187,7 @@ export function WebsiteDesignsPage() {
             <section key={category.title} aria-label={category.title}>
               <h3 className="flex items-center gap-4 font-sans text-h4 font-semibold">
                 {category.title}
-                <span aria-hidden className="h-px flex-1 bg-line" />
+                <span aria-hidden className="flex-1" />
                 <span className="whitespace-nowrap text-bsm font-medium text-muted tabular-nums">
                   {category.images.length} designs
                 </span>
@@ -369,7 +369,7 @@ export function WebsiteDesignsPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-7 flex items-center gap-4 border-t border-line pt-6">
+            <div className="mt-7 flex items-center gap-4">
               <span className="relative size-12 shrink-0 overflow-hidden rounded-full bg-soft">
                 <Image src={ceo.photo} alt={`${ceo.name}, ${ceo.role}`} fill sizes="48px" className="object-cover" />
               </span>

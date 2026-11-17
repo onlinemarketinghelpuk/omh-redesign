@@ -173,7 +173,7 @@ export function AmazonMarketplaceWorkbench() {
 
 export function SeoSearchLandscape() {
   return (
-    <section className="overflow-hidden border-b border-line bg-tint-blue text-ink">
+    <section className="overflow-hidden bg-tint-blue text-ink">
       <div className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-12 items-end gap-x-12 gap-y-9 max-lg:block">

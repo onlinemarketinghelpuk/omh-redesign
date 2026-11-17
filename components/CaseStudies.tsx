@@ -58,7 +58,7 @@ export function ServiceCaseStudies({
   if (!CASE_STUDIES_LIVE || studies.length === 0) return null;
 
   return (
-    <section className="border-y border-line bg-warm" aria-labelledby={`${serviceId}-case-studies-title`}>
+    <section className="bg-warm" aria-labelledby={`${serviceId}-case-studies-title`}>
       <div className="container-omh section-md">
         <Reveal>
           <div className="flex items-end justify-between gap-10 max-lg:block">

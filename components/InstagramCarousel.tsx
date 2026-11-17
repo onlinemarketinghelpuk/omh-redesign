@@ -50,7 +50,7 @@ export function InstagramCarousel({ reels, profileUrl, handle }: { reels: Instag
 
   return (
     <div
-      className="relative w-full overflow-hidden py-10"
+      className="relative w-full overflow-hidden pt-10"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}

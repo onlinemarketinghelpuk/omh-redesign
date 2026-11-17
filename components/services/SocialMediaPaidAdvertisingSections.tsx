@@ -125,7 +125,7 @@ export function PaidSocialGoals() {
             </ol>
           </div>
         </Split>
-        <div className="mt-10 border-t border-oninverse/12 pt-6">
+        <div className="mt-10">
           <p className="text-body leading-relaxed text-oninverse/62">
             Platform audiences shift constantly, so we work from current Meta and platform figures at the point of
             planning rather than quoting a fixed number here.

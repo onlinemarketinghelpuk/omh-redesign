@@ -6,7 +6,7 @@ import { getDraftInsights } from "@/lib/sanity/insights";
 export async function DraftInsightsList() {
   const drafts = await getDraftInsights();
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh py-10">
         <h2 className="font-sans text-h4 font-semibold">
           Drafts <span className="text-body font-normal text-muted">· preview only, hidden from visitors and search engines</span>

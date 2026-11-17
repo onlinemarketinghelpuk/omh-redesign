@@ -15,8 +15,8 @@ import { CASE_STUDIES_LIVE } from "@/lib/flags";
 
 function SolutionHero({ content }: { content: SolutionPageContent }) {
   return (
-    <section className="hero-grid overflow-hidden border-b border-line bg-warm">
-      <div className="container-omh grid min-h-[690px] grid-cols-[minmax(0,1.05fr)_minmax(390px,.75fr)] items-center gap-[clamp(48px,7vw,110px)] py-[clamp(64px,7vw,105px)] max-lg:min-h-0 max-lg:grid-cols-1">
+    <section className="hero-grid overflow-hidden bg-warm">
+      <div className="container-omh grid min-h-[690px] grid-cols-[minmax(0,1.05fr)_minmax(390px,.75fr)] items-center gap-[clamp(48px,7vw,110px)] section-md max-lg:min-h-0 max-lg:grid-cols-1">
         {/* CSS-only entrance, not Reveal: the JS-gated reveal held the headline at opacity 0 until hydration and delayed LCP. */}
         <div className="hero-in relative z-10">
           <Eyebrow>{content.eyebrow}</Eyebrow>
@@ -32,11 +32,11 @@ function SolutionHero({ content }: { content: SolutionPageContent }) {
               {content.secondaryCta}
             </Button>
           </div>
-          <div className="mt-11 grid max-w-[760px] grid-cols-3 border-y border-line max-sm:grid-cols-1 max-sm:divide-y max-sm:divide-line">
+          <div className="mt-10 grid max-w-[760px] grid-cols-3 gap-5 max-sm:grid-cols-1">
             {content.heroPoints.map((point, index) => (
               <div
                 key={point}
-                className="grid grid-cols-[28px_1fr] items-start gap-3 py-6 pr-5 text-body font-semibold text-ink/68 max-sm:py-4"
+                className="grid grid-cols-[28px_1fr] items-start gap-3 pr-5 text-body font-semibold text-ink/68"
               >
                 <span className="text-[18px] leading-[1.55] tabular-nums text-amber-deep">0{index + 1}</span>
                 <span>{point}</span>
@@ -58,7 +58,7 @@ function DefinitionSection({ content }: { content: SolutionPageContent }) {
   const definition = content.definition;
   if (!definition) return null;
   return (
-    <section className="border-b border-line bg-tint-blue">
+    <section className="bg-tint-blue">
       <div className="container-omh section-md">
         <Reveal>
           <div>
@@ -113,7 +113,7 @@ function DefinitionSection({ content }: { content: SolutionPageContent }) {
 
 function ProblemSection({ content }: { content: SolutionPageContent }) {
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-lg">
         <Reveal>
           <div className="grid grid-cols-12 gap-x-[clamp(40px,7vw,104px)] gap-y-10 max-wide:block">
@@ -145,7 +145,7 @@ function ComparisonSection({ content }: { content: SolutionPageContent }) {
   const comparison = content.comparison;
   if (!comparison) return null;
   return (
-    <section className="border-b border-line bg-warm">
+    <section className="bg-warm">
       <div className="container-omh section-md">
         <Reveal>
           <Eyebrow>{comparison.eyebrow}</Eyebrow>
@@ -170,7 +170,7 @@ function ComparisonSection({ content }: { content: SolutionPageContent }) {
 
 function OutcomesSection({ content }: { content: SolutionPageContent }) {
   return (
-    <section className="dark-grid border-b border-oninverse/10 bg-inverse text-oninverse">
+    <section className="dark-grid bg-inverse text-oninverse">
       <div className="container-omh section-lg">
         <Reveal>
           <div>
@@ -181,8 +181,8 @@ function OutcomesSection({ content }: { content: SolutionPageContent }) {
           <div
             className={
               content.outcomes.items.length === 4
-                ? "mt-14 grid gap-0 border-y border-oninverse/15 md:grid-cols-2 xl:grid-cols-4"
-                : "mt-14 grid gap-0 border-y border-oninverse/15 md:grid-cols-2 lg:grid-cols-3"
+                ? "mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-4"
+                : "mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3"
             }
           >
             {content.outcomes.items.map((item) => (
@@ -190,8 +190,8 @@ function OutcomesSection({ content }: { content: SolutionPageContent }) {
                 key={item.number}
                 className={
                   content.outcomes.items.length === 4
-                    ? "border-oninverse/15 py-9 max-md:border-t max-md:first:border-t-0 md:max-xl:odd:pr-7 md:max-xl:even:border-l md:max-xl:even:pl-7 md:max-xl:[&:nth-child(n+3)]:border-t xl:border-r xl:px-7 xl:first:pl-0 xl:last:border-r-0"
-                    : "border-oninverse/15 py-9 max-md:border-t max-md:first:border-t-0 md:max-lg:odd:pr-8 md:max-lg:even:border-l md:max-lg:even:pl-8 md:max-lg:last:col-span-2 md:max-lg:last:border-t lg:border-r lg:px-8 lg:first:pl-0 lg:last:border-r-0"
+                    ? undefined
+                    : "md:max-lg:last:col-span-2"
                 }
               >
                 <span className="font-sans text-[18px] font-semibold text-[var(--accent-light)]">{item.number}</span>
@@ -221,7 +221,7 @@ function Captioned({ caption, className, children }: { caption?: [string, string
 
 function MediaSection({ content }: { content: SolutionPageContent }) {
   return (
-    <section className="overflow-hidden border-b border-line bg-tint-green">
+    <section className="overflow-hidden bg-tint-green">
       <div className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-12 items-end gap-x-12 gap-y-8 max-lg:block">
@@ -261,7 +261,7 @@ function MediaSection({ content }: { content: SolutionPageContent }) {
 
 function ApproachSection({ content }: { content: SolutionPageContent }) {
   return (
-    <section id="approach" className="scroll-mt-24 border-b border-line bg-warm">
+    <section id="approach" className="scroll-mt-24 bg-warm">
       <div className="container-omh section-lg">
         <Reveal>
           <div className="grid grid-cols-12 gap-x-12 gap-y-12 max-wide:block">
@@ -288,7 +288,7 @@ function ApproachSection({ content }: { content: SolutionPageContent }) {
 
 function ServicesSection({ content }: { content: SolutionPageContent }) {
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <div>
@@ -324,7 +324,7 @@ function ServicesSection({ content }: { content: SolutionPageContent }) {
 
 function FitSection({ content }: { content: SolutionPageContent }) {
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-12 gap-x-12 gap-y-9 max-wide:block">
@@ -357,7 +357,7 @@ function FitSection({ content }: { content: SolutionPageContent }) {
 function ProofSection({ content }: { content: SolutionPageContent }) {
   if (!CASE_STUDIES_LIVE) return null;
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-[1fr_1.1fr] items-end gap-16 max-lg:grid-cols-1 max-lg:gap-8">
@@ -386,7 +386,7 @@ function FaqAndNext({ content }: { content: SolutionPageContent }) {
   const currentIndex = solutionOrder.indexOf(content.slug as (typeof solutionOrder)[number]);
   const nextSlugs = solutionOrder.filter((slug) => slug !== content.slug).slice(currentIndex % 2, currentIndex % 2 + 2);
   return (
-    <section className="border-b border-line bg-warm">
+    <section className="bg-warm">
       <div className="container-omh section-lg">
         <Reveal>
           <div className="grid grid-cols-12 gap-x-14 gap-y-12 max-wide:block">
@@ -397,7 +397,7 @@ function FaqAndNext({ content }: { content: SolutionPageContent }) {
             </div>
             <div className="col-span-8"><Accordion items={content.faq} group={`${content.slug}-faq`} /></div>
           </div>
-          <div className="mt-20 border-t border-line pt-9">
+          <div className="mt-16">
             <p className="eyebrow text-muted">You may also be trying to</p>
             <div className="mt-5 grid grid-cols-2 gap-5 max-md:grid-cols-1">
               {nextSlugs.map((slug) => {

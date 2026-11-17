@@ -58,7 +58,7 @@ export function AboutTabs({
             <p className="mt-3 text-[14px] font-semibold uppercase tracking-[0.15em] text-muted">
               {item.statLabel}
             </p>
-            <div className="mt-8 grid gap-5 border-t border-line pt-7">
+            <div className="mt-8 grid gap-5">
               {item.body.map((paragraph) => (
                 <p key={paragraph} className="text-body leading-relaxed text-ink/75">
                   {paragraph}

@@ -36,7 +36,7 @@ export function InsightContents({ items, idSuffix = "" }: { items: TocItem[]; id
   );
 
   return (
-    <nav aria-labelledby={`article-contents${idSuffix}`} className="border-t border-line pt-5">
+    <nav aria-labelledby={`article-contents${idSuffix}`}>
       <p className="flex items-center justify-between max-lg:hidden">
         <span id={`article-contents${idSuffix}`} className="text-[14px] font-semibold uppercase tracking-[0.15em] text-muted">On this page</span>
         {counter}

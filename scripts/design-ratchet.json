@@ -154,11 +154,10 @@
  },
  "one-off clamp() spacing": {
   "app/get-more-leads/page.tsx": 1,
-  "app/page.tsx": 11,
+  "app/page.tsx": 1,
   "components/case-studies/CaseStudyArchive.tsx": 5,
   "components/case-studies/CaseStudyPage.tsx": 10,
   "components/insights/InsightArticle.tsx": 1,
-  "components/solutions/SolutionPage.tsx": 1,
   "components/Testimonials.tsx": 1
  },
  "desktop-first stacked row max-lg:block": {

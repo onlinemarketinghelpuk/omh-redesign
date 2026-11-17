@@ -139,8 +139,15 @@ Agreed with the user when planning the responsive rebuild; the full plan and its
     there is 18px through one rule; spans, small-caps labels, controls and mock-ups keep their sizes.
 28. **Hover effects need a touch equivalent.** Anything that only happens on hover (the portfolio page
     previews) also happens on focus, so a tap starts it on a phone and Tab starts it on a keyboard.
+29. **One section spacing, no lines** (client, 17 Nov 2026, `docs/section-rhythm-plan.md`). Every band,
+    heroes included, has `--section-y` above and below its content (48px on a 320px phone, 88px from
+    1280px): use `section-md` (sm, lg and the hero paddings point at the same value). The last element in
+    a band adds no margin or padding of its own. No borders between sections, no hairlines beside labels,
+    no rules above or below blocks (stats, notes, quotes, controls). Lines stay only where they are part of
+    a component: card outlines, table rows, accordion and FAQ rows, rows of one ruled list, tab bars,
+    form fields. One small-caps label per section.
 
-*Check:* `npm run audit:responsive` (budgets in `docs/responsive-plan.md` section 5) at 320-1280px,
+*Check:* `node scripts/responsive-audit.mjs rhythm` (section gaps, borders and lines at 1440 and 390px); `npm run audit:responsive` (budgets in `docs/responsive-plan.md` section 5) at 320-1280px,
 and `diff-rects` for the desktop gate. Both are described at the top of the plan.
 
 ## 5. How to run the checks

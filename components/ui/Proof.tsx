@@ -69,7 +69,7 @@ const pill = "inline-flex items-center gap-2.5 rounded-full border border-line b
 export function ReviewProof({ heading, serviceId, className = "" }: { heading: string; serviceId: ServiceProofId; className?: string }) {
   const { study, fact, review } = resolveProof(serviceId);
   return (
-    <div className={`border-t border-line pt-5 ${className}`}>
+    <div className={className || undefined}>
       <p className="mb-3.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">{heading}</p>
       <ul className="flex flex-wrap items-center gap-2.5">
         <li className={pill}>

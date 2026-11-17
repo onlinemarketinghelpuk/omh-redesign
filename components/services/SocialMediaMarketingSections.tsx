@@ -158,7 +158,7 @@ export function SocialGoals({
             ))}
           </CardGrid>
         </Split>
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-5 border-t border-oninverse/12 pt-6">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-5 ">
           <p className="text-body leading-relaxed text-oninverse/62">{note}</p>
           <Button href="/book-a-consultation" variant="secondary">
             Talk Through Your Goals

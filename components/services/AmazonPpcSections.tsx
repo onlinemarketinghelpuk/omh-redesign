@@ -178,7 +178,7 @@ function PackageCard({ pkg, index }: { pkg: Package; index: number }) {
 
 export function AmazonPricing() {
   return (
-    <section id="packages" className="border-b border-line bg-tint-amber">
+    <section id="packages" className="bg-tint-amber">
       <div className="container-omh section-md" data-event="amazon_pricing_view">
         <Reveal>
           <div>

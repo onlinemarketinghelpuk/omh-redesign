@@ -16,7 +16,7 @@ function slug(heading: string) {
 
 export function FaqHero() {
   return (
-    <section className="hero-grid border-b border-line bg-warm">
+    <section className="hero-grid bg-warm">
       <div className="container-omh section-md">
         <Reveal>
           <Eyebrow>{faqPage.eyebrow}</Eyebrow>
@@ -129,7 +129,7 @@ function FaqMediaBreak() {
 
 export function FaqPricingLink() {
   return (
-    <section className="border-y border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Split ratio="7/5" align="center">
           <div>

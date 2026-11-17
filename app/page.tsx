@@ -133,8 +133,8 @@ export default async function Home() {
 
   return (
     <>
-      <section className="hero-grid relative overflow-x-clip border-b border-line bg-warm">
-        <div className="container-omh grid min-h-[680px] grid-cols-[minmax(0,0.92fr)_minmax(440px,0.78fr)] items-center gap-[clamp(48px,7vw,116px)] py-[clamp(40px,3.5vw,60px)] max-lg:min-h-0 max-lg:grid-cols-1 max-lg:gap-8 max-sm:gap-8">
+      <section className="hero-grid relative overflow-x-clip bg-warm">
+        <div className="container-omh grid min-h-[680px] grid-cols-[minmax(0,0.92fr)_minmax(440px,0.78fr)] items-center gap-[clamp(48px,7vw,116px)] section-md max-lg:min-h-0 max-lg:grid-cols-1 max-lg:gap-8 max-sm:gap-8">
           {/* Above the fold: a CSS entrance (.hero-in) rather than <Reveal>, which waits for JS and held the
               headline back from painting (PageSpeed, 21 Oct 2026). */}
           <div className="hero-in relative z-10">
@@ -153,7 +153,7 @@ export default async function Home() {
                 {hero.secondaryCta.label}
               </Button>
             </div>
-            <div className="mt-12 grid max-w-[650px] grid-cols-3 border-y border-line py-5 max-lg:max-w-none max-sm:grid-cols-1 max-sm:gap-4">
+            <div className="mt-12 grid max-w-[650px] grid-cols-3 max-lg:max-w-none max-sm:grid-cols-1 max-sm:gap-4">
               {["Strategy first", "Senior delivery", "Clear reporting"].map((item, index) => (
                 <p key={item} className="flex items-center gap-3 text-body font-semibold text-ink/65">
                   <span className="font-sans text-[14px] text-amber-deep">0{index + 1}</span>
@@ -194,7 +194,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="dark-grid border-y border-oninverse/10 bg-inverse py-[clamp(84px,8vw,132px)] text-oninverse">
+      <section className="dark-grid bg-inverse section-md text-oninverse">
         <div className="container-omh">
           <Reveal>
             <div className="mx-auto max-w-[1120px] text-center">
@@ -237,12 +237,12 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface text-ink">
-        <div className="stats-grid container-omh grid grid-cols-4 divide-x divide-line max-lg:grid-cols-2 max-lg:divide-x-0">
+      <section className="section-md bg-surface text-ink">
+        <div className="stats-grid container-omh grid grid-cols-4 gap-x-8 gap-y-10 max-lg:grid-cols-2">
           {stats.map((stat, index) => {
             const StatIcon = statIcons[index] ?? Users;
             return (
-              <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-lg:odd:pl-0 max-sm:py-8 max-sm:pr-3 lg:max-xl:px-5 lg:max-xl:first:pl-0">
+              <div key={stat.label} className="stat-item">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-teal/15 text-amber-deep" aria-hidden>
                   <StatIcon className="size-6" strokeWidth={1.7} />
                 </span>
@@ -257,7 +257,7 @@ export default async function Home() {
       </section>
 
       {CASE_STUDIES_LIVE && (
-      <section id="proof" className="container-omh py-[clamp(72px,8vw,128px)]">
+      <section id="proof" className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-[0.74fr_1.26fr] items-start gap-[clamp(48px,7vw,112px)] max-lg:grid-cols-1 max-sm:gap-10">
             <div className="lg:sticky lg:top-24">
@@ -324,7 +324,7 @@ export default async function Home() {
       </section>
       )}
 
-      <section className="dark-grid border-y border-oninverse/10 bg-inverse py-[clamp(72px,8vw,128px)] text-oninverse">
+      <section className="dark-grid bg-inverse section-md text-oninverse">
         <div className="container-omh">
           <Reveal>
             <div className="grid grid-cols-[1fr_0.92fr] items-center gap-[clamp(64px,9vw,144px)] max-lg:grid-cols-1 max-sm:gap-12">
@@ -389,7 +389,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="container-omh py-[clamp(72px,8vw,128px)]">
+      <section className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-[1.08fr_0.72fr] gap-[clamp(48px,8vw,128px)] max-lg:grid-cols-1">
             {/* Phones show five services and a button for the rest. */}
@@ -434,7 +434,7 @@ export default async function Home() {
         </Reveal>
       </section>
 
-      <section id="reviews" className="scroll-mt-20 border-y border-line bg-surface py-[clamp(72px,8vw,128px)]">
+      <section id="reviews" className="scroll-mt-20 bg-surface section-md">
         <div className="container-omh">
           <Reveal>
             <div className="mb-12">
@@ -494,7 +494,7 @@ export default async function Home() {
 
       <InstagramFeed />
 
-      <section className="recognition-field overflow-hidden border-y border-line bg-warm py-[clamp(72px,8vw,128px)]">
+      <section className="recognition-field overflow-hidden bg-warm section-md">
         <div className="container-omh">
           <Reveal>
             <div className="grid grid-cols-[0.7fr_1.3fr] items-center gap-[clamp(52px,8vw,124px)] max-lg:grid-cols-1">
@@ -507,7 +507,7 @@ export default async function Home() {
                   Every channel we run shares the same commercial goal, and the reporting ties it all
                   together so you can act on it.
                 </p>
-                <div className="mt-9 grid grid-cols-3 border-y border-line py-5">
+                <div className="mt-9 grid grid-cols-3">
                   {["Acquisition", "Conversion", "Measurement"].map((label, index) => (
                     <div key={label}>
                       <p className="font-sans text-[26px] font-semibold text-amber-deep">0{index + 1}</p>
@@ -540,7 +540,7 @@ export default async function Home() {
       </section>
 
       {/* Who we work with: carries the small-business and UK-wide keywords (brief §10). */}
-      <section className="dark-grid border-y border-oninverse/10 bg-inverse py-[clamp(72px,8vw,128px)] text-oninverse">
+      <section className="dark-grid bg-inverse section-md text-oninverse">
         <div className="container-omh">
           <Reveal>
             <div className="grid grid-cols-[0.95fr_1.05fr] items-start gap-[clamp(48px,7vw,112px)] max-lg:grid-cols-1">
@@ -582,7 +582,7 @@ export default async function Home() {
 
       {/* FAQ: answers sit in the page HTML (closed <details>), and the same array
           is published as FAQPage schema. */}
-      <section className="border-b border-line bg-warm py-[clamp(72px,8vw,128px)]">
+      <section className="bg-warm section-md">
         <JsonLd data={faqSchema(homeFaqs)} />
         <div className="container-omh">
           <Reveal>
@@ -606,7 +606,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-surface py-[clamp(72px,8vw,128px)]">
+      <section className="bg-surface section-md">
         <div className="container-omh">
           <Reveal>
             <div className="mb-12 flex items-end justify-between gap-8 max-lg:block">

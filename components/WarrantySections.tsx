@@ -13,7 +13,7 @@ export function WarrantyHero() {
   const [lead] = warranty.intro;
 
   return (
-    <section className="hero-grid border-b border-line bg-warm">
+    <section className="hero-grid bg-warm">
       <div className="container-omh section-md">
         <Reveal>
           <Eyebrow>{warranty.eyebrow}</Eyebrow>
@@ -60,7 +60,7 @@ export function WarrantyIntro() {
       <Reveal>
         <div className="columns-2 gap-x-14 max-md:columns-1">
           {rest.map((paragraph) => (
-            <p key={paragraph} className="mb-5 break-inside-avoid text-body leading-relaxed text-ink/75">
+            <p key={paragraph} className="mb-5 break-inside-avoid last:mb-0 text-body leading-relaxed text-ink/75">
               {paragraph}
             </p>
           ))}
@@ -159,7 +159,7 @@ export function WarrantyPricing() {
 
 export function WarrantyGuarantee() {
   return (
-    <section className="border-y border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <Split ratio="7/5" align="center">

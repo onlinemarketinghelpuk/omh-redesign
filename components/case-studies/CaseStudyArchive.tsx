@@ -471,7 +471,7 @@ export function CaseStudyArchive() {
       <Featured />
       <Browse />
 
-      <section aria-labelledby="goal-heading" className="border-y border-line bg-surface">
+      <section aria-labelledby="goal-heading" className="bg-surface">
         <div className="container-omh section-md">
           <h2 id="goal-heading" className="font-sans text-h2 font-semibold text-balance">
             Explore results by <span className="text-amber-deep">business goal</span>
@@ -507,7 +507,7 @@ export function CaseStudyArchive() {
 
       <Testimonial />
 
-      <section aria-labelledby="reporting-heading" className="border-t border-line bg-surface">
+      <section aria-labelledby="reporting-heading" className="bg-surface">
         <div className="container-omh section-md grid items-start gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <div>
             <Eyebrow>Our reporting promise</Eyebrow>

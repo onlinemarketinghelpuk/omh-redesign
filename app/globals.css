@@ -35,11 +35,16 @@
   /* Layout tokens (responsive plan, docs/responsive-plan.md). One source for the gutter and the section
      rhythm, read by container-omh, the section-* utilities and the voice stylesheets. */
   --gutter: clamp(20px, 8.4px + 3.09vw, 48px);
-  --section-sm: clamp(40px, 29.327px + 3.3354vw, 72px);
-  --section-md: clamp(48px, 29.341px + 5.831vw, 104px);
-  --section-lg: clamp(64px, 37.335px + 8.3329vw, 144px);
-  --hero-pt: clamp(48px, 34px + 2.3vw, 80px);
-  --hero-pb: clamp(56px, 38px + 2.9vw, 88px);
+  /* One section spacing for every band on every page, above and below (client, 17 Nov 2026,
+     docs/section-rhythm-plan.md): 48px on a 320px phone, 88px from 1280px. The size names below all read it,
+     so older code that asks for sm/md/lg/hero gets the same space. OLD sm 40-72, md 48-104, lg 64-144,
+     hero 48-80 / 56-88. */
+  --section-y: clamp(48px, 34.667px + 4.1667vw, 88px);
+  --section-sm: var(--section-y);
+  --section-md: var(--section-y);
+  --section-lg: var(--section-y);
+  --hero-pt: var(--section-y);
+  --hero-pb: var(--section-y);
 
   /* In-section rhythm, as spacing utilities (mb-label, mt-header, mb-stack). Each equals today's desktop value
      at 1280px and tightens on phones. label: band label to content (was mb-11, 44px). header: section header
@@ -1439,21 +1444,8 @@ body {
   }
 }
 
-@media (max-width: 1024px) {
-  .stats-grid .stat-item {
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .stats-grid .stat-item:nth-child(odd) {
-    border-right: 1px solid var(--color-line);
-  }
-
-  .stats-grid .stat-item:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
-}
-
-/* Phones keep the two-column stats grid (client, 2 Nov 2026), so the lg rules above apply all the way down. */
+/* Home stats: no cross lines between the figures any more (client, 17 Nov 2026: no lines in sections). Phones keep
+   the two-column grid (client, 2 Nov 2026). */
 
 /* Neutral instead of amber: the orange ring read as an error state, especially
    around search inputs. Kept visible — keyboard users need to see focus. */

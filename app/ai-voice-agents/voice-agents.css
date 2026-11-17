@@ -1234,3 +1234,25 @@ html:has(.va-page dialog[open]) {
 @media (min-width: 640px) {
   .phone-more { display: none; }
 }
+
+/* Section spacing and lines (client, 17 Nov 2026, docs/section-rhythm-plan.md): every voice band gets the site's one
+   section spacing above and below, set on the band itself (the markup had eight different container paddings, 56 to
+   112px), and no border lines between bands. */
+:is(#va-page > section, #va-page > div > section) {
+  padding-block: var(--section-y);
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+:is(#va-page > section, #va-page > div > section) > .container-omh {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Stat strips without rules (client, 17 Nov 2026): the figures under the voice heroes and lead demos sit on space,
+   not between lines. List rows (pricing notes, FAQ) keep theirs. */
+#va-page dl.mt-12.grid.border-y, #va-page dl.mt-12.grid.border-y > div { border-width: 0; }
+.v4l .kstats, .ld-facts { border-top-width: 0; padding-top: 0; }
+/* The comparison table turns into stacked cards on phones; the last card's gap made the band deeper below. */
+@media (max-width: 767.98px) { .why-table tbody tr:last-child { margin-bottom: 0; } }
+/* London heroes: the floating call card hangs 24px below the photo; on stacked layouts that ate into the band's
+   bottom space, so the photo keeps that much room under it. */
+@media (max-width: 1023.98px) { #hero figure.relative:has(> .absolute.-bottom-6) { margin-bottom: 1.5rem; } }

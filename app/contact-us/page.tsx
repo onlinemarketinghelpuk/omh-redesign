@@ -23,7 +23,7 @@ const channels: { label: string; value: string; href?: string; icon: LucideIcon;
 export default function ContactUsPage() {
   return (
     <>
-      <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
+      <section className="hero-grid overflow-x-clip bg-warm">
         <div className="container-omh section-hero">
           <Eyebrow>Contact Us</Eyebrow>
           <h1 className="mt-7 font-sans text-display font-semibold text-balance">

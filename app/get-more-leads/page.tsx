@@ -94,12 +94,12 @@ export default function GetMoreLeadsPage() {
         </div>
       </ServiceBand>
 
-      <section className="border-y border-line bg-surface text-ink">
-        <div className="stats-grid container-omh grid grid-cols-4 divide-x divide-line max-lg:grid-cols-2 max-lg:divide-x-0">
+      <section className="section-md bg-surface text-ink">
+        <div className="stats-grid container-omh grid grid-cols-4 gap-x-8 gap-y-10 max-lg:grid-cols-2">
           {stats.map((stat, index) => {
             const StatIcon = statIcons[index];
             return (
-              <div key={stat.label} className="stat-item px-8 py-11 first:pl-0 max-lg:px-6 max-lg:odd:pl-0 max-sm:py-8 max-sm:pr-3 lg:max-xl:px-5 lg:max-xl:first:pl-0">
+              <div key={stat.label} className="stat-item">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-teal/15 text-amber-deep" aria-hidden>
                   <StatIcon className="size-6" strokeWidth={1.7} />
                 </span>

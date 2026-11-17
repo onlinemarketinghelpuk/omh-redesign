@@ -11,19 +11,19 @@ export type ServiceBandTone = "warm" | "white" | "mist" | "navy" | "dark";
 /* `rule` is the original treatment and stays the default, so the nine existing
    service pages are untouched. Every rebuilt legacy page picks a different one. */
 export type ServiceBandLabel =
-  | "rule" // dash + caps + hairline running to the right
+  | "rule" // dash + caps (the hairline that ran to the right went with the site's lines, 17 Nov 2026)
   | "plain" // dash + caps, nothing else
   | "pill" // caps inside a rounded outline chip
   | "index" // large tabular numeral beside the caps
-  | "centered" // hairline — caps — hairline, centred
+  | "centered" // caps, centred
   | "underline" // caps above a short thick accent bar
-  | "topline" // full-width hairline above, caps beneath
+  | "topline" // caps only (its full-width hairline went with the site's lines)
   | "dot" // filled accent dot + caps
   | "none"; // no label band — content supplies its own heading
 
 const toneClass: Record<ServiceBandTone, string> = {
   warm: "",
-  white: "border-b border-line bg-surface",
+  white: "bg-surface",
   mist: "bg-tint-blue text-ink",
   // Black and white sections only (client, 29 Oct 2026). OLD navy #0e2035, dark #211a12.
   navy: "bg-inverse text-oninverse",
@@ -55,7 +55,6 @@ export function ServiceBand({
   const dark = darkTones.includes(tone);
   // Phones: tighter tracking and balanced lines keep a long label to two lines (it wrapped to three at 360px).
   const caps = `text-[14px] font-semibold uppercase tracking-[0.17em] max-sm:tracking-[0.1em] text-balance ${dark ? "text-oninverse/55" : "text-muted"}`;
-  const hair = dark ? "bg-oninverse/12" : "bg-line";
   const border = dark ? "border-oninverse/25" : "border-line";
   const accentText = dark ? "text-oninverse/70" : "text-amber-deep";
 
@@ -67,7 +66,6 @@ export function ServiceBand({
             <div className={`flex items-center gap-4 ${caps}`}>
               <span aria-hidden className={`h-0.5 w-7 shrink-0 ${accent}`} />
               <span className="min-w-0">{label}</span>
-              <span aria-hidden className={`h-px flex-1 max-sm:hidden ${hair}`} />
             </div>
           )}
 
@@ -101,11 +99,7 @@ export function ServiceBand({
           )}
 
           {labelStyle === "centered" && (
-            <div className={`flex items-center justify-center gap-5 text-center ${caps}`}>
-              <span aria-hidden className={`h-px flex-1 max-sm:hidden ${hair}`} />
-              <span className="min-w-0">{label}</span>
-              <span aria-hidden className={`h-px flex-1 max-sm:hidden ${hair}`} />
-            </div>
+            <div className={`text-center ${caps}`}>{label}</div>
           )}
 
           {labelStyle === "underline" && (
@@ -116,10 +110,7 @@ export function ServiceBand({
           )}
 
           {labelStyle === "topline" && (
-            <div>
-              <span aria-hidden className={`block h-px w-full ${hair}`} />
-              <span className={`${caps} mt-4 block`}>{label}</span>
-            </div>
+            <span className={`${caps} block`}>{label}</span>
           )}
 
           {labelStyle === "dot" && (

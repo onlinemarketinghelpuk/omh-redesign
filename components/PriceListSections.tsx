@@ -74,8 +74,8 @@ function ComparisonTable({ table }: { table: PriceTable }) {
 
 export function PriceListHero() {
   return (
-    <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
-      <div className="container-omh py-12 sm:py-16">
+    <section className="hero-grid overflow-x-clip bg-warm">
+      <div className="container-omh section-md">
         <p className="text-body font-semibold text-muted">Services & pricing</p>
         <div className="mt-5 flex items-end justify-between gap-8 max-md:block">
           <div>
@@ -109,8 +109,8 @@ export function PriceTables({ voicePricingHtml }: { voicePricingHtml: string }) 
   }, []);
 
   return (
-    <section className="border-b border-line bg-surface">
-      <div className="container-omh grid items-start gap-10 py-12 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-14 lg:py-16">
+    <section className="bg-surface">
+      <div className="container-omh section-md grid items-start gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-14">
         <nav aria-label="Pricing categories" className="lg:sticky lg:top-28">
           <p className="mb-4 font-sans text-xl font-semibold text-ink">Find your service</p>
           <ul className="grid grid-cols-2 gap-x-5 lg:grid-cols-1">
@@ -174,7 +174,7 @@ export function PriceTables({ voicePricingHtml }: { voicePricingHtml: string }) 
 export function PriceListFinalCta() {
   return (
     <section className="bg-warm">
-      <div className="container-omh flex items-center justify-between gap-8 py-12 max-md:flex-col max-md:items-start sm:py-16">
+      <div className="container-omh section-md flex items-center justify-between gap-8 max-md:flex-col max-md:items-start">
         <div>
           <h2 className="font-sans text-h3 font-semibold">Need help choosing a service?</h2>
           <p className="mt-4 text-body leading-relaxed text-ink/75">Tell us what you want to achieve. We’ll explain the options and costs in a free 30-minute consultation.</p>

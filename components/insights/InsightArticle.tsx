@@ -48,15 +48,15 @@ function ArticleExtras({ post, url }: { post: InsightPost; url: string }) {
   return (
     <>
       {tags.length > 0 && (
-        <div className="mt-8 border-t border-line pt-5">
+        <div className="mt-8">
           <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-muted">Related topics</p>
           <p className="mt-2 text-body leading-relaxed text-ink/65">{tags.join(" · ")}</p>
         </div>
       )}
-      <div className="mt-8 border-t border-line pt-5">
+      <div className="mt-8">
         <ShareRow title={post.title} url={url} />
       </div>
-      <div className="mt-8 border-t border-line pt-5">
+      <div className="mt-8">
         <TextLink href="/insights">All insights</TextLink>
       </div>
     </>
@@ -138,12 +138,12 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
 
             {/* One byline strip instead of a floating meta panel — the old 3-column
                 card left a tall empty gap beside the heading on every post. */}
-            <Byline post={post} className="mt-10 border-t border-line pt-6 max-lg:hidden" />
+            <Byline post={post} className="mt-10 max-lg:hidden" />
           </Reveal>
         </div>
       </header>
 
-      <section className="border-b border-line bg-surface">
+      <section className="bg-surface">
         <div className="container-omh section-md">
           {/* Full container width: contents rail plus a body column that fills
               whatever is left, rather than a narrow centred island. */}
@@ -187,7 +187,7 @@ export async function InsightArticle({ post }: { post: InsightPost }) {
         </div>
       </section>
 
-      <section className="border-b border-line bg-warm">
+      <section className="bg-warm">
         <div className="container-omh section-md">
           <Reveal>
             <div className="flex items-end justify-between gap-8 max-lg:block">

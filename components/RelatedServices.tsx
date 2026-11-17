@@ -24,7 +24,7 @@ export function RelatedServices({
   eventPrefix: string;
 }) {
   return (
-    <section className="border-y border-line bg-surface" aria-labelledby={`${eventPrefix}-related-title`}>
+    <section className="bg-surface" aria-labelledby={`${eventPrefix}-related-title`}>
       <div className="container-omh section-md">
         <Reveal>
           <div className="grid grid-cols-12 gap-x-10 gap-y-8 max-wide:block">

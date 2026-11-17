@@ -481,7 +481,7 @@ export function CaseStudyPage({ study }: { study: CaseStudyPageData }) {
       {/* Without a services row, the more-studies band needs its own gap from the section above. */}
       <section
         aria-labelledby="more-heading"
-        className={`border-t border-line bg-soft/40 ${study.services.length ? "" : "mt-[clamp(56px,44px+3vw,96px)]"}`}
+        className={`bg-soft/40 ${study.services.length ?"" : "mt-[clamp(56px,44px+3vw,96px)]"}`}
       >
         <div className="container-omh section-sm">
           <h2 id="more-heading" className="font-sans text-h2 font-semibold">

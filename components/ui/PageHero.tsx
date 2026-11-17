@@ -32,7 +32,7 @@ export function PageHero({
   /** The button row (Button elements). */
   actions: ReactNode;
   stats?: ReadonlyArray<HeroStat>;
-  /** inline: stats wrap in a row. divided: three equal columns with hairlines between them (one-up on phones). */
+  /** inline: stats wrap in a row. divided: three equal columns (one-up on phones); no lines between them since 17 Nov 2026. */
   statsStyle?: "inline" | "divided";
   /** Small print under the stats. */
   statsNote?: ReactNode;
@@ -43,7 +43,7 @@ export function PageHero({
   className?: string;
 }) {
   return (
-    <section className={`hero-grid overflow-x-clip border-b border-line bg-warm ${className}`}>
+    <section className={`hero-grid overflow-x-clip bg-warm ${className}`}>
       <div className="container-omh section-hero">
         <Split ratio="7/5" align="center">
           {/* CSS-only entrance, not <Reveal>: the JS-gated reveal held the headline at opacity 0 until hydration
@@ -55,9 +55,9 @@ export function PageHero({
             <div className="mb-9 text-lead leading-relaxed text-ink/75 [&>p+p]:mt-4">{typeof body === "string" ? <p>{body}</p> : body}</div>
             <div className="flex flex-wrap items-center gap-3.5 max-sm:flex-col max-sm:items-stretch">{actions}</div>
             {stats && (
-              <dl className={`mt-10 border-t border-line pt-7 ${statsStyle === "divided" ? "grid max-w-[690px] items-end gap-5 sm:grid-cols-3 sm:gap-0" : "flex flex-wrap gap-x-10 gap-y-5"}`}>
+              <dl className={`mt-10 ${statsStyle === "divided" ? "grid max-w-[690px] items-end gap-5 sm:grid-cols-3" : "flex flex-wrap gap-x-10 gap-y-5"}`}>
                 {stats.map(([label, value]) => (
-                  <div key={label} className={statsStyle === "divided" ? "sm:border-l sm:border-line sm:pl-5 sm:first:border-l-0 sm:first:pl-0" : undefined}>
+                  <div key={label}>
                     <dt className="eyebrow text-muted">{label}</dt>
                     <dd className="mt-1.5 font-sans text-h4 font-semibold">{value}</dd>
                   </div>

@@ -25,7 +25,7 @@ export default async function ComingSoon({ params }: { params: Promise<{ slug: s
   const { slug } = await params;
 
   return (
-    <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
+    <section className="hero-grid overflow-x-clip bg-warm">
       <div className="container-omh section-md text-center">
         <p className="font-sans text-[clamp(48px,24px+6.5vw,120px)] font-semibold leading-none text-amber-deep">Coming soon</p>
         <h1 className="mt-6 font-sans text-h2 font-semibold">{titleFor(slug)}</h1>

@@ -42,9 +42,9 @@ export function SeoHero() {
       media={<Pointer><div className="pointer-parallax"><MediaFrame kind="image" theme="seo" ratio="16/11" title="Searching for a service" note="" source="/images/Services/SEO 2.jpg" alt="Hands holding a tablet showing a search engine results page." /></div></Pointer>}
       proof={<ReviewProof serviceId="seo" heading="SEO work backed by verified client trust" />}
       after={
-        <ul className="mt-14 grid grid-cols-5 border-t border-line max-lg:grid-cols-2 max-sm:grid-cols-1">
+        <ul className="mt-10 grid grid-cols-5 gap-y-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
           {page.about.claims.map((claim) => (
-            <li key={claim} className="flex items-center gap-3 border-line py-5 pr-4 lg:border-l lg:pl-5 lg:first:border-l-0 lg:first:pl-0">
+            <li key={claim} className="flex items-center gap-3 pr-4">
               <span className="grid size-7 shrink-0 place-items-center rounded-full bg-tint-amber text-amber-deep"><Check className="size-3.5" /></span>
               <span className="text-[15px] font-semibold leading-snug">{claim}</span>
             </li>

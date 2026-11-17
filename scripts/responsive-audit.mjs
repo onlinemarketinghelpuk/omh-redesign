@@ -275,6 +275,85 @@ if (mode === "audit") {
   process.exit(fail ? 1 : 0);
 }
 
+// ------------------------------------------------------------------ rhythm (section spacing and lines)
+// For every top-level <section>: the visible gap above its first content and below its last content (text, media,
+// form fields, and boxes with their own background or border), its own top/bottom borders, and every line drawn
+// inside it (hairline elements, and blocks that carry only a top/bottom border). Run:
+//   node scripts/responsive-audit.mjs rhythm [--pages ...] [--widths 1440,390] --out DIR
+function rhythm() {
+  const d = document, win = window;
+  const main = d.querySelector("main") || d.body;
+  // Closed <details> keep their answers in the DOM with real boxes; they are not on screen.
+  const vis = (el) => { const cs = win.getComputedStyle(el); return cs.display !== "none" && cs.visibility !== "hidden" && cs.opacity !== "0" && !(el.tagName !== "DETAILS" && el.closest("details:not([open])") && !el.closest("summary")); };
+  const sig = (el) => el.tagName.toLowerCase() + (el.id ? "#" + el.id : "") + (typeof el.className === "string" && el.className.trim() ? "." + el.className.trim().split(/\s+/).slice(0, 6).join(".") : "");
+  const clear = (c) => c === "rgba(0, 0, 0, 0)" || c === "transparent";
+  const side = (cs, k) => parseFloat(cs["border" + k + "Width"]) > 0 && cs["border" + k + "Style"] !== "none" && !clear(cs["border" + k + "Color"]);
+  const secs = [...main.querySelectorAll("section")].filter((s) => !s.parentElement.closest("section") && vis(s) && s.getBoundingClientRect().height > 40);
+  const out = [], lines = {};
+  // The colour a section actually shows: its own background, or the nearest ancestor's.
+  const groundOf = (el) => { for (let e = el; e; e = e.parentElement) { const c = win.getComputedStyle(e).backgroundColor; if (!clear(c)) return c; } return "rgb(255, 255, 255)"; };
+  for (const s of secs) {
+    const sr = s.getBoundingClientRect(), scs = win.getComputedStyle(s), ground = groundOf(s);
+    let first = Infinity, last = -Infinity;
+    const ink = (r) => { if (r.width < 2 || r.height < 2) return; if (r.bottom <= sr.top || r.top >= sr.bottom) return; first = Math.min(first, r.top); last = Math.max(last, r.bottom); };
+    const tw = d.createTreeWalker(s, NodeFilter.SHOW_TEXT);
+    for (let n; (n = tw.nextNode()); ) {
+      const p = n.parentElement; if (!n.textContent.trim() || !p || !vis(p)) continue;
+      const pr = p.getBoundingClientRect(); if (pr.width <= 1 || pr.height <= 1) continue; // sr-only
+      const rg = d.createRange(); rg.selectNodeContents(n); for (const r of rg.getClientRects()) ink(r);
+    }
+    for (const el of s.querySelectorAll("*")) {
+      if (!vis(el)) continue;
+      const cs = win.getComputedStyle(el); if (cs.position === "fixed") continue;
+      const r = el.getBoundingClientRect();
+      // Lines: a hairline element (checked before the size filter, they are 1px tall), or a wide block with only a
+      // top and/or bottom border.
+      if (r.width >= 120) {
+        const hair = r.height > 0 && r.height <= 3 && !clear(cs.backgroundColor);
+        const tb = side(cs, "Top") || side(cs, "Bottom"), lr = side(cs, "Left") || side(cs, "Right");
+        if (hair || (tb && !lr && r.width >= 240)) { const k = (hair ? "hair " : "rule ") + sig(el); lines[k] = (lines[k] || 0) + 1; }
+      }
+      if (r.width < 2 || r.height < 1) continue;
+      const media = /^(img|svg|video|canvas|iframe|input|textarea|select|picture)$/i.test(el.tagName);
+      const box = (!clear(cs.backgroundColor) && cs.backgroundColor !== ground) || ["Top", "Right", "Bottom", "Left"].some((k) => side(cs, k));
+      if (media || box) ink(r);
+    }
+    out.push({ id: s.id || sig(s).slice(0, 70), top: Math.round(first - sr.top), bottom: Math.round(sr.bottom - last), h: Math.round(sr.height), borderTop: side(scs, "Top"), borderBottom: side(scs, "Bottom"), dark: /rgb\(0, 0, 0\)|rgb\(1[0-9], /.test(scs.backgroundColor) });
+  }
+  return { secs: out, lines };
+}
+
+if (mode === "rhythm") {
+  const out = flag("out", join("..", "audit", "rhythm-" + new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-")));
+  const widths = flag("widths") ? flag("widths").split(",").map(Number) : [1440, 390];
+  mkdirSync(out, { recursive: true });
+  const pages = await pageList();
+  const c = await openChrome();
+  const report = {};
+  for (const [i, p] of pages.entries()) {
+    report[p] = {};
+    try {
+      await c.open(BASE + p, widths[0]);
+      for (const w of widths) { await c.setWidth(w, w < 1024 ? 844 : 900); await sleep(150); report[p][w] = await c.evaluate(`(${rhythm.toString()})()`); }
+      process.stdout.write(`${i + 1}/${pages.length} ${p}\n`);
+    } catch (e) { process.stdout.write(`${i + 1}/${pages.length} ${p} FAILED ${e.message}\n`); }
+  }
+  c.close();
+  writeFileSync(join(out, "rhythm.json"), JSON.stringify(report));
+  // Summary: section borders, lines by kind, and sections whose top and bottom gaps differ.
+  for (const w of widths) {
+    let secs = 0, bordered = 0, uneven = 0; const tops = [], lineKinds = {};
+    for (const p of Object.keys(report)) {
+      const m = report[p][w]; if (!m) continue;
+      for (const s of m.secs) { secs++; if (s.borderTop || s.borderBottom) bordered++; if (Math.abs(s.top - s.bottom) > 12) uneven++; tops.push(s.top); }
+      for (const [k, n] of Object.entries(m.lines)) lineKinds[k] = (lineKinds[k] || 0) + n;
+    }
+    const lineTotal = Object.values(lineKinds).reduce((a, b) => a + b, 0);
+    console.log(`\n@${w}: ${secs} sections, ${bordered} with a top/bottom border, ${uneven} with top and bottom gaps more than 12px apart; ${lineTotal} lines inside sections; distinct top gaps: ${new Set(tops).size}`);
+    for (const [k, n] of Object.entries(lineKinds).sort((a, b) => b[1] - a[1]).slice(0, 25)) console.log(`  ${String(n).padStart(4)}  ${k.slice(0, 110)}`);
+  }
+}
+
 if (mode === "rects") {
   const out = flag("out"); if (!out) throw new Error("rects needs --out DIR");
   const widths = flag("widths") ? flag("widths").split(",").map(Number) : RECT_WIDTHS;

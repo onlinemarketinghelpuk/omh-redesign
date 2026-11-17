@@ -117,7 +117,7 @@ export function FinalCta({
                 </li>
               ))}
             </ol>
-            {note && <p className="mt-6 border-t border-oninverse/15 pt-5 text-body text-oninverse/70">{note}</p>}
+            {note && <p className="mt-6 text-body text-oninverse/70">{note}</p>}
           </div>
           )}
         </Reveal>

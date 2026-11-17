@@ -42,7 +42,7 @@ function Block({ block }: { block: LegalBlock }) {
 export function LegalPage({ doc }: { doc: LegalDoc }) {
   return (
     <main>
-      <section className="hero-grid overflow-x-clip border-b border-line bg-warm">
+      <section className="hero-grid overflow-x-clip bg-warm">
         <div className="container-omh section-md">
           <Reveal>
             <div className="grid grid-cols-12 items-end gap-x-12 gap-y-8 max-lg:block">

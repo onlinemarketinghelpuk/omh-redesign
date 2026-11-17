@@ -23,7 +23,7 @@ export function AboutHero() {
   const [lead] = about.hero.story;
 
   return (
-    <section className="hero-grid relative overflow-hidden border-b border-line bg-warm">
+    <section className="hero-grid relative overflow-hidden bg-warm">
       <div className="container-omh section-md">
         <Reveal>
           <Eyebrow>{about.hero.eyebrow}</Eyebrow>
@@ -92,7 +92,7 @@ export function AboutHero() {
             </div>
           </Split>
 
-          <div className="mt-14 grid gap-x-10 gap-y-8 border-t border-line pt-9 sm:grid-cols-3">
+          <div className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-3">
             {[
               [Users, `${faces.length} specialists`, "Marketing, development, creative and support in one team"],
               [Trees, "2,000+ trees", "Planted through the One Tree Planted initiative"],
@@ -120,7 +120,7 @@ export function AboutStory() {
   const rest = about.hero.story.slice(1);
 
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <Split ratio="5/6" align="start">
@@ -158,7 +158,7 @@ export function AboutStory() {
 
 export function AboutAwards() {
   return (
-    <section className="dark-grid border-b border-line bg-inverse text-oninverse">
+    <section className="dark-grid bg-inverse text-oninverse">
       <div className="container-omh section-md">
         <Reveal>
           <Split ratio="6/5" align="center">
@@ -208,7 +208,7 @@ export function AboutAwards() {
 
 export function AboutSustainability() {
   return (
-    <section className="border-b border-line bg-warm">
+    <section className="bg-warm">
       <div className="container-omh section-md">
         <Reveal>
           {/* items-start, not items-end: bottom-aligning the heading left a tall
@@ -244,7 +244,7 @@ export function AboutCharity() {
   const [lead, ...rest] = about.charity.body;
 
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <Split ratio="6/6" from="lg" align="start">
@@ -299,7 +299,7 @@ export function AboutCharity() {
 
 export function AboutTeam() {
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-surface">
       <div className="container-omh section-md">
         <Reveal>
           <Split ratio="5/6" align="start">
