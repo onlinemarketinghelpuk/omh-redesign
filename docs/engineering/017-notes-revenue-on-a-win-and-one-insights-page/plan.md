@@ -153,7 +153,7 @@ not to whoever picks this up.**
       `/lead-dashboard/channels`, beside the existing name link, plus a revenue
       figure in the KPI strip at the top. Both point at the URLs 007 already
       built. No new query.
-- [ ] 9. Drive all of it in a real browser, signed in, on the live data and
+- [x] 9. Drive all of it in a real browser, signed in, on the live data and
       again with `?demo=1`: add a note, delete it, mark a lead won from the
       dropdown, override with a custom number, press See all and check the lead
       count on the destination equals the number on the row it came from.
@@ -183,11 +183,43 @@ Deployed first, then driven. Evidence from real runs.
   `Website Seed · £200 / 6mo`, `Website Shoot · £200 / 12mo`, and so on, with
   a first option of "not from the catalogue".
 
-**Not driven on real data, deliberately:** marking a lead won. There are two
-real leads in this deployment, the five outcomes have no "unset", so a made-up
+**Marking a lead won, closed 17 November 2026.** Not driven on either of the
+two real leads, deliberately: the five outcomes have no "unset", so a made-up
 deal value could not be undone and would put false revenue into the client's
-own channel report. The win box was driven in `?demo=1` instead, which says it
-saves nothing. **This is still owed on a test row once one exists.**
+own channel report.
+
+A lead was created instead with `sessionId: "test-017-task9"`, which
+`isTestRow` excludes from every figure on every screen, so nothing done to it
+can reach a report. Test rows are hidden from the Leads table by design, so it
+was driven on the conversation page by deep link, which carries the same
+`OutcomePicker`.
+
+What it showed, on real data through the real write path:
+
+- Picked `SEO Seed · £850 / 6mo` from the catalogue. Both one-press buttons
+  offered: "Use £850 / month" and "Use £5.1k over the term".
+- Pressed the monthly one. On a **fresh page load with no client state**, the
+  picker reads `Won £850 SEO Seed`, so the package label came back from the
+  server and the service fields persisted.
+- A hand-typed £1,234 then replaced it, which is the custom override path.
+
+### A caution for anybody verifying this feature
+
+Three queries were used to check the database and **all three were the wrong
+instrument**, each one making it look as though the service fields had not been
+stored:
+
+| Query | Why it cannot answer |
+|---|---|
+| `findLead` | Returns 9 fields. No `outcome`, no `valueGbp`, no `phone`, no `email`. |
+| `channelFacts` | Returns `outcome` and `valueGbp` but none of the service fields. |
+| `leadTimeline` | A hand-built projection of 19 named fields. No service fields, no `outcomeAt`, no `outcomeBy`, not even `_id`. |
+
+This cost an hour and produced a confident, wrong report of a defect. There is
+no query in this codebase that returns a lead's service fields, so **the only
+honest check is the user-visible one: reload the page and see whether the
+package label is still there.** If a later workstream wants a real check, that
+is a reason to add one, and that is a task, not a note.
 
 ### Defect found while driving it: the win box overhangs the table
 
@@ -243,8 +275,11 @@ passed.
 
 ## Before it can be called done
 
-- `zsh widget/tests/run.sh` green, with the new assertion count quoted against
-  the 2227 baseline. A fix that breaks a neighbour must be visible.
+- `zsh widget/tests/run.sh` green. **2572 assertions across 42 suites, every
+  suite passed**, against a 2227 baseline. Count them with
+  `grep -oE '^[0-9]+ passed|^[0-9]+ ok|^all [0-9]+ assertions pass'`: nine
+  suites report in the third format, and a grep for only the first two
+  undercounts by 840 and looks like a catastrophic regression.
 - `npx tsc --noEmit` and lint clean.
 - Browser evidence recorded for every task 9 item. HTTP 200 is not proof, and
   `?demo=1` never reaches the Convex query, so demo mode renders perfectly over
