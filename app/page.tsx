@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { Reveal } from "@/components/Reveal";
+import { ShowMore } from "@/components/ui/ShowMore";
 import { Pointer } from "@/components/Pointer";
 import { ArrowRight, Button } from "@/components/ui/Button";
 import { BookDemo } from "@/components/BookDemo";
@@ -391,7 +392,8 @@ export default async function Home() {
       <section className="container-omh py-[clamp(72px,8vw,128px)]">
         <Reveal>
           <div className="grid grid-cols-[1.08fr_0.72fr] gap-[clamp(48px,8vw,128px)] max-lg:grid-cols-1">
-            <div className="border-t border-line">
+            {/* Phones show five services and a button for the rest. */}
+            <ShowMore as="div" limit={5} noun="services" className="border-t border-line">
               {services.map((service, index) => (
                 <Link
                   key={service.label}
@@ -411,7 +413,7 @@ export default async function Home() {
                   <CardArrow />
                 </Link>
               ))}
-            </div>
+            </ShowMore>
             <div className="order-first lg:order-last lg:sticky lg:top-24 lg:self-start">
               <SectionLabel>Services</SectionLabel>
               <h2 className="mt-6 font-sans text-h2 font-semibold">

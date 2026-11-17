@@ -26,6 +26,7 @@ import { ServiceHeroArt } from "@/components/services/ServiceHeroArt";
 import { AccentTitle, CheckIcon } from "@/components/services/ServicePrimitives";
 import { ArrowRight, Button, TextLink } from "@/components/ui/Button";
 import { FinalCta } from "@/components/ui/FinalCta";
+import { ShowMore } from "@/components/ui/ShowMore";
 import { Split } from "@/components/ui/Split";
 import { Eyebrow } from "@/components/ui/Proof";
 import { caseStudies } from "@/lib/content/case-studies";
@@ -190,7 +191,8 @@ export function WebsiteDesignsPage() {
                   {category.images.length} designs
                 </span>
               </h3>
-              <ul className="mt-7 grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
+              {/* Phones show two designs per category and a button for the rest (the gallery ran to 14 screens). */}
+              <ShowMore as="ul" limit={2} noun="designs" className="mt-7 grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
                 {category.images.map((image, i) => (
                   <li key={image.file}>
                     {/* Browser-window card. On hover the page screenshot (cropped from the mock-up into
@@ -218,7 +220,7 @@ export function WebsiteDesignsPage() {
                     </figure>
                   </li>
                 ))}
-              </ul>
+              </ShowMore>
             </section>
           ))}
         </div>

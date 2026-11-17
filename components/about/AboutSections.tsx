@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { BookDemo } from "@/components/BookDemo";
 import { FinalCta } from "@/components/ui/FinalCta";
 import { Eyebrow } from "@/components/ui/Proof";
+import { ShowMore } from "@/components/ui/ShowMore";
 import { Split } from "@/components/ui/Split";
 import { about } from "@/lib/content/about";
 
@@ -323,7 +324,8 @@ export function AboutTeam() {
         </Reveal>
 
         <Reveal>
-          <ul className="mt-14 grid grid-cols-4 gap-5 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+          {/* Phones show four people and a button for the whole team (19 portraits ran to 11 screens). */}
+          <ShowMore as="ul" limit={4} noun="team members" className="mt-14 grid grid-cols-4 gap-5 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {about.team.members.map((member) => (
               <li key={member.name}>
                 <figure className="group relative overflow-hidden rounded-media border border-line bg-soft">
@@ -343,7 +345,7 @@ export function AboutTeam() {
                 </figure>
               </li>
             ))}
-          </ul>
+          </ShowMore>
         </Reveal>
       </div>
     </section>

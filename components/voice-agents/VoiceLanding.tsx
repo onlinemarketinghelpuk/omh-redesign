@@ -3,6 +3,7 @@ import { BookDemo } from "@/components/BookDemo";
 import { LandingV4Script } from "@/components/voice-agents/LandingV4Script";
 import { VoiceAgentsScript } from "@/components/voice-agents/VoiceAgentsScript";
 import { VoiceMotion } from "@/components/voice-agents/VoiceMotion";
+import { PhoneCollapse } from "@/components/voice-agents/PhoneCollapse";
 import { JsonLd, SITE } from "@/lib/schema";
 import { ReelPlayer } from "@/components/voice-agents/ReelPlayer";
 
@@ -88,6 +89,8 @@ export function VoiceLanding({ runs, graph, page, demoHeading, thingsToTry, brea
       {/* Popup for any [data-reel] video card (lib/content/sample-reels.ts); idle on pages without one. */}
       <ReelPlayer />
       <VoiceMotion />
+      {/* Phones: the longest lists collapse behind "Show all" (Phase 5). */}
+      <PhoneCollapse />
       {/* Page-specific widgets, e.g. EstateScript. */}
       {children}
     </>
