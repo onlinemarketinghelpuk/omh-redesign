@@ -94,6 +94,18 @@ function later(){setTimeout(load,3500)}if(d.readyState==='complete')later();else
             __html: `try{var r=document.documentElement,s=localStorage.getItem("omh-theme");r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.js="1"}catch(e){}`,
           }}
         />
+        {/* Section joins (client, 17 Nov 2026): a section with the same colour as the one above it gets data-join and
+            drops its top spacing (globals.css), so two white sections are one gap apart, not two. Colours differ
+            between the themes, so it runs in a frame callback (always before paint, so nothing moves) after any
+            DOM change or theme switch. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(d){var q=0;function bg(e){for(;e;e=e.parentElement){var c=getComputedStyle(e).backgroundColor;if(c!=="rgba(0, 0, 0, 0)"&&c!=="transparent")return c}return""}
+function run(){q=0;var m=d.getElementById("main");if(!m)return;var pc=null;m.querySelectorAll("section").forEach(function(s){if(s.parentElement.closest("section")||getComputedStyle(s).display==="none")return;var c=bg(s);if(c===pc)s.setAttribute("data-join","");else s.removeAttribute("data-join");pc=c})}
+function go(){if(!q){q=1;requestAnimationFrame(run)}}
+new MutationObserver(go).observe(d.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:["data-theme"]});addEventListener("resize",go);go()})(document);`,
+          }}
+        />
       </head>
       {/* Browser extensions (e.g. Grammarly) add attributes to <body> before
           React loads; this only silences that one-level attribute mismatch. */}

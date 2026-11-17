@@ -318,8 +318,13 @@ function rhythm() {
       const box = (!clear(cs.backgroundColor) && cs.backgroundColor !== ground) || ["Top", "Right", "Bottom", "Left"].some((k) => side(cs, k));
       if (media || box) ink(r);
     }
-    out.push({ id: s.id || sig(s).slice(0, 70), top: Math.round(first - sr.top), bottom: Math.round(sr.bottom - last), h: Math.round(sr.height), borderTop: side(scs, "Top"), borderBottom: side(scs, "Bottom"), dark: /rgb\(0, 0, 0\)|rgb\(1[0-9], /.test(scs.backgroundColor) });
+    out.push({ id: s.id || sig(s).slice(0, 70), top: Math.round(first - sr.top), bottom: Math.round(sr.bottom - last), h: Math.round(sr.height), y: Math.round(sr.top + win.scrollY), borderTop: side(scs, "Top"), borderBottom: side(scs, "Bottom"), dark: /rgb\(0, 0, 0\)|rgb\(1[0-9], /.test(scs.backgroundColor), ground });
   }
+  // The colour each section shows in dark mode too: two neighbours with the same colour read as one space.
+  const root = d.documentElement, theme = root.getAttribute("data-theme");
+  root.setAttribute("data-theme", theme === "dark" ? "light" : "dark");
+  secs.forEach((s, i) => { out[i].groundAlt = groundOf(s); });
+  if (theme === null) root.removeAttribute("data-theme"); else root.setAttribute("data-theme", theme);
   return { secs: out, lines };
 }
 
@@ -329,6 +334,8 @@ if (mode === "rhythm") {
   mkdirSync(out, { recursive: true });
   const pages = await pageList();
   const c = await openChrome();
+  // --dark: measure the dark theme (the boot script follows prefers-color-scheme when nothing is saved).
+  if (process.argv.includes("--dark")) await c.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }, { name: "prefers-color-scheme", value: "dark" }] });
   const report = {};
   for (const [i, p] of pages.entries()) {
     report[p] = {};

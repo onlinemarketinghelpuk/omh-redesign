@@ -42,12 +42,14 @@ export function ShowMore({
   return (
     <>
       <Tag className={`${className} ${open ? "" : HIDE[limit]}`}>{children}</Tag>
+      {/* 44px to tap, but laid out as one line of text: the extra height hangs into the space around it, so a
+          button that ends a section does not add to the section spacing (client, 17 Nov 2026). */}
       {total > limit && (
         <button
           type="button"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
-          className={`mt-3 inline-flex min-h-11 cursor-pointer items-center font-sans text-body font-semibold text-amber-deep underline-offset-4 hover:underline sm:hidden ${buttonClassName}`}
+          className={`mt-[calc(0.75rem_+_(1lh_-_44px)/2)] mb-[calc((1lh_-_44px)/2)] inline-flex min-h-11 cursor-pointer items-center font-sans text-body font-semibold text-amber-deep underline-offset-4 hover:underline sm:hidden ${buttonClassName}`}
         >
           {open ? (lessLabel ?? `Show fewer ${noun}`) : (moreLabel ?? `Show all ${total} ${noun}`)}
         </button>

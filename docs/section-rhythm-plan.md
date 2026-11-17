@@ -86,3 +86,28 @@ bordered sections 219 -> 0; label hairlines 117 -> 0; space above content 88px a
 own line height adds a few px) and 51px at 390; uneven sections 99 -> 0 real. Full `audit:responsive` beside
 `final-audit-3`: nothing worse (0 sideways scroll, 0 spilled text at every width); distinct section paddings per
 width 11-18 -> 4. Before/after sheets in `audit/sr-sheets`.
+
+### Round 2: doubled gaps between same-colour sections (17 Nov 2026)
+
+Client screenshots after the push: with the lines gone, two white sections next to each other showed both paddings
+as one empty space (176px on desktop, 102px on phones), while a white section next to a black one looked right.
+Census of neighbours (`rhythm` now records each section's colour in both themes): 279 same-colour pairs in light
+mode, gaps 173-191px. Which neighbours share a colour differs by theme (dark mode turns white sections black next
+to black bands, and white `bg-surface` dark grey), and neighbours sit in different wrappers on the voice, FAQ and
+Solutions pages, so CSS sibling selectors could not cover it.
+
+- `app/layout.tsx`: a boot script marks a top-level section whose colour matches the one above it with
+  `data-join`. It runs in a frame callback, so always before paint (nothing moves), after any DOM change, theme
+  switch or resize.
+- `globals.css`: `[data-join]` sets `--section-pt: 0`; the `section-*` utilities and the voice band rule read it
+  for their top padding. The gap between same-colour sections is one `--section-y`; different colours keep
+  `--section-y` on each side.
+- Trailing 44px tap areas (voice text links, "Show all" buttons) now hang into the space instead of adding 12px.
+- Voice heroes: the strip and the video are one header gap apart again (the band rule had zeroed the video's
+  own top padding, leaving ~25px).
+- Dark mode: black panels on black pages get a faint outline (as the booking panel), so their padding no longer
+  reads as extra space under a section.
+
+Result (light and dark census, 52 pages): same-colour gaps 85-98px at 1440 and 49-61px at 390 (the spread is
+headings' own line height); colour edges 85-92 / 49-55. Remaining flags are census artefacts checked by eye:
+background glows, clipped hover crops, the sticky price menu, the Instagram carousel's clipped cards.

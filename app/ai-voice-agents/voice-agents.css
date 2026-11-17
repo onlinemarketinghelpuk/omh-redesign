@@ -1239,7 +1239,7 @@ html:has(.va-page dialog[open]) {
    section spacing above and below, set on the band itself (the markup had eight different container paddings, 56 to
    112px), and no border lines between bands. */
 :is(#va-page > section, #va-page > div > section) {
-  padding-block: var(--section-y);
+  padding-block: var(--section-pt, var(--section-y)) var(--section-y);
   border-top-width: 0;
   border-bottom-width: 0;
 }
@@ -1256,3 +1256,12 @@ html:has(.va-page dialog[open]) {
 /* London heroes: the floating call card hangs 24px below the photo; on stacked layouts that ate into the band's
    bottom space, so the photo keeps that much room under it. */
 @media (max-width: 1023.98px) { #hero figure.relative:has(> .absolute.-bottom-6) { margin-bottom: 1.5rem; } }
+/* 44px tap areas laid out as one line of text (client, 17 Nov 2026): the text links and "Show all" buttons keep
+   their 44px to tap, but the extra height hangs into the space around them instead of adding to it. A link that
+   ended a band made that band 12px deeper below than above. */
+#va-page :is(.text-link, #cities .link-tap) { margin-block: calc((1lh - 44px) / 2); }
+.phone-more { margin-block: calc(12px + (1lh - 44px) / 2) calc((1lh - 44px) / 2); }
+/* Voice heroes (client, 17 Nov 2026): the copy, the "Built for every call" strip and the video sit one header gap
+   apart. The band rule above zeroed the video container's own top padding too, so the strip touched the video. */
+#va-page #top > .container-omh + div { margin-top: var(--gap-header); }
+#va-page #top > .container-omh ~ .container-omh { padding-top: var(--gap-header); }

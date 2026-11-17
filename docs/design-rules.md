@@ -141,8 +141,11 @@ Agreed with the user when planning the responsive rebuild; the full plan and its
     previews) also happens on focus, so a tap starts it on a phone and Tab starts it on a keyboard.
 29. **One section spacing, no lines** (client, 17 Nov 2026, `docs/section-rhythm-plan.md`). Every band,
     heroes included, has `--section-y` above and below its content (48px on a 320px phone, 88px from
-    1280px): use `section-md` (sm, lg and the hero paddings point at the same value). The last element in
-    a band adds no margin or padding of its own. No borders between sections, no hairlines beside labels,
+    1280px): use `section-md` (sm, lg and the hero paddings point at the same value). Two neighbouring
+    sections of the same colour are one `--section-y` apart, not two: the boot script in `app/layout.tsx`
+    marks the lower one `data-join` (per theme, before paint) and it drops its top spacing, so any new
+    section padding must read `--section-pt` the way the `section-*` utilities do. The last element in a
+    band adds no margin or padding of its own (44px tap areas hang into the space, they do not add to it). No borders between sections, no hairlines beside labels,
     no rules above or below blocks (stats, notes, quotes, controls). Lines stay only where they are part of
     a component: card outlines, table rows, accordion and FAQ rows, rows of one ruled list, tab bars,
     form fields. One small-caps label per section.

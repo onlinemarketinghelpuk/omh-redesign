@@ -233,16 +233,33 @@
    unchanged. OLD lg clamp(80px, 53.5px + 7.07vw, 144px), md clamp(64px, 47.4px + 4.42vw, 104px),
    sm clamp(48px, 38.1px + 2.65vw, 72px). */
 @utility section-lg {
-  padding-block: var(--section-lg);
+  padding-block: var(--section-pt, var(--section-lg)) var(--section-lg);
 }
 @utility section-md {
-  padding-block: var(--section-md);
+  padding-block: var(--section-pt, var(--section-md)) var(--section-md);
 }
 @utility section-sm {
-  padding-block: var(--section-sm);
+  padding-block: var(--section-pt, var(--section-sm)) var(--section-sm);
 }
 @utility section-hero {
-  padding-block: var(--hero-pt) var(--hero-pb);
+  padding-block: var(--section-pt, var(--hero-pt)) var(--hero-pb);
+}
+/* Two neighbouring sections of the same colour read as one space, so their two paddings doubled the gap (176px on
+   desktop; client, 17 Nov 2026). The boot script in app/layout.tsx marks a section whose colour matches the one
+   above it, in the current theme, with data-join; it then drops its top spacing and the gap is one --section-y.
+   Sections of different colours keep the full spacing on both sides. Nested sections are not affected. */
+[data-join] {
+  --section-pt: 0px;
+}
+[data-join] section {
+  --section-pt: initial;
+}
+/* Dark mode: a black panel on a black page lost its edge, so its inner padding read as extra space under the
+   section. A faint outline, as on the BookDemo panel (client, 17 Nov 2026). Panels inside black bands look as in
+   light mode. */
+:root[data-theme="dark"] section:not(.bg-inverse, .bg-band) :is(.rounded-card, .rounded-media, .rounded-\[8px\]).bg-inverse {
+  outline: 1px solid color-mix(in oklab, var(--color-oninverse) 12%, transparent);
+  outline-offset: -1px;
 }
 /* A 44x44px touch area for a small link or icon without moving anything: an invisible layer centred on
    the element. Use on standalone links only (not on links stacked closer than 44px, whose areas would
