@@ -417,3 +417,14 @@ pages, Phase 3 hero), and voice-only tap targets (Phase 4).
   runs 17 characters a line.
 - Phase 4 left: the "16px gutter bleed" from the plan was not seen in this round's measurements. Next: Phase 5
   (phone length: voice pages 31-40 screens, Website Designs 34, About 27, home 26).
+
+### Phase 5, 17 Nov 2026: phone length
+
+- `ShowMore` on the Website Designs gallery (2 per category), About team (4) and home services (5);
+  `components/voice-agents/PhoneCollapse.tsx` for the voice markup (adds a `.phone-more` button and
+  `data-phone-limit`; CSS in `voice-agents.css` hides the rest under 640px, never while a filter has hidden items).
+- Screens at 390px: Website Designs 33.7 -> 24.2, About 27.1 -> 19.6, home 26.3 -> 24.9, /ai-voice-agents
+  41.4 -> 35.9, industry voice pages about -2 each (30.6-38.1 now). 640px and 1280px heights unchanged.
+- Not collapsed on purpose: voice FAQ ("Open all" and the result count would disagree with a collapsed list),
+  plan cards, lead-flow and day-of-calls sections. Voice pages stay long because every section is kept (client).
+- Next: Phase 6 device pass (real phones on the Vercel preview; the user is already sending screenshots from one).
