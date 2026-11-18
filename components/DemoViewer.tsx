@@ -50,9 +50,11 @@ export function DemoViewer({ url, title }: { url: string; title: string }) {
 
   return (
     <>
-      {/* The button sits over the card's screenshot: shown on hover or focus, always on touch screens. The overlay
-          lets the pointer through (the screenshot scrolls under it); the dialog stays outside it, or it would too. */}
-      <div className="pointer-events-none absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-300 group-focus-within:opacity-100 group-hover:opacity-100 pointer-coarse:opacity-100">
+      {/* The button sits over the card's screenshot: shown on hover or keyboard focus, always on touch screens. The
+          overlay lets the pointer through (the screenshot scrolls under it); the dialog stays outside it, or it would
+          too. Keyboard focus only (:focus-visible): closing the popup hands focus back to this button, and with plain
+          focus-within the button stayed on the card after a mouse click until the next click (client, 18 Nov 2026). */}
+      <div className="pointer-events-none absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-has-[:focus-visible]:opacity-100 pointer-coarse:opacity-100">
         <button
           type="button"
           aria-haspopup="dialog"
@@ -77,13 +79,15 @@ export function DemoViewer({ url, title }: { url: string; title: string }) {
         className="demo-viewer fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-inverse p-0 text-oninverse"
       >
         <div className="flex h-full flex-col">
-          <div className="flex items-center gap-4 px-[var(--gutter)] py-3">
-            <button type="button" onClick={() => dialog.current?.close()} className="btn-secondary px-4 py-2.5">
+          {/* Back on the left, the size buttons in the true centre (an empty third column balances Back); no title
+              (client, 18 Nov 2026). */}
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 px-[var(--gutter)] py-3">
+            <button type="button" onClick={() => dialog.current?.close()} className="btn-secondary justify-self-start px-4 py-2.5">
               <ArrowLeft className="size-5" aria-hidden />
               Back
             </button>
             {/* Below 768px the preview is already phone width, so the size buttons only show from tablets up. */}
-            <div role="group" aria-label="Preview size" className="mx-auto flex gap-2 max-md:hidden">
+            <div role="group" aria-label="Preview size" className="flex gap-2 max-md:hidden">
               {DEVICES.map(({ key, label, Icon }) => (
                 <button
                   key={key}
@@ -97,7 +101,6 @@ export function DemoViewer({ url, title }: { url: string; title: string }) {
                 </button>
               ))}
             </div>
-            <p className="ml-auto min-w-0 truncate text-body text-oninverse/70 md:ml-0 md:max-w-[30%]">{title}</p>
           </div>
           <div className="min-h-0 flex-1 px-[var(--gutter)] pb-4">
             <div
