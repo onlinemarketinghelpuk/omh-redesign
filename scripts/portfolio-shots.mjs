@@ -93,3 +93,5 @@ for (const slug of categories) {
 ws.close(); proc.kill(); server.close();
 writeFileSync(OUT, JSON.stringify(manifest, null, 2) + "\n");
 console.log(`wrote ${OUT}`);
+// The pre-sized WebP copies the gallery serves.
+await import("./gallery-images.mjs");

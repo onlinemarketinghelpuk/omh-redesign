@@ -130,6 +130,16 @@ function pass(request: NextRequest) {
 export async function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
 
+  /* Portfolio demo designs (public/portfolio/) are for the popup on /website-designs (client, 18 Nov 2026). Opened
+     on their own (a typed or shared link, view-source, "open in new tab") they go back to the gallery. Browsers say
+     how a file is being loaded in Sec-Fetch-Dest; one that sends nothing is let through. A deterrent only. */
+  if (pathname.startsWith("/portfolio/")) {
+    if (request.headers.get("sec-fetch-dest") === "document") {
+      return NextResponse.redirect(new URL("/website-designs", request.url));
+    }
+    return NextResponse.next();
+  }
+
   const isDashboard =
     pathname === "/lead-dashboard" || pathname.startsWith("/lead-dashboard/");
 
@@ -165,6 +175,7 @@ export async function proxy(request: NextRequest) {
 export const config = {
   /* Every page, so maintenance mode can cover the whole public site.
      Static build files, images and anything with a file extension (the
-     files in public/) are skipped, so they never pass through here. */
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)"],
+     files in public/) are skipped, so they never pass through here, except
+     the portfolio demos (see the top of proxy()). */
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)", "/portfolio/:path*"],
 };

@@ -12,6 +12,35 @@ const DEVICES = [
   { key: "phone", label: "Phone", width: "390px", Icon: Smartphone },
 ] as const;
 
+// Make the design harder to lift (client, 18 Nov 2026): no right-click, dragging, selecting or copying inside the demo,
+// and the view-source, save, print and developer-tools shortcuts do nothing. Works on our own demos (same site);
+// another site's demo is out of reach, and the browser decides. A deterrent: what a browser shows can be saved.
+const BLOCKED_KEYS = new Set(["u", "s", "p", "c", "a"]);
+const DEVTOOLS_KEYS = new Set(["i", "j", "c", "k"]);
+function lockDown(frame: HTMLIFrameElement) {
+  let doc: Document | null = null;
+  try {
+    doc = frame.contentDocument;
+  } catch {
+    return;
+  }
+  if (!doc) return;
+  const stop = (e: Event) => e.preventDefault();
+  for (const type of ["contextmenu", "dragstart", "selectstart", "copy", "cut"]) doc.addEventListener(type, stop);
+  doc.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
+    const mod = e.ctrlKey || e.metaKey;
+    const devtools = mod && (e.shiftKey || e.altKey) && DEVTOOLS_KEYS.has(key);
+    const blocked = mod && !e.shiftKey && !e.altKey && BLOCKED_KEYS.has(key);
+    if (e.key === "F12" || devtools || blocked) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+  doc.documentElement.style.setProperty("user-select", "none");
+  doc.documentElement.style.setProperty("-webkit-user-select", "none");
+}
+
 export function DemoViewer({ url, title }: { url: string; title: string }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
@@ -44,6 +73,7 @@ export function DemoViewer({ url, title }: { url: string; title: string }) {
         ref={dialog}
         aria-label={`Live demo: ${title}`}
         onClose={() => setOpen(false)}
+        onContextMenu={(e) => e.preventDefault()}
         className="demo-viewer fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-inverse p-0 text-oninverse"
       >
         <div className="flex h-full flex-col">
@@ -79,7 +109,10 @@ export function DemoViewer({ url, title }: { url: string; title: string }) {
                 <iframe
                   src={url}
                   title={`Live demo: ${title}`}
-                  onLoad={() => setLoaded(true)}
+                  onLoad={(e) => {
+                    lockDown(e.currentTarget);
+                    setLoaded(true);
+                  }}
                   className="relative size-full border-0"
                 />
               )}

@@ -27,9 +27,20 @@ const nextConfig: NextConfig = {
     ],
   },
   // Portfolio demos (public/portfolio/, shown in the popup on /website-designs) are made-up shops: keep them out of
-  // search results (client, 18 Nov 2026).
+  // search results, and let only our own pages frame them (client, 18 Nov 2026). The proxy sends anyone who opens one
+  // directly back to the gallery, so the answer varies with how it was requested.
   async headers() {
-    return [{ source: "/portfolio/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }];
+    return [
+      {
+        source: "/portfolio/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Vary", value: "Sec-Fetch-Dest" },
+        ],
+      },
+    ];
   },
   async redirects() {
     return [

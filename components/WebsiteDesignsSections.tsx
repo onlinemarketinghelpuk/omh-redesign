@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { CaseStudyVisual } from "@/components/case-studies/CaseStudyVisual";
 import { DemoViewer } from "@/components/DemoViewer";
+import { GalleryImage } from "@/components/GalleryImage";
 import { RelatedServices } from "@/components/RelatedServices";
 import { SiteTestimonials } from "@/components/Testimonials";
 import { ServiceBand } from "@/components/services/ServiceBand";
@@ -233,7 +234,7 @@ export function WebsiteDesignsPage() {
                       </div>
                       <div className="relative aspect-[16/10] overflow-hidden bg-surface [container-type:size]">
                         {/* Demo screenshots are whole pages (about eight screens), so they scroll for longer. */}
-                        <Image
+                        <GalleryImage
                           src={item.src}
                           alt={item.alt}
                           width={item.width}
