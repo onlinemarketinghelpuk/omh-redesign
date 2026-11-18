@@ -256,6 +256,7 @@ export const priceList = {
       ],
     },
     seoPackages,
+    ecommerceSeoPackages,
     {
       id: "local-seo",
       title: "Our Local SEO Packages",
