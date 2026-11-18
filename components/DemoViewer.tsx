@@ -24,8 +24,6 @@ export function DemoViewer({ url, title }: { url: string; title: string }) {
       {/* The button sits over the card's screenshot: shown on hover or focus, always on touch screens. The overlay
           lets the pointer through (the screenshot scrolls under it); the dialog stays outside it, or it would too. */}
       <div className="pointer-events-none absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-300 group-focus-within:opacity-100 group-hover:opacity-100 pointer-coarse:opacity-100">
-        {/* Dark overlay on hover or focus; on touch screens it waits for a tap, so thumbnails are not dimmed. */}
-        <span aria-hidden className="absolute inset-0 bg-inverse/45 opacity-0 transition-opacity duration-300 group-focus-within:opacity-100 group-focus:opacity-100 group-hover:opacity-100" />
         <button
           type="button"
           aria-haspopup="dialog"
@@ -35,7 +33,7 @@ export function DemoViewer({ url, title }: { url: string; title: string }) {
             dialog.current?.showModal();
           }}
           data-event="website_designs_demo_open"
-          className="button-motion btn-primary pointer-events-auto relative shadow-[0_18px_40px_-18px_rgb(0_0_0/0.6)]"
+          className="button-motion btn-primary pointer-events-auto shadow-[0_18px_40px_-18px_rgb(0_0_0/0.6)]"
         >
           <Eye className="size-5" aria-hidden />
           View demo<span className="sr-only">: {title}</span>

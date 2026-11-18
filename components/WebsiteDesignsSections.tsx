@@ -241,8 +241,8 @@ export function WebsiteDesignsPage() {
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                           className={`absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:ease-in-out group-focus:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))] motion-safe:group-focus:translate-y-[min(0px,calc(100cqh-100%))] ${item.demo ? "group-hover:duration-[14000ms] group-focus:duration-[14000ms]" : "group-hover:duration-[6000ms] group-focus:duration-[6000ms]"}`}
                         />
-                        {/* Designs with a live demo: an overlay and a button over the screenshot on hover or focus
-                            (the button always shows on touch screens) open it in a popup (client, 18 Nov 2026). */}
+                        {/* Designs with a live demo: a button over the screenshot on hover or focus
+                            (always shown on touch screens; no dark overlay, client 18 Nov 2026) opens it in a popup. */}
                         {item.demo && <DemoViewer url={item.demo} title={item.alt} />}
                       </div>
                     </figure>
