@@ -1387,7 +1387,7 @@ body {
     color 480ms ease;
 }
 
-.recognition-tile:hover {
+.recognition-tile:is(:hover, :focus-visible) {
   z-index: 2;
   transform: translateY(-6px);
   border-color: var(--color-teal);
@@ -1396,7 +1396,7 @@ body {
   box-shadow: 0 30px 58px -34px rgb(0 0 0 / 0.72);
 }
 
-.recognition-tile:hover svg:first-child {
+.recognition-tile:is(:hover, :focus-visible) svg:first-child {
   transform: scale(1.12) rotate(-4deg);
   color: #7d5c33;
 }
@@ -1413,7 +1413,7 @@ body {
     transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.recognition-tile:hover .recognition-arrow {
+.recognition-tile:is(:hover, :focus-visible) .recognition-arrow {
   opacity: 1;
   transform: translateX(0);
 }
@@ -1512,7 +1512,7 @@ select:focus-visible {
     background: var(--color-surface);
   }
 
-  .recognition-tile:hover {
+  .recognition-tile:is(:hover, :focus-visible) {
     background: var(--color-soft);
     color: var(--color-ink);
   }

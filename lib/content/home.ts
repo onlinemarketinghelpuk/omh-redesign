@@ -151,21 +151,23 @@ export const testimonials = CASE_STUDIES_LIVE
 // 14 tiles. The home page draws positions 1, 5, 10 and 12 double-height (the two AI
 // tiles among them); with dense packing that is the spread that fills the three-column
 // masonry in exactly six rows with no hole. Re-check if a tile is added or removed.
+// Each tile links to the page that covers it (client, 18 Nov 2026). No page of its own for GA4, Tag Manager,
+// reporting or account support: they go to the service whose packages include them.
 export const recognition = [
-  "Google Ads",
-  "AI Voice Agents",
-  "Meta Ads",
-  "GA4",
-  "Tag Manager",
-  "WordPress",
-  "WooCommerce",
-  "Local SEO",
-  "Landing Pages",
-  "Reporting",
-  "Conversion Rate",
-  "Technical SEO",
-  "AI Chatbots",
-  "Account Support",
+  { label: "Google Ads", href: "/google-adwords-ppc" },
+  { label: "AI Voice Agents", href: "/ai-voice-agents" },
+  { label: "Meta Ads", href: "/social-media-paid-advertising" },
+  { label: "GA4", href: "/google-adwords-ppc" },
+  { label: "Tag Manager", href: "/google-adwords-ppc" },
+  { label: "WordPress", href: "/wordpress-development" },
+  { label: "WooCommerce", href: "/wordpress-development" },
+  { label: "Local SEO", href: "/local-seo" },
+  { label: "Landing Pages", href: "/solutions/improve-website-conversion" },
+  { label: "Reporting", href: "/solutions/outsource-digital-marketing" },
+  { label: "Conversion Rate", href: "/solutions/improve-website-conversion" },
+  { label: "Technical SEO", href: "/seo-services" },
+  { label: "AI Chatbots", href: "/ai-services" },
+  { label: "Account Support", href: "/solutions/outsource-digital-marketing" },
 ];
 
 export const whoWeWorkWith = {

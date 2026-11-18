@@ -10,8 +10,8 @@ const DRAG_STEP_PX = 180; // Dragging this far moves the ring on by one reel, ab
 const DRAG_START_PX = 5; // Less than this is a click on the reel, not a drag.
 const FLICK_PX = 40; // A short, quick drag still moves on one reel.
 const VISIBLE_EITHER_SIDE = 2;
-// Instagram's own gradient and the reference widget's card colours, used only inside this carousel.
-const instaGradient = "bg-[linear-gradient(135deg,oklch(80%_.16_75),oklch(68%_.23_30),oklch(62%_.26_0),oklch(55%_.25_320))]";
+// Brand colours, not Instagram's gradient (client, 18 Nov 2026): the accent brown for the ring, active dot, glow
+// and button, and the site's black for the cards and arrows.
 
 export function InstagramCarousel({ reels, profileUrl, handle }: { reels: InstagramReel[]; profileUrl: string; handle: string }) {
   const count = reels.length;
@@ -57,7 +57,7 @@ export function InstagramCarousel({ reels, profileUrl, handle }: { reels: Instag
       onBlurCapture={() => setPaused(false)}
     >
       <a href={profileUrl} target="_blank" rel="noreferrer" className="mx-auto mb-8 flex w-fit items-center gap-3">
-        <span className={`grid size-11 place-items-center rounded-full p-[2px] ${instaGradient}`}>
+        <span className={`grid size-11 place-items-center rounded-full bg-amber p-[2px]`}>
           <span className="grid size-full place-items-center rounded-full bg-inverse">
             {/* The footer's Instagram mark: lucide-react v1 dropped its brand icons. */}
             <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" fillRule="evenodd" aria-hidden>
@@ -120,7 +120,7 @@ export function InstagramCarousel({ reels, profileUrl, handle }: { reels: Instag
                   e.preventDefault();
                   setPlaying(reel);
                 }}
-                className={`group absolute left-1/2 top-0 w-[240px] overflow-hidden rounded-[22px] border border-oninverse/12 bg-[oklch(19%_.025_300)] shadow-[0_30px_80px_-20px_oklch(65%_.25_0)] sm:w-[300px] ${dragging ? "" : "transition-all duration-700 ease-out"}`}
+                className={`group absolute left-1/2 top-0 w-[240px] overflow-hidden rounded-[22px] border border-oninverse/12 bg-inverse shadow-[0_30px_80px_-20px_var(--accent)] sm:w-[300px] ${dragging ? "" : "transition-all duration-700 ease-out"}`}
                 style={{
                   transform: `translateX(-50%) translateX(${offset * 62}%) translateZ(${-distance * 160}px) rotateY(${offset * -32}deg)`,
                   zIndex: 10 - Math.round(distance),
@@ -146,7 +146,7 @@ export function InstagramCarousel({ reels, profileUrl, handle }: { reels: Instag
           type="button"
           aria-label="Previous reel"
           onClick={() => go(-1)}
-          className="grid size-10 cursor-pointer place-items-center rounded-full border border-oninverse/12 bg-[oklch(24%_.03_300)] transition hover:bg-[oklch(65%_.25_0)]"
+          className="grid size-10 cursor-pointer place-items-center rounded-full border border-oninverse/12 bg-oninverse/10 transition hover:bg-amber"
         >
           <ChevronLeft className="size-5" aria-hidden />
         </button>
@@ -158,7 +158,7 @@ export function InstagramCarousel({ reels, profileUrl, handle }: { reels: Instag
               aria-label={`Go to reel ${index + 1}`}
               aria-current={index === active || undefined}
               onClick={() => setActive(index)}
-              className={`h-1.5 cursor-pointer rounded-full transition-all ${index === active ? `w-6 ${instaGradient}` : "w-1.5 bg-oninverse/40"}`}
+              className={`h-1.5 cursor-pointer rounded-full transition-all ${index === active ? "w-6 bg-amber" : "w-1.5 bg-oninverse/40"}`}
             />
           ))}
         </div>
@@ -166,7 +166,7 @@ export function InstagramCarousel({ reels, profileUrl, handle }: { reels: Instag
           type="button"
           aria-label="Next reel"
           onClick={() => go(1)}
-          className="grid size-10 cursor-pointer place-items-center rounded-full border border-oninverse/12 bg-[oklch(24%_.03_300)] transition hover:bg-[oklch(65%_.25_0)]"
+          className="grid size-10 cursor-pointer place-items-center rounded-full border border-oninverse/12 bg-oninverse/10 transition hover:bg-amber"
         >
           <ChevronRight className="size-5" aria-hidden />
         </button>
@@ -177,7 +177,7 @@ export function InstagramCarousel({ reels, profileUrl, handle }: { reels: Instag
           href={profileUrl}
           target="_blank"
           rel="noreferrer"
-          className={`rounded-full px-6 py-2.5 text-sm font-semibold text-white transition hover:scale-105 ${instaGradient}`}
+          className="button-motion btn-primary"
         >
           Follow us on Instagram
         </a>

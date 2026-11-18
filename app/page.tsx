@@ -524,13 +524,13 @@ export default async function Home() {
 
               <div className="recognition-masonry">
                 {recognition.map((item, index) => {
-                  const RecognitionIcon = recognitionIcons[item] ?? Target;
+                  const RecognitionIcon = recognitionIcons[item.label] ?? Target;
                   return (
-                    <div key={item} className={`recognition-tile${tallTiles.has(index) ? " recognition-tile-2" : ""}`}>
+                    <Link key={item.label} href={item.href} data-event="home_capability_click" className={`recognition-tile${tallTiles.has(index) ? " recognition-tile-2" : ""}`}>
                       <RecognitionIcon className="size-7" strokeWidth={1.7} aria-hidden />
-                      <span>{item}</span>
-                      <ArrowRight className="recognition-arrow size-4" />
-                    </div>
+                      <span>{item.label}</span>
+                      <ArrowRight className="recognition-arrow size-4" aria-hidden />
+                    </Link>
                   );
                 })}
               </div>

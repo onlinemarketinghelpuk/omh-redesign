@@ -504,9 +504,9 @@ export default async function Home2() {
                 {recognition.map((item, index) => {
                   const RecognitionIcon = recognitionIcons[index % recognitionIcons.length];
                   return (
-                    <div key={item} className={`recognition-tile recognition-tile-${(index % 4) + 1}`}>
+                    <div key={item.label} className={`recognition-tile recognition-tile-${(index % 4) + 1}`}>
                       <RecognitionIcon className="size-7" strokeWidth={1.7} aria-hidden />
-                      <span>{item}</span>
+                      <span>{item.label}</span>
                       <ArrowRight className="recognition-arrow size-4" />
                     </div>
                   );
