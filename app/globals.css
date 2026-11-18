@@ -320,6 +320,23 @@ body {
 }
 
 /*
+  Pointer cursor on everything clickable (client, 18 Nov 2026). Tailwind v4 dropped
+  it from buttons, so all 120+ buttons, the demo popup button, accordion summaries
+  and the voice pages' chips showed the arrow. In @layer base so `cursor-*`
+  utilities and the disabled rule still win.
+*/
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  select:not(:disabled),
+  input:is([type="checkbox"], [type="radio"], [type="range"], [type="submit"], [type="button"], [type="reset"], [type="file"], [type="color"]):not(:disabled),
+  label:has(> input:is([type="checkbox"], [type="radio"]):not(:disabled)) {
+    cursor: pointer;
+  }
+}
+
+/*
   Two-font system, assigned once at element level so no page can drift.
   Instrument Sans = headings/UI, Source Sans 3 = everything else, quotes
   included (the Source Serif 4 accent was dropped in Oct 2026 at the client's request).
