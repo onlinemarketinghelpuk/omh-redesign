@@ -33,6 +33,7 @@ import { Eyebrow } from "@/components/ui/Proof";
 import { caseStudies } from "@/lib/content/case-studies";
 import { company } from "@/lib/content/nav";
 import { websiteDesigns as page } from "@/lib/content/website-designs";
+import portfolioDemos from "@/lib/content/portfolio-demos.json";
 import { wordpressDevelopment } from "@/lib/content/wordpress-development";
 import { CASE_STUDIES_LIVE } from "@/lib/flags";
 
@@ -48,6 +49,26 @@ import { CASE_STUDIES_LIVE } from "@/lib/flags";
 
 const LABEL = "topline" as const;
 const ACCENT = "bg-amber";
+
+// The portfolio: HTML demo designs first (public/portfolio/<category>/, listed in portfolio-demos.json by
+// scripts/portfolio-shots.mjs, each with a live demo), then the theme screenshots from the old site.
+type GalleryItem = { key: string; src: string; alt: string; width: number; height: number; demo?: string };
+const gallery: { title: string; items: GalleryItem[] }[] = [
+  ...portfolioDemos.map((c) => ({
+    title: c.title,
+    items: c.items.map((d) => ({ key: d.demo, src: d.shot, alt: d.alt, width: d.width, height: d.height, demo: d.demo })),
+  })),
+  ...page.gallery.categories.map((c) => ({
+    title: c.title,
+    items: c.images.map((im) => ({
+      key: im.file,
+      src: `${page.gallery.base}pages/${im.file.replace(/\.\w+$/, ".jpg")}`,
+      alt: im.alt,
+      width: 990,
+      height: 1016,
+    })),
+  })),
+];
 
 const sectorIcons: Record<string, LucideIcon> = {
   Construction: HardHat,
@@ -184,19 +205,19 @@ export function WebsiteDesignsPage() {
         <p className="mt-4 hidden text-body text-muted pointer-fine:block">Hover over a design to scroll through the page.</p>
         <p className="mt-4 hidden text-body text-muted pointer-coarse:block">Tap a design to scroll through the page.</p>
         <div className="mt-12 flex flex-col gap-14">
-          {page.gallery.categories.map((category) => (
+          {gallery.map((category) => (
             <section key={category.title} aria-label={category.title}>
               <h3 className="flex items-center gap-4 font-sans text-h4 font-semibold">
                 {category.title}
                 <span aria-hidden className="flex-1" />
                 <span className="whitespace-nowrap text-bsm font-medium text-muted tabular-nums">
-                  {category.images.length} designs
+                  {category.items.length} designs
                 </span>
               </h3>
               {/* Phones show two designs per category and a button for the rest (the gallery ran to 14 screens). */}
               <ShowMore as="ul" limit={2} noun="designs" className="mt-7 grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
-                {category.images.map((image: { file: string; alt: string; demo?: string }, i) => (
-                  <li key={image.file}>
+                {category.items.map((item, i) => (
+                  <li key={item.key}>
                     {/* Browser-window card. On hover the page screenshot (cropped from the mock-up into
                         pages/) slides up until its bottom meets the frame: 100cqh is the frame height,
                         min() keeps screenshots shorter than the frame still. Focus does the same, so a tap
@@ -211,17 +232,18 @@ export function WebsiteDesignsPage() {
                         </span>
                       </div>
                       <div className="relative aspect-[16/10] overflow-hidden bg-surface [container-type:size]">
+                        {/* Demo screenshots are whole pages (about eight screens), so they scroll for longer. */}
                         <Image
-                          src={`${page.gallery.base}pages/${image.file.replace(/\.\w+$/, ".jpg")}`}
-                          alt={image.alt}
-                          width={990}
-                          height={1016}
+                          src={item.src}
+                          alt={item.alt}
+                          width={item.width}
+                          height={item.height}
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                          className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:duration-[6000ms] group-hover:ease-in-out group-focus:duration-[6000ms] group-focus:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))] motion-safe:group-focus:translate-y-[min(0px,calc(100cqh-100%))]"
+                          className={`absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:ease-in-out group-focus:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))] motion-safe:group-focus:translate-y-[min(0px,calc(100cqh-100%))] ${item.demo ? "group-hover:duration-[14000ms] group-focus:duration-[14000ms]" : "group-hover:duration-[6000ms] group-focus:duration-[6000ms]"}`}
                         />
-                        {/* Designs with a live demo: a button over the screenshot on hover or focus (always shown on
-                            touch screens) opens it in a popup (client, 18 Nov 2026). */}
-                        {image.demo && <DemoViewer url={image.demo} title={image.alt} />}
+                        {/* Designs with a live demo: an overlay and a button over the screenshot on hover or focus
+                            (the button always shows on touch screens) open it in a popup (client, 18 Nov 2026). */}
+                        {item.demo && <DemoViewer url={item.demo} title={item.alt} />}
                       </div>
                     </figure>
                   </li>

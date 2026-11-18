@@ -94,9 +94,7 @@ export const websiteDesigns = {
       {
         title: "Accountancy Firm Designs",
         images: [
-          // demo: a live site the card opens in the demo popup (client, 18 Nov 2026). This one is a placeholder (the
-          // redesign preview) until the client sends the real demo links.
-          { file: "Modern-and-Efficient-Accounting-Online-Marketing-Help-Theme.jpg", alt: "Modern and Efficient Accounting Online Marketing Help Theme", demo: "https://omh-redesign-pi.vercel.app/" },
+          { file: "Modern-and-Efficient-Accounting-Online-Marketing-Help-Theme.jpg", alt: "Modern and Efficient Accounting Online Marketing Help Theme" },
           { file: "Sophisticated-Online-Marketing-Assistance-Theme-for-Accountancy-Websites.jpg", alt: "Sophisticated Online Marketing Assistance Theme for Accountancy Websites" },
           { file: "Conversion-Boosting-Marketing-Support-Theme-for-Accountants.jpg", alt: "Conversion-Boosting Marketing Support Theme for Accountants" },
           { file: "Dynamic-and-Engaging-Marketing-Solutions-for-Accounting-Sites.jpg", alt: "Dynamic and Engaging Marketing Solutions for Accounting Sites" },

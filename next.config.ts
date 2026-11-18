@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**.fbcdn.net" },
     ],
   },
+  // Portfolio demos (public/portfolio/, shown in the popup on /website-designs) are made-up shops: keep them out of
+  // search results (client, 18 Nov 2026).
+  async headers() {
+    return [{ source: "/portfolio/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }];
+  },
   async redirects() {
     return [
       { source: "/blog", destination: "/insights", permanent: true },

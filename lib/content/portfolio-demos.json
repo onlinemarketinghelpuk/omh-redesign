@@ -1,0 +1,43 @@
+[
+  {
+    "slug": "ecommerce",
+    "title": "Ecommerce Designs",
+    "items": [
+      {
+        "demo": "/portfolio/ecommerce/1-home-comfort-living.html",
+        "shot": "/portfolio/ecommerce/1-home-comfort-living.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Hollin ecommerce website design: Throws, Linen Bedding & Cosy Home Comforts, Made in Yorkshire"
+      },
+      {
+        "demo": "/portfolio/ecommerce/2-skincare-beauty.html",
+        "shot": "/portfolio/ecommerce/2-skincare-beauty.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Sulis ecommerce website design: Small-Batch Skincare Made in Bath: Serums, Moisturisers & Gift Sets"
+      },
+      {
+        "demo": "/portfolio/ecommerce/3-home-lighting-decor.html",
+        "shot": "/portfolio/ecommerce/3-home-lighting-decor.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Wick & Wire ecommerce website design: Designer Lighting & Home Decor, Hand-finished in Bristol"
+      },
+      {
+        "demo": "/portfolio/ecommerce/4-luxury-gift-store.html",
+        "shot": "/portfolio/ecommerce/4-luxury-gift-store.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Marlowe & Co. ecommerce website design: Luxury Gifts & Hampers, Hand-Wrapped in Marylebone, London"
+      },
+      {
+        "demo": "/portfolio/ecommerce/5-kitchen-dining.html",
+        "shot": "/portfolio/ecommerce/5-kitchen-dining.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Forge & Table ecommerce website design: Sheffield Cutlery, Bone China & Kitchenware"
+      }
+    ]
+  }
+]
