@@ -6,8 +6,8 @@ import { CASE_STUDIES_LIVE } from "@/lib/flags";
   so edit the brief first, then this file.
 
   Developer notes carried over from the brief:
-  - Package prices are pending; they are confirmed in the written proposal. Put the
-    figures in `packages[].price` once the client sets them.
+  - Package prices: the /seo-services packages at £100 more per tier, built in
+    `ecommerceSeoPackages` (lib/content/price-list.ts).
   - The meta description mentions a free ecommerce SEO audit. If that offer stops,
     swap it for "Book a free consultation".
   - Hero stats and the results section come from /case-studies/clothing-business.
@@ -155,14 +155,6 @@ export const ecommerceSeo = {
     title: "Ecommerce SEO packages built around your catalogue.",
     titleAccent: "built around your catalogue.",
     body: "Store size drives the work, so ecommerce SEO packages are scoped by the number of categories and products in play. Your ecommerce SEO consultant confirms price, VAT, deliverables and terms in a written proposal before anything starts.",
-    // ponytail: `price` is empty until the client sets figures; the card then shows the proposal line.
-    pendingPrice: "Priced in your proposal",
-    items: [
-      { stage: "Growing store", name: "Ecommerce SEO Starter", price: "", bestFor: "For smaller catalogues that need the foundations fixed and core categories ranking.", includes: ["Ecommerce SEO audit", "Up to 10 category pages optimised", "Technical fixes list and support", "Monthly report and call"], cta: "Discuss Starter" },
-      { stage: "Established store", name: "Ecommerce SEO Growth", price: "", bestFor: "For stores ready to expand keyword coverage across more ranges and products.", includes: ["Everything in Starter", "Up to 25 category pages and priority products", "Two buying guides per month", "Product schema and Core Web Vitals work"], cta: "Discuss Growth" },
-      { stage: "Large catalogue", name: "Ecommerce SEO Scale", price: "", bestFor: "For large or multi-store catalogues that need ongoing technical and content work.", includes: ["Everything in Growth", "Faceted navigation and crawl budget plan", "Digital PR and link building", "Dedicated ecommerce SEO specialist"], cta: "Discuss Scale" },
-    ],
-    note: "Package names are not a recommendation. Prices and inclusions are confirmed in your written proposal.",
   },
 
   whyOmh: {

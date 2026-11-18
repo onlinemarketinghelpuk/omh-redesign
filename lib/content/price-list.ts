@@ -88,6 +88,49 @@ const amazonPpcTable: PriceTable = {
   notes: amazonPpc.pricingNotes.filter((note) => !note.startsWith("*Confirm")),
 };
 
+export const seoPackages: PriceTable = {
+  id: "seo",
+  title: "Search Engine Optimisation Packages",
+  tiers: ["SEO Seed", "SEO Shoot", "SEO Sapling", "SEO Tree"],
+  rows: [
+    { label: "Include Hours*", values: ["15", "30", "45", "75"] },
+    { label: "Contract Length (Months)", values: ["6", "6", "9", "9"] },
+    { label: "Set-up Time", values: ["14 Days", "14 Days", "14 Days", "14 Days"] },
+    { label: "Keyword Research", values: [true, true, true, true] },
+    { label: "Account Manager", values: [true, true, true, true] },
+    { label: "Meetings", values: ["Monthly", "Monthly", "Monthly", "Monthly"] },
+    { label: "On Boarding", values: ["24 hours", "24 hours", "24 hours", "24 hours"] },
+    { label: "Audience Research", values: [true, true, true, true] },
+    { label: "Campaign Set-up", values: [true, true, true, true] },
+    { label: "Management and optimisation", values: [true, true, true, true] },
+    { label: "Analytics Set-up", values: [true, true, true, true] },
+    { label: "Reporting", values: [true, true, true, true] },
+    { label: "Ad Copywriting", values: [false, true, true, true] },
+    { label: "Conversion Optimisation", values: [false, true, true, true] },
+    { label: "Consultancy", values: [false, true, true, true] },
+    { label: "Pricing**", values: ["£850", "£1600", "£2500", "£4100"] },
+  ],
+  notes: [
+    consultationNote,
+    "As part of your services, we will:",
+    accountManagerNote,
+    progressCallsNote,
+    rollingNote,
+    "Technical tasks included but not limited to are:",
+    "Advanced crawling and extraction, Hreflang recommendations, Page speed analysis, Full & mini technical audits, Log File Analysis Implementation Checks, Staging environment checks, Basic crawling, Sitemap checks & recommendations Schema investigations, Mobile vs Desktop parity checks & recommendations",
+  ],
+};
+
+// Ecommerce SEO: the same packages at £100 more per tier (client, 18 Nov 2026).
+export const ecommerceSeoPackages: PriceTable = {
+  ...seoPackages,
+  id: "ecommerce-seo",
+  title: "Ecommerce SEO Packages",
+  rows: seoPackages.rows.map((row) =>
+    row.label.startsWith("Pricing") ? { ...row, values: row.values.map((v) => `£${Number(String(v).slice(1)) + 100}`) } : row,
+  ),
+};
+
 export const priceList = {
   eyebrow: "Pricing",
   title: "All Services Price List",
@@ -212,38 +255,7 @@ export const priceList = {
         "We do guarantee that we will drive relevant traffic to your website.",
       ],
     },
-    {
-      id: "seo",
-      title: "Search Engine Optimisation Packages",
-      tiers: ["SEO Seed", "SEO Shoot", "SEO Sapling", "SEO Tree"],
-      rows: [
-        { label: "Include Hours*", values: ["15", "30", "45", "75"] },
-        { label: "Contract Length (Months)", values: ["6", "6", "9", "9"] },
-        { label: "Set-up Time", values: ["14 Days", "14 Days", "14 Days", "14 Days"] },
-        { label: "Keyword Research", values: [true, true, true, true] },
-        { label: "Account Manager", values: [true, true, true, true] },
-        { label: "Meetings", values: ["Monthly", "Monthly", "Monthly", "Monthly"] },
-        { label: "On Boarding", values: ["24 hours", "24 hours", "24 hours", "24 hours"] },
-        { label: "Audience Research", values: [true, true, true, true] },
-        { label: "Campaign Set-up", values: [true, true, true, true] },
-        { label: "Management and optimisation", values: [true, true, true, true] },
-        { label: "Analytics Set-up", values: [true, true, true, true] },
-        { label: "Reporting", values: [true, true, true, true] },
-        { label: "Ad Copywriting", values: [false, true, true, true] },
-        { label: "Conversion Optimisation", values: [false, true, true, true] },
-        { label: "Consultancy", values: [false, true, true, true] },
-        { label: "Pricing**", values: ["£850", "£1600", "£2500", "£4100"] },
-      ],
-      notes: [
-        consultationNote,
-        "As part of your services, we will:",
-        accountManagerNote,
-        progressCallsNote,
-        rollingNote,
-        "Technical tasks included but not limited to are:",
-        "Advanced crawling and extraction, Hreflang recommendations, Page speed analysis, Full & mini technical audits, Log File Analysis Implementation Checks, Staging environment checks, Basic crawling, Sitemap checks & recommendations Schema investigations, Mobile vs Desktop parity checks & recommendations",
-      ],
-    },
+    seoPackages,
     {
       id: "local-seo",
       title: "Our Local SEO Packages",
@@ -312,7 +324,7 @@ export const priceList = {
         "These packages include copy writing and content creation. The content we create will be inline with your existing brand if you don’t have a brand pallet we can help guide you with this or you can invest in a Branding Package. Our Social Media Marketing packages do not included as standard brand pallet creation so your account manager will discuss the packages available for this service should you need this.",
         "All designs for social media creative come with 1 review. We may use the same content across different platforms but will make sure it is optimised accordingly. The above packages are on a minimum 3 month basis.",
       ],
-    },
+    },
     amazonPpcTable,
     {
       id: "Shopify",

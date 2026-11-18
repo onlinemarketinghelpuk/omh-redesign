@@ -18,6 +18,8 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Split } from "@/components/ui/Split";
 import { bestSeoServices as page } from "@/lib/content/seo-landing";
+import { ComparisonTable } from "@/components/PriceListSections";
+import { seoPackages } from "@/lib/content/price-list";
 
 /* /seo-services on the same scaffold as the other service pages (hero with proof
    badge, ruled "need help" lists, surface cards, process timeline, carousel reviews,
@@ -137,6 +139,19 @@ export function SeoAffordable() {
           </dl>
         </Split>
       </Reveal>
+    </Band>
+  );
+}
+
+export function SeoPackages() {
+  return (
+    <Band label="Packages" id="packages" tone="warm">
+      <div data-event={`${event}_pricing_view`}>
+        <SectionIntro title="Compare our SEO packages." accent="SEO packages." body="Four monthly packages, from 15 to 75 hours of SEO work. We confirm the right one for your business on a free 30 minute consultation." bodyClassName="text-body" />
+        <div className="mt-header"><ComparisonTable table={seoPackages} /></div>
+        <p className="mt-6 text-bsm text-muted">{seoPackages.notes.find((note) => note.startsWith("*"))}</p>
+        <Button href="/book-a-consultation" className="mt-6" data-event={`${event}_packages_cta_click`}>Discuss your package</Button>
+      </div>
     </Band>
   );
 }

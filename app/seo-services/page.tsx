@@ -9,6 +9,7 @@ import {
   SeoFinalCTA,
   SeoHero,
   SeoMedia,
+  SeoPackages,
   SeoProcess,
   SeoServicesGrid,
   SeoSmallBusiness,
@@ -34,6 +35,7 @@ export default function SeoServicesPage() {
       <SeoServicesGrid />
       <SeoMedia />
       <SeoAffordable />
+      <SeoPackages />
       <SeoProcess />
       <SeoSmallBusiness />
       <ServiceCaseStudies

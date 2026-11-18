@@ -23,6 +23,8 @@ import { CardGrid } from "@/components/ui/CardGrid";
 import { NumberedList } from "@/components/ui/NumberedList";
 import { PageHero } from "@/components/ui/PageHero";
 import { Split } from "@/components/ui/Split";
+import { ComparisonTable } from "@/components/PriceListSections";
+import { ecommerceSeoPackages } from "@/lib/content/price-list";
 import { caseStudies } from "@/lib/content/case-studies";
 import { ecommerceSeo as page } from "@/lib/content/ecommerce-seo";
 import { CASE_STUDIES_LIVE } from "@/lib/flags";
@@ -225,36 +227,9 @@ export function EcommerceSeoPackages() {
     <Band label={p.eyebrow} id="packages" tone="warm">
       <div data-event={`${event}_pricing_view`}>
         <SectionIntro title={p.title} accent={p.titleAccent} body={p.body} bodyClassName="text-body" />
-        <CardGrid cols={3} className="mt-header">
-          {p.items.map((pkg) => (
-            <article key={pkg.name} className="surface-card flex flex-col overflow-hidden rounded-card border border-line bg-surface">
-              <div className="border-b border-line bg-soft/50 p-6">
-                <p className="eyebrow text-muted">{pkg.stage}</p>
-                <h3 className="mt-2 font-sans text-h3 font-semibold">{pkg.name}</h3>
-                {pkg.price ? (
-                  <p className="mt-3 font-sans text-price font-semibold tracking-[-0.02em]">{pkg.price}</p>
-                ) : (
-                  <p className="mt-3 font-sans text-h4 font-semibold text-amber-deep">{p.pendingPrice}</p>
-                )}
-                <p className="mt-4 text-bsm leading-relaxed text-ink/70">{pkg.bestFor}</p>
-              </div>
-              <ul className="flex-1 p-6">
-                {pkg.includes.map((line) => (
-                  <li key={line} className="flex gap-3 border-b border-line py-3 text-body leading-snug text-ink/85 last:border-b-0">
-                    <Check className="mt-1 size-4 shrink-0 text-amber-deep" />
-                    {line}
-                  </li>
-                ))}
-              </ul>
-              <div className="px-6 pb-6">
-                <Button href="/book-a-consultation" className="min-h-11 w-full justify-center" data-event={`${event}_package_select`} data-package={pkg.name}>
-                  {pkg.cta}
-                </Button>
-              </div>
-            </article>
-          ))}
-        </CardGrid>
-        <p className="mt-6 text-bsm text-muted">{p.note}</p>
+        <div className="mt-header"><ComparisonTable table={ecommerceSeoPackages} /></div>
+        <p className="mt-6 text-bsm text-muted">{ecommerceSeoPackages.notes.find((note) => note.startsWith("*"))}</p>
+        <Button href="/book-a-consultation" className="mt-6" data-event={`${event}_packages_cta_click`}>Discuss your package</Button>
       </div>
     </Band>
   );

@@ -21,7 +21,7 @@ function Value({ value }: { value: PriceCell }) {
   return <>{value}</>;
 }
 
-function ComparisonTable({ table }: { table: PriceTable }) {
+export function ComparisonTable({ table }: { table: PriceTable }) {
   const pricing = table.rows.find(row => row.label.startsWith("Pricing"));
   return (
     <>
