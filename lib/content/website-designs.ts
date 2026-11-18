@@ -2,7 +2,8 @@
   Phase 7 of docs/legacy-pages-plan.md — /website-designs, the last legacy page.
   Copy follows the SEO page brief (Sep 2026: focus "web design company",
   secondary "company website design"). The gallery names and alt text are still
-  verbatim from the live page, including "ecommerce Designs" in lower case.
+  verbatim from the live page. The old "ecommerce Designs" screenshots were removed
+  (client, 18 Nov 2026); the ecommerce live demos replace them.
 
   ◈ Live-site defect: the page's "CASE STUDIES" band is unfinished — five
   identical cards reading "Hospitality / It is a long established fact that a
@@ -139,19 +140,6 @@ export const websiteDesigns = {
           { file: "Legal-Firm-Website-Design-Custom-Site.jpg", alt: "Legal Firm Website Design Custom Site" },
           { file: "Legal-Firm-Website-Design-Dark-Website-Scratch.jpg", alt: "Legal Firm Website Design Dark Website Scratch" },
           { file: "Legal-Firm-Website-Design-Uk-Designer.jpg", alt: "Legal Firm Website Design Uk Designer" },
-        ],
-      },
-      {
-        title: "ecommerce Designs",
-        images: [
-          { file: "Sleek-and-Modern-eCommerce-Website-Theme-Design-for-Online-Marketing-Help.jpg", alt: "Sleek and Modern eCommerce Website Theme Design for Online Marketing Help" },
-          { file: "User-Friendly-Online-Marketing-Support-Design-for-eCommerce-Stores.jpg", alt: "User-Friendly Online Marketing Support Design for eCommerce Stores" },
-          { file: "Responsive-eCommerce-Marketing-Assistance-Design.jpg", alt: "Responsive eCommerce Marketing Assistance Design" },
-          { file: "High-Performance-Online-Marketing-Help-Theme-for-E-commerce.jpg", alt: "High-Performance Online Marketing Help Theme for E-commerce" },
-          { file: "Efficient-Online-Marketing-Tools-and-Resources-for-eCommerce.jpg", alt: "Efficient Online Marketing Tools and Resources for eCommerce" },
-          { file: "Dynamic-and-Engaging-Online-Marketing-Solutions-for-E-commerce.jpg", alt: "Dynamic and Engaging Online Marketing Solutions for E-commerce" },
-          { file: "Contemporary-eCommerce-Marketing-Aid-Website-Theme.jpg", alt: "Contemporary eCommerce Marketing Aid Website Theme" },
-          { file: "Vibrant-Online-Marketing-Assistance-Theme-with-Elegance-for-eCommerce.jpg", alt: "Vibrant Online Marketing Assistance Theme with Elegance for eCommerce" },
         ],
       },
     ] as { title: string; images: { file: string; alt: string }[] }[],
