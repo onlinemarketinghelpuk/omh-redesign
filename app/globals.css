@@ -337,6 +337,19 @@ body {
 }
 
 /*
+  Smooth in-page jumps site-wide (client, 18 Nov 2026: the /website-designs industry
+  cards jumped instantly). Page changes stay instant: <html> carries
+  data-scroll-behavior="smooth" (app/layout.tsx), so Next switches this off while
+  it resets the scroll. Never pair it with scroll-padding on <html>: offset
+  anchor targets with scroll-margin (see voice-agents.css, 17 Nov 2026).
+*/
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/*
   Two-font system, assigned once at element level so no page can drift.
   Instrument Sans = headings/UI, Source Sans 3 = everything else, quotes
   included (the Source Serif 4 accent was dropped in Oct 2026 at the client's request).
