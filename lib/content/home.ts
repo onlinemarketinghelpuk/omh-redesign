@@ -123,18 +123,19 @@ export const difference = [
 ];
 
 // Tile labels are the anchor text into each service page, so each one carries
-// that page's own focus keyword (brief §7). List, names and order set by the client
-// (18 Nov 2026): eight services; Website Design, Local SEO, Conversion Improvement,
-// Social Media Marketing and WordPress Maintenance removed; Shopify added after WordPress.
+// that page's own focus keyword (brief §7). Eight services, names set by the client
+// (18 Nov 2026). Rows run from the narrowest title to the widest, by rendered width at
+// 1440px (client; measured 18 Nov 2026: 141, 201, 302, 322, 377, 392, 436, 437px).
+// Re-measure if a label changes.
 export const services = [
   { label: "AI Services", href: "/ai-services", body: "Chatbots, voice agents, integrations and automation, built and managed for you." },
-  { label: "Search Engine Optimisation (SEO)", href: "/seo-services", body: "Technical, on-page and content SEO for long-term organic growth." },
   { label: "AI Voice Agents", href: "/ai-voice-agents", body: "Answers every call and books appointments, day and night." },
   { label: "Google Ads Advertising", href: "/google-adwords-ppc", body: "Search, Shopping and Performance Max campaigns built around profit." },
   { label: "Amazon PPC Advertising", href: "/amazon-ppc-advertising-agency-uk", body: "Sponsored ads that grow sales without wasting spend." },
   { label: "Paid Social Media Advertising", href: "/social-media-paid-advertising", body: "Meta, Instagram and TikTok ads that turn attention into leads." },
-  { label: "WordPress Development Services", href: "/wordpress-development", body: "Custom WordPress and WooCommerce builds." },
   { label: "Shopify Development Services", href: "/shopify-development", body: "Shopify stores built around your products and your customers." },
+  { label: "WordPress Development Services", href: "/wordpress-development", body: "Custom WordPress and WooCommerce builds." },
+  { label: "Search Engine Optimisation (SEO)", href: "/seo-services", body: "Technical, on-page and content SEO for long-term organic growth." },
 ];
 
 // While case studies are unpublished (lib/flags.ts) the quotes come from published Trustpilot/Google reviews instead.
