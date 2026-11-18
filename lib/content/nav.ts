@@ -38,7 +38,9 @@ const serviceColumns: NavColumn[] = [
     links: [
       { label: "Local SEO", href: "/local-seo", ready: true },
       { label: "SEO Services", href: "/seo-services", ready: true },
-      { label: "Ecommerce SEO", href: "/ecommerce-seo-services", ready: true },
+      // Ecommerce SEO is out of the menus for now (client, 18 Nov 2026); the page stays live at
+      // /ecommerce-seo-services, in the sitemap, search and breadcrumbs (the page list below). Put this back to show it:
+      // { label: "Ecommerce SEO", href: "/ecommerce-seo-services", ready: true },
     ],
   },
   {
