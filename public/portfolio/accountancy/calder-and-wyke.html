@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calder &amp; Wyke | Chartered Accountants for Owner-Managed Businesses, Leeds</title>
+<meta name="description" content="ICAEW chartered accountants in Leeds for owner-managed businesses turning over £1m to £25m. Management accounts by the 8th working day, outsourced FD and tax planning a year ahead.">
+<link rel="canonical" href="https://www.calderwyke.co.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calder &amp; Wyke | Chartered Accountants, Leeds">
+<meta property="og:description" content="Management accounts on your desk by the 8th working day. Tax bills you can see coming a year out.">
+<meta property="og:url" content="https://www.calderwyke.co.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#101714">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "name": "Calder & Wyke Chartered Accountants Ltd",
+  "description": "Chartered accountants for owner-managed businesses: management accounts, outsourced finance director, year-end accounts, corporation tax and R&D tax relief.",
+  "url": "https://www.calderwyke.co.uk/",
+  "telephone": "+441132457781",
+  "email": "hello@calderwyke.co.uk",
+  "foundingDate": "2004",
+  "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80&auto=format&fit=crop",
+  "priceRange": "££",
+  "address": { "@type": "PostalAddress", "streetAddress": "3rd Floor, 11 Park Square East", "addressLocality": "Leeds", "postalCode": "LS1 2NG", "addressCountry": "GB" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 53.7998, "longitude": -1.5537 },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "17:30" }],
+  "areaServed": ["Leeds","Harrogate","Wakefield","Bradford","York","Huddersfield","Wetherby","Ilkley"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "86" }
+}
+</script>
+<style>
+/* =========================================================
+   CALDER & WYKE
+   Art direction: dark editorial. A business magazine, not a
+   bank: big Fraunces headlines, contents pages, drop caps,
+   brass rules and asymmetric features.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --ink:#101714;
+  --ink-2:#17201C;
+  --ink-3:#1F2A25;
+  --bone:#ECE6DA;
+  --bone-2:#B9B2A4;
+  --brass:#C8A15A;
+  --brass-2:#E2C58A;
+  --rule:rgba(236,230,218,.16);
+  --error:#F0907E;
+
+  --f-serif:'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --f-sans:'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  --t-xs:.78rem;
+  --t-sm:.92rem;
+  --t-base:1.0625rem;
+  --t-lg:1.2rem;
+  --t-xl:clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem);
+  --t-2xl:clamp(2.4rem, 1.3rem + 4vw, 4.6rem);
+  --t-cover:clamp(2.9rem, 1.2rem + 5.6vw, 6.2rem);
+
+  --s-1:.5rem; --s-2:1rem; --s-3:1.75rem; --s-4:2.75rem; --s-5:4.5rem; --s-6:7rem;
+  --wrap:min(1280px, 100% - 2.5rem);
+  --ease:cubic-bezier(.25,.8,.25,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font:400 var(--t-base)/1.65 var(--f-sans)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-serif);font-weight:400;margin:0;line-height:1.02;letter-spacing:-.015em;font-variation-settings:"opsz" 144}
+p{margin:0 0 var(--s-2)}
+.wrap{width:var(--wrap);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:0;background:var(--brass);color:var(--ink);padding:.75rem 1rem;z-index:300}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:2px solid var(--brass-2);outline-offset:3px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.kicker{font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+.dek{font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:var(--t-lg);color:var(--bone-2)}
+
+/* section masthead: kicker left, folio right, brass rule between */
+.mast{display:flex;align-items:baseline;gap:1rem;padding-top:var(--s-2);border-top:1px solid var(--brass);margin-bottom:var(--s-4)}
+.mast .folio{margin-left:auto;font-family:var(--f-serif);font-style:italic;color:var(--bone-2);font-size:var(--t-sm)}
+
+/* buttons: brass fill, text link style secondary */
+.btn{display:inline-flex;align-items:center;gap:.9rem;padding:1rem 1.5rem;background:var(--brass);color:var(--ink);font:600 var(--t-sm)/1 var(--f-sans);letter-spacing:.04em;text-decoration:none;border:0;cursor:pointer;transition:background .3s var(--ease)}
+.btn:hover{background:var(--brass-2)}
+.btn .arr{display:inline-block;transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(5px)}
+.tlink{color:var(--bone);text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:2px;transition:color .2s}
+.tlink:hover{color:var(--brass-2)}
+
+/* ---------- 3. Navigation: split around a centred wordmark ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:80;transition:background .4s var(--ease),padding .4s var(--ease);padding:1.25rem 0}
+.nav.is-scrolled{background:rgba(16,23,20,.96);padding:.6rem 0;box-shadow:0 1px 0 var(--rule)}
+.nav__in{width:var(--wrap);margin-inline:auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
+.nav__links{display:none;list-style:none;margin:0;padding:0;gap:1.6rem}
+.nav__links a{text-decoration:none;font-size:var(--t-sm);color:var(--bone-2);transition:color .2s}
+.nav__links a:hover{color:var(--bone)}
+.brand{grid-column:2;text-align:center;text-decoration:none;font-family:var(--f-serif);font-size:1.55rem;line-height:1;letter-spacing:.01em}
+.brand i{color:var(--brass);font-weight:300}
+.brand small{display:block;font:500 .6rem var(--f-sans);letter-spacing:.32em;text-transform:uppercase;color:var(--bone-2);margin-top:.35rem}
+.nav__right{grid-column:3;display:flex;justify-content:flex-end;align-items:center;gap:1.2rem}
+.nav__tel{display:none;text-decoration:none;font-size:var(--t-sm)}
+.nav__cta{display:none}
+.nav__index{background:none;border:1px solid var(--rule);color:var(--bone);font:500 var(--t-xs) var(--f-sans);letter-spacing:.2em;text-transform:uppercase;padding:.6rem .9rem;cursor:pointer}
+@media (max-width:1079px){.nav__in{display:flex;justify-content:space-between}.brand{text-align:left}}
+@media (min-width:1080px){
+  .nav__links{display:flex;grid-column:1}
+  .nav__tel,.nav__cta{display:inline-flex}
+  .nav__index{display:none}
+  .nav__cta{padding:.7rem 1.1rem}
+}
+/* full-screen index panel (mobile) */
+.index{position:fixed;inset:0;z-index:120;background:var(--ink-2);padding:1.25rem;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s}
+.index.is-open{opacity:1;visibility:visible}
+.index__top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--brass);padding-bottom:1rem}
+.index ol{list-style:none;margin:var(--s-3) 0;padding:0;counter-reset:i}
+.index li a{display:flex;align-items:baseline;gap:1rem;text-decoration:none;font-family:var(--f-serif);font-size:clamp(1.9rem,8vw,3rem);padding:.35rem 0;border-bottom:1px solid var(--rule)}
+.index li a::after{counter-increment:i;content:"p. 0" counter(i);margin-left:auto;font:italic 300 1rem var(--f-serif);color:var(--brass)}
+.index__foot{margin-top:auto;display:grid;gap:.6rem}
+
+/* ---------- 4. Hero: magazine cover ---------- */
+.cover{padding:calc(var(--s-6) + .5rem) 0 var(--s-4)}
+.cover__meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;border-bottom:1px solid var(--rule);padding-bottom:.9rem;margin-bottom:var(--s-4)}
+.cover__grid{display:grid;gap:var(--s-4);align-items:start}
+.cover h1{font-size:clamp(2.6rem, 1.3rem + 4.4vw, 5.3rem);font-weight:350;line-height:1;max-width:15ch}
+.cover h1 em{font-style:italic;color:var(--brass-2)}
+.cover__lede{font-size:var(--t-lg);line-height:1.6;color:var(--bone);max-width:46ch;margin:var(--s-3) 0 var(--s-4)}
+.cover__actions{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+.btn--lg{padding:1.15rem 1.7rem;font-size:1rem}
+.btn--ghost{background:transparent;color:var(--bone);border:1px solid rgba(236,230,218,.4);padding:1.1rem 1.4rem}
+.btn--ghost:hover{background:transparent;border-color:var(--brass);color:var(--brass-2)}
+.cover__risk{font-size:var(--t-sm);color:var(--bone-2);max-width:48ch;margin:1rem 0 0}
+.proof{list-style:none;margin:var(--s-4) 0 0;padding:var(--s-2) 0 0;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;font-size:var(--t-sm);color:var(--bone-2)}
+.proof li{display:flex;align-items:center;gap:.5rem}
+.proof li + li{padding-left:1.6rem;border-left:1px solid var(--rule)}
+.proof b{color:var(--bone);font-weight:600}
+.stars{color:var(--brass);letter-spacing:.1em;font-size:.85rem}
+/* partner card */
+.partner-card{background:var(--ink-2);border:1px solid var(--rule);padding:.75rem .75rem 1.4rem}
+.partner-card__img{position:relative;aspect-ratio:4/5;background:var(--ink-3);overflow:hidden}
+.partner-card__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.partner-card__plate{position:absolute;left:0;right:0;bottom:0;margin:0;padding:2.2rem 1rem .9rem;background:linear-gradient(transparent,rgba(16,23,20,.92));display:flex;flex-direction:column;gap:.2rem}
+.partner-card__plate b{font-family:var(--f-serif);font-weight:400;font-size:1.55rem;line-height:1.1}
+.partner-card__plate i{font-weight:300;font-size:.7em;color:var(--brass-2)}
+.partner-card blockquote{margin:1.1rem .5rem 1rem;font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:1.1rem;line-height:1.45;color:var(--bone)}
+.partner-card .tlink{margin:0 .5rem;font-size:var(--t-sm)}
+/* deadline strip */
+.deadline{margin-top:var(--s-5);display:grid;gap:1rem 2rem;align-items:center;border-top:1px solid var(--brass);border-bottom:1px solid var(--rule);padding:1.1rem 0}
+.deadline p{margin:0}
+.deadline__lbl{display:flex;flex-direction:column;gap:.2rem}
+.deadline__lbl b{font-family:var(--f-serif);font-weight:400;font-size:1.25rem}
+.deadline__what{color:var(--bone-2);font-size:var(--t-sm);max-width:40ch}
+.clock{display:flex;gap:1.1rem}
+.clock div{display:flex;align-items:baseline;gap:.2rem}
+.clock b{font-family:var(--f-serif);font-weight:300;font-size:1.9rem;line-height:1;font-variant-numeric:tabular-nums;color:var(--brass-2)}
+.clock span{font-size:var(--t-xs);color:var(--bone-2)}
+.deadline__link{font-size:var(--t-sm);justify-self:start}
+@media (min-width:1000px){
+  .cover__grid{grid-template-columns:minmax(0,8fr) minmax(0,3.6fr);gap:var(--s-5)}
+  .deadline{grid-template-columns:auto 1fr auto auto}
+}
+@media (max-width:759px){
+  .hide-sm{display:none}
+  .cover h1{font-weight:400}
+  .cover__actions .btn{flex:1 1 100%;justify-content:center}
+  .proof li + li{padding-left:0;border-left:0}
+  .partner-card{display:grid;grid-template-columns:96px 1fr;gap:0 1rem;align-items:center;padding:.75rem}
+  .partner-card__img{aspect-ratio:1}
+  .partner-card__plate{display:none}
+  .partner-card blockquote{margin:0 0 .5rem;font-size:1rem}
+  .partner-card .tlink{margin:0;grid-column:2}
+  .partner-card::before{content:"James Wyke FCA CTA · your partner";grid-column:1/-1;order:-1;font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:.7rem}
+}
+@media (min-width:760px) and (max-width:999px){
+  .partner-card{display:grid;grid-template-columns:220px 1fr;gap:0 1.5rem;align-items:end}
+  .partner-card__img{grid-row:span 2}
+}
+
+/* full-bleed photo with caption */
+.plate{position:relative;height:clamp(240px,38vw,500px);background:var(--ink-3);overflow:hidden}
+.plate img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05) brightness(.82)}
+.plate figcaption{position:absolute;left:0;right:0;bottom:0;padding:1rem 0;background:linear-gradient(transparent,rgba(16,23,20,.85))}
+.plate figcaption .wrap{font-family:var(--f-serif);font-style:italic;font-size:var(--t-sm);color:var(--bone)}
+
+/* ---------- 5. Trust bar: credits line ---------- */
+.credits{border-bottom:1px solid var(--rule)}
+.credits ul{width:var(--wrap);margin:0 auto;padding:var(--s-3) 0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem 2rem}
+.credits li{display:flex;flex-direction:column;gap:.25rem}
+.credits b{font-family:var(--f-serif);font-weight:400;font-size:1.3rem;color:var(--bone)}
+.credits span{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
+@media (min-width:900px){.credits ul{grid-template-columns:repeat(5,1fr)}.credits li + li{border-left:1px solid var(--rule);padding-left:2rem}}
+
+/* ---------- 6. Services: table of contents with leaders ---------- */
+.services{padding:var(--s-6) 0}
+.services__head{display:grid;gap:var(--s-3);margin-bottom:var(--s-5)}
+.services__head h2{font-size:var(--t-2xl);max-width:13ch}
+.services__head h2 em{color:var(--brass-2)}
+.toc{list-style:none;margin:0;padding:0;display:grid;gap:0 var(--s-5)}
+.toc li{padding:var(--s-3) 0;border-top:1px solid var(--rule)}
+.toc__line{display:flex;align-items:baseline;gap:.6rem}
+.toc__line h3{font-size:1.65rem;white-space:nowrap}
+.toc__line::after{content:"";flex:1;border-bottom:1px dotted rgba(236,230,218,.35);transform:translateY(-.3em);order:2}
+.toc__line .fee{order:3;font-family:var(--f-serif);font-style:italic;color:var(--brass-2);white-space:nowrap}
+.toc p{color:var(--bone-2);margin:.7rem 0 0;max-width:52ch}
+@media (min-width:900px){.services__head{grid-template-columns:1fr 1fr;align-items:end}.toc{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.toc__line{flex-wrap:wrap}.toc__line::after{display:none}.toc__line .fee{width:100%}.toc__line h3{white-space:normal}}
+
+/* ---------- 7. Case studies: features ---------- */
+.features{padding:0 0 var(--s-6)}
+.feature-lead{display:grid;gap:0;margin-bottom:var(--s-5)}
+.feature-lead__img{background:var(--ink-3);aspect-ratio:4/3;overflow:hidden}
+.feature-lead__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3);transition:transform 1.2s var(--ease)}
+.feature-lead:hover img{transform:scale(1.03)}
+.feature-lead__txt{background:var(--bone);color:var(--ink);padding:var(--s-4) var(--s-3);position:relative}
+.feature-lead__txt .kicker{color:#7A5A1E}
+.feature-lead__txt h3{font-size:var(--t-xl);margin:.8rem 0 1rem}
+.feature-lead__txt p{color:#3B4540}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem 1.5rem;margin:var(--s-3) 0 0;padding-top:var(--s-2);border-top:1px solid rgba(16,23,20,.2)}
+.facts dt{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.facts dd{margin:.15rem 0 0;font-family:var(--f-serif);font-size:1.15rem}
+.result{display:block;font-family:var(--f-serif);font-size:clamp(2.6rem,1.8rem + 2.4vw,3.8rem);line-height:1;color:#7A5A1E;margin-top:var(--s-3)}
+.result + small{font-size:var(--t-sm);color:#3B4540}
+@media (min-width:980px){
+  .feature-lead{grid-template-columns:7fr 5fr;align-items:center}
+  .feature-lead__txt{margin-left:-8rem;padding:var(--s-4)}
+}
+.feature-pair{display:grid;gap:var(--s-4)}
+.feature-sm{border-top:1px solid var(--brass);padding-top:var(--s-3)}
+.feature-sm__img{aspect-ratio:16/10;background:var(--ink-3);overflow:hidden;margin-bottom:var(--s-3)}
+.feature-sm__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3)}
+.feature-sm h3{font-size:1.9rem;margin:.6rem 0 .8rem}
+.feature-sm p{color:var(--bone-2)}
+.feature-sm .facts{border-top-color:var(--rule)}
+.feature-sm .facts dt{color:var(--bone-2);opacity:1}
+.feature-sm .result{color:var(--brass-2);font-size:2.6rem}
+.feature-sm .result + small{color:var(--bone-2)}
+@media (min-width:860px){.feature-pair{grid-template-columns:1fr 1fr;gap:var(--s-5)}.feature-sm:nth-child(2){margin-top:var(--s-6)}}
+
+/* ---------- 8. Process: chapters on a light page ---------- */
+.process{background:var(--bone);color:var(--ink);padding:var(--s-6) 0}
+.process .mast{border-top-color:#7A5A1E}
+.process .kicker{color:#7A5A1E}
+.process .mast .folio{color:#5A615D}
+.process h2{font-size:var(--t-2xl);max-width:15ch;margin-bottom:var(--s-5)}
+.chapters{list-style:none;margin:0;padding:0;display:grid;gap:var(--s-4)}
+.chapter{display:grid;grid-template-columns:auto 1fr;gap:var(--s-3)}
+.chapter__no{font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:1rem;color:#7A5A1E;writing-mode:vertical-rl;transform:rotate(180deg);border-left:1px solid rgba(16,23,20,.25);padding-left:.6rem}
+.chapter h3{font-size:1.75rem;margin-bottom:.5rem}
+.chapter .when{display:block;font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:#5A615D;margin-bottom:.6rem}
+.chapter p{color:#3B4540;margin:0;max-width:40ch}
+@media (min-width:760px){.chapters{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1150px){.chapters{grid-template-columns:repeat(5,1fr);gap:var(--s-3)}.chapter:nth-child(even){margin-top:var(--s-5)}}
+
+/* ---------- 9. Guarantees: editorial pledges ---------- */
+.pledges{padding:var(--s-6) 0}
+.pledges__grid{display:grid;gap:var(--s-5)}
+.pledges h2{font-size:var(--t-2xl);max-width:12ch}
+.pledges h2 em{color:var(--brass-2)}
+.pledges__intro p{color:var(--bone-2);max-width:40ch;margin-top:var(--s-3)}
+.pledge{display:grid;grid-template-columns:3.5rem 1fr;gap:var(--s-2);padding:var(--s-3) 0;border-top:1px solid var(--rule)}
+.pledge:last-child{border-bottom:1px solid var(--rule)}
+.pledge svg{color:var(--brass)}
+.pledge h3{font-size:1.55rem;margin-bottom:.4rem}
+.pledge p{color:var(--bone-2);margin:0}
+@media (min-width:960px){.pledges__grid{grid-template-columns:5fr 7fr}}
+
+/* ---------- 10. Testimonials: pull-quote slider ---------- */
+.voices{padding:var(--s-6) 0;background:var(--ink-2);border-block:1px solid var(--rule)}
+.slides{position:relative;min-height:320px}
+.slide{margin:0;display:none}
+.slide.is-active{display:block;animation:fade .7s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.slide blockquote{margin:0;font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:clamp(1.7rem,1.1rem + 2.2vw,3rem);line-height:1.18;max-width:28ch}
+.slide blockquote::before{content:"\201C";color:var(--brass);margin-right:.05em}
+.slide figcaption{margin-top:var(--s-3);display:flex;flex-wrap:wrap;gap:.3rem 1.5rem;font-size:var(--t-sm);color:var(--bone-2)}
+.slide figcaption b{color:var(--bone);font-weight:500}
+.slider-ctrl{display:flex;align-items:center;gap:1rem;margin-top:var(--s-4)}
+.slider-ctrl button{width:48px;height:48px;border:1px solid var(--rule);background:none;color:var(--bone);cursor:pointer;display:grid;place-items:center;transition:border-color .2s}
+.slider-ctrl button:hover{border-color:var(--brass)}
+.slider-ctrl output{font-family:var(--f-serif);font-style:italic;color:var(--bone-2);min-width:4ch}
+
+/* ---------- 11. FAQ ---------- */
+.faq{padding:var(--s-6) 0}
+.faq__grid{display:grid;gap:var(--s-4)}
+.faq h2{font-size:var(--t-2xl);max-width:9ch}
+.faq__intro p{color:var(--bone-2);max-width:32ch;margin-top:var(--s-3)}
+.qa{border-top:1px solid var(--rule)}
+.qa__item{border-bottom:1px solid var(--rule)}
+.qa__btn{width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.4rem 0;background:none;border:0;color:var(--bone);text-align:left;font:400 1.35rem/1.3 var(--f-serif);cursor:pointer}
+.qa__btn:hover{color:var(--brass-2)}
+.qa__btn .mk{font-family:var(--f-serif);font-style:italic;color:var(--brass);font-size:1rem;flex:none;transition:transform .3s var(--ease)}
+.qa__btn[aria-expanded="true"] .mk{transform:rotate(45deg)}
+.qa__panel{padding:0 0 1.5rem;color:var(--bone-2);max-width:64ch}
+.qa__panel p{margin:0}
+@media (min-width:960px){.faq__grid{grid-template-columns:4fr 8fr;gap:var(--s-5)}.faq__intro{position:sticky;top:7rem;align-self:start}}
+
+/* ---------- 12. Contact form ---------- */
+.contact{padding:var(--s-6) 0;background:var(--ink-3)}
+.contact__grid{display:grid;gap:var(--s-5)}
+.contact h2{font-size:var(--t-2xl);max-width:11ch}
+.contact h2 em{color:var(--brass-2)}
+.contact__intro p{color:var(--bone-2);max-width:38ch;margin-top:var(--s-3)}
+.partners{display:grid;gap:1rem;margin-top:var(--s-4)}
+.partner{display:flex;gap:1rem;align-items:center}
+.partner__mono{width:52px;height:52px;border:1px solid var(--brass);display:grid;place-items:center;font-family:var(--f-serif);font-size:1.2rem;color:var(--brass-2);flex:none}
+.partner b{display:block;font-family:var(--f-serif);font-weight:400;font-size:1.1rem}
+.partner span{font-size:var(--t-sm);color:var(--bone-2)}
+.form{display:grid;gap:1.1rem 1.5rem}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field label{font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--bone-2)}
+.field input,.field select,.field textarea{font:400 1.02rem var(--f-sans);color:var(--bone);background:var(--ink);border:1px solid var(--rule);border-radius:0;padding:.9rem 1rem;transition:border-color .2s}
+.field select{appearance:none;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C8A15A' stroke-width='1.5'/%3E%3C/svg%3E") right 1rem center no-repeat}
+.field select option{background:var(--ink)}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brass)}
+.field [aria-invalid="true"]{border-color:var(--error)}
+.err{font-size:var(--t-sm);color:var(--error)}
+.err:empty{display:none}
+.field--full,.form__foot{grid-column:1/-1}
+.form__foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.form__foot small{color:var(--bone-2);max-width:42ch}
+.thanks{border:1px solid var(--brass);padding:var(--s-4)}
+.thanks h3{font-size:var(--t-xl);margin-bottom:var(--s-2)}
+.thanks p{color:var(--bone-2)}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.contact__grid{grid-template-columns:5fr 7fr;gap:var(--s-6)}}
+
+/* ---------- 13. Footer ---------- */
+.foot{padding:var(--s-5) 0 var(--s-3);font-size:var(--t-sm);color:var(--bone-2)}
+.foot__top{display:grid;gap:var(--s-4);padding-bottom:var(--s-4);border-bottom:1px solid var(--rule)}
+.foot__brand{font-family:var(--f-serif);font-size:clamp(2.4rem,1.6rem + 3vw,4rem);line-height:1;color:var(--bone)}
+.foot__brand i{color:var(--brass)}
+.foot h3{font:500 var(--t-xs) var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:var(--s-2)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
+.foot address{font-style:normal;line-height:1.75}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--bone)}
+.social{display:flex;gap:1.2rem;margin-top:var(--s-3)}
+.social a{display:inline-flex;align-items:center;gap:.4rem}
+.foot__reg{padding-top:var(--s-3);display:grid;gap:1rem;font-size:var(--t-xs);line-height:1.6}
+.foot__reg ul{display:flex;flex-wrap:wrap;gap:1.4rem}
+@media (min-width:900px){.foot__top{grid-template-columns:1.4fr 1fr 1fr 1fr}.foot__reg{grid-template-columns:2fr 1fr}.foot__reg ul{justify-content:flex-end}}
+
+/* mobile call strip */
+.mcall{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:70;display:flex;background:var(--brass);color:var(--ink)}
+.mcall a{flex:1;padding:.9rem;text-align:center;text-decoration:none;font-weight:600;font-size:var(--t-sm)}
+.mcall a + a{border-left:1px solid rgba(16,23,20,.3)}
+@media (min-width:760px){.mcall{display:none}}
+@media (max-width:759px){.foot{padding-bottom:5rem}}
+
+/* back to top: brass outline, italic label */
+.to-top{position:fixed;right:1.25rem;bottom:1.25rem;z-index:75;display:flex;flex-direction:column;align-items:center;gap:.2rem;width:58px;padding:.6rem 0;background:var(--ink-2);color:var(--bone);border:1px solid var(--brass);font:italic 300 .85rem var(--f-serif);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s,background .2s}
+.to-top.is-shown{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:var(--brass);color:var(--ink)}
+@media (max-width:759px){.to-top{bottom:5.2rem;right:1rem}}
+
+main:focus{outline:none}
+/* ---------- 14. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#process">How we work</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="brand" href="#top" aria-label="Calder and Wyke, back to top">Calder <i>&amp;</i> Wyke<small>Chartered Accountants</small></a>
+    <div class="nav__right">
+      <a class="nav__tel" href="tel:+441132457781">0113 245 7781</a>
+      <a class="btn nav__cta" href="#contact">Get a quote</a>
+      <button class="nav__index" type="button" aria-expanded="false" aria-controls="index">Index</button>
+    </div>
+  </div>
+</header>
+
+<div class="index" id="index" role="dialog" aria-modal="true" aria-label="Site index">
+  <div class="index__top"><span class="kicker">Index</span><button class="nav__index" type="button" data-close>Close</button></div>
+  <ol>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#process">How we work</a></li>
+    <li><a href="#pledges">Our promises</a></li>
+    <li><a href="#voices">In their words</a></li>
+    <li><a href="#faq">Questions</a></li>
+    <li><a href="#contact">Get a quote</a></li>
+  </ol>
+  <div class="index__foot"><a class="tlink" href="tel:+441132457781">0113 245 7781</a><a class="tlink" href="mailto:hello@calderwyke.co.uk">hello@calderwyke.co.uk</a></div>
+</div>
+
+<main id="main" tabindex="-1">
+<!-- ============ HERO: COVER ============ -->
+<section class="cover" id="top" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="cover__meta kicker"><span>ICAEW Chartered Accountants · Park Square, Leeds</span><span class="hide-sm">For owner-managed businesses, £1m to £25m</span></div>
+    <div class="cover__grid">
+      <div class="cover__main">
+        <h1 id="hero-title">Management accounts on your desk by the <em>8th working day.</em> Every month.</h1>
+        <p class="cover__lede">Most owners see their real numbers once a year, nine months late. Our clients see them monthly, with a partner who explains what they mean and tax bills they can see coming a year out.</p>
+        <div class="cover__actions">
+          <a class="btn btn--lg" href="#contact">Book a free health check <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="tel:+441132457781"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>0113 245 7781</a>
+        </div>
+        <p class="cover__risk">Free and no obligation. We read your last two years' accounts and send you a written note within ten working days.</p>
+        <ul class="proof" aria-label="Credentials">
+          <li><span class="stars" aria-hidden="true">★★★★★</span><span><b>4.9</b> from 86 Google reviews</span></li>
+          <li><span><b>ICAEW</b> chartered firm</span></li>
+          <li><span><b>Xero</b> Platinum partner</span></li>
+        </ul>
+      </div>
+      <aside class="partner-card" aria-labelledby="pc-name">
+        <div class="partner-card__img">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=700&q=80&auto=format&fit=crop" alt="Portrait of James Wyke, partner at Calder and Wyke" width="700" height="875" fetchpriority="high">
+          <p class="partner-card__plate"><span class="kicker">Your partner</span><b id="pc-name">James Wyke <i>FCA CTA</i></b></p>
+        </div>
+        <blockquote>“You'll speak to me, not a different junior every year. That's the whole point of us.”</blockquote>
+        <a class="tlink" href="#contact">Book 30 minutes with James <span aria-hidden="true">→</span></a>
+      </aside>
+    </div>
+
+    <!-- deadline strip (signature countdown) -->
+    <div class="deadline" aria-labelledby="dl-label">
+      <p class="deadline__lbl"><span class="kicker" id="dl-label">Next HMRC deadline</span><b id="dl-date">31 January 2027</b></p>
+      <p class="deadline__what" id="dl-what">Directors' Self Assessment returns and tax due</p>
+      <div class="clock" role="timer" aria-label="Time remaining until the next deadline">
+        <div><b id="dl-d">00</b><span>days</span></div>
+        <div><b id="dl-h">00</b><span>hrs</span></div>
+        <div><b id="dl-m">00</b><span>min</span></div>
+        <div><b id="dl-s">00</b><span>sec</span></div>
+      </div>
+      <a class="deadline__link tlink" href="#pledges">Our clients file by October <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<figure class="plate" style="margin:0">
+  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80&auto=format&fit=crop" alt="Accountants and business owners in discussion around a table" loading="lazy" decoding="async" width="1920" height="1080">
+  <figcaption><div class="wrap">Quarterly review, Park Square. Every client gets one, with a partner in the room.</div></figcaption>
+</figure>
+
+<!-- ============ TRUST ============ -->
+<section class="credits" aria-label="Accreditations and credentials">
+  <ul>
+    <li><b>ICAEW</b><span>Chartered Accountants</span></li>
+    <li><b>Xero Platinum</b><span>Partner since 2016</span></li>
+    <li><b>4.9 / 5</b><span>86 Google reviews</span></li>
+    <li><b>22 years</b><span>In Park Square</span></li>
+    <li><b>£2m</b><span>Professional indemnity</span></li>
+  </ul>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services" aria-labelledby="svc-title">
+  <div class="wrap">
+    <div class="mast"><span class="kicker">01 · Services</span><span class="folio">p. 01</span></div>
+    <div class="services__head reveal">
+      <h2 id="svc-title">Everything a finance team does, <em>without hiring one.</em></h2>
+      <p class="dek">Fixed monthly fees, agreed once a year. The figures below are typical for a business turning over £2m to £6m.</p>
+    </div>
+    <ul class="toc">
+      <li class="reveal"><div class="toc__line"><h3>Management accounts</h3><span class="fee">from £650 / month</span></div><p>Profit and loss, balance sheet, cash flow and KPIs by the 8th working day, with a one-page note on what changed and why.</p></li>
+      <li class="reveal"><div class="toc__line"><h3>Outsourced FD</h3><span class="fee">from £1,200 / month</span></div><p>A finance director two days a month: budgets, forecasts, bank and investor conversations, and a seat at your board meeting.</p></li>
+      <li class="reveal"><div class="toc__line"><h3>Year-end and corporation tax</h3><span class="fee">from £3,400 / year</span></div><p>Statutory accounts and CT600 filed within four months of your year end, not nine. Tax estimate shared at month six.</p></li>
+      <li class="reveal"><div class="toc__line"><h3>Tax planning for owners</h3><span class="fee">from £950 / year</span></div><p>Salary, dividends, pensions and director's loan accounts planned together, so your personal and company tax are worked out as one.</p></li>
+      <li class="reveal"><div class="toc__line"><h3>R&amp;D tax relief</h3><span class="fee">fixed fee, quoted</span></div><p>Claims under the merged scheme and ERIS, prepared by people who visit the shop floor. Fixed fees, never a percentage of the claim.</p></li>
+      <li class="reveal"><div class="toc__line"><h3>Audit</h3><span class="fee">from £7,500</span></div><p>Statutory and voluntary audits for groups and companies over the thresholds, with a separate engagement team from your accounts work.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CASE STUDIES ============ -->
+<section class="features" id="clients" aria-labelledby="clients-title">
+  <div class="wrap">
+    <div class="mast"><span class="kicker">02 · Clients</span><span class="folio">p. 02</span></div>
+    <h2 id="clients-title" class="vh">Client case studies</h2>
+
+    <article class="feature-lead reveal">
+      <div class="feature-lead__img"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1400&q=80&auto=format&fit=crop" alt="Business owners reviewing figures together in a meeting" loading="lazy" decoding="async" width="1400" height="1050"></div>
+      <div class="feature-lead__txt">
+        <span class="kicker">Feature · Harrogate</span>
+        <h3>The bakery group that was busier every year and earning less</h3>
+        <p>Four shops and a wholesale arm. Turnover had grown 30% in two years, but profit had fallen. Monthly accounts by site showed the wholesale contracts were priced below the cost of flour and labour.</p>
+        <dl class="facts"><div><dt>Scope</dt><dd>Management accounts + FD</dd></div><div><dt>Engagement</dt><dd>18 months so far</dd></div><div><dt>Fee</dt><dd>£1,450 / month</dd></div><div><dt>Turnover</dt><dd>£3.8m</dd></div></dl>
+        <span class="result">£96,000</span><small>a year recovered by repricing three wholesale contracts</small>
+      </div>
+    </article>
+
+    <div class="feature-pair">
+      <article class="feature-sm reveal">
+        <div class="feature-sm__img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&q=80&auto=format&fit=crop" alt="Laptop screen showing financial charts and reports" loading="lazy" decoding="async" width="1000" height="625"></div>
+        <span class="kicker">Wakefield · Engineering</span>
+        <h3>A precision engineer that didn't know it did R&amp;D</h3>
+        <p>Their previous accountant had never asked. Two days on the shop floor found three qualifying projects across two years.</p>
+        <dl class="facts"><div><dt>Scope</dt><dd>R&amp;D claim + CT</dd></div><div><dt>Duration</dt><dd>6 weeks</dd></div><div><dt>Fee</dt><dd>£4,800 fixed</dd></div><div><dt>Staff</dt><dd>42</dd></div></dl>
+        <span class="result">£61,400</span><small>tax relief recovered across two accounting periods</small>
+      </article>
+      <article class="feature-sm reveal">
+        <div class="feature-sm__img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1000&q=80&auto=format&fit=crop" alt="Person signing financial documents at a desk" loading="lazy" decoding="async" width="1000" height="625"></div>
+        <span class="kicker">Leeds · Software</span>
+        <h3>Investor-ready books before a Series A</h3>
+        <p>Three years of accounts restated, revenue recognition fixed and a data room built ahead of due diligence.</p>
+        <dl class="facts"><div><dt>Scope</dt><dd>Restatement + reporting</dd></div><div><dt>Duration</dt><dd>10 weeks</dd></div><div><dt>Fee</dt><dd>£9,500 fixed</dd></div><div><dt>Raise</dt><dd>£4.2m</dd></div></dl>
+        <span class="result">0</span><small>adjustments raised by the investor's due diligence team</small>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process" aria-labelledby="proc-title">
+  <div class="wrap">
+    <div class="mast"><span class="kicker">03 · How we work</span><span class="folio">p. 03</span></div>
+    <h2 id="proc-title" class="reveal">From first phone call to your first monthly pack, in five chapters.</h2>
+    <ol class="chapters">
+      <li class="chapter reveal"><span class="chapter__no">Chapter one</span><div><span class="when">Day 1 · 30 minutes</span><h3>A proper conversation</h3><p>Helen or James calls you, not a salesperson. We ask what keeps you up, and what your current accountant doesn't tell you.</p></div></li>
+      <li class="chapter reveal"><span class="chapter__no">Chapter two</span><div><span class="when">Week 1 to 2 · free</span><h3>Health check</h3><p>We read your last two years' accounts and tax returns and send you a short written note, whether or not you become a client.</p></div></li>
+      <li class="chapter reveal"><span class="chapter__no">Chapter three</span><div><span class="when">Week 2</span><h3>Fixed-fee proposal</h3><p>One monthly fee covering everything agreed, written down. No hourly billing and no charge for phone calls.</p></div></li>
+      <li class="chapter reveal"><span class="chapter__no">Chapter four</span><div><span class="when">Weeks 3 to 6</span><h3>The switch</h3><p>We request professional clearance from your old accountant and move your Xero or QuickBooks setup over. You sign one letter.</p></div></li>
+      <li class="chapter reveal"><span class="chapter__no">Chapter five</span><div><span class="when">Every month after</span><h3>The rhythm</h3><p>Accounts by the 8th working day, a call to walk through them, and a quarterly review in person or on Teams.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ GUARANTEES ============ -->
+<section class="pledges" id="pledges" aria-labelledby="pl-title">
+  <div class="wrap">
+    <div class="mast"><span class="kicker">04 · Our promises</span><span class="folio">p. 04</span></div>
+    <div class="pledges__grid">
+      <div class="pledges__intro reveal">
+        <h2 id="pl-title">No surprises. <em>In writing.</em></h2>
+        <p>The worst thing an accountant can do is tell you about a tax bill a month before it's due. These are in every engagement letter we sign.</p>
+      </div>
+      <div class="reveal">
+        <div class="pledge"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M20 10v10l7 4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><div><h3>Late accounts are free</h3><p>If your management accounts aren't with you by the 8th working day, that month's fee is waived. We've waived it twice since 2019.</p></div></div>
+        <div class="pledge"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="28" height="26" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M6 15h28M13 4v8M27 4v8" stroke="currentColor" stroke-width="1.2"/></svg><div><h3>Tax bills twelve months ahead</h3><p>Every quarter you get an updated estimate of your company and personal tax, with the date each one is due.</p></div></div>
+        <div class="pledge"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 32V12l12-6 12 6v20z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M15 22h10M15 27h10" stroke="currentColor" stroke-width="1.2"/></svg><div><h3>One fee, reviewed once a year</h3><p>Agreed in advance, paid monthly by direct debit. Ring us as often as you like. It won't appear on an invoice.</p></div></div>
+        <div class="pledge"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="15" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="27" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4 34c1-7 6-10 11-10s9 3 10 10M24 25c5 0 10 3 11 9" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><div><h3>A partner on every account</h3><p>You'll deal with Helen Calder or James Wyke directly, plus one named manager. Not a different junior each year.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="voices" id="voices" aria-labelledby="v-title" aria-roledescription="carousel">
+  <div class="wrap">
+    <div class="mast"><span class="kicker" id="v-title">05 · In their words</span><span class="folio">p. 05</span></div>
+    <div class="slides" id="slides">
+      <figure class="slide is-active" aria-roledescription="slide" aria-label="1 of 3">
+        <blockquote>I used to find out how the year went in October. Now I know by the 10th of every month, and Helen tells me what I should do about it.</blockquote>
+        <figcaption><b>Sarah P.</b><span>Managing director, bakery group, Harrogate</span><span>Client since 2025</span></figcaption>
+      </figure>
+      <figure class="slide" aria-roledescription="slide" aria-label="2 of 3">
+        <blockquote>James found sixty grand our old firm had missed for years. The first monthly pack was a bit of a shock, honestly. The second one made sense.</blockquote>
+        <figcaption><b>Mark D.</b><span>Owner, precision engineering, Wakefield</span><span>Client since 2024</span></figcaption>
+      </figure>
+      <figure class="slide" aria-roledescription="slide" aria-label="3 of 3">
+        <blockquote>Our investors' accountants went through everything and came back with no questions. Priya on the team answered the data room requests in hours, not days.</blockquote>
+        <figcaption><b>Tom A.</b><span>Co-founder, software company, Leeds</span><span>Client since 2023</span></figcaption>
+      </figure>
+    </div>
+    <div class="slider-ctrl">
+      <button type="button" data-step="-1" aria-label="Previous testimonial"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M18 6H2M6 1L1 6l5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      <button type="button" data-step="1" aria-label="Next testimonial"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M12 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      <output id="slide-no" aria-live="polite">1 / 3</output>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="mast"><span class="kicker">06 · Questions</span><span class="folio">p. 06</span></div>
+    <div class="faq__grid">
+      <div class="faq__intro reveal">
+        <h2 id="faq-title">What owners ask first</h2>
+        <p>Something else on your mind? Email <a class="tlink" href="mailto:hello@calderwyke.co.uk">hello@calderwyke.co.uk</a> and a partner will reply the same day.</p>
+      </div>
+      <div class="qa reveal" data-accordion>
+        <div class="qa__item"><h3 style="margin:0"><button class="qa__btn" type="button" aria-expanded="false" aria-controls="c1" id="c1b">How much will it cost?<span class="mk" aria-hidden="true">+</span></button></h3><div class="qa__panel" id="c1" role="region" aria-labelledby="c1b" hidden><p>For a business turning over £2m to £6m with monthly management accounts, year-end and tax, most clients pay between £1,100 and £1,900 a month. You'll have a fixed figure in writing after the free health check, before you commit to anything.</p></div></div>
+        <div class="qa__item"><h3 style="margin:0"><button class="qa__btn" type="button" aria-expanded="false" aria-controls="c2" id="c2b">Can we switch accountants part way through the year?<span class="mk" aria-hidden="true">+</span></button></h3><div class="qa__panel" id="c2" role="region" aria-labelledby="c2b" hidden><p>Yes, and most clients do. We write to your current accountant for professional clearance and the handover information. They're obliged to respond. It usually takes three to four weeks and you won't need to speak to them.</p></div></div>
+        <div class="qa__item"><h3 style="margin:0"><button class="qa__btn" type="button" aria-expanded="false" aria-controls="c3" id="c3b">Do we need an audit?<span class="mk" aria-hidden="true">+</span></button></h3><div class="qa__panel" id="c3" role="region" aria-labelledby="c3b" hidden><p>Usually not, unless your banks or investors ask for one. Most companies are exempt while they meet two of the three small company tests: turnover up to £15m, balance sheet total up to £7.5m and no more than 50 employees. Groups and some regulated businesses have different rules, which we'll check for you.</p></div></div>
+        <div class="qa__item"><h3 style="margin:0"><button class="qa__btn" type="button" aria-expanded="false" aria-controls="c4" id="c4b">How do payments work?<span class="mk" aria-hidden="true">+</span></button></h3><div class="qa__panel" id="c4" role="region" aria-labelledby="c4b" hidden><p>One monthly direct debit on the 1st, covering everything in your engagement letter. Extra projects, such as R&amp;D claims or a company sale, are quoted separately as a fixed fee before any work starts.</p></div></div>
+        <div class="qa__item"><h3 style="margin:0"><button class="qa__btn" type="button" aria-expanded="false" aria-controls="c5" id="c5b">Which software do you use?<span class="mk" aria-hidden="true">+</span></button></h3><div class="qa__panel" id="c5" role="region" aria-labelledby="c5b" hidden><p>Mostly Xero, and QuickBooks Online where clients already use it. If you're on Sage or spreadsheets, we can move you over during onboarding at no extra charge.</p></div></div>
+        <div class="qa__item"><h3 style="margin:0"><button class="qa__btn" type="button" aria-expanded="false" aria-controls="c6" id="c6b">We're under £1m turnover. Can you help?<span class="mk" aria-hidden="true">+</span></button></h3><div class="qa__panel" id="c6" role="region" aria-labelledby="c6b" hidden><p>Sometimes. If you're growing quickly or preparing to raise money, yes. If you mainly need a year-end and tax return, a smaller firm will serve you better for less, and we're happy to recommend two good ones in Leeds.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact" aria-labelledby="ct-title">
+  <div class="wrap">
+    <div class="mast"><span class="kicker">07 · Get a quote</span><span class="folio">p. 07</span></div>
+    <div class="contact__grid">
+      <div class="reveal contact__intro">
+        <h2 id="ct-title">Start with a <em>free</em> health check.</h2>
+        <p>Tell us a little about the business. A partner will call within one working day to arrange the health check and a fixed-fee proposal.</p>
+        <div class="partners">
+          <div class="partner"><span class="partner__mono" aria-hidden="true">HC</span><div><b>Helen Calder FCA</b><span>Partner, owner-managed businesses</span></div></div>
+          <div class="partner"><span class="partner__mono" aria-hidden="true">JW</span><div><b>James Wyke FCA CTA</b><span>Partner, tax and R&amp;D</span></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="form" id="quote-form" novalidate>
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+          <div class="field"><label for="postcode">Business postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+          <div class="field"><label for="type">What do you need?</label>
+            <select id="type" name="type" aria-describedby="type-error" required><option value="">Choose one</option><option>Monthly management accounts</option><option>Outsourced FD</option><option>Year-end and corporation tax</option><option>Tax planning for owners</option><option>R&amp;D tax relief</option><option>Audit</option><option>Switching accountant</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+          <div class="field"><label for="budget">Monthly budget</label>
+            <select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Choose one</option><option>Under £500</option><option>£500 to £1,000</option><option>£1,000 to £2,000</option><option>£2,000 to £4,000</option><option>Over £4,000</option><option>Not sure yet</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+          <div class="field field--full"><label for="message">About the business</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. Manufacturing, £4m turnover, 30 staff, year end March" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+          <div class="form__foot"><small>Your details stay with us and are used only to reply. <a class="tlink" href="/privacy-policy/">Privacy policy</a>.</small><button class="btn" type="submit">Request my health check <span class="arr" aria-hidden="true">→</span></button></div>
+        </form>
+        <div class="thanks" id="form-success" tabindex="-1" hidden>
+          <span class="kicker">Received</span>
+          <h3>Thank you<span data-first-name></span>.</h3>
+          <p>Helen or James will call you within one working day. If you'd like to send last year's accounts in the meantime, reply to the confirmation email and attach them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><p class="foot__brand">Calder <i>&amp;</i> Wyke</p><p style="margin-top:1rem;max-width:30ch">Chartered accountants for owner-managed businesses across Yorkshire.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/calder-and-wyke"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.6c.6-1 1.9-1.9 3.6-1.9 3 0 3.4 2 3.4 4.6V20h-4v-5.8c0-1.4 0-3-1.8-3s-2.2 1.4-2.2 2.9V20h-4z" fill="currentColor"/></svg>LinkedIn</a>
+          <a href="https://www.instagram.com/calderandwyke"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Instagram</a>
+        </div>
+      </div>
+      <div><h3>Office</h3><address>3rd Floor, 11 Park Square East<br>Leeds LS1 2NG<br><a href="tel:+441132457781">0113 245 7781</a><br><a href="mailto:hello@calderwyke.co.uk">hello@calderwyke.co.uk</a></address></div>
+      <div><h3>Hours</h3><ul><li>Monday to Friday, 8.30am to 5.30pm</li><li>Evening calls by appointment</li><li>Closed bank holidays</li></ul></div>
+      <div><h3>Clients across</h3><ul><li>Leeds and Wetherby</li><li>Harrogate and York</li><li>Wakefield</li><li>Bradford and Ilkley</li><li>Huddersfield</li></ul></div>
+    </div>
+    <div class="foot__reg">
+      <p style="margin:0">© <span id="yr">2026</span> Calder &amp; Wyke Chartered Accountants Ltd. Registered in England and Wales no. 05118342. Registered office: 3rd Floor, 11 Park Square East, Leeds LS1 2NG. Registered to carry on audit work in the UK and regulated for a range of investment business activities by the Institute of Chartered Accountants in England and Wales.</p>
+      <ul><li><a href="/privacy-policy/">Privacy</a></li><li><a href="/terms-of-business/">Terms of business</a></li><li><a href="/complaints/">Complaints</a></li><li><a href="/cookies/">Cookies</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<nav class="mcall" aria-label="Quick contact"><a href="tel:+441132457781">Call 0113 245 7781</a><a href="#contact">Free health check</a></nav>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg width="12" height="16" viewBox="0 0 12 16" aria-hidden="true"><path d="M6 15V2M1 6l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>Top</button>
+
+<script>
+/* Calder & Wyke: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- nav: solid and compact on scroll --- */
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('is-scrolled', window.scrollY > 30); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* --- full-screen index menu --- */
+  var openBtn = document.querySelector('.nav__right .nav__index'), panel = document.getElementById('index'), closeBtn = panel.querySelector('[data-close]');
+  function setIndex(open){
+    panel.classList.toggle('is-open', open); openBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    (open ? closeBtn : openBtn).focus();
+  }
+  openBtn.addEventListener('click', function(){ setIndex(true); });
+  closeBtn.addEventListener('click', function(){ setIndex(false); });
+  panel.addEventListener('click', function(e){ if(e.target.closest('a')){ panel.classList.remove('is-open'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; } });
+  document.addEventListener('keydown', function(e){
+    if(!panel.classList.contains('is-open')) return;
+    if(e.key === 'Escape') setIndex(false);
+    if(e.key === 'Tab'){ var f = panel.querySelectorAll('a,button'), a = f[0], z = f[f.length-1];
+      if(e.shiftKey && document.activeElement === a){ z.focus(); e.preventDefault(); } else if(!e.shiftKey && document.activeElement === z){ a.focus(); e.preventDefault(); } }
+  });
+
+  /* --- next HMRC deadline countdown (signature) ---
+     Annual dates: [month (0-11), day, description]. */
+  var DEADLINES = [
+    [0,31,'Directors\u2019 Self Assessment returns and tax due'],
+    [3,5,'Last day of the tax year'],
+    [4,31,'P60s to employees'],
+    [6,6,'P11D forms due to HMRC'],
+    [6,31,'Second payment on account due'],
+    [9,5,'Deadline to register for Self Assessment'],
+    [9,31,'Paper Self Assessment returns due']
+  ];
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function nextDeadline(now){
+    var best = null;
+    DEADLINES.forEach(function(d){
+      var t = new Date(now.getFullYear(), d[0], d[1], 23, 59, 59);
+      if(t < now) t = new Date(now.getFullYear()+1, d[0], d[1], 23, 59, 59);
+      if(!best || t < best.t) best = {t:t, d:d};
+    });
+    return best;
+  }
+  var el = { d:document.getElementById('dl-d'), h:document.getElementById('dl-h'), m:document.getElementById('dl-m'), s:document.getElementById('dl-s'),
+             date:document.getElementById('dl-date'), what:document.getElementById('dl-what') };
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var now = new Date(), nd = nextDeadline(now), diff = Math.max(0, nd.t - now);
+    el.date.textContent = nd.d[1] + ' ' + MONTHS[nd.d[0]] + ' ' + nd.t.getFullYear();
+    el.what.textContent = nd.d[2];
+    el.d.textContent = Math.floor(diff/864e5);
+    el.h.textContent = pad(Math.floor(diff/36e5)%24);
+    el.m.textContent = pad(Math.floor(diff/6e4)%60);
+    el.s.textContent = pad(Math.floor(diff/1e3)%60);
+  }
+  tick(); setInterval(tick, reduce ? 60000 : 1000);
+
+  /* --- reveal --- */
+  var items = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){ items.forEach(function(e){ e.classList.add('is-in'); }); }
+  else{
+    var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-in'); io.unobserve(x.target); } }); }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+    items.forEach(function(e){ io.observe(e); });
+  }
+
+  /* --- testimonial slider --- */
+  var slides = document.querySelectorAll('.slide'), out = document.getElementById('slide-no'), cur = 0;
+  function show(i){ slides[cur].classList.remove('is-active'); cur = (i + slides.length) % slides.length; slides[cur].classList.add('is-active'); out.textContent = (cur+1) + ' / ' + slides.length; }
+  document.querySelectorAll('[data-step]').forEach(function(b){ b.addEventListener('click', function(){ show(cur + (+b.dataset.step)); }); });
+
+  /* --- accordion --- */
+  document.querySelectorAll('[data-accordion] .qa__btn').forEach(function(b){
+    b.addEventListener('click', function(){ var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open)); document.getElementById(b.getAttribute('aria-controls')).hidden = open; });
+  });
+
+  /* --- form validation --- */
+  var form = document.getElementById('quote-form'), ok = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'Please add your name.'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'Please use a UK number, for example 0113 245 7781.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Please check your email address.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Please add a full UK postcode, for example LS1 2NG.'; },
+    type: function(v){ return v !== '' || 'Please choose a service.'; },
+    budget: function(v){ return v !== '' || 'Please choose a budget range.'; },
+    message: function(v){ return v.trim().length >= 10 || 'A line about the business helps us prepare.'; }
+  };
+  function check(f){ var r = rules[f.name]; if(!r) return true; var res = r(f.value), err = document.getElementById(f.name + '-error');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; return false; } f.removeAttribute('aria-invalid'); err.textContent = ''; return true; }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    ok.querySelector('[data-first-name]').textContent = ', ' + document.getElementById('name').value.trim().split(' ')[0];
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+
+  /* --- back to top --- */
+  var toTop = document.getElementById('to-top');
+  window.addEventListener('scroll', function(){ toTop.classList.toggle('is-shown', window.scrollY > window.innerHeight * 1.2); }, {passive:true});
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); document.getElementById('main').focus({preventScroll:true}); });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Lane Coffee Roasters | Fresh Coffee Subscriptions from Glasgow</title>
+<meta name="description" content="Speciality coffee roasted every Monday in Finnieston, Glasgow and posted Tuesday. Flexible subscriptions from £10.50 a bag, free UK delivery, pause or skip any time.">
+<link rel="canonical" href="https://www.emberlanecoffee.co.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ember Lane Coffee Roasters | Roasted Monday, posted Tuesday">
+<meta property="og:description" content="Fresh speciality coffee from Glasgow. Build a subscription in 30 seconds.">
+<meta property="og:url" content="https://www.emberlanecoffee.co.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#2B1A14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='20' rx='13' ry='18' transform='rotate(25 20 20)' fill='%23D9572B'/%3E%3Cpath d='M23 4c-7 7 1 13-6 32' fill='none' stroke='%23FBF4EA' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Ember Lane Coffee Roasters Ltd",
+  "description": "Speciality coffee roaster in Finnieston, Glasgow. Online coffee shop, subscriptions, wholesale for cafés and office coffee.",
+  "url": "https://www.emberlanecoffee.co.uk/",
+  "telephone": "+441413397742",
+  "email": "hello@emberlanecoffee.co.uk",
+  "foundingDate": "2017",
+  "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1200&q=80&auto=format&fit=crop",
+  "priceRange": "£",
+  "address": { "@type": "PostalAddress", "streetAddress": "Unit 2, 1048 Argyle Street", "addressLocality": "Glasgow", "postalCode": "G3 8LY", "addressCountry": "GB" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 55.8650, "longitude": -4.2865 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+  ],
+  "areaServed": ["United Kingdom","Glasgow","Edinburgh","Stirling","Paisley","Dundee"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2316" }
+}
+</script>
+<style>
+/* =========================================================
+   EMBER LANE COFFEE ROASTERS
+   Art direction: packaging-led colour blocks. Each coffee
+   owns a colour (terracotta, teal, mustard, rose), chunky
+   Unbounded display type, tickets, bags and a week planner.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --milk:#FBF4EA;
+  --milk-2:#F1E6D6;
+  --roast:#2B1A14;          /* text + dark blocks */
+  --roast-2:#6A5248;
+  --terra:#D9572B;          /* fill with roast text, or large text only */
+  --terra-d:#B23F17;        /* AA text on milk */
+  --teal:#1F5F5B;           /* AA with milk text */
+  --mustard:#E8B43A;
+  --rose:#F2B8A2;
+  --error:#B3261E;
+
+  --f-display:'Unbounded', 'Arial Black', sans-serif;
+  --f:'Figtree', 'Segoe UI', Arial, sans-serif;
+
+  --t-sm:.9rem;
+  --t-base:1.0625rem;
+  --t-lg:1.25rem;
+  --t-xl:clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  --t-2xl:clamp(2.2rem, 1.3rem + 3.6vw, 4.2rem);
+  --t-hero:clamp(2.3rem, 1.2rem + 3.9vw, 4.6rem);
+
+  --s-1:.5rem; --s-2:1rem; --s-3:1.6rem; --s-4:2.6rem; --s-5:4.4rem; --s-6:7rem;
+  --r:20px;
+  --wrap:min(1260px, 100% - 2rem);
+  --ease:cubic-bezier(.3,1.25,.5,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--milk);color:var(--roast);font:400 var(--t-base)/1.6 var(--f)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;line-height:1.02;letter-spacing:-.02em}
+p{margin:0 0 var(--s-2)}
+button{font-family:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:0;background:var(--roast);color:var(--milk);padding:.75rem 1rem;z-index:300}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+main:focus{outline:none}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font:700 .78rem var(--f);letter-spacing:.12em;text-transform:uppercase;margin-bottom:var(--s-2)}
+.eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
+
+/* buttons: fat pills */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:2px solid var(--roast);background:var(--roast);color:var(--milk);font:700 var(--t-base)/1 var(--f);text-decoration:none;cursor:pointer;transition:transform .25s var(--ease),background .2s,color .2s}
+.btn:hover{transform:translateY(-3px) rotate(-1deg)}
+.btn--milk{background:var(--milk);color:var(--roast)}
+.btn--line{background:transparent;color:inherit;border-color:currentColor}
+.btn--terra{background:var(--terra);color:var(--roast);border-color:var(--roast)}
+
+/* ---------- 3. Announcement + navigation ---------- */
+.announce{background:var(--roast);color:var(--milk);font-size:.85rem;font-weight:600;text-align:center;padding:.55rem 1rem;position:relative;overflow:hidden;height:2.3rem}
+.announce p{position:absolute;inset:0;margin:0;display:grid;place-items:center;transition:transform .6s cubic-bezier(.6,0,.2,1),opacity .6s}
+.announce p:not(.is-on){transform:translateY(100%);opacity:0}
+.nav{position:sticky;top:0;z-index:80;background:var(--milk);border-bottom:2px solid transparent;transition:border-color .2s}
+.nav.is-scrolled{border-bottom-color:var(--roast)}
+.nav__in{width:var(--wrap);margin-inline:auto;display:flex;align-items:center;gap:1.2rem;height:76px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto}
+.logo__txt{display:flex;flex-direction:column;line-height:1}
+.logo__txt b{font:800 1.12rem var(--f-display);letter-spacing:.02em}
+.logo__txt small{white-space:nowrap;font:600 .62rem var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--roast-2);margin-top:.3rem}
+.nav__links{display:none;list-style:none;margin:0;padding:0;gap:.3rem}
+.nav__links a{display:block;padding:.55rem .9rem;border-radius:999px;text-decoration:none;font-weight:600;transition:background .2s}
+.nav__links a:hover{background:var(--milk-2)}
+.nav__tel{display:none;font-weight:700;text-decoration:none}
+.nav__cta{display:none;padding:.7rem 1.1rem;font-size:.95rem}
+.bag{position:relative;width:46px;height:46px;border-radius:50%;border:2px solid var(--roast);background:var(--mustard);display:grid;place-items:center;cursor:pointer;color:var(--roast)}
+.bag__n{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;border-radius:11px;background:var(--terra);border:2px solid var(--roast);font:800 .7rem/18px var(--f);text-align:center;padding:0 4px}
+.bag.bump{animation:bump .5s var(--ease)}
+@keyframes bump{40%{transform:scale(1.18) rotate(-6deg)}}
+.menu-btn{width:46px;height:46px;border-radius:50%;border:2px solid var(--roast);background:var(--milk);display:grid;place-items:center;cursor:pointer;color:var(--roast);position:relative;z-index:160}
+@media (min-width:1120px){.nav__links,.nav__tel,.nav__cta{display:flex}.menu-btn{display:none}}
+@media (max-width:420px){.logo__txt small{letter-spacing:.12em;font-size:.56rem}}
+/* circular reveal menu */
+.burst{position:fixed;inset:0;z-index:150;background:var(--terra);clip-path:circle(0 at calc(100% - 3rem) 4.5rem);transition:clip-path .7s cubic-bezier(.7,0,.2,1);display:flex;flex-direction:column;padding:6rem 1.5rem 2rem;visibility:hidden}
+.burst.is-open{clip-path:circle(150% at calc(100% - 3rem) 4.5rem);visibility:visible}
+.burst ul{list-style:none;margin:0;padding:0}
+.burst li a{display:block;font:800 clamp(2rem,9vw,3.4rem)/1.15 var(--f-display);text-decoration:none;color:var(--roast);padding:.2rem 0}
+.burst li a:hover{color:var(--milk)}
+.burst__foot{margin-top:auto;display:grid;gap:.6rem;font-weight:700}
+
+/* ---------- 4. Hero: colour block + product photo + roast picker ---------- */
+.hero{padding:var(--s-3) 0 var(--s-5)}
+.hero__grid{width:var(--wrap);margin-inline:auto;display:grid;gap:1rem}
+.hero__block{background:var(--terra);border:2px solid var(--roast);border-radius:var(--r);padding:clamp(1.6rem,4vw,3.4rem);display:flex;flex-direction:column;justify-content:space-between;gap:var(--s-4)}
+.hero h1{font-size:var(--t-hero);font-weight:800;letter-spacing:-.035em}
+.hero__lede{font-size:var(--t-lg);max-width:36ch;font-weight:500;margin:var(--s-3) 0 0}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero__side{display:grid;gap:1rem}
+.hero__photo{position:relative;border:2px solid var(--roast);border-radius:var(--r);overflow:hidden;background:var(--roast-2);min-height:280px}
+.hero__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;right:1rem;top:1rem;width:118px;height:118px;border-radius:50%;background:var(--mustard);border:2px solid var(--roast);display:grid;place-items:center}
+.badge svg{position:absolute;inset:0;animation:spin 18s linear infinite}
+.badge text{font:700 10.5px var(--f);letter-spacing:.2em;fill:var(--roast)}
+.badge b{font:800 1.05rem/1 var(--f-display);text-align:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.roast{border:2px solid var(--roast);border-radius:var(--r);padding:1.2rem 1.3rem;background:var(--teal);color:var(--milk);transition:background .4s ease,color .4s ease}
+.roast__top{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.8rem}
+.roast__top span{font:700 .75rem var(--f);letter-spacing:.12em;text-transform:uppercase}
+.chips{display:flex;gap:.4rem}
+.chips button{width:30px;height:30px;border-radius:50%;border:2px solid var(--roast);cursor:pointer;transition:transform .2s var(--ease)}
+.chips button[aria-pressed="true"]{transform:scale(1.2);box-shadow:0 0 0 3px var(--milk)}
+.roast h2{font-size:1.45rem;margin-bottom:.3rem}
+.roast p{margin:0;font-size:.95rem}
+.roast__price{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;font-weight:700}
+.roast__price .btn{padding:.6rem 1rem;font-size:.9rem}
+@media (min-width:960px){
+  .hero__grid{grid-template-columns:1.25fr .95fr;min-height:min(640px,calc(100vh - 160px))}
+  .hero__side{grid-template-rows:1fr auto}
+}
+
+/* ---------- 5. Trust bar ---------- */
+.trust{background:var(--milk-2);border-block:2px solid var(--roast)}
+.trust ul{width:var(--wrap);margin:0 auto;list-style:none;padding:1rem 0;display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.4rem;font-weight:600;font-size:.95rem}
+.trust li{display:flex;align-items:center;gap:.6rem}
+.trust svg{flex:none}
+@media (min-width:1000px){.trust ul{display:flex;justify-content:space-between}}
+
+/* ---------- 6. Coffees: packaging tiles ---------- */
+.coffees{padding:var(--s-6) 0}
+.coffees__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s-3);margin-bottom:var(--s-4)}
+.coffees h2{font-size:var(--t-2xl);max-width:13ch}
+.coffees__head p{max-width:36ch;margin:0;color:var(--roast-2)}
+.packs{display:grid;gap:1rem}
+.pack{position:relative;border:2px solid var(--roast);border-radius:var(--r);padding:1.4rem;display:flex;flex-direction:column;overflow:hidden;transition:transform .3s var(--ease)}
+.pack:hover{transform:translateY(-6px);box-shadow:6px 6px 0 var(--roast)}
+.pack__top{display:flex;justify-content:space-between;align-items:flex-start}
+.pack__tag{font:700 .7rem var(--f);letter-spacing:.06em;text-transform:uppercase;border:2px solid currentColor;border-radius:999px;padding:.2rem .55rem}
+.pack--terra{background:var(--terra)}
+.pack--teal{background:var(--teal);color:var(--milk)}
+.pack--mustard{background:var(--mustard)}
+.pack--rose{background:var(--rose)}
+.pack__bag{width:96px;height:120px;margin:0 0 1.2rem;flex:none}
+.pack__origin{font:700 .75rem var(--f);letter-spacing:.12em;text-transform:uppercase}
+.pack h3{font-size:1.35rem;margin:.35rem 0 .5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pack__notes{font-weight:600;margin:0 0 1rem;min-height:3.2em}
+.bars{display:grid;gap:.35rem;margin:0 0 1.2rem;font-size:.82rem;font-weight:600}
+.bars div{display:grid;grid-template-columns:5.2rem 1fr;align-items:center;gap:.6rem}
+.bars i{display:block;height:8px;border-radius:4px;background:rgba(43,26,20,.18);position:relative;overflow:hidden}
+.pack--teal .bars i{background:rgba(251,244,234,.25)}
+.bars i::after{content:"";position:absolute;inset:0;width:var(--v);background:currentColor;border-radius:4px}
+.pack__foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.pack__foot b{font:800 1.2rem var(--f-display)}
+.pack__foot small{display:block;font-weight:600;font-size:.78rem}
+.add{border:2px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:.55rem .9rem;font:700 .85rem var(--f);cursor:pointer;transition:background .2s,color .2s}
+.add:hover{background:var(--roast);color:var(--milk);border-color:var(--roast)}
+.pack--teal .add:hover{background:var(--milk);color:var(--teal);border-color:var(--milk)}
+@media (min-width:640px){.packs{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.packs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* ---------- 7. Subscription builder (signature) ---------- */
+.sub{background:var(--teal);color:var(--milk);padding:var(--s-6) 0;border-block:2px solid var(--roast)}
+.sub h2{font-size:var(--t-2xl);max-width:14ch}
+.sub__intro{max-width:44ch;margin:var(--s-2) 0 var(--s-4);color:#D9E7E5}
+.sub__grid{display:grid;gap:var(--s-4)}
+.sub fieldset{border:0;padding:0;margin:0 0 1.6rem}
+.sub legend{font:700 1rem var(--f);margin-bottom:.7rem;display:flex;gap:.6rem;align-items:center}
+.sub legend b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--mustard);color:var(--roast);font:800 .8rem var(--f-display)}
+.picks{display:flex;flex-wrap:wrap;gap:.5rem}
+.picks label{position:relative}
+.picks input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.picks span{display:block;padding:.65rem 1rem;border-radius:999px;border:2px solid rgba(251,244,234,.5);font-weight:700;transition:background .15s,color .15s,border-color .15s}
+.picks label:hover span{border-color:var(--milk)}
+.picks input:checked + span{background:var(--milk);color:var(--roast);border-color:var(--milk)}
+.picks input:focus-visible + span{outline:3px solid var(--mustard);outline-offset:2px}
+.receipt{background:var(--milk);color:var(--roast);border:2px solid var(--roast);border-radius:var(--r);padding:1.6rem;align-self:start;position:sticky;top:100px;box-shadow:8px 8px 0 var(--roast)}
+.receipt h3{font-size:1.1rem;margin-bottom:1rem}
+.receipt dl{margin:0;display:grid;gap:.55rem}
+.receipt dl div{display:flex;justify-content:space-between;gap:1rem;border-bottom:1.5px dashed rgba(43,26,20,.25);padding-bottom:.55rem}
+.receipt dt{color:var(--roast-2);font-weight:500}
+.receipt dd{margin:0;font-weight:700;text-align:right}
+.receipt__total{display:flex;justify-content:space-between;align-items:baseline;margin:1.2rem 0 .3rem}
+.receipt__total b{font:800 clamp(2rem,1.5rem + 1.6vw,2.8rem)/1 var(--f-display);color:var(--terra-d)}
+.receipt__cup{font-weight:600;color:var(--roast-2);margin-bottom:1.2rem}
+.receipt .btn{width:100%}
+.receipt small{display:block;margin-top:.8rem;color:var(--roast-2);font-size:.82rem;text-align:center}
+@media (min-width:980px){.sub__grid{grid-template-columns:1.3fr .9fr;gap:var(--s-5)}}
+
+/* ---------- 8. Wholesale partners (case studies) ---------- */
+.partners{padding:var(--s-6) 0}
+.partners h2{font-size:var(--t-2xl);max-width:14ch;margin-bottom:var(--s-4)}
+.pgrid{display:grid;gap:1rem}
+.pcase{border:2px solid var(--roast);border-radius:var(--r);overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.pcase__img{aspect-ratio:16/10;background:var(--milk-2);overflow:hidden;border-bottom:2px solid var(--roast)}
+.pcase__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.pcase:hover .pcase__img img{transform:scale(1.05)}
+.pcase__body{padding:1.4rem;display:flex;flex-direction:column;flex:1}
+.pcase__type{font:700 .75rem var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--terra-d)}
+.pcase h3{font-size:1.3rem;margin:.4rem 0 .6rem;min-height:2.1em}
+.pcase p{color:var(--roast-2);font-size:.98rem}
+.pcase dl{margin:auto 0 0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem;padding-top:1rem;border-top:1.5px dashed rgba(43,26,20,.25);font-size:.9rem}
+.pcase dt{color:var(--roast-2)}
+.pcase dd{margin:0;font-weight:700}
+.pcase__big{background:var(--mustard);border-top:2px solid var(--roast);padding:1rem 1.4rem;display:flex;align-items:baseline;gap:.7rem}
+.pcase__big b{font:800 2rem/1 var(--f-display)}
+.pcase__big span{font-weight:600;font-size:.92rem}
+@media (min-width:900px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:640px) and (max-width:899px){
+  .pcase{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+  .pcase__img{grid-row:1/3;aspect-ratio:auto;border-bottom:0;border-right:2px solid var(--roast)}
+  .pcase__big{grid-column:2}
+  .pcase h3{min-height:0}
+}
+
+/* ---------- 9. Process: week planner ---------- */
+.week{padding:0 0 var(--s-6)}
+.week h2{font-size:var(--t-2xl);max-width:15ch;margin-bottom:var(--s-2)}
+.week__intro{max-width:50ch;color:var(--roast-2);margin-bottom:var(--s-4)}
+.cal{display:grid;grid-template-columns:1fr;border:2px solid var(--roast);border-radius:var(--r);overflow:hidden;background:#fff}
+.day{padding:1.2rem;border-bottom:2px solid var(--roast);min-height:0}
+.day:last-child{border-bottom:0}
+.day__name{display:flex;justify-content:space-between;font:800 .9rem var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+.day__name small{font:600 .75rem var(--f);text-transform:none;letter-spacing:0;color:var(--roast-2)}
+.day h3{font-size:1.05rem;margin:.9rem 0 .4rem;font-family:var(--f);font-weight:800;letter-spacing:0}
+.day p{margin:0;font-size:.9rem;color:var(--roast-2)}
+.day--terra{background:var(--terra)}.day--mustard{background:var(--mustard)}.day--rose{background:var(--rose)}
+.day--teal{background:var(--teal);color:var(--milk)}.day--teal p,.day--teal small{color:#D9E7E5!important}
+.day--terra p,.day--mustard p,.day--rose p{color:var(--roast)}
+.day--off{background:repeating-linear-gradient(-45deg,#fff 0 10px,var(--milk-2) 10px 20px)}
+@media (min-width:900px){.cal{grid-template-columns:repeat(7,1fr)}.day{border-bottom:0;border-right:2px solid var(--roast);min-height:240px}.day:last-child{border-right:0}}
+
+/* ---------- 10. Guarantees: tickets ---------- */
+.tickets{padding:var(--s-6) 0;background:var(--roast);color:var(--milk)}
+.tickets h2{font-size:var(--t-2xl);max-width:13ch;margin-bottom:var(--s-4)}
+.tgrid{display:grid;gap:1.2rem}
+.ticket{position:relative;background:var(--milk);color:var(--roast);border-radius:14px;padding:1.6rem 1.6rem 1.4rem;display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:center}
+.ticket::before,.ticket::after{content:"";position:absolute;top:50%;width:26px;height:26px;border-radius:50%;background:var(--roast);transform:translateY(-50%)}
+.ticket::before{left:-13px}.ticket::after{right:-13px}
+.ticket__stub{font:800 2.2rem/1 var(--f-display);color:var(--terra-d);padding-right:1.2rem;border-right:2px dashed rgba(43,26,20,.3);min-width:5.2rem;text-align:center}
+.ticket h3{font-size:1.1rem;margin-bottom:.3rem;font-family:var(--f);font-weight:800;letter-spacing:0}
+.ticket p{margin:0;color:var(--roast-2);font-size:.95rem}
+.ticket:nth-child(2){transform:rotate(1deg)}
+.ticket:nth-child(3){transform:rotate(-1deg)}
+@media (min-width:900px){.tgrid{grid-template-columns:repeat(3,1fr);gap:1.6rem}}
+
+/* ---------- 11. Reviews ---------- */
+.reviews{padding:var(--s-6) 0}
+.reviews__top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s-3);margin-bottom:var(--s-4)}
+.reviews h2{font-size:var(--t-2xl)}
+.tp{display:flex;align-items:center;gap:.8rem;font-weight:700}
+.tp b{font:800 2.6rem/1 var(--f-display)}
+.tp a{color:var(--terra-d);font-weight:700}
+.rgrid{display:grid;gap:1rem}
+.rv{margin:0;border:2px solid var(--roast);border-radius:var(--r);padding:1.5rem;background:#fff;display:flex;flex-direction:column;gap:1rem}
+.rv__stars{color:var(--terra-d);letter-spacing:.12em}
+.rv blockquote{margin:0;font-size:1.05rem}
+.rv figcaption{margin-top:auto;font-size:.9rem;color:var(--roast-2)}
+.rv figcaption b{display:block;color:var(--roast)}
+.rv--big{background:var(--mustard)}
+.rv--big blockquote{font:700 clamp(1.4rem,1.1rem + 1.2vw,2rem)/1.2 var(--f-display);letter-spacing:-.01em}
+.rv--big .rv__stars,.rv--big figcaption{color:var(--roast)}
+@media (min-width:760px){.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.rv--big{grid-column:1/-1}}
+@media (min-width:1100px){.rgrid{grid-template-columns:repeat(4,minmax(0,1fr))}.rv--big{grid-column:span 2;grid-row:span 2;justify-content:space-between}.rv--big blockquote{font-size:clamp(1.5rem,1.1rem + 1.3vw,2.2rem)}}
+
+/* ---------- 12. FAQ ---------- */
+.faq{padding:0 0 var(--s-6)}
+.faq h2{font-size:var(--t-2xl);margin-bottom:var(--s-4)}
+.faq__cols{display:grid;gap:.8rem}
+.acc__item{border:2px solid var(--roast);border-radius:16px;background:#fff;overflow:hidden;align-self:start}
+.acc__btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.2rem;background:none;border:0;text-align:left;font:700 1.08rem/1.35 var(--f);color:var(--roast);cursor:pointer}
+.acc__btn:hover{background:var(--milk-2)}
+.acc__ic{flex:none;width:32px;height:32px;border-radius:50%;background:var(--mustard);border:2px solid var(--roast);display:grid;place-items:center;transition:transform .3s var(--ease)}
+.acc__btn[aria-expanded="true"] .acc__ic{transform:rotate(135deg);background:var(--terra)}
+.acc__panel{padding:0 1.2rem 1.2rem;color:var(--roast-2)}
+.acc__panel p{margin:0}
+@media (min-width:900px){.faq__cols{grid-template-columns:1fr 1fr}}
+
+/* ---------- 13. Wholesale form ---------- */
+.trade{padding:var(--s-6) 0;background:var(--terra);border-top:2px solid var(--roast)}
+.trade__grid{display:grid;gap:var(--s-4)}
+.trade h2{font-size:var(--t-2xl);max-width:11ch}
+.trade__intro p{max-width:38ch;font-weight:500;margin-top:var(--s-2)}
+.trade__intro ul{list-style:none;padding:0;margin:var(--s-3) 0 0;display:grid;gap:.5rem;font-weight:700}
+.trade__intro li::before{content:"✓";display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--roast);color:var(--milk);font-size:.75rem;margin-right:.6rem}
+.card{background:var(--milk);border:2px solid var(--roast);border-radius:var(--r);padding:clamp(1.3rem,3vw,2.2rem);box-shadow:10px 10px 0 var(--roast)}
+.form{display:grid;gap:1rem 1.2rem}
+.fld{display:flex;flex-direction:column;gap:.35rem}
+.fld label{font-weight:700;font-size:.92rem}
+.fld input,.fld select,.fld textarea{font:500 1rem var(--f);color:var(--roast);background:#fff;border:2px solid var(--roast);border-radius:12px;padding:.8rem .95rem}
+.fld select{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232B1A14' stroke-width='2'/%3E%3C/svg%3E") right .95rem center no-repeat}
+.fld textarea{min-height:120px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;box-shadow:0 0 0 3px var(--mustard)}
+.fld [aria-invalid="true"]{border-color:var(--error);background:#FFF4F2}
+.err{font-size:.85rem;font-weight:700;color:var(--error)}
+.err:empty{display:none}
+.fld--full,.form__foot{grid-column:1/-1}
+.form__foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.form__foot small{color:var(--roast-2);max-width:38ch}
+.done{text-align:center;padding:1.5rem .5rem}
+.done__cup{width:72px;height:72px;margin:0 auto 1rem;border-radius:50%;background:var(--mustard);border:2px solid var(--roast);display:grid;place-items:center}
+.done h3{font-size:1.6rem;margin-bottom:.5rem}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.trade__grid{grid-template-columns:5fr 7fr;gap:var(--s-5)}}
+
+/* ---------- 14. Footer ---------- */
+.foot{background:var(--roast);color:#E7D9C8;padding:var(--s-5) 0 var(--s-3);font-size:.95rem}
+.foot a{text-decoration:none;color:var(--milk)}
+.foot a:hover{color:var(--mustard)}
+.foot__news{display:grid;gap:1rem;padding:1.6rem;border-radius:var(--r);background:var(--teal);margin-bottom:var(--s-4);align-items:center}
+.foot__news h2{font-size:1.4rem;color:var(--milk)}
+.foot__news form{display:flex;flex-wrap:wrap;gap:.5rem}
+.foot__news input{flex:1 1 220px;font:500 1rem var(--f);padding:.9rem 1.1rem;border-radius:999px;border:2px solid var(--roast);background:var(--milk);color:var(--roast)}
+.foot__news p{flex-basis:100%;margin:0;font-weight:600;color:var(--milk)}
+.foot__grid{display:grid;gap:var(--s-3)}
+.foot h3{font:800 .8rem var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--mustard);margin-bottom:.8rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
+.foot address{font-style:normal;line-height:1.75}
+.foot__desc{max-width:30ch;margin-top:1rem}
+.foot .logo__txt small{color:#CDBBA8}
+.social{display:flex;gap:.5rem;margin-top:1rem}
+.social a{width:42px;height:42px;border-radius:50%;border:2px solid #6A5248;display:grid;place-items:center}
+.social a:hover{border-color:var(--mustard)}
+.foot__base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:var(--s-4);padding-top:var(--s-2);border-top:1px solid #4A3329;font-size:.85rem;color:#CDBBA8}
+.foot__base ul{display:flex;flex-wrap:wrap;gap:1.2rem}
+@media (min-width:900px){.foot__news{grid-template-columns:1fr 1.2fr}.foot__grid{grid-template-columns:1.5fr 1fr 1fr 1fr 1fr}}
+
+/* toast, back to top, mobile call */
+.toast{position:fixed;left:50%;top:1rem;z-index:170;transform:translate(-50%,-160%);background:var(--mustard);color:var(--roast);border:2px solid var(--roast);border-radius:999px;padding:.8rem 1.2rem;font-weight:700;transition:transform .45s var(--ease);box-shadow:4px 4px 0 var(--roast)}
+.toast.is-on{transform:translate(-50%,0)}
+.to-top{position:fixed;right:1rem;bottom:1rem;z-index:90;display:flex;align-items:center;gap:.4rem;padding:.75rem 1.1rem;border-radius:999px;background:var(--terra);color:var(--roast);border:2px solid var(--roast);font:800 .85rem var(--f);cursor:pointer;box-shadow:3px 3px 0 var(--roast);opacity:0;visibility:hidden;transform:translateY(20px) rotate(-6deg);transition:opacity .3s,visibility .3s,transform .4s var(--ease)}
+.to-top.is-shown{opacity:1;visibility:visible;transform:none}
+.to-top:hover{transform:translateY(-3px)}
+.mcall{position:fixed;left:1rem;bottom:1rem;z-index:90;display:flex;align-items:center;gap:.4rem;padding:.75rem 1.1rem;border-radius:999px;background:var(--roast);color:var(--milk);font-weight:700;text-decoration:none;font-size:.9rem}
+@media (min-width:760px){.mcall{display:none}}
+
+/* ---------- 15. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(30px) scale(.98);transition:opacity .6s ease,transform .7s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .announce p:not(.is-on){display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="announce" aria-live="off">
+  <p class="is-on">Roasted Monday, posted Tuesday. Every week.</p>
+  <p>Free UK delivery on subscriptions and orders over £30</p>
+  <p>Great Taste 2025: two stars for Huila Pink Bourbon</p>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="logo" href="#top" aria-label="Ember Lane Coffee Roasters, back to top">
+      <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="20" rx="13" ry="18" transform="rotate(25 20 20)" fill="#D9572B" stroke="#2B1A14" stroke-width="2"/><path d="M23.5 3.5c-7.5 7 2 13.5-5.5 33" fill="none" stroke="#2B1A14" stroke-width="2.4" stroke-linecap="round"/><path d="M27 12c1.8 1.6 2 3.6.6 5.2" fill="none" stroke="#FBF4EA" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="logo__txt"><b>EMBER LANE</b><small>Coffee roasters · Glasgow</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="#coffees">Coffees</a></li>
+        <li><a href="#subscribe">Subscribe</a></li>
+        <li><a href="#partners">Wholesale</a></li>
+        <li><a href="#week">Our week</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="nav__tel" href="tel:+441413397742">0141 339 7742</a>
+    <a class="btn nav__cta" href="#trade">Wholesale quote</a>
+    <button class="bag" type="button" id="bag" aria-label="Your bag, 0 items"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="bag__n" id="bag-n">0</span></button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="burst" aria-label="Open menu"><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 2h20M0 7h20M0 12h20" stroke="currentColor" stroke-width="2.4"/></svg></button>
+  </div>
+</header>
+
+<div class="burst" id="burst" role="dialog" aria-modal="true" aria-label="Menu">
+  <ul>
+    <li><a href="#coffees">Coffees</a></li>
+    <li><a href="#subscribe">Subscribe</a></li>
+    <li><a href="#partners">Wholesale</a></li>
+    <li><a href="#week">Our week</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#trade">Wholesale quote</a></li>
+  </ul>
+  <div class="burst__foot"><a href="tel:+441413397742">0141 339 7742</a><a href="mailto:hello@emberlanecoffee.co.uk">hello@emberlanecoffee.co.uk</a></div>
+</div>
+
+<main id="main" tabindex="-1">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__grid">
+    <div class="hero__block reveal">
+      <div>
+        <span class="eyebrow">Speciality coffee, Finnieston</span>
+        <h1 id="hero-title">Roasted Monday. In your cup by Thursday.</h1>
+        <p class="hero__lede">Four coffees we're proud of, roasted in small batches and posted the next morning. Subscribe from £10.50 a bag, and pause or skip whenever you like.</p>
+      </div>
+      <div class="hero__ctas">
+        <a class="btn" href="#subscribe">Build my subscription <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></a>
+        <a class="btn btn--line" href="#coffees">Shop single bags</a>
+      </div>
+    </div>
+    <div class="hero__side">
+      <div class="hero__photo reveal">
+        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1100&q=80&auto=format&fit=crop" alt="Freshly roasted coffee beans" width="1100" height="900" fetchpriority="high">
+        <div class="badge" aria-hidden="true"><svg viewBox="0 0 118 118"><defs><path id="c" d="M59 59m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#c">FRESH · ROASTED · EVERY · MONDAY ·</textPath></text></svg><b>7<br>days</b></div>
+      </div>
+      <div class="roast reveal" id="roast" aria-live="polite">
+        <div class="roast__top"><span>This week's roast</span>
+          <div class="chips" role="group" aria-label="Choose a coffee">
+            <button type="button" style="background:#1F5F5B" aria-pressed="true" aria-label="Guji Hambela" data-i="0"></button>
+            <button type="button" style="background:#D9572B" aria-pressed="false" aria-label="Huila Pink Bourbon" data-i="1"></button>
+            <button type="button" style="background:#E8B43A" aria-pressed="false" aria-label="Cerrado Mineiro" data-i="2"></button>
+            <button type="button" style="background:#F2B8A2" aria-pressed="false" aria-label="Firelight espresso" data-i="3"></button>
+          </div>
+        </div>
+        <h2 id="roast-name">Guji Hambela, Ethiopia</h2>
+        <p id="roast-notes">Blueberry, jasmine, lemon sherbet</p>
+        <div class="roast__price"><span id="roast-price">£14.00 · 250g</span><button class="btn btn--milk add-hero" type="button">Add to bag</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust" aria-label="Why order from us">
+  <ul>
+    <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M9 3v4M15 3v4" stroke="currentColor" stroke-width="2"/></svg>Roast date on every bag</li>
+    <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="17.5" r="1.6" fill="currentColor"/><circle cx="17" cy="17.5" r="1.6" fill="currentColor"/></svg>Free delivery on subscriptions</li>
+    <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 14l-1.5 7 5-3 5 3-1.5-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Great Taste 2025, two stars</li>
+    <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="none" stroke="currentColor" stroke-width="2"/></svg>4.8 on Trustpilot, 2,316 reviews</li>
+    <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21c0-8 4-14 14-17-1 10-6 15-14 17zM6 21c2-4 5-7 9-9" fill="none" stroke="currentColor" stroke-width="2"/></svg>Home-compostable bags</li>
+  </ul>
+</section>
+
+<!-- ============ COFFEES (services equivalent) ============ -->
+<section class="coffees" id="coffees" aria-labelledby="cf-title">
+  <div class="wrap">
+    <div class="coffees__head reveal">
+      <div><span class="eyebrow" style="color:var(--terra-d)">The line-up</span><h2 id="cf-title">Four coffees. No filler.</h2></div>
+      <p>We'd rather do four well than twenty on rotation. Each one is bought direct or through importers who pay farmers well above Fairtrade minimums.</p>
+    </div>
+    <div class="packs">
+      <article class="pack pack--teal reveal">
+        <div class="pack__top"><svg class="pack__bag" viewBox="0 0 96 120" aria-hidden="true"><path d="M14 18h68l6 98H8z" fill="#FBF4EA" stroke="#2B1A14" stroke-width="2.5"/><path d="M14 18l6-14h56l6 14" fill="#E8B43A" stroke="#2B1A14" stroke-width="2.5"/><rect x="26" y="48" width="44" height="40" rx="4" fill="#1F5F5B" stroke="#2B1A14" stroke-width="2"/><path d="M36 68h24M36 76h16" stroke="#FBF4EA" stroke-width="3"/></svg><span class="pack__tag">Filter</span></div>
+        <span class="pack__origin">Ethiopia · Natural</span><h3>Guji Hambela</h3><p class="pack__notes">Blueberry, jasmine, lemon sherbet</p>
+        <div class="bars"><div>Acidity<i style="--v:85%"></i></div><div>Sweetness<i style="--v:75%"></i></div><div>Body<i style="--v:40%"></i></div></div>
+        <div class="pack__foot"><span><b>£14.00</b><small>250g, filter</small></span><button class="add" type="button" data-name="Guji Hambela">Add</button></div>
+      </article>
+      <article class="pack pack--terra reveal">
+        <div class="pack__top"><svg class="pack__bag" viewBox="0 0 96 120" aria-hidden="true"><path d="M14 18h68l6 98H8z" fill="#FBF4EA" stroke="#2B1A14" stroke-width="2.5"/><path d="M14 18l6-14h56l6 14" fill="#1F5F5B" stroke="#2B1A14" stroke-width="2.5"/><rect x="26" y="48" width="44" height="40" rx="4" fill="#D9572B" stroke="#2B1A14" stroke-width="2"/><path d="M36 68h24M36 76h16" stroke="#2B1A14" stroke-width="3"/></svg><span class="pack__tag">All-rounder</span></div>
+        <span class="pack__origin">Colombia · Washed</span><h3>Huila Pink Bourbon</h3><p class="pack__notes">Raspberry, cola, cacao nib</p>
+        <div class="bars"><div>Acidity<i style="--v:70%"></i></div><div>Sweetness<i style="--v:85%"></i></div><div>Body<i style="--v:55%"></i></div></div>
+        <div class="pack__foot"><span><b>£13.50</b><small>250g, filter or espresso</small></span><button class="add" type="button" data-name="Huila Pink Bourbon">Add</button></div>
+      </article>
+      <article class="pack pack--mustard reveal">
+        <div class="pack__top"><svg class="pack__bag" viewBox="0 0 96 120" aria-hidden="true"><path d="M14 18h68l6 98H8z" fill="#FBF4EA" stroke="#2B1A14" stroke-width="2.5"/><path d="M14 18l6-14h56l6 14" fill="#D9572B" stroke="#2B1A14" stroke-width="2.5"/><rect x="26" y="48" width="44" height="40" rx="4" fill="#E8B43A" stroke="#2B1A14" stroke-width="2"/><path d="M36 68h24M36 76h16" stroke="#2B1A14" stroke-width="3"/></svg><span class="pack__tag">With milk</span></div>
+        <span class="pack__origin">Brazil · Pulped natural</span><h3>Cerrado Mineiro</h3><p class="pack__notes">Hazelnut, milk chocolate, caramel</p>
+        <div class="bars"><div>Acidity<i style="--v:30%"></i></div><div>Sweetness<i style="--v:80%"></i></div><div>Body<i style="--v:80%"></i></div></div>
+        <div class="pack__foot"><span><b>£11.00</b><small>250g, great with milk</small></span><button class="add" type="button" data-name="Cerrado Mineiro">Add</button></div>
+      </article>
+      <article class="pack pack--rose reveal">
+        <div class="pack__top"><svg class="pack__bag" viewBox="0 0 96 120" aria-hidden="true"><path d="M14 18h68l6 98H8z" fill="#FBF4EA" stroke="#2B1A14" stroke-width="2.5"/><path d="M14 18l6-14h56l6 14" fill="#2B1A14" stroke="#2B1A14" stroke-width="2.5"/><rect x="26" y="48" width="44" height="40" rx="4" fill="#F2B8A2" stroke="#2B1A14" stroke-width="2"/><path d="M36 68h24M36 76h16" stroke="#2B1A14" stroke-width="3"/></svg><span class="pack__tag">Espresso</span></div>
+        <span class="pack__origin">House blend · Espresso</span><h3>Firelight</h3><p class="pack__notes">Dark chocolate, cherry, brown sugar</p>
+        <div class="bars"><div>Acidity<i style="--v:40%"></i></div><div>Sweetness<i style="--v:75%"></i></div><div>Body<i style="--v:90%"></i></div></div>
+        <div class="pack__foot"><span><b>£10.50</b><small>250g, our café blend</small></span><button class="add" type="button" data-name="Firelight espresso">Add</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUBSCRIPTION BUILDER (signature) ============ -->
+<section class="sub" id="subscribe" aria-labelledby="sb-title">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--mustard)">Subscribe</span>
+    <h2 id="sb-title">Build your subscription in four taps.</h2>
+    <p class="sub__intro">Change anything, pause or skip a delivery, or cancel from your account. No minimum term, no phone call needed.</p>
+    <div class="sub__grid">
+      <form id="builder" onsubmit="return false">
+        <fieldset><legend><b>1</b>Which coffee?</legend><div class="picks">
+          <label><input type="radio" name="coffee" value="Roaster's choice" data-p="0" checked><span>Roaster's choice</span></label>
+          <label><input type="radio" name="coffee" value="Guji Hambela" data-p="1"><span>Guji (fruity)</span></label>
+          <label><input type="radio" name="coffee" value="Huila Pink Bourbon" data-p=".5"><span>Huila (juicy)</span></label>
+          <label><input type="radio" name="coffee" value="Cerrado Mineiro" data-p="-1"><span>Cerrado (chocolatey)</span></label>
+          <label><input type="radio" name="coffee" value="Firelight" data-p="-1.5"><span>Firelight (espresso)</span></label>
+        </div></fieldset>
+        <fieldset><legend><b>2</b>How do you brew?</legend><div class="picks">
+          <label><input type="radio" name="grind" value="Whole bean" checked><span>Whole bean</span></label>
+          <label><input type="radio" name="grind" value="Espresso"><span>Espresso</span></label>
+          <label><input type="radio" name="grind" value="Filter"><span>Filter / V60</span></label>
+          <label><input type="radio" name="grind" value="Cafetière"><span>Cafetière</span></label>
+          <label><input type="radio" name="grind" value="AeroPress"><span>AeroPress</span></label>
+        </div></fieldset>
+        <fieldset><legend><b>3</b>Bag size</legend><div class="picks">
+          <label><input type="radio" name="size" value="250" checked><span>250g · about 16 cups</span></label>
+          <label><input type="radio" name="size" value="500"><span>500g · about 33 cups</span></label>
+          <label><input type="radio" name="size" value="1000"><span>1kg · about 66 cups</span></label>
+        </div></fieldset>
+        <fieldset><legend><b>4</b>How often?</legend><div class="picks">
+          <label><input type="radio" name="freq" value="weekly"><span>Every week</span></label>
+          <label><input type="radio" name="freq" value="fortnightly" checked><span>Every 2 weeks</span></label>
+          <label><input type="radio" name="freq" value="monthly"><span>Every month</span></label>
+        </div></fieldset>
+      </form>
+      <div class="receipt" aria-live="polite">
+        <h3>Your subscription</h3>
+        <dl>
+          <div><dt>Coffee</dt><dd id="s-coffee">Roaster's choice</dd></div>
+          <div><dt>Grind</dt><dd id="s-grind">Whole bean</dd></div>
+          <div><dt>Bag</dt><dd id="s-size">250g</dd></div>
+          <div><dt>Delivery</dt><dd id="s-freq">Every 2 weeks, free</dd></div>
+        </dl>
+        <p class="receipt__total"><span>Per delivery</span><b id="s-price">£10.50</b></p>
+        <p class="receipt__cup" id="s-cup">That's 66p a cup, or about £22.75 a month.</p>
+        <a class="btn btn--terra" href="#top" id="s-go">Start my subscription</a>
+        <small>First bag ships next Tuesday. Pause, skip or cancel any time.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHOLESALE PARTNERS (case studies) ============ -->
+<section class="partners" id="partners" aria-labelledby="pt-title">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--terra-d)">Wholesale</span>
+    <h2 id="pt-title" class="reveal">Cafés, offices and a hotel by the loch.</h2>
+    <div class="pgrid">
+      <article class="pcase reveal">
+        <div class="pcase__img"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=900&q=80&auto=format&fit=crop" alt="Latte with heart-shaped latte art on a café table" loading="lazy" width="900" height="560"></div>
+        <div class="pcase__body"><span class="pcase__type">Bakery café · Partick</span><h3>Switching a busy bakery to Firelight</h3><p>Two days of barista training, a recipe card for the grinder and a weekly delivery every Tuesday before 9am.</p>
+          <dl><div><dt>Volume</dt><dd>22kg a week</dd></div><div><dt>Set-up</dt><dd>2 weeks</dd></div><div><dt>Training</dt><dd>Included</dd></div><div><dt>Price</dt><dd>£19.80/kg</dd></div></dl></div>
+        <div class="pcase__big"><b>+14%</b><span>coffee sales in the first quarter</span></div>
+      </article>
+      <article class="pcase reveal">
+        <div class="pcase__img"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80&auto=format&fit=crop" alt="Cup of black coffee on a desk" loading="lazy" width="900" height="560"></div>
+        <div class="pcase__body"><span class="pcase__type">Design studio · Merchant City</span><h3>Office coffee for 45 people</h3><p>A bean-to-cup machine on a free loan with a monthly beans plan, and a quarterly cupping for the team.</p>
+          <dl><div><dt>Volume</dt><dd>8kg a month</dd></div><div><dt>Machine</dt><dd>Free loan</dd></div><div><dt>Monthly</dt><dd>£295</dd></div><div><dt>Contract</dt><dd>Rolling</dd></div></dl></div>
+        <div class="pcase__big"><b>37p</b><span>per cup, beans and machine included</span></div>
+      </article>
+      <article class="pcase reveal">
+        <div class="pcase__img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=80&auto=format&fit=crop" alt="Coffee beans spilling from a cup" loading="lazy" width="900" height="560"></div>
+        <div class="pcase__body"><span class="pcase__type">Hotel · Loch Lomond</span><h3>A house blend with the hotel's name on it</h3><p>Three sample roasts, a blind tasting with their head chef, and own-label bags for the rooms and shop.</p>
+          <dl><div><dt>Volume</dt><dd>30kg a month</dd></div><div><dt>Development</dt><dd>5 weeks</dd></div><div><dt>Label bags</dt><dd>1,200 a year</dd></div><div><dt>Fee</dt><dd>£450 one-off</dd></div></dl></div>
+        <div class="pcase__big"><b>1,200</b><span>own-label bags sold to guests last year</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS: OUR WEEK ============ -->
+<section class="week" id="week" aria-labelledby="wk-title">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--teal)">Our week</span>
+    <h2 id="wk-title" class="reveal">Why your coffee is never more than 7 days old.</h2>
+    <p class="week__intro reveal">Every order follows the same week. Order by Sunday midnight and it's in this Monday's roast.</p>
+    <div class="cal reveal">
+      <div class="day day--off"><p class="day__name">Sun <small>by midnight</small></p><h3>Order closes</h3><p>Subscriptions and shop orders for this week's roast.</p></div>
+      <div class="day day--terra"><p class="day__name">Mon <small>6am</small></p><h3>We roast</h3><p>Ali roasts every bag to order on our 15kg Giesen.</p></div>
+      <div class="day day--mustard"><p class="day__name">Tue <small>8am</small></p><h3>Pack and post</h3><p>Rested overnight, ground to your brew, posted Royal Mail Tracked 24.</p></div>
+      <div class="day day--teal"><p class="day__name">Wed <small>most of UK</small></p><h3>Delivered</h3><p>Through your letterbox. No need to be in.</p></div>
+      <div class="day day--rose"><p class="day__name">Thu <small>everyone</small></p><h3>Delivered</h3><p>Highlands, islands and Northern Ireland.</p></div>
+      <div class="day"><p class="day__name">Fri <small>2 to 4pm</small></p><h3>Cupping</h3><p>Open tasting at the roastery. Free, just turn up.</p></div>
+      <div class="day day--off"><p class="day__name">Sat <small>9 to 2</small></p><h3>Shop open</h3><p>Collect, sniff the beans and buy a flat white.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARANTEES: TICKETS ============ -->
+<section class="tickets" id="promise" aria-labelledby="tk-title">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--mustard)">Our promise</span>
+    <h2 id="tk-title" class="reveal">No stale coffee. No lock-in. No faff.</h2>
+    <div class="tgrid">
+      <div class="ticket reveal"><span class="ticket__stub">7d</span><div><h3>Never older than 7 days</h3><p>Every bag has its roast date on the front. If yours is older than 7 days when it arrives, the next one is free.</p></div></div>
+      <div class="ticket reveal"><span class="ticket__stub">2</span><div><h3>Pause in two clicks</h3><p>Skip, pause, swap coffee or cancel from your account any time before Sunday midnight.</p></div></div>
+      <div class="ticket reveal"><span class="ticket__stub">£0</span><div><h3>Don't love it? Free swap</h3><p>Tell us what you didn't like and we'll send a different coffee next delivery at no charge.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews" aria-labelledby="rv-title">
+  <div class="wrap">
+    <div class="reviews__top reveal"><div><span class="eyebrow" style="color:var(--terra-d)">Reviews</span><h2 id="rv-title">2,316 people can't be wrong. Probably.</h2></div><p class="tp"><b>4.8</b><span>Trustpilot average<br><a href="https://uk.trustpilot.com/review/emberlanecoffee.co.uk">Read all 2,316 reviews</a></span></p></div>
+    <div class="rgrid">
+      <figure class="rv rv--big reveal"><div class="rv__stars" aria-label="5 stars">★★★★★</div><blockquote>I didn't know coffee could taste like blueberries until the Guji turned up. Two years subscribed now and I've only paused once, for a honeymoon.</blockquote><figcaption><b>Morag S.</b>Edinburgh · fortnightly, Roaster's choice</figcaption></figure>
+      <figure class="rv reveal"><div class="rv__stars" aria-label="5 stars">★★★★★</div><blockquote>Roast date was 2 days before it arrived. Supermarket "fresh" coffee is often months old.</blockquote><figcaption><b>James K.</b>Manchester · Firelight, espresso</figcaption></figure>
+      <figure class="rv reveal"><div class="rv__stars" aria-label="4 stars">★★★★☆</div><blockquote>Lovely coffee. One bag came ground for filter instead of cafetière, but they sent a replacement the same week.</blockquote><figcaption><b>Aisha R.</b>Cardiff · monthly, Cerrado</figcaption></figure>
+      <figure class="rv reveal"><div class="rv__stars" aria-label="5 stars">★★★★★</div><blockquote>Skipping deliveries when we're away is genuinely two clicks. No guilt-trip emails.</blockquote><figcaption><b>Tom &amp; Fi B.</b>Stirling · weekly, 500g</figcaption></figure>
+      <figure class="rv reveal"><div class="rv__stars" aria-label="5 stars">★★★★★</div><blockquote>Went to a Friday cupping. Ali spent 20 minutes helping me fix my V60 technique. Free!</blockquote><figcaption><b>Ewan D.</b>Glasgow · Guji Hambela</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" aria-labelledby="fq-title">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--teal)">FAQ</span>
+    <h2 id="fq-title" class="reveal">Questions, answered.</h2>
+    <div class="faq__cols" data-accordion>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q1" id="q1b">How much does delivery cost?<span class="acc__ic" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#2B1A14" stroke-width="2.4"/></svg></span></button></h3><div class="acc__panel" id="q1" role="region" aria-labelledby="q1b" hidden><p>Free on all subscriptions and on shop orders over £30. Otherwise it's £3.95 with Royal Mail Tracked 24. Bags fit through your letterbox.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q2" id="q2b">Can I pause or cancel my subscription?<span class="acc__ic" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#2B1A14" stroke-width="2.4"/></svg></span></button></h3><div class="acc__panel" id="q2" role="region" aria-labelledby="q2b" hidden><p>Yes, from your account at any time before Sunday midnight. There's no minimum number of deliveries and no cancellation fee.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q3" id="q3b">Whole bean or ground?<span class="acc__ic" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#2B1A14" stroke-width="2.4"/></svg></span></button></h3><div class="acc__panel" id="q3" role="region" aria-labelledby="q3b" hidden><p>Whole bean stays fresher for longer, so it's best if you have a grinder. If not, we grind to order on Tuesday morning for your brew method, and it'll taste great for about two weeks.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q4" id="q4b">How do payments work?<span class="acc__ic" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#2B1A14" stroke-width="2.4"/></svg></span></button></h3><div class="acc__panel" id="q4" role="region" aria-labelledby="q4b" hidden><p>Subscriptions are charged on the Sunday before each roast, by card, Apple Pay or Google Pay. Wholesale accounts are invoiced monthly on 30-day terms after your first two orders.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q5" id="q5b">Are your bags really compostable?<span class="acc__ic" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#2B1A14" stroke-width="2.4"/></svg></span></button></h3><div class="acc__panel" id="q5" role="region" aria-labelledby="q5b" hidden><p>Yes, our bags and valves are certified home-compostable and break down in a garden compost bin in around six months. The outer postal box is recycled card.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q6" id="q6b">Do you supply cafés and offices?<span class="acc__ic" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#2B1A14" stroke-width="2.4"/></svg></span></button></h3><div class="acc__panel" id="q6" role="region" aria-labelledby="q6b" hidden><p>Yes, across central Scotland with our own van, and UK-wide by courier. Barista training is included for cafés, and offices can borrow a bean-to-cup machine. Use the wholesale form and we'll send samples.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHOLESALE FORM ============ -->
+<section class="trade" id="trade" aria-labelledby="td-title">
+  <div class="wrap trade__grid">
+    <div class="trade__intro reveal">
+      <span class="eyebrow">Wholesale &amp; office coffee</span>
+      <h2 id="td-title">Get a wholesale quote</h2>
+      <p>Tell us about your café, office or shop. We'll reply within one working day and post you free samples.</p>
+      <ul><li>Free samples posted within 48 hours</li><li>Barista training included for cafés</li><li>Rolling monthly terms, no long contracts</li></ul>
+    </div>
+    <div class="card reveal">
+      <form class="form" id="quote-form" novalidate>
+        <div class="fld"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="postcode">Business postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="type">What kind of business?</label><select id="type" name="type" aria-describedby="type-error" required><option value="">Choose one</option><option>Café or restaurant</option><option>Office</option><option>Hotel or B&amp;B</option><option>Shop or deli (retail bags)</option><option>Corporate gifts</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="budget">Monthly budget</label><select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Choose one</option><option>Under £150</option><option>£150 to £400</option><option>£400 to £1,000</option><option>£1,000 to £2,500</option><option>Over £2,500</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+        <div class="fld fld--full"><label for="message">Tell us a bit more</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. 40-cover café, two-group espresso machine, about 15kg a week" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+        <div class="form__foot"><small>We'll only use your details to reply. <a href="/privacy-policy/">Privacy policy</a>.</small><button class="btn" type="submit">Send and get samples</button></div>
+      </form>
+      <div class="done" id="form-success" tabindex="-1" hidden><div class="done__cup" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h2a2 2 0 0 1 0 4h-2M8 3c-1 1.5 1 2.5 0 4M12 3c-1 1.5 1 2.5 0 4" fill="none" stroke="#2B1A14" stroke-width="2"/></svg></div><h3>Cheers<span data-first-name></span>!</h3><p style="margin:0">Fraser from our wholesale team will be in touch within one working day. Your samples go out in the next post.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__news">
+      <h2>Brewing tips and new coffees, once a month</h2>
+      <form id="news" novalidate><label class="vh" for="news-email">Email address</label><input id="news-email" type="email" placeholder="Your email" autocomplete="email"><button class="btn btn--terra" type="submit">Sign up</button><p id="news-msg" aria-live="polite"></p></form>
+    </div>
+    <div class="foot__grid">
+      <div>
+        <a class="logo" href="#top" aria-label="Ember Lane Coffee Roasters, back to top"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="20" rx="13" ry="18" transform="rotate(25 20 20)" fill="#D9572B" stroke="#FBF4EA" stroke-width="2"/><path d="M23.5 3.5c-7.5 7 2 13.5-5.5 33" fill="none" stroke="#FBF4EA" stroke-width="2.4" stroke-linecap="round"/></svg><span class="logo__txt"><b style="color:var(--milk)">EMBER LANE</b><small>Coffee roasters · Glasgow</small></span></a>
+        <p class="foot__desc">Small-batch speciality coffee, roasted every Monday in Finnieston since 2017.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/emberlanecoffee" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.tiktok.com/@emberlanecoffee" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.facebook.com/emberlanecoffee" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Roastery</h3><address>Unit 2, 1048 Argyle Street<br>Finnieston, Glasgow G3 8LY<br><a href="tel:+441413397742">0141 339 7742</a><br><a href="mailto:hello@emberlanecoffee.co.uk">hello@emberlanecoffee.co.uk</a></address></div>
+      <div><h3>Shop hours</h3><ul><li>Mon to Fri, 8am to 4pm</li><li>Saturday, 9am to 2pm</li><li>Friday cupping, 2 to 4pm</li></ul></div>
+      <div><h3>We deliver</h3><ul><li>UK-wide by Royal Mail</li><li>Van: Glasgow and Paisley</li><li>Edinburgh and Stirling</li><li>Dundee wholesale</li></ul></div>
+      <div><h3>Help</h3><ul><li><a href="/account/">My subscription</a></li><li><a href="/delivery/">Delivery</a></li><li><a href="/returns/">Returns</a></li><li><a href="/brew-guides/">Brew guides</a></li></ul></div>
+    </div>
+    <div class="foot__base"><span>© <span id="yr">2026</span> Ember Lane Coffee Roasters Ltd. Registered in Scotland no. SC563921. VAT GB 291 4466 03.</span><ul><li><a href="/privacy-policy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/cookies/">Cookies</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Added to bag</div>
+<a class="mcall" href="tel:+441413397742"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2"/></svg>Call us</a>
+<button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M7 15V2M1 7l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>Top</button>
+
+<script>
+/* Ember Lane: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gbp = function(n){ return '£' + n.toFixed(2); };
+
+  /* --- rotating announcement --- */
+  var ann = document.querySelectorAll('.announce p'), ai = 0;
+  if(!reduce) setInterval(function(){ ann[ai].classList.remove('is-on'); ai = (ai+1) % ann.length; ann[ai].classList.add('is-on'); }, 4000);
+
+  /* --- nav border, back to top --- */
+  var nav = document.getElementById('nav'), toTop = document.getElementById('to-top');
+  function onScroll(){ nav.classList.toggle('is-scrolled', scrollY > 40); toTop.classList.toggle('is-shown', scrollY > innerHeight * 1.2); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); document.getElementById('main').focus({preventScroll:true}); });
+
+  /* --- circular reveal menu --- */
+  var mb = document.querySelector('.menu-btn'), burst = document.getElementById('burst');
+  var openIcon = mb.innerHTML, closeIcon = '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2.4"/></svg>';
+  function setMenu(open){
+    burst.classList.toggle('is-open', open); mb.setAttribute('aria-expanded', String(open));
+    mb.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); mb.innerHTML = open ? closeIcon : openIcon;
+    document.body.style.overflow = open ? 'hidden' : '';
+    if(open) burst.querySelector('a').focus();
+  }
+  mb.addEventListener('click', function(){ setMenu(mb.getAttribute('aria-expanded') !== 'true'); });
+  burst.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && burst.classList.contains('is-open')){ setMenu(false); mb.focus(); } });
+
+  /* --- bag + toast --- */
+  var count = 0, bag = document.getElementById('bag'), bagN = document.getElementById('bag-n'), toast = document.getElementById('toast'), tt;
+  function addToBag(name){
+    count++; bagN.textContent = count; bag.setAttribute('aria-label', 'Your bag, ' + count + (count === 1 ? ' item' : ' items'));
+    bag.classList.remove('bump'); void bag.offsetWidth; bag.classList.add('bump');
+    toast.textContent = name + ' added to your bag'; toast.classList.add('is-on'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('is-on'); }, 2400);
+  }
+  document.querySelectorAll('.add').forEach(function(b){ b.addEventListener('click', function(){ addToBag(b.dataset.name); }); });
+
+  /* --- hero: this week's roast picker --- */
+  var ROASTS = [
+    {n:'Guji Hambela, Ethiopia', t:'Blueberry, jasmine, lemon sherbet', p:'£14.00 · 250g', bg:'#1F5F5B', fg:'#FBF4EA'},
+    {n:'Huila Pink Bourbon, Colombia', t:'Raspberry, cola, cacao nib', p:'£13.50 · 250g', bg:'#D9572B', fg:'#2B1A14'},
+    {n:'Cerrado Mineiro, Brazil', t:'Hazelnut, milk chocolate, caramel', p:'£11.00 · 250g', bg:'#E8B43A', fg:'#2B1A14'},
+    {n:'Firelight espresso blend', t:'Dark chocolate, cherry, brown sugar', p:'£10.50 · 250g', bg:'#F2B8A2', fg:'#2B1A14'}
+  ];
+  var roast = document.getElementById('roast'), rn = document.getElementById('roast-name'), rt = document.getElementById('roast-notes'), rp = document.getElementById('roast-price'), cur = 0;
+  document.querySelectorAll('.chips button').forEach(function(c){
+    c.addEventListener('click', function(){
+      cur = +c.dataset.i; var r = ROASTS[cur];
+      document.querySelectorAll('.chips button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === c)); });
+      roast.style.background = r.bg; roast.style.color = r.fg; rn.textContent = r.n; rt.textContent = r.t; rp.textContent = r.p;
+    });
+  });
+  document.querySelector('.add-hero').addEventListener('click', function(){ addToBag(ROASTS[cur].n.split(',')[0]); });
+
+  /* --- subscription builder (signature) ---
+     Subscriber prices: 250g £10.50, 500g £19.00, 1kg £34.00, adjusted per coffee. 15g per cup. */
+  var B = document.getElementById('builder');
+  var BASE = {250:10.5, 500:19, 1000:34}, CUPS = {250:16, 500:33, 1000:66}, PER_MONTH = {weekly:4.33, fortnightly:2.17, monthly:1};
+  var FREQ_TXT = {weekly:'Every week, free', fortnightly:'Every 2 weeks, free', monthly:'Every month, free'};
+  var out = {coffee:document.getElementById('s-coffee'), grind:document.getElementById('s-grind'), size:document.getElementById('s-size'), freq:document.getElementById('s-freq'),
+             price:document.getElementById('s-price'), cup:document.getElementById('s-cup')};
+  function calc(){
+    var c = B.querySelector('[name=coffee]:checked'), g = B.querySelector('[name=grind]:checked').value,
+        s = +B.querySelector('[name=size]:checked').value, f = B.querySelector('[name=freq]:checked').value;
+    var adj = parseFloat(c.dataset.p) * (s/250);
+    var price = Math.max(0, BASE[s] + adj), perCup = price / CUPS[s] * 100, month = price * PER_MONTH[f];
+    out.coffee.textContent = c.value; out.grind.textContent = g; out.size.textContent = s === 1000 ? '1kg' : s + 'g';
+    out.freq.textContent = FREQ_TXT[f]; out.price.textContent = gbp(price);
+    out.cup.textContent = 'That’s ' + Math.round(perCup) + 'p a cup, or about ' + gbp(month) + ' a month.';
+  }
+  B.addEventListener('change', calc); calc();
+  document.getElementById('s-go').addEventListener('click', function(e){ e.preventDefault(); addToBag('Subscription: ' + out.coffee.textContent); });
+
+  /* --- reveal --- */
+  var items = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){ items.forEach(function(e){ e.classList.add('is-in'); }); }
+  else{ var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-in'); io.unobserve(x.target); } }); }, {threshold:.1}); items.forEach(function(e){ io.observe(e); }); }
+
+  /* --- accordion --- */
+  document.querySelectorAll('[data-accordion] .acc__btn').forEach(function(b){
+    b.addEventListener('click', function(){ var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open)); document.getElementById(b.getAttribute('aria-controls')).hidden = open; });
+  });
+
+  /* --- newsletter --- */
+  document.getElementById('news').addEventListener('submit', function(e){
+    e.preventDefault(); var v = document.getElementById('news-email').value.trim();
+    document.getElementById('news-msg').textContent = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? 'You’re in. First email lands at the start of next month.' : 'Please enter a valid email address.';
+  });
+
+  /* --- wholesale form validation --- */
+  var form = document.getElementById('quote-form'), ok = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'What should we call you?'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'UK number please, e.g. 0141 339 7742.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'That email doesn’t look right.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Full UK postcode please, e.g. G3 8LY.'; },
+    type: function(v){ return v !== '' || 'Pick a business type.'; },
+    budget: function(v){ return v !== '' || 'Pick a monthly budget.'; },
+    message: function(v){ return v.trim().length >= 10 || 'A line about your set-up helps us pick samples.'; }
+  };
+  function check(f){ var r = rules[f.name]; if(!r) return true; var res = r(f.value), err = document.getElementById(f.name + '-error');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; return false; } f.removeAttribute('aria-invalid'); err.textContent = ''; return true; }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    ok.querySelector('[data-first-name]').textContent = ', ' + document.getElementById('name').value.trim().split(' ')[0];
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

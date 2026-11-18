@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Forty | B2B Google Ads, LinkedIn Ads &amp; SEO Agency, Leeds</title>
+<meta name="description" content="Signal Forty is a Leeds performance marketing agency for B2B firms. Google Ads, LinkedIn Ads, SEO and tracking that report on leads and pipeline, not clicks. 30-day rolling contracts.">
+<link rel="canonical" href="https://www.signalforty.co.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Signal Forty | Leads, not likes">
+<meta property="og:description" content="Paid search, paid social and SEO for B2B firms in Yorkshire and across the UK. Forecast your leads in 30 seconds.">
+<meta property="og:url" content="https://www.signalforty.co.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#0C100F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230C100F'/%3E%3Crect x='8' y='24' width='5' height='8' fill='%23C6F432'/%3E%3Crect x='15' y='18' width='5' height='14' fill='%23C6F432'/%3E%3Crect x='22' y='12' width='5' height='20' fill='%23C6F432'/%3E%3Ccircle cx='31' cy='9' r='3' fill='%23FF7A3D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;800;900&family=Chivo+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["ProfessionalService","LocalBusiness"],
+  "name": "Signal Forty",
+  "description": "Performance marketing agency for B2B companies: Google Ads, Microsoft Ads, LinkedIn Ads, SEO, landing pages and conversion tracking.",
+  "url": "https://www.signalforty.co.uk/",
+  "telephone": "+441134960782",
+  "email": "hello@signalforty.co.uk",
+  "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop",
+  "priceRange": "££",
+  "address": { "@type": "PostalAddress", "streetAddress": "3rd Floor, Platform, New Station Street", "addressLocality": "Leeds", "postalCode": "LS1 4JB", "addressCountry": "GB" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 53.7955, "longitude": -1.5459 },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "17:30" }],
+  "areaServed": ["Leeds","Bradford","Wakefield","Harrogate","York","Sheffield","Manchester","United Kingdom"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "63" }
+}
+</script>
+<style>
+/* =========================================================
+   SIGNAL FORTY
+   Art direction: a live analytics console. Near-black panels,
+   hairline grid, monospaced labels, one acid lime for "good",
+   one signal orange for "act now". Square edges, no shadows.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --bg:#0C100F;
+  --panel:#131917;
+  --panel-2:#19211E;
+  --line:#26302C;
+  --text:#E8EDEA;
+  --muted:#9AA7A1;          /* AA on --bg and --panel */
+  --lime:#C6F432;
+  --lime-d:#9DC21E;
+  --orange:#FF7A3D;
+  --error:#FF8A7A;
+
+  --f:'Chivo', 'Segoe UI', Arial, sans-serif;
+  --f-m:'Chivo Mono', ui-monospace, 'Courier New', monospace;
+
+  --t-xs:.74rem;
+  --t-sm:.9rem;
+  --t-base:1.03rem;
+  --t-lg:1.2rem;
+  --t-xl:clamp(1.6rem, 1.2rem + 1.5vw, 2.3rem);
+  --t-2xl:clamp(2.2rem, 1.4rem + 3.2vw, 3.9rem);
+  --t-hero:clamp(2.6rem, 1.3rem + 5vw, 5.8rem);
+
+  --s-1:.5rem; --s-2:1rem; --s-3:1.6rem; --s-4:2.6rem; --s-5:4.2rem; --s-6:6.5rem;
+  --wrap:min(1320px, 100% - 2.5rem);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 var(--t-base)/1.6 var(--f);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;background-attachment:fixed;background-position:-1px -1px}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,transparent 0%,var(--bg) 70%);pointer-events:none;z-index:-1}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-weight:800;line-height:1.02;letter-spacing:-.025em;margin:0}
+p{margin:0 0 var(--s-2)}
+button,input,select,textarea{font-family:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:0;background:var(--lime);color:var(--bg);padding:.75rem 1rem;z-index:300}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+main:focus{outline:none}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--f-m)}
+.label{display:inline-flex;align-items:center;gap:.5rem;font:500 var(--t-xs) var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-bottom:var(--s-2)}
+.label::before{content:"//";color:var(--muted)}
+.sec{padding:var(--s-6) 0;position:relative}
+.sec h2{font-size:var(--t-2xl);max-width:18ch}
+.sec__head{display:grid;gap:var(--s-2);margin-bottom:var(--s-4)}
+.sec__head p{color:var(--muted);max-width:50ch;margin:0}
+@media (min-width:960px){.sec__head{grid-template-columns:1.2fr .8fr;align-items:end}}
+.up{color:var(--lime)}
+.down{color:var(--orange)}
+
+/* buttons: hard rectangles */
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.3rem;border:1px solid var(--lime);background:var(--lime);color:var(--bg);font:700 .98rem/1 var(--f);text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:transparent;color:var(--lime)}
+.btn--ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--text);color:var(--text)}
+.kbd{display:inline-block;font:500 .72rem/1 var(--f-m);padding:.25rem .4rem;border:1px solid var(--line);border-bottom-width:2px;color:var(--muted);border-radius:4px}
+
+/* ---------- 3. Navigation + command-palette mobile menu ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(12,16,15,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav__in{width:var(--wrap);margin-inline:auto;height:68px;display:flex;align-items:center;gap:1.5rem}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto}
+.logo b{font:800 1.2rem/1 var(--f);letter-spacing:-.02em;white-space:nowrap}
+.logo b span{font:500 .8rem var(--f-m);color:var(--lime);margin-left:.15rem;vertical-align:top}
+.nav__links{display:none;list-style:none;margin:0;padding:0;gap:1.5rem}
+.nav__links a{text-decoration:none;font-size:.94rem;color:var(--muted);transition:color .15s}
+.nav__links a:hover{color:var(--text)}
+.nav__tel{display:none;text-decoration:none;font:500 .9rem var(--f-m)}
+.nav .btn{padding:.7rem 1rem;font-size:.9rem}
+.cmd-btn{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:.55rem .75rem;font:500 .85rem var(--f-m);cursor:pointer}
+.cmd-btn:hover{border-color:var(--muted)}
+@media (min-width:1140px){.nav__links,.nav__tel{display:flex}.cmd-btn{display:none}}
+@media (max-width:520px){.nav__cta{display:none}}
+.cmd{position:fixed;inset:0;z-index:150;display:grid;place-items:start center;padding:12vh 1rem 1rem;background:rgba(5,8,7,.72);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.cmd.is-open{opacity:1;visibility:visible}
+.cmd__box{width:min(560px,100%);background:var(--panel);border:1px solid var(--muted);transform:translateY(-10px) scale(.98);transition:transform .25s var(--ease)}
+.cmd.is-open .cmd__box{transform:none}
+.cmd__search{display:flex;align-items:center;gap:.6rem;padding:.9rem 1rem;border-bottom:1px solid var(--line)}
+.cmd__search input{flex:1;background:none;border:0;color:var(--text);font:500 1.05rem var(--f-m);outline:none}
+.cmd__search input::placeholder{color:var(--muted)}
+.cmd__list{list-style:none;margin:0;padding:.4rem;max-height:52vh;overflow:auto}
+.cmd__list a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.75rem .8rem;text-decoration:none;font-weight:500}
+.cmd__list a small{font:500 .74rem var(--f-m);color:var(--muted)}
+.cmd__list a:hover,.cmd__list a:focus,.cmd__list a.is-active{background:var(--panel-2);outline:none;box-shadow:inset 2px 0 0 var(--lime)}
+.cmd__empty{padding:1rem;color:var(--muted);font:500 .9rem var(--f-m)}
+.cmd__foot{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-top:1px solid var(--line);font:500 .74rem var(--f-m);color:var(--muted)}
+
+/* ---------- 4. Hero: copy + live console ---------- */
+.hero{padding:var(--s-5) 0 var(--s-6)}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-4);align-items:center}
+.status{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--line);background:var(--panel);padding:.45rem .8rem;font:500 .78rem var(--f-m);color:var(--muted);margin-bottom:var(--s-3)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.hero h1{font-size:var(--t-hero);max-width:12ch}
+.hero h1 span{color:var(--lime)}
+.hero__lede{font-size:var(--t-lg);color:var(--muted);max-width:44ch;margin:var(--s-3) 0}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:.7rem}
+.hero__facts{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin-top:var(--s-3);font:500 .82rem var(--f-m);color:var(--muted)}
+.hero__facts b{color:var(--text);font-weight:600}
+.console{background:var(--panel);border:1px solid var(--line)}
+.console__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.65rem .9rem;border-bottom:1px solid var(--line);font:500 .74rem var(--f-m);color:var(--muted)}
+.console__bar span:first-child{display:flex;gap:6px}
+.console__bar span:first-child i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.tile{background:var(--panel);padding:1rem 1.1rem}
+.tile small{display:block;font:500 .72rem var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tile b{display:block;font:800 clamp(1.6rem,1.2rem + 1.2vw,2.3rem)/1.1 var(--f);margin:.3rem 0 .15rem;font-variant-numeric:tabular-nums}
+.tile em{font:500 .78rem var(--f-m);font-style:normal}
+.tile svg{display:block;width:100%;height:34px;margin-top:.5rem}
+.feed{list-style:none;margin:0;padding:.6rem .9rem;border-top:1px solid var(--line);font:400 .8rem/1.9 var(--f-m);color:var(--muted);height:7.8em;overflow:hidden}
+.feed li{display:flex;justify-content:space-between;gap:.8rem;white-space:nowrap}
+.feed li span:first-child{overflow:hidden;text-overflow:ellipsis}
+.feed li.new{animation:slidein .5s var(--ease)}
+@keyframes slidein{from{opacity:0;transform:translateY(-8px)}}
+@media (min-width:1000px){.hero__grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:var(--s-5)}}
+
+/* ---------- 5. Trust strip ---------- */
+.trust{border-block:1px solid var(--line);background:var(--panel)}
+.trust ul{width:var(--wrap);margin:0 auto;list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr}
+.trust li{display:flex;align-items:center;gap:.7rem;padding:1rem .9rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:var(--t-sm)}
+.trust li b{display:block;font-weight:700}
+.trust li span span{font:500 .74rem var(--f-m);color:var(--muted)}
+@media (min-width:1000px){.trust ul{grid-template-columns:repeat(5,1fr)}.trust li{border-bottom:0}.trust li:last-child{border-right:0}}
+
+/* ---------- 6. Services: a pricing table ---------- */
+.svc{width:100%;border-collapse:collapse;font-size:var(--t-sm)}
+.svc caption{text-align:left;font:500 .78rem var(--f-m);color:var(--muted);padding-bottom:.8rem}
+.svc th,.svc td{text-align:left;padding:1.1rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+.svc thead th{font:500 .72rem var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom-color:var(--muted)}
+.svc tbody tr{transition:background .15s}
+.svc tbody tr:hover{background:var(--panel)}
+.svc tbody th{font-size:1.15rem;font-weight:700;min-width:180px}
+.svc tbody th small{display:block;font:400 var(--t-sm)/1.5 var(--f);color:var(--muted);margin-top:.3rem;max-width:36ch}
+.svc td.mono{white-space:nowrap}
+.chip{display:inline-block;font:500 .72rem var(--f-m);padding:.2rem .45rem;border:1px solid var(--line);color:var(--lime);margin:.1rem .2rem .1rem 0}
+@media (max-width:860px){
+  .svc thead{display:none}
+  .svc tr{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);padding:1rem 0}
+  .svc th,.svc td{border:0;padding:.35rem .2rem}
+  .svc tbody th{grid-column:1/-1}
+  .svc td::before{content:attr(data-th);display:block;font:500 .7rem var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .svc td:last-child{grid-column:1/-1}
+}
+
+/* ---------- 7. Forecaster (signature) ---------- */
+.fc{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.fc__in,.fc__out{background:var(--panel);padding:clamp(1.2rem,3vw,2rem)}
+.ctl{margin-bottom:1.5rem}
+.ctl__top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.5rem}
+.ctl label,.ctl legend{font:500 .78rem var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ctl output{font:800 1.5rem var(--f);font-variant-numeric:tabular-nums}
+.ctl input[type=range]{width:100%;appearance:none;-webkit-appearance:none;height:4px;background:linear-gradient(90deg,var(--lime) var(--p,30%),var(--line) 0);cursor:pointer}
+.ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:28px;background:var(--text);border:3px solid var(--bg);outline:1px solid var(--lime)}
+.ctl input[type=range]::-moz-range-thumb{width:14px;height:24px;background:var(--text);border:3px solid var(--bg);border-radius:0}
+.ctl fieldset{border:0;margin:0;padding:0}
+.segs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:.5rem}
+.segs label{position:relative;cursor:pointer}
+.segs input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.segs span{display:block;padding:.7rem .8rem;border:1px solid var(--line);font:500 .9rem var(--f);text-transform:none;letter-spacing:0;color:var(--text);transition:border-color .15s,background .15s}
+.segs input:checked + span{border-color:var(--lime);background:rgba(198,244,50,.08);box-shadow:inset 3px 0 0 var(--lime)}
+.segs input:focus-visible + span{outline:2px solid var(--lime);outline-offset:2px}
+.bench{font:400 .78rem/1.6 var(--f-m);color:var(--muted);border-top:1px dashed var(--line);padding-top:1rem;margin:0}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:1.4rem}
+.kpi{background:var(--panel-2);padding:.9rem 1rem}
+.kpi small{display:block;font:500 .7rem var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi b{display:block;font:800 clamp(1.5rem,1.2rem + 1vw,2.1rem)/1.15 var(--f);font-variant-numeric:tabular-nums;margin-top:.2rem}
+.kpi--hi b{color:var(--lime)}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto}
+.chart .bar{fill:#2E3A35;transition:height .5s var(--ease),y .5s var(--ease),fill .2s}
+.chart .bar.is-live{fill:var(--lime)}
+.chart text{font:500 10px var(--f-m);fill:var(--muted)}
+@media (max-width:600px){.chart text{font-size:17px}.chart text.val{display:none}}
+.fc__note{font:400 .76rem/1.6 var(--f-m);color:var(--muted);margin:1rem 0 0}
+@media (min-width:600px){.kpis{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1000px){.fc{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}}
+
+/* ---------- 8. Case studies: report cards ---------- */
+.cases{display:grid;gap:1.2rem}
+.case{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .2s}
+.case:hover{border-color:var(--muted)}
+.case__img{aspect-ratio:16/9;background:var(--panel-2);overflow:hidden;border-bottom:1px solid var(--line)}
+.case__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);opacity:.85;transition:filter .4s,opacity .4s}
+.case:hover .case__img img{filter:none;opacity:1}
+.case__body{padding:1.3rem;display:flex;flex-direction:column;flex:1}
+.case__tag{font:500 .72rem var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.case h3{font-size:1.45rem;margin:.5rem 0 .6rem}
+.case p{color:var(--muted);font-size:var(--t-sm)}
+.delta{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin:auto 0 1rem}
+.delta div{background:var(--panel-2);padding:.75rem .8rem}
+.delta small{display:block;font:500 .68rem var(--f-m);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.delta b{font:800 1.4rem var(--f);font-variant-numeric:tabular-nums}
+.delta s{font:400 .8rem var(--f-m);color:var(--muted);margin-left:.3rem}
+.meta{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;font:500 .76rem var(--f-m);color:var(--muted);border-top:1px solid var(--line);padding-top:.9rem}
+.meta b{color:var(--text);font-weight:600}
+@media (min-width:960px){.cases{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- 9. Process: a changelog ---------- */
+.log{list-style:none;margin:0;padding:0;border-left:1px solid var(--line);margin-left:.4rem}
+.log li{position:relative;padding:0 0 2.2rem 2rem}
+.log li::before{content:"";position:absolute;left:-6px;top:.35rem;width:11px;height:11px;background:var(--bg);border:2px solid var(--lime)}
+.log li:last-child{padding-bottom:0}
+.log__day{font:500 .78rem var(--f-m);color:var(--lime)}
+.log h3{font-size:1.35rem;margin:.25rem 0 .4rem}
+.log p{color:var(--muted);margin:0;max-width:56ch}
+.log code{font:400 .8rem var(--f-m);color:var(--text);background:var(--panel);border:1px solid var(--line);padding:.1rem .35rem}
+.proc{display:grid;gap:var(--s-4)}
+.proc__aside{background:var(--panel);border:1px solid var(--line);padding:1.5rem;align-self:start}
+.proc__aside h3{font-size:1.2rem;margin-bottom:.8rem}
+.proc__aside ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;font-size:var(--t-sm);color:var(--muted)}
+.proc__aside li{display:flex;gap:.6rem}
+.proc__aside li::before{content:"+";color:var(--lime);font-family:var(--f-m)}
+@media (min-width:960px){.proc{grid-template-columns:1.3fr .7fr}.proc__aside{position:sticky;top:96px}}
+
+/* ---------- 10. Guarantees: terms in plain English ---------- */
+.terms{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.term{background:var(--panel);padding:1.5rem}
+.term__n{font:500 .74rem var(--f-m);color:var(--orange)}
+.term h3{font-size:1.3rem;margin:.6rem 0 .5rem}
+.term p{margin:0;color:var(--muted);font-size:var(--t-sm)}
+.term--hi{background:var(--lime);color:var(--bg)}
+.term--hi p,.term--hi .term__n{color:#25300A}
+@media (min-width:760px){.terms{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.terms{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- 11. Testimonials ---------- */
+.quotes{display:grid;gap:1.2rem}
+.q{margin:0;background:var(--panel);border:1px solid var(--line);padding:1.5rem;display:flex;flex-direction:column;gap:1rem}
+.q blockquote{margin:0;font-size:1.05rem;line-height:1.55}
+.q blockquote::before{content:"> ";font-family:var(--f-m);color:var(--lime)}
+.q figcaption{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-top:auto;font-size:var(--t-sm);color:var(--muted)}
+.q figcaption b{display:block;color:var(--text)}
+.q .chip{white-space:nowrap}
+.q--wide{background:var(--panel-2)}
+.q--wide blockquote{font-size:clamp(1.25rem,1rem + 1vw,1.7rem);line-height:1.35;font-weight:500}
+@media (min-width:900px){.quotes{grid-template-columns:repeat(3,1fr)}.q--wide{grid-column:span 2}}
+
+/* ---------- 12. FAQ ---------- */
+.faq__grid{display:grid;gap:var(--s-4)}
+.acc{border-top:1px solid var(--line)}
+.acc__item{border-bottom:1px solid var(--line)}
+.acc__btn{width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:1.1rem 0;background:none;border:0;text-align:left;color:var(--text);font:700 1.08rem/1.35 var(--f);cursor:pointer}
+.acc__btn .n{font:500 .78rem var(--f-m);color:var(--muted)}
+.acc__btn .ic{font:500 1rem var(--f-m);color:var(--lime);width:2.6rem;text-align:right}
+.acc__btn:hover{color:var(--lime)}
+.acc__btn[aria-expanded="true"] .ic::before{content:"[-]"}
+.acc__btn[aria-expanded="false"] .ic::before{content:"[+]"}
+.acc__panel{padding:0 0 1.2rem 2.6rem;color:var(--muted);max-width:66ch}
+.acc__panel p{margin:0}
+@media (min-width:960px){.faq__grid{grid-template-columns:.7fr 1.3fr}}
+
+/* ---------- 13. Form ---------- */
+.brief{display:grid;gap:var(--s-4)}
+.brief__card{background:var(--panel);border:1px solid var(--line)}
+.brief__card .console__bar{font-size:.76rem}
+.form{display:grid;gap:1rem 1.2rem;padding:clamp(1.2rem,3vw,2rem)}
+.fld{display:flex;flex-direction:column;gap:.35rem}
+.fld label{font:500 .76rem var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.fld input,.fld select,.fld textarea{font:400 1rem var(--f);color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:0;padding:.8rem .9rem;transition:border-color .15s}
+.fld select{appearance:none;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C6F432' stroke-width='1.6'/%3E%3C/svg%3E") right .9rem center no-repeat}
+.fld select option{background:var(--panel);color:var(--text)}
+.fld textarea{min-height:120px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--lime)}
+.fld [aria-invalid="true"]{border-color:var(--error)}
+.err{font:500 .82rem var(--f-m);color:var(--error)}
+.err:empty{display:none}
+.fld--full,.form__foot{grid-column:1/-1}
+.form__foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.form__foot small{color:var(--muted);max-width:42ch}
+.done{padding:2rem;font-family:var(--f-m)}
+.done h3{font:800 1.9rem var(--f);margin:.6rem 0}
+.done p{color:var(--muted);margin:0}
+.brief__list{list-style:none;margin:var(--s-3) 0 0;padding:0;display:grid;gap:.8rem}
+.brief__list li{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:start;color:var(--muted)}
+.brief__list b{color:var(--text);display:block}
+.brief__list .kbd{margin-top:.15rem}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.brief{grid-template-columns:.8fr 1.2fr;gap:var(--s-5)}}
+
+/* ---------- 14. Footer ---------- */
+.foot{border-top:1px solid var(--line);background:var(--bg);padding:var(--s-5) 0 var(--s-3);font-size:var(--t-sm);color:var(--muted)}
+.foot a{color:var(--text);text-decoration:none}
+.foot a:hover{color:var(--lime)}
+.foot__grid{display:grid;gap:var(--s-3)}
+.foot h3{font:500 .74rem var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-bottom:.8rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
+.foot address{font-style:normal;line-height:1.75}
+.foot__desc{margin:1rem 0 0;max-width:34ch}
+.social{display:flex;gap:.5rem;margin-top:1rem}
+.social a{width:40px;height:40px;border:1px solid var(--line);display:grid;place-items:center}
+.social a:hover{border-color:var(--lime)}
+.foot__base{margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px solid var(--line);display:grid;gap:.8rem;font:400 .78rem var(--f-m)}
+.foot__base ul{display:flex;flex-wrap:wrap;gap:1.2rem}
+@media (min-width:900px){.foot__grid{grid-template-columns:1.4fr 1fr 1fr 1fr}.foot__base{grid-template-columns:1fr auto;align-items:center}}
+
+/* back to top: a Home keycap */
+.to-top{position:fixed;right:1rem;bottom:1rem;z-index:80;display:flex;flex-direction:column;align-items:center;justify-content:center;width:62px;height:58px;background:var(--panel-2);color:var(--text);border:1px solid var(--muted);border-bottom-width:4px;border-radius:6px;font:500 .64rem var(--f-m);letter-spacing:.08em;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .2s,visibility .2s,transform .2s,border-bottom-width .1s}
+.to-top.is-shown{opacity:1;visibility:visible;transform:none}
+.to-top:hover{border-color:var(--lime);color:var(--lime)}
+.to-top:active{border-bottom-width:1px;transform:translateY(3px)}
+
+/* ---------- 15. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav">
+  <div class="nav__in">
+    <a class="logo" href="#top" aria-label="Signal Forty, back to top">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="8" fill="#19211E" stroke="#26302C"/><rect x="8" y="24" width="5" height="8" fill="#C6F432"/><rect x="15" y="18" width="5" height="14" fill="#C6F432"/><rect x="22" y="12" width="5" height="20" fill="#C6F432"/><circle cx="31" cy="9" r="3" fill="#FF7A3D"/></svg>
+      <b>Signal<span>40</span></b>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#forecast">Forecast</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="nav__tel" href="tel:+441134960782">0113 496 0782</a>
+    <a class="btn nav__cta" href="#brief">Get a quote</a>
+    <button class="cmd-btn" type="button" id="cmd-btn" aria-expanded="false" aria-controls="cmd" aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2"/></svg>Menu</button>
+  </div>
+</header>
+
+<div class="cmd" id="cmd" role="dialog" aria-modal="true" aria-label="Site menu">
+  <div class="cmd__box">
+    <div class="cmd__search"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#9AA7A1" stroke-width="2"/><path d="M15 15l6 6" stroke="#9AA7A1" stroke-width="2"/></svg><label for="cmd-q" class="vh">Filter pages</label><input id="cmd-q" type="text" placeholder="Jump to..." autocomplete="off" aria-controls="cmd-list"></div>
+    <ul class="cmd__list" id="cmd-list">
+      <li><a href="#services" data-k="seo google ads linkedin ppc price pricing cost">Services and pricing <small>/services</small></a></li>
+      <li><a href="#forecast" data-k="calculator roi leads budget">Forecast your leads <small>/forecast</small></a></li>
+      <li><a href="#results" data-k="case studies clients work">Client results <small>/results</small></a></li>
+      <li><a href="#process">How we work <small>/process</small></a></li>
+      <li><a href="#terms" data-k="contract guarantee notice">Our guarantees <small>/terms</small></a></li>
+      <li><a href="#faq">FAQ <small>/faq</small></a></li>
+      <li><a href="#brief" data-k="contact audit form price">Get a quote <small>/brief</small></a></li>
+      <li><a href="tel:+441134960782">Call 0113 496 0782 <small>tel</small></a></li>
+    </ul>
+    <p class="cmd__empty" id="cmd-empty" hidden>No matches. Try "price" or "seo".</p>
+    <div class="cmd__foot"><span><span class="kbd">↑</span> <span class="kbd">↓</span> move</span><span><span class="kbd">Esc</span> close</span></div>
+  </div>
+</div>
+
+<main id="main" tabindex="-1">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div class="reveal">
+      <span class="status"><i aria-hidden="true"></i>3 of 22 client slots open for Q1 2027</span>
+      <h1 id="hero-title">Leads, not likes. <span>Pipeline</span>, not reach.</h1>
+      <p class="hero__lede">Google Ads, LinkedIn Ads and SEO for B2B firms that sell something serious: machinery, software, professional services. We report on qualified leads and revenue, straight from your CRM.</p>
+      <div class="hero__ctas"><a class="btn" href="#forecast">Forecast my leads <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true"><path d="M0 6h12M7 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a><a class="btn btn--ghost" href="tel:+441134960782">0113 496 0782</a></div>
+      <p class="hero__facts"><span><b>£4.1m</b> ad spend managed in 2025</span><span><b>-38%</b> average cost per lead in year one</span><span><b>30-day</b> rolling contracts</span></p>
+    </div>
+    <div class="console reveal" role="img" aria-label="Example dashboard: last 30 days across all client accounts. 1,862 qualified leads, cost per lead £41.20, conversion rate 4.7%, pipeline £3.9 million.">
+      <div class="console__bar" aria-hidden="true"><span><i></i><i></i><i></i></span><span>all_clients · last 30 days</span><span class="up">● live</span></div>
+      <div class="tiles" aria-hidden="true">
+        <div class="tile"><small>Qualified leads</small><b data-tick="1862">1,862</b><em class="up">▲ 23.4%</em><svg viewBox="0 0 120 34" preserveAspectRatio="none"><polyline points="0,30 15,27 30,28 45,22 60,20 75,16 90,14 105,9 120,5" fill="none" stroke="#C6F432" stroke-width="2"/></svg></div>
+        <div class="tile"><small>Cost per lead</small><b>£41.20</b><em class="up">▼ 17.9%</em><svg viewBox="0 0 120 34" preserveAspectRatio="none"><polyline points="0,6 15,8 30,7 45,12 60,15 75,14 90,20 105,24 120,27" fill="none" stroke="#C6F432" stroke-width="2"/></svg></div>
+        <div class="tile"><small>Conversion rate</small><b>4.7%</b><em class="up">▲ 0.9 pts</em><svg viewBox="0 0 120 34" preserveAspectRatio="none"><polyline points="0,24 15,22 30,25 45,20 60,18 75,19 90,14 105,13 120,11" fill="none" stroke="#C6F432" stroke-width="2"/></svg></div>
+        <div class="tile"><small>Pipeline created</small><b>£3.9m</b><em class="down">▼ 2.1% vs Oct</em><svg viewBox="0 0 120 34" preserveAspectRatio="none"><polyline points="0,20 15,16 30,18 45,12 60,10 75,8 90,12 105,11 120,13" fill="none" stroke="#FF7A3D" stroke-width="2"/></svg></div>
+      </div>
+      <ul class="feed" id="feed" aria-hidden="true">
+        <li><span>Lead · Google Ads · "cnc machining sheffield"</span><span>2m ago</span></li>
+        <li><span>Demo booked · LinkedIn · Finance director</span><span>6m ago</span></li>
+        <li><span>Lead · SEO · /hydraulic-valve-repair</span><span>11m ago</span></li>
+        <li><span>Call 3m12s · Google Ads · Harrogate</span><span>14m ago</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust" aria-label="Partner badges">
+  <ul>
+    <li><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z" fill="none" stroke="#C6F432" stroke-width="1.6"/><path d="M8 12l3 3 5-6" fill="none" stroke="#C6F432" stroke-width="1.6"/></svg><span><b>Google Partner</b><span>Premier tier, top 3% UK</span></span></li>
+    <li><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="none" stroke="#C6F432" stroke-width="1.6"/><rect x="13" y="3" width="8" height="8" fill="none" stroke="#C6F432" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" fill="none" stroke="#C6F432" stroke-width="1.6"/><rect x="13" y="13" width="8" height="8" fill="none" stroke="#C6F432" stroke-width="1.6"/></svg><span><b>Microsoft Advertising</b><span>Partner</span></span></li>
+    <li><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" fill="none" stroke="#C6F432" stroke-width="1.6"/><path d="M7 10v7M7 7v.1M11 17v-7M11 13c0-2 5-3 5 0v4" fill="none" stroke="#C6F432" stroke-width="1.6"/></svg><span><b>LinkedIn Marketing</b><span>Partner</span></span></li>
+    <li><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="#C6F432" stroke-width="1.6"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6" stroke="#C6F432" stroke-width="1.6"/></svg><span><b>HubSpot</b><span>Solutions Partner</span></span></li>
+    <li><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z" fill="none" stroke="#C6F432" stroke-width="1.6"/></svg><span><b>4.9 / 5</b><span>63 Google reviews</span></span></li>
+  </ul>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services" aria-labelledby="sv-title">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><span class="label">Services</span><h2 id="sv-title">Six channels. One number that matters.</h2></div><p>Pick one or run them together. Every fee is flat, published and separate from your ad spend. We never take a percentage markup on media.</p></div>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="svc">
+        <caption>Prices exclude VAT. Minimum term: 30 days.</caption>
+        <thead><tr><th scope="col">Channel</th><th scope="col">Monthly fee from</th><th scope="col">Typical ad spend</th><th scope="col">First results</th><th scope="col">Good for</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Google Ads<small>Search, Performance Max and YouTube for people already looking for what you sell.</small></th><td class="mono" data-th="Fee from">£950</td><td class="mono" data-th="Ad spend">£2k to £40k</td><td class="mono" data-th="Results">2 to 4 weeks</td><td data-th="Good for"><span class="chip">enquiries</span><span class="chip">calls</span><span class="chip">quotes</span></td></tr>
+          <tr><th scope="row">LinkedIn Ads<small>Reach decision makers by job title, company size and industry.</small></th><td class="mono" data-th="Fee from">£850</td><td class="mono" data-th="Ad spend">£2k to £15k</td><td class="mono" data-th="Results">4 to 6 weeks</td><td data-th="Good for"><span class="chip">demos</span><span class="chip">ABM</span></td></tr>
+          <tr><th scope="row">Microsoft Ads<small>Cheaper clicks from desktop-heavy office audiences. Often 30% lower CPC than Google.</small></th><td class="mono" data-th="Fee from">£350</td><td class="mono" data-th="Ad spend">£500 to £5k</td><td class="mono" data-th="Results">2 weeks</td><td data-th="Good for"><span class="chip">B2B search</span></td></tr>
+          <tr><th scope="row">SEO &amp; content<small>Technical fixes, service pages and buyer guides that rank for the searches your sales team cares about.</small></th><td class="mono" data-th="Fee from">£1,400</td><td class="mono" data-th="Ad spend">n/a</td><td class="mono" data-th="Results">3 to 6 months</td><td data-th="Good for"><span class="chip">organic leads</span><span class="chip">AI search</span></td></tr>
+          <tr><th scope="row">Landing pages &amp; CRO<small>Fast pages built for one offer, then A/B tested. Most clients see conversion rate rise within a month.</small></th><td class="mono" data-th="Fee from">£1,800 one-off</td><td class="mono" data-th="Ad spend">n/a</td><td class="mono" data-th="Results">2 weeks</td><td data-th="Good for"><span class="chip">conversion rate</span></td></tr>
+          <tr><th scope="row">Tracking &amp; reporting<small>GA4, server-side tagging, call tracking and offline conversions pushed back from HubSpot or Salesforce.</small></th><td class="mono" data-th="Fee from">£1,200 one-off</td><td class="mono" data-th="Ad spend">n/a</td><td class="mono" data-th="Results">1 week</td><td data-th="Good for"><span class="chip">true ROI</span><span class="chip">CRM data</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORECASTER (signature) ============ -->
+<section class="sec" id="forecast" aria-labelledby="fc-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><span class="label">Forecast</span><h2 id="fc-title">What could your budget bring in?</h2></div><p>Real benchmarks from 22 UK B2B accounts we managed in 2025. Move the sliders and the 12-month chart updates as you go.</p></div>
+    <div class="fc reveal">
+      <form class="fc__in" id="fc" onsubmit="return false">
+        <div class="ctl"><div class="ctl__top"><label for="f-budget">Monthly ad spend</label><output id="o-budget" for="f-budget">£6,000</output></div><input type="range" id="f-budget" min="1000" max="40000" step="500" value="6000"></div>
+        <div class="ctl"><fieldset><legend>Your industry</legend>
+          <div class="segs">
+            <label><input type="radio" name="ind" value="mfg" checked><span>Manufacturing</span></label>
+            <label><input type="radio" name="ind" value="saas"><span>Software / SaaS</span></label>
+            <label><input type="radio" name="ind" value="prof"><span>Professional services</span></label>
+            <label><input type="radio" name="ind" value="rec"><span>Recruitment</span></label>
+          </div></fieldset></div>
+        <div class="ctl"><div class="ctl__top"><label for="f-deal">Average deal value</label><output id="o-deal" for="f-deal">£14,800</output></div><input type="range" id="f-deal" min="1000" max="60000" step="200" value="14800"></div>
+        <p class="bench" id="bench">Benchmarks for manufacturing: CPC £3.10, lead rate 3.1%, close rate 22%.</p>
+      </form>
+      <div class="fc__out" aria-live="polite">
+        <div class="kpis">
+          <div class="kpi"><small>Leads / month</small><b id="k-leads">63</b></div>
+          <div class="kpi"><small>Cost per lead</small><b id="k-cpl">£95</b></div>
+          <div class="kpi"><small>Deals in 12 months</small><b id="k-deals">152</b></div>
+          <div class="kpi kpi--hi"><small>Revenue won, 12 months</small><b id="k-rev">£2.2m</b></div>
+        </div>
+        <div class="chart">
+          <svg id="chart" viewBox="0 0 600 220" role="img" aria-labelledby="chart-t"><title id="chart-t">Forecast qualified leads per month, months 1 to 12</title></svg>
+        </div>
+        <p class="fc__note">Months 1 to 3 are learning time while we test keywords and audiences. Estimates, not a promise. Our fee is extra: <span id="k-fee">£950</span> a month for this budget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDIES ============ -->
+<section class="sec" id="results" aria-labelledby="rs-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><span class="label">Results</span><h2 id="rs-title">Three accounts, before and after.</h2></div><p>Numbers from each client's own CRM, shared with permission. Ad spend shown is monthly.</p></div>
+    <div class="cases">
+      <article class="case reveal">
+        <div class="case__img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop" alt="Engineer working at a laptop beside industrial equipment" loading="lazy" width="800" height="450"></div>
+        <div class="case__body">
+          <span class="case__tag">Manufacturing · Sheffield</span>
+          <h3>Hollis Fluid Controls</h3>
+          <p>Valve maker spending £9k a month on Google Ads with no idea which leads became orders. We rebuilt tracking into HubSpot and cut 40% of spend on searches that never bought.</p>
+          <div class="delta"><div><small>Cost per lead</small><b>£58</b><s>£137</s></div><div><small>Orders from ads</small><b>£1.3m</b><s>£410k</s></div></div>
+          <p class="meta"><span>Spend <b>£7.5k/mo</b></span><span>Fee <b>£1,450/mo</b></span><span>Time <b>11 months</b></span></p>
+        </div>
+      </article>
+      <article class="case reveal">
+        <div class="case__img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop" alt="Laptop showing analytics charts on a desk" loading="lazy" width="800" height="450"></div>
+        <div class="case__body">
+          <span class="case__tag">SaaS · Manchester</span>
+          <h3>Ledgerline</h3>
+          <p>Accounting software for construction firms. LinkedIn Ads aimed at finance directors at firms with 50 to 500 staff, plus Google Ads on competitor comparisons.</p>
+          <div class="delta"><div><small>Demos / month</small><b>94</b><s>21</s></div><div><small>Cost per demo</small><b>£212</b><s>£486</s></div></div>
+          <p class="meta"><span>Spend <b>£18k/mo</b></span><span>Fee <b>£2,600/mo</b></span><span>Time <b>8 months</b></span></p>
+        </div>
+      </article>
+      <article class="case reveal">
+        <div class="case__img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop" alt="Team meeting around a table with laptops" loading="lazy" width="800" height="450"></div>
+        <div class="case__body">
+          <span class="case__tag">Recruitment · York</span>
+          <h3>Kestrel Engineering Recruitment</h3>
+          <p>Wanted more client vacancies, not more candidates. SEO for "engineering recruitment agency" pages in six Yorkshire towns and a small Microsoft Ads test.</p>
+          <div class="delta"><div><small>Organic enquiries</small><b>47/mo</b><s>9/mo</s></div><div><small>Top-3 rankings</small><b>31</b><s>4</s></div></div>
+          <p class="meta"><span>Spend <b>£900/mo</b></span><span>Fee <b>£1,750/mo</b></span><span>Time <b>14 months</b></span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec" id="process" aria-labelledby="pr-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><span class="label">Process</span><h2 id="pr-title">Your first 90 days, logged.</h2></div></div>
+    <div class="proc">
+      <ol class="log reveal">
+        <li><span class="log__day">day_00</span><h3>Free account audit</h3><p>We go through your ad accounts, analytics and CRM for an hour and send a written audit with the five biggest leaks. Yours to keep even if you don't hire us.</p></li>
+        <li><span class="log__day">day_07</span><h3>Tracking fixed</h3><p>Every form, call and booked demo tracked properly, with lead quality pushed back from your CRM using <code>offline_conversions</code>.</p></li>
+        <li><span class="log__day">day_14</span><h3>Campaigns rebuilt</h3><p>New structure, new ads and landing pages live. Wasted searches blocked from day one.</p></li>
+        <li><span class="log__day">day_30</span><h3>First monthly review</h3><p>A 30-minute call with your account lead. One page of numbers: leads, cost per lead, pipeline. No 40-slide decks.</p></li>
+        <li><span class="log__day">day_90</span><h3>Scale or switch</h3><p>We move budget to what's producing revenue and cut what isn't. If cost per lead hasn't dropped, month four is on us.</p></li>
+      </ol>
+      <aside class="proc__aside reveal" aria-label="What's included">
+        <h3>Every plan includes</h3>
+        <ul><li>A named account lead, not a junior</li><li>Live Looker Studio dashboard</li><li>Monthly 30-minute review call</li><li>Slack or Teams channel with your team</li><li>Same-day replies, 8:30am to 5:30pm</li><li>Full ownership of every ad account</li></ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARANTEES ============ -->
+<section class="sec" id="terms" aria-labelledby="tm-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><span class="label">Terms</span><h2 id="tm-title">Our terms, in plain English.</h2></div></div>
+    <div class="terms reveal">
+      <div class="term term--hi"><span class="term__n">01</span><h3>Month four free</h3><p>If cost per qualified lead hasn't dropped by day 90, we work month four for free.</p></div>
+      <div class="term"><span class="term__n">02</span><h3>30-day rolling</h3><p>No 12-month lock-in. Give us 30 days' notice whenever you like.</p></div>
+      <div class="term"><span class="term__n">03</span><h3>You own the accounts</h3><p>Ad accounts, analytics and data stay in your name. We're just users.</p></div>
+      <div class="term"><span class="term__n">04</span><h3>No media markup</h3><p>You pay Google and LinkedIn directly. Our fee is flat and published above.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec" id="reviews" aria-labelledby="rv-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><span class="label">Reviews</span><h2 id="rv-title">What clients say once the numbers are in.</h2></div></div>
+    <div class="quotes">
+      <figure class="q q--wide reveal"><blockquote>Our last agency sent us click reports. Signal Forty sent us a list of which searches turned into orders over £20k. We cut half the keywords and sales went up.</blockquote><figcaption><span><b>Martin H.</b>Sales director, Hollis Fluid Controls, Sheffield</span><span class="chip">CPL -58%</span></figcaption></figure>
+      <figure class="q reveal"><blockquote>First agency that asked for our CRM before our ad account. That told me everything.</blockquote><figcaption><span><b>Aisha K.</b>CEO, Ledgerline, Manchester</span><span class="chip">4.5× demos</span></figcaption></figure>
+      <figure class="q reveal"><blockquote>Thirty-day contract and they still act like they're on a five-year deal.</blockquote><figcaption><span><b>Gareth P.</b>MD, Pennine Laser Cutting, Halifax</span></figcaption></figure>
+      <figure class="q reveal"><blockquote>Straight answers when a campaign isn't working. Took a while to get used to, honestly.</blockquote><figcaption><span><b>Louise D.</b>Marketing manager, Aire Valley Solicitors, Bradford</span></figcaption></figure>
+      <figure class="q reveal"><blockquote>Our SEO enquiries went from nine a month to forty-seven. Two of those became our biggest clients.</blockquote><figcaption><span><b>James R.</b>Director, Kestrel Engineering Recruitment, York</span><span class="chip">5.2× leads</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" aria-labelledby="fq-title" style="padding-top:0">
+  <div class="wrap faq__grid">
+    <div class="reveal"><span class="label">FAQ</span><h2 id="fq-title">Questions before you sign.</h2><p style="color:var(--muted);margin-top:1rem">Or call Dan on 0113 496 0782. He runs the place.</p></div>
+    <div class="acc reveal" data-accordion>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q1" id="q1b"><span class="n">01</span>What's the minimum ad budget you'll work with?<span class="ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q1" role="region" aria-labelledby="q1b" hidden><p>£1,500 a month on Google Ads, or £2,000 on LinkedIn. Below that, there usually isn't enough data to learn from, and we'd rather tell you than take your money.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q2" id="q2b"><span class="n">02</span>Do you only work with Yorkshire businesses?<span class="ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q2" role="region" aria-labelledby="q2b" hidden><p>No. About half our clients are in Yorkshire and the North West, the rest are across the UK. Everyone gets the same reviews by video, and we're happy to visit if you're within a couple of hours of Leeds.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q3" id="q3b"><span class="n">03</span>How do you know which leads are good?<span class="ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q3" role="region" aria-labelledby="q3b" hidden><p>We connect your CRM (HubSpot, Salesforce, Pipedrive or Zoho) and send deal stages back to Google and LinkedIn. That way the ad platforms learn from real sales, not just form fills.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q4" id="q4b"><span class="n">04</span>What happens to our accounts if we leave?<span class="ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q4" role="region" aria-labelledby="q4b" hidden><p>Nothing. They're yours and always were. We remove our access on your last day and send a handover note for whoever takes over.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q5" id="q5b"><span class="n">05</span>Do you help with AI search like ChatGPT and Google's AI Overviews?<span class="ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q5" role="region" aria-labelledby="q5b" hidden><p>Yes, as part of SEO. We track whether your brand is cited for your key questions and write pages built to be quoted. It's newer ground, so we report on it separately and don't overpromise.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q6" id="q6b"><span class="n">06</span>How is the "month four free" guarantee measured?<span class="ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q6" role="region" aria-labelledby="q6b" hidden><p>We agree your baseline cost per qualified lead in week one, using your last 90 days. If month three's figure isn't lower, month four's fee is zero. It's in the contract.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORM ============ -->
+<section class="sec" id="brief" aria-labelledby="bf-title" style="padding-top:0">
+  <div class="wrap brief">
+    <div class="reveal">
+      <span class="label">Get a quote</span>
+      <h2 id="bf-title">Book a free account audit.</h2>
+      <p style="color:var(--muted);margin-top:1rem;max-width:42ch">Tell us a bit about the business. Dan will reply within one working day with a time for your audit call.</p>
+      <ul class="brief__list">
+        <li><span class="kbd">01</span><span><b>Hour-long audit call</b>We look through your accounts with you.</span></li>
+        <li><span class="kbd">02</span><span><b>Written report in 3 days</b>The five biggest leaks, ranked by cost.</span></li>
+        <li><span class="kbd">03</span><span><b>Fixed quote</b>No obligation. Keep the report either way.</span></li>
+      </ul>
+    </div>
+    <div class="brief__card reveal">
+      <div class="console__bar" aria-hidden="true"><span><i></i><i></i><i></i></span><span>new_brief.form</span><span></span></div>
+      <form class="form" id="quote-form" novalidate>
+        <div class="fld"><label for="name">Name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="postcode">Office postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="type">What do you need?</label><select id="type" name="type" aria-describedby="type-error" required><option value="">Select</option><option>Google Ads</option><option>LinkedIn Ads</option><option>SEO and content</option><option>Tracking and reporting</option><option>Full paid and organic</option><option>Just the free audit</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="budget">Monthly ad budget</label><select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Select</option><option>Under £1,500</option><option>£1,500 to £5,000</option><option>£5,000 to £15,000</option><option>£15,000 to £40,000</option><option>Over £40,000</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+        <div class="fld fld--full"><label for="message">What's not working right now?</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. Spending £8k a month on Google Ads, lots of leads but sales say most are rubbish" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+        <div class="form__foot"><small>We'll only use your details to reply. See our <a href="/privacy/" style="color:var(--lime)">privacy policy</a>.</small><button class="btn" type="submit">Send brief</button></div>
+      </form>
+      <div class="done" id="form-success" tabindex="-1" hidden><span class="up">✓ brief received</span><h3>Cheers<span data-first-name></span>.</h3><p>Dan will reply within one working day with a time for your audit call.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="logo" href="#top" aria-label="Signal Forty, back to top"><svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="8" fill="#19211E" stroke="#26302C"/><rect x="8" y="24" width="5" height="8" fill="#C6F432"/><rect x="15" y="18" width="5" height="14" fill="#C6F432"/><rect x="22" y="12" width="5" height="20" fill="#C6F432"/><circle cx="31" cy="9" r="3" fill="#FF7A3D"/></svg><b>Signal<span>40</span></b></a>
+        <p class="foot__desc">A B2B performance marketing agency in Leeds. Paid search, paid social, SEO and tracking for firms that measure success in signed deals.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/signal-forty" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.6c.6-1 1.9-1.9 3.6-1.9 3 0 3.4 2 3.4 4.6V20h-4v-5.8c0-1.4 0-3-1.8-3s-2.2 1.4-2.2 2.9V20h-4z" fill="currentColor"/></svg></a>
+          <a href="https://x.com/signalforty" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.youtube.com/@signalforty" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Office</h3><address>3rd Floor, Platform<br>New Station Street<br>Leeds LS1 4JB<br><a href="tel:+441134960782">0113 496 0782</a><br><a href="mailto:hello@signalforty.co.uk">hello@signalforty.co.uk</a></address></div>
+      <div><h3>Hours</h3><ul><li>Mon to Fri, 8:30am to 5:30pm</li><li>Same-day replies</li><li>Closed bank holidays</li></ul></div>
+      <div><h3>Areas</h3><ul><li>Leeds and Bradford</li><li>Wakefield, Harrogate, York</li><li>Sheffield and Manchester</li><li>UK-wide by video</li></ul></div>
+    </div>
+    <div class="foot__base">
+      <span>© <span id="yr">2026</span> Signal Forty Ltd · Registered in England and Wales no. 12904416 · VAT GB 362 8810 54</span>
+      <ul><li><a href="/privacy/">Privacy</a></li><li><a href="/cookies/">Cookies</a></li><li><a href="/terms/">Terms</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M1 9l6-7 6 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>HOME</button>
+
+<script>
+/* Signal Forty: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function gbp(n, short){
+    if(short && n >= 1e6) return '£' + (n/1e6).toFixed(n >= 1e7 ? 0 : 1) + 'm';
+    if(short && n >= 1e4) return '£' + Math.round(n/1e3) + 'k';
+    return '£' + Math.round(n).toLocaleString('en-GB');
+  }
+
+  /* --- back to top --- */
+  var toTop = document.getElementById('to-top');
+  window.addEventListener('scroll', function(){ toTop.classList.toggle('is-shown', scrollY > innerHeight * 1.2); }, {passive:true});
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); document.getElementById('main').focus({preventScroll:true}); });
+
+  /* --- command palette menu: filter, arrow keys, Esc, focus trap --- */
+  var cmdBtn = document.getElementById('cmd-btn'), cmd = document.getElementById('cmd'), q = document.getElementById('cmd-q'),
+      links = Array.prototype.slice.call(cmd.querySelectorAll('.cmd__list a')), empty = document.getElementById('cmd-empty'), active = 0;
+  function visible(){ return links.filter(function(a){ return !a.parentNode.hidden; }); }
+  function setActive(i){ var v = visible(); links.forEach(function(a){ a.classList.remove('is-active'); }); if(v.length){ active = (i + v.length) % v.length; v[active].classList.add('is-active'); v[active].scrollIntoView({block:'nearest'}); } }
+  function setMenu(open){
+    cmd.classList.toggle('is-open', open); cmdBtn.setAttribute('aria-expanded', String(open)); document.body.style.overflow = open ? 'hidden' : '';
+    if(open){ q.value = ''; filter(); setTimeout(function(){ q.focus(); }, 30); } else cmdBtn.focus({preventScroll:true});
+  }
+  function filter(){ var t = q.value.trim().toLowerCase(); links.forEach(function(a){ a.parentNode.hidden = t && (a.textContent + ' ' + (a.dataset.k || '')).toLowerCase().indexOf(t) < 0; }); empty.hidden = visible().length > 0; setActive(0); }
+  cmdBtn.addEventListener('click', function(){ setMenu(true); });
+  q.addEventListener('input', filter);
+  cmd.addEventListener('click', function(e){ if(e.target === cmd) setMenu(false); if(e.target.closest('a')){ cmd.classList.remove('is-open'); cmdBtn.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; } });
+  document.addEventListener('keydown', function(e){
+    if(!cmd.classList.contains('is-open')) return;
+    if(e.key === 'Escape'){ e.preventDefault(); setMenu(false); }
+    else if(e.key === 'ArrowDown'){ e.preventDefault(); setActive(active + 1); }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); setActive(active - 1); }
+    else if(e.key === 'Enter' && document.activeElement === q){ var v = visible(); if(v[active]){ e.preventDefault(); v[active].click(); } }
+    else if(e.key === 'Tab'){ var f = [q].concat(visible()), i = f.indexOf(document.activeElement); e.preventDefault(); f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus(); }
+  });
+  window.addEventListener('resize', function(){ if(innerWidth >= 1140 && cmd.classList.contains('is-open')) setMenu(false); });
+
+  /* --- reveal --- */
+  var rev = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)) rev.forEach(function(e){ e.classList.add('is-in'); });
+  else { var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-in'); io.unobserve(x.target); } }); }, {threshold:.12}); rev.forEach(function(e){ io.observe(e); }); }
+
+  /* --- hero console: a new lead line appears every few seconds --- */
+  var feed = document.getElementById('feed'), FEED = [
+    'Lead · Google Ads · "industrial valve supplier"', 'Demo booked · LinkedIn · Operations director', 'Lead · SEO · /laser-cutting-leeds',
+    'Call 4m48s · Google Ads · Wakefield', 'Lead · Microsoft Ads · "payroll software uk"', 'MQL → SQL · HubSpot · £22k deal'
+  ], fi = 0, lead = document.querySelector('[data-tick]'), leads = 1862;
+  if(!reduce) setInterval(function(){
+    if(document.hidden) return;
+    var li = document.createElement('li'); li.className = 'new'; li.innerHTML = '<span>' + FEED[fi++ % FEED.length] + '</span><span>just now</span>';
+    feed.insertBefore(li, feed.firstChild); if(feed.children.length > 6) feed.removeChild(feed.lastChild);
+    leads += 1; lead.textContent = leads.toLocaleString('en-GB');
+  }, 3200);
+
+  /* --- Forecaster (signature) ---
+     Benchmarks: CPC, lead rate (lead per click), close rate, default deal value.
+     A 12-month ramp reflects learning time; fee = max(£950, 12% of spend). */
+  var IND = {
+    mfg:  {name:'manufacturing',          cpc:3.10, cvr:.031, close:.22, deal:14800},
+    saas: {name:'software and SaaS',      cpc:6.20, cvr:.042, close:.18, deal:9400},
+    prof: {name:'professional services',  cpc:4.60, cvr:.055, close:.25, deal:3800},
+    rec:  {name:'recruitment',            cpc:2.40, cvr:.048, close:.20, deal:5200}
+  };
+  var RAMP = [.55,.7,.82,.9,.95,1,1.03,1.06,1.08,1.1,1.12,1.14];
+  var fc = document.getElementById('fc'), bud = document.getElementById('f-budget'), deal = document.getElementById('f-deal'), chart = document.getElementById('chart'),
+      o = {budget:document.getElementById('o-budget'), deal:document.getElementById('o-deal'), bench:document.getElementById('bench'), leads:document.getElementById('k-leads'),
+           cpl:document.getElementById('k-cpl'), deals:document.getElementById('k-deals'), rev:document.getElementById('k-rev'), fee:document.getElementById('k-fee')};
+  /* build chart scaffold once */
+  var NS = 'http://www.w3.org/2000/svg', W = 600, H = 220, PADL = 34, PADB = 24, bw = (W - PADL) / 12, bars = [], vals = [], grid = [];
+  for(var g = 0; g < 4; g++){ var ln = document.createElementNS(NS,'line'); ln.setAttribute('x1',PADL); ln.setAttribute('x2',W); ln.setAttribute('stroke','#26302C'); chart.appendChild(ln);
+    var tx = document.createElementNS(NS,'text'); tx.setAttribute('x',0); chart.appendChild(tx); grid.push([ln,tx]); }
+  for(var m = 0; m < 12; m++){
+    var r = document.createElementNS(NS,'rect'); r.setAttribute('class','bar' + (m >= 3 ? ' is-live' : '')); r.setAttribute('x', PADL + m*bw + 5); r.setAttribute('width', bw - 10); r.setAttribute('y', H - PADB); r.setAttribute('height', 0); chart.appendChild(r); bars.push(r);
+    var v = document.createElementNS(NS,'text'); v.setAttribute('x', PADL + m*bw + bw/2); v.setAttribute('text-anchor','middle'); v.setAttribute('class','val'); chart.appendChild(v); vals.push(v);
+    var l = document.createElementNS(NS,'text'); l.setAttribute('x', PADL + m*bw + bw/2); l.setAttribute('y', H - 8); l.setAttribute('text-anchor','middle'); l.textContent = 'M' + (m+1); chart.appendChild(l);
+  }
+  var lastInd = null;
+  function calc(){
+    var key = fc.querySelector('[name=ind]:checked').value, ind = IND[key];
+    if(key !== lastInd){ deal.value = ind.deal; lastInd = key; }
+    var b = +bud.value, dv = +deal.value, clicks = b / ind.cpc, base = clicks * ind.cvr, series = RAMP.map(function(k){ return base * k; });
+    var total = series.reduce(function(a,c){ return a + c; }, 0), deals = total * ind.close, steady = series[5];
+    o.budget.textContent = gbp(b); o.deal.textContent = gbp(dv);
+    o.leads.textContent = Math.round(steady); o.cpl.textContent = gbp(b / steady); o.deals.textContent = Math.round(deals); o.rev.textContent = gbp(deals * dv, true);
+    o.fee.textContent = gbp(Math.max(950, Math.round(b * .12 / 50) * 50));
+    o.bench.textContent = 'Benchmarks for ' + ind.name + ': CPC £' + ind.cpc.toFixed(2) + ', lead rate ' + (ind.cvr*100).toFixed(1) + '%, close rate ' + Math.round(ind.close*100) + '%.';
+    [bud, deal].forEach(function(s){ s.style.setProperty('--p', ((s.value - s.min) / (s.max - s.min) * 100) + '%'); });
+    /* draw */
+    var max = Math.max.apply(null, series), step = Math.pow(10, Math.floor(Math.log10(max))) , top = Math.ceil(max / step) * step; if(top / 4 < 1) top = 4;
+    var plotH = H - PADB - 18;
+    grid.forEach(function(gr, i){ var val = top * (i + 1) / 4, y = H - PADB - plotH * (i + 1) / 4; gr[0].setAttribute('y1', y); gr[0].setAttribute('y2', y); gr[1].setAttribute('y', y + 3); gr[1].textContent = Math.round(val); });
+    series.forEach(function(s, i){ var h = plotH * s / top; bars[i].setAttribute('y', H - PADB - h); bars[i].setAttribute('height', h); vals[i].setAttribute('y', H - PADB - h - 5); vals[i].textContent = Math.round(s); });
+    bud.setAttribute('aria-valuetext', gbp(b) + ' a month'); deal.setAttribute('aria-valuetext', gbp(dv));
+  }
+  fc.addEventListener('input', calc); fc.addEventListener('change', calc); calc();
+
+  /* --- accordion --- */
+  document.querySelectorAll('[data-accordion] .acc__btn').forEach(function(b){
+    b.addEventListener('click', function(){ var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open)); document.getElementById(b.getAttribute('aria-controls')).hidden = open; });
+  });
+
+  /* --- brief form --- */
+  var form = document.getElementById('quote-form'), ok = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'Name required.'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'Enter a UK number, e.g. 0113 496 0782.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Enter a valid email address.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Enter a full UK postcode, e.g. LS1 4JB.'; },
+    type: function(v){ return v !== '' || 'Pick a service.'; },
+    budget: function(v){ return v !== '' || 'Pick a budget range.'; },
+    message: function(v){ return v.trim().length >= 10 || 'A sentence or two, please.'; }
+  };
+  function check(f){ var r = rules[f.name]; if(!r) return true; var res = r(f.value), err = document.getElementById(f.name + '-error');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; return false; } f.removeAttribute('aria-invalid'); err.textContent = ''; return true; }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    ok.querySelector('[data-first-name]').textContent = ' ' + document.getElementById('name').value.trim().split(' ')[0];
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

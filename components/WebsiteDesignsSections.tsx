@@ -1,6 +1,7 @@
 import Image from "@/components/ui/SiteImage";
 import Link from "next/link";
 import {
+  ArrowDown,
   Calculator,
   Dumbbell,
   HardHat,
@@ -51,32 +52,22 @@ import { CASE_STUDIES_LIVE } from "@/lib/flags";
 const LABEL = "topline" as const;
 const ACCENT = "bg-amber";
 
-// The portfolio: HTML demo designs first (public/portfolio/<category>/, listed in portfolio-demos.json by
-// scripts/portfolio-shots.mjs, each with a live demo), then the theme screenshots from the old site.
-// A demo folder whose heading matches an old category (Legal Firm Designs) joins it: demos first, one section.
-type GalleryItem = { key: string; src: string; alt: string; width: number; height: number; demo?: string };
-type GalleryCategory = { title: string; items: GalleryItem[] };
-const gallery = ([
-  ...portfolioDemos.map((c) => ({
-    title: c.title,
-    items: c.items.map((d) => ({ key: d.demo, src: d.shot, alt: d.alt, width: d.width, height: d.height, demo: d.demo })),
-  })),
-  ...page.gallery.categories.map((c) => ({
-    title: c.title,
-    items: c.images.map((im) => ({
-      key: im.file,
-      src: `${page.gallery.base}pages/${im.file.replace(/\.\w+$/, ".jpg")}`,
-      alt: im.alt,
-      width: 990,
-      height: 1016,
-    })),
-  })),
-] as GalleryCategory[]).reduce<GalleryCategory[]>((all, c) => {
-  const same = all.find((x) => x.title === c.title);
-  if (same) same.items.push(...c.items);
-  else all.push(c);
-  return all;
-}, []);
+// The portfolio: the HTML demo designs (public/portfolio/<folder>/, listed in portfolio-demos.json by
+// scripts/portfolio-shots.mjs). Each folder is named after an industry card ("Non-Profit Websites" ->
+// non-profit), so the card links down to its designs and the section takes the card's name, in card order.
+const sectorSlug = (sector: string) => sector.replace(/ Websites$/, "").toLowerCase().replace(/\s+/g, "-");
+const gallery = portfolioDemos
+  .map((c) => {
+    const sector = page.help.sectors.find((s) => sectorSlug(s) === c.slug);
+    return {
+      id: `designs-${c.slug}`,
+      title: sector ? sector.replace(/Websites$/, "Designs") : c.title,
+      order: sector ? page.help.sectors.indexOf(sector) : page.help.sectors.length,
+      items: c.items.map((d) => ({ key: d.demo, src: d.shot, alt: d.alt, width: d.width, height: d.height, demo: d.demo })),
+    };
+  })
+  .sort((a, b) => a.order - b.order);
+const designCount = (n: number) => `${n} design${n === 1 ? "" : "s"}`;
 
 const sectorIcons: Record<string, LucideIcon> = {
   Construction: HardHat,
@@ -176,12 +167,27 @@ export function WebsiteDesignsPage() {
         <ul className="mt-10 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
           {page.help.sectors.map((sector) => {
             const Icon = sectorIcons[sector.replace(/ Websites$/, "")] ?? HardHat;
-            return (
-              <li key={sector} className="surface-card flex items-center gap-3.5 rounded-card border border-line bg-warm/55 px-5 py-4 font-sans text-[17px] font-semibold">
+            // Industries with designs in the portfolio link down to them (client, 18 Nov 2026).
+            const designs = gallery.find((c) => c.id === `designs-${sectorSlug(sector)}`);
+            const inner = (
+              <>
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-[10px] bg-soft text-amber-deep">
                   <Icon className="size-5" aria-hidden="true" />
                 </span>
                 {sector}
+                {designs && <ArrowDown className="ml-auto size-4 shrink-0 text-muted transition-transform group-hover/sector:translate-y-0.5" aria-hidden="true" />}
+              </>
+            );
+            const card = "surface-card flex h-full items-center gap-3.5 rounded-card border border-line bg-warm/55 px-5 py-4 font-sans text-[17px] font-semibold";
+            return (
+              <li key={sector}>
+                {designs ? (
+                  <a href={`#${designs.id}`} aria-label={`${sector}: see ${designCount(designs.items.length)}`} data-event="website_designs_sector_click" className={`${card} group/sector transition-colors hover:border-ink/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber`}>
+                    {inner}
+                  </a>
+                ) : (
+                  <div className={card}>{inner}</div>
+                )}
               </li>
             );
           })}
@@ -214,20 +220,20 @@ export function WebsiteDesignsPage() {
         <p className="mt-4 hidden text-body text-muted pointer-coarse:block">Tap a design to scroll through the page.</p>
         <div className="mt-12 flex flex-col gap-14">
           {gallery.map((category) => (
-            <section key={category.title} aria-label={category.title}>
+            <section key={category.id} id={category.id} aria-label={category.title} className="scroll-mt-28">
               <h3 className="flex items-center gap-4 font-sans text-h4 font-semibold">
                 {category.title}
                 <span aria-hidden className="flex-1" />
                 <span className="whitespace-nowrap text-bsm font-medium text-muted tabular-nums">
-                  {category.items.length} designs
+                  {designCount(category.items.length)}
                 </span>
               </h3>
               {/* Phones show two designs per category and a button for the rest (the gallery ran to 14 screens). */}
               <ShowMore as="ul" limit={2} noun="designs" className="mt-7 grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
                 {category.items.map((item, i) => (
                   <li key={item.key}>
-                    {/* Browser-window card. On hover the page screenshot (cropped from the mock-up into
-                        pages/) slides up until its bottom meets the frame: 100cqh is the frame height,
+                    {/* Browser-window card. On hover the full-page screenshot slides up until its
+                        bottom meets the frame: 100cqh is the frame height,
                         min() keeps screenshots shorter than the frame still. Focus does the same, so a tap
                         scrolls it on touch screens (no hover there) and keyboard users get it too. */}
                     <figure tabIndex={0} className="group overflow-hidden rounded-card border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-ink/30 hover:shadow-[0_28px_60px_-34px_rgb(0_0_0/0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber">
@@ -240,18 +246,18 @@ export function WebsiteDesignsPage() {
                         </span>
                       </div>
                       <div className="relative aspect-[16/10] overflow-hidden bg-surface [container-type:size]">
-                        {/* Demo screenshots are whole pages (about eight screens), so they scroll for longer. */}
+                        {/* Screenshots are whole pages (about eight screens), so the scroll is slow. */}
                         <GalleryImage
                           src={item.src}
                           alt={item.alt}
                           width={item.width}
                           height={item.height}
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                          className={`absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:ease-in-out group-focus:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))] motion-safe:group-focus:translate-y-[min(0px,calc(100cqh-100%))] ${item.demo ? "group-hover:duration-[14000ms] group-focus:duration-[14000ms]" : "group-hover:duration-[6000ms] group-focus:duration-[6000ms]"}`}
+                          className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:ease-in-out group-focus:ease-in-out group-hover:duration-[14000ms] group-focus:duration-[14000ms] motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))] motion-safe:group-focus:translate-y-[min(0px,calc(100cqh-100%))]"
                         />
-                        {/* Designs with a live demo: a button over the screenshot on hover or focus
-                            (always shown on touch screens; no dark overlay, client 18 Nov 2026) opens it in a popup. */}
-                        {item.demo && <DemoViewer url={item.demo} title={item.alt} />}
+                        {/* A button over the screenshot on hover or focus (always shown on touch screens; no dark
+                            overlay, client 18 Nov 2026) opens the live demo in a popup. */}
+                        <DemoViewer url={item.demo} title={item.alt} />
                       </div>
                     </figure>
                   </li>

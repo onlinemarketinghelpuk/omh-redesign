@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Hartwell Trust | Funding MND Research from Sheffield</title>
+<meta name="description" content="The Hartwell Trust funds motor neurone disease (MND) research. 89p of every £1 goes straight into research, chosen by independent peer review. Donate, fundraise or leave a gift in your will.">
+<link rel="canonical" href="https://www.hartwelltrust.org.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Hartwell Trust | 89p of every £1 into MND research">
+<meta property="og:description" content="See exactly where your donation goes. Independent peer review, published results, no cold calls.">
+<meta property="og:url" content="https://www.hartwelltrust.org.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%230F3A40'/%3E%3Crect x='10' y='9' width='6' height='22' rx='3' fill='%23fff'/%3E%3Crect x='24' y='15' width='6' height='16' rx='3' fill='%23fff'/%3E%3Crect x='16' y='18' width='8' height='4' fill='%23fff'/%3E%3Ccircle cx='27' cy='9' r='3.2' fill='%23F26B5B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["NGO","LocalBusiness"],
+  "name": "The Hartwell Trust",
+  "description": "Charity funding research into motor neurone disease (MND), selected by independent peer review. Registered charity no. 1162804.",
+  "url": "https://www.hartwelltrust.org.uk/",
+  "telephone": "+441142993471",
+  "email": "hello@hartwelltrust.org.uk",
+  "foundingDate": "2011",
+  "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&q=80&auto=format&fit=crop",
+  "nonprofitStatus": "https://schema.org/NonprofitCharitableIncorporatedOrganization",
+  "address": { "@type": "PostalAddress", "streetAddress": "4th Floor, The Workstation, 15 Paternoster Row", "addressLocality": "Sheffield", "postalCode": "S1 2BX", "addressCountry": "GB" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 53.3786, "longitude": -1.4682 },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" }],
+  "areaServed": ["United Kingdom","Sheffield","South Yorkshire","Derbyshire"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "318" }
+}
+</script>
+<style>
+/* =========================================================
+   THE HARTWELL TRUST
+   Art direction: infographic annual report. White pages, one
+   deep teal, one coral, pictogram dot charts, big honest
+   numbers, calm clinical spacing, Newsreader for the voice.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --white:#FFFFFF;
+  --mist:#F4F8F7;
+  --mint:#DDF1EC;
+  --teal:#0F3A40;
+  --teal-2:#1D5A61;
+  --ink:#13262A;
+  --ink-2:#526468;
+  --coral:#F26B5B;         /* fills, dots and large text */
+  --coral-d:#C2412F;       /* AA text on white */
+  --sand:#F4C98B;
+  --line:#DCE6E4;
+  --error:#B42318;
+
+  --f-serif:'Newsreader', Georgia, serif;
+  --f:'Hanken Grotesk', 'Segoe UI', Arial, sans-serif;
+
+  --t-xs:.78rem;
+  --t-sm:.9rem;
+  --t-base:1.0625rem;
+  --t-lg:1.2rem;
+  --t-xl:clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  --t-2xl:clamp(2.2rem, 1.4rem + 3vw, 3.8rem);
+  --t-hero:clamp(2.5rem, 1.4rem + 4vw, 4.8rem);
+
+  --s-1:.5rem; --s-2:1rem; --s-3:1.6rem; --s-4:2.6rem; --s-5:4.4rem; --s-6:7rem;
+  --r:16px;
+  --wrap:min(1240px, 100% - 2rem);
+  --ease:cubic-bezier(.22,.8,.3,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font:400 var(--t-base)/1.65 var(--f)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-serif);font-weight:500;margin:0;line-height:1.08;letter-spacing:-.015em}
+p{margin:0 0 var(--s-2)}
+button{font-family:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:0;background:var(--teal);color:#fff;padding:.75rem 1rem;z-index:300}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:3px solid var(--coral-d);outline-offset:3px}
+main:focus{outline:none}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.kicker{display:flex;align-items:center;gap:.6rem;font:600 var(--t-xs) var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--teal-2);margin-bottom:var(--s-2)}
+.kicker::before{content:"";width:22px;height:2px;background:var(--coral)}
+.fig{font-family:var(--f-serif);font-weight:500;letter-spacing:-.03em;line-height:1}
+.sec{padding:var(--s-6) 0}
+.sec__head{display:grid;gap:var(--s-2);margin-bottom:var(--s-4)}
+.sec__head h2{font-size:var(--t-2xl);max-width:17ch}
+.sec__head p{color:var(--ink-2);max-width:48ch;margin:0}
+@media (min-width:960px){.sec__head{grid-template-columns:1.2fr .8fr;align-items:end}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.4rem;border-radius:999px;border:2px solid var(--teal);background:var(--teal);color:#fff;font:600 var(--t-base)/1 var(--f);text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--teal-2);border-color:var(--teal-2)}
+.btn--coral{background:var(--coral-d);border-color:var(--coral-d)}
+.btn--coral:hover{background:#A63524;border-color:#A63524}
+.btn--line{background:transparent;color:var(--teal)}
+.btn--line:hover{background:var(--mint);color:var(--teal)}
+
+/* ---------- 3. Navigation (desktop bar, mobile bottom tab bar) ---------- */
+.nav{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+.nav.is-scrolled{border-bottom-color:var(--line)}
+.nav__in{width:var(--wrap);margin-inline:auto;display:flex;align-items:center;gap:1.4rem;height:76px}
+.logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;margin-right:auto}
+.logo__txt{display:flex;flex-direction:column;line-height:1.05}
+.logo__txt small{font:600 .62rem var(--f);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
+.logo__txt b{font:500 1.35rem var(--f-serif);letter-spacing:-.01em}
+.nav__links{display:none;list-style:none;margin:0;padding:0;gap:1.6rem}
+.nav__links a{text-decoration:none;font-weight:500;color:var(--ink-2);transition:color .2s}
+.nav__links a:hover{color:var(--teal)}
+.nav__tel{display:none;text-decoration:none;font-weight:600;font-size:var(--t-sm)}
+.nav__cta{display:none;padding:.75rem 1.1rem}
+.nav__donate{padding:.75rem 1.2rem}
+@media (min-width:1080px){.nav__links,.nav__tel,.nav__cta{display:flex}}
+/* mobile bottom tab bar */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--line);padding:.3rem .3rem calc(.3rem + env(safe-area-inset-bottom))}
+.tabbar a,.tabbar button{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.45rem .2rem;border:0;background:none;font:600 .7rem var(--f);color:var(--ink-2);text-decoration:none;border-radius:10px;cursor:pointer}
+.tabbar a:hover,.tabbar button:hover,.tabbar [aria-expanded="true"]{background:var(--mint);color:var(--teal)}
+.tabbar .is-donate{color:var(--coral-d)}
+.more{position:fixed;left:.5rem;right:.5rem;bottom:calc(64px + env(safe-area-inset-bottom));z-index:94;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:.5rem;box-shadow:0 -12px 40px rgba(15,58,64,.15);transform:translateY(16px);opacity:0;visibility:hidden;transition:transform .25s var(--ease),opacity .25s,visibility .25s}
+.more.is-open{transform:none;opacity:1;visibility:visible}
+.more a{display:flex;justify-content:space-between;padding:.85rem .9rem;border-radius:10px;text-decoration:none;font-weight:600}
+.more a:hover{background:var(--mist)}
+@media (min-width:1080px){.tabbar,.more{display:none}}
+@media (max-width:1079px){body{padding-bottom:70px}.nav__donate{display:none}}
+
+/* ---------- 4. Hero: headline + 100-dot pictogram ---------- */
+.hero{padding:var(--s-4) 0 var(--s-5);background:linear-gradient(var(--mist),var(--white))}
+.hero__grid{display:grid;gap:var(--s-4);align-items:center}
+.hero h1{font-size:var(--t-hero);max-width:15ch}
+.hero h1 em{font-style:italic;color:var(--coral-d)}
+.hero__lede{font-size:var(--t-lg);color:var(--ink-2);max-width:42ch;margin:var(--s-3) 0}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:.7rem}
+.hero__proof{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:var(--s-3);font-size:var(--t-sm);color:var(--ink-2)}
+.hero__proof b{color:var(--ink)}
+.chart{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.2rem,3vw,2rem)}
+.chart__top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1rem}
+.chart__top h2{font-size:1.25rem}
+.chart__top span{font-size:var(--t-xs);color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
+.dots{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-bottom:1.2rem}
+.dots i{aspect-ratio:1;border-radius:50%;background:var(--c,#E5ECEB);transform:scale(.4);opacity:0;transition:transform .5s var(--ease),opacity .5s,background .4s}
+.dots.is-in i{transform:none;opacity:1}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:var(--t-sm)}
+.legend li{display:grid;grid-template-columns:14px 1fr auto;gap:.6rem;align-items:center}
+.legend li::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--c)}
+.legend b{font-family:var(--f-serif);font-size:1.15rem;font-weight:500}
+@media (min-width:980px){.hero__grid{grid-template-columns:1.15fr .85fr;gap:var(--s-5)}}
+
+/* ---------- 5. Trust bar ---------- */
+.trust{border-block:1px solid var(--line)}
+.trust ul{width:var(--wrap);margin:0 auto;list-style:none;padding:1.1rem 0;display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.6rem;font-size:var(--t-sm)}
+.trust li{display:flex;align-items:center;gap:.65rem}
+.trust li b{display:block}
+.trust li span{color:var(--ink-2)}
+.trust svg{flex:none}
+@media (min-width:980px){.trust ul{grid-template-columns:repeat(5,1fr)}}
+
+/* ---------- 6. Key numbers ---------- */
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.kpi{background:#fff;padding:1.4rem 1.3rem}
+.kpi .fig{font-size:clamp(2.2rem,1.6rem + 2vw,3.4rem);color:var(--teal)}
+.kpi p{margin:.5rem 0 0;color:var(--ink-2);font-size:var(--t-sm)}
+@media (min-width:860px){.kpis{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- 7. What we fund: budget lines ---------- */
+.lines{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.line{display:grid;gap:.6rem 1.6rem;padding:1.5rem 0;border-bottom:1px solid var(--line)}
+.line h3{font-size:1.45rem}
+.line p{margin:0;color:var(--ink-2)}
+.line__bar{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.9rem}
+.line__bar i{display:block;height:12px;border-radius:6px;background:var(--mist);overflow:hidden;position:relative}
+.line__bar i::after{content:"";position:absolute;inset:0;width:0;background:var(--c,var(--teal));border-radius:6px;transition:width 1.2s var(--ease)}
+.line.is-in .line__bar i::after{width:var(--v)}
+.line__bar b{font:500 1.3rem var(--f-serif);min-width:5.5rem;text-align:right}
+@media (min-width:900px){.line{grid-template-columns:1fr 1.4fr 1fr;align-items:center}}
+
+/* ---------- 8. Follow your £ (signature) ---------- */
+.follow{background:var(--teal);color:#fff}
+.follow .kicker{color:var(--sand)}
+.follow .sec__head p{color:#C7DADB}
+.follow__grid{display:grid;gap:1.2rem}
+.panel{background:#164A51;border:1px solid #2A666D;border-radius:var(--r);padding:clamp(1.2rem,3vw,2rem)}
+.panel fieldset{border:0;margin:0 0 1.3rem;padding:0}
+.panel legend{font-weight:600;margin-bottom:.6rem}
+.seg{display:inline-flex;background:#0F3A40;border-radius:999px;padding:4px;gap:4px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.seg span{display:block;padding:.55rem 1.1rem;border-radius:999px;font-weight:600;font-size:var(--t-sm);transition:background .15s,color .15s}
+.seg input:checked + span{background:#fff;color:var(--teal)}
+.seg input:focus-visible + span{outline:3px solid var(--sand);outline-offset:2px}
+.amts{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.amts label{position:relative}
+.amts input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.amts span{display:block;text-align:center;padding:.85rem .3rem;border:1px solid #3B7A80;border-radius:12px;font:500 1.3rem var(--f-serif);transition:background .15s,border-color .15s}
+.amts input:checked + span{background:var(--coral);border-color:var(--coral);color:var(--ink)}
+.amts input:focus-visible + span{outline:3px solid var(--sand);outline-offset:2px}
+.other{display:flex;align-items:center;gap:.6rem;margin-top:.6rem}
+.other label{font-size:var(--t-sm);color:#C7DADB}
+.other input{width:7.5rem;font:500 1.1rem var(--f);padding:.55rem .7rem;border-radius:10px;border:1px solid #3B7A80;background:#0F3A40;color:#fff}
+.switch{display:flex;align-items:center;gap:.8rem;cursor:pointer;font-size:var(--t-sm)}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch i{flex:none;width:46px;height:26px;border-radius:13px;background:#0F3A40;border:1px solid #3B7A80;position:relative;transition:background .2s}
+.switch i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s var(--ease)}
+.switch input:checked + i{background:var(--coral)}
+.switch input:checked + i::after{transform:translateX(20px)}
+.switch input:focus-visible + i{outline:3px solid var(--sand);outline-offset:2px}
+.out{background:#fff;color:var(--ink);border-radius:var(--r);padding:clamp(1.2rem,3vw,2rem);display:flex;flex-direction:column}
+.out__total{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin-bottom:.4rem}
+.out__total .fig{font-size:clamp(2.6rem,2rem + 2.4vw,3.8rem);color:var(--teal)}
+.out__total small{color:var(--ink-2)}
+.out__ga{font-size:var(--t-sm);color:var(--coral-d);font-weight:600;margin:0 0 1.2rem;min-height:1.4em}
+.buys{list-style:none;margin:0 0 1.4rem;padding:0;display:grid;gap:.8rem}
+.buys li{display:grid;grid-template-columns:44px 1fr;gap:.8rem;align-items:center;padding:.8rem;border:1px solid var(--line);border-radius:12px}
+.buys .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--c)}
+.buys b{display:block;font:500 1.2rem var(--f-serif)}
+.buys span{font-size:var(--t-sm);color:var(--ink-2)}
+.out .btn{margin-top:auto}
+.out small.note{display:block;margin-top:.7rem;font-size:var(--t-xs);color:var(--ink-2);text-align:center}
+.out__done{margin:.8rem 0 0;font-weight:600;color:var(--teal);text-align:center}
+@media (min-width:980px){.follow__grid{grid-template-columns:1fr 1fr}}
+
+/* ---------- 9. Research we fund (case studies) ---------- */
+.grants{display:grid;gap:1.2rem}
+.grant{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;background:#fff;transition:border-color .2s,box-shadow .2s}
+.grant:hover{border-color:var(--teal-2);box-shadow:0 14px 34px rgba(15,58,64,.08)}
+.grant__img{aspect-ratio:16/9;background:var(--mint);overflow:hidden}
+.grant__img img{width:100%;height:100%;object-fit:cover}
+.grant__body{padding:1.3rem 1.4rem 1.4rem;display:flex;flex-direction:column;flex:1}
+.status{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;font:600 var(--t-xs) var(--f);padding:.25rem .65rem;border-radius:999px;background:var(--mint);color:var(--teal)}
+.status--done{background:#FDE4E0;color:var(--coral-d)}
+.status i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.grant h3{font-size:1.4rem;margin:.7rem 0 .4rem}
+.grant__who{font-size:var(--t-sm);color:var(--ink-2);margin-bottom:.8rem}
+.grant p{color:var(--ink-2)}
+.grant dl{margin:auto 0 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;border-top:1px solid var(--line);padding-top:1rem}
+.grant dt{font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2)}
+.grant dd{margin:.2rem 0 0;font:500 1.15rem var(--f-serif)}
+.prog{margin-top:1rem}
+.prog__bar{height:6px;border-radius:3px;background:var(--mist);overflow:hidden}
+.prog__bar i{display:block;height:100%;background:var(--teal-2);width:var(--v)}
+.prog small{display:flex;justify-content:space-between;font-size:var(--t-xs);color:var(--ink-2);margin-top:.35rem}
+.grant__result{margin:1rem -1.4rem -1.4rem;padding:1rem 1.4rem;background:var(--mist);font-size:var(--t-sm)}
+.grant__result b{color:var(--teal)}
+@media (min-width:900px){.grants{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- 10. How we choose: funnel ---------- */
+.choose{background:var(--mist)}
+.funnel{display:grid;gap:.7rem}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.3rem}
+.stage__n{display:grid;place-items:center;min-width:6.2rem;height:4.6rem;border-radius:12px;background:var(--c);color:#fff;font:500 2rem var(--f-serif)}
+.stage h3{font-size:1.25rem;margin-bottom:.2rem}
+.stage p{margin:0;color:var(--ink-2);font-size:var(--t-sm)}
+@media (min-width:900px){
+  .funnel{gap:.6rem}
+  .stage:nth-child(1){margin-right:0}
+  .stage:nth-child(2){margin:0 5%}
+  .stage:nth-child(3){margin:0 10%}
+  .stage:nth-child(4){margin:0 15%}
+  .stage:nth-child(5){margin:0 20%}
+}
+
+/* ---------- 11. Promises ---------- */
+.promise__grid{display:grid;gap:var(--s-4)}
+.promise__big{background:var(--teal);color:#fff;border-radius:var(--r);padding:clamp(1.6rem,4vw,2.6rem);display:flex;flex-direction:column;justify-content:space-between;gap:var(--s-3)}
+.promise__big .fig{font-size:clamp(4.5rem,3rem + 6vw,8rem);color:var(--coral)}
+.promise__big p{margin:0;font:500 1.4rem/1.35 var(--f-serif);max-width:24ch}
+.plist{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.plist li{display:grid;grid-template-columns:44px 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--line)}
+.plist li:first-child{border-top:1px solid var(--line)}
+.plist .ic{width:44px;height:44px;border-radius:12px;background:var(--mint);display:grid;place-items:center}
+.plist h3{font-size:1.25rem;margin-bottom:.2rem}
+.plist p{margin:0;color:var(--ink-2)}
+@media (min-width:960px){.promise__grid{grid-template-columns:.9fr 1.1fr}}
+
+/* ---------- 12. Voices ---------- */
+.voices{background:var(--mist)}
+.vgrid{display:grid;gap:1rem}
+.v{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;display:flex;flex-direction:column;gap:1rem}
+.v blockquote{margin:0;font:400 1.18rem/1.5 var(--f-serif)}
+.v figcaption{display:flex;align-items:center;gap:.8rem;margin-top:auto;font-size:var(--t-sm);color:var(--ink-2)}
+.v figcaption b{display:block;color:var(--ink)}
+.v .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--c);font:600 .85rem var(--f);color:var(--teal);flex:none}
+.v--lead{background:var(--teal);color:#fff;border-color:var(--teal)}
+.v--lead blockquote{font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);line-height:1.35}
+.v--lead figcaption{color:#C7DADB}
+.v--lead figcaption b{color:#fff}
+@media (min-width:860px){.vgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.v--lead{grid-column:span 2;grid-row:span 2}}
+@media (min-width:1100px){.vgrid{grid-template-columns:repeat(4,minmax(0,1fr))}.v--lead{grid-column:span 2;grid-row:span 2}}
+
+/* ---------- 13. FAQ ---------- */
+.faq__grid{display:grid;gap:var(--s-4)}
+.acc{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.acc__item + .acc__item{border-top:1px solid var(--line)}
+.acc__btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 1.3rem;background:#fff;border:0;text-align:left;font:600 1.05rem/1.35 var(--f);color:var(--ink);cursor:pointer}
+.acc__btn:hover{background:var(--mist)}
+.acc__btn[aria-expanded="true"]{background:var(--mint)}
+.acc__ic{flex:none;position:relative;width:16px;height:16px}
+.acc__ic::before,.acc__ic::after{content:"";position:absolute;left:0;top:7px;width:16px;height:2px;background:var(--teal);transition:transform .25s var(--ease)}
+.acc__ic::after{transform:rotate(90deg)}
+.acc__btn[aria-expanded="true"] .acc__ic::after{transform:rotate(0)}
+.acc__panel{padding:0 1.3rem 1.2rem;color:var(--ink-2);background:var(--mint)}
+.acc__panel p{margin:0}
+@media (min-width:960px){.faq__grid{grid-template-columns:.8fr 1.2fr}.faq__intro{position:sticky;top:110px;align-self:start}}
+
+/* ---------- 14. Fundraise form ---------- */
+.fund{background:var(--mist)}
+.fund__grid{display:grid;gap:var(--s-4)}
+.fund__intro ul{list-style:none;margin:var(--s-3) 0 0;padding:0;display:grid;gap:.9rem}
+.fund__intro li{display:grid;grid-template-columns:40px 1fr;gap:.8rem;align-items:start}
+.fund__intro li .ic{width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center}
+.fund__intro li b{display:block}
+.fund__intro li span{color:var(--ink-2);font-size:var(--t-sm)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.3rem,3vw,2.2rem)}
+.form{display:grid;gap:1rem 1.2rem}
+.fld{display:flex;flex-direction:column;gap:.35rem}
+.fld label{font-weight:600;font-size:var(--t-sm)}
+.fld input,.fld select,.fld textarea{font:400 1rem var(--f);color:var(--ink);background:#fff;border:1px solid #BFCFCC;border-radius:10px;padding:.8rem .9rem;transition:border-color .15s,box-shadow .15s}
+.fld select{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230F3A40' stroke-width='1.8'/%3E%3C/svg%3E") right .9rem center no-repeat}
+.fld textarea{min-height:120px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--mint)}
+.fld [aria-invalid="true"]{border-color:var(--error);box-shadow:0 0 0 4px #FDE4E0}
+.err{font-size:var(--t-sm);font-weight:600;color:var(--error)}
+.err:empty{display:none}
+.fld--full,.form__foot{grid-column:1/-1}
+.form__foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.form__foot small{color:var(--ink-2);max-width:40ch}
+.done{text-align:center;padding:1.5rem .5rem}
+.done__ic{width:64px;height:64px;margin:0 auto 1rem;border-radius:50%;background:var(--mint);display:grid;place-items:center}
+.done h3{font-size:1.7rem;margin-bottom:.5rem}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.fund__grid{grid-template-columns:.85fr 1.15fr;gap:var(--s-5)}}
+
+/* ---------- 15. Footer ---------- */
+.foot{background:var(--teal);color:#C7DADB;padding:var(--s-5) 0 var(--s-3);font-size:var(--t-sm)}
+.foot a{color:#fff;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.foot__grid{display:grid;gap:var(--s-3)}
+.foot h3{font:600 .75rem var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--sand);margin-bottom:.8rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
+.foot address{font-style:normal;line-height:1.75}
+.foot__desc{max-width:32ch;margin-top:1rem}
+.foot .logo__txt b{color:#fff}
+.foot .logo__txt small{color:#C7DADB}
+.social{display:flex;gap:.5rem;margin-top:1rem}
+.social a{width:40px;height:40px;border-radius:50%;border:1px solid #2A666D;display:grid;place-items:center}
+.social a:hover{border-color:var(--coral);text-decoration:none}
+.foot__reg{margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px solid #2A666D;display:grid;gap:1rem;font-size:.82rem}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem}
+.badges span{display:inline-flex;align-items:center;gap:.45rem;border:1px solid #2A666D;border-radius:8px;padding:.4rem .7rem;color:#fff;font-weight:600}
+.foot__reg ul{display:flex;flex-wrap:wrap;gap:1.2rem}
+@media (min-width:900px){.foot__grid{grid-template-columns:1.4fr 1fr 1fr 1fr}.foot__reg{grid-template-columns:1fr auto;align-items:center}}
+
+/* back to top: report-style pill showing how much you've read */
+.to-top{position:fixed;right:1rem;bottom:1rem;z-index:96;display:flex;align-items:center;gap:.5rem;background:#fff;color:var(--teal);border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem .55rem .6rem;font:600 var(--t-xs) var(--f);cursor:pointer;box-shadow:0 10px 26px rgba(15,58,64,.14);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,visibility .25s,transform .25s var(--ease)}
+.to-top.is-shown{opacity:1;visibility:visible;transform:none}
+.to-top:hover{border-color:var(--teal)}
+.to-top .ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(var(--coral) var(--p,0%),var(--mist) 0);display:grid;place-items:center}
+.to-top .ring::after{content:"";width:18px;height:18px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cpath d='M5 9V1M1.5 4.5L5 1l3.5 3.5' fill='none' stroke='%230F3A40' stroke-width='1.6'/%3E%3C/svg%3E") center no-repeat}
+@media (max-width:1079px){.to-top{bottom:80px}}
+
+/* ---------- 16. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .dots i{transform:none;opacity:1}
+  .line .line__bar i::after{width:var(--v)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="logo" href="#top" aria-label="The Hartwell Trust, back to top">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#0F3A40"/><rect x="10" y="9" width="6" height="22" rx="3" fill="#fff"/><rect x="24" y="15" width="6" height="16" rx="3" fill="#fff"/><rect x="16" y="18" width="8" height="4" fill="#fff"/><circle cx="27" cy="9" r="3.2" fill="#F26B5B"/></svg>
+      <span class="logo__txt"><small>The</small><b>Hartwell Trust</b></span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="#fund">What we fund</a></li>
+        <li><a href="#follow">Your donation</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#choose">How we choose</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="nav__tel" href="tel:+441142993471">0114 299 3471</a>
+    <a class="btn btn--line nav__cta" href="#fundraise">Fundraise</a>
+    <a class="btn btn--coral nav__donate" href="#follow">Donate</a>
+  </div>
+</header>
+
+<nav class="tabbar" aria-label="Quick links">
+  <a href="#research"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3M8 3h8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Research</a>
+  <a href="#follow" class="is-donate"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" fill="currentColor"/></svg>Donate</a>
+  <a href="#fundraise"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4.5" r="2" fill="currentColor"/><path d="M8 21l3-6 3 2v4M7 12l3-4 4 2 3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Fundraise</a>
+  <button type="button" id="more-btn" aria-expanded="false" aria-controls="more"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="19" cy="12" r="1.8" fill="currentColor"/></svg>More</button>
+</nav>
+<div class="more" id="more">
+  <a href="#fund">What we fund <span aria-hidden="true">→</span></a>
+  <a href="#choose">How we choose research <span aria-hidden="true">→</span></a>
+  <a href="#promise">Our promises <span aria-hidden="true">→</span></a>
+  <a href="#faq">FAQ <span aria-hidden="true">→</span></a>
+  <a href="tel:+441142993471">Call 0114 299 3471 <span aria-hidden="true">→</span></a>
+</div>
+
+<main id="main" tabindex="-1">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div class="reveal">
+      <p class="kicker">Motor neurone disease research · Sheffield</p>
+      <h1 id="hero-title"><em>89p</em> of every £1 you give goes straight into MND research.</h1>
+      <p class="hero__lede">There is still no cure for motor neurone disease. We fund the scientists closest to one, chosen by independent experts, and we show you exactly where your money goes.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--coral" href="#follow">Donate and see where it goes</a>
+        <a class="btn btn--line" href="#fundraise">Fundraise for us</a>
+      </div>
+      <p class="hero__proof"><span><b>£14.6m</b> committed to research</span><span><b>63</b> projects funded</span><span><b>AMRC</b> peer-reviewed</span></p>
+    </div>
+    <div class="chart reveal" aria-labelledby="chart-title">
+      <div class="chart__top"><h2 id="chart-title">Where each £1 went in 2025</h2><span>100 dots = £1</span></div>
+      <div class="dots" id="dots" role="img" aria-label="Of every pound: 52p laboratory research, 23p clinical trials, 14p researcher fellowships, 8p fundraising, 3p running the charity."></div>
+      <ul class="legend">
+        <li style="--c:#0F3A40"><span>Laboratory research</span><b>52p</b></li>
+        <li style="--c:#3E8C8F"><span>Clinical trials</span><b>23p</b></li>
+        <li style="--c:#F26B5B"><span>Researcher fellowships</span><b>14p</b></li>
+        <li style="--c:#F4C98B"><span>Fundraising</span><b>8p</b></li>
+        <li style="--c:#C5D3D1"><span>Running the charity</span><b>3p</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust" aria-label="Accreditations">
+  <ul>
+    <li><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V7z" fill="#DDF1EC" stroke="#0F3A40" stroke-width="1.5"/></svg><span><b>AMRC member</b><span>Independent peer review</span></span></li>
+    <li><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#DDF1EC" stroke="#0F3A40" stroke-width="1.5"/><path d="M8 12l3 3 5-6" fill="none" stroke="#0F3A40" stroke-width="1.8"/></svg><span><b>Fundraising Regulator</b><span>Registered</span></span></li>
+    <li><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" fill="#DDF1EC" stroke="#0F3A40" stroke-width="1.5"/><path d="M8 9h8M8 13h8M8 17h5" stroke="#0F3A40" stroke-width="1.5"/></svg><span><b>Charity no. 1162804</b><span>England and Wales</span></span></li>
+    <li><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="#DDF1EC" stroke="#0F3A40" stroke-width="1.5"/></svg><span><b>4.9 out of 5</b><span>318 Google reviews</span></span></li>
+    <li><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" fill="#DDF1EC" stroke="#0F3A40" stroke-width="1.5"/><path d="M8 12h8M8 16h8" stroke="#0F3A40" stroke-width="1.5"/></svg><span><b>Audited accounts</b><span>Published every year</span></span></li>
+  </ul>
+</section>
+
+<!-- ============ WHAT WE FUND (services) ============ -->
+<section class="sec" id="fund" aria-labelledby="fd-title">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><p class="kicker">Where it goes</p><h2 id="fd-title">Every pound of 2025, accounted for.</h2></div><p>We spent £2.80m last year. These are the same five lines as the dots above, taken straight from our audited accounts.</p></div>
+    <div class="kpis reveal" style="margin-bottom:var(--s-4)">
+      <div class="kpi"><span class="fig" data-count="63">63</span><p>research projects funded since 2011</p></div>
+      <div class="kpi"><span class="fig">11</span><p>clinical trials supported</p></div>
+      <div class="kpi"><span class="fig" data-count="29">29</span><p>early-career researchers trained</p></div>
+      <div class="kpi"><span class="fig">£2.49m</span><p>spent on research in 2025</p></div>
+    </div>
+    <ul class="lines">
+      <li class="line reveal"><h3>Laboratory research</h3><p>Understanding why motor neurones die, using stem cells grown from people living with MND.</p><div class="line__bar" style="--v:100%"><i></i><b>£1.46m</b></div></li>
+      <li class="line reveal"><h3>Clinical trials</h3><p>Getting promising drugs into patients faster, including places on trials at the Sheffield clinic.</p><div class="line__bar" style="--v:44%;--c:#3E8C8F"><i></i><b>£644k</b></div></li>
+      <li class="line reveal"><h3>Researcher fellowships</h3><p>Three-year fellowships that keep talented early-career scientists working on MND.</p><div class="line__bar" style="--v:27%;--c:#F26B5B"><i></i><b>£392k</b></div></li>
+      <li class="line reveal"><h3>Fundraising</h3><p>Events, materials and the small team that supports our fundraisers. Every £1 here brought in about £6.</p><div class="line__bar" style="--v:15%;--c:#F4C98B"><i></i><b>£224k</b></div></li>
+      <li class="line reveal"><h3>Running the charity</h3><p>Audit, governance, IT and our office in Sheffield. We keep this as small as we can.</p><div class="line__bar" style="--v:6%;--c:#C5D3D1"><i></i><b>£84k</b></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FOLLOW YOUR £ (signature) ============ -->
+<section class="sec follow" id="follow" aria-labelledby="fl-title">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><p class="kicker">Follow your £</p><h2 id="fl-title">See what your donation pays for.</h2></div><p>Pick an amount and we'll show you, using last year's real costs, what it funds in our labs and clinics.</p></div>
+    <div class="follow__grid">
+      <form class="panel reveal" id="follow-form" onsubmit="return false">
+        <fieldset><legend>How often?</legend>
+          <div class="seg"><label><input type="radio" name="freq" value="once" checked><span>One-off</span></label><label><input type="radio" name="freq" value="monthly"><span>Monthly</span></label></div>
+        </fieldset>
+        <fieldset><legend>Amount</legend>
+          <div class="amts">
+            <label><input type="radio" name="amt" value="10"><span>£10</span></label>
+            <label><input type="radio" name="amt" value="25" checked><span>£25</span></label>
+            <label><input type="radio" name="amt" value="50"><span>£50</span></label>
+            <label><input type="radio" name="amt" value="100"><span>£100</span></label>
+          </div>
+          <div class="other"><label for="other">Or another amount, £</label><input id="other" type="number" min="2" max="10000" step="1" inputmode="numeric" placeholder="e.g. 15"></div>
+        </fieldset>
+        <label class="switch"><input type="checkbox" id="ga" checked><i aria-hidden="true"></i><span>Add Gift Aid. I'm a UK taxpayer, so the Trust can claim 25p for every £1 at no extra cost to me.</span></label>
+      </form>
+      <div class="out reveal" aria-live="polite">
+        <div class="out__total"><span class="fig" id="o-total">£31.25</span><small id="o-per">for research, with Gift Aid</small></div>
+        <p class="out__ga" id="o-ga">Gift Aid adds £6.25</p>
+        <ul class="buys">
+          <li style="--c:#DDF1EC"><span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3M8 3h8" fill="none" stroke="#0F3A40" stroke-width="1.8"/></svg></span><div><b id="o-lab">30 minutes</b><span>of a postdoctoral scientist's time in the lab</span></div></li>
+          <li style="--c:#E3F0F0"><span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 12h4l2-5 4 10 2-5h4" fill="none" stroke="#3E8C8F" stroke-width="1.8"/></svg></span><div><b id="o-trial">1.5 hours</b><span>of research nurse time on a clinical trial</span></div></li>
+          <li style="--c:#FDE4E0"><span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="#C2412F" stroke-width="1.8"/><path d="M5 21c1-4 4-6 7-6s6 2 7 6" fill="none" stroke="#C2412F" stroke-width="1.8"/></svg></span><div><b id="o-fellow">2 hours</b><span>of training for an early-career researcher</span></div></li>
+        </ul>
+        <button class="btn btn--coral" type="button" id="o-btn">Donate £25</button>
+        <small class="note">Estimates use average costs from our 2025 accounts.</small>
+        <p class="out__done" id="o-done" hidden>Thank you. On the live site this opens our secure donation page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH WE FUND (case studies) ============ -->
+<section class="sec" id="research" aria-labelledby="rs-title">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><p class="kicker">Research we fund</p><h2 id="rs-title">Three projects your donations are paying for.</h2></div><p>We report on every grant every six months. These are three of the 14 projects running right now.</p></div>
+    <div class="grants">
+      <article class="grant reveal">
+        <div class="grant__img"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=900&q=80&auto=format&fit=crop" alt="Scientist pipetting samples in a research laboratory" loading="lazy" decoding="async" width="900" height="506"></div>
+        <div class="grant__body">
+          <span class="status"><i></i>In progress</span>
+          <h3>Why do motor neurones die first?</h3>
+          <p class="grant__who">Dr Aisha Rahman · University of Sheffield</p>
+          <p>Using stem cells from 40 people with MND to find out why motor neurones are more fragile than other nerve cells.</p>
+          <dl><div><dt>Grant</dt><dd>£412k</dd></div><div><dt>Length</dt><dd>3 years</dd></div><div><dt>Started</dt><dd>2024</dd></div></dl>
+          <div class="prog"><div class="prog__bar" style="--v:62%"><i></i></div><small><span>62% complete</span><span>Ends Sep 2027</span></small></div>
+        </div>
+      </article>
+      <article class="grant reveal">
+        <div class="grant__img"><img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=900&q=80&auto=format&fit=crop" alt="Rack of sample tubes in a laboratory" loading="lazy" decoding="async" width="900" height="506"></div>
+        <div class="grant__body">
+          <span class="status status--done"><i></i>Completed</span>
+          <h3>A blood test to track MND</h3>
+          <p class="grant__who">Prof. Martin Hale · Newcastle University</p>
+          <p>Developed a blood marker that shows how fast the disease is progressing, so trials can measure whether a drug works in months, not years.</p>
+          <dl><div><dt>Grant</dt><dd>£286k</dd></div><div><dt>Length</dt><dd>2 years</dd></div><div><dt>Ended</dt><dd>2025</dd></div></dl>
+          <p class="grant__result"><b>Result:</b> now used in four UK drug trials, cutting their length by an average of 7 months.</p>
+        </div>
+      </article>
+      <article class="grant reveal">
+        <div class="grant__img"><img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=900&q=80&auto=format&fit=crop" alt="Researcher examining a sample under a microscope" loading="lazy" decoding="async" width="900" height="506"></div>
+        <div class="grant__body">
+          <span class="status"><i></i>Recruiting patients</span>
+          <h3>Repurposing an existing drug</h3>
+          <p class="grant__who">Dr Owen Price · Sheffield Teaching Hospitals</p>
+          <p>A phase 2 trial of a drug already licensed for another condition, which slowed nerve damage in early lab studies.</p>
+          <dl><div><dt>Grant</dt><dd>£538k</dd></div><div><dt>Patients</dt><dd>120</dd></div><div><dt>Started</dt><dd>2025</dd></div></dl>
+          <div class="prog"><div class="prog__bar" style="--v:35%"><i></i></div><small><span>42 of 120 recruited</span><span>Results 2028</span></small></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE CHOOSE (process) ============ -->
+<section class="sec choose" id="choose" aria-labelledby="ch-title">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><p class="kicker">How we choose</p><h2 id="ch-title">From 142 ideas to 11 funded projects.</h2></div><p>Our last funding round, step by step. People living with MND sit on the panel that makes the final call.</p></div>
+    <div class="funnel">
+      <div class="stage reveal" style="--c:#0F3A40"><span class="stage__n">142</span><div><h3>Open call for ideas</h3><p>Any UK researcher can apply. Applications open each March.</p></div></div>
+      <div class="stage reveal" style="--c:#1D5A61"><span class="stage__n">58</span><div><h3>Scientific shortlist</h3><p>Our research committee checks each idea is sound, original and about MND.</p></div></div>
+      <div class="stage reveal" style="--c:#3E8C8F"><span class="stage__n">24</span><div><h3>Independent peer review</h3><p>At least three outside experts score each proposal, following AMRC best practice.</p></div></div>
+      <div class="stage reveal" style="--c:#C2412F"><span class="stage__n">16</span><div><h3>Lay panel</h3><p>Eight people living with or caring for someone with MND ask: will this matter to patients?</p></div></div>
+      <div class="stage reveal" style="--c:#A63524"><span class="stage__n">11</span><div><h3>Funded and followed</h3><p>Trustees award the grants. Every team reports to us every six months.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROMISES (guarantees) ============ -->
+<section class="sec" id="promise" aria-labelledby="pm-title">
+  <div class="wrap promise__grid">
+    <div class="promise__big reveal"><p class="kicker" style="color:var(--sand)">Our promise</p><span class="fig">89p</span><p>Of every £1 goes into research. If that ever drops below 85p, we'll tell every donor, in writing, and explain why.</p></div>
+    <div class="reveal">
+      <h2 id="pm-title" style="font-size:var(--t-xl);margin-bottom:1.2rem">What you can expect from us</h2>
+      <ul class="plist">
+        <li><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" fill="none" stroke="#0F3A40" stroke-width="2.2"/></svg></span><div><h3>Only the best science</h3><p>Every pound goes through independent peer review. No pet projects, no favours.</p></div></li>
+        <li><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6" fill="none" stroke="#0F3A40" stroke-width="1.8"/></svg></span><div><h3>A report back, once a year</h3><p>One email each spring showing what your money did. Not weekly appeals.</p></div></li>
+        <li><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="#0F3A40" stroke-width="1.8"/><path d="M3 3l18 18" stroke="#C2412F" stroke-width="2"/></svg></span><div><h3>No cold calls, ever</h3><p>We never phone donors to ask for more, and we never sell or swap your details.</p></div></li>
+        <li><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v4h-4M6 21v-4h4" fill="none" stroke="#0F3A40" stroke-width="1.8"/></svg></span><div><h3>Change or stop any time</h3><p>Monthly gifts can be paused or cancelled online in under a minute.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOICES (testimonials) ============ -->
+<section class="sec voices" id="voices" aria-labelledby="vo-title">
+  <div class="wrap">
+    <div class="sec__head reveal"><div><p class="kicker">Voices</p><h2 id="vo-title">Why people give to Hartwell</h2></div></div>
+    <div class="vgrid">
+      <figure class="v v--lead reveal"><blockquote>I was diagnosed at 46. I can't wait for a cure, but my daughter might not have to. Seeing exactly which lab my monthly gift goes to makes it feel like I'm part of the fight, not watching it.</blockquote><figcaption><span class="av" style="--c:#F4C98B">RK</span><span><b>Richard K.</b>Living with MND, Rotherham · monthly donor</span></figcaption></figure>
+      <figure class="v reveal"><blockquote>The fellowship kept me in MND research when I nearly left for industry. Five years on, I run my own lab.</blockquote><figcaption><span class="av" style="--c:#DDF1EC">LT</span><span><b>Dr Laura T.</b>Former Hartwell fellow</span></figcaption></figure>
+      <figure class="v reveal"><blockquote>Ran the Sheffield Half for Dad and raised £3,140. The team sent me a photo of the lab equipment it bought.</blockquote><figcaption><span class="av" style="--c:#FDE4E0">JB</span><span><b>Jess B.</b>Fundraiser, Chesterfield</span></figcaption></figure>
+      <figure class="v reveal"><blockquote>Leaving a gift in my will was simpler than I expected. Helen explained everything and never pushed.</blockquote><figcaption><span class="av" style="--c:#E3F0F0">MW</span><span><b>Margaret W.</b>Legacy pledger, Bakewell</span></figcaption></figure>
+      <figure class="v reveal"><blockquote>Only knocked a star off because the online form for in-memory giving was a bit clunky. Lovely people.</blockquote><figcaption><span class="av" style="--c:#DDF1EC">PS</span><span><b>Paul S.</b>In memory of his wife, Sheffield</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" aria-labelledby="fq-title">
+  <div class="wrap faq__grid">
+    <div class="faq__intro reveal"><p class="kicker">FAQ</p><h2 id="fq-title" style="font-size:var(--t-2xl)">Questions donors ask</h2><p style="color:var(--ink-2);max-width:32ch;margin-top:1rem">Can't see yours? Call Helen on 0114 299 3471, Monday to Friday.</p></div>
+    <div class="acc reveal" data-accordion>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q1" id="q1b">How much of my donation goes to research?<span class="acc__ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q1" role="region" aria-labelledby="q1b" hidden><p>89p of every £1 in 2025. The remaining 11p paid for fundraising (8p), which brings in around £6 for every £1 spent, and running the charity (3p). The full breakdown is in our audited accounts.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q2" id="q2b">Can I choose which project my money funds?<span class="acc__ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q2" role="region" aria-labelledby="q2b" hidden><p>For gifts over £1,000, yes, you can restrict it to a research area. Smaller gifts go into our research fund, which lets us back the strongest projects each year. Either way, you'll get a report on what it paid for.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q3" id="q3b">What is Gift Aid?<span class="acc__ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q3" role="region" aria-labelledby="q3b" hidden><p>If you pay UK Income Tax or Capital Gains Tax, Gift Aid lets us claim an extra 25p from HMRC for every £1 you give, at no cost to you. You need to have paid at least as much tax in the year as we claim.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q4" id="q4b">How do I leave a gift in my will?<span class="acc__ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q4" role="region" aria-labelledby="q4b" hidden><p>Ask your solicitor to include The Hartwell Trust, registered charity no. 1162804. Gifts to charity in a will are usually free of Inheritance Tax. Our free guide explains the wording, and you never have to tell us.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q5" id="q5b">How do payments work for monthly giving?<span class="acc__ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q5" role="region" aria-labelledby="q5b" hidden><p>By Direct Debit on a date you choose, protected by the Direct Debit Guarantee. You can change the amount, pause or cancel any time online or with one phone call.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q6" id="q6b">I've just been diagnosed. Can you help me?<span class="acc__ic" aria-hidden="true"></span></button></h3><div class="acc__panel" id="q6" role="region" aria-labelledby="q6b" hidden><p>We fund research rather than care services, but we'll gladly point you in the right direction. Your MND care centre or neurologist is the best first contact, and we can tell you about trials recruiting near you.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNDRAISE FORM ============ -->
+<section class="sec fund" id="fundraise" aria-labelledby="fr-title">
+  <div class="wrap fund__grid">
+    <div class="fund__intro reveal">
+      <p class="kicker">Get involved</p>
+      <h2 id="fr-title" style="font-size:var(--t-2xl);max-width:12ch">Fundraise, partner or leave a legacy</h2>
+      <p style="color:var(--ink-2);max-width:40ch;margin-top:1rem">Tell us what you have in mind. Helen or Tom will call within two working days with ideas and everything you need.</p>
+      <ul>
+        <li><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="2" fill="#0F3A40"/><path d="M8 21l3-6 3 2v4M7 12l3-4 4 2 3 3" fill="none" stroke="#0F3A40" stroke-width="1.8"/></svg></span><div><b>Run, walk or ride for us</b><span>Free running vest and a fundraising pack</span></div></li>
+        <li><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="#0F3A40" stroke-width="1.8"/></svg></span><div><b>Gifts in wills</b><span>A free, no-pressure guide</span></div></li>
+        <li><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="#0F3A40" stroke-width="1.8"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" fill="none" stroke="#0F3A40" stroke-width="1.8"/></svg></span><div><b>Company partnerships</b><span>Charity of the year, matched giving and payroll giving</span></div></li>
+      </ul>
+    </div>
+    <div class="card reveal">
+      <form class="form" id="quote-form" novalidate>
+        <div class="fld"><label for="name">Name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="postcode">Postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="type">I'm interested in</label><select id="type" name="type" aria-describedby="type-error" required><option value="">Choose one</option><option>A running, walking or cycling challenge</option><option>My own fundraising event</option><option>A gift in my will</option><option>Giving in memory of someone</option><option>A company partnership</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="budget">Fundraising target or gift</label><select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Choose one</option><option>Under £500</option><option>£500 to £2,000</option><option>£2,000 to £10,000</option><option>Over £10,000</option><option>Not sure yet</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+        <div class="fld fld--full"><label for="message">Tell us a little more</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. I'd like to run the Sheffield Half in memory of my dad" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+        <div class="form__foot"><small>We'll only use your details to reply, and never share them. <a href="/privacy-policy/">Privacy policy</a>.</small><button class="btn btn--coral" type="submit">Send</button></div>
+      </form>
+      <div class="done" id="form-success" tabindex="-1" hidden><div class="done__ic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" fill="none" stroke="#0F3A40" stroke-width="2.4"/></svg></div><h3>Thank you<span data-first-name></span>.</h3><p style="margin:0;color:var(--ink-2)">Helen or Tom will call you within two working days. We're so grateful you thought of us.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="logo" href="#top" aria-label="The Hartwell Trust, back to top"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><rect x="10" y="9" width="6" height="22" rx="3" fill="#0F3A40"/><rect x="24" y="15" width="6" height="16" rx="3" fill="#0F3A40"/><rect x="16" y="18" width="8" height="4" fill="#0F3A40"/><circle cx="27" cy="9" r="3.2" fill="#F26B5B"/></svg><span class="logo__txt"><small>The</small><b>Hartwell Trust</b></span></a>
+        <p class="foot__desc">Funding research into motor neurone disease since 2011, set up by the family of Daniel Hartwell.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/hartwelltrust" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.instagram.com/hartwelltrust" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.linkedin.com/company/hartwell-trust" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.6c.6-1 1.9-1.9 3.6-1.9 3 0 3.4 2 3.4 4.6V20h-4v-5.8c0-1.4 0-3-1.8-3s-2.2 1.4-2.2 2.9V20h-4z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Office</h3><address>4th Floor, The Workstation<br>15 Paternoster Row<br>Sheffield S1 2BX<br><a href="tel:+441142993471">0114 299 3471</a><br><a href="mailto:hello@hartwelltrust.org.uk">hello@hartwelltrust.org.uk</a></address></div>
+      <div><h3>Hours</h3><ul><li>Monday to Friday</li><li>9am to 5pm</li><li>Visits by appointment</li></ul></div>
+      <div><h3>Our work reaches</h3><ul><li>Labs across the UK</li><li>Sheffield and South Yorkshire</li><li>Derbyshire and Nottinghamshire</li><li>Families nationwide</li></ul></div>
+    </div>
+    <div class="foot__reg">
+      <div class="badges"><span>Registered with the Fundraising Regulator</span><span>AMRC member</span><span>Charity no. 1162804</span></div>
+      <ul><li><a href="/privacy-policy/">Privacy</a></li><li><a href="/annual-report/">Annual report</a></li><li><a href="/fundraising-promise/">Fundraising promise</a></li><li><a href="/complaints/">Complaints</a></li></ul>
+      <span style="grid-column:1/-1">© <span id="yr">2026</span> The Hartwell Trust, a charitable incorporated organisation registered in England and Wales, no. 1162804.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top"><span class="ring" aria-hidden="true"></span><span id="read">0% read</span></button>
+
+<script>
+/* The Hartwell Trust: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- nav border + back to top with % read --- */
+  var nav = document.getElementById('nav'), toTop = document.getElementById('to-top'), read = document.getElementById('read');
+  function onScroll(){
+    var y = scrollY, max = document.documentElement.scrollHeight - innerHeight, p = Math.round(Math.min(1, y/max) * 100);
+    nav.classList.toggle('is-scrolled', y > 10); toTop.classList.toggle('is-shown', y > innerHeight * 1.2);
+    toTop.style.setProperty('--p', p + '%'); read.textContent = p + '% read';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); document.getElementById('main').focus({preventScroll:true}); });
+
+  /* --- mobile "More" sheet --- */
+  var moreBtn = document.getElementById('more-btn'), more = document.getElementById('more');
+  function setMore(open){ more.classList.toggle('is-open', open); moreBtn.setAttribute('aria-expanded', String(open)); if(open) more.querySelector('a').focus(); }
+  moreBtn.addEventListener('click', function(e){ e.stopPropagation(); setMore(moreBtn.getAttribute('aria-expanded') !== 'true'); });
+  more.addEventListener('click', function(e){ if(e.target.closest('a')) setMore(false); });
+  document.addEventListener('click', function(e){ if(more.classList.contains('is-open') && !more.contains(e.target)) setMore(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && more.classList.contains('is-open')){ setMore(false); moreBtn.focus(); } });
+
+  /* --- 100-dot pictogram --- */
+  var SPLIT = [[52,'#0F3A40'],[23,'#3E8C8F'],[14,'#F26B5B'],[8,'#F4C98B'],[3,'#C5D3D1']];
+  var dots = document.getElementById('dots'), k = 0;
+  SPLIT.forEach(function(s){ for(var i = 0; i < s[0]; i++){ var d = document.createElement('i'); d.style.setProperty('--c', s[1]); d.style.transitionDelay = reduce ? '0s' : (k * 12) + 'ms'; dots.appendChild(d); k++; } });
+
+  /* --- reveal + budget bars + dots + counters --- */
+  var items = document.querySelectorAll('.reveal, #dots');
+  if(reduce || !('IntersectionObserver' in window)){ items.forEach(function(e){ e.classList.add('is-in'); }); }
+  else{ var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-in'); io.unobserve(x.target); } }); }, {threshold:.15}); items.forEach(function(e){ io.observe(e); }); }
+  if(!reduce && 'IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(en){ en.forEach(function(x){ if(!x.isIntersecting) return; var el = x.target, end = +el.dataset.count, t0 = null;
+      (function step(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/1100,1); el.textContent = Math.round(end*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); })(performance.now()); cio.unobserve(el); }); }, {threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(function(c){ cio.observe(c); });
+  }
+
+  /* --- Follow your £ (signature) ---
+     Unit costs from the 2025 accounts: postdoc lab time £34/hour,
+     trial research nurse £62/hour, early-career training £24/hour. Shares: lab 52%, trials 23%, fellowships 14%. */
+  var F = document.getElementById('follow-form'), other = document.getElementById('other'), gaBox = document.getElementById('ga');
+  var o = { total:document.getElementById('o-total'), per:document.getElementById('o-per'), ga:document.getElementById('o-ga'),
+            lab:document.getElementById('o-lab'), trial:document.getElementById('o-trial'), fellow:document.getElementById('o-fellow'), btn:document.getElementById('o-btn') };
+  function money(n){ return '£' + (Math.round(n*100)/100).toLocaleString('en-GB', {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2}); }
+  function dur(h){ if(h < 1){ var m = Math.max(5, Math.round(h*60/5)*5); return m + ' minutes'; } h = Math.round(h*2)/2; return h + (h === 1 ? ' hour' : ' hours'); }
+  function calc(){
+    var custom = parseFloat(other.value), amt = custom >= 2 ? custom : +F.querySelector('[name=amt]:checked').value;
+    var monthly = F.querySelector('[name=freq]:checked').value === 'monthly', yearMult = monthly ? 12 : 1;
+    var gross = amt * (gaBox.checked ? 1.25 : 1), research = gross * 0.89 * yearMult;
+    o.total.textContent = money(gross * yearMult);
+    o.per.textContent = (monthly ? 'a year' : 'in total') + (gaBox.checked ? ', with Gift Aid' : '');
+    o.ga.textContent = gaBox.checked ? 'Gift Aid adds ' + money((gross - amt) * yearMult) + (monthly ? ' a year' : '') : '';
+    o.lab.textContent = dur(research * (52/89) / 34);
+    o.trial.textContent = dur(research * (23/89) / 62);
+    o.fellow.textContent = dur(research * (14/89) / 24);
+    o.btn.textContent = 'Donate ' + money(amt) + (monthly ? ' a month' : '');
+  }
+  F.addEventListener('change', function(e){ if(e.target.name === 'amt') other.value = ''; calc(); });
+  other.addEventListener('input', function(){ if(other.value) F.querySelectorAll('[name=amt]').forEach(function(r){ r.checked = false; }); else F.querySelector('[name=amt][value="25"]').checked = true; calc(); });
+  calc();
+  o.btn.addEventListener('click', function(){ document.getElementById('o-done').hidden = false; });
+
+  /* --- accordion --- */
+  document.querySelectorAll('[data-accordion] .acc__btn').forEach(function(b){
+    b.addEventListener('click', function(){ var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open)); document.getElementById(b.getAttribute('aria-controls')).hidden = open; });
+  });
+
+  /* --- fundraise form --- */
+  var form = document.getElementById('quote-form'), ok = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'Please enter your name.'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'Please enter a UK phone number, e.g. 0114 299 3471.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Please enter a valid email address.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Please enter a full UK postcode, e.g. S1 2BX.'; },
+    type: function(v){ return v !== '' || 'Please choose an option.'; },
+    budget: function(v){ return v !== '' || 'Please choose an option.'; },
+    message: function(v){ return v.trim().length >= 10 || 'A sentence or two helps us prepare.'; }
+  };
+  function check(f){ var r = rules[f.name]; if(!r) return true; var res = r(f.value), err = document.getElementById(f.name + '-error');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; return false; } f.removeAttribute('aria-invalid'); err.textContent = ''; return true; }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    ok.querySelector('[data-first-name]').textContent = ', ' + document.getElementById('name').value.trim().split(' ')[0];
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

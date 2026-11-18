@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Table Hull | Food Bank and Community Pantry in Hull</title>
+<meta name="description" content="Open Table Hull is a community food bank and pantry on Newland Avenue. Need food? Just come in, no referral needed for your first three visits. Donate, volunteer or run a food drive.">
+<link rel="canonical" href="https://www.opentablehull.org.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Open Table Hull | Nobody in Hull should go to bed hungry">
+<meta property="og:description" content="Food parcels, a community pantry and hot Saturday lunches for Hull. Give food, money or time.">
+<meta property="og:url" content="https://www.opentablehull.org.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#FBF6EC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%23D8452B'/%3E%3Cpath d='M9 20h22a11 11 0 0 1-22 0z' fill='%23FBF6EC'/%3E%3Cpath d='M20 15c-2-3-6-1-4 2l4 3 4-3c2-3-2-5-4-2z' fill='%23FBF6EC'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["NGO","LocalBusiness"],
+  "name": "Open Table Hull",
+  "legalName": "Open Table Hull CIO",
+  "description": "Community food bank, pantry and hot meals for people in Hull. Registered charity no. 1187342.",
+  "url": "https://www.opentablehull.org.uk/",
+  "telephone": "+441482447812",
+  "email": "hello@opentablehull.org.uk",
+  "foundingDate": "2014",
+  "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&q=80&auto=format&fit=crop",
+  "nonprofitStatus": "https://schema.org/NonprofitCharitableIncorporatedOrganization",
+  "address": { "@type": "PostalAddress", "streetAddress": "The Old Hall, 41 Newland Avenue", "addressLocality": "Hull", "postalCode": "HU5 3BG", "addressCountry": "GB" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 53.7598, "longitude": -0.3593 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Thursday"], "opens": "10:00", "closes": "14:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "14:00" }
+  ],
+  "areaServed": ["Hull","Cottingham","Hessle","Anlaby","Willerby","Kirk Ella"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "212" }
+}
+</script>
+<style>
+/* =========================================================
+   OPEN TABLE HULL
+   Art direction: hand-made community zine. Kraft paper, tape,
+   marker underlines and handwritten notes, set in Atkinson
+   Hyperlegible so it stays easy for everyone to read.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --oat:#FBF6EC;
+  --kraft:#E8D9BF;
+  --kraft-2:#D9C5A2;
+  --ink:#1F2A24;
+  --ink-2:#4C564F;
+  --tomato:#D8452B;        /* fills with white text at 18px bold+, or ink text */
+  --tomato-d:#B23419;      /* AA text on oat */
+  --leaf:#2F6B3B;          /* AA with white text */
+  --tape:#9FC6E6;
+  --sun:#F5C547;
+  --error:#B3261E;
+
+  --f-head:'Young Serif', Georgia, serif;
+  --f:'Atkinson Hyperlegible', Verdana, Arial, sans-serif;
+  --f-hand:'Caveat', 'Comic Sans MS', cursive;
+
+  --t-sm:.95rem;
+  --t-base:1.0625rem;
+  --t-lg:1.25rem;
+  --t-xl:clamp(1.7rem, 1.25rem + 1.8vw, 2.5rem);
+  --t-2xl:clamp(2.3rem, 1.4rem + 3.4vw, 4rem);
+  --t-hero:clamp(2.5rem, 1.4rem + 4.4vw, 5rem);
+
+  --s-1:.5rem; --s-2:1rem; --s-3:1.6rem; --s-4:2.6rem; --s-5:4.2rem; --s-6:6.5rem;
+  --wrap:min(1220px, 100% - 2rem);
+  --ease:cubic-bezier(.34,1.4,.6,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--oat);color:var(--ink);font:400 var(--t-base)/1.65 var(--f)}
+/* paper fibres */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-head);font-weight:400;margin:0;line-height:1.08;letter-spacing:-.01em}
+p{margin:0 0 var(--s-2)}
+button{font-family:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--oat);padding:.75rem 1rem;z-index:300}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:3px}
+main:focus{outline:none}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hand{font-family:var(--f-hand);font-weight:700;color:var(--tomato-d);font-size:1.45rem;line-height:1.1}
+/* marker underline */
+.mark{position:relative;white-space:nowrap;z-index:0}
+.mark::after{content:"";position:absolute;left:-.1em;right:-.1em;bottom:.02em;height:.38em;background:var(--sun);z-index:-1;transform:rotate(-1.2deg);border-radius:.2em .5em .3em .4em}
+/* tape strip */
+.tape{position:relative}
+.tape::before{content:"";position:absolute;top:-11px;left:50%;width:84px;height:22px;transform:translateX(-50%) rotate(-3deg);background:rgba(159,198,230,.8);box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.label{display:inline-block;font:700 .82rem var(--f);letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--oat);padding:.3rem .65rem;transform:rotate(-1.5deg);margin-bottom:var(--s-3)}
+
+/* buttons: chunky, slightly tilted on hover */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.4rem;border-radius:12px;border:2px solid var(--ink);background:var(--ink);color:var(--oat);font:700 var(--t-base)/1 var(--f);text-decoration:none;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s}
+.btn:hover{transform:rotate(-1.5deg) translateY(-2px);box-shadow:3px 4px 0 var(--ink)}
+.btn--tomato{background:var(--tomato-d);border-color:var(--tomato-d);color:#fff}
+.btn--leaf{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.btn--paper{background:var(--oat);color:var(--ink)}
+
+/* ---------- 3. Navigation: paper sheet drops down on mobile ---------- */
+.nav{position:sticky;top:0;z-index:80;background:var(--oat);border-bottom:2px dashed transparent;transition:border-color .2s}
+.nav.is-scrolled{border-bottom-color:var(--kraft-2)}
+.nav__in{width:var(--wrap);margin-inline:auto;display:flex;align-items:center;gap:1rem;height:74px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto}
+.logo__txt{display:flex;flex-direction:column;line-height:1}
+.logo__txt b{font:400 1.45rem var(--f-head);white-space:nowrap}
+.logo__txt small{font:700 .68rem var(--f);letter-spacing:.3em;color:var(--tomato-d);margin-top:.2rem}
+.nav__links{display:none;list-style:none;margin:0;padding:0;gap:.2rem}
+.nav__links a{display:block;padding:.5rem .8rem;text-decoration:none;font-weight:700;border-radius:8px}
+.nav__links a:hover{background:var(--kraft)}
+.nav__help{display:none;font-weight:700;color:var(--leaf);text-decoration:none;padding:.5rem .8rem;border:2px solid var(--leaf);border-radius:12px}
+.nav__help:hover{background:var(--leaf);color:#fff}
+.nav__donate{padding:.75rem 1.1rem}
+.nav__tel{display:none;font-weight:700;text-decoration:none}
+.menu-btn{display:flex;align-items:center;gap:.4rem;background:none;border:2px solid var(--ink);border-radius:12px;padding:.6rem .8rem;font:700 var(--t-sm) var(--f);cursor:pointer;color:var(--ink)}
+@media (min-width:1180px){.nav__links,.nav__tel{display:flex}.menu-btn{display:none}}
+@media (min-width:720px){.nav__help{display:inline-flex}}
+@media (max-width:440px){.nav__in{gap:.6rem}.nav__donate{padding:.6rem .75rem;font-size:.88rem}.logo__txt b{font-size:1.15rem}.logo svg{width:34px;height:34px}.menu-btn{padding:.55rem .65rem}}
+.sheet{position:fixed;left:.6rem;right:.6rem;top:.6rem;z-index:150;background:var(--kraft);border:2px solid var(--ink);border-radius:6px;padding:1.2rem 1.2rem 1.4rem;box-shadow:6px 8px 0 rgba(31,42,36,.25);transform:translateY(-120%);transition:transform .55s var(--ease);visibility:hidden}
+.sheet.is-open{transform:none;visibility:visible}
+.sheet__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.sheet ul{list-style:none;margin:0;padding:0;display:grid;gap:.2rem}
+.sheet li a{display:block;padding:.55rem .2rem;border-bottom:2px dashed var(--kraft-2);text-decoration:none;font:400 1.7rem var(--f-head)}
+.sheet__foot{display:grid;gap:.6rem;margin-top:1.2rem}
+
+/* ---------- 4. Hero: headline + two paths ---------- */
+.hero{padding:var(--s-4) 0 var(--s-5)}
+.hero__head{display:grid;gap:var(--s-3);align-items:end;margin-bottom:var(--s-4)}
+.hero h1{font-size:var(--t-hero);max-width:15ch}
+.hero__note{display:flex;gap:1rem;align-items:flex-start;max-width:34ch}
+.hero__note p{margin:0;color:var(--ink-2)}
+.paths{display:grid;gap:1.2rem}
+.path{position:relative;border:2px solid var(--ink);border-radius:8px;padding:clamp(1.4rem,3vw,2.2rem);display:flex;flex-direction:column}
+.path h2{font-size:var(--t-xl);margin-bottom:.6rem}
+.path--help{background:var(--leaf);color:#fff;transform:rotate(-.6deg)}
+.path--help .hand{color:var(--sun)}
+.path--give{background:#fff;transform:rotate(.5deg)}
+.status{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:.35rem .8rem;font-weight:700;margin-bottom:1rem;align-self:flex-start}
+.status i{width:10px;height:10px;border-radius:50%;background:var(--sun)}
+.status.is-open i{background:#7CF29A;box-shadow:0 0 0 4px rgba(124,242,154,.25)}
+.times{list-style:none;margin:1rem 0 1.4rem;padding:0;display:grid;gap:.35rem}
+.times li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed rgba(255,255,255,.35);padding-bottom:.35rem}
+.times li.is-today{font-weight:700}
+.path__ctas{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:auto}
+/* donate widget */
+.give-toggle{display:inline-flex;width:max-content;justify-self:start;align-self:flex-start;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:.4rem 0 1rem}
+.give-toggle button{border:0;background:none;padding:.55rem 1rem;font:700 var(--t-sm) var(--f);cursor:pointer;color:var(--ink)}
+.give-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--oat)}
+.amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.8rem}
+.amounts label{position:relative}
+.amounts input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.amounts span{display:block;text-align:center;padding:.8rem .3rem;border:2px solid var(--ink);border-radius:10px;font:700 1.1rem var(--f);transition:background .15s}
+.amounts input:checked + span{background:var(--sun)}
+.amounts input:focus-visible + span{outline:3px solid var(--leaf);outline-offset:2px}
+.equiv{display:flex;gap:.7rem;align-items:center;background:var(--oat);border:2px dashed var(--kraft-2);border-radius:10px;padding:.8rem 1rem;margin-bottom:.8rem;min-height:4.2rem}
+.equiv svg{flex:none}
+.equiv p{margin:0;font-weight:700}
+.gift{display:flex;gap:.6rem;align-items:flex-start;font-size:var(--t-sm);margin-bottom:1rem;cursor:pointer}
+.gift input{width:20px;height:20px;accent-color:var(--leaf);margin-top:.15rem;flex:none}
+.give-done{margin-top:.8rem;font-weight:700;color:var(--leaf)}
+@media (min-width:960px){.hero__head{grid-template-columns:1.4fr .6fr}.paths{grid-template-columns:1fr 1.15fr;gap:1.6rem}}
+
+/* ---------- 5. Trust strip ---------- */
+.trust{background:var(--kraft);border-block:2px solid var(--ink)}
+.trust ul{width:var(--wrap);margin:0 auto;list-style:none;padding:1rem 0;display:flex;flex-wrap:wrap;gap:.7rem 1.2rem;justify-content:center}
+.trust li{display:flex;align-items:center;gap:.5rem;background:var(--oat);border:2px solid var(--ink);border-radius:6px;padding:.45rem .8rem;font-weight:700;font-size:var(--t-sm)}
+.trust li:nth-child(odd){transform:rotate(-1deg)}
+.trust li:nth-child(even){transform:rotate(1deg)}
+
+/* ---------- 6. Numbers ---------- */
+.numbers{padding:var(--s-5) 0 0}
+.ngrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.num{border-top:3px solid var(--ink);padding-top:.8rem}
+.num b{display:block;font:400 clamp(2.4rem,1.7rem + 2.4vw,3.6rem)/1 var(--f-head)}
+.num span{color:var(--ink-2)}
+@media (min-width:860px){.ngrid{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- 7. What we do: doodle list ---------- */
+.do{padding:var(--s-5) 0}
+.do__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:var(--s-4)}
+.do h2{font-size:var(--t-2xl);max-width:13ch}
+.do__head p{max-width:38ch;color:var(--ink-2);margin:0}
+.dlist{list-style:none;margin:0;padding:0;display:grid;gap:0 var(--s-4)}
+.dlist li{display:grid;grid-template-columns:64px 1fr;gap:1rem;padding:1.4rem 0;border-top:2px dashed var(--kraft-2)}
+.doodle{width:64px;height:64px;border-radius:50%;background:var(--kraft);display:grid;place-items:center;border:2px solid var(--ink)}
+.dlist h3{font-size:1.45rem;margin-bottom:.3rem}
+.dlist p{margin:0;color:var(--ink-2)}
+.dlist .when{display:inline-block;margin-top:.5rem;font-weight:700;font-size:var(--t-sm);background:var(--oat);border:2px solid var(--ink);border-radius:999px;padding:.15rem .6rem}
+@media (min-width:860px){.dlist{grid-template-columns:1fr 1fr}}
+
+/* ---------- 8. This week's shelf (signature) ---------- */
+.shelf{background:var(--kraft);padding:var(--s-6) 0;border-block:2px solid var(--ink)}
+.shelf h2{font-size:var(--t-2xl);max-width:14ch}
+.shelf__intro{max-width:46ch;color:var(--ink-2);margin:var(--s-2) 0 var(--s-4)}
+.shelf__grid{display:grid;gap:1.4rem}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem;background:var(--oat);border:2px solid var(--ink);border-radius:8px;padding:.8rem .9rem}
+.item__lvl{width:96px}
+.item__lvl i{display:block;height:10px;border-radius:5px;background:var(--kraft-2);overflow:hidden;position:relative}
+.item__lvl i::after{content:"";position:absolute;inset:0;width:var(--v);border-radius:5px;background:var(--c)}
+.item__lvl small{display:block;font-weight:700;font-size:.78rem;margin-top:.25rem;color:var(--c2)}
+.item b{display:block}
+.item span.sub{font-size:var(--t-sm);color:var(--ink-2)}
+.pledge{border:2px solid var(--ink);background:#fff;border-radius:10px;padding:.55rem .85rem;font:700 var(--t-sm) var(--f);cursor:pointer;white-space:nowrap;color:var(--ink);transition:background .15s,transform .2s var(--ease)}
+.pledge:hover{background:var(--sun)}
+.pledge[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.pledge:disabled{opacity:.55;cursor:default;background:var(--oat)}
+.list{position:sticky;top:96px;align-self:start;background:#fff;border:2px solid var(--ink);border-radius:4px;padding:1.4rem 1.3rem;transform:rotate(1deg);margin-inline:.4rem;box-shadow:5px 6px 0 rgba(31,42,36,.18)}
+.list h3{font-size:1.5rem;margin-bottom:.2rem}
+.list ol{margin:1rem 0;padding-left:1.4rem;font-family:var(--f-hand);font-size:1.6rem;line-height:1.3;min-height:3rem}
+.list ol:empty::before{content:"Tap \201CI'll bring this\201D to start your list";display:block;margin-left:-1.4rem;color:var(--ink-2);font:400 var(--t-sm) var(--f)}
+.list__drop{font-size:var(--t-sm);border-top:2px dashed var(--kraft-2);padding-top:.8rem;margin-bottom:1rem}
+.list__drop b{display:block}
+.list__msg{font-weight:700;color:var(--leaf);margin:.8rem 0 0}
+@media (min-width:960px){.shelf__grid{grid-template-columns:1.5fr 1fr;gap:var(--s-4)}}
+@media (max-width:559px){.item{grid-template-columns:1fr auto;row-gap:.5rem}.item__lvl{width:auto;grid-column:1/-1;display:flex;align-items:center;gap:.6rem}.item__lvl i{flex:1;max-width:140px}.item__lvl small{margin-top:0}}
+
+/* ---------- 9. Stories ---------- */
+.stories{padding:var(--s-6) 0}
+.stories h2{font-size:var(--t-2xl);max-width:14ch;margin-bottom:.6rem}
+.stories__note{color:var(--ink-2);font-size:var(--t-sm);margin-bottom:var(--s-4)}
+.sgrid{display:grid;gap:1.6rem}
+.story{background:#fff;border:2px solid var(--ink);padding:1rem 1rem 1.4rem;display:flex;flex-direction:column}
+.story:nth-child(1){transform:rotate(-1deg)}
+.story:nth-child(2){transform:rotate(.8deg)}
+.story:nth-child(3){transform:rotate(-.5deg)}
+.story__img{aspect-ratio:4/3;background:var(--kraft);overflow:hidden;margin-bottom:1rem;filter:sepia(.2) saturate(.9)}
+.story__img img{width:100%;height:100%;object-fit:cover}
+.story .hand{margin-bottom:.4rem}
+.story h3{font-size:1.4rem;margin-bottom:.5rem}
+.story p{color:var(--ink-2)}
+.story dl{margin:auto 0 0;display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;font-size:var(--t-sm);border-top:2px dashed var(--kraft-2);padding-top:.8rem}
+.story dt{color:var(--ink-2)}
+.story dd{margin:0;font-weight:700}
+@media (min-width:900px){.sgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- 10. How to get help (process) ---------- */
+.how{padding:0 0 var(--s-6)}
+.how__box{background:var(--leaf);color:#fff;border:2px solid var(--ink);border-radius:8px;padding:clamp(1.6rem,4vw,3rem)}
+.how h2{font-size:var(--t-2xl);max-width:16ch}
+.how__intro{max-width:52ch;color:#E2EEE3;margin:var(--s-2) 0 var(--s-4)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1.4rem;counter-reset:s}
+.steps li{position:relative;padding-left:4rem}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-.2rem;width:48px;height:48px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;font:400 1.6rem var(--f-head);border:2px solid var(--ink)}
+.steps h3{font-size:1.35rem;margin-bottom:.3rem}
+.steps p{margin:0;color:#E2EEE3}
+.how__private{margin-top:var(--s-4);display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;border-top:2px dashed rgba(255,255,255,.35);padding-top:var(--s-3)}
+.how__private p{margin:0;max-width:48ch}
+@media (min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}.steps li{padding:4rem 0 0}.steps li::before{top:0}}
+
+/* ---------- 11. Promises ---------- */
+.promises{padding:0 0 var(--s-6)}
+.promises h2{font-size:var(--t-2xl);max-width:14ch;margin-bottom:var(--s-4)}
+.pgrid{display:grid;gap:1.2rem}
+.pbox{background:#fff;border:2px solid var(--ink);border-radius:8px;padding:1.6rem}
+.pbox h3{font-size:1.5rem;margin-bottom:1rem}
+.pbox ul{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.pbox li{display:grid;grid-template-columns:28px 1fr;gap:.7rem}
+.pbox li svg{margin-top:.15rem}
+.pbox li b{display:block}
+.pbox li span{color:var(--ink-2)}
+.pound{margin-top:1.2rem;border-top:2px dashed var(--kraft-2);padding-top:1rem}
+.pound__bar{display:flex;height:28px;border:2px solid var(--ink);border-radius:6px;overflow:hidden;margin:.6rem 0}
+.pound__bar i{display:block;height:100%}
+.pound__key{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:var(--t-sm)}
+.pound__key span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:.4rem;vertical-align:-1px;background:var(--c);border:1px solid var(--ink)}
+@media (min-width:860px){.pgrid{grid-template-columns:1fr 1fr}}
+
+/* ---------- 12. Voices ---------- */
+.voices{padding:var(--s-5) 0;background:var(--kraft);border-block:2px solid var(--ink)}
+.voices h2{font-size:var(--t-2xl);margin-bottom:var(--s-4)}
+.vgrid{display:grid;gap:1.4rem}
+.v{margin:0;background:var(--oat);border:2px solid var(--ink);border-radius:4px;padding:1.6rem 1.4rem 1.3rem;position:relative}
+.v blockquote{margin:0 0 1rem;font-size:1.08rem}
+.v figcaption{font-size:var(--t-sm);color:var(--ink-2)}
+.v figcaption b{color:var(--ink);display:block}
+.v--big blockquote{font:400 clamp(1.4rem,1.1rem + 1vw,1.9rem)/1.3 var(--f-head)}
+.v .who{position:absolute;top:-14px;right:1rem;background:var(--sun);border:2px solid var(--ink);border-radius:999px;padding:.1rem .7rem;font:700 .8rem var(--f)}
+@media (min-width:900px){.vgrid{grid-template-columns:1.3fr 1fr 1fr}.v--big{grid-row:span 2}}
+
+/* ---------- 13. FAQ ---------- */
+.faq{padding:var(--s-6) 0}
+.faq__grid{display:grid;gap:var(--s-4)}
+.faq h2{font-size:var(--t-2xl);max-width:10ch}
+.faq__intro p{color:var(--ink-2);max-width:32ch;margin-top:var(--s-2)}
+.acc__item{border-bottom:2px dashed var(--kraft-2)}
+.acc__item:first-child{border-top:2px dashed var(--kraft-2)}
+.acc__btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;background:none;border:0;text-align:left;font:700 1.12rem/1.35 var(--f);color:var(--ink);cursor:pointer}
+.acc__btn:hover{color:var(--tomato-d)}
+.acc__ic{flex:none;width:34px;height:34px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:700 1.2rem/1 var(--f);transition:transform .3s var(--ease),background .2s}
+.acc__btn[aria-expanded="true"] .acc__ic{transform:rotate(45deg);background:var(--sun)}
+.acc__panel{padding:0 3rem 1.2rem 0;color:var(--ink-2)}
+.acc__panel p{margin:0}
+@media (min-width:960px){.faq__grid{grid-template-columns:4fr 8fr}.faq__intro{position:sticky;top:110px;align-self:start}}
+
+/* ---------- 14. Get involved form ---------- */
+.involve{padding:0 0 var(--s-6)}
+.involve__box{display:grid;gap:var(--s-4);background:#fff;border:2px solid var(--ink);border-radius:8px;padding:clamp(1.4rem,4vw,3rem);box-shadow:8px 10px 0 var(--kraft-2)}
+.involve h2{font-size:var(--t-2xl);max-width:11ch}
+.involve__intro p{color:var(--ink-2);max-width:36ch;margin-top:var(--s-2)}
+.involve__intro ul{list-style:none;margin:var(--s-3) 0 0;padding:0;display:grid;gap:.5rem;font-weight:700}
+.involve__intro li{display:flex;gap:.6rem;align-items:center}
+.involve__intro li::before{content:"";width:20px;height:20px;flex:none;border-radius:50%;background:var(--sun);border:2px solid var(--ink)}
+.form{display:grid;gap:1.1rem 1.3rem}
+.fld{display:flex;flex-direction:column;gap:.35rem}
+.fld label{font-weight:700}
+.fld input,.fld select,.fld textarea{font:400 1.05rem var(--f);color:var(--ink);background:var(--oat);border:2px solid var(--ink);border-radius:10px;padding:.85rem .95rem}
+.fld select{appearance:none;background:var(--oat) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231F2A24' stroke-width='2'/%3E%3C/svg%3E") right .95rem center no-repeat}
+.fld textarea{min-height:120px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;box-shadow:0 0 0 4px var(--sun)}
+.fld [aria-invalid="true"]{border-color:var(--error);background:#FFF2EF}
+.err{font-weight:700;font-size:var(--t-sm);color:var(--error)}
+.err:empty{display:none}
+.fld--full,.form__foot{grid-column:1/-1}
+.form__foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.form__foot small{color:var(--ink-2);max-width:40ch}
+.done{border:2px dashed var(--leaf);border-radius:10px;padding:1.6rem;background:#F1F8F1}
+.done .hand{color:var(--leaf);font-size:2rem}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.involve__box{grid-template-columns:5fr 7fr;gap:var(--s-5)}}
+
+/* ---------- 15. Footer ---------- */
+.foot{background:var(--ink);color:#D7DDD8;padding:var(--s-5) 0 5rem;font-size:var(--t-sm)}
+.foot a{color:#fff;text-decoration:none}
+.foot a.btn--paper{color:var(--ink)}
+.foot a:hover{text-decoration:underline}
+.foot__urgent{display:grid;gap:1rem;background:var(--leaf);color:#fff;border-radius:8px;padding:1.4rem 1.6rem;margin-bottom:var(--s-4);align-items:center}
+.foot__urgent p{margin:0;font-size:1.05rem}
+.foot__urgent b{font:400 1.5rem var(--f-head);display:block;margin-bottom:.2rem}
+.foot__grid{display:grid;gap:var(--s-3)}
+.foot h3{font:700 .8rem var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--sun);margin-bottom:.8rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
+.foot address{font-style:normal;line-height:1.75}
+.foot__desc{max-width:32ch;margin-top:1rem}
+.foot .logo__txt b{color:#fff}
+.foot .logo__txt small{color:var(--sun)}
+.social{display:flex;gap:.5rem;margin-top:1rem}
+.social a{width:42px;height:42px;border-radius:50%;border:2px solid #4C564F;display:grid;place-items:center}
+.social a:hover{border-color:var(--sun);text-decoration:none}
+.foot__reg{margin-top:var(--s-4);padding-top:var(--s-2);border-top:1px solid #3A453E;display:grid;gap:1rem;font-size:.85rem;color:#B9C2BB}
+.foot__reg ul{display:flex;flex-wrap:wrap;gap:1.2rem}
+.fr{display:inline-flex;align-items:center;gap:.6rem;border:1px solid #4C564F;border-radius:6px;padding:.45rem .7rem;color:#fff}
+@media (min-width:760px){.foot__urgent{grid-template-columns:1fr auto}}
+@media (min-width:900px){.foot__grid{grid-template-columns:1.4fr 1fr 1fr 1fr}.foot__reg{grid-template-columns:auto 1fr auto;align-items:center}}
+
+/* back to top: a torn paper tag with tape */
+.to-top{position:fixed;right:1rem;bottom:1rem;z-index:90;display:flex;flex-direction:column;align-items:center;gap:.1rem;background:var(--sun);color:var(--ink);border:2px solid var(--ink);padding:.7rem .7rem .55rem;font:700 .75rem var(--f);cursor:pointer;clip-path:polygon(0 0,100% 0,100% 88%,88% 100%,72% 92%,55% 100%,38% 92%,20% 100%,0 90%);transform:rotate(3deg) translateY(16px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s,transform .4s var(--ease)}
+.to-top.is-shown{opacity:1;visibility:visible;transform:rotate(3deg)}
+.to-top:hover{transform:rotate(-2deg) translateY(-3px)}
+.mcall{position:fixed;left:1rem;bottom:1rem;z-index:90;display:flex;align-items:center;gap:.4rem;padding:.75rem 1rem;border-radius:12px;background:var(--leaf);color:#fff;font-weight:700;text-decoration:none;border:2px solid var(--ink);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,visibility .25s,transform .25s}
+.mcall.is-shown{opacity:1;visibility:visible;transform:none}
+@media (min-width:760px){.mcall{display:none}}
+
+/* ---------- 16. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(24px) rotate(-.4deg);transition:opacity .6s ease,transform .7s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="logo" href="#top" aria-label="Open Table Hull, back to top">
+      <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="#D8452B" stroke="#1F2A24" stroke-width="1.5"/><path d="M8.5 20.5h23a11.5 11.5 0 0 1-23 0z" fill="#FBF6EC" stroke="#1F2A24" stroke-width="1.5"/><path d="M20 15.2c-1.6-2.6-5.4-1.1-3.7 1.8L20 20l3.7-3c1.7-2.9-2.1-4.4-3.7-1.8z" fill="#F5C547" stroke="#1F2A24" stroke-width="1.2"/></svg>
+      <span class="logo__txt"><b>Open Table</b><small>HULL</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="#what">What we do</a></li>
+        <li><a href="#shelf">Give food</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#involve">Volunteer</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="nav__tel" href="tel:+441482447812">01482 447812</a>
+    <a class="nav__help" href="#get-help">Need food?</a>
+    <a class="btn btn--tomato nav__donate" href="#give">Donate</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="sheet__top"><span class="hand">Where to?</span><button class="menu-btn" type="button" data-close>Close</button></div>
+  <ul>
+    <li><a href="#get-help">I need food</a></li>
+    <li><a href="#give">Donate money</a></li>
+    <li><a href="#shelf">Give food</a></li>
+    <li><a href="#what">What we do</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#involve">Volunteer or run a food drive</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="sheet__foot"><a class="btn btn--leaf" href="tel:+441482447812">Call 01482 447812</a></div>
+</div>
+
+<main id="main" tabindex="-1">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="hero__head reveal">
+      <div>
+        <span class="label">Newland Avenue · since 2014</span>
+        <h1 id="hero-title">Nobody in Hull should go to bed <span class="mark">hungry.</span></h1>
+      </div>
+      <div class="hero__note">
+        <svg width="60" height="48" viewBox="0 0 60 48" aria-hidden="true"><path d="M4 6c18 2 32 12 40 32M44 38l-10-2M44 38l2-10" fill="none" stroke="#B23419" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <p><span class="hand" style="display:block;margin-bottom:.3rem">Two ways in.</span>Whether you need a hand this week or want to give one, start here.</p>
+      </div>
+    </div>
+    <div class="paths">
+      <div class="path path--help reveal" id="get-help">
+        <span class="status" id="status" aria-live="polite"><i aria-hidden="true"></i><span id="status-txt">Checking today's hours</span></span>
+        <h2>Need food this week?</h2>
+        <p>Just come in. No referral needed for your first three visits, and nobody will ask why. We'll sit you down with a cuppa and you choose your own food.</p>
+        <ul class="times" aria-label="Opening times">
+          <li data-day="2"><span>Tuesday</span><span>10am to 2pm</span></li>
+          <li data-day="4"><span>Thursday</span><span>10am to 2pm</span></li>
+          <li data-day="6"><span>Saturday hot lunch</span><span>11am to 2pm</span></li>
+        </ul>
+        <div class="path__ctas">
+          <a class="btn btn--paper" href="#how">How it works</a>
+          <a class="btn btn--paper" href="tel:+441482447812">Call 01482 447812</a>
+        </div>
+        <p class="hand" style="margin:1rem 0 0">Can't come in? We deliver to people who are housebound.</p>
+      </div>
+
+      <form class="path path--give reveal" id="give" aria-labelledby="give-title" onsubmit="return false">
+        <h2 id="give-title">Help a neighbour</h2>
+        <p style="color:var(--ink-2);margin-bottom:.4rem">94p of every £1 goes on food and direct support for Hull families.</p>
+        <div class="give-toggle" role="group" aria-label="Donation frequency">
+          <button type="button" aria-pressed="true" data-freq="once">One-off</button>
+          <button type="button" aria-pressed="false" data-freq="monthly">Monthly</button>
+        </div>
+        <fieldset style="border:0;margin:0;padding:0">
+          <legend class="vh">Amount</legend>
+          <div class="amounts">
+            <label><input type="radio" name="amt" value="5"><span>£5</span></label>
+            <label><input type="radio" name="amt" value="12" checked><span>£12</span></label>
+            <label><input type="radio" name="amt" value="25"><span>£25</span></label>
+            <label><input type="radio" name="amt" value="50"><span>£50</span></label>
+          </div>
+        </fieldset>
+        <div class="equiv" aria-live="polite"><svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16l-2 11H6zM8 9V7a4 4 0 0 1 8 0v2" fill="#F5C547" stroke="#1F2A24" stroke-width="1.6"/></svg><p id="equiv">£12 fills a family's breakfast cupboard for a week.</p></div>
+        <label class="gift"><input type="checkbox" id="giftaid" checked><span>Add Gift Aid. I'm a UK taxpayer, so Open Table can claim an extra 25p for every £1 at no cost to me. <span id="ga-total" style="font-weight:700"></span></span></label>
+        <button class="btn btn--tomato" type="submit" id="give-btn" style="width:100%">Donate £12</button>
+        <p class="give-done" id="give-done" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust" aria-label="About the charity">
+  <ul>
+    <li>Registered charity no. 1187342</li>
+    <li>Registered with the Fundraising Regulator</li>
+    <li>Investing in Volunteers accredited</li>
+    <li>★ 4.9 from 212 Google reviews</li>
+    <li>12 years on Newland Avenue</li>
+  </ul>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="numbers" aria-label="Last year in numbers">
+  <div class="wrap">
+    <p class="hand reveal" style="margin-bottom:1rem">Last year, with your help:</p>
+    <div class="ngrid">
+      <div class="num reveal"><b data-count="31486">31,486</b><span>meals' worth of food handed out</span></div>
+      <div class="num reveal"><b data-count="1207">1,207</b><span>Hull households helped</span></div>
+      <div class="num reveal"><b data-count="164">164</b><span>volunteers, aged 16 to 83</span></div>
+      <div class="num reveal"><b>94p</b><span>of every £1 spent on food and direct support</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE DO (services) ============ -->
+<section class="do" id="what" aria-labelledby="do-title">
+  <div class="wrap">
+    <div class="do__head reveal"><div><span class="label">What we do</span><h2 id="do-title">More than a food parcel.</h2></div><p>Food gets people through the door. Advice, a warm room and a friendly face are what help them out of the hole.</p></div>
+    <ul class="dlist">
+      <li class="reveal"><span class="doodle" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M4 9h16l-2 11H6zM8 9V7a4 4 0 0 1 8 0v2" fill="none" stroke="#1F2A24" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><h3>Emergency food</h3><p>Three days of food for your household, chosen by you, including fresh veg and toiletries.</p><span class="when">Tue and Thu, 10am to 2pm</span></div></li>
+      <li class="reveal"><span class="doodle" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2" fill="none" stroke="#1F2A24" stroke-width="1.7"/><path d="M4 11h16M9 6V4M15 6V4" stroke="#1F2A24" stroke-width="1.7"/></svg></span><div><h3>Community pantry</h3><p>Pay £4.50 a week and take around £20 of shopping. A membership, not a handout, for anyone on a low income.</p><span class="when">Tue, Thu and Sat</span></div></li>
+      <li class="reveal"><span class="doodle" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M5 13h14a7 7 0 0 1-14 0zM9 9c0-2 2-2 2-4M13 9c0-2 2-2 2-4" fill="none" stroke="#1F2A24" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><h3>Saturday hot lunch</h3><p>Two courses at a shared table, cooked by volunteers from the Avenue's restaurants. Free, and kids eat first.</p><span class="when">Sat, 11am to 2pm</span></div></li>
+      <li class="reveal"><span class="doodle" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.5" fill="none" stroke="#1F2A24" stroke-width="1.7"/><path d="M3 20c.6-3.5 3-5.5 6-5.5s5.4 2 6 5.5M16 6h5M16 10h4" fill="none" stroke="#1F2A24" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><h3>Money and benefits advice</h3><p>Free one-to-one sessions with a trained adviser. Last year they helped families claim £284,000 they were owed.</p><span class="when">By appointment</span></div></li>
+      <li class="reveal"><span class="doodle" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="#1F2A24" stroke-width="1.7"/><path d="M6 21c1-4 3.4-6 6-6s5 2 6 6" fill="none" stroke="#1F2A24" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><h3>Baby bank</h3><p>Nappies, formula, clothes and prams for families with children under five, referred by midwives and health visitors.</p><span class="when">Thu, 10am to 2pm</span></div></li>
+      <li class="reveal"><span class="doodle" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" fill="none" stroke="#1F2A24" stroke-width="1.7"/><circle cx="7" cy="17.5" r="1.6" fill="#1F2A24"/><circle cx="17" cy="17.5" r="1.6" fill="#1F2A24"/></svg></span><div><h3>Home deliveries</h3><p>Food delivered by volunteer drivers to people who are housebound, unwell or caring for someone.</p><span class="when">Wednesdays, across Hull</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ THIS WEEK'S SHELF (signature) ============ -->
+<section class="shelf" id="shelf" aria-labelledby="sh-title">
+  <div class="wrap">
+    <span class="label">Give food</span>
+    <h2 id="sh-title">What's running low this week</h2>
+    <p class="shelf__intro">Updated every Monday by Bev in the stockroom. Tap what you can bring and we'll make you a drop-off list.</p>
+    <div class="shelf__grid">
+      <ul class="items" id="items">
+        <li class="item reveal"><span class="item__lvl" style="--v:8%;--c:#B23419;--c2:#B23419"><i></i><small>Very low</small></span><span><b>UHT milk</b><span class="sub">1 litre cartons, semi-skimmed or whole</span></span><button class="pledge" type="button" aria-pressed="false" data-item="UHT milk">I'll bring this</button></li>
+        <li class="item reveal"><span class="item__lvl" style="--v:12%;--c:#B23419;--c2:#B23419"><i></i><small>Very low</small></span><span><b>Nappies, sizes 5 and 6</b><span class="sub">Any brand, unopened packs</span></span><button class="pledge" type="button" aria-pressed="false" data-item="Nappies, size 5 or 6">I'll bring this</button></li>
+        <li class="item reveal"><span class="item__lvl" style="--v:22%;--c:#D98A1F;--c2:#8A5200"><i></i><small>Low</small></span><span><b>Tinned fish</b><span class="sub">Tuna, sardines, mackerel</span></span><button class="pledge" type="button" aria-pressed="false" data-item="Tinned fish">I'll bring this</button></li>
+        <li class="item reveal"><span class="item__lvl" style="--v:25%;--c:#D98A1F;--c2:#8A5200"><i></i><small>Low</small></span><span><b>Cooking oil</b><span class="sub">500ml or 1 litre bottles</span></span><button class="pledge" type="button" aria-pressed="false" data-item="Cooking oil">I'll bring this</button></li>
+        <li class="item reveal"><span class="item__lvl" style="--v:30%;--c:#D98A1F;--c2:#8A5200"><i></i><small>Low</small></span><span><b>Sanitary products</b><span class="sub">Pads and tampons</span></span><button class="pledge" type="button" aria-pressed="false" data-item="Sanitary products">I'll bring this</button></li>
+        <li class="item reveal"><span class="item__lvl" style="--v:38%;--c:#D98A1F;--c2:#8A5200"><i></i><small>Low</small></span><span><b>Tea bags and coffee</b><span class="sub">Small jars and boxes of 80</span></span><button class="pledge" type="button" aria-pressed="false" data-item="Tea bags or coffee">I'll bring this</button></li>
+        <li class="item reveal"><span class="item__lvl" style="--v:96%;--c:#2F6B3B;--c2:#2F6B3B"><i></i><small>Full, thank you</small></span><span><b>Pasta and rice</b><span class="sub">We're well stocked until December</span></span><button class="pledge" type="button" disabled>Not needed</button></li>
+      </ul>
+      <aside class="list tape" aria-labelledby="list-title">
+        <h3 id="list-title">Your drop-off list</h3>
+        <p style="margin:0;color:var(--ink-2);font-size:var(--t-sm)">Bring it to The Old Hall, 41 Newland Avenue</p>
+        <ol id="pledged" aria-live="polite"></ol>
+        <div class="list__drop"><b>Drop-off times</b>Monday to Friday, 9am to 4pm. Or use the green crate at Co-op, Chanterlands Avenue.</div>
+        <button class="btn btn--leaf" type="button" id="list-send" style="width:100%">Email me this list</button>
+        <p class="list__msg" id="list-msg" aria-live="polite" hidden></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORIES (case studies) ============ -->
+<section class="stories" id="stories" aria-labelledby="st-title">
+  <div class="wrap">
+    <span class="label">Stories</span>
+    <h2 id="st-title" class="reveal">What a bag of shopping can start.</h2>
+    <p class="stories__note">Shared with permission. Names have been changed.</p>
+    <div class="sgrid">
+      <article class="story reveal">
+        <div class="story__img"><img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80&auto=format&fit=crop" alt="Volunteers sorting donated food into boxes" loading="lazy" decoding="async" width="800" height="600"></div>
+        <p class="hand">"I'd never been in debt."</p>
+        <h3>Dawn, 54, Orchard Park</h3>
+        <p>Cut to part-time hours after a hip operation. Came for food twice, then sat down with our money adviser, who found a disability benefit she'd never claimed.</p>
+        <dl><dt>Help</dt><dd>Food, money advice</dd><dt>Time</dt><dd>6 weeks</dd><dt>Outcome</dt><dd>£4,380 a year in benefits</dd></dl>
+      </article>
+      <article class="story reveal">
+        <div class="story__img"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80&auto=format&fit=crop" alt="Volunteers handing out food at a community table" loading="lazy" decoding="async" width="800" height="600"></div>
+        <p class="hand">"The kids think it's a café."</p>
+        <h3>Kyle and Jade, Newington</h3>
+        <p>Two young children and a gap between jobs. They joined the pantry and come to Saturday lunch, where Jade now volunteers on the till.</p>
+        <dl><dt>Help</dt><dd>Pantry, hot lunch</dd><dt>Time</dt><dd>8 months</dd><dt>Saving</dt><dd>About £60 a month on food</dd></dl>
+      </article>
+      <article class="story reveal">
+        <div class="story__img"><img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&q=80&auto=format&fit=crop" alt="Hands holding a donated food parcel" loading="lazy" decoding="async" width="800" height="600"></div>
+        <p class="hand">"I just needed someone to knock."</p>
+        <h3>Mr Patel, 81, Avenues</h3>
+        <p>Housebound after a fall and too proud to ask. A neighbour told us. He now gets a Wednesday delivery, and Graham, his driver, stays for a cup of tea.</p>
+        <dl><dt>Help</dt><dd>Home delivery</dd><dt>Time</dt><dd>Ongoing, weekly</dd><dt>Visits</dt><dd>41 so far</dd></dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO GET HELP (process) ============ -->
+<section class="how" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="how__box reveal">
+      <span class="label" style="background:var(--sun);color:var(--ink)">Getting help</span>
+      <h2 id="how-title">What happens when you come in</h2>
+      <p class="how__intro">Most people tell us the hardest bit was walking through the door. Here's exactly what to expect, so there are no surprises.</p>
+      <ol class="steps">
+        <li><h3>Walk in</h3><p>No appointment and no referral for your first three visits. Just say hello at the front desk.</p></li>
+        <li><h3>Have a cuppa</h3><p>A volunteer sits with you for a few minutes. We'll ask how many people you're feeding and about any allergies.</p></li>
+        <li><h3>Choose your food</h3><p>You pick from the shelves, like a shop. Fresh fruit, veg, bread and toiletries too.</p></li>
+        <li><h3>Get extra help</h3><p>If you'd like, book a free chat about money, benefits or energy bills. Totally optional.</p></li>
+      </ol>
+      <div class="how__private"><p><b>Prefer to keep it private?</b> We have a side entrance on Ella Street and a quiet room. Just ring ahead and ask for Sam.</p><a class="btn btn--paper" href="tel:+441482447812">Call 01482 447812</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROMISES (guarantees) ============ -->
+<section class="promises" id="promises" aria-labelledby="pr-title">
+  <div class="wrap">
+    <span class="label">Our promises</span>
+    <h2 id="pr-title" class="reveal">To everyone who walks in, and everyone who gives.</h2>
+    <div class="pgrid">
+      <div class="pbox reveal">
+        <h3>If you need help</h3>
+        <ul>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#2F6B3B" stroke-width="3" stroke-linecap="round"/></svg><div><b>No judgement, ever</b><span>We never ask why. Plenty of our volunteers once came in for food themselves.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#2F6B3B" stroke-width="3" stroke-linecap="round"/></svg><div><b>Your details stay private</b><span>We only record what we need, and never share it without your permission.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#2F6B3B" stroke-width="3" stroke-linecap="round"/></svg><div><b>Nobody turned away hungry</b><span>Even after three visits, you'll leave with food while we sort out a referral together.</span></div></li>
+        </ul>
+      </div>
+      <div class="pbox reveal">
+        <h3>If you give</h3>
+        <ul>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#2F6B3B" stroke-width="3" stroke-linecap="round"/></svg><div><b>It stays in Hull</b><span>Every penny and every tin goes to people in Hull and the villages around it.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#2F6B3B" stroke-width="3" stroke-linecap="round"/></svg><div><b>Accounts in the open</b><span>Our annual report and audited accounts are published every October.</span></div></li>
+        </ul>
+        <div class="pound">
+          <b>Where each £1 went last year</b>
+          <div class="pound__bar" aria-hidden="true"><i style="width:71%;background:#2F6B3B"></i><i style="width:23%;background:#F5C547"></i><i style="width:6%;background:#D9C5A2"></i></div>
+          <div class="pound__key"><span style="--c:#2F6B3B">71p food</span><span style="--c:#F5C547">23p advice and support</span><span style="--c:#D9C5A2">6p running costs</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOICES (testimonials) ============ -->
+<section class="voices" id="voices" aria-labelledby="vo-title">
+  <div class="wrap">
+    <h2 id="vo-title" class="reveal">In their words</h2>
+    <div class="vgrid">
+      <figure class="v v--big reveal"><span class="who">Visitor</span><blockquote>I came in shaking. Margaret made me a tea and talked about her grandkids for ten minutes before she even asked what I needed. I'll never forget that.</blockquote><figcaption><b>Lisa M.</b>Bransholme · came in for food in 2025, now volunteers on Tuesdays</figcaption></figure>
+      <figure class="v reveal"><span class="who">Donor</span><blockquote>I give £12 a month and get a two-line text when the shelves are low. That's the right amount of contact.</blockquote><figcaption><b>Tom H.</b>Cottingham · monthly donor since 2022</figcaption></figure>
+      <figure class="v reveal"><span class="who">Volunteer</span><blockquote>Retired from the docks and wanted something to do. Three years on, I run the Wednesday deliveries. Best job I've had.</blockquote><figcaption><b>Graham P.</b>Hessle · delivery driver</figcaption></figure>
+      <figure class="v reveal"><span class="who">Partner</span><blockquote>Our office food drive filled 41 crates. Bev sent photos of every shelf it went on. Staff loved that.</blockquote><figcaption><b>Priya S.</b>Office manager, solicitors, Hull city centre</figcaption></figure>
+      <figure class="v reveal"><span class="who">Visitor</span><blockquote>The pantry is the difference between eating properly and not, the week before payday. Wish it opened Mondays too!</blockquote><figcaption><b>Dean R.</b>Newington · pantry member</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" aria-labelledby="fq-title">
+  <div class="wrap faq__grid">
+    <div class="faq__intro reveal"><span class="label">FAQ</span><h2 id="fq-title">Good to know</h2><p>Anything else? Ring 01482 447812 or email <a href="mailto:hello@opentablehull.org.uk">hello@opentablehull.org.uk</a>.</p></div>
+    <div class="reveal" data-accordion>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q1" id="q1b">Do I need a referral to get food?<span class="acc__ic" aria-hidden="true">+</span></button></h3><div class="acc__panel" id="q1" role="region" aria-labelledby="q1b" hidden><p>Not for your first three visits. After that we'll help you get a referral from Citizens Advice, your GP, a housing officer or your children's school, so we can keep supporting you. Nobody is turned away hungry while that happens.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q2" id="q2b">What food can I donate?<span class="acc__ic" aria-hidden="true">+</span></button></h3><div class="acc__panel" id="q2" role="region" aria-labelledby="q2b" hidden><p>Anything in date, sealed and not needing a fridge. Check "What's running low" above first, because we sometimes have too much pasta and not enough tinned fish. We can't take home-cooked food or alcohol.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q3" id="q3b">Can you take food past its best before date?<span class="acc__ic" aria-hidden="true">+</span></button></h3><div class="acc__panel" id="q3" role="region" aria-labelledby="q3b" hidden><p>Yes for most dry and tinned food up to a few months past "best before", as it's still safe to eat. Never past a "use by" date, and no baby food or formula past any date.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q4" id="q4b">How is my money spent?<span class="acc__ic" aria-hidden="true">+</span></button></h3><div class="acc__panel" id="q4" role="region" aria-labelledby="q4b" hidden><p>Last year 71p of every £1 bought food, 23p paid for advice, deliveries and the hot lunch, and 6p covered rent, insurance and running costs. Our accounts are filed with the Charity Commission every year.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q5" id="q5b">What is Gift Aid?<span class="acc__ic" aria-hidden="true">+</span></button></h3><div class="acc__panel" id="q5" role="region" aria-labelledby="q5b" hidden><p>If you're a UK taxpayer, ticking the Gift Aid box lets us claim an extra 25p from HMRC for every £1 you give, at no cost to you. So £12 becomes £15. You must have paid enough Income Tax or Capital Gains Tax in the year to cover it.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q6" id="q6b">Can my workplace or school run a food drive?<span class="acc__ic" aria-hidden="true">+</span></button></h3><div class="acc__panel" id="q6" role="region" aria-labelledby="q6b" hidden><p>Please do. We'll lend you collection crates and a shopping list, and collect from anywhere in Hull. Use the form below and Bev will be in touch within two working days.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GET INVOLVED FORM ============ -->
+<section class="involve" id="involve" aria-labelledby="iv-title">
+  <div class="wrap">
+    <div class="involve__box">
+      <div class="involve__intro reveal">
+        <span class="label">Get involved</span>
+        <h2 id="iv-title">Give your time, or rally your team</h2>
+        <p>Volunteer, run a food drive, or partner with us as a business. Tell us a little and we'll reply within two working days.</p>
+        <ul><li>Shifts from 2 hours, weekdays and Saturdays</li><li>Crates and shopping lists for food drives</li><li>Team volunteering days for up to 12 people</li></ul>
+      </div>
+      <div class="reveal">
+        <form class="form" id="quote-form" novalidate>
+          <div class="fld"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+          <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+          <div class="fld"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+          <div class="fld"><label for="postcode">Postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+          <div class="fld"><label for="type">How would you like to help?</label><select id="type" name="type" aria-describedby="type-error" required><option value="">Choose one</option><option>Volunteer on my own</option><option>Team volunteering day</option><option>School or workplace food drive</option><option>Business partnership or sponsorship</option><option>Something else</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+          <div class="fld"><label for="budget">Donation or sponsorship</label><select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Choose one</option><option>Just my time</option><option>Under £250</option><option>£250 to £1,000</option><option>£1,000 to £5,000</option><option>Over £5,000</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+          <div class="fld fld--full"><label for="message">Tell us a bit more</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. 20 of us at the office could do a food drive in December" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+          <div class="form__foot"><small>We'll only use your details to reply. <a href="/privacy-policy/">Privacy policy</a>.</small><button class="btn btn--tomato" type="submit">Send</button></div>
+        </form>
+        <div class="done" id="form-success" tabindex="-1" hidden><p class="hand">Thank you<span data-first-name></span>!</p><p style="margin:0">Bev or Sam will be in touch within two working days. In the meantime, the kettle's always on at Newland Avenue.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__urgent"><p><b>Need food today?</b>Come to 41 Newland Avenue on Tuesday or Thursday, 10am to 2pm. Outside those times, call us and we'll do our best.</p><a class="btn btn--paper" href="tel:+441482447812">Call 01482 447812</a></div>
+    <div class="foot__grid">
+      <div>
+        <a class="logo" href="#top" aria-label="Open Table Hull, back to top"><svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="#D8452B" stroke="#FBF6EC" stroke-width="1.5"/><path d="M8.5 20.5h23a11.5 11.5 0 0 1-23 0z" fill="#FBF6EC"/><path d="M20 15.2c-1.6-2.6-5.4-1.1-3.7 1.8L20 20l3.7-3c1.7-2.9-2.1-4.4-3.7-1.8z" fill="#F5C547"/></svg><span class="logo__txt"><b>Open Table</b><small>HULL</small></span></a>
+        <p class="foot__desc">A community food bank, pantry and hot lunch on Newland Avenue, run by 164 volunteers and four staff.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/opentablehull" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.instagram.com/opentablehull" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Find us</h3><address>The Old Hall<br>41 Newland Avenue<br>Hull HU5 3BG<br><a href="tel:+441482447812">01482 447812</a><br><a href="mailto:hello@opentablehull.org.uk">hello@opentablehull.org.uk</a></address></div>
+      <div><h3>Opening times</h3><ul><li>Food and pantry: Tue and Thu, 10am to 2pm</li><li>Hot lunch: Sat, 11am to 2pm</li><li>Donations: Mon to Fri, 9am to 4pm</li></ul></div>
+      <div><h3>We help people in</h3><ul><li>Hull, HU1 to HU9</li><li>Cottingham and Hessle</li><li>Anlaby and Willerby</li><li>Kirk Ella</li></ul></div>
+    </div>
+    <div class="foot__reg">
+      <span class="fr"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V7z" fill="none" stroke="#F5C547" stroke-width="2"/></svg>Registered with the Fundraising Regulator</span>
+      <span>© <span id="yr">2026</span> Open Table Hull CIO. Registered charity no. 1187342 (England and Wales).</span>
+      <ul><li><a href="/privacy-policy/">Privacy</a></li><li><a href="/safeguarding/">Safeguarding</a></li><li><a href="/annual-report/">Annual report</a></li><li><a href="/complaints/">Complaints</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<a class="mcall" href="#get-help">Need food?</a>
+<button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V2M2 8l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Top</button>
+
+<script>
+/* Open Table Hull: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- nav border + back to top --- */
+  var nav = document.getElementById('nav'), toTop = document.getElementById('to-top');
+  function onScroll(){ nav.classList.toggle('is-scrolled', scrollY > 10); toTop.classList.toggle('is-shown', scrollY > innerHeight * 1.2); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); document.getElementById('main').focus({preventScroll:true}); });
+
+  /* --- paper sheet menu --- */
+  var mb = document.querySelector('.nav .menu-btn'), sheet = document.getElementById('sheet'), sClose = sheet.querySelector('[data-close]');
+  function setSheet(open, refocus){ sheet.classList.toggle('is-open', open); mb.setAttribute('aria-expanded', String(open)); document.body.style.overflow = open ? 'hidden' : ''; if(open) sClose.focus(); else if(refocus) mb.focus(); }
+  mb.addEventListener('click', function(){ setSheet(true); });
+  sClose.addEventListener('click', function(){ setSheet(false, true); });
+  sheet.addEventListener('click', function(e){ if(e.target.closest('a')) setSheet(false); });
+  document.addEventListener('keydown', function(e){
+    if(!sheet.classList.contains('is-open')) return;
+    if(e.key === 'Escape') setSheet(false, true);
+    if(e.key === 'Tab'){ var f = sheet.querySelectorAll('a,button'), a = f[0], z = f[f.length-1];
+      if(e.shiftKey && document.activeElement === a){ z.focus(); e.preventDefault(); } else if(!e.shiftKey && document.activeElement === z){ a.focus(); e.preventDefault(); } }
+  });
+
+  /* --- open now / next open (Tue, Thu 10-14; Sat 11-14) --- */
+  var HOURS = {2:[10,14,'Tuesday'], 4:[10,14,'Thursday'], 6:[11,14,'Saturday']};
+  var st = document.getElementById('status'), stTxt = document.getElementById('status-txt');
+  function fmt(h){ return (h > 12 ? h - 12 : h) + (h >= 12 ? 'pm' : 'am'); }
+  function status(){
+    var now = new Date(), d = now.getDay(), h = now.getHours() + now.getMinutes()/60, today = HOURS[d];
+    document.querySelectorAll('.times li').forEach(function(li){ li.classList.toggle('is-today', +li.dataset.day === d); });
+    if(today && h >= today[0] && h < today[1]){ st.classList.add('is-open'); stTxt.textContent = 'Open now until ' + fmt(today[1]); return; }
+    st.classList.remove('is-open');
+    for(var i = 0; i < 8; i++){
+      var dd = (d + i) % 7, o = HOURS[dd];
+      if(o && (i > 0 || h < o[0])){ stTxt.textContent = 'Next open ' + (i === 0 ? 'today' : i === 1 ? 'tomorrow' : o[2]) + ' at ' + fmt(o[0]); return; }
+    }
+  }
+  status(); setInterval(status, 60000);
+
+  /* --- donate widget with real-world equivalents and Gift Aid --- */
+  var EQUIV = {5:'£5 buys a week of fresh fruit and veg for one person.', 12:'£12 fills a family’s breakfast cupboard for a week.', 25:'£25 pays for a Saturday hot lunch for eight people.', 50:'£50 funds an hour with our money adviser, who finds families £280 on average.'};
+  var give = document.getElementById('give'), freq = 'once', eq = document.getElementById('equiv'), ga = document.getElementById('giftaid'), gaTotal = document.getElementById('ga-total'), gBtn = document.getElementById('give-btn'), gDone = document.getElementById('give-done');
+  function updGive(){
+    var a = +give.querySelector('[name=amt]:checked').value;
+    eq.textContent = EQUIV[a] + (freq === 'monthly' ? ' Every month.' : '');
+    gaTotal.textContent = ga.checked ? '(£' + a + ' becomes £' + (a * 1.25).toFixed(2).replace('.00','') + ')' : '';
+    gBtn.textContent = 'Donate £' + a + (freq === 'monthly' ? ' a month' : '');
+  }
+  give.querySelectorAll('.give-toggle button').forEach(function(b){ b.addEventListener('click', function(){ freq = b.dataset.freq; give.querySelectorAll('.give-toggle button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); updGive(); }); });
+  give.addEventListener('change', updGive); updGive();
+  give.addEventListener('submit', function(){ gDone.hidden = false; gDone.textContent = 'Thank you! On the live site this opens our secure payment page.'; });
+
+  /* --- this week's shelf: pledge list (signature) --- */
+  var list = document.getElementById('pledged'), lMsg = document.getElementById('list-msg');
+  document.querySelectorAll('.pledge:not(:disabled)').forEach(function(b){
+    b.addEventListener('click', function(){
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(on)); b.textContent = on ? 'On my list ✓' : 'I’ll bring this';
+      var ex = list.querySelector('[data-item="' + b.dataset.item + '"]');
+      if(on && !ex){ var li = document.createElement('li'); li.dataset.item = b.dataset.item; li.textContent = b.dataset.item; list.appendChild(li); }
+      if(!on && ex) ex.remove();
+      lMsg.hidden = true;
+    });
+  });
+  document.getElementById('list-send').addEventListener('click', function(){
+    lMsg.hidden = false;
+    lMsg.textContent = list.children.length ? 'Done. Your list of ' + list.children.length + (list.children.length === 1 ? ' item' : ' items') + ' would be emailed to you. Thank you!' : 'Pick at least one item first.';
+  });
+
+  /* --- reveal + counters --- */
+  var items = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){ items.forEach(function(e){ e.classList.add('is-in'); }); }
+  else{ var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-in'); io.unobserve(x.target); } }); }, {threshold:.1}); items.forEach(function(e){ io.observe(e); }); }
+  if(!reduce && 'IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(en){ en.forEach(function(x){ if(!x.isIntersecting) return; var el = x.target, end = +el.dataset.count, t0 = null;
+      (function step(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/1300,1); el.textContent = Math.round(end*(1-Math.pow(1-p,3))).toLocaleString('en-GB'); if(p<1) requestAnimationFrame(step); })(performance.now()); cio.unobserve(el); }); }, {threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(function(c){ cio.observe(c); });
+  }
+
+  /* --- accordion --- */
+  document.querySelectorAll('[data-accordion] .acc__btn').forEach(function(b){
+    b.addEventListener('click', function(){ var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open)); document.getElementById(b.getAttribute('aria-controls')).hidden = open; });
+  });
+
+  /* --- get involved form --- */
+  var form = document.getElementById('quote-form'), ok = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'Please tell us your name.'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'Please use a UK number, for example 01482 447812.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Please check your email address.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Please add a full UK postcode, for example HU5 3BG.'; },
+    type: function(v){ return v !== '' || 'Please choose how you’d like to help.'; },
+    budget: function(v){ return v !== '' || 'Please choose an option.'; },
+    message: function(v){ return v.trim().length >= 10 || 'A sentence or two helps us plan.'; }
+  };
+  function check(f){ var r = rules[f.name]; if(!r) return true; var res = r(f.value), err = document.getElementById(f.name + '-error');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; return false; } f.removeAttribute('aria-invalid'); err.textContent = ''; return true; }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    ok.querySelector('[data-first-name]').textContent = ', ' + document.getElementById('name').value.trim().split(' ')[0];
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+(function(){var m=document.querySelector('.mcall'),h=document.getElementById('get-help');if(!m||!h)return;function t(){var r=h.getBoundingClientRect();m.classList.toggle('is-shown',scrollY>innerHeight*.9&&(r.bottom<0||r.top>innerHeight));}addEventListener('scroll',t,{passive:true});t();})();
+</script>
+</body>
+</html>

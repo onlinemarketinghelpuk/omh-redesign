@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knox &amp; Parry | House Extensions in Kingston, Richmond &amp; Surrey</title>
+<meta name="description" content="Fixed-price kitchen, side-return and two-storey extensions across Kingston, Richmond and Surrey. If we finish late we pay you £150 for every working day. 347 extensions since 2009.">
+<link rel="canonical" href="https://www.knoxparry.co.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Knox &amp; Parry | Fixed price. Fixed date. Or we pay.">
+<meta property="og:description" content="House extensions across south-west London and Surrey with a fixed price and a £150 a day late-finish guarantee.">
+<meta property="og:url" content="https://www.knoxparry.co.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#121212">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Knox & Parry Build Ltd",
+  "description": "Fixed-price house extensions: single-storey rear, side-return, wraparound and two-storey extensions across Kingston upon Thames, Richmond and Surrey.",
+  "url": "https://www.knoxparry.co.uk/",
+  "telephone": "+442085463172",
+  "email": "hello@knoxparry.co.uk",
+  "foundingDate": "2009",
+  "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&auto=format&fit=crop",
+  "priceRange": "£££",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Unit 12, Canbury Business Park, Elm Crescent",
+    "addressLocality": "Kingston upon Thames",
+    "postalCode": "KT2 6HJ",
+    "addressCountry": "GB"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 51.4171, "longitude": -0.2990 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00" }
+  ],
+  "areaServed": ["Kingston upon Thames","Surbiton","Richmond","Teddington","Twickenham","Wimbledon","New Malden","Esher","Thames Ditton","Epsom"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "263" }
+}
+</script>
+<style>
+/* =========================================================
+   KNOX & PARRY
+   Art direction: bold brutalist-modern. Oversized condensed
+   type, hard edges, black / concrete / hi-vis yellow blocks.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --black:#121212;
+  --white:#F7F6F2;
+  --concrete:#D3CEC4;
+  --concrete-2:#BDB7AB;
+  --grey:#55524C;
+  --yellow:#FFD60A;
+  --error:#C81E1E;
+
+  --f-display:'Anton', Impact, 'Arial Narrow Bold', sans-serif;
+  --f-body:'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  --t-sm:.9375rem;
+  --t-base:1.0625rem;
+  --t-lg:1.25rem;
+  --t-xl:clamp(1.8rem, 1.2rem + 2.2vw, 3rem);
+  --t-2xl:clamp(2.8rem, 1.4rem + 5.5vw, 6.5rem);
+  --t-mega:clamp(3.6rem, .8rem + 12.5vw, 15rem);
+
+  --s-1:.5rem; --s-2:1rem; --s-3:1.5rem; --s-4:2.5rem; --s-5:4rem; --s-6:7rem;
+  --border:3px solid var(--black);
+  --pad:clamp(1rem, 4vw, 3rem);
+  --ease:cubic-bezier(.7,0,.2,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--black);font:400 var(--t-base)/1.6 var(--f-body)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;line-height:.92;margin:0;letter-spacing:.005em}
+p{margin:0 0 var(--s-2)}
+.px{padding-inline:var(--pad)}
+.skip{position:absolute;left:-999px;top:0;background:var(--yellow);color:var(--black);padding:.75rem 1rem;z-index:300;font-weight:700}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:4px solid var(--yellow);outline-offset:2px;box-shadow:0 0 0 7px var(--black)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tag{display:inline-block;background:var(--black);color:var(--yellow);font:700 .8rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;padding:.5rem .7rem;margin-bottom:var(--s-3)}
+.tag--y{background:var(--yellow);color:var(--black)}
+
+/* buttons: solid slabs with a hard offset on hover */
+.btn{display:inline-flex;align-items:center;gap:.8rem;padding:1.05rem 1.5rem;background:var(--yellow);color:var(--black);border:var(--border);font:700 var(--t-base)/1 var(--f-body);text-transform:uppercase;letter-spacing:.05em;text-decoration:none;cursor:pointer;transition:transform .15s var(--ease),box-shadow .15s var(--ease)}
+.btn:hover{transform:translate(-4px,-4px);box-shadow:4px 4px 0 var(--black)}
+.btn--dark{background:var(--black);color:var(--yellow)}
+.btn--onblack{border-color:var(--yellow)}
+.btn--onblack:hover{box-shadow:4px 4px 0 var(--yellow)}
+
+/* ---------- 3. Navigation: hide on scroll down, show on scroll up ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--black);color:var(--white);display:flex;align-items:stretch;height:64px;border-bottom:3px solid var(--black);transition:transform .35s var(--ease)}
+.nav.is-hidden{transform:translateY(-100%)}
+.nav__logo{flex:none;white-space:nowrap;background:var(--yellow);color:var(--black);display:flex;align-items:center;padding:0 1.1rem;font:400 1.6rem/1 var(--f-display);text-decoration:none;letter-spacing:.02em}
+.nav__logo span{font-family:var(--f-body);font-weight:700;margin:0 .1rem}
+.nav > nav{display:flex;align-items:center}
+.nav__links{display:none;list-style:none;margin:0 0 0 var(--s-3);padding:0;align-items:center;gap:clamp(.9rem,1.4vw,1.5rem)}
+.nav__links a{white-space:nowrap}
+.nav__links a{text-decoration:none;font-weight:500;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.06em}
+.nav__links a:hover{color:var(--yellow)}
+.nav__right{margin-left:auto;display:flex;align-items:stretch}
+.nav__tel{display:flex;align-items:center;gap:.5rem;padding:0 1.1rem;text-decoration:none;font-weight:700;border-left:1px solid #333}
+.nav__tel span{display:none}
+.nav__quote{display:none;align-items:center;padding:0 1.3rem;background:var(--yellow);color:var(--black);text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:var(--t-sm)}
+.nav__menu{background:none;border:0;border-left:1px solid #333;color:var(--white);font:700 var(--t-sm) var(--f-body);letter-spacing:.1em;padding:0 1.2rem;cursor:pointer;text-transform:uppercase}
+@media (min-width:720px){.nav__tel span{display:inline}.nav__quote{display:flex}}
+@media (min-width:1280px){.nav__links{display:flex}.nav__menu{display:none}}
+
+/* full-screen overlay menu */
+.overlay{position:fixed;inset:0;z-index:150;background:var(--yellow);color:var(--black);display:flex;flex-direction:column;padding:var(--pad);transform:translateY(-100%);transition:transform .5s var(--ease);visibility:hidden}
+.overlay.is-open{transform:none;visibility:visible}
+.overlay__top{display:flex;justify-content:space-between;align-items:center}
+.overlay__close{background:var(--black);color:var(--yellow);border:0;font:700 var(--t-sm) var(--f-body);letter-spacing:.1em;padding:.9rem 1.2rem;cursor:pointer;text-transform:uppercase}
+.overlay ol{list-style:none;margin:auto 0;padding:0;counter-reset:m}
+.overlay li{border-bottom:3px solid var(--black)}
+.overlay li a{display:flex;align-items:baseline;gap:1rem;font:400 clamp(2.4rem,8vw,5.5rem)/1.05 var(--f-display);text-transform:uppercase;text-decoration:none;padding:.2rem 0;transition:padding .25s var(--ease)}
+.overlay li a::before{counter-increment:m;content:"0" counter(m);font:700 1rem var(--f-body)}
+.overlay li a:hover{padding-left:1rem}
+.overlay__foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-weight:700}
+
+/* ---------- 4. Hero: split slab + proof strip ---------- */
+.hero{background:var(--black);color:var(--white);padding-top:64px;overflow:hidden;border-bottom:3px solid var(--yellow)}
+.hero__grid{display:grid;grid-template-columns:1fr}
+.hero__main{padding:var(--s-4) var(--pad) var(--s-4);display:flex;flex-direction:column;justify-content:center}
+.hero__kicker{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin-bottom:var(--s-3);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#C9C5BD}
+.hero__kicker .slot{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow);color:var(--black);padding:.4rem .6rem}
+.hero__kicker .slot::before{content:"";width:8px;height:8px;background:var(--black);animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero h1{font-size:clamp(3.8rem, 1.4rem + 9vw, 7.4rem);line-height:.88;letter-spacing:0}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln > span{display:block}
+.hero h1 .o > span{color:transparent;-webkit-text-stroke:2px var(--white)}
+.hero h1 .y > span{color:var(--yellow)}
+.hero__lede{font-size:var(--t-lg);max-width:42ch;color:#E6E3DC;margin:var(--s-3) 0}
+.hero__lede strong{color:var(--white);background:linear-gradient(transparent 62%,rgba(255,214,10,.35) 62%)}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:stretch}
+.hero__ctas .btn{justify-content:center}
+@media (max-width:520px){.hero__ctas .btn{flex:1 1 100%}}
+.btn--ghost{background:transparent;color:var(--white);border-color:var(--white)}
+.btn--ghost:hover{box-shadow:4px 4px 0 var(--yellow);border-color:var(--yellow);color:var(--yellow)}
+.hero__calc{display:inline-block;margin:var(--s-2) 0 0;font-size:var(--t-sm);color:#C9C5BD}
+.hero__calc a{color:var(--yellow);font-weight:700}
+
+.hero__media{position:relative;min-height:340px;background:var(--grey);border-top:3px solid var(--yellow)}
+.hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.75),transparent 45%);pointer-events:none}
+.plate{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;padding:1rem 1.2rem;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.plate b{color:var(--yellow);font-weight:700}
+.sticker{position:absolute;right:1rem;top:1rem;z-index:3;background:var(--yellow);color:var(--black);padding:.8rem 1rem;transform:rotate(-4deg);border:3px solid var(--black);box-shadow:6px 6px 0 var(--black)}
+.sticker b{display:block;font:400 2.3rem/1 var(--f-display)}
+.sticker span{font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+
+.proof{display:grid;grid-template-columns:repeat(2,1fr);list-style:none;margin:0;padding:0;border-top:3px solid var(--white)}
+.proof li{padding:1.1rem var(--pad);border-bottom:1px solid #333}
+.proof li:nth-child(odd){border-right:1px solid #333}
+.proof b{display:block;font:400 clamp(1.7rem,1.2rem + 1.4vw,2.5rem)/1 var(--f-display);color:var(--yellow)}
+.proof span{display:block;margin-top:.35rem;font-size:.8rem;font-weight:500;color:#C9C5BD;line-height:1.35}
+
+@media (min-width:1000px){
+  .hero__grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);min-height:calc(100svh - 64px - 106px);max-height:860px}
+  .hero__main{padding-block:var(--s-3)}
+  .hero__media{min-height:0;border-top:0;border-left:3px solid var(--yellow)}
+  .sticker{right:auto;left:-46px;top:12%}
+  .sticker b{font-size:2.8rem}
+  .proof{grid-template-columns:repeat(4,1fr)}
+  .proof li{border-bottom:0;border-right:1px solid #333}
+  .proof li:last-child{border-right:0}
+}
+
+/* load-in: lines rise out of their masks, sticker drops */
+.js .hero h1 .ln > span{transform:translateY(105%);transition:transform .9s var(--ease)}
+.js .hero h1 .ln:nth-child(2) > span{transition-delay:.12s}
+.js .hero h1 .ln:nth-child(3) > span{transition-delay:.24s}
+.js .hero.is-ready h1 .ln > span{transform:none}
+.js .sticker{opacity:0;transform:translateY(-30px) rotate(-14deg);transition:transform .6s .6s cubic-bezier(.3,1.6,.5,1),opacity .2s .6s}
+.js .hero.is-ready .sticker{opacity:1;transform:rotate(-4deg)}
+/* ---------- 5. Trust bar: marquee ---------- */
+.ticker{background:var(--yellow);border-block:var(--border);overflow:hidden;white-space:nowrap}
+.ticker__track{display:inline-flex;animation:tick 38s linear infinite}
+.ticker:hover .ticker__track{animation-play-state:paused}
+.ticker ul{display:flex;list-style:none;margin:0;padding:0}
+.ticker li{display:flex;align-items:center;gap:.9rem;padding:1rem 1.6rem;font:400 1.5rem/1 var(--f-display);text-transform:uppercase}
+.ticker li::after{content:"";width:12px;height:12px;background:var(--black);margin-left:1.6rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- 6. Numbers ---------- */
+.stats{display:grid;border-bottom:var(--border)}
+.stat{padding:var(--s-4) var(--pad);border-top:var(--border)}
+.stat b{display:block;font:400 clamp(4rem,2rem + 7vw,8.5rem)/.9 var(--f-display)}
+.stat p{margin:.6rem 0 0;max-width:30ch;font-weight:500}
+.stat:nth-child(2){background:var(--concrete)}
+@media (min-width:900px){.stats{grid-template-columns:1fr 1fr 1fr}.stat{border-top:0}.stat + .stat{border-left:var(--border)}}
+
+/* ---------- 7. Services: uneven block grid ---------- */
+.services{padding:var(--s-6) 0 0}
+.services__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s-3);margin-bottom:var(--s-4)}
+.services h2{font-size:var(--t-2xl);max-width:9ch}
+.services__head p{max-width:38ch;font-weight:500;margin:0}
+.blocks{display:grid;grid-template-columns:1fr;border-top:var(--border)}
+.block{padding:var(--s-4) var(--pad);border-bottom:var(--border);position:relative;transition:background .2s}
+.block:hover{background:var(--yellow)}
+.block__n{font:700 .85rem var(--f-body);letter-spacing:.14em}
+.block h3{overflow-wrap:break-word;font-size:var(--t-xl);margin:.6rem 0 .8rem}
+.block p{max-width:44ch;margin:0}
+.block .price{display:inline-block;margin-top:var(--s-2);background:var(--black);color:var(--white);padding:.35rem .6rem;font-weight:700;font-size:var(--t-sm)}
+.block--img{padding:0;min-height:320px;background:var(--grey)}
+.block--img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.block--img:hover{background:var(--grey)}
+.block--dark{background:var(--black);color:var(--white)}
+.block--dark:hover{background:var(--black)}
+.block--dark .price{background:var(--yellow);color:var(--black)}
+@media (min-width:860px){
+  .blocks{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .block{border-right:var(--border)}
+  .block:nth-child(3n){border-right:0}
+  .block--wide{grid-column:span 2}
+}
+
+/* ---------- 8. Calculator (signature) ---------- */
+.calc{background:var(--black);color:var(--white);padding:var(--s-6) 0}
+.calc__grid{display:grid;gap:var(--s-5)}
+.calc h2{font-size:var(--t-2xl);max-width:10ch}
+.calc h2 em{font-style:normal;color:var(--yellow)}
+.calc__intro{color:#D6D2CA;max-width:40ch;margin-top:var(--s-3)}
+.calc fieldset{border:0;margin:0 0 var(--s-4);padding:0}
+.calc legend{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:var(--t-sm);margin-bottom:var(--s-2);color:var(--yellow)}
+.seg{display:grid;grid-template-columns:repeat(2,1fr);border:3px solid var(--white)}
+.seg label{position:relative;display:flex;cursor:pointer}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg span{display:flex;align-items:center;justify-content:center;width:100%;padding:1rem;text-align:center;font-weight:700;text-transform:uppercase;font-size:var(--t-sm);letter-spacing:.04em;border:1px solid #444;transition:background .15s}
+.seg input:checked + span{background:var(--yellow);color:var(--black)}
+.seg input:focus-visible + span{outline:4px solid var(--yellow);outline-offset:-8px;box-shadow:inset 0 0 0 8px var(--black)}
+.seg label:hover span{background:#262626}
+.seg input:checked + span:hover{background:var(--yellow)}
+.seg--3{grid-template-columns:repeat(3,1fr)}
+@media (min-width:600px){.seg--4{grid-template-columns:repeat(4,1fr)}}
+.range-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
+.range-row output{font:400 2.4rem/1 var(--f-display);color:var(--yellow)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:12px;background:#333;border:0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;background:var(--yellow);border:3px solid var(--black);cursor:grab}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;background:var(--yellow);border:3px solid var(--black);border-radius:0;cursor:grab}
+.calc__out{border:3px solid var(--yellow);padding:var(--s-4) var(--s-3);align-self:start;position:sticky;top:90px}
+.calc__out .lbl{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;color:#C9C5BD}
+.calc__price{font:400 clamp(2.6rem,1.6rem + 3.6vw,4.8rem)/1 var(--f-display);color:var(--yellow);margin:.4rem 0 var(--s-3)}
+.calc__weeks{font:400 2rem/1 var(--f-display);margin:.4rem 0 var(--s-3)}
+.calc__out ul{list-style:none;padding:var(--s-2) 0 0;margin:0 0 var(--s-3);border-top:1px solid #444;display:grid;gap:.4rem;font-size:var(--t-sm);color:#D6D2CA}
+.calc__out ul li::before{content:"+ ";color:var(--yellow);font-weight:700}
+.calc__out small{display:block;color:#A9A59D;margin-top:var(--s-2);font-size:.8rem}
+@media (min-width:980px){.calc__grid{grid-template-columns:1fr 1fr;gap:var(--s-6)}}
+
+/* ---------- 9. Projects: stacked slabs ---------- */
+.projects{padding:var(--s-6) 0 0}
+.projects h2{font-size:var(--t-2xl);margin-bottom:var(--s-4)}
+.slab{display:grid;border-top:var(--border)}
+.slab:last-child{border-bottom:var(--border)}
+.slab__img{position:relative;min-height:280px;background:var(--concrete-2);overflow:hidden}
+.slab__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .4s}
+.slab:hover .slab__img img{filter:none}
+.slab__data{padding:var(--s-4) var(--pad);background:var(--white);transition:background .2s,color .2s}
+.slab:hover .slab__data{background:var(--black);color:var(--white)}
+.slab__n{font:400 4.5rem/.8 var(--f-display);-webkit-text-stroke:2px currentColor;color:transparent}
+.slab h3{font-size:var(--t-xl);margin:var(--s-2) 0}
+.slab p{max-width:46ch}
+.slab dl{display:grid;grid-template-columns:repeat(2,1fr);margin:var(--s-3) 0 0;border-top:2px solid currentColor}
+.slab dl div{padding:.7rem 0;border-bottom:1px solid currentColor}
+.slab dt{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.slab dd{margin:0;font-weight:700;font-size:1.1rem}
+.slab .early{display:inline-block;background:var(--yellow);color:var(--black);padding:.2rem .4rem}
+@media (min-width:900px){
+  .slab{grid-template-columns:3fr 2fr}
+  .slab:nth-child(even){grid-template-columns:2fr 3fr}
+  .slab:nth-child(even) .slab__img{order:2}
+  .slab__img{min-height:440px}
+  .slab__data{border-left:var(--border)}
+  .slab:nth-child(even) .slab__data{border-left:0;border-right:var(--border)}
+}
+
+/* ---------- 10. Process: sticky title + big steps ---------- */
+.process{padding:var(--s-6) 0;background:var(--concrete)}
+.process__grid{display:grid;gap:var(--s-4)}
+.process h2{font-size:var(--t-2xl);max-width:8ch}
+.process__aside p{max-width:32ch;font-weight:500;margin-top:var(--s-3)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:var(--s-3);padding:var(--s-3) 0;border-top:var(--border)}
+.steps li:last-child{border-bottom:var(--border)}
+.steps li::before{counter-increment:s;content:counter(s,decimal-leading-zero);font:400 clamp(3.2rem,2rem + 3vw,5rem)/.85 var(--f-display);color:var(--black)}
+.steps h3{font-size:1.9rem;margin-bottom:.4rem}
+.steps .wk{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--white);padding:.25rem .5rem;margin-bottom:.6rem}
+.steps p{margin:0;max-width:52ch}
+@media (min-width:980px){.process__grid{grid-template-columns:.8fr 1.2fr;gap:var(--s-6)}.process__aside{position:sticky;top:100px;align-self:start}}
+
+/* ---------- 11. Guarantee: yellow slab ---------- */
+.guarantee{background:var(--yellow);border-block:var(--border);padding:var(--s-6) 0}
+.guarantee__grid{display:grid;gap:var(--s-4);align-items:end}
+.guarantee .huge{font:400 clamp(7rem,3rem + 18vw,19rem)/.8 var(--f-display);letter-spacing:-.02em}
+.guarantee .huge small{font-size:.25em;display:block;letter-spacing:.02em;margin-top:.6rem}
+.guarantee h2{font-size:var(--t-xl);margin-bottom:var(--s-3)}
+.terms{list-style:none;margin:var(--s-3) 0 0;padding:0;border-top:var(--border)}
+.terms li{padding:.9rem 0;border-bottom:2px solid var(--black);display:grid;grid-template-columns:28px 1fr;gap:.8rem;font-weight:500}
+@media (min-width:980px){.guarantee__grid{grid-template-columns:1.1fr .9fr;gap:var(--s-6)}}
+
+/* ---------- 12. Testimonials: mismatched blocks ---------- */
+.reviews{padding:var(--s-6) 0}
+.reviews h2{font-size:var(--t-2xl);margin-bottom:var(--s-4);max-width:12ch}
+.rgrid{display:grid;gap:0;border:var(--border)}
+.rv{margin:0;padding:var(--s-4) var(--s-3);border-bottom:var(--border);display:flex;flex-direction:column;justify-content:space-between;gap:var(--s-3)}
+.rv:last-child{border-bottom:0}
+.rv blockquote{margin:0;font-size:var(--t-lg);font-weight:500;line-height:1.45}
+.rv--big blockquote{font:400 clamp(1.9rem,1.2rem + 2vw,3rem)/1.05 var(--f-display);text-transform:uppercase}
+.rv figcaption{font-size:var(--t-sm)}
+.rv figcaption b{display:block;font-size:var(--t-base)}
+.rv--black{background:var(--black);color:var(--white)}
+.rv--concrete{background:var(--concrete)}
+.rv--yellow{background:var(--yellow)}
+@media (min-width:900px){
+  .rgrid{grid-template-columns:repeat(6,1fr)}
+  .rv{border-bottom:0;border-right:var(--border)}
+  .rv:nth-child(1){grid-column:span 4;border-bottom:var(--border)}
+  .rv:nth-child(2){grid-column:span 2;border-right:0;border-bottom:var(--border)}
+  .rv:nth-child(3){grid-column:span 3}
+  .rv:nth-child(4){grid-column:span 3;border-right:0}
+}
+
+/* ---------- 13. FAQ ---------- */
+.faq{padding:0 0 var(--s-6)}
+.faq h2{font-size:var(--t-2xl);margin-bottom:var(--s-4)}
+.acc{border-top:var(--border)}
+.acc__item{border-bottom:var(--border)}
+.acc__btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);background:none;border:0;padding:1.3rem 0;text-align:left;color:var(--black);cursor:pointer;font:400 clamp(1.35rem,1rem + 1.2vw,2rem)/1.1 var(--f-display);text-transform:uppercase}
+.acc__btn:hover{color:var(--grey)}
+.acc__plus{flex:none;width:44px;height:44px;background:var(--black);color:var(--yellow);display:grid;place-items:center;transition:transform .25s var(--ease)}
+.acc__btn[aria-expanded="true"] .acc__plus{transform:rotate(45deg);background:var(--yellow);color:var(--black);outline:3px solid var(--black)}
+.acc__panel{padding:0 0 1.5rem;max-width:70ch;font-size:var(--t-lg)}
+.acc__panel p{margin:0}
+
+/* ---------- 14. Quote form ---------- */
+.quote{background:var(--black);color:var(--white);padding:var(--s-6) 0}
+.quote__grid{display:grid;gap:var(--s-5)}
+.quote h2{font-size:var(--t-2xl)}
+.quote h2 em{font-style:normal;color:var(--yellow)}
+.quote__aside p{color:#D6D2CA;max-width:36ch;margin-top:var(--s-3)}
+.quote__aside .big-tel{display:inline-block;margin-top:var(--s-3);font:400 clamp(2rem,1.4rem + 2vw,3.2rem)/1 var(--f-display);color:var(--yellow);text-decoration:none;border-bottom:3px solid var(--yellow)}
+.form{display:grid;gap:var(--s-3)}
+.fld{display:flex;flex-direction:column;gap:.4rem}
+.fld label{font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+.fld input,.fld select,.fld textarea{font:500 1.05rem var(--f-body);background:var(--white);color:var(--black);border:3px solid var(--white);border-radius:0;padding:.9rem .9rem}
+.fld select{appearance:none;background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23121212' stroke-width='2.5'/%3E%3C/svg%3E") right 1rem center no-repeat}
+.fld textarea{min-height:140px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--yellow);box-shadow:6px 6px 0 var(--yellow)}
+.fld [aria-invalid="true"]{border-color:#FF6B6B}
+.err{font-weight:700;font-size:.85rem;color:#FF8A8A;min-height:0}
+.err:empty{display:none}
+.form__foot{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center;justify-content:space-between}
+.form__foot small{color:#B5B1A8;max-width:40ch}
+.form__foot small a{color:var(--white)}
+.done{background:var(--yellow);color:var(--black);padding:var(--s-4);border:3px solid var(--yellow)}
+.done h3{font-size:var(--t-xl);margin-bottom:var(--s-2)}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}.fld--full,.form__foot{grid-column:1/-1}}
+@media (min-width:1000px){.quote__grid{grid-template-columns:.8fr 1.2fr;gap:var(--s-6)}}
+
+/* ---------- 15. Footer ---------- */
+.foot{background:var(--concrete);padding:var(--s-5) 0 0;font-size:var(--t-sm);overflow:hidden}
+.foot__grid{display:grid;gap:var(--s-4)}
+.foot h3{font:700 .8rem var(--f-body);letter-spacing:.14em;margin-bottom:var(--s-2)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.3rem}
+.foot address{font-style:normal;line-height:1.7}
+.foot a:hover{background:var(--yellow)}
+.social{display:flex;gap:.5rem;margin-top:var(--s-2)}
+.social a{width:44px;height:44px;display:grid;place-items:center;background:var(--black);color:var(--white)}
+.social a:hover{background:var(--yellow);color:var(--black)}
+.foot__base{display:flex;flex-wrap:wrap;gap:var(--s-2);justify-content:space-between;padding:var(--s-3) 0;margin-top:var(--s-5);border-top:var(--border);font-weight:500}
+.foot__base ul{display:flex;flex-wrap:wrap;gap:var(--s-3)}
+.foot__word{font:400 clamp(4rem,1rem + 15vw,17rem)/.78 var(--f-display);text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap;margin-bottom:-.06em;color:var(--black)}
+@media (min-width:860px){.foot__grid{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+
+/* mobile floating call button */
+.fab{position:fixed;right:1rem;bottom:1rem;z-index:90;width:60px;height:60px;display:grid;place-items:center;background:var(--yellow);color:var(--black);border:3px solid var(--black);box-shadow:4px 4px 0 var(--black)}
+@media (min-width:720px){.fab{display:none}}
+
+/* ---------- 16. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(40px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .js .hero h1 .ln > span{transform:none}
+  .js .sticker{opacity:1;transform:rotate(-4deg)}
+  .ticker{white-space:normal}
+  .ticker__track{display:block}
+  .ticker ul{flex-wrap:wrap;justify-content:center}
+  .ticker ul[aria-hidden]{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="Knox and Parry, back to top">KNOX<span>&amp;</span>PARRY</a>
+  <nav aria-label="Main">
+    <ul class="nav__links">
+      <li><a href="#services">Extensions</a></li>
+      <li><a href="#cost">Cost</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#guarantee">Guarantee</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+  <div class="nav__right">
+    <a class="nav__tel" href="tel:+442085463172" aria-label="Call 020 8546 3172"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>020 8546 3172</span></a>
+    <a class="nav__quote" href="#quote">Get a quote</a>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="overlay">Menu</button>
+  </div>
+</header>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Site menu">
+  <div class="overlay__top">
+    <span class="nav__logo" style="padding:.6rem .9rem;background:var(--black);color:var(--yellow)">KNOX<span>&amp;</span>PARRY</span>
+    <button class="overlay__close" type="button">Close</button>
+  </div>
+  <ol>
+    <li><a href="#services">Extensions</a></li>
+    <li><a href="#cost">What it costs</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#guarantee">Guarantee</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#quote">Get a quote</a></li>
+  </ol>
+  <div class="overlay__foot"><a href="tel:+442085463172">020 8546 3172</a><a href="mailto:hello@knoxparry.co.uk">hello@knoxparry.co.uk</a></div>
+</div>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__grid">
+    <div class="hero__main">
+      <p class="hero__kicker"><span>Extensions · Kingston, Richmond &amp; Surrey</span><span class="slot">Next build slot: March 2027</span></p>
+      <h1 id="hero-title"><span class="ln"><span>Fixed price.</span></span><span class="ln o"><span>Fixed date.</span></span><span class="ln y"><span>Or we pay.</span></span></h1>
+      <p class="hero__lede">Kitchen, side-return and two-storey extensions with one price agreed at signing. If we finish late, <strong>we pay you £150 for every working day</strong> we overrun.</p>
+      <div class="hero__ctas">
+        <a class="btn" href="#quote">Book a free site visit <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 7h18M12 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></a>
+        <a class="btn btn--ghost" href="tel:+442085463172"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>020 8546 3172</a>
+      </div>
+      <p class="hero__calc">Not ready to talk? <a href="#cost">Price your extension in 30 seconds</a></p>
+    </div>
+    <div class="hero__media">
+      <div class="sticker" aria-hidden="true"><b>£150/DAY</b><span>if we finish late</span></div>
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&auto=format&fit=crop" alt="Bright open-plan kitchen and living space in a finished rear extension" width="1200" height="1500" fetchpriority="high">
+      <p class="plate"><span>Side return, Surbiton</span><span>12 weeks</span><b>Finished 2 days early</b></p>
+    </div>
+  </div>
+  <ul class="proof" aria-label="Why homeowners choose us">
+    <li><b>4.8 / 5</b><span>From 263 Google reviews</span></li>
+    <li><b>48 HRS</b><span>To book your free site visit</span></li>
+    <li><b>5% MAX</b><span>Deposit, capped at £5,000</span></li>
+    <li><b>10 YRS</b><span>Insurance-backed guarantee via the FMB</span></li>
+  </ul>
+</section>
+<!-- ============ TRUST: TICKER ============ -->
+<section class="ticker" aria-label="Accreditations and credentials">
+  <div class="ticker__track">
+    <ul>
+      <li>FMB member since 2011</li><li>TrustMark registered</li><li>Which? Trusted Trader</li><li>CHAS accredited</li><li>17 years trading</li><li>£10m public liability</li><li>Fixed-price contracts</li>
+    </ul>
+    <ul aria-hidden="true">
+      <li>FMB member since 2011</li><li>TrustMark registered</li><li>Which? Trusted Trader</li><li>CHAS accredited</li><li>17 years trading</li><li>£10m public liability</li><li>Fixed-price contracts</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" aria-label="Knox and Parry in numbers">
+  <div class="stat reveal"><b data-count="347">347</b><p>Extensions finished since 2009, every one with a written completion date.</p></div>
+  <div class="stat reveal"><b>£<span data-count="14850">14,850</span></b><p>Paid to clients for late days since we started the guarantee in 2019. We'd rather it was zero.</p></div>
+  <div class="stat reveal"><b>0</b><p>Invoices that went over the contract price without the client changing the design.</p></div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services" aria-labelledby="svc-title">
+  <div class="services__head px">
+    <div><span class="tag">01 / Extensions</span><h2 id="svc-title">What we build</h2></div>
+    <p>We only do extensions and lofts. No bathrooms, no driveways, no small jobs. That focus is how we keep dates.</p>
+  </div>
+  <div class="blocks">
+    <article class="block reveal"><span class="block__n">01</span><h3>Single-storey rear</h3><p>The classic kitchen-diner. Steel, bifolds or sliders, rooflights and underfloor heating, built to the back of a semi or terrace.</p><span class="price">From £68,000</span></article>
+    <article class="block reveal"><span class="block__n">02</span><h3>Side return</h3><p>Filling the narrow alley on a Victorian terrace. Usually the best value per square metre you'll ever buy in Kingston or Surbiton.</p><span class="price">From £59,000</span></article>
+    <article class="block block--img reveal" aria-label="Photo of extension under construction"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=80&auto=format&fit=crop" alt="Construction team working on a building site with blockwork and scaffolding" loading="lazy" decoding="async" width="900" height="900"></article>
+    <article class="block block--wide block--dark reveal"><span class="block__n">03</span><h3>Wraparound</h3><p>Side return and rear in one L-shaped room. Needs full planning in most of our boroughs, and a structural engineer who's done a lot of them. Ours has done 61.</p><span class="price">From £112,000</span></article>
+    <article class="block reveal"><span class="block__n">04</span><h3>Two-storey</h3><p>A bigger kitchen downstairs and a bedroom with en suite upstairs. Often cheaper per m² than moving house, once you add up stamp duty.</p><span class="price">From £148,000</span></article>
+    <article class="block reveal"><span class="block__n">05</span><h3>Loft conversions</h3><p>Rear dormer and hip-to-gable lofts, usually alongside an extension so you only live with builders once.</p><span class="price">From £62,000</span></article>
+    <article class="block reveal"><span class="block__n">06</span><h3>Design and planning</h3><p>Our partner architects draw it, we price it as they draw, so you never get planning for something you can't afford to build.</p><span class="price">From £3,950</span></article>
+    <article class="block reveal"><span class="block__n">07</span><h3>Structural and party wall</h3><p>Engineer's calcs, Building Control and party wall notices handled before day one, not discovered in week three.</p><span class="price">Included</span></article>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR (signature) ============ -->
+<section class="calc" id="cost" aria-labelledby="calc-title">
+  <div class="calc__grid px">
+    <div>
+      <span class="tag tag--y">02 / Cost</span>
+      <h2 id="calc-title">What will it <em>actually</em> cost?</h2>
+      <p class="calc__intro">Real ranges from our last 80 extensions in south-west London and Surrey. Move the slider and see a number before you speak to anyone.</p>
+      <form id="calc" style="margin-top:2.5rem" onsubmit="return false">
+        <fieldset>
+          <legend>Type of extension</legend>
+          <div class="seg seg--4">
+            <label><input type="radio" name="kind" value="rear" checked><span>Rear</span></label>
+            <label><input type="radio" name="kind" value="side"><span>Side return</span></label>
+            <label><input type="radio" name="kind" value="wrap"><span>Wraparound</span></label>
+            <label><input type="radio" name="kind" value="two"><span>Two-storey</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Finish level</legend>
+          <div class="seg seg--3">
+            <label><input type="radio" name="spec" value="1" ><span>Standard</span></label>
+            <label><input type="radio" name="spec" value="1.18" checked><span>Mid</span></label>
+            <label><input type="radio" name="spec" value="1.42"><span>High</span></label>
+          </div>
+        </fieldset>
+        <div class="range-row"><label for="area" style="font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.9375rem;color:var(--yellow)">New floor area</label><output id="area-out" for="area">25 m²</output></div>
+        <input type="range" id="area" min="10" max="60" step="1" value="25" aria-describedby="area-out">
+      </form>
+    </div>
+    <div class="calc__out" aria-live="polite">
+      <span class="lbl">Estimated build cost, inc. VAT</span>
+      <p class="calc__price" id="calc-price">£69,000 to £80,000</p>
+      <span class="lbl">Time on site</span>
+      <p class="calc__weeks" id="calc-weeks">13 to 15 weeks</p>
+      <ul>
+        <li>Groundworks, structure, steel and roof</li>
+        <li>Glazing, electrics, plumbing and heating</li>
+        <li>Plastering, screed and decoration</li>
+        <li>Building Control and site clearance</li>
+      </ul>
+      <a class="btn btn--onblack" href="#quote">Get a fixed price</a>
+      <small>Excludes kitchen units, flooring finish, architect and planning fees. Your fixed price comes after a site visit and drawings.</small>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="projects" id="projects" aria-labelledby="proj-title">
+  <div class="px"><span class="tag">03 / Projects</span><h2 id="proj-title">Recent extensions</h2></div>
+  <div>
+    <article class="slab reveal">
+      <div class="slab__img"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=80&auto=format&fit=crop" alt="Open-plan kitchen with island and dining area in a side-return extension" loading="lazy" decoding="async" width="1400" height="933"></div>
+      <div class="slab__data"><span class="slab__n" aria-hidden="true">01</span><h3>Side return, Surbiton</h3><p>Victorian terrace, 22 m² added. Steel ridge beam and a full-length glass roof so the middle room finally gets daylight.</p>
+        <dl><div><dt>Time on site</dt><dd>12 weeks</dd></div><div><dt>Budget</dt><dd>£68k to £79k</dd></div><div><dt>Finished</dt><dd><span class="early">2 days early</span></dd></div><div><dt>Planning</dt><dd>Full, Kingston</dd></div></dl></div>
+    </article>
+    <article class="slab reveal">
+      <div class="slab__img"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1400&q=80&auto=format&fit=crop" alt="Kitchen and living space with large glazed doors to the garden" loading="lazy" decoding="async" width="1400" height="933"></div>
+      <div class="slab__data"><span class="slab__n" aria-hidden="true">02</span><h3>Wraparound, Teddington</h3><p>41 m² L-shaped kitchen, dining and snug. Corner glazing with no post, using a cantilevered steel frame.</p>
+        <dl><div><dt>Time on site</dt><dd>16 weeks</dd></div><div><dt>Budget</dt><dd>£128k to £142k</dd></div><div><dt>Finished</dt><dd>10 days late, £1,500 paid</dd></div><div><dt>Planning</dt><dd>Full, Richmond</dd></div></dl></div>
+    </article>
+    <article class="slab reveal">
+      <div class="slab__img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80&auto=format&fit=crop" alt="Exterior of a modern home extension at dusk with lights on inside" loading="lazy" decoding="async" width="1400" height="933"></div>
+      <div class="slab__data"><span class="slab__n" aria-hidden="true">03</span><h3>Two-storey rear, New Malden</h3><p>Kitchen-diner below, main bedroom with en suite above. Family lived in the house throughout.</p>
+        <dl><div><dt>Time on site</dt><dd>18 weeks</dd></div><div><dt>Budget</dt><dd>£165k to £182k</dd></div><div><dt>Finished</dt><dd><span class="early">On the day</span></dd></div><div><dt>Planning</dt><dd>Full, Kingston</dd></div></dl></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process" aria-labelledby="proc-title">
+  <div class="process__grid px">
+    <div class="process__aside">
+      <span class="tag">04 / Process</span>
+      <h2 id="proc-title">How it goes</h2>
+      <p>Most of our clients are first-timers. Here's every stage, so nothing comes as a surprise.</p>
+      <a class="btn btn--dark" href="#quote" style="margin-top:1.5rem">Start with a site visit</a>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><div><span class="wk">Day 1</span><h3>Free site visit</h3><p>Ben or Sam comes round, measures up, looks at the drains and the neighbours' walls, and gives you a ballpark before leaving.</p></div></li>
+      <li class="reveal"><div><span class="wk">Weeks 1 to 4</span><h3>Drawings, priced as they're drawn</h3><p>Our partner architects draw it. We price each version so the design stays inside your budget.</p></div></li>
+      <li class="reveal"><div><span class="wk">Weeks 4 to 12</span><h3>Planning and party wall</h3><p>We submit planning or a prior approval, serve party wall notices and book Building Control.</p></div></li>
+      <li class="reveal"><div><span class="wk">Contract</span><h3>Fixed price, fixed date</h3><p>One price, one completion date, and the £150 a day clause in writing. 5% deposit, no more than £5,000.</p></div></li>
+      <li class="reveal"><div><span class="wk">On site</span><h3>Build</h3><p>One site manager for the whole job. A weekly plan on a whiteboard in your hallway, and a WhatsApp group with photos every day.</p></div></li>
+      <li class="reveal"><div><span class="wk">Handover</span><h3>Keys, certificates, guarantee</h3><p>Building Control completion certificate, electrical certs, your 10-year guarantee, and a return visit at six months.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ GUARANTEE ============ -->
+<section class="guarantee" id="guarantee" aria-labelledby="g-title">
+  <div class="guarantee__grid px">
+    <p class="huge reveal" aria-hidden="true">£150<small>Every working day we're late</small></p>
+    <div class="reveal">
+      <span class="tag">05 / Guarantee</span>
+      <h2 id="g-title">Overruns are the builder's problem. Not yours.</h2>
+      <p style="font-weight:500;max-width:46ch">Budgets blow up and dates slip because nobody's on the hook. We put ourselves on it, in the contract.</p>
+      <ul class="terms">
+        <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l6 6L21 6" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>Price fixed at signing. It only changes if you change the design.</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l6 6L21 6" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>£150 for every working day past the completion date, paid before your final invoice.</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l6 6L21 6" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>Groundworks risk shown as a separate sum. Anything unused comes back to you.</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l6 6L21 6" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>Stage payments only for work that's finished. Never ahead.</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l6 6L21 6" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>10-year insurance-backed guarantee through the FMB.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="reviews" id="reviews" aria-labelledby="rev-title">
+  <div class="px">
+    <span class="tag">06 / Reviews</span>
+    <h2 id="rev-title">From people who lived through it</h2>
+    <div class="rgrid">
+      <figure class="rv rv--big reveal">
+        <blockquote>The price on the contract was the price on the final invoice. £97,400. To the pound.</blockquote>
+        <figcaption><b>Jo K.</b>Wimbledon · single-storey rear extension</figcaption>
+      </figure>
+      <figure class="rv rv--yellow reveal">
+        <blockquote>Kyle put a whiteboard in our hallway with the week's plan on it. Sounds small. It meant we never had to chase anyone.</blockquote>
+        <figcaption><b>Priya N.</b>Surbiton · side-return extension</figcaption>
+      </figure>
+      <figure class="rv rv--black reveal">
+        <blockquote>Ten days late because their steel supplier let them down. They paid the £1,500 without us asking, before the final bill. The kitchen is brilliant, and honestly I'd forgotten about the delay by Christmas.</blockquote>
+        <figcaption><b>Tom and Hannah G.</b>Teddington · wraparound extension</figcaption>
+      </figure>
+      <figure class="rv rv--concrete reveal">
+        <blockquote>Ben talked us out of the huge rooflight we wanted. Said the room would cook in July. He was right, the one next door does.</blockquote>
+        <figcaption><b>Andrew B.</b>New Malden · two-storey extension</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="px">
+    <span class="tag">07 / FAQ</span>
+    <h2 id="faq-title">Questions we get every week</h2>
+    <div class="acc" data-accordion>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="a1" id="a1b">How much does an extension cost in south-west London?<span class="acc__plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0v16M0 8h16" stroke="currentColor" stroke-width="3"/></svg></span></button></h3>
+        <div class="acc__panel" id="a1" role="region" aria-labelledby="a1b" hidden><p>In 2026, expect £2,600 to £3,800 per m² for a single-storey extension including VAT, before kitchen units. A typical 25 m² kitchen extension in Kingston or Surbiton lands between £70,000 and £95,000. Two-storey works out cheaper per m² because the foundations and roof are shared across two floors.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="a2" id="a2b">Do I need planning permission?<span class="acc__plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0v16M0 8h16" stroke="currentColor" stroke-width="3"/></svg></span></button></h3>
+        <div class="acc__panel" id="a2" role="region" aria-labelledby="a2b" hidden><p>Not always. Many single-storey rear extensions are permitted development: up to 3 m deep on a semi or terrace, or up to 6 m through the prior approval process. Side returns, wraparounds and two-storey extensions usually need full planning. Flats and homes in some conservation areas have no permitted development rights. Kingston and Richmond take around eight weeks to decide.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="a3" id="a3b">What about the party wall?<span class="acc__plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0v16M0 8h16" stroke="currentColor" stroke-width="3"/></svg></span></button></h3>
+        <div class="acc__panel" id="a3" role="region" aria-labelledby="a3b" hidden><p>If you're digging foundations near a neighbour's or building on the boundary, the Party Wall etc. Act 1996 means notices go out before work starts. We serve them for you. If a neighbour appoints their own surveyor, budget £1,000 to £2,500 per neighbour, which you pay by law.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="a4" id="a4b">How do payments work?<span class="acc__plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0v16M0 8h16" stroke="currentColor" stroke-width="3"/></svg></span></button></h3>
+        <div class="acc__panel" id="a4" role="region" aria-labelledby="a4b" hidden><p>A 5% deposit capped at £5,000, then stage payments at fixed milestones: foundations, watertight shell, first fix, plastered, and completion. You only pay for a stage once it's finished and you've seen it. Any late-day payment comes off the last invoice.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="a5" id="a5b">Can we live at home during the build?<span class="acc__plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0v16M0 8h16" stroke="currentColor" stroke-width="3"/></svg></span></button></h3>
+        <div class="acc__panel" id="a5" role="region" aria-labelledby="a5b" hidden><p>Almost everyone does. We build the new shell first and only knock through once it's watertight, usually around week eight. We'll set up a temporary kitchen, and the knock-through week is the dusty one. We sheet everything and clean every evening.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="a6" id="a6b">What if you find something in the ground?<span class="acc__plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0v16M0 8h16" stroke="currentColor" stroke-width="3"/></svg></span></button></h3>
+        <div class="acc__panel" id="a6" role="region" aria-labelledby="a6b" hidden><p>Tree roots and old drains are common round here. Your contract shows a separate groundworks sum, usually £3,000 to £6,000, based on a trial hole we dig before you sign. If we don't use it, it's deducted from your final invoice.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE FORM ============ -->
+<section class="quote" id="quote" aria-labelledby="q-title">
+  <div class="quote__grid px">
+    <div class="quote__aside">
+      <span class="tag tag--y">08 / Quote</span>
+      <h2 id="q-title">Get a <em>fixed</em> price</h2>
+      <p>Fill this in and Ben or Sam will call within one working day to book a free site visit. Evening and Saturday morning visits available.</p>
+      <a class="big-tel" href="tel:+442085463172">020 8546 3172</a>
+    </div>
+    <div>
+      <form class="form" id="quote-form" novalidate>
+        <div class="fld"><label for="name">Name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="postcode">Postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="type">Project</label>
+          <select id="type" name="type" aria-describedby="type-error" required><option value="">Choose</option><option>Single-storey rear</option><option>Side return</option><option>Wraparound</option><option>Two-storey</option><option>Loft conversion</option><option>Extension and loft</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="budget">Budget</label>
+          <select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Choose</option><option>Under £60,000</option><option>£60,000 to £90,000</option><option>£90,000 to £130,000</option><option>£130,000 to £200,000</option><option>Over £200,000</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+        <div class="fld fld--full"><label for="message">Tell us about the house</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. 1930s semi, want to open up the back, have drawings already" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+        <div class="form__foot"><small>We won't add you to a mailing list. <a href="/privacy-policy/">Privacy policy</a>.</small><button type="submit" class="btn btn--onblack">Send it</button></div>
+      </form>
+      <div class="done" id="form-success" tabindex="-1" hidden>
+        <h3>Got it<span data-first-name></span>.</h3>
+        <p>Ben or Sam will ring you within one working day to book your site visit. Can't wait? Call 020 8546 3172.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="px">
+    <div class="foot__grid">
+      <div>
+        <h3>KNOX &amp; PARRY BUILD LTD</h3>
+        <p style="max-width:30ch">House extensions and lofts in south-west London and Surrey since 2009.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/knoxandparry" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.facebook.com/knoxandparry" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.houzz.co.uk/professionals/builders/knox-and-parry" aria-label="Houzz"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v20h5v-6h2v6h5V10l-7-3V2z" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        </div>
+      </div>
+      <div><h3>YARD &amp; OFFICE</h3><address>Unit 12, Canbury Business Park<br>Elm Crescent<br>Kingston upon Thames KT2 6HJ<br><a href="tel:+442085463172">020 8546 3172</a><br><a href="mailto:hello@knoxparry.co.uk">hello@knoxparry.co.uk</a></address></div>
+      <div><h3>HOURS</h3><ul><li>Mon to Fri, 8am to 5.30pm</li><li>Saturday, 9am to 12pm</li><li>Site visits until 7pm by appointment</li></ul></div>
+      <div><h3>AREAS</h3><ul><li>Kingston and Surbiton</li><li>Richmond and Twickenham</li><li>Teddington</li><li>Wimbledon and New Malden</li><li>Esher and Thames Ditton</li><li>Epsom</li></ul></div>
+    </div>
+    <div class="foot__base">
+      <span>© <span id="yr">2026</span> Knox &amp; Parry Build Ltd. Registered in England no. 06893517. VAT GB 973 2264 18.</span>
+      <ul><li><a href="/privacy-policy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/complaints/">Complaints</a></li><li><a href="/cookies/">Cookies</a></li></ul>
+    </div>
+  </div>
+  <p class="foot__word" aria-hidden="true">Knox&amp;Parry</p>
+</footer>
+
+<a class="fab" href="tel:+442085463172" aria-label="Call Knox and Parry on 020 8546 3172"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></a>
+
+<script>
+/* Knox & Parry: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- nav: hide on scroll down, reveal on scroll up --- */
+  var nav = document.getElementById('nav'), lastY = 0;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    nav.classList.toggle('is-hidden', y > lastY && y > 300);
+    lastY = y;
+  }, {passive:true});
+
+  /* --- overlay menu with focus handling --- */
+  var btn = document.querySelector('.nav__menu'), ov = document.getElementById('overlay'), closeBtn = ov.querySelector('.overlay__close');
+  function openMenu(){ ov.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; closeBtn.focus(); }
+  function closeMenu(){ ov.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; btn.focus(); }
+  btn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  ov.addEventListener('click', function(e){ if(e.target.closest('a')){ ov.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; } });
+  document.addEventListener('keydown', function(e){
+    if(!ov.classList.contains('is-open')) return;
+    if(e.key === 'Escape') closeMenu();
+    if(e.key === 'Tab'){ /* keep focus inside the overlay */
+      var f = ov.querySelectorAll('a,button'), first = f[0], last = f[f.length-1];
+      if(e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+      else if(!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+    }
+  });
+
+  /* --- hero load-in --- */
+  requestAnimationFrame(function(){ document.querySelector('.hero').classList.add('is-ready'); });
+
+  /* --- reveal --- */
+  var items = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){ items.forEach(function(el){ el.classList.add('is-in'); }); }
+  else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, {threshold:.12});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* --- counters --- */
+  if(!reduce && 'IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target, end = +el.dataset.count, t0 = null;
+        (function step(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/1000,1);
+          el.textContent = Math.round(end*(1-Math.pow(1-p,3))).toLocaleString('en-GB'); if(p<1) requestAnimationFrame(step); })(performance.now());
+        cio.unobserve(el);
+      });
+    }, {threshold:.5});
+    document.querySelectorAll('[data-count]').forEach(function(c){ c.textContent='0'; cio.observe(c); });
+  }
+
+  /* --- extension cost calculator (signature) ---
+     Rates per m² inc. VAT, from recent jobs. Edit here to update. */
+  var KINDS = {
+    rear: {rate:2700, weeks:9},
+    side: {rate:2950, weeks:9},
+    wrap: {rate:3050, weeks:11},
+    two:  {rate:2350, weeks:13}
+  };
+  var calc = document.getElementById('calc'), area = document.getElementById('area'),
+      areaOut = document.getElementById('area-out'), priceEl = document.getElementById('calc-price'), weeksEl = document.getElementById('calc-weeks');
+  var shown = {lo:0, hi:0}, anim = null;
+  function fmt(n){ return '£' + n.toLocaleString('en-GB'); }
+  function update(){
+    var k = KINDS[calc.querySelector('[name=kind]:checked').value];
+    var spec = parseFloat(calc.querySelector('[name=spec]:checked').value);
+    var a = +area.value, base = a * k.rate * spec;
+    var lo = Math.round(base*.93/1000)*1000, hi = Math.round(base*1.08/1000)*1000;
+    var w = Math.round(k.weeks + a/8);
+    areaOut.textContent = a + ' m²';
+    weeksEl.textContent = w + ' to ' + (w+2) + ' weeks';
+    if(reduce){ priceEl.textContent = fmt(lo) + ' to ' + fmt(hi); shown = {lo:lo,hi:hi}; return; }
+    var from = {lo:shown.lo, hi:shown.hi}, t0 = null;
+    cancelAnimationFrame(anim);
+    (function step(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/350,1), e = 1-Math.pow(1-p,3);
+      shown.lo = Math.round((from.lo + (lo-from.lo)*e)/100)*100; shown.hi = Math.round((from.hi + (hi-from.hi)*e)/100)*100;
+      if(p === 1){ shown.lo = lo; shown.hi = hi; }
+      priceEl.textContent = fmt(shown.lo) + ' to ' + fmt(shown.hi);
+      if(p < 1) anim = requestAnimationFrame(step); })(performance.now());
+  }
+  calc.addEventListener('input', update); calc.addEventListener('change', update);
+  update();
+
+  /* --- accordion --- */
+  document.querySelectorAll('[data-accordion] .acc__btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open));
+      document.getElementById(b.getAttribute('aria-controls')).hidden = open;
+    });
+  });
+
+  /* --- quote form validation --- */
+  var form = document.getElementById('quote-form'), done = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'We need your name.'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'UK number please, e.g. 07700 900412.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'That email doesn’t look right.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Full postcode please, e.g. KT6 4QA.'; },
+    type: function(v){ return v !== '' || 'Pick a project type.'; },
+    budget: function(v){ return v !== '' || 'Pick a budget range.'; },
+    message: function(v){ return v.trim().length >= 10 || 'A line or two about the house, please.'; }
+  };
+  function check(f){
+    var r = rules[f.name]; if(!r) return true;
+    var res = r(f.value), err = document.getElementById(f.name + '-error');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; return false; }
+    f.removeAttribute('aria-invalid'); err.textContent = ''; return true;
+  }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    done.querySelector('[data-first-name]').textContent = ', ' + document.getElementById('name').value.trim().split(' ')[0];
+    form.hidden = true; done.hidden = false; done.focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

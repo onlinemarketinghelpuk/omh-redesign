@@ -1,5 +1,38 @@
 [
   {
+    "slug": "accountancy",
+    "title": "Accountancy Designs",
+    "items": [
+      {
+        "demo": "/portfolio/accountancy/calder-and-wyke.html",
+        "shot": "/portfolio/accountancy/calder-and-wyke.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Calder & Wyke accountancy website design: Chartered Accountants for Owner-Managed Businesses, Leeds"
+      }
+    ]
+  },
+  {
+    "slug": "construction",
+    "title": "Construction Designs",
+    "items": [
+      {
+        "demo": "/portfolio/construction/datum-fit-out.html",
+        "shot": "/portfolio/construction/datum-fit-out.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Datum Fit-Out construction website design: Office Fit-Out Contractors in Manchester"
+      },
+      {
+        "demo": "/portfolio/construction/knox-and-parry.html",
+        "shot": "/portfolio/construction/knox-and-parry.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Knox & Parry construction website design: House Extensions in Kingston, Richmond & Surrey"
+      }
+    ]
+  },
+  {
     "slug": "ecommerce",
     "title": "Ecommerce Designs",
     "items": [
@@ -37,54 +70,156 @@
         "width": 990,
         "height": 4950,
         "alt": "Forge & Table ecommerce website design: Sheffield Cutlery, Bone China & Kitchenware"
+      },
+      {
+        "demo": "/portfolio/ecommerce/ember-lane.html",
+        "shot": "/portfolio/ecommerce/ember-lane.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Ember Lane Coffee Roasters ecommerce website design: Fresh Coffee Subscriptions from Glasgow"
+      },
+      {
+        "demo": "/portfolio/ecommerce/kiln-and-tide.html",
+        "shot": "/portfolio/ecommerce/kiln-and-tide.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Kiln & Tide ecommerce website design: Handmade Stoneware from Penryn, Cornwall"
+      },
+      {
+        "demo": "/portfolio/ecommerce/second-charge.html",
+        "shot": "/portfolio/ecommerce/second-charge.jpg",
+        "width": 990,
+        "height": 4912,
+        "alt": "Second Charge ecommerce website design: Refurbished Laptops, Phones & Tablets with 18-Month Warranty"
       }
     ]
   },
   {
-    "slug": "legal-firm",
-    "title": "Legal Firm Designs",
+    "slug": "legal",
+    "title": "Legal Designs",
     "items": [
       {
-        "demo": "/portfolio/legal-firm/1-halden-rowe-solicitors.html",
-        "shot": "/portfolio/legal-firm/1-halden-rowe-solicitors.jpg",
+        "demo": "/portfolio/legal/1-halden-rowe-solicitors.html",
+        "shot": "/portfolio/legal/1-halden-rowe-solicitors.jpg",
         "width": 990,
         "height": 4950,
-        "alt": "Halden Rowe Solicitors legal firm website design: Family, Property, Wills & Employment Lawyers in Leeds"
+        "alt": "Halden Rowe Solicitors legal website design: Family, Property, Wills & Employment Lawyers in Leeds"
       },
       {
-        "demo": "/portfolio/legal-firm/2-ashcombe-pryor-solicitors.html",
-        "shot": "/portfolio/legal-firm/2-ashcombe-pryor-solicitors.jpg",
+        "demo": "/portfolio/legal/2-ashcombe-pryor-solicitors.html",
+        "shot": "/portfolio/legal/2-ashcombe-pryor-solicitors.jpg",
         "width": 990,
         "height": 4950,
-        "alt": "Ashcombe Pryor Solicitors legal firm website design: Private client and family solicitors, Chancery Lane"
+        "alt": "Ashcombe Pryor Solicitors legal website design: Private client and family solicitors, Chancery Lane"
       },
       {
-        "demo": "/portfolio/legal-firm/3-wainwright-cole-solicitors.html",
-        "shot": "/portfolio/legal-firm/3-wainwright-cole-solicitors.jpg",
+        "demo": "/portfolio/legal/3-wainwright-cole-solicitors.html",
+        "shot": "/portfolio/legal/3-wainwright-cole-solicitors.jpg",
         "width": 990,
         "height": 4950,
-        "alt": "Wainwright & Cole Solicitors legal firm website design: Manchester & Chester Law Firm"
+        "alt": "Wainwright & Cole Solicitors legal website design: Manchester & Chester Law Firm"
       },
       {
-        "demo": "/portfolio/legal-firm/4-harland-price-solicitors.html",
-        "shot": "/portfolio/legal-firm/4-harland-price-solicitors.jpg",
+        "demo": "/portfolio/legal/4-harland-price-solicitors.html",
+        "shot": "/portfolio/legal/4-harland-price-solicitors.jpg",
         "width": 990,
         "height": 4950,
-        "alt": "Harland Price Solicitors legal firm website design: Employment and Business Law, Birmingham"
+        "alt": "Harland Price Solicitors legal website design: Employment and Business Law, Birmingham"
       },
       {
-        "demo": "/portfolio/legal-firm/5-montague-vere-litigation.html",
-        "shot": "/portfolio/legal-firm/5-montague-vere-litigation.jpg",
+        "demo": "/portfolio/legal/5-montague-vere-litigation.html",
+        "shot": "/portfolio/legal/5-montague-vere-litigation.jpg",
         "width": 990,
         "height": 4950,
-        "alt": "Montague Vere legal firm website design: Commercial Litigation & Arbitration Solicitors, Fleet Street, London"
+        "alt": "Montague Vere legal website design: Commercial Litigation & Arbitration Solicitors, Fleet Street, London"
       },
       {
-        "demo": "/portfolio/legal-firm/6-ashdown-rourke-solicitors.html",
-        "shot": "/portfolio/legal-firm/6-ashdown-rourke-solicitors.jpg",
+        "demo": "/portfolio/legal/6-ashdown-rourke-solicitors.html",
+        "shot": "/portfolio/legal/6-ashdown-rourke-solicitors.jpg",
         "width": 990,
         "height": 4950,
-        "alt": "Ashdown Rourke Solicitors legal firm website design: Construction and Property Lawyers in Bristol"
+        "alt": "Ashdown Rourke Solicitors legal website design: Construction and Property Lawyers in Bristol"
+      }
+    ]
+  },
+  {
+    "slug": "marketing",
+    "title": "Marketing Designs",
+    "items": [
+      {
+        "demo": "/portfolio/marketing/signal-forty.html",
+        "shot": "/portfolio/marketing/signal-forty.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Signal Forty marketing website design: B2B Google Ads, LinkedIn Ads & SEO Agency, Leeds"
+      }
+    ]
+  },
+  {
+    "slug": "medical",
+    "title": "Medical Designs",
+    "items": [
+      {
+        "demo": "/portfolio/medical/1-kingsmere-hospital-london.html",
+        "shot": "/portfolio/medical/1-kingsmere-hospital-london.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Kingsmere Hospital medical website design: Private hospital in Marylebone, London"
+      },
+      {
+        "demo": "/portfolio/medical/2-northbrook-childrens-hospital.html",
+        "shot": "/portfolio/medical/2-northbrook-childrens-hospital.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Northbrook Children's Hospital medical website design: Independent children's hospital in Manchester"
+      },
+      {
+        "demo": "/portfolio/medical/3-clearwater-eye-hospital.html",
+        "shot": "/portfolio/medical/3-clearwater-eye-hospital.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Clearwater Eye Hospital medical website design: Cataract, laser and lens surgery in Birmingham"
+      },
+      {
+        "demo": "/portfolio/medical/4-thornfield-orthopaedic-hospital.html",
+        "shot": "/portfolio/medical/4-thornfield-orthopaedic-hospital.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Thornfield Orthopaedic & Sports Hospital medical website design: Private orthopaedic hospital in Leeds"
+      },
+      {
+        "demo": "/portfolio/medical/5-linden-womens-hospital.html",
+        "shot": "/portfolio/medical/5-linden-womens-hospital.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "The Linden Women's Hospital medical website design: Private maternity, scans and gynaecology in Edinburgh"
+      },
+      {
+        "demo": "/portfolio/medical/6-aldridge-heart-hospital.html",
+        "shot": "/portfolio/medical/6-aldridge-heart-hospital.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Aldridge Heart Hospital medical website design: Private cardiac care in Cardiff"
+      }
+    ]
+  },
+  {
+    "slug": "non-profit",
+    "title": "Non Profit Designs",
+    "items": [
+      {
+        "demo": "/portfolio/non-profit/hartwell-trust.html",
+        "shot": "/portfolio/non-profit/hartwell-trust.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "The Hartwell Trust non profit website design: Funding MND Research from Sheffield"
+      },
+      {
+        "demo": "/portfolio/non-profit/open-table-hull.html",
+        "shot": "/portfolio/non-profit/open-table-hull.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Open Table Hull non profit website design: Food Bank and Community Pantry in Hull"
       }
     ]
   }

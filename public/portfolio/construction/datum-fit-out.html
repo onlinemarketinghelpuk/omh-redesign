@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datum Fit-Out | Office Fit-Out Contractors in Manchester</title>
+<meta name="description" content="Cat A, Cat B and live office refurbishments across Manchester, Leeds and Liverpool. 96.7% of our last 120 projects handed over on or before programme. Fixed programme, LADs accepted.">
+<link rel="canonical" href="https://www.datumfitout.co.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Datum Fit-Out | Commercial Fit-Out, Manchester">
+<meta property="og:description" content="Office fit-outs handed over on the date in the programme. Cat A, Cat B and live refurbishments across the North West and Leeds.">
+<meta property="og:url" content="https://www.datumfitout.co.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#12395E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Datum Fit-Out Ltd",
+  "description": "Commercial fit-out contractor delivering Cat A, Cat B, office refurbishment, hospitality and design and build projects across Manchester, Leeds and Liverpool.",
+  "url": "https://www.datumfitout.co.uk/",
+  "telephone": "+441618324417",
+  "email": "projects@datumfitout.co.uk",
+  "foundingDate": "2011",
+  "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Unit 6, Jersey Street Works, 24 Jersey Street",
+    "addressLocality": "Manchester",
+    "postalCode": "M4 6JB",
+    "addressCountry": "GB"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 53.4848, "longitude": -2.2271 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "18:00" }
+  ],
+  "areaServed": ["Manchester","Salford","Trafford","Stockport","Altrincham","Bolton","Warrington","Leeds","Liverpool"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "57" }
+}
+</script>
+<style>
+/* =========================================================
+   DATUM FIT-OUT
+   Art direction: industrial / technical. Drawing sheet logic:
+   blueprint grid, title blocks, dimension lines, mono labels.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --paper:#EEF1F2;
+  --paper-2:#E1E7EA;
+  --navy:#12395E;
+  --navy-2:#0B2742;
+  --ink:#0D1B26;
+  --ink-2:#3E5263;
+  --accent:#C2410C;          /* safety orange, AA with white text */
+  --accent-soft:#F6D9C8;
+  --rule:#9DB0C0;
+  --grid:rgba(18,57,94,.07);
+  --grid-major:rgba(18,57,94,.13);
+  --error:#B42318;
+
+  --f-sans:'Archivo', 'Arial Narrow', Arial, sans-serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --t-mono:.75rem;
+  --t-sm:.9rem;
+  --t-base:1rem;
+  --t-lg:1.15rem;
+  --t-xl:clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  --t-2xl:clamp(2.2rem, 1.3rem + 3.6vw, 4.2rem);
+  --t-hero:clamp(2.4rem, 1.1rem + 4.4vw, 5.4rem);
+
+  --u:8px;                    /* base spacing unit */
+  --s-1:calc(var(--u)*1); --s-2:calc(var(--u)*2); --s-3:calc(var(--u)*3); --s-4:calc(var(--u)*5); --s-5:calc(var(--u)*8); --s-6:calc(var(--u)*12);
+
+  --wrap:min(1320px, 100% - 2rem);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--t-base)/1.55 var(--f-sans);font-stretch:100%}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:800;font-stretch:75%;line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+p{margin:0 0 var(--s-2)}
+.wrap{width:var(--wrap);margin-inline:auto}
+.mono{font-family:var(--f-mono);font-size:var(--t-mono);letter-spacing:.04em;text-transform:uppercase}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:.75rem 1rem;z-index:200}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:2px dashed var(--accent);outline-offset:3px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* blueprint grid used on several sections */
+.grid-bg{background-color:var(--paper);background-image:
+  linear-gradient(var(--grid-major) 1px,transparent 1px),linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
+  linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px}
+
+/* section header: number / title / drawing ref, joined by a rule */
+.sh{display:flex;align-items:center;gap:var(--s-2);margin-bottom:var(--s-4);color:var(--ink-2)}
+.sh::after{content:"";flex:1;height:1px;background:var(--rule);order:2}
+.sh .ref{order:3}
+.sh b{color:var(--accent);font-weight:500}
+
+/* buttons: square, heavy, arrow box */
+.btn{display:inline-flex;align-items:stretch;text-decoration:none;font:700 var(--t-sm)/1 var(--f-sans);font-stretch:87%;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer}
+.btn span{padding:1rem 1.25rem;display:flex;align-items:center;white-space:nowrap}
+.btn i{display:grid;place-items:center;width:3rem;background:var(--accent);border-left:2px solid var(--ink);transition:width .3s var(--ease)}
+.btn:hover i{width:3.6rem}
+.btn--line{background:transparent;color:var(--ink)}
+.btn--line i{background:transparent}
+.btn--sm span{padding:.7rem .9rem}.btn--sm i{width:2.4rem}
+
+/* ---------- 3. Navigation ---------- */
+.hdr{position:sticky;top:0;z-index:60}
+.util{background:var(--navy-2);color:#C9D6E2;transition:margin .35s var(--ease)}
+.util .wrap{display:flex;justify-content:space-between;gap:var(--s-2);padding:.45rem 0;overflow:hidden;white-space:nowrap}
+.hdr.is-scrolled .util{margin-top:-2.05rem}
+.bar{background:var(--paper);border-bottom:1px solid var(--rule);transition:box-shadow .3s}
+.hdr.is-scrolled .bar{box-shadow:0 2px 0 var(--ink)}
+.bar .wrap{display:flex;align-items:stretch;min-height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;padding-right:var(--s-3);border-right:1px solid var(--rule);margin-right:auto}
+.logo strong{font-weight:800;font-stretch:62%;font-size:1.9rem;letter-spacing:.02em;line-height:1}
+.logo small{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;color:var(--ink-2);line-height:1.2;white-space:nowrap}
+.logo > span{display:flex;flex-direction:column;gap:.15rem}
+.logo > span br{display:none}
+.menu{display:flex;align-items:stretch}
+.menu nav{display:flex;align-items:stretch}
+.menu ul{display:flex;align-items:stretch;list-style:none;margin:0;padding:0}
+.menu li{display:flex}
+.menu li a{display:flex;align-items:center;gap:.45rem;height:100%;padding:0 .85rem;border-right:1px solid var(--rule);text-decoration:none;font-weight:600;white-space:nowrap;font-stretch:87%;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.04em;transition:background .2s}
+.menu li a::before{content:attr(data-n);font:400 .68rem var(--f-mono);color:var(--accent)}
+.menu li a:hover{background:var(--paper-2)}
+.menu .tel{display:flex;align-items:center;padding:0 1rem;text-decoration:none;font-family:var(--f-mono);font-size:var(--t-sm);font-weight:500;white-space:nowrap}
+.menu .btn{align-self:center;margin-left:.5rem}
+.burger{display:none;align-items:center;gap:.6rem;background:none;border:0;border-left:1px solid var(--rule);padding:0 1rem;font:500 var(--t-mono) var(--f-mono);letter-spacing:.08em;color:var(--ink);cursor:pointer}
+.burger svg rect{transition:transform .25s var(--ease)}
+.burger[aria-expanded="true"] .b1{transform:translate(0,4px)}.burger[aria-expanded="true"] .b3{transform:translate(0,-4px)}
+.call-icon{display:none}
+@media (max-width:1379px){
+  .menu nav{display:block}
+  .menu li{display:block}
+  .burger{display:flex}
+  .call-icon{display:flex;align-items:center;padding:0 1rem;border-left:1px solid var(--rule)}
+  .menu{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:2px solid var(--ink);flex-direction:column;align-items:stretch;display:none}
+  .menu.is-open{display:flex}
+  .menu ul{flex-direction:column}
+  .menu li a{padding:1rem;border-right:0;border-top:1px solid var(--rule);font-size:1.15rem;height:auto}
+  .menu .tel{padding:1rem;border-top:1px solid var(--rule)}
+  .menu .btn{margin:1rem;align-self:flex-start}
+  .util .hide-sm{display:none}
+}
+@media (max-width:420px){.logo{padding-right:.75rem;gap:.45rem}.call-icon,.burger{padding:0 .75rem}}
+
+/* ---------- 4. Hero: drawing sheet ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:2px solid var(--ink)}
+.hero .wrap{display:grid;grid-template-columns:1fr;gap:var(--s-4);padding:var(--s-5) 0 var(--s-4)}
+.hero h1{font-size:var(--t-hero);font-stretch:68%}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero__lede{font-size:var(--t-lg);max-width:46ch;color:var(--ink-2);margin-top:var(--s-3)}
+.frame{position:relative;padding:28px 0 0 34px}
+.frame__img{background:var(--rule);aspect-ratio:4/3;overflow:hidden;border:2px solid var(--ink)}
+.frame__img img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+/* dimension lines */
+.dim{position:absolute;font-family:var(--f-mono);font-size:.68rem;color:var(--navy);letter-spacing:.06em}
+.dim--top{top:0;left:34px;right:0;height:20px;border-left:1px solid var(--navy);border-right:1px solid var(--navy);display:flex;align-items:center;justify-content:center}
+.dim--top::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--navy)}
+.dim--top span,.dim--side span{position:relative;background:var(--paper);padding:0 .4rem}
+.dim--side{left:0;top:28px;bottom:0;width:24px;border-top:1px solid var(--navy);border-bottom:1px solid var(--navy);display:flex;align-items:center;justify-content:center}
+.dim--side::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--navy)}
+.dim--side span{writing-mode:vertical-rl;transform:rotate(180deg);padding:.4rem 0}
+.callout{position:absolute;right:-1px;bottom:18%;background:var(--accent);color:#fff;padding:.5rem .7rem;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em}
+.callout::before{content:"";position:absolute;right:100%;top:50%;width:60px;height:1px;background:var(--accent)}
+.callout::after{content:"";position:absolute;right:calc(100% + 56px);top:calc(50% - 4px);width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);background:var(--paper)}
+/* title block */
+.tblock{display:grid;grid-template-columns:repeat(2,1fr);border:2px solid var(--ink);background:var(--paper)}
+.tblock > div{padding:.6rem .8rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.tblock dt{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.08em;color:var(--ink-2);text-transform:uppercase}
+.tblock dd{margin:.15rem 0 0;font-weight:700;font-stretch:87%;font-size:1.05rem}
+.tblock__cta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;padding:.8rem!important;border-right:0!important;border-bottom:0!important}
+.tblock__cta a.tel{font-family:var(--f-mono);font-weight:500;text-decoration:none}
+@media (min-width:640px){.tblock{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1024px){
+  .hero .wrap{grid-template-columns:1.15fr .85fr;grid-template-rows:auto auto;column-gap:var(--s-5)}
+  .hero__copy{grid-row:1/3;align-self:center}
+  .tblock{grid-column:1/-1}
+}
+/* crosshair (signature interaction, pointer devices only) */
+.xh{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;z-index:3}
+.hero:hover .xh{opacity:1}
+.xh::before,.xh::after{content:"";position:absolute;background:var(--accent);opacity:.55}
+.xh::before{left:0;right:0;top:var(--cy,50%);height:1px}
+.xh::after{top:0;bottom:0;left:var(--cx,50%);width:1px}
+.xh span{position:absolute;left:calc(var(--cx,50%) + 10px);top:calc(var(--cy,50%) + 10px);background:var(--ink);color:#fff;font:500 .68rem var(--f-mono);padding:.3rem .45rem;letter-spacing:.06em;white-space:nowrap}
+@media (hover:hover) and (pointer:fine){.hero{cursor:crosshair}}
+@media not all and (hover:hover){.xh{display:none}}
+
+/* ---------- 5. Trust bar: certificate strip ---------- */
+.certs{background:var(--ink);color:#E6ECF1}
+.certs ul{list-style:none;margin:0 auto;padding:0;width:var(--wrap);display:grid;grid-template-columns:repeat(2,1fr)}
+.certs li{padding:1rem;border-right:1px solid #2B3E4E;border-bottom:1px solid #2B3E4E;display:flex;flex-direction:column;gap:.25rem}
+.certs li .mono{color:#F4A77D}
+.certs li strong{font-stretch:87%;font-size:1.05rem}
+@media (min-width:760px){.certs ul{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1180px){.certs ul{grid-template-columns:repeat(6,1fr)}.certs li{border-bottom:0}}
+
+/* ---------- 6. Numbers ---------- */
+.numbers{padding:var(--s-6) 0}
+.numbers__grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:2px solid var(--ink)}
+.numbers__grid div{padding:var(--s-3) var(--s-2) var(--s-3) 0;border-bottom:1px solid var(--rule)}
+.numbers__grid .val{font-weight:800;font-stretch:62%;font-size:clamp(2.6rem,1.6rem + 3.5vw,4.6rem);line-height:1;display:block}
+.numbers__grid .val small{font-size:.45em;color:var(--accent)}
+@media (min-width:900px){.numbers__grid{grid-template-columns:repeat(4,1fr)}.numbers__grid div{border-right:1px solid var(--rule);padding-left:var(--s-2)}.numbers__grid div:first-child{padding-left:0}.numbers__grid div:last-child{border-right:0}}
+
+/* ---------- 7. Services: schedule table ---------- */
+.services{padding:0 0 var(--s-6)}
+.services h2{font-size:var(--t-2xl);max-width:16ch;margin-bottom:var(--s-4)}
+.sched{border-top:2px solid var(--ink)}
+.sched__row{display:grid;grid-template-columns:4.5rem 1fr;gap:.25rem var(--s-2);padding:var(--s-3) 0;border-bottom:1px solid var(--rule);transition:background .2s}
+.sched__row:hover{background:var(--paper-2)}
+.sched__row .code{color:var(--accent);grid-row:span 3}
+.sched__row h3{font-size:1.6rem;font-stretch:75%}
+.sched__row p{margin:0;color:var(--ink-2);max-width:62ch}
+.sched__row .rate{font-family:var(--f-mono);font-size:var(--t-mono);color:var(--ink)}
+.sched__head{display:none}
+@media (min-width:960px){
+  .sched__row,.sched__head{grid-template-columns:5rem 1.1fr 2fr 1fr;align-items:baseline;padding-inline:.5rem}
+  .sched__row .code{grid-row:auto}
+  .sched__head{display:grid;padding:.6rem .5rem;border-bottom:1px solid var(--ink);color:var(--ink-2)}
+  .sched__row .rate{text-align:right}
+}
+
+/* ---------- 8. Projects: horizontal scroll ---------- */
+.projects{padding:var(--s-6) 0;background:var(--navy);color:#E6ECF1;overflow:hidden}
+.projects .sh{color:#B7C7D6}.projects .sh::after{background:#3B5B7A}.projects .sh b{color:#F4A77D}
+.projects__top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s-3);margin-bottom:var(--s-4)}
+.projects h2{font-size:var(--t-2xl);max-width:14ch;color:#fff}
+.arrows{display:flex;gap:0}
+.arrows button{width:52px;height:52px;background:transparent;border:1px solid #7F9AB3;color:#fff;cursor:pointer;display:grid;place-items:center}
+.arrows button + button{border-left:0}
+.arrows button:hover{background:var(--accent);border-color:var(--accent)}
+.rail{display:flex;gap:var(--s-3);overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(1rem,(100% - 1320px)/2) var(--s-3);scrollbar-width:thin;scrollbar-color:#7F9AB3 transparent;cursor:grab}
+.rail.is-drag{cursor:grabbing;scroll-snap-type:none}
+.rail:focus-visible{outline-offset:-4px}
+.proj{flex:0 0 min(84vw,440px);scroll-snap-align:start;background:var(--navy-2);border:1px solid #3B5B7A}
+.proj__img{aspect-ratio:4/3;background:#2A4A68;overflow:hidden;position:relative}
+.proj__img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);pointer-events:none}
+.proj:hover .proj__img img{transform:scale(1.04)}
+.proj__img .mono{position:absolute;top:.6rem;left:.6rem;background:var(--accent);color:#fff;padding:.25rem .45rem}
+.proj__body{padding:var(--s-3)}
+.proj h3{font-size:1.5rem;font-stretch:75%;color:#fff;margin-bottom:.6rem}
+.proj p{color:#C9D6E2;font-size:var(--t-sm)}
+.spec{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #3B5B7A;margin:0}
+.spec div{padding:.55rem 0;border-bottom:1px solid #3B5B7A}
+.spec div:nth-child(odd){padding-right:.5rem;border-right:1px solid #3B5B7A}
+.spec div:nth-child(even){padding-left:.75rem}
+.spec dt{font:400 .65rem var(--f-mono);letter-spacing:.08em;color:#9FB6CB;text-transform:uppercase}
+.spec dd{margin:0;font-weight:600;color:#fff}
+
+/* ---------- 9. Process: Gantt programme ---------- */
+.process{padding:var(--s-6) 0}
+.process h2{font-size:var(--t-2xl);max-width:18ch;margin-bottom:var(--s-2)}
+.process__intro{max-width:58ch;color:var(--ink-2);margin-bottom:var(--s-4)}
+.gantt-wrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper)}
+.gantt{min-width:760px;display:grid;grid-template-columns:230px repeat(14,1fr)}
+.gantt > *{border-bottom:1px solid var(--rule);min-height:46px;display:flex;align-items:center}
+.g-head{font:500 .66rem var(--f-mono);color:var(--ink-2);justify-content:center;border-left:1px solid var(--rule);background:var(--paper-2);min-height:34px}
+.g-head:first-child{justify-content:flex-start;padding-left:.75rem;border-left:0}
+.g-label{padding:0 .75rem;font-weight:600;font-stretch:87%;font-size:var(--t-sm);border-right:1px solid var(--ink);background:var(--paper)}
+.g-track{grid-column:2/-1;position:relative;background-image:linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:calc(100%/14) 100%}
+.g-bar{position:absolute;top:12px;bottom:12px;left:calc(var(--s)/14*100%);width:calc((var(--e) - var(--s))/14*100%);background:var(--navy);transform-origin:left;display:flex;align-items:center;padding-left:.5rem;color:#fff;font:500 .62rem var(--f-mono);letter-spacing:.05em;white-space:nowrap;overflow:hidden}
+.g-bar--key{background:var(--accent)}
+.g-bar--ms{width:14px;left:calc(var(--s)/14*100% - 7px);background:none;padding:0;overflow:visible}
+.g-bar--ms::before{content:"";width:14px;height:14px;background:var(--accent);transform:rotate(45deg)}
+.g-bar--ms span{position:absolute;left:22px;color:var(--ink)}
+.js .gantt .g-bar:not(.g-bar--ms){transform:scaleX(0);transition:transform .9s var(--ease)}
+.js .gantt.is-in .g-bar{transform:scaleX(1)}
+.steps-notes{display:grid;gap:var(--s-3);margin-top:var(--s-4);list-style:none;padding:0;counter-reset:st}
+.steps-notes li{border-left:2px solid var(--accent);padding-left:var(--s-2)}
+.steps-notes h3{font-size:1.2rem;font-stretch:87%;margin-bottom:.35rem}
+.steps-notes p{color:var(--ink-2);font-size:var(--t-sm);margin:0}
+@media (min-width:860px){.steps-notes{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- 10. Guarantees: tolerances ---------- */
+.tol{padding:var(--s-6) 0;border-block:2px solid var(--ink)}
+.tol__grid{display:grid;gap:0;border-left:1px solid var(--rule)}
+.tol h2{font-size:var(--t-2xl);max-width:15ch;margin-bottom:var(--s-4)}
+.tol__item{padding:var(--s-3);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);border-top:1px solid var(--rule);margin-top:-1px;background:var(--paper)}
+.tol__item .big{display:block;font-weight:800;font-stretch:62%;font-size:clamp(3rem,2rem + 3vw,4.6rem);line-height:1;color:var(--navy)}
+.tol__item .big em{font-style:normal;color:var(--accent)}
+.tol__item h3{font-size:1.25rem;font-stretch:87%;margin:.6rem 0 .5rem}
+.tol__item p{color:var(--ink-2);margin:0;font-size:var(--t-sm)}
+@media (min-width:760px){.tol__grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1180px){.tol__grid{grid-template-columns:1.4fr 1fr 1fr}.tol__item:first-child{grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper-2)}}
+
+/* ---------- 11. Testimonials: site notes ---------- */
+.notes{padding:var(--s-6) 0}
+.notes__grid{display:grid;gap:var(--s-3)}
+.note{margin:0;border:1px solid var(--ink);background:var(--paper)}
+.note__head{display:flex;justify-content:space-between;gap:1rem;padding:.55rem .8rem;border-bottom:1px solid var(--ink);background:var(--paper-2)}
+.note blockquote{margin:0;padding:var(--s-3) var(--s-3) var(--s-2);font-size:var(--t-lg);line-height:1.5}
+.note figcaption{padding:0 var(--s-3) var(--s-3);font-size:var(--t-sm);color:var(--ink-2)}
+.note figcaption b{color:var(--ink);display:block;font-stretch:87%;font-size:1rem}
+.note--lead blockquote{font-size:clamp(1.3rem,1rem + 1vw,1.75rem);font-weight:600;font-stretch:87%;line-height:1.3}
+@media (min-width:960px){.notes__grid{grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto}.note--lead{grid-row:span 2}}
+
+/* ---------- 12. FAQ ---------- */
+.faq{padding:var(--s-6) 0;background:var(--paper-2)}
+.faq__grid{display:grid;gap:var(--s-4)}
+.faq h2{font-size:var(--t-2xl);max-width:12ch}
+.faq__aside p{color:var(--ink-2);max-width:34ch;margin-top:var(--s-3)}
+.acc{border-top:2px solid var(--ink)}
+.acc__item{border-bottom:1px solid var(--ink)}
+.acc__btn{width:100%;display:grid;grid-template-columns:3.5rem 1fr 32px;align-items:center;gap:.5rem;background:none;border:0;padding:1.1rem 0;text-align:left;color:var(--ink);cursor:pointer;font:700 1.15rem/1.25 var(--f-sans);font-stretch:87%}
+.acc__btn .q{font:500 var(--t-mono) var(--f-mono);color:var(--accent)}
+.acc__sq{width:32px;height:32px;border:1px solid var(--ink);display:grid;place-items:center;transition:background .2s}
+.acc__sq svg{transition:transform .3s var(--ease)}
+.acc__btn:hover .acc__sq{background:var(--paper)}
+.acc__btn[aria-expanded="true"] .acc__sq{background:var(--ink);color:#fff}
+.acc__btn[aria-expanded="true"] .acc__sq svg{transform:rotate(45deg)}
+.acc__panel{padding:0 0 1.2rem 4rem;color:var(--ink-2);max-width:72ch}
+.acc__panel p{margin:0}
+@media (min-width:960px){.faq__grid{grid-template-columns:.7fr 1.3fr;gap:var(--s-5)}}
+
+/* ---------- 13. Form ---------- */
+.enquire{padding:var(--s-6) 0}
+.enquire__grid{display:grid;gap:var(--s-4)}
+.enquire h2{font-size:var(--t-2xl);max-width:13ch;margin-bottom:var(--s-3)}
+.enquire__aside p{color:var(--ink-2);max-width:40ch}
+.direct{margin-top:var(--s-4);border:1px solid var(--ink);background:var(--paper)}
+.direct div{display:flex;justify-content:space-between;gap:1rem;padding:.75rem .9rem;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.direct div:last-child{border-bottom:0}
+.direct a{font-weight:600;text-decoration:none}
+.direct a:hover{text-decoration:underline}
+.form{display:grid;grid-template-columns:1fr;border:2px solid var(--ink);background:var(--paper)}
+.f{display:flex;flex-direction:column;border-bottom:1px solid var(--ink);position:relative}
+.f label{padding:.6rem .8rem 0;font:500 .66rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.f input,.f select,.f textarea{font:500 1.05rem var(--f-sans);color:var(--ink);background:transparent;border:0;padding:.35rem .8rem .75rem;border-radius:0;width:100%}
+.f select{appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230D1B26' stroke-width='1.6'/%3E%3C/svg%3E") right .9rem center no-repeat}
+.f textarea{min-height:130px;resize:vertical}
+.f:focus-within{background:#fff;box-shadow:inset 4px 0 0 var(--accent)}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none}
+.f.has-error{box-shadow:inset 4px 0 0 var(--error)}
+.err{font:500 .7rem var(--f-mono);color:var(--error);padding:0 .8rem .5rem;min-height:0}
+.err:empty{display:none}
+.f--full{grid-column:1/-1}
+.form__foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem}
+.form__foot small{color:var(--ink-2);max-width:42ch}
+.ticket{border:2px solid var(--ink);background:#fff}
+.ticket__head{background:var(--accent);color:#fff;padding:.6rem .9rem;display:flex;justify-content:space-between}
+.ticket__body{padding:var(--s-3)}
+.ticket h3{font-size:var(--t-xl);margin-bottom:var(--s-2)}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}.f:nth-child(odd):not(.f--full){border-right:1px solid var(--ink)}}
+@media (min-width:1024px){.enquire__grid{grid-template-columns:.8fr 1.2fr;gap:var(--s-5)}}
+
+/* ---------- 14. Footer ---------- */
+.foot{background:var(--navy-2);color:#C9D6E2;padding:var(--s-5) 0 var(--s-3);font-size:var(--t-sm)}
+.foot a{color:#fff}
+.foot__grid{display:grid;gap:var(--s-4)}
+.foot h3{font:500 .68rem var(--f-mono);letter-spacing:.1em;color:#F4A77D;margin-bottom:var(--s-2)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.3rem}
+.foot address{font-style:normal;line-height:1.7}
+.foot__logo strong{font-weight:800;font-stretch:62%;font-size:3rem;color:#fff;line-height:1;display:block;text-transform:uppercase}
+.social{display:flex;gap:0;margin-top:var(--s-3)}
+.social a{width:42px;height:42px;display:grid;place-items:center;border:1px solid #3B5B7A}
+.social a + a{border-left:0}
+.social a:hover{background:var(--accent);border-color:var(--accent)}
+.foot__base{margin-top:var(--s-5);padding-top:var(--s-2);border-top:1px solid #3B5B7A;display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-2)}
+.foot__base ul{display:flex;flex-wrap:wrap;gap:var(--s-3)}
+@media (min-width:860px){.foot__grid{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+
+/* ---------- 15. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .js .gantt .g-bar:not(.g-bar--ms){transform:none}
+  .xh{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="util mono">
+    <div class="wrap">
+      <span>53.4848° N · 2.2271° W · Ancoats, Manchester</span>
+      <span class="hide-sm">Office Mon to Fri 07:00 to 18:00 · Site line 24/7 for live projects</span>
+    </div>
+  </div>
+  <div class="bar">
+    <div class="wrap" style="position:relative">
+      <a class="logo" href="#top" aria-label="Datum Fit-Out, back to top">
+        <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M2 26h26" stroke="#0D1B26" stroke-width="2.5"/><path d="M15 6l8 14H7z" fill="#C2410C"/><path d="M15 2v4" stroke="#0D1B26" stroke-width="2"/></svg>
+        <span><strong>DATUM</strong><br><small>FIT-OUT · EST. 2011</small></span>
+      </a>
+      <div class="menu" id="menu">
+        <nav aria-label="Main">
+          <ul>
+            <li><a href="#services" data-n="01">Services</a></li>
+            <li><a href="#projects" data-n="02">Projects</a></li>
+            <li><a href="#programme" data-n="03">Programme</a></li>
+            <li><a href="#guarantees" data-n="04">Guarantees</a></li>
+            <li><a href="#reviews" data-n="05">Clients</a></li>
+            <li><a href="#faq" data-n="06">FAQ</a></li>
+          </ul>
+        </nav>
+        <a class="tel" href="tel:+441618324417">0161 832 4417</a>
+        <a class="btn btn--sm" href="#enquire"><span>Get a quote</span><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 10L10 2M4 2h6v6" fill="none" stroke="#fff" stroke-width="1.8"/></svg></i></a>
+      </div>
+      <a class="call-icon" href="tel:+441618324417" aria-label="Call 0161 832 4417"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu">MENU
+        <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect class="b1" y="0" width="18" height="2" fill="currentColor"/><rect y="5" width="18" height="2" fill="currentColor"/><rect class="b3" y="10" width="18" height="2" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero grid-bg" id="top" aria-labelledby="hero-title">
+  <div class="xh" aria-hidden="true"><span id="xh-label">X 0000 · Y 0000 mm</span></div>
+  <div class="wrap">
+    <div class="hero__copy">
+      <p class="mono sh" style="margin-bottom:1.5rem"><b>00</b> Commercial fit-out · Manchester, Leeds, Liverpool <span class="ref">DRG DFO-000</span></p>
+      <h1 id="hero-title">Fit-outs handed over on the date <em>in the programme.</em></h1>
+      <p class="hero__lede">Cat A, Cat B and live office refurbishments across the North West and Leeds. 116 of our last 120 projects finished on or before programme. The other four ran under three working days late, and we paid the damages.</p>
+    </div>
+    <div class="frame">
+      <div class="dim dim--top"><span>14,200 SQ FT · CAT B</span></div>
+      <div class="dim dim--side"><span>11 WEEKS</span></div>
+      <div class="frame__img">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop" alt="Finished open-plan office with desks, glazed partitions and daylight" width="1200" height="900" fetchpriority="high">
+      </div>
+      <span class="callout">HANDED OVER 2 DAYS EARLY</span>
+    </div>
+    <dl class="tblock">
+      <div><dt>Projects since 2011</dt><dd>186</dd></div>
+      <div><dt>On programme, last 120</dt><dd>96.7%</dd></div>
+      <div><dt>Contract</dt><dd>JCT D&amp;B / MW</dd></div>
+      <div><dt>Response</dt><dd>Survey in 48 hrs</dd></div>
+      <div class="tblock__cta">
+        <a class="btn" href="#enquire"><span>Request a programme &amp; price</span><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 10L10 2M4 2h6v6" fill="none" stroke="#fff" stroke-width="1.8"/></svg></i></a>
+        <a class="tel" href="tel:+441618324417">or call 0161 832 4417</a>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ TRUST: CERTIFICATES ============ -->
+<section class="certs" aria-label="Accreditations, insurance and reviews">
+  <ul>
+    <li><span class="mono">Cert 01</span><strong>CHAS Elite</strong></li>
+    <li><span class="mono">Cert 02</span><strong>Constructionline Gold</strong></li>
+    <li><span class="mono">Cert 03</span><strong>ISO 9001 &amp; ISO 45001</strong></li>
+    <li><span class="mono">Cert 04</span><strong>SafeContractor approved</strong></li>
+    <li><span class="mono">Insurance</span><strong>£10m PL · £5m PI</strong></li>
+    <li><span class="mono">Google</span><strong>4.8 from 57 reviews</strong></li>
+  </ul>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="numbers" aria-label="Datum in numbers">
+  <div class="wrap">
+    <div class="numbers__grid reveal">
+      <div><span class="val" data-count="186">186</span><span class="mono">Fit-outs completed since 2011</span></div>
+      <div><span class="val"><span data-count="1420000">1,420,000</span></span><span class="mono">Square feet delivered</span></div>
+      <div><span class="val">96.7<small>%</small></span><span class="mono">On or before programme</span></div>
+      <div><span class="val">0</span><span class="mono">RIDDOR incidents in 2025</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services" aria-labelledby="svc-title">
+  <div class="wrap">
+    <p class="sh mono"><b>01</b> Services <span class="ref">Schedule S-01</span></p>
+    <h2 id="svc-title" class="reveal">One contractor from strip-out to the last floor box.</h2>
+    <div class="sched reveal" role="list">
+      <div class="sched__head mono" aria-hidden="true"><span>Ref</span><span>Service</span><span>Scope</span><span style="text-align:right">Typical rate, ex VAT</span></div>
+      <div class="sched__row" role="listitem"><span class="code mono">S-01</span><h3>Cat A fit-out</h3><p>Raised floors, suspended ceilings, LED lighting, HVAC and fire alarm to landlord spec. For landlords and agents getting floors ready to let.</p><span class="rate">£45 to £75 / sq ft</span></div>
+      <div class="sched__row" role="listitem"><span class="code mono">S-02</span><h3>Cat B fit-out</h3><p>Partitions, meeting rooms, kitchens, breakout, AV, data and furniture. Designed around how your team actually works.</p><span class="rate">£70 to £150 / sq ft</span></div>
+      <div class="sched__row" role="listitem"><span class="code mono">S-03</span><h3>Live refurbishment</h3><p>Phased and out-of-hours works so your business keeps trading. Floors handed back clean, with IT tested, every Monday at 6am.</p><span class="rate">Phased pricing</span></div>
+      <div class="sched__row" role="listitem"><span class="code mono">S-04</span><h3>Hospitality and retail</h3><p>Cafés, bars and shop units, including extraction, grease traps, licensing drawings and fire strategy.</p><span class="rate">£90 to £220 / sq ft</span></div>
+      <div class="sched__row" role="listitem"><span class="code mono">S-05</span><h3>Design and build</h3><p>In-house designers produce space plans, 3D visuals and a costed specification before you commit, under a single JCT Design and Build contract.</p><span class="rate">Design fee credited</span></div>
+      <div class="sched__row" role="listitem"><span class="code mono">S-06</span><h3>Strip-out and dilapidations</h3><p>Back to shell and core at lease end, with a schedule of works agreed against your landlord's dilapidations claim.</p><span class="rate">From £9 / sq ft</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="projects" id="projects" aria-labelledby="proj-title">
+  <div class="wrap">
+    <p class="sh mono"><b>02</b> Projects <span class="ref">Sheet P-01 to P-05</span></p>
+    <div class="projects__top">
+      <h2 id="proj-title">Recent handovers</h2>
+      <div class="arrows">
+        <button type="button" data-dir="-1" aria-label="Previous projects"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M18 6H2M6 1L1 6l5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <button type="button" data-dir="1" aria-label="Next projects"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M12 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="rail" id="rail" tabindex="0" aria-label="Project gallery, scroll horizontally">
+    <article class="proj">
+      <div class="proj__img"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=900&q=80&auto=format&fit=crop" alt="Open-plan office floor with workstations and meeting area" loading="lazy" decoding="async" width="900" height="675"><span class="mono">P-01</span></div>
+      <div class="proj__body"><h3>Fintech HQ, Spinningfields</h3><p>Two floors for 140 staff. Keys handed over on 12 March against a programme date of 14 March.</p>
+        <dl class="spec"><div><dt>Type</dt><dd>Cat B</dd></div><div><dt>Area</dt><dd>14,200 sq ft</dd></div><div><dt>Duration</dt><dd>11 weeks</dd></div><div><dt>Value</dt><dd>£780k to £840k</dd></div></dl></div>
+    </article>
+    <article class="proj">
+      <div class="proj__img"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=900&q=80&auto=format&fit=crop" alt="Refurbished office with rows of desks and large windows" loading="lazy" decoding="async" width="900" height="675"><span class="mono">P-02</span></div>
+      <div class="proj__body"><h3>Law firm, King Street</h3><p>Fully live refurbishment, worked Friday 7pm to Monday 6am across eight weekends. Zero lost fee-earning days.</p>
+        <dl class="spec"><div><dt>Type</dt><dd>Live refurb</dd></div><div><dt>Area</dt><dd>9,600 sq ft</dd></div><div><dt>Duration</dt><dd>8 weekends</dd></div><div><dt>Value</dt><dd>£410k to £450k</dd></div></dl></div>
+    </article>
+    <article class="proj">
+      <div class="proj__img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=900&q=80&auto=format&fit=crop" alt="Coworking space with shared desks and people working on laptops" loading="lazy" decoding="async" width="900" height="675"><span class="mono">P-03</span></div>
+      <div class="proj__body"><h3>Coworking floor, Northern Quarter</h3><p>Hot desks, 18 phone booths and a members' kitchen in a 1900s mill. Acoustic treatment to hit 35 dB between booths.</p>
+        <dl class="spec"><div><dt>Type</dt><dd>Design &amp; build</dd></div><div><dt>Area</dt><dd>6,100 sq ft</dd></div><div><dt>Duration</dt><dd>9 weeks</dd></div><div><dt>Value</dt><dd>£340k to £375k</dd></div></dl></div>
+    </article>
+    <article class="proj">
+      <div class="proj__img"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=80&auto=format&fit=crop" alt="Office breakout area with lounge seating and plants" loading="lazy" decoding="async" width="900" height="675"><span class="mono">P-04</span></div>
+      <div class="proj__body"><h3>Production studio, MediaCity</h3><p>Two edit suites, a sound booth and open studio. Acoustic test results came back 3 dB better than specified.</p>
+        <dl class="spec"><div><dt>Type</dt><dd>Cat B</dd></div><div><dt>Area</dt><dd>6,800 sq ft</dd></div><div><dt>Duration</dt><dd>10 weeks</dd></div><div><dt>Value</dt><dd>£520k to £565k</dd></div></dl></div>
+    </article>
+    <article class="proj">
+      <div class="proj__img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80&auto=format&fit=crop" alt="Modern office tower seen from street level" loading="lazy" decoding="async" width="900" height="675"><span class="mono">P-05</span></div>
+      <div class="proj__body"><h3>Speculative floor, Wellington Place, Leeds</h3><p>Cat A to BREEAM Excellent standard for a landlord. Let within six weeks of handover.</p>
+        <dl class="spec"><div><dt>Type</dt><dd>Cat A</dd></div><div><dt>Area</dt><dd>22,500 sq ft</dd></div><div><dt>Duration</dt><dd>8 weeks</dd></div><div><dt>Value</dt><dd>£610k to £660k</dd></div></dl></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PROCESS: GANTT ============ -->
+<section class="process grid-bg" id="programme" aria-labelledby="prog-title">
+  <div class="wrap">
+    <p class="sh mono"><b>03</b> Process <span class="ref">Programme PR-01</span></p>
+    <h2 id="prog-title" class="reveal">A typical 10,000 sq ft Cat B, week by week.</h2>
+    <p class="process__intro reveal">You get a programme like this before you sign anything, and an updated one in your inbox every Friday. If a bar moves, the report says why.</p>
+    <div class="gantt-wrap reveal" tabindex="0" aria-label="Sample project programme, scroll horizontally on small screens">
+      <div class="gantt" id="gantt">
+        <div class="g-head">Activity</div>
+        <div class="g-head">W0</div><div class="g-head">W1</div><div class="g-head">W2</div><div class="g-head">W3</div><div class="g-head">W4</div><div class="g-head">W5</div><div class="g-head">W6</div><div class="g-head">W7</div><div class="g-head">W8</div><div class="g-head">W9</div><div class="g-head">W10</div><div class="g-head">W11</div><div class="g-head">W12</div><div class="g-head">W13</div>
+        <div class="g-label">Measured survey &amp; brief</div><div class="g-track"><span class="g-bar" style="--s:0;--e:1">WK 0 to 1</span></div>
+        <div class="g-label">Design &amp; costed proposal</div><div class="g-track"><span class="g-bar" style="--s:1;--e:3">WK 1 to 3</span></div>
+        <div class="g-label">Contract signed, programme fixed</div><div class="g-track"><span class="g-bar g-bar--ms" style="--s:3"><span>FIXED DATE</span></span></div>
+        <div class="g-label">Long-lead orders</div><div class="g-track"><span class="g-bar" style="--s:3;--e:7">GLAZING · AHU</span></div>
+        <div class="g-label">Strip-out &amp; first fix</div><div class="g-track"><span class="g-bar" style="--s:4;--e:7">WK 4 to 7</span></div>
+        <div class="g-label">Partitions, ceilings, M&amp;E</div><div class="g-track"><span class="g-bar" style="--s:6;--e:11">WK 6 to 11</span></div>
+        <div class="g-label">Joinery, floors, furniture</div><div class="g-track"><span class="g-bar" style="--s:10;--e:13">WK 10 to 13</span></div>
+        <div class="g-label">Snagging &amp; handover</div><div class="g-track"><span class="g-bar g-bar--key" style="--s:13;--e:14">KEYS</span></div>
+      </div>
+    </div>
+    <ol class="steps-notes">
+      <li class="reveal"><h3>1. Survey within 48 hours</h3><p>A laser measured survey and a walk round with whoever runs your office, not just whoever signs the cheque.</p></li>
+      <li class="reveal"><h3>2. Fixed price and programme</h3><p>Itemised cost plan, a programme with a handover date, and the LAD rate written into the contract.</p></li>
+      <li class="reveal"><h3>3. One project manager</h3><p>Jas, Tom or Lewis runs your job from survey to keys. Site report every Friday with photos and a look-ahead.</p></li>
+      <li class="reveal"><h3>4. Handover and 12 months</h3><p>Snags closed in 5 working days, O&amp;M manual on handover day, and a defects visit at 6 and 12 months.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ GUARANTEES ============ -->
+<section class="tol" id="guarantees" aria-labelledby="g-title">
+  <div class="wrap">
+    <p class="sh mono"><b>04</b> Guarantees <span class="ref">Tolerances T-01</span></p>
+    <div class="tol__grid">
+      <div class="tol__item reveal">
+        <h2 id="g-title">Late fit-outs cost you rent on two buildings. We put that risk on us.</h2>
+        <div><span class="big">LAD<em>s</em></span><h3>Liquidated damages, at a rate you set</h3><p>Most contractors negotiate LADs out. We write them in, at a daily rate that reflects your actual cost of delay, and we've paid them four times in 120 projects.</p></div>
+      </div>
+      <div class="tol__item reveal"><span class="big">0<em>h</em></span><h3>Lost trading on live sites</h3><p>On live refurbs, desks, power and data are tested and working before your team arrives. If they're not, we cover the cost of the lost hours.</p></div>
+      <div class="tol__item reveal"><span class="big">5<em>d</em></span><h3>Snag list closed</h3><p>Every snag closed within five working days of handover, signed off by you, not by us.</p></div>
+      <div class="tol__item reveal"><span class="big">1<em>pm</em></span><h3>Single point of contact</h3><p>One named project manager with a direct mobile. No passing you between estimators, site managers and accounts.</p></div>
+      <div class="tol__item reveal"><span class="big">±<em>0</em></span><h3>Variations priced first</h3><p>Change something mid-job and you'll get the cost and programme impact in writing within 24 hours, before any work starts.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="notes" id="reviews" aria-labelledby="rev-title">
+  <div class="wrap">
+    <p class="sh mono"><b>05</b> <span id="rev-title">Client notes</span> <span class="ref">Ref C-01 to C-03</span></p>
+    <div class="notes__grid">
+      <figure class="note note--lead reveal">
+        <div class="note__head mono"><span>Ref C-01 · Live refurb</span><span>King Street</span></div>
+        <blockquote>We stayed open the whole time. Datum worked from Friday evening to Monday morning for eight weekends and every Monday the floor was clean and the network was up. One week the kitchen tap wasn't connected. Jas had a plumber in by ten.</blockquote>
+        <figcaption><b>Sarah M., Office Manager</b>Law firm, King Street, Manchester · 9,600 sq ft</figcaption>
+      </figure>
+      <figure class="note reveal">
+        <div class="note__head mono"><span>Ref C-02 · Cat B</span><span>Spinningfields</span></div>
+        <blockquote>Programme said handover on 14 March. We got the keys on the 12th. The previous fit-out we did with another firm ran five weeks over.</blockquote>
+        <figcaption><b>Daniel O., COO</b>Fintech, Spinningfields · 14,200 sq ft</figcaption>
+      </figure>
+      <figure class="note reveal">
+        <div class="note__head mono"><span>Ref C-03 · Studio</span><span>MediaCity</span></div>
+        <blockquote>Tom on site was brilliant with our sound engineer, who is fussy. Snag list was longer than I'd hoped, mostly paint, but it was all done inside the week.</blockquote>
+        <figcaption><b>Rachel T., Studio Director</b>Production company, Salford · 6,800 sq ft</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <p class="sh mono"><b>06</b> FAQ <span class="ref">Q.01 to Q.06</span></p>
+    <div class="faq__grid">
+      <div class="faq__aside reveal">
+        <h2 id="faq-title">Straight answers</h2>
+        <p>If your question is about a specific building, send us the address and floor plan and we'll come back within a day.</p>
+      </div>
+      <div class="acc reveal" data-accordion>
+        <div class="acc__item"><h3 style="margin:0;text-transform:none"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q1" id="q1b"><span class="q">Q.01</span><span>How much does an office fit-out cost per sq ft?</span><span class="acc__sq" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h3>
+          <div class="acc__panel" id="q1" role="region" aria-labelledby="q1b" hidden><p>In Manchester in 2026, Cat A typically runs £45 to £75 per sq ft and Cat B £70 to £150, excluding VAT. The biggest swing factors are how much M&amp;E needs changing, the number of enclosed rooms, and whether furniture and AV are in our scope.</p></div></div>
+        <div class="acc__item"><h3 style="margin:0;text-transform:none"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q2" id="q2b"><span class="q">Q.02</span><span>How long does a fit-out take?</span><span class="acc__sq" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h3>
+          <div class="acc__panel" id="q2" role="region" aria-labelledby="q2b" hidden><p>For 10,000 sq ft of Cat B, allow 3 to 5 weeks for design and procurement and 8 to 12 weeks on site. Long-lead items like glazed partitions and air handling units drive the programme, so we order them the week the contract is signed.</p></div></div>
+        <div class="acc__item"><h3 style="margin:0;text-transform:none"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q3" id="q3b"><span class="q">Q.03</span><span>Can we keep working while you refurbish?</span><span class="acc__sq" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h3>
+          <div class="acc__panel" id="q3" role="region" aria-labelledby="q3b" hidden><p>Yes. We phase the floor, work evenings and weekends where needed, and keep noisy work out of office hours. About a third of our projects are fully live. Out-of-hours labour costs more, and we'll show you that line clearly in the price.</p></div></div>
+        <div class="acc__item"><h3 style="margin:0;text-transform:none"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q4" id="q4b"><span class="q">Q.04</span><span>Do we need planning permission or landlord consent?</span><span class="acc__sq" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h3>
+          <div class="acc__panel" id="q4" role="region" aria-labelledby="q4b" hidden><p>Internal office works rarely need planning permission, but they do need Building Regulations approval, which we handle through an approved inspector. You'll almost certainly need a Licence for Alterations from your landlord. We prepare the drawings and method statements for it. A change of use, for example office to café, does need planning.</p></div></div>
+        <div class="acc__item"><h3 style="margin:0;text-transform:none"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q5" id="q5b"><span class="q">Q.05</span><span>How do payments work?</span><span class="acc__sq" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h3>
+          <div class="acc__panel" id="q5" role="region" aria-labelledby="q5b" hidden><p>No upfront deposit. We submit monthly valuations for work completed, with 30-day terms and 3% retention: half released at practical completion and half after the 12-month defects period. Long-lead items over £25,000 may need paying on order, covered by a vesting certificate so they're legally yours.</p></div></div>
+        <div class="acc__item"><h3 style="margin:0;text-transform:none"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="q6" id="q6b"><span class="q">Q.06</span><span>Do you design as well as build?</span><span class="acc__sq" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h3>
+          <div class="acc__panel" id="q6" role="region" aria-labelledby="q6b" hidden><p>Both. Our two in-house designers can take you from space plan to finishes, or we'll build to your architect's drawings under a traditional contract. The design fee is credited against the build if you go ahead with us.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENQUIRY FORM ============ -->
+<section class="enquire grid-bg" id="enquire" aria-labelledby="q-title">
+  <div class="wrap">
+    <p class="sh mono"><b>07</b> Enquiry <span class="ref">Form E-01</span></p>
+    <div class="enquire__grid">
+      <div class="enquire__aside reveal">
+        <h2 id="q-title">Get a programme and a price</h2>
+        <p>Tell us about the space. We'll call within one working day and book a measured survey within 48 hours.</p>
+        <div class="direct">
+          <div><span class="mono">Phone</span><a href="tel:+441618324417">0161 832 4417</a></div>
+          <div><span class="mono">Email</span><a href="mailto:projects@datumfitout.co.uk">projects@datumfitout.co.uk</a></div>
+          <div><span class="mono">Office</span><span>Unit 6, Jersey Street Works, M4 6JB</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="form" id="quote-form" novalidate>
+          <div class="f"><label for="name">Name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+          <div class="f"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+          <div class="f"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+          <div class="f"><label for="postcode">Site postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+          <div class="f"><label for="type">Project type</label>
+            <select id="type" name="type" aria-describedby="type-error" required><option value="">Select</option><option>Cat A fit-out</option><option>Cat B fit-out</option><option>Live refurbishment</option><option>Hospitality or retail</option><option>Design and build</option><option>Strip-out or dilapidations</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+          <div class="f"><label for="budget">Budget range</label>
+            <select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Select</option><option>Under £100k</option><option>£100k to £250k</option><option>£250k to £500k</option><option>£500k to £1m</option><option>Over £1m</option><option>Not set yet</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+          <div class="f f--full"><label for="message">The space and your deadline</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. 8,000 sq ft second floor, lease starts 1 June, 90 staff" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+          <div class="form__foot"><small>We'll only use these details to respond. <a href="/privacy-policy/">Privacy policy</a>.</small>
+            <button class="btn" type="submit"><span>Send enquiry</span><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 10L10 2M4 2h6v6" fill="none" stroke="#fff" stroke-width="1.8"/></svg></i></button></div>
+        </form>
+        <div class="ticket" id="form-success" tabindex="-1" hidden>
+          <div class="ticket__head mono"><span>Enquiry received</span><span id="ticket-ref">DFO-ENQ</span></div>
+          <div class="ticket__body">
+            <h3>Thanks<span data-first-name></span>. It's logged.</h3>
+            <p>One of our project managers will call you within one working day to book the survey. Quote the reference above if you ring us first on 0161 832 4417.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__logo"><strong>Datum</strong><p style="margin-top:.75rem;max-width:30ch">Commercial fit-out contractors. Manchester-based, working across the North West and Leeds since 2011.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/datum-fit-out" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.6c.6-1 1.9-1.9 3.6-1.9 3 0 3.4 2 3.4 4.6V20h-4v-5.8c0-1.4 0-3-1.8-3s-2.2 1.4-2.2 2.9V20h-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+          <a href="https://www.instagram.com/datumfitout" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+          <a href="https://x.com/datumfitout" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.8"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Office</h3><address>Datum Fit-Out Ltd<br>Unit 6, Jersey Street Works<br>24 Jersey Street, Manchester<br>M4 6JB<br><a href="tel:+441618324417">0161 832 4417</a><br><a href="mailto:projects@datumfitout.co.uk">projects@datumfitout.co.uk</a></address></div>
+      <div><h3>Hours</h3><ul><li>Office: Mon to Fri, 07:00 to 18:00</li><li>Sites: 24/7 on live projects</li><li>Emergency site line for current clients</li></ul></div>
+      <div><h3>Areas</h3><ul><li>Manchester city centre</li><li>Salford and MediaCity</li><li>Trafford and Altrincham</li><li>Stockport and Cheshire</li><li>Leeds</li><li>Liverpool and Warrington</li></ul></div>
+    </div>
+    <div class="foot__base mono">
+      <span>© <span id="yr">2026</span> Datum Fit-Out Ltd · Company no. 07612338 · VAT GB 119 4482 51</span>
+      <ul><li><a href="/privacy-policy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/modern-slavery-statement/">Modern slavery statement</a></li><li><a href="/cookies/">Cookies</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Datum Fit-Out: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- header: collapse utility strip on scroll --- */
+  var hdr = document.getElementById('hdr');
+  var onScroll = function(){ hdr.classList.toggle('is-scrolled', window.scrollY > 30); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* --- mobile menu --- */
+  var burger = document.querySelector('.burger'), menu = document.getElementById('menu');
+  function setMenu(open){ burger.setAttribute('aria-expanded', String(open)); menu.classList.toggle('is-open', open); }
+  burger.addEventListener('click', function(){ setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+  menu.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && menu.classList.contains('is-open')){ setMenu(false); burger.focus(); } });
+
+  /* --- crosshair with mm coordinates (signature) --- */
+  var hero = document.querySelector('.hero'), xh = document.querySelector('.xh'), lbl = document.getElementById('xh-label');
+  if(!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    var raf = null;
+    hero.addEventListener('mousemove', function(e){
+      if(raf) return;
+      raf = requestAnimationFrame(function(){
+        var r = hero.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+        xh.style.setProperty('--cx', x + 'px'); xh.style.setProperty('--cy', y + 'px');
+        /* scale: 1px on screen = 12.5mm on the "drawing" */
+        var pad = function(n){ return String(Math.round(n*12.5)).padStart(5,'0'); };
+        lbl.textContent = 'X ' + pad(x) + ' · Y ' + pad(y) + ' mm';
+        raf = null;
+      });
+    });
+  }
+
+  /* --- reveal --- */
+  var items = document.querySelectorAll('.reveal, #gantt');
+  if(reduce || !('IntersectionObserver' in window)){ items.forEach(function(el){ el.classList.add('is-in'); }); }
+  else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, {threshold:.15});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* --- counters --- */
+  if(!reduce && 'IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target, end = +el.dataset.count, t0 = null;
+        (function step(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/1200,1);
+          el.textContent = Math.round(end*(1-Math.pow(1-p,4))).toLocaleString('en-GB'); if(p<1) requestAnimationFrame(step); })(performance.now());
+        cio.unobserve(el);
+      });
+    }, {threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(function(c){ c.textContent='0'; cio.observe(c); });
+  }
+
+  /* --- project rail: arrows + drag to scroll --- */
+  var rail = document.getElementById('rail');
+  document.querySelectorAll('.arrows button').forEach(function(b){
+    b.addEventListener('click', function(){ var card = rail.querySelector('.proj'); rail.scrollBy({left: (+b.dataset.dir) * (card.offsetWidth + 24), behavior: reduce ? 'auto' : 'smooth'}); });
+  });
+  rail.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight'){ rail.scrollBy({left:300}); e.preventDefault(); }
+    if(e.key === 'ArrowLeft'){ rail.scrollBy({left:-300}); e.preventDefault(); }
+  });
+  var down = false, sx = 0, sl = 0, moved = false;
+  rail.addEventListener('pointerdown', function(e){ if(e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; });
+  window.addEventListener('pointermove', function(e){ if(!down) return; var dx = e.clientX - sx; if(Math.abs(dx) > 4){ moved = true; rail.classList.add('is-drag'); } rail.scrollLeft = sl - dx; });
+  window.addEventListener('pointerup', function(){ down = false; rail.classList.remove('is-drag'); });
+  rail.addEventListener('click', function(e){ if(moved){ e.preventDefault(); moved = false; } }, true);
+
+  /* --- accordion (uses hidden attribute for simplicity and a11y) --- */
+  document.querySelectorAll('[data-accordion] .acc__btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      document.getElementById(btn.getAttribute('aria-controls')).hidden = open;
+    });
+  });
+
+  /* --- form validation --- */
+  var form = document.getElementById('quote-form'), ok = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'Enter your name.'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'Enter a UK phone number, e.g. 0161 832 4417.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Enter a valid email address.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Enter a full UK postcode, e.g. M4 6JB.'; },
+    type: function(v){ return v !== '' || 'Select a project type.'; },
+    budget: function(v){ return v !== '' || 'Select a budget range.'; },
+    message: function(v){ return v.trim().length >= 10 || 'Add a line about the space, size or deadline.'; }
+  };
+  function check(f){
+    var r = rules[f.name]; if(!r) return true;
+    var res = r(f.value), err = document.getElementById(f.name + '-error'), wrap = f.closest('.f');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; wrap.classList.add('has-error'); return false; }
+    f.removeAttribute('aria-invalid'); err.textContent = ''; wrap.classList.remove('has-error'); return true;
+  }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    ok.querySelector('[data-first-name]').textContent = ', ' + document.getElementById('name').value.trim().split(' ')[0];
+    document.getElementById('ticket-ref').textContent = 'DFO-ENQ-' + String(Date.now()).slice(-5);
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

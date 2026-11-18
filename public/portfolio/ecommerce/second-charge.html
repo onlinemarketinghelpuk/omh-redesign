@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Charge | Refurbished Laptops, Phones &amp; Tablets with 18-Month Warranty</title>
+<meta name="description" content="Refurbished MacBooks, iPhones, iPads and ThinkPads, tested on 72 points with battery health of at least 85%. 18-month warranty, 30-day returns, next-day delivery. Birmingham.">
+<link rel="canonical" href="https://www.secondcharge.co.uk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Second Charge | Refurbished tech that works like new">
+<meta property="og:description" content="Up to 55% less than new. 72-point check, 18-month warranty, instant trade-in quotes.">
+<meta property="og:url" content="https://www.secondcharge.co.uk/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#F2F3EF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='2' y='9' width='32' height='22' rx='6' fill='%2316181D'/%3E%3Crect x='34' y='15' width='4' height='10' rx='2' fill='%2316181D'/%3E%3Cpath d='M20 12l-6 9h5l-2 7 7-10h-5z' fill='%23C6F432'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ElectronicsStore",
+  "name": "Second Charge Ltd",
+  "description": "Refurbished laptops, phones and tablets with an 18-month warranty, plus device trade-in and business supply. Workshop and collection point in Birmingham's Jewellery Quarter.",
+  "url": "https://www.secondcharge.co.uk/",
+  "telephone": "+441218286113",
+  "email": "help@secondcharge.co.uk",
+  "foundingDate": "2019",
+  "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=80&auto=format&fit=crop",
+  "priceRange": "££",
+  "address": { "@type": "PostalAddress", "streetAddress": "Unit 7, The Big Peg, 120 Vyse Street", "addressLocality": "Birmingham", "postalCode": "B18 6NF", "addressCountry": "GB" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 52.4889, "longitude": -1.9113 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "14:00" }
+  ],
+  "areaServed": ["United Kingdom","Birmingham","Solihull","Wolverhampton","Walsall","Coventry"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "5412" }
+}
+</script>
+<style>
+/* =========================================================
+   SECOND CHARGE
+   Art direction: product UI. The site looks like a well-made
+   app: soft grey canvas, white cards, one electric lime,
+   mono read-outs for specs, battery bars and status chips.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  --bg:#F2F3EF;
+  --card:#FFFFFF;
+  --ink:#16181D;
+  --ink-2:#5B606B;
+  --line:#E1E3DC;
+  --lime:#C6F432;          /* fills with ink text only */
+  --lime-2:#E9FBB0;
+  --sky:#DCE8FF;
+  --good:#167A45;          /* AA on white */
+  --warn:#9A6200;
+  --error:#C42B2B;
+
+  --f:'Onest', 'Segoe UI', Arial, sans-serif;
+  --f-mono:'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --t-xs:.75rem;
+  --t-sm:.875rem;
+  --t-base:1rem;
+  --t-lg:1.15rem;
+  --t-xl:clamp(1.5rem, 1.15rem + 1.4vw, 2.2rem);
+  --t-2xl:clamp(2rem, 1.3rem + 2.8vw, 3.4rem);
+  --t-hero:clamp(2.2rem, 1.3rem + 3.6vw, 4.2rem);
+
+  --r:18px; --r-sm:12px;
+  --s-1:.5rem; --s-2:1rem; --s-3:1.5rem; --s-4:2.5rem; --s-5:4rem; --s-6:6rem;
+  --wrap:min(1280px, 100% - 1.5rem);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+
+/* ---------- 2. Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-base)/1.55 var(--f)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.05}
+p{margin:0 0 var(--s-2)}
+button{font-family:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+.mono{font-family:var(--f-mono);font-size:.8rem;letter-spacing:-.01em}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.75rem 1rem;z-index:300}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:3px solid #6B8E00;outline-offset:2px}
+main:focus{outline:none}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.chip{display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap;padding:.25rem .6rem;border-radius:999px;font:600 var(--t-xs) var(--f);background:var(--bg);border:1px solid var(--line)}
+.chip--lime{background:var(--lime);border-color:var(--lime)}
+.chip--good{color:var(--good);background:#E8F5EC;border-color:#CDE9D6}
+.chip i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.sec-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:var(--s-3)}
+.sec-h h2{font-size:var(--t-2xl);max-width:18ch}
+.sec-h p{margin:0;color:var(--ink-2);max-width:40ch}
+.label{font:600 var(--t-xs) var(--f);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin-bottom:.6rem;display:block}
+
+/* buttons: app-style */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.25rem;border-radius:var(--r-sm);border:1px solid var(--ink);background:var(--ink);color:#fff;font:600 var(--t-base)/1 var(--f);text-decoration:none;cursor:pointer;transition:background .15s,color .15s,transform .15s}
+.btn:hover{background:#2A2D35}
+.btn:active{transform:scale(.98)}
+.btn--lime{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.btn--lime:hover{background:#B5E61E;border-color:#B5E61E}
+.btn--ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{background:var(--bg)}
+
+/* ---------- 3. Navigation: search-first bar + category tabs ---------- */
+.hdr{position:sticky;top:0;z-index:80;background:rgba(242,243,239,.94);backdrop-filter:blur(10px);transition:box-shadow .2s}
+.hdr.is-scrolled{box-shadow:0 1px 0 var(--line)}
+.bar{width:var(--wrap);margin-inline:auto;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.8rem;padding:.8rem 0 .6rem}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-weight:800;font-size:1.2rem;letter-spacing:-.04em;white-space:nowrap}
+.logo b{font-weight:800}
+.logo span{color:var(--ink-2);font-weight:600}
+.search{display:none;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:0 1rem;height:46px}
+.search input{flex:1;border:0;background:none;font:500 var(--t-base) var(--f);color:var(--ink);min-width:0}
+.search input:focus{outline:none}
+.search:focus-within{border-color:var(--ink)}
+.search kbd{font:500 .7rem var(--f-mono);border:1px solid var(--line);border-radius:6px;padding:.1rem .35rem;color:var(--ink-2)}
+.bar__right{display:flex;align-items:center;gap:.5rem}
+.bar__tel{display:none;font-weight:600;font-size:var(--t-sm);text-decoration:none;padding:0 .5rem}
+.bar__cta{display:none;padding:.7rem 1rem;font-size:var(--t-sm)}
+.icon-btn{position:relative;width:44px;height:44px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.icon-btn:hover{border-color:var(--ink)}
+.bag__n{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:10px;background:var(--lime);font:700 .7rem/20px var(--f);text-align:center;padding:0 5px;border:1px solid var(--ink)}
+.bag.bump{animation:bump .45s var(--ease)}
+@keyframes bump{40%{transform:translateY(-4px)}}
+.tabs{width:var(--wrap);margin-inline:auto;display:flex;gap:.3rem;overflow-x:auto;scrollbar-width:none;padding-bottom:.7rem}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;padding:.45rem .85rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:var(--t-sm);color:var(--ink-2);border:1px solid transparent;transition:background .15s,color .15s}
+.tabs a:hover{background:var(--card);color:var(--ink);border-color:var(--line)}
+.tabs a.is-hot{background:var(--lime);color:var(--ink)}
+/* popover menu (mobile) */
+.menu-wrap{position:relative}
+.pop{position:absolute;right:0;top:calc(100% + .5rem);width:min(320px,calc(100vw - 1.5rem));background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:.6rem;box-shadow:0 18px 40px rgba(22,24,29,.12);transform-origin:top right;transform:scale(.95);opacity:0;visibility:hidden;transition:transform .2s var(--ease),opacity .2s,visibility .2s}
+.pop.is-open{transform:none;opacity:1;visibility:visible}
+.pop a{display:flex;justify-content:space-between;align-items:center;padding:.8rem .8rem;border-radius:var(--r-sm);text-decoration:none;font-weight:600}
+.pop a:hover{background:var(--bg)}
+.pop hr{border:0;border-top:1px solid var(--line);margin:.4rem 0}
+.pop .btn{width:100%;margin-top:.3rem;justify-content:center}
+@media (min-width:860px){.search{display:flex}.bar{grid-template-columns:auto 1fr auto;gap:1.5rem}}
+@media (min-width:1120px){.bar__tel,.bar__cta{display:inline-flex}.menu-wrap{display:none}}
+@media (max-width:859px){.bar{grid-template-columns:1fr auto}.search--m{display:flex;grid-column:1/-1;order:3;height:42px}}
+@media (min-width:860px){.search--m{display:none!important}}
+
+/* ---------- 4. Hero: bento dashboard ---------- */
+.hero{padding:var(--s-2) 0 var(--s-4)}
+.bento{width:var(--wrap);margin-inline:auto;display:grid;gap:.75rem}
+.b-main{background:var(--lime);border:0;padding:clamp(1.5rem,3.5vw,3rem);display:flex;flex-direction:column;justify-content:space-between;gap:var(--s-4);border-radius:var(--r)}
+.b-main h1{font-size:clamp(2.2rem, 1.3rem + 3vw, 3.7rem);font-weight:800;letter-spacing:-.045em;max-width:16ch}
+.b-main p{font-size:var(--t-lg);max-width:40ch;margin:var(--s-2) 0 0}
+.b-main__ctas{display:flex;flex-wrap:wrap;gap:.6rem}
+.b-prod{padding:1rem;display:flex;flex-direction:column;gap:.8rem}
+.b-prod__img{aspect-ratio:16/11;border-radius:var(--r-sm);background:var(--bg);overflow:hidden}
+@media (min-width:1100px){.b-prod__img{aspect-ratio:auto;flex:1 1 auto;min-height:220px}}
+.b-prod__img img{width:100%;height:100%;object-fit:cover}
+.b-prod__row{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem}
+.b-prod h2{font-size:1.15rem;letter-spacing:-.02em}
+.b-prod .spec{color:var(--ink-2);font-size:var(--t-sm);margin:.2rem 0 0}
+.price{display:flex;align-items:baseline;gap:.5rem}
+.price b{font-size:1.6rem;letter-spacing:-.03em}
+.price s{color:var(--ink-2);font-size:var(--t-sm)}
+.batt{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.6rem;font-size:var(--t-sm)}
+.batt__bar{height:10px;border-radius:5px;background:var(--bg);border:1px solid var(--line);overflow:hidden}
+.batt__bar i{display:block;height:100%;background:var(--good);border-radius:5px;width:0;transition:width 1.2s var(--ease)}
+.is-in .batt__bar i,.batt__bar.is-in i{width:var(--v)}
+.b-stat{padding:1.2rem;display:flex;flex-direction:column;gap:.7rem}
+.b-stat__top{display:flex;justify-content:space-between;align-items:center}
+.b-stat__score{display:flex;align-items:center;gap:.7rem;margin:0}
+.b-stat__score b{font-size:2.6rem;letter-spacing:-.05em;line-height:1}
+.b-stat__score span{font-size:var(--t-xs);color:var(--ink-2);line-height:1.35}
+.b-stat__quote{margin:0;font-size:var(--t-sm);font-weight:500;line-height:1.45;padding:.8rem;background:var(--bg);border-radius:var(--r-sm)}
+.b-stat__who{display:flex;align-items:center;gap:.5rem;margin:auto 0 0;font-size:var(--t-xs);color:var(--ink-2)}
+.b-stat__who a{color:var(--ink);font-weight:600}
+.avatar{width:26px;height:26px;border-radius:50%;background:var(--sky);display:grid;place-items:center;font:700 .62rem var(--f);color:var(--ink);flex:none}
+.stars{color:#1E9E5A;letter-spacing:.08em}
+.b-ship{padding:1.2rem;background:var(--ink);color:#fff;border-color:var(--ink);display:flex;flex-direction:column}
+.b-ship ul{list-style:none;margin:auto 0 0;padding:.9rem 0 0;border-top:1px solid #2E323B;display:grid;gap:.4rem;font-size:var(--t-xs);color:#C9CCD3}
+.b-ship li{display:flex;gap:.5rem;align-items:center}
+.b-ship li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime)}
+.b-ship .label{color:#A8ACB5}
+.b-ship .mono{font-size:1.6rem;color:var(--lime);display:block;margin:.2rem 0}
+.b-ship p{margin:0;font-size:var(--t-sm);color:#C9CCD3}
+.b-warr{padding:1.2rem;background:var(--sky);border-color:var(--sky)}
+.b-warr b{font-size:2rem;letter-spacing:-.04em;display:block}
+.b-warr p{margin:.3rem 0 0;font-size:var(--t-sm)}
+@media (max-width:759px){.b-stat,.b-warr{display:none}}
+@media (min-width:760px){.bento{grid-template-columns:repeat(2,1fr)}.b-main{grid-column:1/-1}}
+@media (min-width:1100px){
+  .bento{grid-template-columns:1.6fr 1fr .8fr;grid-template-rows:auto auto}
+  .b-main{grid-column:1;grid-row:1/3}
+  .b-prod{grid-column:2;grid-row:1/3}
+  .b-stat{grid-column:3;grid-row:1}
+  .b-ship{grid-column:3;grid-row:2}
+  .b-warr{display:none}
+}
+
+/* ---------- 5. Trust bar ---------- */
+.trust{width:var(--wrap);margin:0 auto;padding:.4rem 0 0}
+.trust ul{list-style:none;margin:0;padding:0 0 .2rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
+.trust ul::-webkit-scrollbar{display:none}
+.trust li{flex:none}
+@media (min-width:1100px){.trust ul{justify-content:space-between}}
+.trust li{display:flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;font-weight:600;font-size:var(--t-sm)}
+.trust svg{flex:none;color:var(--good)}
+
+/* ---------- 5b. Shop by category ---------- */
+.cats{padding:var(--s-5) 0 0}
+.cat-grid{display:grid;gap:.75rem}
+.cat{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;transition:border-color .15s,transform .2s var(--ease)}
+.cat:hover{border-color:var(--ink);transform:translateY(-3px)}
+.cat__img{display:block;aspect-ratio:16/10;background:var(--bg);overflow:hidden;margin:.6rem .6rem 0;border-radius:var(--r-sm)}
+.cat__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.cat:hover .cat__img img{transform:scale(1.04)}
+.cat__img{position:relative}
+.cat__img::after{content:"";position:absolute;right:.7rem;top:.7rem;width:38px;height:38px;border-radius:50%;background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M2 12L12 2M5 2h7v7' fill='none' stroke='%2316181D' stroke-width='2'/%3E%3C/svg%3E") center no-repeat;opacity:0;transform:scale(.7);transition:opacity .2s,transform .2s var(--ease)}
+.cat:hover .cat__img::after,.cat:focus-visible .cat__img::after{opacity:1;transform:none}
+.cat__foot{border-top:1px solid var(--line);margin-top:auto}
+.cat__body{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem 1.1rem;flex:1}
+.cat__name{font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+.cat__meta{color:var(--ink-2);font-size:var(--t-sm)}
+@media (min-width:760px){.cat:not(.cat--action) .cat__meta{min-height:2.7em}}
+.cat__foot{display:flex;justify-content:space-between;align-items:baseline;margin-top:auto;padding-top:.8rem}
+.cat__foot b{font-size:1.05rem}
+.cat--action{padding:.4rem}
+.cat--action .cat__body{padding:1rem .8rem .8rem}
+.cat__icon{width:48px;height:48px;border-radius:var(--r-sm);display:grid;place-items:center;margin:.8rem .8rem 0;background:rgba(255,255,255,.55)}
+.cat--lime{background:var(--lime);border-color:var(--lime)}
+.cat--ink{background:var(--ink);border-color:var(--ink);color:#fff}
+.cat--ink .cat__meta{color:#A8ACB5}
+.cat--ink .cat__icon{background:#2B2F38}
+.cat--ink:hover{border-color:var(--lime)}
+.cat__go{margin-top:auto;padding-top:1rem;font-weight:600}
+.brands{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:var(--s-3)}
+.brands a{padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--card);text-decoration:none;font-weight:600;font-size:var(--t-sm)}
+.brands a:hover{border-color:var(--ink)}
+@media (max-width:639px){
+  .cat{flex-direction:row;align-items:center}
+  .cat__img{flex:none;width:104px;aspect-ratio:1;margin:.6rem}
+  .cat__body{padding:.8rem .9rem .8rem .2rem}
+  .cat__foot{padding-top:.5rem}
+  .cat--action{flex-direction:row;padding:0}
+  .cat__icon{flex:none;margin:.9rem}
+  .cat--action .cat__body{padding:.9rem .9rem .9rem 0}
+  .cat__go{padding-top:.5rem}
+}
+@media (min-width:640px) and (max-width:759px){.cat-grid{grid-template-columns:repeat(2,1fr)}.cat--action{grid-column:1/-1}}
+@media (min-width:760px){
+  .cat-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .cat:not(.cat--action){grid-column:span 2}
+  .cat__img{aspect-ratio:4/3}
+  .cat--action{grid-column:1/-1;flex-direction:row;align-items:center;padding:1rem 1.2rem;min-height:104px}
+  .cat__icon{flex:none;margin:0 1.1rem 0 0}
+  .cat--action .cat__body{padding:0;display:grid;grid-template-columns:1fr auto;column-gap:1.5rem;align-items:center}
+  .cat--action .cat__name,.cat--action .cat__meta{grid-column:1}
+  .cat--action .cat__go{grid-column:2;grid-row:1/3;margin:0;padding:0;white-space:nowrap}
+}
+@media (min-width:760px){
+  .cat__img{aspect-ratio:2/1;margin:.5rem .5rem 0}
+  .cat:not(.cat--action) .cat__body{padding:.75rem 1rem .85rem;gap:.15rem}
+  .cat__name{font-size:1.12rem}
+  .cat__foot{padding-top:.55rem;margin-top:auto}
+  .cat:not(.cat--action) .cat__meta{margin-bottom:.55rem}
+  .cat--action{min-height:0;padding:.85rem 1.1rem}
+  .cat__icon{width:42px;height:42px}
+}
+@media (min-width:1100px){.cat--action{grid-column:span 3}.cat:not(.cat--action) .cat__meta{min-height:0}.cat__img{aspect-ratio:2.2/1}}
+}
+
+/* ---------- 6. Shop: filterable product grid ---------- */
+.shop{padding:var(--s-5) 0}
+.filters{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:var(--s-3)}
+.filters button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.55rem 1rem;font:600 var(--t-sm) var(--f);cursor:pointer;color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.filters .count{font:500 .72rem var(--f-mono);opacity:.7;margin-left:.3rem}
+.grid{display:grid;gap:.75rem}
+.prod{padding:.9rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .15s,transform .2s var(--ease)}
+.prod:hover{border-color:var(--ink);transform:translateY(-3px)}
+.prod[hidden]{display:none}
+.prod__img{position:relative;aspect-ratio:4/3;border-radius:var(--r-sm);background:var(--bg);overflow:hidden}
+.prod__img img{width:100%;height:100%;object-fit:cover}
+.prod__img .chip{position:absolute;top:.6rem;left:.6rem}
+.prod h3{font-size:1.05rem;letter-spacing:-.02em}
+.prod .spec{color:var(--ink-2);font-size:var(--t-sm);margin:0}
+.prod__foot{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-top:auto}
+.prod__save{font:500 .72rem var(--f-mono);color:var(--good)}
+.add{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:var(--r-sm);width:42px;height:42px;display:grid;place-items:center;cursor:pointer;flex:none;transition:background .15s}
+.add:hover{background:var(--lime);color:var(--ink)}
+.add.is-added{background:var(--good);border-color:var(--good)}
+@media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+/* grades explainer */
+.grades{display:grid;gap:.75rem;margin-top:var(--s-4)}
+.grade{padding:1.2rem}
+.grade h3{font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-bottom:.4rem}
+.grade p{margin:0;color:var(--ink-2);font-size:var(--t-sm)}
+.dots{display:flex;gap:3px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--ink)}
+@media (min-width:860px){.grades{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 7. Trade-in valuer (signature) ---------- */
+.trade{padding:var(--s-5) 0;background:var(--ink);color:#fff}
+.trade .sec-h p{color:#A8ACB5}
+.trade__grid{display:grid;gap:.75rem}
+.tin{background:#1F2228;border:1px solid #2E323B;border-radius:var(--r);padding:clamp(1.2rem,3vw,2rem)}
+.step{margin-bottom:1.4rem}
+.step:last-child{margin-bottom:0}
+.step .label{color:#A8ACB5}
+.opts{display:flex;flex-wrap:wrap;gap:.4rem}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opts span{display:block;padding:.6rem .9rem;border-radius:var(--r-sm);border:1px solid #3A3F49;font-weight:600;font-size:var(--t-sm);transition:background .12s,border-color .12s,color .12s}
+.opts label:hover span{border-color:#7A808C}
+.opts input:checked + span{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.opts input:focus-visible + span{outline:3px solid #fff;outline-offset:2px}
+.opts--cond span small{display:block;font-weight:400;font-size:.72rem;opacity:.75;margin-top:.15rem}
+.quote{background:var(--lime);color:var(--ink);border-radius:var(--r);padding:clamp(1.2rem,3vw,2rem);display:flex;flex-direction:column}
+.quote__dev{font-weight:600;margin:0}
+.quote__val{font-size:clamp(3rem,2rem + 4vw,5rem);font-weight:800;letter-spacing:-.06em;line-height:1;margin:.6rem 0 .3rem;font-variant-numeric:tabular-nums}
+.quote__note{font-size:var(--t-sm);margin:0}
+.quote ul{list-style:none;margin:1.2rem 0;padding:1rem 0 0;border-top:1px solid rgba(22,24,29,.2);display:grid;gap:.45rem;font-size:var(--t-sm);font-weight:500}
+.quote li{display:flex;gap:.5rem}
+.quote li::before{content:"";width:16px;height:16px;flex:none;border-radius:50%;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' fill='none' stroke='%23C6F432' stroke-width='1.8'/%3E%3C/svg%3E") center no-repeat;margin-top:.15rem}
+.quote .btn{margin-top:auto}
+@media (min-width:960px){.trade__grid{grid-template-columns:1.5fr 1fr}}
+
+/* ---------- 8. Business case studies: cost bars ---------- */
+.biz{padding:var(--s-5) 0}
+.cases{display:grid;gap:.75rem}
+.case{padding:clamp(1.2rem,2.5vw,1.8rem);display:grid;gap:1.2rem}
+.case__top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;align-items:center}
+.case h3{font-size:1.3rem}
+.case__meta{display:flex;flex-wrap:wrap;gap:.4rem}
+.case p{margin:0;color:var(--ink-2)}
+.compare{display:grid;gap:.55rem}
+.compare__row{display:grid;grid-template-columns:7.5rem 1fr 5.5rem;align-items:center;gap:.7rem;font-size:var(--t-sm)}
+.compare__row span:first-child{color:var(--ink-2);font-weight:600}
+.compare__row b{text-align:right;font-family:var(--f-mono);font-weight:500}
+.cbar{height:16px;border-radius:5px;background:var(--bg);overflow:hidden}
+.cbar i{display:block;height:100%;border-radius:5px;background:#C5C9D1;width:0;transition:width 1.1s var(--ease)}
+.cbar--us i{background:var(--lime);border:1px solid #9CC20F}
+.case.is-in .cbar i{width:var(--v)}
+.case__saved{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.case__saved b{font-size:1.8rem;letter-spacing:-.04em;color:var(--good)}
+.case__saved span{color:var(--ink-2);font-size:var(--t-sm)}
+@media (min-width:1000px){.case{grid-template-columns:1fr 1.2fr;align-items:center;gap:2.5rem}}
+
+/* ---------- 9. Process: order-tracker style ---------- */
+.check{padding:0 0 var(--s-5)}
+.track{padding:clamp(1.2rem,3vw,2rem)}
+.track ol{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.track li{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding-bottom:1.6rem;position:relative}
+.track li:last-child{padding-bottom:0}
+.track li::before{content:"";position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--line)}
+.track li:last-child::before{display:none}
+.track .dot{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--card);display:grid;place-items:center;font:500 .8rem var(--f-mono);position:relative;z-index:1;transition:background .4s,border-color .4s}
+.track li.is-done .dot{background:var(--lime);border-color:var(--ink)}
+.track h3{font-size:1.05rem;margin:.55rem 0 .25rem}
+.track p{margin:0;color:var(--ink-2);font-size:var(--t-sm)}
+.track .t{font:500 .72rem var(--f-mono);color:var(--ink-2)}
+@media (min-width:1000px){
+  .track ol{grid-template-columns:repeat(6,1fr);gap:1rem}
+  .track li{grid-template-columns:1fr;padding:0}
+  .track li::before{left:44px;right:-12px;top:19px;bottom:auto;width:auto;height:2px}
+  .track li.is-done::before{background:var(--ink)}
+}
+
+/* ---------- 10. Guarantee: warranty card ---------- */
+.warranty{padding:0 0 var(--s-5)}
+.warranty__grid{display:grid;gap:.75rem}
+.wcard{position:relative;border-radius:var(--r);padding:clamp(1.4rem,3vw,2.2rem);background:linear-gradient(135deg,#1C1F26 0%,#2B2F38 100%);color:#fff;overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+.wcard::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:30px solid rgba(198,244,50,.18)}
+.wcard__top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.wcard__big{font-size:clamp(3.6rem,2.4rem + 4vw,6rem);font-weight:800;letter-spacing:-.06em;line-height:.9;color:var(--lime);position:relative;z-index:1}
+.wcard__big small{display:block;font-size:.25em;letter-spacing:.02em;color:#fff;font-weight:600;margin-top:.5rem}
+.wcard__foot{display:flex;justify-content:space-between;gap:1rem;font:500 .78rem var(--f-mono);color:#A8ACB5;position:relative;z-index:1}
+.wlist{padding:clamp(1.2rem,3vw,2rem);display:grid;gap:1.1rem}
+.wlist div{display:grid;grid-template-columns:44px 1fr;gap:1rem;align-items:start}
+.wlist .ic{width:44px;height:44px;border-radius:var(--r-sm);background:var(--lime-2);display:grid;place-items:center}
+.wlist h3{font-size:1.05rem;margin:.2rem 0 .25rem}
+.wlist p{margin:0;color:var(--ink-2);font-size:var(--t-sm)}
+@media (min-width:960px){.warranty__grid{grid-template-columns:1fr 1.2fr}}
+
+/* ---------- 11. Reviews: snap carousel ---------- */
+.reviews{padding:0 0 var(--s-5)}
+.rv-ctrl{display:flex;gap:.4rem}
+.rail{display:flex;gap:.75rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:.3rem}
+.rail::-webkit-scrollbar{display:none}
+.rv{flex:0 0 min(86%,380px);scroll-snap-align:start;margin:0;padding:1.3rem;display:flex;flex-direction:column;gap:.8rem}
+.rv__head{display:flex;justify-content:space-between;align-items:center}
+.rv blockquote{margin:0;font-size:1.02rem}
+.rv figcaption{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.6rem;font-size:var(--t-sm);color:var(--ink-2);padding-top:.8rem;border-top:1px solid var(--line)}
+.rv figcaption b{color:var(--ink)}
+
+/* ---------- 12. FAQ ---------- */
+.faq{padding:0 0 var(--s-5)}
+.faq__grid{display:grid;gap:.75rem}
+.faq__side{padding:1.6rem;align-self:start}
+.faq__side h2{font-size:var(--t-xl);margin-bottom:.6rem}
+.faq__side p{color:var(--ink-2);font-size:var(--t-sm)}
+.acc{padding:.4rem 1.2rem}
+.acc__item + .acc__item{border-top:1px solid var(--line)}
+.acc__btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;background:none;border:0;text-align:left;font:600 1.02rem/1.35 var(--f);color:var(--ink);cursor:pointer}
+.acc__chev{flex:none;width:30px;height:30px;border-radius:8px;background:var(--bg);display:grid;place-items:center;transition:transform .25s var(--ease),background .2s}
+.acc__btn[aria-expanded="true"] .acc__chev{transform:rotate(180deg);background:var(--lime)}
+.acc__panel{padding:0 2.6rem 1.2rem 0;color:var(--ink-2);font-size:.95rem}
+.acc__panel p{margin:0}
+@media (min-width:960px){.faq__grid{grid-template-columns:1fr 2fr}.faq__side{position:sticky;top:140px}}
+
+/* ---------- 13. Business quote form ---------- */
+.bquote{padding:0 0 var(--s-5)}
+.bq{display:grid;gap:.75rem}
+.bq__intro{padding:clamp(1.4rem,3vw,2.2rem);background:var(--ink);color:#fff;border-color:var(--ink)}
+.bq__intro h2{font-size:var(--t-2xl);margin-bottom:.8rem}
+.bq__intro p{color:#C9CCD3}
+.bq__intro dl{margin:1.4rem 0 0;display:grid;gap:.8rem}
+.bq__intro dt{font:500 .72rem var(--f-mono);color:#A8ACB5;text-transform:uppercase}
+.bq__intro dd{margin:0;font-weight:700;font-size:1.1rem}
+.bq__intro a{text-decoration:none}
+.bq__intro a:hover{color:var(--lime)}
+.bq__form{padding:clamp(1.4rem,3vw,2.2rem)}
+.form{display:grid;gap:1rem}
+.fld{display:flex;flex-direction:column;gap:.35rem}
+.fld label{font-weight:600;font-size:var(--t-sm)}
+.fld input,.fld select,.fld textarea{font:500 1rem var(--f);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:.8rem .9rem;transition:border-color .15s,background .15s}
+.fld select{appearance:none;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2316181D' stroke-width='1.8'/%3E%3C/svg%3E") right .9rem center no-repeat}
+.fld textarea{min-height:120px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--ink);background:#fff}
+.fld [aria-invalid="true"]{border-color:var(--error);background:#FFF5F5}
+.err{font-size:var(--t-sm);font-weight:600;color:var(--error)}
+.err:empty{display:none}
+.fld--full,.form__foot{grid-column:1/-1}
+.form__foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.form__foot small{color:var(--ink-2);max-width:40ch}
+.done{text-align:center;padding:2rem 1rem}
+.done__ic{width:64px;height:64px;margin:0 auto 1rem;border-radius:50%;background:var(--lime);display:grid;place-items:center}
+.done h3{font-size:1.5rem;margin-bottom:.4rem}
+@media (min-width:640px){.form{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.bq{grid-template-columns:1fr 1.6fr}}
+
+/* ---------- 14. Footer ---------- */
+.foot{background:var(--ink);color:#C9CCD3;padding:var(--s-5) 0 var(--s-3);font-size:var(--t-sm)}
+.foot a{text-decoration:none;color:#fff}
+.foot a:hover{color:var(--lime)}
+.foot__impact{display:grid;gap:.75rem;margin-bottom:var(--s-4)}
+.impact{background:#1F2228;border:1px solid #2E323B;border-radius:var(--r);padding:1.2rem}
+.impact b{display:block;font-size:1.9rem;color:var(--lime);letter-spacing:-.04em}
+.foot__grid{display:grid;gap:var(--s-3)}
+.foot h3{font:600 .75rem var(--f);text-transform:uppercase;letter-spacing:.08em;color:#A8ACB5;margin-bottom:.8rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
+.foot address{font-style:normal;line-height:1.75}
+.foot__desc{max-width:32ch;margin-top:1rem}
+.foot .logo span{color:#A8ACB5}
+.social{display:flex;gap:.4rem;margin-top:1rem}
+.social a{width:40px;height:40px;border-radius:var(--r-sm);border:1px solid #3A3F49;display:grid;place-items:center}
+.social a:hover{border-color:var(--lime)}
+.foot__base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:var(--s-4);padding-top:var(--s-2);border-top:1px solid #2E323B;font-size:var(--t-xs)}
+.foot__base ul{display:flex;flex-wrap:wrap;gap:1.2rem}
+@media (min-width:760px){.foot__impact{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:900px){.foot__grid{grid-template-columns:1.5fr 1fr 1fr 1fr 1fr}}
+
+/* toast, battery back-to-top, mobile call */
+.toast{position:fixed;right:1rem;top:1rem;z-index:170;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:.8rem 1rem;display:flex;gap:.7rem;align-items:center;box-shadow:0 12px 30px rgba(22,24,29,.12);font-weight:600;font-size:var(--t-sm);transform:translateX(130%);transition:transform .35s var(--ease)}
+.toast.is-on{transform:none}
+.toast i{width:28px;height:28px;border-radius:50%;background:var(--lime);display:grid;place-items:center;flex:none}
+.to-top{position:fixed;right:1rem;bottom:1rem;z-index:90;display:flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:.55rem .75rem;cursor:pointer;font:600 var(--t-xs) var(--f);color:var(--ink);box-shadow:0 8px 24px rgba(22,24,29,.1);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,visibility .25s,transform .25s var(--ease)}
+.to-top.is-shown{opacity:1;visibility:visible;transform:none}
+.to-top:hover{border-color:var(--ink)}
+.tbatt{position:relative;width:30px;height:16px;border:2px solid var(--ink);border-radius:4px;padding:1px}
+.tbatt::after{content:"";position:absolute;right:-5px;top:4px;width:3px;height:5px;background:var(--ink);border-radius:0 2px 2px 0}
+.tbatt i{display:block;height:100%;width:var(--p,0%);background:var(--lime);border-radius:2px;transition:width .15s}
+.mcall{position:fixed;left:1rem;bottom:1rem;z-index:90;display:flex;align-items:center;gap:.4rem;padding:.7rem 1rem;border-radius:var(--r-sm);background:var(--ink);color:#fff;font-weight:600;font-size:var(--t-sm);text-decoration:none}
+@media (min-width:760px){.mcall{display:none}}
+
+/* ---------- 15. Motion ---------- */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .batt__bar i,.case .cbar i{width:var(--v)!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="hdr" id="hdr">
+  <div class="bar">
+    <a class="logo" href="#top" aria-label="Second Charge, back to top">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="9" width="32" height="22" rx="6" fill="#16181D"/><rect x="34.5" y="15" width="3.5" height="10" rx="1.75" fill="#16181D"/><path d="M20.5 12.5l-6.5 9h5.2l-2 7 7.3-10h-5.3z" fill="#C6F432"/></svg>
+      <span><b>second</b>charge</span>
+    </a>
+    <form class="search" role="search" onsubmit="return false"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="#5B606B" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="#5B606B" stroke-width="2"/></svg><label class="vh" for="q">Search devices</label><input id="q" type="search" placeholder="Search 1,240 refurbished devices"><kbd>/</kbd></form>
+    <div class="bar__right">
+      <a class="bar__tel" href="tel:+441218286113">0121 828 6113</a>
+      <a class="btn btn--ghost bar__cta" href="#business">Business quote</a>
+      <button class="icon-btn bag" id="bag" type="button" aria-label="Your basket, 0 items"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h11L21 7H6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="19.5" r="1.5" fill="currentColor"/><circle cx="17" cy="19.5" r="1.5" fill="currentColor"/></svg><span class="bag__n" id="bag-n">0</span></button>
+      <div class="menu-wrap">
+        <button class="icon-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="pop" aria-label="Open menu"><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.8"/></svg></button>
+        <div class="pop" id="pop">
+          <a href="#categories">Shop by category <span aria-hidden="true">→</span></a>
+          <a href="#shop">Popular devices <span aria-hidden="true">→</span></a>
+          <a href="#trade-in">Trade in <span aria-hidden="true">→</span></a>
+          <a href="#business">For business <span aria-hidden="true">→</span></a>
+          <a href="#check">72-point check <span aria-hidden="true">→</span></a>
+          <a href="#warranty">Warranty <span aria-hidden="true">→</span></a>
+          <a href="#faq">Help &amp; FAQ <span aria-hidden="true">→</span></a>
+          <hr>
+          <a href="tel:+441218286113">Call 0121 828 6113</a>
+          <a class="btn" href="#quote">Get a business quote</a>
+        </div>
+      </div>
+    </div>
+    <form class="search search--m" role="search" onsubmit="return false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="#5B606B" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="#5B606B" stroke-width="2"/></svg><label class="vh" for="qm">Search devices</label><input id="qm" type="search" placeholder="Search devices"></form>
+  </div>
+  <nav class="tabs" aria-label="Categories">
+    <a href="#categories">All categories</a>
+    <a href="#shop" data-cat="laptop">Laptops</a>
+    <a href="#shop" data-cat="phone">Phones</a>
+    <a href="#shop" data-cat="tablet">Tablets</a>
+    <a href="#trade-in" class="is-hot">Trade in</a>
+    <a href="#business">Business</a>
+    <a href="#check">72-point check</a>
+    <a href="#warranty">Warranty</a>
+    <a href="#faq">Help</a>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+<!-- ============ HERO: BENTO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="bento">
+    <div class="b-main reveal">
+      <div>
+        <span class="chip" style="background:rgba(22,24,29,.08);border-color:transparent"><i></i>Tested on 72 points, in Birmingham</span>
+        <h1 id="hero-title" style="margin-top:1rem">Laptops and phones that work like new, for up to 55% less.</h1>
+        <p>Every device is wiped, tested, graded honestly and covered for 18 months. Battery health of 85% or better, or we replace the battery.</p>
+      </div>
+      <div class="b-main__ctas">
+        <a class="btn" href="#shop">Shop refurbished</a>
+        <a class="btn btn--ghost" href="#trade-in">Value my old device</a>
+      </div>
+    </div>
+    <article class="card b-prod reveal">
+      <div class="b-prod__img"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=900&q=80&auto=format&fit=crop" alt="Refurbished MacBook laptop open on a desk" width="900" height="620" fetchpriority="high"></div>
+      <div class="b-prod__row">
+        <div><span class="chip chip--good"><i></i>Excellent</span><h2 style="margin-top:.5rem">MacBook Air 13" M2</h2><p class="spec">8GB · 256GB SSD · Midnight · 2022</p></div>
+        <div class="price" style="flex-direction:column;align-items:flex-end;gap:.2rem"><b>£649</b><s>New £999</s><span class="chip chip--lime">Save £350</span></div>
+      </div>
+      <div class="batt"><span class="mono">Battery</span><span class="batt__bar"><i style="--v:94%"></i></span><span class="mono">94%</span></div>
+      <button class="btn btn--lime add-hero" type="button" data-name="MacBook Air 13&quot; M2">Add to basket</button>
+    </article>
+    <div class="card b-stat reveal">
+      <div class="b-stat__top"><span class="label" style="margin:0">Trustpilot</span><span class="stars" aria-hidden="true">★★★★★</span></div>
+      <p class="b-stat__score"><b>4.7</b><span>out of 5 from<br>5,412 reviews</span></p>
+      <blockquote class="b-stat__quote">“The listing said 94% battery. It was 94%. That honesty sold me.”</blockquote>
+      <p class="b-stat__who"><span class="avatar" aria-hidden="true">LM</span>Laura M. · Coventry · <a href="#reviews">All reviews</a></p>
+    </div>
+    <div class="card b-ship reveal" aria-live="off">
+      <span class="label" id="cutoff-lbl">Next-day delivery</span>
+      <span class="mono" id="cutoff">04:12:09</span>
+      <p id="cutoff-txt">Order in this time for delivery tomorrow with DPD.</p>
+      <ul><li>Free on every order</li><li>One-hour slot texted on the morning</li><li>Or collect in the Jewellery Quarter</li></ul>
+    </div>
+    <div class="card b-warr reveal"><b>18 months</b><p>Warranty on every device, plus 30-day no-quibble returns.</p></div>
+  </div>
+  <div class="trust" aria-label="Credentials">
+    <ul>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V7z" fill="none" stroke="currentColor" stroke-width="2"/></svg>Blancco certified data wipe</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>18-month warranty</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2"/></svg>30-day free returns</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21c0-8 4-14 14-17-1 10-6 15-14 17z" fill="none" stroke="currentColor" stroke-width="2"/></svg>ISO 14001 certified</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18" stroke="currentColor" stroke-width="2"/></svg>Klarna and PayPal Pay in 3</li>
+      
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SHOP BY CATEGORY ============ -->
+<section class="cats" id="categories" aria-labelledby="cat-title">
+  <div class="wrap">
+    <div class="sec-h reveal"><h2 id="cat-title">Shop by category</h2><p>1,240 devices in stock today, every one tested in our Birmingham workshop.</p></div>
+    <div class="cat-grid">
+      <a class="card cat reveal" href="#shop" data-cat="laptop">
+        <span class="cat__img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async" width="900" height="600"></span>
+        <span class="cat__body"><span class="cat__name">Laptops</span><span class="cat__meta">MacBook, ThinkPad, XPS, Surface</span><span class="cat__foot"><span class="mono">412 in stock</span><b>from £189</b></span></span>
+      </a>
+      <a class="card cat reveal" href="#shop" data-cat="phone">
+        <span class="cat__img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async" width="900" height="600"></span>
+        <span class="cat__body"><span class="cat__name">Phones</span><span class="cat__meta">iPhone, Samsung Galaxy, Google Pixel</span><span class="cat__foot"><span class="mono">530 in stock</span><b>from £119</b></span></span>
+      </a>
+      <a class="card cat reveal" href="#shop" data-cat="tablet">
+        <span class="cat__img"><img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async" width="700" height="466"></span>
+        <span class="cat__body"><span class="cat__name">Tablets</span><span class="cat__meta">iPad, Galaxy Tab</span><span class="cat__foot"><span class="mono">214 in stock</span><b>from £149</b></span></span>
+      </a>
+      <a class="card cat cat--action cat--lime reveal" href="#trade-in">
+        <span class="cat__icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v4h-4M6 21v-4h4" fill="none" stroke="#16181D" stroke-width="2"/></svg></span>
+        <span class="cat__body"><span class="cat__name">Trade in</span><span class="cat__meta">Instant price for your old phone, tablet or laptop. Paid in 2 days.</span><span class="cat__go">Get a price <span aria-hidden="true">→</span></span></span>
+      </a>
+      <a class="card cat cat--action cat--ink reveal" href="#business">
+        <span class="cat__icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="#C6F432" stroke-width="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" fill="none" stroke="#C6F432" stroke-width="2"/></svg></span>
+        <span class="cat__body"><span class="cat__name">Business &amp; schools</span><span class="cat__meta">Fleets from 10 devices, enrolled and asset-tagged.</span><span class="cat__go">See fleet pricing <span aria-hidden="true">→</span></span></span>
+      </a>
+    </div>
+    <div class="brands reveal" role="group" aria-label="Shop by brand">
+      <span class="label" style="margin:0">Popular brands</span>
+      <a href="#shop">Apple</a><a href="#shop">Lenovo</a><a href="#shop">Dell</a><a href="#shop">Microsoft</a><a href="#shop">Samsung</a><a href="#shop">Google</a><a href="#shop">HP</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP (services equivalent) ============ -->
+<section class="shop" id="shop" aria-labelledby="shop-title">
+  <div class="wrap">
+    <div class="sec-h reveal"><h2 id="shop-title">Popular this week</h2><p>Prices include VAT. Every listing shows the real battery health and grade, not a range.</p></div>
+    <div class="filters" role="group" aria-label="Filter devices">
+      <button type="button" aria-pressed="true" data-f="all">All<span class="count">6</span></button>
+      <button type="button" aria-pressed="false" data-f="laptop">Laptops<span class="count">3</span></button>
+      <button type="button" aria-pressed="false" data-f="phone">Phones<span class="count">2</span></button>
+      <button type="button" aria-pressed="false" data-f="tablet">Tablets<span class="count">1</span></button>
+    </div>
+    <div class="grid" id="grid" aria-live="polite">
+      <article class="card prod" data-cat="laptop"><div class="prod__img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=700&q=80&auto=format&fit=crop" alt="Refurbished laptop on a wooden desk" loading="lazy" width="700" height="525"><span class="chip chip--good"><i></i>Excellent</span></div><h3>Lenovo ThinkPad T14 Gen 3</h3><p class="spec">i5-1245U · 16GB · 512GB · 14" FHD</p><div class="batt"><span class="mono">Battery</span><span class="batt__bar"><i style="--v:91%"></i></span><span class="mono">91%</span></div><div class="prod__foot"><div><div class="price"><b>£429</b><s>£1,089</s></div><span class="prod__save">You save £660</span></div><button class="add" type="button" data-name="ThinkPad T14 Gen 3" aria-label="Add ThinkPad T14 Gen 3 to basket"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2"/></svg></button></div></article>
+      <article class="card prod" data-cat="phone"><div class="prod__img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=700&q=80&auto=format&fit=crop" alt="Refurbished smartphone held in hand" loading="lazy" width="700" height="525"><span class="chip chip--good"><i></i>Excellent</span></div><h3>iPhone 14, 128GB</h3><p class="spec">Unlocked · Midnight · eSIM and SIM</p><div class="batt"><span class="mono">Battery</span><span class="batt__bar"><i style="--v:89%"></i></span><span class="mono">89%</span></div><div class="prod__foot"><div><div class="price"><b>£379</b><s>£699</s></div><span class="prod__save">You save £320</span></div><button class="add" type="button" data-name="iPhone 14, 128GB" aria-label="Add iPhone 14 to basket"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2"/></svg></button></div></article>
+      <article class="card prod" data-cat="laptop"><div class="prod__img"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=700&q=80&auto=format&fit=crop" alt="Refurbished slim laptop with keyboard backlight" loading="lazy" width="700" height="525"><span class="chip"><i></i>Good</span></div><h3>Dell XPS 13 9315</h3><p class="spec">i7-1250U · 16GB · 512GB · 13.4"</p><div class="batt"><span class="mono">Battery</span><span class="batt__bar"><i style="--v:86%"></i></span><span class="mono">86%</span></div><div class="prod__foot"><div><div class="price"><b>£489</b><s>£1,199</s></div><span class="prod__save">You save £710</span></div><button class="add" type="button" data-name="Dell XPS 13" aria-label="Add Dell XPS 13 to basket"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2"/></svg></button></div></article>
+      <article class="card prod" data-cat="tablet"><div class="prod__img"><img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=700&q=80&auto=format&fit=crop" alt="Refurbished tablet on a table" loading="lazy" width="700" height="525"><span class="chip chip--lime"><i></i>Pristine</span></div><h3>iPad 10th generation, 64GB</h3><p class="spec">Wi-Fi · Blue · 10.9"</p><div class="batt"><span class="mono">Battery</span><span class="batt__bar"><i style="--v:98%"></i></span><span class="mono">98%</span></div><div class="prod__foot"><div><div class="price"><b>£279</b><s>£349</s></div><span class="prod__save">You save £70</span></div><button class="add" type="button" data-name="iPad 10th generation" aria-label="Add iPad 10th generation to basket"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2"/></svg></button></div></article>
+      <article class="card prod" data-cat="phone"><div class="prod__img"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=700&q=80&auto=format&fit=crop" alt="Refurbished phone shown front and back" loading="lazy" width="700" height="525"><span class="chip"><i></i>Good</span></div><h3>iPhone 13, 128GB</h3><p class="spec">Unlocked · Starlight · 5G</p><div class="batt"><span class="mono">Battery</span><span class="batt__bar"><i style="--v:87%"></i></span><span class="mono">87%</span></div><div class="prod__foot"><div><div class="price"><b>£299</b><s>£599</s></div><span class="prod__save">You save £300</span></div><button class="add" type="button" data-name="iPhone 13, 128GB" aria-label="Add iPhone 13 to basket"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2"/></svg></button></div></article>
+      <article class="card prod" data-cat="laptop"><div class="prod__img"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=700&q=80&auto=format&fit=crop" alt="Refurbished laptop with a bright screen" loading="lazy" width="700" height="525"><span class="chip chip--good"><i></i>Excellent</span></div><h3>Microsoft Surface Laptop 5</h3><p class="spec">i5-1235U · 8GB · 256GB · 13.5" touch</p><div class="batt"><span class="mono">Battery</span><span class="batt__bar"><i style="--v:92%"></i></span><span class="mono">92%</span></div><div class="prod__foot"><div><div class="price"><b>£549</b><s>£999</s></div><span class="prod__save">You save £450</span></div><button class="add" type="button" data-name="Surface Laptop 5" aria-label="Add Surface Laptop 5 to basket"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2"/></svg></button></div></article>
+    </div>
+    <div class="grades">
+      <div class="card grade reveal"><h3>Pristine <span class="dots" aria-label="Condition 3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></span></h3><p>No visible marks at arm's length or close up. Often unused returns.</p></div>
+      <div class="card grade reveal"><h3>Excellent <span class="dots" aria-label="Condition 2 of 3"><i class="on"></i><i class="on"></i><i></i></span></h3><p>Light marks you'd only notice close up. Screen flawless. Our most popular grade.</p></div>
+      <div class="card grade reveal"><h3>Good <span class="dots" aria-label="Condition 1 of 3"><i class="on"></i><i></i><i></i></span></h3><p>Visible wear on the case, never on the screen. Works exactly the same, costs least.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRADE-IN VALUER (signature) ============ -->
+<section class="trade" id="trade-in" aria-labelledby="ti-title">
+  <div class="wrap">
+    <div class="sec-h reveal"><h2 id="ti-title">What's your old device worth?</h2><p>An instant price, held for 14 days. Free prepaid box, paid within 2 working days of arrival.</p></div>
+    <div class="trade__grid">
+      <form class="tin" id="tin" onsubmit="return false">
+        <div class="step"><span class="label">1. Device</span><div class="opts" id="o-dev">
+          <label><input type="radio" name="dev" value="iphone13" checked><span>iPhone 13</span></label>
+          <label><input type="radio" name="dev" value="iphone14"><span>iPhone 14</span></label>
+          <label><input type="radio" name="dev" value="iphone15"><span>iPhone 15</span></label>
+          <label><input type="radio" name="dev" value="mba1"><span>MacBook Air M1</span></label>
+          <label><input type="radio" name="dev" value="mba2"><span>MacBook Air M2</span></label>
+          <label><input type="radio" name="dev" value="ipadair5"><span>iPad Air (5th gen)</span></label>
+        </div></div>
+        <div class="step"><span class="label">2. Storage</span><div class="opts" id="o-store"></div></div>
+        <div class="step"><span class="label">3. Condition</span><div class="opts opts--cond">
+          <label><input type="radio" name="cond" value="1"><span>Like new<small>No marks, perfect screen</small></span></label>
+          <label><input type="radio" name="cond" value=".85" checked><span>Good<small>Light scratches</small></span></label>
+          <label><input type="radio" name="cond" value=".65"><span>Fair<small>Dents or heavy wear</small></span></label>
+          <label><input type="radio" name="cond" value=".3"><span>Faulty<small>Cracked or won't turn on</small></span></label>
+        </div></div>
+      </form>
+      <div class="quote" aria-live="polite">
+        <p class="quote__dev" id="q-dev">iPhone 13, 128GB, Good</p>
+        <p class="quote__val" id="q-val">£183</p>
+        <p class="quote__note">Paid by bank transfer, or take £<span id="q-credit">201</span> as store credit (+10%).</p>
+        <ul><li>Free prepaid box posted the next working day</li><li>Price held for 14 days</li><li>We wipe it with Blancco before it's resold</li></ul>
+        <a class="btn" href="#quote" id="q-lock">Lock in this price</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUSINESS CASE STUDIES ============ -->
+<section class="biz" id="business" aria-labelledby="bz-title">
+  <div class="wrap">
+    <div class="sec-h reveal"><h2 id="bz-title">Fleets for businesses and schools</h2><p>Bulk pricing from 10 devices, set up and enrolled before they arrive. Here's what three customers saved against buying new.</p></div>
+    <div class="cases">
+      <article class="card case reveal">
+        <div><div class="case__top"><h3>Accountancy firm, Solihull</h3><div class="case__meta"><span class="chip">25 laptops</span><span class="chip">2 weeks</span></div></div><p style="margin-top:.6rem">ThinkPad T14 Gen 3s with Windows 11 Pro, Intune pre-enrolled and asset-tagged, delivered over a weekend.</p></div>
+        <div class="compare">
+          <div class="compare__row"><span>Buying new</span><span class="cbar"><i style="--v:100%"></i></span><b>£27,250</b></div>
+          <div class="compare__row"><span>Second Charge</span><span class="cbar cbar--us"><i style="--v:39%"></i></span><b>£10,725</b></div>
+          <p class="case__saved"><b>£16,525 saved</b><span>· 3.1 tonnes CO2e avoided</span></p>
+        </div>
+      </article>
+      <article class="card case reveal">
+        <div><div class="case__top"><h3>Primary academy, Walsall</h3><div class="case__meta"><span class="chip">60 iPads</span><span class="chip">10 days</span></div></div><p style="margin-top:.6rem">iPad 9th generation with cases, enrolled in Apple School Manager and Jamf before delivery.</p></div>
+        <div class="compare">
+          <div class="compare__row"><span>Buying new</span><span class="cbar"><i style="--v:100%"></i></span><b>£20,940</b></div>
+          <div class="compare__row"><span>Second Charge</span><span class="cbar cbar--us"><i style="--v:60%"></i></span><b>£12,540</b></div>
+          <p class="case__saved"><b>£8,400 saved</b><span>· enough for a second class set next year</span></p>
+        </div>
+      </article>
+      <article class="card case reveal">
+        <div><div class="case__top"><h3>Youth charity, Wolverhampton</h3><div class="case__meta"><span class="chip">40 traded in</span><span class="chip">30 bought</span></div></div><p style="margin-top:.6rem">We collected 40 old laptops, wiped them to certificate, and credited their value against 30 refurbished replacements.</p></div>
+        <div class="compare">
+          <div class="compare__row"><span>Gross cost</span><span class="cbar"><i style="--v:100%"></i></span><b>£10,830</b></div>
+          <div class="compare__row"><span>After trade-in</span><span class="cbar cbar--us"><i style="--v:64%"></i></span><b>£6,950</b></div>
+          <p class="case__saved"><b>£3,880 credited</b><span>· 40 data-wipe certificates issued</span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS: 72-POINT CHECK ============ -->
+<section class="check" id="check" aria-labelledby="ck-title">
+  <div class="wrap">
+    <div class="sec-h reveal"><h2 id="ck-title">What happens before it reaches you</h2><p>Every device follows the same route through our Jewellery Quarter workshop. Most take three working days.</p></div>
+    <div class="card track reveal" id="track">
+      <ol>
+        <li><span class="dot">01</span><div><span class="t">Day 1</span><h3>Booked in</h3><p>Serial checked against stolen and finance registers.</p></div></li>
+        <li><span class="dot">02</span><div><span class="t">Day 1</span><h3>Data wiped</h3><p>Blancco erasure, with a certificate kept for every device.</p></div></li>
+        <li><span class="dot">03</span><div><span class="t">Day 2</span><h3>72-point test</h3><p>Screen, keys, ports, cameras, speakers, Wi-Fi, Bluetooth, sensors.</p></div></li>
+        <li><span class="dot">04</span><div><span class="t">Day 2</span><h3>Battery check</h3><p>Under 85% health? We fit a new battery before it's listed.</p></div></li>
+        <li><span class="dot">05</span><div><span class="t">Day 3</span><h3>Graded and cleaned</h3><p>Photographed, graded by a second technician, deep cleaned.</p></div></li>
+        <li><span class="dot">06</span><div><span class="t">Next day</span><h3>Shipped</h3><p>Order by 4pm, with you tomorrow by DPD with a one-hour slot.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARANTEE: WARRANTY CARD ============ -->
+<section class="warranty" id="warranty" aria-labelledby="wr-title">
+  <div class="wrap">
+    <div class="sec-h reveal"><h2 id="wr-title">Bought with a warranty. Not a hope.</h2><p>The worry with refurbished is "what if it dies in month three?" Here's exactly what happens.</p></div>
+    <div class="warranty__grid">
+      <div class="wcard reveal">
+        <div class="wcard__top"><span class="logo" style="color:#fff"><b>second</b><span style="color:#A8ACB5">charge</span></span><span class="chip chip--lime">Warranty</span></div>
+        <p class="wcard__big">18 months<small>Parts and labour, every device</small></p>
+        <div class="wcard__foot"><span>SC-W-2026-061384</span><span>Valid in the UK</span></div>
+      </div>
+      <div class="card wlist reveal">
+        <div><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V7z" fill="none" stroke="#16181D" stroke-width="2"/></svg></span><div><h3>Fixed or replaced in 5 working days</h3><p>Free collection, repair at our workshop and back to you. If we can't fix it, you get a like-for-like replacement.</p></div></div>
+        <div><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v4h-4M6 21v-4h4" fill="none" stroke="#16181D" stroke-width="2"/></svg></span><div><h3>30 days to change your mind</h3><p>Return it for any reason within 30 days. We send a prepaid label and refund within 3 working days of it arriving.</p></div></div>
+        <div><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="16" height="10" rx="2" fill="none" stroke="#16181D" stroke-width="2"/><path d="M21 10v4" stroke="#16181D" stroke-width="2"/><path d="M6 10h6v4H6z" fill="#16181D"/></svg></span><div><h3>Battery promise</h3><p>At least 85% health on arrival, shown on the listing. If it drops below 80% within 12 months, we replace the battery free.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews" aria-labelledby="rv-title">
+  <div class="wrap">
+    <div class="sec-h reveal"><h2 id="rv-title">4.7 from 5,412 reviews</h2><div class="rv-ctrl"><button class="icon-btn" type="button" data-dir="-1" aria-label="Previous reviews"><svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M16 6H2M6 1L1 6l5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><button class="icon-btn" type="button" data-dir="1" aria-label="Next reviews"><svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M0 6h14M10 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button></div></div>
+    <div class="rail" id="rv-rail" tabindex="0" aria-label="Customer reviews, scroll sideways">
+      <figure class="card rv"><div class="rv__head"><span class="stars" aria-label="5 stars">★★★★★</span><span class="chip chip--good"><i></i>Verified</span></div><blockquote>Honestly couldn't tell it from new. The listing said 94% battery and coconutBattery showed 94%. That level of honesty sold me.</blockquote><figcaption><span><b>Laura M.</b> · Coventry</span><span class="mono">MacBook Air M2 · Excellent</span></figcaption></figure>
+      <figure class="card rv"><div class="rv__head"><span class="stars" aria-label="5 stars">★★★★★</span><span class="chip chip--good"><i></i>Verified</span></div><blockquote>Traded in my old 13 and got £20 more than the big trade-in sites offered. Money was in my account two days after they got it.</blockquote><figcaption><span><b>Dev P.</b> · Leicester</span><span class="mono">iPhone 13 trade-in</span></figcaption></figure>
+      <figure class="card rv"><div class="rv__head"><span class="stars" aria-label="4 stars">★★★★☆</span><span class="chip chip--good"><i></i>Verified</span></div><blockquote>Good grade had a small scuff on the lid, exactly as described. Speaker crackled after 5 months, Hannah sorted a repair in 4 days.</blockquote><figcaption><span><b>Callum R.</b> · Birmingham</span><span class="mono">Dell XPS 13 · Good</span></figcaption></figure>
+      <figure class="card rv"><div class="rv__head"><span class="stars" aria-label="5 stars">★★★★★</span><span class="chip chip--good"><i></i>Verified</span></div><blockquote>We bought 25 laptops for the office. They arrived enrolled, labelled and charged. Staff just logged in on Monday.</blockquote><figcaption><span><b>Sunita K.</b> · Solihull</span><span class="mono">25 × ThinkPad T14</span></figcaption></figure>
+      <figure class="card rv"><div class="rv__head"><span class="stars" aria-label="5 stars">★★★★★</span><span class="chip chip--good"><i></i>Verified</span></div><blockquote>Bought my daughter an iPad for school. Pristine really meant pristine, still had the screen film on.</blockquote><figcaption><span><b>Gareth W.</b> · Walsall</span><span class="mono">iPad 10th gen · Pristine</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" aria-labelledby="fq-title">
+  <div class="wrap faq__grid">
+    <div class="card faq__side reveal"><h2 id="fq-title">Questions before you buy</h2><p>Can't see your answer? Live chat and phone, Monday to Saturday.</p><a class="btn btn--ghost" href="tel:+441218286113">Call 0121 828 6113</a></div>
+    <div class="card acc reveal" data-accordion>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="f1" id="f1b">Is refurbished as reliable as new?<span class="acc__chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button></h3><div class="acc__panel" id="f1" role="region" aria-labelledby="f1b" hidden><p>Our warranty claim rate across all devices is 2.3% in the first year, which is close to new. Every device passes 72 tests, and anything with a battery under 85% gets a new one before it's listed.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="f2" id="f2b">How much is delivery?<span class="acc__chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button></h3><div class="acc__panel" id="f2" role="region" aria-labelledby="f2b" hidden><p>Free next-working-day delivery by DPD on all orders placed before 4pm. Saturday delivery is £6.99. You can also collect from our Jewellery Quarter workshop.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="f3" id="f3b">Can I pay in instalments?<span class="acc__chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button></h3><div class="acc__panel" id="f3" role="region" aria-labelledby="f3b" hidden><p>Yes. Klarna and PayPal Pay in 3 split your order into three interest-free payments. Businesses can pay by invoice on 30-day terms after a quick credit check.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="f4" id="f4b">Are phones unlocked?<span class="acc__chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button></h3><div class="acc__panel" id="f4" role="region" aria-labelledby="f4b" hidden><p>Every phone is unlocked to all networks and checked against the stolen phone register and outstanding finance before we buy it.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="f5" id="f5b">What happens to my data when I trade in?<span class="acc__chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button></h3><div class="acc__panel" id="f5" role="region" aria-labelledby="f5b" hidden><p>Please back up and sign out of iCloud or your Google account first. When it arrives we erase it with Blancco and email you a certificate with the serial number.</p></div></div>
+      <div class="acc__item"><h3 style="margin:0"><button class="acc__btn" type="button" aria-expanded="false" aria-controls="f6" id="f6b">Do you supply businesses and schools?<span class="acc__chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></button></h3><div class="acc__panel" id="f6" role="region" aria-labelledby="f6b" hidden><p>Yes, from 10 devices. We'll pre-install your software, enrol in Intune, Jamf or Apple School Manager, asset-tag and deliver. Use the business quote form for pricing within one working day.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUSINESS QUOTE FORM ============ -->
+<section class="bquote" id="quote" aria-labelledby="bq-title">
+  <div class="wrap bq">
+    <div class="card bq__intro reveal">
+      <h2 id="bq-title">Business quote</h2>
+      <p>Tell us how many devices you need. A named account manager replies within one working day with pricing and delivery dates.</p>
+      <dl>
+        <div><dt>Phone</dt><dd><a href="tel:+441218286113">0121 828 6113</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:business@secondcharge.co.uk">business@secondcharge.co.uk</a></dd></div>
+        <div><dt>Workshop</dt><dd>Unit 7, The Big Peg, 120 Vyse Street, Birmingham B18 6NF</dd></div>
+      </dl>
+    </div>
+    <div class="card bq__form reveal">
+      <form class="form" id="quote-form" novalidate>
+        <div class="fld"><label for="name">Name</label><input id="name" name="name" autocomplete="name" aria-describedby="name-error" required><span class="err" id="name-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-error" required><span class="err" id="phone-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><span class="err" id="email-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="postcode">Delivery postcode</label><input id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error" required><span class="err" id="postcode-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="type">What do you need?</label><select id="type" name="type" aria-describedby="type-error" required><option value="">Choose one</option><option>Laptops for staff</option><option>Phones for staff</option><option>iPads or tablets for a school</option><option>Trade in an old fleet</option><option>Mixed order</option></select><span class="err" id="type-error" aria-live="polite"></span></div>
+        <div class="fld"><label for="budget">Budget</label><select id="budget" name="budget" aria-describedby="budget-error" required><option value="">Choose one</option><option>Under £5,000</option><option>£5,000 to £15,000</option><option>£15,000 to £40,000</option><option>£40,000 to £100,000</option><option>Over £100,000</option></select><span class="err" id="budget-error" aria-live="polite"></span></div>
+        <div class="fld fld--full"><label for="message">Devices and specs</label><textarea id="message" name="message" aria-describedby="message-error" placeholder="e.g. 20 laptops, 16GB RAM, Windows 11 Pro, needed by March" required></textarea><span class="err" id="message-error" aria-live="polite"></span></div>
+        <div class="form__foot"><small>We'll only use these details to reply. <a href="/privacy-policy/">Privacy policy</a>.</small><button class="btn btn--lime" type="submit">Get my quote</button></div>
+      </form>
+      <div class="done" id="form-success" tabindex="-1" hidden><div class="done__ic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" fill="none" stroke="#16181D" stroke-width="2.6"/></svg></div><h3>Thanks<span data-first-name></span>, request received.</h3><p style="margin:0;color:var(--ink-2)">Hannah from our business team will email your quote within one working day. Reference <span class="mono" id="ref">SC-B</span>.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__impact">
+      <div class="impact"><b>61,384</b>devices given a second life since 2019</div>
+      <div class="impact"><b>4,912 t</b>CO2e avoided compared with buying new</div>
+      <div class="impact"><b>2.3%</b>first-year warranty claim rate</div>
+    </div>
+    <div class="foot__grid">
+      <div>
+        <a class="logo" href="#top" style="color:#fff" aria-label="Second Charge, back to top"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="9" width="32" height="22" rx="6" fill="#C6F432"/><rect x="34.5" y="15" width="3.5" height="10" rx="1.75" fill="#C6F432"/><path d="M20.5 12.5l-6.5 9h5.2l-2 7 7.3-10h-5.3z" fill="#16181D"/></svg><span style="color:#A8ACB5"><b style="color:#fff">second</b>charge</span></a>
+        <p class="foot__desc">Refurbished laptops, phones and tablets from a workshop in Birmingham's Jewellery Quarter. Tested, wiped and guaranteed.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/secondchargeuk" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.tiktok.com/@secondchargeuk" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="https://www.linkedin.com/company/second-charge" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.6c.6-1 1.9-1.9 3.6-1.9 3 0 3.4 2 3.4 4.6V20h-4v-5.8c0-1.4 0-3-1.8-3s-2.2 1.4-2.2 2.9V20h-4z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Workshop</h3><address>Unit 7, The Big Peg<br>120 Vyse Street<br>Birmingham B18 6NF<br><a href="tel:+441218286113">0121 828 6113</a><br><a href="mailto:help@secondcharge.co.uk">help@secondcharge.co.uk</a></address></div>
+      <div><h3>Hours</h3><ul><li>Mon to Fri, 9am to 5.30pm</li><li>Saturday, 10am to 2pm</li><li>Collection by appointment</li></ul></div>
+      <div><h3>Delivery</h3><ul><li>Free next day, UK mainland</li><li>Same-day courier in Birmingham</li><li>Solihull, Walsall, Wolverhampton</li><li>Coventry and Dudley</li></ul></div>
+      <div><h3>Help</h3><ul><li><a href="/track-order/">Track an order</a></li><li><a href="/warranty-claim/">Warranty claim</a></li><li><a href="/returns/">Returns</a></li><li><a href="/grading/">How we grade</a></li></ul></div>
+    </div>
+    <div class="foot__base"><span>© <span id="yr">2026</span> Second Charge Ltd. Registered in England and Wales no. 11862204. VAT GB 318 5521 47. WEEE producer reg. WEE/MP3017XZ.</span><ul><li><a href="/privacy-policy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/cookies/">Cookies</a></li><li><a href="/modern-slavery-statement/">Modern slavery</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><i aria-hidden="true"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M1 6l4 4 8-8" fill="none" stroke="#16181D" stroke-width="2.2"/></svg></i><span id="toast-txt">Added to basket</span></div>
+<a class="mcall" href="tel:+441218286113"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2"/></svg>Call</a>
+<button class="to-top" id="to-top" type="button" aria-label="Back to top"><span class="tbatt" aria-hidden="true"><i id="tbatt"></i></span>Top</button>
+
+<script>
+/* Second Charge: vanilla JS */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- header shadow + battery back-to-top (fill = scroll progress) --- */
+  var hdr = document.getElementById('hdr'), toTop = document.getElementById('to-top'), tb = document.getElementById('tbatt');
+  function onScroll(){
+    var y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    hdr.classList.toggle('is-scrolled', y > 8);
+    toTop.classList.toggle('is-shown', y > innerHeight * 1.2);
+    tb.style.setProperty('--p', Math.round(Math.min(1, y/max) * 100) + '%');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); document.getElementById('main').focus({preventScroll:true}); });
+
+  /* --- mobile search shows below 860px --- */
+  document.addEventListener('keydown', function(e){ if(e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){ e.preventDefault(); (innerWidth < 860 ? document.getElementById('qm') : document.getElementById('q')).focus(); } });
+
+  /* --- popover menu --- */
+  var mbtn = document.getElementById('menu-btn'), pop = document.getElementById('pop');
+  function setPop(open){ pop.classList.toggle('is-open', open); mbtn.setAttribute('aria-expanded', String(open)); if(open) pop.querySelector('a').focus(); }
+  mbtn.addEventListener('click', function(e){ e.stopPropagation(); setPop(mbtn.getAttribute('aria-expanded') !== 'true'); });
+  pop.addEventListener('click', function(e){ if(e.target.closest('a')) setPop(false); });
+  document.addEventListener('click', function(e){ if(pop.classList.contains('is-open') && !pop.contains(e.target)) setPop(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && pop.classList.contains('is-open')){ setPop(false); mbtn.focus(); } });
+
+  /* --- next-day cut-off countdown (4pm, Mon to Fri) --- */
+  var cut = document.getElementById('cutoff'), cutTxt = document.getElementById('cutoff-txt');
+  function pad(n){ return String(n).padStart(2,'0'); }
+  var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function nextWorkday(d){ var x = new Date(d); do { x.setDate(x.getDate()+1); } while(x.getDay() === 0 || x.getDay() === 6); return x; }
+  function tickCut(){
+    var now = new Date(), t = new Date(now); t.setHours(16,0,0,0);
+    var day = now.getDay(), weekend = (day === 0 || day === 6);
+    if(weekend || now >= t){ t = nextWorkday(now); t.setHours(16,0,0,0); }
+    var deliver = nextWorkday(t), tomorrow = nextWorkday(now).toDateString() === deliver.toDateString() && (deliver - now) < 2*864e5;
+    cutTxt.textContent = 'Order within this time and it arrives ' + (tomorrow ? 'tomorrow' : 'on ' + DAYS[deliver.getDay()]) + ' with a one-hour DPD slot.';
+    var d = Math.max(0, t - now); cut.textContent = pad(Math.floor(d/36e5)) + ':' + pad(Math.floor(d/6e4)%60) + ':' + pad(Math.floor(d/1e3)%60);
+  }
+  tickCut(); setInterval(tickCut, reduce ? 30000 : 1000);
+
+  /* --- basket + toast --- */
+  var count = 0, bag = document.getElementById('bag'), bagN = document.getElementById('bag-n'), toast = document.getElementById('toast'), tt = null, toastTxt = document.getElementById('toast-txt');
+  function addToBag(name, btn){
+    count++; bagN.textContent = count; bag.setAttribute('aria-label', 'Your basket, ' + count + (count === 1 ? ' item' : ' items'));
+    bag.classList.remove('bump'); void bag.offsetWidth; bag.classList.add('bump');
+    toastTxt.textContent = name + ' added to basket'; toast.classList.add('is-on'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('is-on'); }, 2400);
+    if(btn && btn.classList.contains('add')){ btn.classList.add('is-added'); setTimeout(function(){ btn.classList.remove('is-added'); }, 1500); }
+  }
+  document.querySelectorAll('.add, .add-hero').forEach(function(b){ b.addEventListener('click', function(){ addToBag(b.dataset.name, b); }); });
+
+  /* --- product filters (also driven by category tabs) --- */
+  var fbtns = document.querySelectorAll('.filters button'), prods = document.querySelectorAll('#grid .prod');
+  function filter(f){
+    fbtns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.f === f)); });
+    prods.forEach(function(p){ p.hidden = !(f === 'all' || p.dataset.cat === f); });
+  }
+  fbtns.forEach(function(b){ b.addEventListener('click', function(){ filter(b.dataset.f); }); });
+  document.querySelectorAll('.tabs [data-cat], .cat[data-cat]').forEach(function(a){ a.addEventListener('click', function(){ filter(a.dataset.cat); }); });
+
+  /* --- trade-in valuer (signature) ---
+     Base prices for "Like new"; condition multiplies. Edit to update. */
+  var DEV = {
+    iphone13:{n:'iPhone 13', s:{'128GB':215,'256GB':245}},
+    iphone14:{n:'iPhone 14', s:{'128GB':290,'256GB':325}},
+    iphone15:{n:'iPhone 15', s:{'128GB':395,'256GB':440}},
+    mba1:{n:'MacBook Air M1', s:{'256GB':330,'512GB':380}},
+    mba2:{n:'MacBook Air M2', s:{'256GB':520,'512GB':585}},
+    ipadair5:{n:'iPad Air (5th gen)', s:{'64GB':230,'256GB':285}}
+  };
+  var COND = {'1':'Like new', '.85':'Good', '.65':'Fair', '.3':'Faulty'};
+  var tin = document.getElementById('tin'), store = document.getElementById('o-store'), qDev = document.getElementById('q-dev'), qVal = document.getElementById('q-val'), qCred = document.getElementById('q-credit');
+  var shown = 0, anim;
+  function buildStorage(){
+    var d = DEV[tin.querySelector('[name=dev]:checked').value];
+    store.innerHTML = '';
+    Object.keys(d.s).forEach(function(k, i){
+      var l = document.createElement('label');
+      l.innerHTML = '<input type="radio" name="store" value="' + k + '"' + (i === 0 ? ' checked' : '') + '><span>' + k + '</span>';
+      store.appendChild(l);
+    });
+  }
+  function value(){
+    var dk = tin.querySelector('[name=dev]:checked').value, d = DEV[dk], s = tin.querySelector('[name=store]:checked').value, c = tin.querySelector('[name=cond]:checked').value;
+    var v = Math.round(d.s[s] * parseFloat(c));
+    qDev.textContent = d.n + ', ' + s + ', ' + COND[c];
+    qCred.textContent = Math.round(v * 1.1);
+    if(reduce){ qVal.textContent = '£' + v; shown = v; return; }
+    var from = shown, t0 = null; cancelAnimationFrame(anim);
+    (function step(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/400, 1); shown = Math.round(from + (v-from)*(1-Math.pow(1-p,3))); qVal.textContent = '£' + shown; if(p < 1) anim = requestAnimationFrame(step); })(performance.now());
+  }
+  tin.addEventListener('change', function(e){ if(e.target.name === 'dev') buildStorage(); value(); });
+  buildStorage(); value();
+
+  /* --- reviews rail arrows --- */
+  var rail = document.getElementById('rv-rail');
+  document.querySelectorAll('.rv-ctrl button').forEach(function(b){ b.addEventListener('click', function(){ rail.scrollBy({left: (+b.dataset.dir) * (rail.querySelector('.rv').offsetWidth + 12), behavior: reduce ? 'auto' : 'smooth'}); }); });
+
+  /* --- reveal, battery bars, cost bars, tracker --- */
+  var items = document.querySelectorAll('.reveal, .prod, .case');
+  var trackLis = document.querySelectorAll('#track li');
+  function lightTrack(){ trackLis.forEach(function(li, i){ setTimeout(function(){ li.classList.add('is-done'); }, reduce ? 0 : i * 280); }); }
+  if(reduce || !('IntersectionObserver' in window)){ items.forEach(function(e){ e.classList.add('is-in'); }); lightTrack(); }
+  else{
+    var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-in'); if(x.target.id === 'track') lightTrack(); io.unobserve(x.target); } }); }, {threshold:.15});
+    items.forEach(function(e){ io.observe(e); });
+  }
+
+  /* --- accordion --- */
+  document.querySelectorAll('[data-accordion] .acc__btn').forEach(function(b){
+    b.addEventListener('click', function(){ var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open)); document.getElementById(b.getAttribute('aria-controls')).hidden = open; });
+  });
+
+  /* --- business quote form --- */
+  var form = document.getElementById('quote-form'), ok = document.getElementById('form-success');
+  var rules = {
+    name: function(v){ return v.trim().length >= 2 || 'Enter your name.'; },
+    phone: function(v){ var d = v.replace(/\D/g,''); return (/^(\+44\s?|0)[\d\s]{9,13}$/.test(v.trim()) && d.length >= 10 && d.length <= 12) || 'Enter a UK phone number, e.g. 0121 828 6113.'; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Enter a valid email address.'; },
+    postcode: function(v){ return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()) || 'Enter a full UK postcode, e.g. B18 6NF.'; },
+    type: function(v){ return v !== '' || 'Choose what you need.'; },
+    budget: function(v){ return v !== '' || 'Choose a budget.'; },
+    message: function(v){ return v.trim().length >= 10 || 'Tell us roughly how many devices and which specs.'; }
+  };
+  function check(f){ var r = rules[f.name]; if(!r) return true; var res = r(f.value), err = document.getElementById(f.name + '-error');
+    if(res !== true){ f.setAttribute('aria-invalid','true'); err.textContent = res; return false; } f.removeAttribute('aria-invalid'); err.textContent = ''; return true; }
+  form.addEventListener('focusout', function(e){ if(e.target.name && e.target.value) check(e.target); });
+  form.addEventListener('input', function(e){ if(e.target.getAttribute('aria-invalid')) check(e.target); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); var first = null;
+    Array.prototype.forEach.call(form.elements, function(f){ if(f.name && !check(f) && !first) first = f; });
+    if(first){ first.focus(); return; }
+    ok.querySelector('[data-first-name]').textContent = ', ' + document.getElementById('name').value.trim().split(' ')[0];
+    document.getElementById('ref').textContent = 'SC-B-' + String(Date.now()).slice(-5);
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
