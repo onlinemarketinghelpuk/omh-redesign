@@ -71,7 +71,12 @@ for (const slug of categories) {
     await loaded;
     await sleep(2500);
     // Walk the page so scroll reveals and lazy images fire, then back to the top and let it settle.
-    await evaluate(`(async () => { const h = document.documentElement.scrollHeight; for (let y = 0; y < h; y += 500) { scrollTo(0, y); await new Promise(r => setTimeout(r, 120)); } scrollTo(0, 0); await new Promise(r => setTimeout(r, 1500)); })()`);
+    // Height re-read each step: pages grow as images load, and a walk that stops short leaves the lower reveals hidden.
+    // Two frames per step: scroll reveals are checked when a frame is drawn, and a slow WebGL/canvas page could
+    // scroll a section past between frames, so it never revealed.
+    await evaluate(`(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { scrollTo(0, y); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); await new Promise(r => setTimeout(r, 120)); } scrollTo(0, 0); await new Promise(r => setTimeout(r, 1500)); })()`);
+    // Remote photos still downloading came out as blank boxes; wait for every image (15s cap).
+    await evaluate(`(async () => { document.querySelectorAll("img[loading=lazy]").forEach((i) => (i.loading = "eager")); await Promise.race([Promise.all([...document.images].map((i) => i.decode().catch(() => {}))), new Promise((r) => setTimeout(r, 15000))]); })()`);
     // Scroll-driven count-ups read 0 at the top of the page; show their final figures in the screenshot.
     await evaluate(`document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = el.dataset.count; })`);
     // Finish CSS fades in progress (a review slider caught mid-crossfade showed two quotes on top of each other).
@@ -85,7 +90,7 @@ for (const slug of categories) {
     const shot = path.replace(/\.html$/, ".jpg");
     writeFileSync(join(ROOT, shot), Buffer.from(data, "base64"));
     const [name, ...rest] = title.split(" | ");
-    items.push({ demo: path, shot, width: SHOT_W, height: Math.round(height * scale), alt: `${name.trim()} ${slug} website design${rest.length ? `: ${rest.join(" | ").trim()}` : ""}` });
+    items.push({ demo: path, shot, width: SHOT_W, height: Math.round(height * scale), alt: `${name.trim()} ${slug.replace(/-/g, " ")} website design${rest.length ? `: ${rest.join(" | ").trim()}` : ""}` });
     console.log(`${shot}  ${SHOT_W}x${Math.round(height * scale)}  ${name.trim()}`);
   }
   if (items.length) manifest.push({ slug, title: titleOf(slug), items });

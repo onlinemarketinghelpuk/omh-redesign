@@ -53,8 +53,10 @@ const ACCENT = "bg-amber";
 
 // The portfolio: HTML demo designs first (public/portfolio/<category>/, listed in portfolio-demos.json by
 // scripts/portfolio-shots.mjs, each with a live demo), then the theme screenshots from the old site.
+// A demo folder whose heading matches an old category (Legal Firm Designs) joins it: demos first, one section.
 type GalleryItem = { key: string; src: string; alt: string; width: number; height: number; demo?: string };
-const gallery: { title: string; items: GalleryItem[] }[] = [
+type GalleryCategory = { title: string; items: GalleryItem[] };
+const gallery = ([
   ...portfolioDemos.map((c) => ({
     title: c.title,
     items: c.items.map((d) => ({ key: d.demo, src: d.shot, alt: d.alt, width: d.width, height: d.height, demo: d.demo })),
@@ -69,7 +71,12 @@ const gallery: { title: string; items: GalleryItem[] }[] = [
       height: 1016,
     })),
   })),
-];
+] as GalleryCategory[]).reduce<GalleryCategory[]>((all, c) => {
+  const same = all.find((x) => x.title === c.title);
+  if (same) same.items.push(...c.items);
+  else all.push(c);
+  return all;
+}, []);
 
 const sectorIcons: Record<string, LucideIcon> = {
   Construction: HardHat,

@@ -39,5 +39,53 @@
         "alt": "Forge & Table ecommerce website design: Sheffield Cutlery, Bone China & Kitchenware"
       }
     ]
+  },
+  {
+    "slug": "legal-firm",
+    "title": "Legal Firm Designs",
+    "items": [
+      {
+        "demo": "/portfolio/legal-firm/1-halden-rowe-solicitors.html",
+        "shot": "/portfolio/legal-firm/1-halden-rowe-solicitors.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Halden Rowe Solicitors legal firm website design: Family, Property, Wills & Employment Lawyers in Leeds"
+      },
+      {
+        "demo": "/portfolio/legal-firm/2-ashcombe-pryor-solicitors.html",
+        "shot": "/portfolio/legal-firm/2-ashcombe-pryor-solicitors.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Ashcombe Pryor Solicitors legal firm website design: Private client and family solicitors, Chancery Lane"
+      },
+      {
+        "demo": "/portfolio/legal-firm/3-wainwright-cole-solicitors.html",
+        "shot": "/portfolio/legal-firm/3-wainwright-cole-solicitors.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Wainwright & Cole Solicitors legal firm website design: Manchester & Chester Law Firm"
+      },
+      {
+        "demo": "/portfolio/legal-firm/4-harland-price-solicitors.html",
+        "shot": "/portfolio/legal-firm/4-harland-price-solicitors.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Harland Price Solicitors legal firm website design: Employment and Business Law, Birmingham"
+      },
+      {
+        "demo": "/portfolio/legal-firm/5-montague-vere-litigation.html",
+        "shot": "/portfolio/legal-firm/5-montague-vere-litigation.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Montague Vere legal firm website design: Commercial Litigation & Arbitration Solicitors, Fleet Street, London"
+      },
+      {
+        "demo": "/portfolio/legal-firm/6-ashdown-rourke-solicitors.html",
+        "shot": "/portfolio/legal-firm/6-ashdown-rourke-solicitors.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Ashdown Rourke Solicitors legal firm website design: Construction and Property Lawyers in Bristol"
+      }
+    ]
   }
 ]
