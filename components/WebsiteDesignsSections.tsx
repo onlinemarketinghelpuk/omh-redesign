@@ -18,6 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { CaseStudyVisual } from "@/components/case-studies/CaseStudyVisual";
+import { DemoViewer } from "@/components/DemoViewer";
 import { RelatedServices } from "@/components/RelatedServices";
 import { SiteTestimonials } from "@/components/Testimonials";
 import { ServiceBand } from "@/components/services/ServiceBand";
@@ -194,7 +195,7 @@ export function WebsiteDesignsPage() {
               </h3>
               {/* Phones show two designs per category and a button for the rest (the gallery ran to 14 screens). */}
               <ShowMore as="ul" limit={2} noun="designs" className="mt-7 grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
-                {category.images.map((image, i) => (
+                {category.images.map((image: { file: string; alt: string; demo?: string }, i) => (
                   <li key={image.file}>
                     {/* Browser-window card. On hover the page screenshot (cropped from the mock-up into
                         pages/) slides up until its bottom meets the frame: 100cqh is the frame height,
@@ -218,6 +219,9 @@ export function WebsiteDesignsPage() {
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                           className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-out group-hover:duration-[6000ms] group-hover:ease-in-out group-focus:duration-[6000ms] group-focus:ease-in-out motion-safe:group-hover:translate-y-[min(0px,calc(100cqh-100%))] motion-safe:group-focus:translate-y-[min(0px,calc(100cqh-100%))]"
                         />
+                        {/* Designs with a live demo: a button over the screenshot on hover or focus (always shown on
+                            touch screens) opens it in a popup (client, 18 Nov 2026). */}
+                        {image.demo && <DemoViewer url={image.demo} title={image.alt} />}
                       </div>
                     </figure>
                   </li>
