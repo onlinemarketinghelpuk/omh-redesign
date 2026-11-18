@@ -68,7 +68,7 @@ export type SeoLanding = {
 };
 
 // Identical review set on both pages, in the order the carousel lists them.
-const sharedTestimonials: readonly LandingTestimonial[] = [
+export const sharedTestimonials: readonly LandingTestimonial[] = [
   {
     name: "Leah Cross",
     quote:

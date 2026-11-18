@@ -1640,6 +1640,14 @@ select:focus-visible {
   animation: heading-flash 1.6s ease-out;
 }
 
+/* Home review slider (components/ReviewRotator.tsx, motion-safe only): each slot slides in from where its review was. */
+@keyframes review-in {
+  from {
+    opacity: 0;
+    translate: var(--rx, 0) var(--ry, 0);
+  }
+}
+
 @keyframes heading-flash {
   from { background: var(--color-tint-amber); }
   to { background: transparent; }

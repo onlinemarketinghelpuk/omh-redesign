@@ -2,6 +2,7 @@ import type { CaseMeta } from "@/components/ui/Case";
 import { caseStudies } from "@/lib/content/case-studies";
 import { CASE_STUDIES_LIVE } from "@/lib/flags";
 import { siteTestimonials } from "@/lib/content/testimonials";
+import { sharedTestimonials } from "@/lib/content/seo-landing";
 
 // Homepage SEO brief (Oct 2026): focus "full service digital marketing agency",
 // co-primary "digital marketing agency uk".
@@ -138,16 +139,17 @@ export const services = [
   { label: "Search Engine Optimisation (SEO)", href: "/seo-services", body: "Technical, on-page and content SEO for long-term organic growth." },
 ];
 
-// While case studies are unpublished (lib/flags.ts) the quotes come from published Trustpilot/Google reviews instead.
-export const testimonials = CASE_STUDIES_LIVE
+// While case studies are unpublished (lib/flags.ts) the quotes come from published Trustpilot/Google reviews instead:
+// every site review plus the extra ones on the SEO pages, opening on the three the section always showed. The SEO
+// pages' Natasha Kendle review is the same as hers in siteTestimonials, one word apart, so it is left out. The
+// second Tania Smyths review is a different one (website build, not Google Ads).
+const reviewPool = [...siteTestimonials, ...sharedTestimonials.filter((t) => t.name !== "Natasha Kendle")];
+const leadReviews = ["Kiera Taylor-Elton", "Sanjay", "Tania Smyths"].map((n) => reviewPool.find((t) => t.name === n)!);
+export const testimonials: readonly { quote: string; name?: string }[] = CASE_STUDIES_LIVE
   ? caseStudies
       .filter((s) => s.testimonial)
-      .slice(0, 3)
       .map((s) => ({ quote: s.testimonial!.quote, name: s.testimonial!.attribution }))
-  : ["Kiera Taylor-Elton", "Sanjay", "Tania Smyths"].map((n) => {
-      const t = siteTestimonials.find((x) => x.name === n)!;
-      return { quote: t.quote, name: t.name };
-    });
+  : [...leadReviews, ...reviewPool.filter((t) => !leadReviews.includes(t))].map(({ quote, name }) => ({ quote, name }));
 
 // 14 tiles. The home page draws positions 1, 5, 10 and 12 double-height (the two AI
 // tiles among them); with dense packing that is the spread that fills the three-column

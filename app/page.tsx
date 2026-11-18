@@ -3,7 +3,6 @@ import Image from "@/components/ui/SiteImage";
 import Link from "next/link";
 import {
   Activity,
-  BadgeCheck,
   BarChart3,
   Blocks,
   Crown,
@@ -16,7 +15,6 @@ import {
   MonitorUp,
   MousePointerClick,
   PhoneCall,
-  Quote,
   Search,
   ShoppingBag,
   Store,
@@ -27,6 +25,7 @@ import {
 } from "lucide-react";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { Reveal } from "@/components/Reveal";
+import { ReviewRotator } from "@/components/ReviewRotator";
 import { ShowMore } from "@/components/ui/ShowMore";
 import { Pointer } from "@/components/Pointer";
 import { ArrowRight, Button } from "@/components/ui/Button";
@@ -451,43 +450,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-[1.1fr_0.9fr] gap-6 max-lg:grid-cols-1">
-              <figure className="quote-feature group relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[8px] bg-inverse p-[clamp(28px,4vw,56px)] text-oninverse max-sm:min-h-[420px]">
-                <Quote className="size-12 text-oninverse/22 transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:-translate-y-1 group-hover:rotate-[-4deg]" strokeWidth={1.5} aria-hidden />
-                <blockquote className="my-12 font-body text-[clamp(30px,25px+1.3vw,44px)] leading-tight max-sm:text-h3">
-                  &ldquo;{testimonials[0].quote}&rdquo;
-                </blockquote>
-                <figcaption className="text-body font-semibold text-oninverse/75">
-                  {testimonials[0].name}
-                </figcaption>
-              </figure>
-
-              <div className="grid gap-6">
-                {testimonials.slice(1).map((testimonial) => (
-                  <figure
-                    key={testimonial.name}
-                    className="surface-card group flex flex-col justify-between rounded-[8px] border border-teal/20 bg-surface p-8"
-                  >
-                    <div>
-                      <Quote className="size-9 text-amber transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:-translate-y-1 group-hover:rotate-[-4deg]" strokeWidth={1.5} aria-hidden />
-                      <blockquote className="mt-5 text-[22px] leading-relaxed text-ink/85">
-                        &ldquo;{testimonial.quote}&rdquo;
-                      </blockquote>
-                    </div>
-                    <figcaption className="mt-8 flex items-center justify-between gap-4 text-body font-semibold max-sm:flex-col max-sm:items-start">
-                      {testimonial.name}
-                      {/* ponytail: no star row — these are named, real reviewers
-                          who never gave a score, so five stars would be an
-                          invented rating (brief §6). */}
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-[14px] font-semibold uppercase tracking-[0.08em] text-amber-deep">
-                        <BadgeCheck className="size-4" aria-hidden />
-                        Client review
-                      </span>
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
+            <ReviewRotator testimonials={testimonials} />
           </Reveal>
         </div>
       </section>
