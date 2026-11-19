@@ -59,6 +59,48 @@
     "title": "Construction Designs",
     "items": [
       {
+        "demo": "/portfolio/construction/1-oakline-extensions-london.html",
+        "shot": "/portfolio/construction/1-oakline-extensions-london.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Oakline Build construction website design: House extensions & loft conversions in Wimbledon, SW19"
+      },
+      {
+        "demo": "/portfolio/construction/2-castlegate-construction-birmingham.html",
+        "shot": "/portfolio/construction/2-castlegate-construction-birmingham.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Castlegate Construction construction website design: Commercial Main Contractor, Birmingham"
+      },
+      {
+        "demo": "/portfolio/construction/3-ironstone-civils-leeds.html",
+        "shot": "/portfolio/construction/3-ironstone-civils-leeds.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Ironstone Civils construction website design: Groundworks & Civil Engineering Contractor, Leeds"
+      },
+      {
+        "demo": "/portfolio/construction/4-slate-and-ridge-roofing-bristol.html",
+        "shot": "/portfolio/construction/4-slate-and-ridge-roofing-bristol.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Slate & Ridge Roofing construction website design: Roofers in Bristol | Slate, Tile & Flat Roofs"
+      },
+      {
+        "demo": "/portfolio/construction/5-larchwood-timber-homes.html",
+        "shot": "/portfolio/construction/5-larchwood-timber-homes.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Larchwood Timber Homes construction website design: Timber-frame self-build homes, Inverness & the Highlands"
+      },
+      {
+        "demo": "/portfolio/construction/6-meridian-fitout-manchester.html",
+        "shot": "/portfolio/construction/6-meridian-fitout-manchester.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Meridian Interiors construction website design: Office Fit-Out & Refurbishment, Manchester"
+      },
+      {
         "demo": "/portfolio/construction/datum-fit-out.html",
         "shot": "/portfolio/construction/datum-fit-out.jpg",
         "width": 990,

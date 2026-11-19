@@ -77,6 +77,10 @@ for (const slug of categories) {
     await evaluate(`(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { scrollTo(0, y); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); await new Promise(r => setTimeout(r, 120)); } scrollTo(0, 0); await new Promise(r => setTimeout(r, 1500)); })()`);
     // Remote photos still downloading came out as blank boxes; wait for every image (15s cap).
     await evaluate(`(async () => { document.querySelectorAll("img[loading=lazy]").forEach((i) => (i.loading = "eager")); await Promise.race([Promise.all([...document.images].map((i) => i.decode().catch(() => {}))), new Promise((r) => setTimeout(r, 15000))]); })()`);
+    // Pinned scroll scenes (a full-screen sticky stage inside a track several screens tall, Ironstone's hero) came
+    // out as screens of blank space under the stage: shrink each track to its stage. Sticky headers and sidebars are
+    // shorter than the screen, so they are left alone.
+    const pinned = await evaluate(`[...document.querySelectorAll("*")].filter((el) => getComputedStyle(el).position === "sticky" && el.offsetHeight >= innerHeight * 0.9 && el.parentElement.offsetHeight > el.offsetHeight * 1.5).map((el) => (el.parentElement.style.height = el.offsetHeight + "px")).length`);
     // Scroll-driven count-ups read 0 at the top of the page; show their final figures in the screenshot.
     // Text-only elements: Flock (marketing 1) puts data-count on whole story cards, which this used to wipe.
     await evaluate(`document.querySelectorAll("[data-count]").forEach((el) => { if (!el.children.length) el.textContent = el.dataset.count; })`);
@@ -92,7 +96,7 @@ for (const slug of categories) {
     writeFileSync(join(ROOT, shot), Buffer.from(data, "base64"));
     const [name, ...rest] = title.split(" | ");
     items.push({ demo: path, shot, width: SHOT_W, height: Math.round(height * scale), alt: `${name.trim()} ${slug.replace(/-/g, " ")} website design${rest.length ? `: ${rest.join(" | ").trim()}` : ""}` });
-    console.log(`${shot}  ${SHOT_W}x${Math.round(height * scale)}  ${name.trim()}`);
+    console.log(`${shot}  ${SHOT_W}x${Math.round(height * scale)}  ${name.trim()}${pinned ? `  (${pinned} pinned scene shrunk)` : ""}`);
   }
   if (items.length) manifest.push({ slug, title: titleOf(slug), items });
 }
