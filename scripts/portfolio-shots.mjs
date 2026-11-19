@@ -87,6 +87,10 @@ for (const slug of categories) {
     // Finish CSS fades in progress (a review slider caught mid-crossfade showed two quotes on top of each other).
     // Not reduced motion: one demo's 3D hero loses its heading in that mode.
     await evaluate(`document.getAnimations().forEach((a) => { try { a.finish(); } catch {} })`);
+    // The full-page capture can restart CSS animations (Brightpath's kinetic headline came out at its first frame:
+    // words hidden, photo pills as dots). Pin the ones that have already played to their last frame, so a restart
+    // still shows the end. Running and looping ones are left alone: pinning those collapsed Forge & Table's cards.
+    await evaluate(`(() => { const live = new Set(document.getAnimations().filter((a) => a.playState !== "finished").map((a) => a.effect && a.effect.target)); document.querySelectorAll("*").forEach((el) => { if (getComputedStyle(el).animationName !== "none" && !live.has(el)) el.setAttribute("data-shot-done", ""); }); document.head.insertAdjacentHTML("beforeend", "<style>[data-shot-done]{animation-delay:-100s!important;animation-iteration-count:1!important;animation-fill-mode:both!important}</style>"); })()`);
     const title = await evaluate("document.title");
     const { cssContentSize } = await send("Page.getLayoutMetrics");
     const height = Math.min(Math.ceil(cssContentSize.height), MAX_H);

@@ -341,6 +341,48 @@
     "title": "Non Profit Designs",
     "items": [
       {
+        "demo": "/portfolio/non-profit/1-fairshare-food-network.html",
+        "shot": "/portfolio/non-profit/1-fairshare-food-network.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Fairshare Food Network non profit website design: Food banks, pantries and advice in Leeds"
+      },
+      {
+        "demo": "/portfolio/non-profit/2-second-chance-animal-rescue.html",
+        "shot": "/portfolio/non-profit/2-second-chance-animal-rescue.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Second Chance Animal Rescue non profit website design: Dog and cat rehoming near Lewes, East Sussex"
+      },
+      {
+        "demo": "/portfolio/non-profit/3-tidewell-ocean-trust.html",
+        "shot": "/portfolio/non-profit/3-tidewell-ocean-trust.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Tidewell Ocean Trust non profit website design: Marine conservation charity in Falmouth, Cornwall"
+      },
+      {
+        "demo": "/portfolio/non-profit/4-brightpath-youth.html",
+        "shot": "/portfolio/non-profit/4-brightpath-youth.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Brightpath Youth non profit website design: Youth mentoring in east London"
+      },
+      {
+        "demo": "/portfolio/non-profit/5-openline-mental-health.html",
+        "shot": "/portfolio/non-profit/5-openline-mental-health.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Openline non profit website design: Mental health support in Greater Manchester"
+      },
+      {
+        "demo": "/portfolio/non-profit/6-silver-thread-befriending.html",
+        "shot": "/portfolio/non-profit/6-silver-thread-befriending.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Silver Thread non profit website design: Befriending for older people in Edinburgh and the Lothians"
+      },
+      {
         "demo": "/portfolio/non-profit/hartwell-trust.html",
         "shot": "/portfolio/non-profit/hartwell-trust.jpg",
         "width": 990,
