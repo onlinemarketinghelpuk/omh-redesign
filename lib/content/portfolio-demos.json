@@ -196,6 +196,48 @@
     "title": "Marketing Designs",
     "items": [
       {
+        "demo": "/portfolio/marketing/1-flock-social-agency.html",
+        "shot": "/portfolio/marketing/1-flock-social-agency.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Flock marketing website design: Social media marketing agency in Manchester"
+      },
+      {
+        "demo": "/portfolio/marketing/2-signalbox-ppc-agency.html",
+        "shot": "/portfolio/marketing/2-signalbox-ppc-agency.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Signalbox marketing website design: PPC & Paid Media Agency in London"
+      },
+      {
+        "demo": "/portfolio/marketing/3-harbour-and-hart-brand-agency.html",
+        "shot": "/portfolio/marketing/3-harbour-and-hart-brand-agency.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Harbour & Hart marketing website design: Brand and creative studio in Bristol"
+      },
+      {
+        "demo": "/portfolio/marketing/4-rankwell-seo-agency.html",
+        "shot": "/portfolio/marketing/4-rankwell-seo-agency.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Rankwell marketing website design: SEO and Content Marketing Agency in Leeds"
+      },
+      {
+        "demo": "/portfolio/marketing/5-reelhouse-video-marketing.html",
+        "shot": "/portfolio/marketing/5-reelhouse-video-marketing.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Reelhouse marketing website design: Video marketing agency in Glasgow"
+      },
+      {
+        "demo": "/portfolio/marketing/6-loop-growth-marketing.html",
+        "shot": "/portfolio/marketing/6-loop-growth-marketing.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Loop marketing website design: Growth marketing agency for ecommerce and DTC brands, Birmingham"
+      },
+      {
         "demo": "/portfolio/marketing/signal-forty.html",
         "shot": "/portfolio/marketing/signal-forty.jpg",
         "width": 990,

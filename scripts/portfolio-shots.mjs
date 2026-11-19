@@ -78,7 +78,8 @@ for (const slug of categories) {
     // Remote photos still downloading came out as blank boxes; wait for every image (15s cap).
     await evaluate(`(async () => { document.querySelectorAll("img[loading=lazy]").forEach((i) => (i.loading = "eager")); await Promise.race([Promise.all([...document.images].map((i) => i.decode().catch(() => {}))), new Promise((r) => setTimeout(r, 15000))]); })()`);
     // Scroll-driven count-ups read 0 at the top of the page; show their final figures in the screenshot.
-    await evaluate(`document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = el.dataset.count; })`);
+    // Text-only elements: Flock (marketing 1) puts data-count on whole story cards, which this used to wipe.
+    await evaluate(`document.querySelectorAll("[data-count]").forEach((el) => { if (!el.children.length) el.textContent = el.dataset.count; })`);
     // Finish CSS fades in progress (a review slider caught mid-crossfade showed two quotes on top of each other).
     // Not reduced motion: one demo's 3D hero loses its heading in that mode.
     await evaluate(`document.getAnimations().forEach((a) => { try { a.finish(); } catch {} })`);
