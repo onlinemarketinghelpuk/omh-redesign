@@ -1085,32 +1085,22 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-weight: 600;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
-/* Article headings (client, 22 Oct 2026): less space above, tied to the text they introduce, and marked in amber
-   like the site's eyebrows — a short bar over each h2, a rule beside each h3. */
+/* Article headings (client, 22 Oct 2026): less space above, tied to the text they introduce. Client, 22 Nov 2026:
+   no amber bar over h2 or rule beside h3, and every heading runs the full text column (no 30ch cap, no balanced
+   short lines). */
 .insight-prose h2 {
+  max-width: none;
   margin-top: 1em; /* was 2.1em; the gap above a heading read as a blank block */
   font-size: var(--text-h2);
   line-height: var(--text-h2--line-height);
   scroll-margin-top: 110px;
 }
 
-.insight-prose h2::before {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 4px;
-  margin-bottom: 0.4em;
-  border-radius: 2px;
-  background: var(--color-amber);
-}
-
 .insight-prose h3 {
   margin-top: 1.3em; /* was 1.9em */
-  padding-left: 0.7em;
-  border-left: 3px solid var(--color-amber);
   font-size: var(--text-h3);
   line-height: var(--text-h3--line-height);
 }

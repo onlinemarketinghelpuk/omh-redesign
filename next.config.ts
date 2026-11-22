@@ -86,25 +86,25 @@ const nextConfig: NextConfig = {
       ...["ppc-request-quote", "seo-request-quote", "wordpress-development-request-quote", "wordpress-website-maintenance-request-quote",
         "social-media-paid-marketing-request-quote", "facebook-paid-ads-questionnaire", "new-website-development-quotation-questionnaire",
         "website-redesign-project-questionnaire"].map((slug) => ({ source: `/${slug}`, destination: "/book-a-consultation", permanent: true })),
-      // Search Console 404s (20 Oct 2026): old WordPress URLs still indexed. Each goes to its closest live page; the
-      // three blog posts kept their slugs under /insights.
+      // Search Console 404s (20 Oct 2026): old WordPress URLs still indexed. Each goes to its closest live page.
       { source: "/all-services-price-list", destination: "/pricing", permanent: true },
       { source: "/website-maintenance", destination: "/wordpress-website-maintenance", permanent: true },
-      {
-        source: "/advance-tips-to-increase-conversion-rate-in-email-marketing",
-        destination: "/insights/advance-tips-to-increase-conversion-rate-in-email-marketing",
-        permanent: true,
-      },
-      {
-        source: "/10-benefits-of-custom-wordpress-development-for-uk-business",
-        destination: "/insights/10-benefits-of-custom-wordpress-development-for-uk-business",
-        permanent: true,
-      },
-      {
-        source: "/best-content-delivery-network-cdn-providers",
-        destination: "/insights/best-content-delivery-network-cdn-providers",
-        permanent: true,
-      },
+      // 22 Nov 2026: posts live at /<slug>, not /insights/<slug>; the old redirects here landed on "Coming soon".
+      // /10-benefits-of-custom-wordpress-development-for-uk-business is a live post again (no redirect). These two
+      // have no post of their own, so they go to the nearest one; the /insights/ copies cover browsers that cached
+      // the old 308.
+      ...["", "/insights"].flatMap((prefix) => [
+        {
+          source: `${prefix}/advance-tips-to-increase-conversion-rate-in-email-marketing`,
+          destination: "/ai-powered-email-marketing-personalisation-at-scale-for-higher-conversions",
+          permanent: true,
+        },
+        {
+          source: `${prefix}/best-content-delivery-network-cdn-providers`,
+          destination: "/best-content-delivery-network-providers",
+          permanent: true,
+        },
+      ]),
       // The old WordPress theme's files (greate, greate-child). Only themes: /wp-content/uploads may still be
       // referenced by imported images (see images.remotePatterns above).
       { source: "/wp-content/themes/:path*", destination: "/", permanent: true },
@@ -127,6 +127,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ];
+  },
+  // /insights/<post> shows the post (its canonical is /<post>) instead of "Coming soon". A rewrite, not a redirect:
+  // browsers that cached the old /<post> -> /insights/<post> 308 would loop on a redirect back.
+  async rewrites() {
+    return [{ source: "/insights/:slug", destination: "/:slug" }];
   },
 };
 
