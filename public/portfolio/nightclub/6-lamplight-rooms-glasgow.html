@@ -1,0 +1,2011 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lamplight Rooms · Disco, funk, soul and house in a Merchant City basement, Glasgow</title>
+<meta name="description" content="Lamplight Rooms is a three-room basement club under a Merchant City townhouse in Glasgow. Disco, funk, soul and house, Thursday to Saturday, 23:00 to 03:00. Over 18s only.">
+<meta name="theme-color" content="#110a0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" crossorigin>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<style>
+/* ==========================================================================
+   Lamplight Rooms, Glasgow. Single-file home page. Every class and id is lr-.
+   ========================================================================== */
+:root{
+  --lr-night:#110a0d; --lr-ink:#160c11; --lr-plum:#1e1019; --lr-plum-2:#291622; --lr-umber:#1a0f0b;
+  --lr-line:rgba(255,224,196,.12); --lr-line-2:rgba(255,224,196,.24);
+  --lr-text:#f6ebe1; --lr-soft:#d2c2b6; --lr-mute:#ab9a8e;
+  --lr-amber:#f5a742; --lr-magenta:#f25fa6; --lr-teal:#4bd0be;
+  --lr-on:#170c10;
+  --lr-serif:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --lr-sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --lr-gut:20px; --lr-head-h:64px;
+  --accent:var(--lr-amber);
+}
+@media (min-width:768px){:root{--lr-gut:32px;--lr-head-h:76px}}
+@media (min-width:1200px){:root{--lr-gut:48px}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--lr-head-h) + 12px)}
+body{margin:0;background:var(--lr-night);color:var(--lr-text);font:400 16px/1.62 var(--lr-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+::selection{background:var(--lr-amber);color:var(--lr-on)}
+[hidden]{display:none!important}
+[tabindex="-1"]:focus{outline:none}
+.lr-d{display:none}
+@media (min-width:768px){.lr-d{display:inline}.lr-m{display:none}}
+.lr-vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.lr-skip{position:fixed;left:16px;top:-80px;z-index:100;background:var(--lr-amber);color:var(--lr-on);padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none;transition:top .2s}
+.lr-skip:focus{top:12px}
+.lr-wrap{width:100%;max-width:1440px;margin-inline:auto;padding-inline:var(--lr-gut)}
+
+/* ---------- shared type and controls ---------- */
+.lr-strap{position:relative;display:inline-block;font:700 11.5px/1.3 var(--lr-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.lr-strap::before{content:"";display:inline-block;vertical-align:middle;position:relative;top:-1px;margin-right:11px;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent),0 0 16px 1px var(--accent)}
+.lr-h2{font:400 clamp(40px,5.3vw,82px)/.98 var(--lr-serif);letter-spacing:-.012em;margin-top:20px;text-wrap:balance}
+.lr-h2 em{font-style:italic;color:var(--accent)}
+.lr-h3{font:400 clamp(26px,2.3vw,34px)/1.08 var(--lr-serif);letter-spacing:-.005em}
+.lr-lede{margin-top:20px;font-size:clamp(16px,1.2vw,18.5px);line-height:1.62;color:var(--lr-soft);max-width:58ch}
+.lr-note{font-size:13.5px;line-height:1.55;color:var(--lr-mute)}
+.lr-link{color:var(--accent);text-underline-offset:4px;text-decoration-thickness:1px}
+.lr-link:hover{text-decoration-thickness:2px}
+.lr-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--lr-on);font:700 15px/1 var(--lr-sans);letter-spacing:.01em;text-decoration:none;white-space:nowrap;transition:transform .25s ease,box-shadow .3s ease,background-color .25s ease,color .25s ease}
+.lr-btn:hover{transform:translateY(-1px);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 16%,transparent),0 14px 36px -12px var(--accent)}
+.lr-btn:active{transform:translateY(0)}
+.lr-btn--ghost{background:color-mix(in srgb,var(--accent) 7%,transparent);color:var(--accent)}
+.lr-btn--ghost:hover{background:color-mix(in srgb,var(--accent) 15%,transparent);box-shadow:none}
+.lr-btn--sm{min-height:44px;padding:0 20px;font-size:14px}
+.lr-btn[disabled],.lr-btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.lr-btn svg{width:16px;height:16px;flex:none}
+.lr-sec{position:relative;padding-block:clamp(76px,9vw,140px)}
+.lr-sec__head .lr-strap::after{content:"";position:absolute;left:3px;bottom:calc(100% - 1px);width:1px;height:var(--lr-cord,clamp(76px,9vw,140px));background:linear-gradient(to top,color-mix(in srgb,var(--accent) 55%,transparent),transparent)}
+@media (prefers-reduced-motion:reduce){
+  .lr-btn,.lr-btn:hover{transition:none;transform:none}
+}
+
+/* ---------- header ---------- */
+.lr-head{position:fixed;inset:0 0 auto 0;z-index:60;border-bottom:1px solid transparent;transition:background-color .35s ease,border-color .35s ease}
+.lr-head--solid{background:rgba(17,10,13,.84);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom-color:var(--lr-line)}
+.lr-head__in{display:flex;align-items:center;gap:12px;height:var(--lr-head-h)}
+.lr-logo{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;text-decoration:none;color:var(--lr-text)}
+.lr-logo svg{width:22px;height:34px;flex:none}
+.lr-logo__name{font:400 24px/1 var(--lr-serif);white-space:nowrap}
+.lr-logo__name em{font-style:italic}
+.lr-nav{display:none}
+.lr-nav a{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 13px;font:600 14px/1 var(--lr-sans);color:var(--lr-soft);text-decoration:none;transition:color .2s}
+.lr-nav a::after{content:"";position:absolute;left:50%;bottom:6px;width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);opacity:0;transform:translate(-50%,4px);transition:opacity .25s,transform .25s}
+.lr-nav a:hover,.lr-nav a:focus-visible{color:var(--lr-text)}
+.lr-head:not(.lr-head--solid) .lr-nav a{color:var(--lr-text);text-shadow:0 1px 12px rgba(17,10,13,.85),0 0 2px rgba(17,10,13,.6)}
+@media (max-width:480px){.lr-hero__in>.lr-strap{font-size:10px;letter-spacing:.11em;white-space:nowrap}.lr-hero__in>.lr-strap::before{margin-right:8px}}
+.lr-hero__in>.lr-strap{padding:7px 15px 7px 13px;border-radius:999px;background:rgba(17,10,13,.52);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid color-mix(in srgb,var(--accent) 26%,transparent)}
+.lr-nav a:hover::after,.lr-nav a:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+.lr-head__tel{display:none;align-items:center;min-height:44px;padding:0 8px;font:600 14px/1 var(--lr-sans);color:var(--lr-text);text-decoration:none;white-space:nowrap}
+.lr-head__tel:hover{color:var(--accent)}
+.lr-burger{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--lr-line-2);background:rgba(17,10,13,.35)}
+.lr-burger span{display:block;width:18px;height:1.5px;background:var(--lr-text);border-radius:2px}
+.lr-burger:hover{border-color:var(--accent)}
+@media (min-width:768px){.lr-head__in{gap:16px}.lr-head__tel{display:inline-flex}.lr-logo__name{font-size:27px}}
+@media (min-width:1200px){
+  .lr-nav{display:flex;margin-inline:auto}
+  .lr-logo{margin-right:0}
+  .lr-burger{display:none}
+}
+
+/* ---------- full-screen menu (tablet and mobile) ---------- */
+.lr-menu{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;background:radial-gradient(120% 70% at 50% -10%,rgba(245,167,66,.2),transparent 60%),radial-gradient(90% 60% at 100% 100%,rgba(242,95,166,.12),transparent 60%),#130a0e;overflow-y:auto;overscroll-behavior:contain;animation:lr-menu-in .35s ease both}
+@keyframes lr-menu-in{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.lr-menu__top{display:flex;align-items:center;justify-content:space-between;height:var(--lr-head-h);flex:none}
+.lr-menu__close{width:44px;height:44px;border-radius:50%;border:1px solid var(--lr-line-2);background:transparent;display:grid;place-items:center}
+.lr-menu__close svg{width:16px;height:16px}
+.lr-menu__close:hover{border-color:var(--accent)}
+.lr-menu__body{flex:1;display:flex;flex-direction:column;gap:28px;padding-block:18px calc(28px + env(safe-area-inset-bottom))}
+.lr-menu__links a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;min-height:56px;padding:9px 0;border-bottom:1px solid var(--lr-line);font:400 clamp(30px,6.4vw,46px)/1.05 var(--lr-serif);text-decoration:none}
+.lr-menu__links a span{font:600 12px/1 var(--lr-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--lr-mute)}
+.lr-menu__links a:hover{color:var(--accent)}
+.lr-menu__cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.lr-menu__meta{display:grid;gap:6px;margin-top:auto;font-size:14.5px;color:var(--lr-soft)}
+.lr-menu__meta a{display:inline-flex;align-items:center;min-height:44px;font:400 30px/1 var(--lr-serif);color:var(--lr-text);text-decoration:none}
+@media (min-width:768px){.lr-menu__links a{font-size:34px}.lr-menu__body{gap:36px}.lr-menu__links{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px}.lr-menu__cta{max-width:520px}}
+@media (min-width:1200px){.lr-menu{display:none!important}}
+@media (prefers-reduced-motion:reduce){.lr-menu{animation:none}}
+
+/* ---------- hero ---------- */
+.lr-hero{--lr-dial:clamp(180px,min(26svh,56vw),250px);position:relative;isolation:isolate;display:flex;min-height:100vh;min-height:100svh;overflow:hidden;background:var(--lr-night)}
+.lr-hero__stage{position:absolute;inset:0;z-index:-1}
+.lr-hero__gl{display:block;width:100%;height:100%}
+.lr-hero__stage::after{content:"";position:absolute;inset:auto 0 0 0;height:16%;background:linear-gradient(to bottom,rgba(17,10,13,0),var(--lr-night));pointer-events:none}
+.lr-hero__in{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:calc(var(--lr-head-h) + 4px);padding-bottom:18px}
+.lr-hero__lamp{flex:1 1 auto;display:grid;place-items:center;width:100%;min-height:calc(var(--lr-dial) + 20px);padding-block:6px 14px}
+.lr-hero__dial{position:relative;width:var(--lr-dial);aspect-ratio:1;border-radius:50%}
+.lr-hero__dial canvas{display:block;width:100%;height:100%;border-radius:50%;box-shadow:0 0 0 3px #7c5223,0 0 0 4px rgba(0,0,0,.5),0 0 70px 6px rgba(245,167,66,.5),0 0 220px 40px rgba(242,95,166,.22)}
+.lr-hero h1{margin-top:14px;font:400 clamp(44px,12.6vw,60px)/.96 var(--lr-serif);letter-spacing:-.014em;text-shadow:0 2px 34px rgba(17,10,13,.55)}
+.lr-hero h1 span{display:block}
+.lr-hero h1 em{font-style:italic}
+.lr-hero__sub{margin-top:12px;max-width:62ch;font-size:15px;line-height:1.5;color:var(--lr-text);text-shadow:0 1px 18px rgba(17,10,13,.8)}
+.lr-hero__cta{display:flex;justify-content:center;gap:10px;margin-top:16px;width:100%}
+.lr-hero__cta .lr-btn{flex:1 1 0;max-width:210px;min-height:50px;padding-inline:18px}
+.lr-facts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr);width:100%;margin-top:16px;border:1px solid var(--lr-line-2);border-radius:18px;background:rgba(17,10,13,.5);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);text-align:left;overflow:hidden}
+.lr-facts li{display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;padding:9px 12px;border-top:1px solid var(--lr-line)}
+.lr-facts li:first-child{grid-column:1/-1;border-top:0}
+.lr-facts li:nth-child(n+3){border-left:1px solid var(--lr-line)}
+.lr-facts__k{font:700 10px/1.2 var(--lr-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--lr-mute);white-space:nowrap}
+.lr-facts__v{font:400 20px/1.1 var(--lr-serif);color:var(--lr-text)}
+.lr-facts__v--now{display:flex;align-items:center;gap:8px}
+.lr-facts__v--now::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--lr-mute)}
+.lr-facts[data-lr-state="open"] .lr-facts__v--now::before,.lr-facts[data-lr-state="late"] .lr-facts__v--now::before,.lr-facts[data-lr-state="tonight"] .lr-facts__v--now::before,.lr-facts[data-lr-state="bar"] .lr-facts__v--now::before{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.lr-motion{position:absolute;right:var(--lr-gut);top:calc(var(--lr-head-h) + 6px);z-index:2;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--lr-line-2);background:rgba(17,10,13,.45);color:var(--lr-text);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lr-motion:hover{border-color:var(--accent);color:var(--accent)}
+.lr-motion svg{width:14px;height:14px}
+.lr-motion .lr-i-play{display:none}
+.lr-motion[aria-pressed="true"] .lr-i-play{display:block}
+.lr-motion[aria-pressed="true"] .lr-i-pause{display:none}
+/* 2D fallback when WebGL or three.js is not available */
+.lr-hero--flat .lr-hero__gl{display:none}
+.lr-hero--flat .lr-hero__stage{background:radial-gradient(34% 30% at 50% 36%,rgba(245,167,66,.5),transparent 70%),radial-gradient(58% 48% at 46% 44%,rgba(242,95,166,.3),transparent 72%),radial-gradient(70% 60% at 56% 58%,rgba(75,208,190,.18),transparent 74%),var(--lr-night)}
+@media (min-width:768px){
+  .lr-hero{--lr-dial:clamp(240px,min(34svh,50vw),380px)}
+  .lr-hero__in{padding-bottom:30px}
+  .lr-hero__lamp{padding-block:14px 22px;min-height:calc(var(--lr-dial) + 36px)}
+  .lr-hero h1{margin-top:18px;font-size:clamp(60px,min(9.6vw,9svh),92px)}
+  .lr-hero__sub{margin-top:16px;font-size:17px;max-width:54ch}
+  .lr-hero__cta{gap:12px;margin-top:24px}
+  .lr-hero__cta .lr-btn{flex:none;min-width:168px;min-height:54px}
+  .lr-facts{grid-template-columns:minmax(0,1.7fr) minmax(0,.75fr) minmax(0,.85fr) minmax(0,1.5fr);margin-top:28px;max-width:940px;border-radius:999px}
+  .lr-facts li{padding:12px 18px;border-top:0;border-left:1px solid var(--lr-line)}
+  .lr-facts li:first-child{grid-column:auto;border-left:0;padding-left:26px}
+  .lr-facts__k{font-size:10.5px;letter-spacing:.16em}
+  .lr-facts__v{font-size:20px}
+}
+@media (min-width:768px) and (max-height:820px) and (orientation:landscape){
+  .lr-hero{--lr-dial:clamp(200px,min(30svh,28vw),300px)}
+  .lr-hero h1{font-size:clamp(52px,min(6.6vw,9svh),80px)}
+  .lr-hero h1 span{display:inline}
+  .lr-hero__sub{max-width:74ch}
+}
+@media (min-width:1200px){
+  .lr-hero{--lr-dial:clamp(230px,min(37svh,28vw),410px)}
+  .lr-hero h1{font-size:clamp(64px,min(7.1vw,11.4svh),116px)}
+  .lr-hero h1 span{display:inline}
+  .lr-hero__sub{font-size:18px;max-width:76ch}
+  .lr-hero__cta{margin-top:26px}
+  .lr-facts{margin-top:32px}
+  .lr-facts li{padding:12px 24px}
+  .lr-facts li:first-child{padding-left:30px}
+  .lr-facts__v{font-size:23px}
+  .lr-motion{top:auto;bottom:30px}
+}
+
+/* ---------- shared: layout, panels, chips, fields ---------- */
+.lr-sec--plum{background:var(--lr-plum)}
+.lr-sec--umber{background:var(--lr-umber)}
+.lr-sec--ink{background:var(--lr-ink)}
+.lr-sec::before{content:"";position:absolute;inset:0 0 auto 0;height:min(520px,60%);background:radial-gradient(60% 100% at 18% 0,color-mix(in srgb,var(--accent) 9%,transparent),transparent 70%);pointer-events:none}
+.lr-sec>.lr-wrap{position:relative}
+.lr-two{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+@media (min-width:1200px){
+  .lr-two{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(56px,6.5vw,104px);align-items:start}
+  .lr-two--even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .lr-two--flip{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+  .lr-stick{position:sticky;top:calc(var(--lr-head-h) + 28px)}
+}
+.lr-panel{border:1px solid var(--lr-line);border-radius:26px;background:linear-gradient(180deg,rgba(255,232,208,.055),rgba(255,232,208,.02));padding:clamp(20px,2.6vw,38px)}
+.lr-chips{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--lr-gut);margin-inline:calc(var(--lr-gut)*-1);padding:4px var(--lr-gut);scrollbar-width:none}
+.lr-chips::-webkit-scrollbar{display:none}
+.lr-chip{flex:none;scroll-snap-align:start;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--lr-line-2);background:transparent;color:var(--lr-soft);font:600 14px/1 var(--lr-sans);white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
+.lr-chip:hover{border-color:var(--accent);color:var(--lr-text)}
+.lr-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--lr-on)}
+@media (min-width:768px){.lr-chips{flex-wrap:wrap;overflow:visible;margin-inline:0;padding:0}}
+.lr-form{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media (min-width:768px){.lr-form{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 18px}.lr-form>.lr-full{grid-column:1/-1}}
+.lr-field{display:grid;gap:7px;min-width:0;align-content:start}
+.lr-field label,.lr-legend{font:600 13.5px/1.3 var(--lr-sans);color:var(--lr-text)}
+.lr-opt{color:var(--lr-mute);font-weight:500}
+.lr-input{width:100%;min-height:50px;padding:12px 14px;border-radius:13px;border:1px solid var(--lr-line-2);background:rgba(255,232,208,.045);color:var(--lr-text);font-size:16px;line-height:1.3;transition:border-color .2s,box-shadow .2s}
+.lr-input::placeholder{color:#8f7f74}
+.lr-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 24%,transparent)}
+.lr-input[aria-invalid="true"]{border-color:#ff9c88}
+select.lr-input{appearance:none;-webkit-appearance:none;padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23d2c2b6' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:12px 8px}
+select.lr-input option{background:#22131b;color:var(--lr-text)}
+textarea.lr-input{min-height:104px;resize:vertical}
+.lr-err{font-size:13px;line-height:1.4;color:#ffab99}
+.lr-err:empty{display:none}
+.lr-check{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:start;font-size:14px;line-height:1.5;color:var(--lr-soft);cursor:pointer}
+.lr-check input{width:22px;height:22px;margin:0;accent-color:var(--accent);cursor:pointer}
+.lr-check--box{min-height:44px;align-items:center}
+.lr-alert{border:1px solid #ff9c88;border-radius:14px;padding:14px 16px;background:rgba(255,120,96,.08);font-size:14px;color:#ffd5cb}
+.lr-alert strong{display:block;margin-bottom:4px;color:#ffe6df}
+.lr-alert a{color:inherit;text-underline-offset:3px}
+.lr-alert li{margin-top:2px}
+.lr-done{display:grid;gap:14px;justify-items:start}
+.lr-done__mark{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);box-shadow:0 0 36px -6px var(--accent)}
+.lr-done__mark svg{width:22px;height:22px}
+.lr-done p{color:var(--lr-soft);max-width:52ch}
+.lr-done:focus{outline:none}
+
+/* ---------- what's on ---------- */
+.lr-on__top{display:grid;gap:8px 64px;align-items:end}
+.lr-filters{display:grid;gap:10px;margin-top:36px}
+.lr-filters__g{display:grid;gap:8px;min-width:0}
+.lr-filters__l{font:700 11px/1 var(--lr-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--lr-mute)}
+.lr-on__count{margin-top:22px;font-size:13.5px;color:var(--lr-mute)}
+.lr-nights{margin-top:10px;border-top:1px solid var(--lr-line-2)}
+.lr-night{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px 16px;padding:22px 0;border-bottom:1px solid var(--lr-line)}
+.lr-night__date{display:grid;justify-items:start;align-content:start;gap:2px}
+.lr-night__dow,.lr-night__mon{font:700 11.5px/1 var(--lr-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.lr-night__mon{color:var(--lr-mute)}
+.lr-night__day{font:400 58px/.86 var(--lr-serif);letter-spacing:-.02em}
+.lr-night__name{font:400 32px/1 var(--lr-serif);letter-spacing:-.008em}
+.lr-night__name em{font-style:italic}
+.lr-night__blurb{margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--lr-soft);max-width:46ch}
+.lr-night__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.lr-night__tags li{padding:5px 10px;border-radius:999px;border:1px solid var(--lr-line-2);font:600 11.5px/1 var(--lr-sans);color:var(--lr-soft)}
+.lr-night__tags li.lr-night__bar{border-color:color-mix(in srgb,var(--accent) 60%,transparent);color:var(--accent)}
+.lr-night__rooms{grid-column:1/-1;display:grid;gap:10px;padding:14px 16px;border-radius:16px;background:rgba(255,232,208,.04)}
+.lr-night__rooms div{display:grid;grid-template-columns:126px minmax(0,1fr);gap:12px;font-size:14px;line-height:1.4}
+.lr-night__rooms dt{font:700 11px/1.5 var(--lr-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--lr-mute)}
+.lr-night__rooms dd{color:var(--lr-text)}
+.lr-night__buy{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.lr-night__time{font-size:13px;color:var(--lr-mute)}
+.lr-night__price{font-size:14px;color:var(--lr-soft)}
+.lr-night__price strong{font:400 28px/1 var(--lr-serif);color:var(--lr-text);margin-left:2px}
+.lr-night__price small{display:block;font-size:11.5px;color:var(--lr-mute)}
+.lr-on__more{display:flex;justify-content:center;margin-top:30px}
+.lr-on__empty{padding:34px 0;border-bottom:1px solid var(--lr-line);color:var(--lr-soft)}
+.lr-on__empty button{margin-top:14px}
+@media (min-width:768px){
+  .lr-filters{grid-template-columns:auto auto;justify-content:start;gap:14px 44px}
+  .lr-night{grid-template-columns:96px minmax(0,1fr) minmax(0,1fr);gap:18px 28px;padding:28px 0}
+  .lr-night__day{font-size:72px}
+  .lr-night__name{font-size:38px}
+  .lr-night__rooms{grid-column:auto;grid-row:1/3;grid-column-start:3;align-self:start}
+  .lr-night__buy{grid-column:1/3}
+}
+@media (min-width:768px) and (max-width:1023px){.lr-night__rooms div{grid-template-columns:minmax(0,1fr);gap:1px}}
+@media (min-width:1200px){
+  .lr-on__top{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+  .lr-on__top .lr-lede{margin:0 0 8px}
+  .lr-night{grid-template-columns:118px minmax(0,1.05fr) minmax(0,1.25fr) 190px;gap:0 40px;align-items:center;padding:30px 12px;margin-inline:-12px;border-radius:0;transition:background-color .3s}
+  .lr-night:hover{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 7%,transparent),transparent 80%)}
+  .lr-night__day{font-size:84px}
+  .lr-night__name{font-size:44px}
+  .lr-night__rooms{grid-row:auto;grid-column:auto;background:none;padding:0;border-left:1px solid var(--lr-line);padding-left:28px;border-radius:0}
+  .lr-night__rooms div{grid-template-columns:134px minmax(0,1fr)}
+  .lr-night__buy{grid-column:auto;flex-direction:column;align-items:flex-end;gap:10px;text-align:right}
+}
+
+/* ---------- tickets ---------- */
+.lr-points{display:grid;gap:0;margin-top:34px;border-top:1px solid var(--lr-line)}
+.lr-points li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--lr-line);color:var(--lr-soft);font-size:15px}
+.lr-points li strong{display:block;color:var(--lr-text);font-weight:600;margin-bottom:2px}
+.lr-points svg{width:22px;height:22px;margin-top:2px;color:var(--accent)}
+.lr-tix__steps{display:flex;gap:6px;margin-bottom:26px;counter-reset:lr-s}
+.lr-tix__steps li{flex:1 1 0;min-width:0;padding-top:12px;border-top:2px solid var(--lr-line-2);font:600 12px/1.25 var(--lr-sans);color:var(--lr-mute)}
+.lr-tix__steps li span{display:none}
+.lr-tix__steps li[aria-current="step"]{border-top-color:var(--accent);color:var(--lr-text)}
+.lr-tix__steps li[aria-current="step"] span{display:inline}
+.lr-tix__steps li.lr-is-done{border-top-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+@media (min-width:768px){.lr-tix__steps li span{display:inline}}
+.lr-tix__q{font:400 clamp(28px,2.6vw,38px)/1.05 var(--lr-serif);letter-spacing:-.008em}
+.lr-tix__q:focus{outline:none}
+.lr-tix__hint{margin-top:8px;font-size:14.5px;color:var(--lr-soft)}
+.lr-opts{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:22px}
+@media (min-width:768px){.lr-opts--2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.lr-optc{position:relative;display:block;min-width:0}
+.lr-optc input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.lr-optc input:disabled{cursor:not-allowed}
+.lr-optc__b{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 16px;min-height:64px;padding:13px 18px;border:1px solid var(--lr-line-2);border-radius:16px;background:rgba(255,232,208,.03);transition:border-color .2s,background-color .2s,box-shadow .2s}
+.lr-optc:hover .lr-optc__b{border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+.lr-optc input:checked+.lr-optc__b{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 11%,transparent);box-shadow:inset 0 0 0 1px var(--accent)}
+.lr-optc input:focus-visible+.lr-optc__b{outline:2px solid var(--accent);outline-offset:3px}
+.lr-optc input:disabled+.lr-optc__b{opacity:.5}
+.lr-optc__t{font:400 23px/1.1 var(--lr-serif)}
+.lr-optc__s{grid-column:1;font-size:13px;line-height:1.4;color:var(--lr-soft)}
+.lr-optc__p{grid-row:1/3;grid-column:2;text-align:right;font:400 26px/1 var(--lr-serif)}
+.lr-optc__p small{display:block;margin-top:4px;font:600 11px/1.2 var(--lr-sans);letter-spacing:.04em;color:var(--lr-mute)}
+.lr-tix__more{margin-top:12px;min-height:44px;padding:0 4px;border:0;background:none;color:var(--accent);font:600 14px/1 var(--lr-sans);text-decoration:underline;text-underline-offset:4px}
+.lr-qty{display:flex;align-items:center;gap:18px;margin-top:24px}
+.lr-qty button{width:52px;height:52px;border-radius:50%;border:1px solid var(--lr-line-2);background:transparent;font:400 26px/1 var(--lr-serif);display:grid;place-items:center}
+.lr-qty button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.lr-qty button:disabled{opacity:.35;cursor:not-allowed}
+.lr-qty output{min-width:64px;text-align:center;font:400 64px/1 var(--lr-serif)}
+.lr-tix__sum{display:grid;gap:0;margin-top:22px;border-top:1px solid var(--lr-line)}
+.lr-tix__sum div{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--lr-line);font-size:15px}
+.lr-tix__sum dt{color:var(--lr-mute)}
+.lr-tix__sum dd{text-align:right;color:var(--lr-text);min-width:0;overflow-wrap:anywhere}
+.lr-tix__sum .lr-tix__total dd{font:400 30px/1 var(--lr-serif)}
+.lr-tix__bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 20px;margin-top:28px;padding-top:22px;border-top:1px solid var(--lr-line)}
+.lr-tix__line{flex:1 1 220px;min-width:0;font-size:13.5px;line-height:1.45;color:var(--lr-soft)}
+.lr-tix__line strong{display:block;font:400 22px/1.15 var(--lr-serif);color:var(--lr-text)}
+.lr-tix__nav{display:flex;gap:10px;margin-left:auto}
+.lr-tix__fee{margin-top:16px}
+
+/* ---------- booths ---------- */
+.lr-spend{width:100%;margin-top:34px;border-collapse:collapse;font-size:15px}
+.lr-spend caption{text-align:left;padding-bottom:12px;font:700 11px/1.3 var(--lr-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--lr-mute)}
+.lr-spend th,.lr-spend td{padding:16px 14px 16px 0;border-bottom:1px solid var(--lr-line);text-align:left;vertical-align:top}
+.lr-spend thead th{font:700 11px/1.3 var(--lr-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--lr-mute);border-bottom-color:var(--lr-line-2)}
+.lr-spend tbody th{font:400 24px/1.1 var(--lr-serif);color:var(--lr-text)}
+.lr-spend tbody th small{display:block;margin-top:5px;font:500 13px/1.4 var(--lr-sans);color:var(--lr-mute)}
+.lr-spend td{color:var(--lr-soft)}
+.lr-spend td b{font:400 24px/1.1 var(--lr-serif);color:var(--lr-text)}
+@media (max-width:767px){
+  .lr-spend thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .lr-spend,.lr-spend caption,.lr-spend tbody,.lr-spend tr,.lr-spend th,.lr-spend td{display:block}
+  .lr-spend tr{padding:16px 18px;margin-top:10px;border:1px solid var(--lr-line);border-radius:18px;background:rgba(255,232,208,.03)}
+  .lr-spend th,.lr-spend td{padding:0;border:0}
+  .lr-spend td{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--lr-line)}
+  .lr-spend td::before{content:attr(data-lr-l);font:700 11px/1.3 var(--lr-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--lr-mute)}
+}
+.lr-booths__pic{margin-top:30px;border-radius:22px;overflow:hidden;position:relative}
+.lr-booths__pic img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.lr-booths__pic figcaption{position:absolute;left:16px;bottom:14px;right:16px;font-size:13px;color:var(--lr-text);text-shadow:0 1px 12px rgba(0,0,0,.8)}
+.lr-form__foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+.lr-form__foot .lr-note{flex:1 1 240px}
+
+/* ---------- the rooms ---------- */
+.lr-split{display:grid;gap:8px 64px;align-items:end}
+@media (min-width:1200px){.lr-split{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}.lr-split .lr-lede{margin:0 0 8px}}
+.lr-pill{display:inline-block;padding:6px 11px;border-radius:999px;border:1px solid var(--lr-line-2);font:600 12px/1 var(--lr-sans);color:var(--lr-soft)}
+.lr-trio{display:grid;gap:14px;margin-top:44px}
+.lr-room{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-width:0;min-height:430px;border-radius:24px;overflow:hidden;background:#1a0f0b}
+.lr-room img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.lr-room::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,10,13,.05) 25%,rgba(17,10,13,.9) 82%,rgba(17,10,13,.96));pointer-events:none}
+.lr-room__body{width:100%;padding:22px}
+.lr-room__cap{font:700 11px/1 var(--lr-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.lr-room__name{margin-top:10px;font:400 40px/1 var(--lr-serif);letter-spacing:-.01em}
+.lr-room__name button{all:unset;display:block;cursor:default}
+.lr-room__more p{margin-top:12px;font-size:15px;line-height:1.55;color:var(--lr-soft);max-width:46ch}
+.lr-room__more ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+@media (min-width:768px){
+  .lr-trio{display:flex;gap:12px;height:clamp(470px,56vw,580px)}
+  .lr-room{flex:1 1 0;min-height:0;transition:flex-grow .7s cubic-bezier(.2,.7,.2,1)}
+  .lr-room.lr-is-open{flex-grow:2.7}
+  .lr-room__name{font-size:clamp(28px,3.1vw,46px)}
+  .lr-room__name button{cursor:pointer}
+  .lr-room__name button::after{content:"";position:absolute;inset:0}
+  .lr-room__name button:focus-visible{outline:none}
+  .lr-room:has(button:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+  .lr-room__more{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .7s cubic-bezier(.2,.7,.2,1),opacity .4s ease}
+  .lr-room__more>div{min-height:0;overflow:hidden}
+  .lr-room__more>div>*{width:min(440px,calc(100vw - 2*var(--lr-gut) - 400px))}
+  .lr-room.lr-is-open .lr-room__more{grid-template-rows:1fr;opacity:1;transition-delay:0s,.25s}
+  .lr-room__body{padding:26px}
+}
+@media (min-width:1200px){.lr-room__more>div>*{width:440px}}
+@media (prefers-reduced-motion:reduce){.lr-room,.lr-room__more{transition:none!important}}
+.lr-specs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-top:14px;border:1px solid var(--lr-line);border-radius:24px;overflow:hidden}
+.lr-specs li{padding:22px 20px;border-top:1px solid var(--lr-line);border-left:1px solid var(--lr-line);margin:-1px 0 0 -1px}
+.lr-specs b{display:block;font:400 clamp(38px,4vw,58px)/1 var(--lr-serif);letter-spacing:-.01em}
+.lr-specs span{display:block;margin-top:8px;font-size:13.5px;line-height:1.45;color:var(--lr-soft)}
+@media (min-width:1024px){.lr-specs{grid-template-columns:repeat(4,minmax(0,1fr))}.lr-specs li{padding:28px}}
+.lr-listen{display:grid;gap:26px;margin-top:clamp(56px,7vw,104px);align-items:center}
+.lr-listen__pic{position:relative;border-radius:24px;overflow:hidden}
+.lr-listen__pic img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.lr-listen__when{font:700 11.5px/1.3 var(--lr-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.lr-listen h3{margin-top:14px;font:400 clamp(34px,3.8vw,58px)/1 var(--lr-serif);letter-spacing:-.01em}
+.lr-listen h3 em{font-style:italic;color:var(--accent)}
+.lr-listen p{margin-top:16px;color:var(--lr-soft);max-width:52ch}
+.lr-listen ul{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 26px}
+@media (min-width:1024px){.lr-listen{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(40px,5vw,84px)}}
+
+/* ---------- door policy ---------- */
+.lr-bring{margin-top:34px}
+.lr-bring h3{font:700 11px/1.3 var(--lr-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--lr-mute)}
+.lr-bring ul{display:grid;gap:0;margin-top:8px}
+.lr-bring li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--lr-line);font-size:15px;color:var(--lr-soft)}
+.lr-bring li:first-child{border-top:0}
+.lr-bring svg{width:22px;height:22px;margin-top:2px;color:var(--accent)}
+.lr-bring b{color:var(--lr-text);font-weight:600}
+.lr-rules{border-top:1px solid var(--lr-line-2)}
+.lr-rules>div{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:22px 0;border-bottom:1px solid var(--lr-line)}
+.lr-rules dt{font:400 27px/1.1 var(--lr-serif);letter-spacing:-.005em}
+.lr-rules dd{font-size:15.5px;line-height:1.6;color:var(--lr-soft);max-width:62ch}
+.lr-rules dd strong{color:var(--lr-text);font-weight:600}
+@media (min-width:768px){.lr-rules>div{grid-template-columns:210px minmax(0,1fr);gap:28px;padding:26px 0}}
+
+/* ---------- safety and welfare ---------- */
+.lr-care{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:44px}
+.lr-care>li{display:flex;flex-direction:column;padding:26px;border:1px solid var(--lr-line);border-radius:24px;background:linear-gradient(180deg,rgba(255,232,208,.05),rgba(255,232,208,.015))}
+.lr-care svg{width:30px;height:30px;color:var(--accent)}
+.lr-care h3{margin-top:18px;font:400 28px/1.08 var(--lr-serif)}
+.lr-care p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--lr-soft)}
+.lr-care p strong{color:var(--lr-text);font-weight:700}
+@media (min-width:768px){.lr-care{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.lr-care{grid-template-columns:repeat(3,minmax(0,1fr))}.lr-care>li{padding:30px}}
+.lr-access{display:grid;gap:28px;margin-top:14px;padding:clamp(24px,3.4vw,48px);border-radius:24px;border:1px solid color-mix(in srgb,var(--accent) 38%,transparent);background:radial-gradient(80% 120% at 0 0,color-mix(in srgb,var(--accent) 12%,transparent),transparent 60%),rgba(255,232,208,.02)}
+.lr-access h3{font:400 clamp(32px,3.4vw,50px)/1.02 var(--lr-serif);letter-spacing:-.01em}
+.lr-access h3 em{font-style:italic;color:var(--accent)}
+.lr-access__how{margin-top:16px;color:var(--lr-soft);max-width:46ch}
+.lr-access__how a{white-space:nowrap}
+.lr-access__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.lr-access dl{display:grid;grid-template-columns:minmax(0,1fr);gap:0;border-top:1px solid var(--lr-line)}
+.lr-access dl>div{padding:16px 0;border-bottom:1px solid var(--lr-line)}
+.lr-access dt{font-weight:700;color:var(--lr-text);font-size:15px}
+.lr-access dd{margin-top:4px;font-size:14.5px;line-height:1.55;color:var(--lr-soft)}
+@media (min-width:768px){.lr-access dl{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}}
+@media (min-width:1200px){.lr-access{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}}
+
+/* ---------- getting here and home ---------- */
+.lr-map{display:none;margin-top:32px;border:1px solid var(--lr-line);border-radius:26px;background:radial-gradient(50% 50% at 53% 50%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 75%),rgba(255,232,208,.02);padding:14px}
+.lr-map svg{display:block;width:100%;height:auto}
+.lr-map figcaption{padding:4px 10px 8px;font-size:12.5px;color:var(--lr-mute);text-align:center}
+@media (min-width:768px){.lr-map{display:block}}
+.lr-way h3{font:400 30px/1.05 var(--lr-serif);margin-top:38px}
+.lr-way h3:first-of-type{margin-top:36px}
+.lr-way__p{margin-top:10px;color:var(--lr-soft);font-size:15.5px;max-width:60ch}
+.lr-way__p strong{color:var(--lr-text);font-weight:600}
+.lr-walks{margin-top:14px;border-top:1px solid var(--lr-line)}
+.lr-walks li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--lr-line);font-size:15px}
+.lr-walks small{display:block;font-size:13px;color:var(--lr-mute)}
+.lr-walks b{font:400 24px/1 var(--lr-serif);white-space:nowrap}
+.lr-walks i{grid-column:1/-1;display:block;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 25%,transparent));width:calc(var(--lr-min)/12*100%)}
+.lr-quiet{margin-top:34px;padding:22px 24px;border-radius:20px;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.lr-quiet p:first-child{font:400 27px/1.12 var(--lr-serif)}
+.lr-quiet p+p{margin-top:8px;font-size:14.5px;color:var(--lr-soft)}
+
+/* ---------- practical, private hire ---------- */
+.lr-prac{display:grid;grid-template-columns:minmax(0,1fr);margin-top:44px;border-top:1px solid var(--lr-line-2)}
+.lr-prac li{padding:26px 0;border-bottom:1px solid var(--lr-line)}
+.lr-prac h3{font:400 29px/1.05 var(--lr-serif)}
+.lr-prac p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--lr-soft)}
+.lr-prac b{display:block;margin-top:14px;font:700 11.5px/1.4 var(--lr-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+@media (min-width:768px){.lr-prac{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:44px}}
+@media (min-width:1200px){.lr-prac{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:0;border-bottom:1px solid var(--lr-line)}.lr-prac li{padding:30px 30px 34px;border-bottom:0;border-left:1px solid var(--lr-line)}.lr-prac li:first-child{padding-left:0;border-left:0}}
+.lr-hire{display:grid;gap:0;border-radius:28px;overflow:hidden;border:1px solid var(--lr-line);background:var(--lr-plum)}
+.lr-hire__pic img{width:100%;height:100%;min-height:240px;aspect-ratio:3/2;object-fit:cover}
+.lr-hire__body{padding:clamp(24px,4vw,60px)}
+.lr-hire__body .lr-h2{font-size:clamp(36px,4.2vw,64px)}
+.lr-hire__facts{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 28px}
+.lr-hire__cta{display:flex;flex-wrap:wrap;gap:10px}
+@media (min-width:1024px){.lr-hire{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}.lr-hire__pic img{aspect-ratio:auto;position:absolute;inset:0}.lr-hire__pic{position:relative;min-height:480px}}
+
+/* ---------- questions ---------- */
+.lr-faq{border-top:1px solid var(--lr-line-2)}
+.lr-faq__i{border-bottom:1px solid var(--lr-line)}
+.lr-faq__q{font:inherit}
+.lr-faq__q button{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;gap:16px;width:100%;min-height:72px;padding:14px 0;border:0;background:none;text-align:left;font:400 clamp(23px,2.1vw,30px)/1.15 var(--lr-serif);color:var(--lr-text)}
+.lr-faq__q button:hover{color:var(--accent)}
+.lr-faq__x{position:relative;justify-self:end;width:40px;height:40px;border-radius:50%;border:1px solid var(--lr-line-2);transition:background-color .25s,border-color .25s,transform .35s}
+.lr-faq__x::before,.lr-faq__x::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:1.5px;margin:-.75px 0 0 -6.5px;background:currentColor;transition:transform .35s}
+.lr-faq__x::after{transform:rotate(90deg)}
+.lr-faq__q button[aria-expanded="true"] .lr-faq__x{background:var(--accent);border-color:var(--accent);color:var(--lr-on)}
+.lr-faq__q button[aria-expanded="true"] .lr-faq__x::after{transform:rotate(0)}
+.lr-faq__a{padding:0 60px 24px 0;font-size:15.5px;line-height:1.65;color:var(--lr-soft);max-width:66ch}
+.lr-faq__a p+p{margin-top:10px}
+@media (max-width:767px){.lr-faq__a{padding-right:0}}
+@media (prefers-reduced-motion:reduce){.lr-faq__x,.lr-faq__x::before,.lr-faq__x::after{transition:none}}
+
+/* ---------- the letter ---------- */
+.lr-news{display:grid;gap:0;border-radius:28px;overflow:hidden;border:1px solid var(--lr-line);background:radial-gradient(70% 120% at 100% 0,color-mix(in srgb,var(--accent) 14%,transparent),transparent 60%),var(--lr-ink)}
+.lr-news__body{padding:clamp(24px,4.4vw,64px)}
+.lr-news__body .lr-h2{font-size:clamp(38px,4.6vw,70px)}
+.lr-news__form{display:grid;gap:14px;margin-top:28px;max-width:560px}
+.lr-news__row{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+@media (min-width:768px){.lr-news__row{grid-template-columns:minmax(0,1fr) auto}}
+.lr-news__pic{position:relative;min-height:220px}
+.lr-news__pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lr-news__pic::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(22,12,17,.0),rgba(22,12,17,.0))}
+@media (min-width:1024px){.lr-news{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}.lr-news__pic::after{background:linear-gradient(90deg,var(--lr-ink),rgba(22,12,17,0) 45%)}}
+@media (max-width:1023px){.lr-news__pic{order:-1;min-height:0;aspect-ratio:16/9}.lr-news__pic::after{background:linear-gradient(0deg,var(--lr-ink),rgba(22,12,17,0) 55%)}}
+
+/* ---------- footer: the "your way home" departures board ---------- */
+.lr-foot{--lr-cord:clamp(64px,8vw,116px);position:relative;background:#0c0709;border-top:1px solid var(--lr-line);padding-top:clamp(64px,8vw,116px)}
+.lr-foot__top{display:grid;gap:16px 64px;align-items:end}
+.lr-foot__h{margin-top:18px;font:400 clamp(38px,4.8vw,72px)/1 var(--lr-serif);letter-spacing:-.012em}
+.lr-foot__h em{font-style:italic;color:var(--accent)}
+.lr-foot__warn{font-size:14.5px;line-height:1.6;color:var(--lr-soft);max-width:56ch}
+.lr-foot__warn strong{color:var(--lr-text);font-weight:700}
+@media (min-width:1200px){.lr-foot__top{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+.lr-board{--lr-fw:15px;--lr-fh:26px;--lr-cols:calc(5*(var(--lr-fw) + 1px)) minmax(0,1fr);margin-top:36px;padding:14px 12px 6px;border-radius:22px;border:1px solid #2e1d15;background:linear-gradient(180deg,#160d0b,#0e0807);box-shadow:inset 0 1px 0 rgba(255,220,180,.07),0 40px 90px -50px #000}
+.lr-board__bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:2px 4px 14px;font:700 10px/1 var(--lr-sans);letter-spacing:.12em;white-space:nowrap;text-transform:uppercase;color:var(--accent)}
+.lr-board__bar span:first-child::before{content:"";display:inline-block;width:6px;height:6px;margin-right:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);vertical-align:1px}
+.lr-board__bar span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.lr-board__head{display:none;grid-template-columns:var(--lr-cols);gap:0 var(--lr-cg,10px);padding:0 4px 8px;font:700 10.5px/1 var(--lr-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--lr-mute)}
+.lr-brow{display:grid;grid-template-columns:var(--lr-cols);gap:7px var(--lr-cg,10px);align-items:center;padding:10px 4px;border-top:1px solid rgba(255,220,180,.07)}
+.lr-flaps{display:flex;gap:1px;min-width:0}
+.lr-flap{position:relative;flex:none;display:grid;place-items:center;width:var(--lr-fw);height:var(--lr-fh);border-radius:3px;background:linear-gradient(180deg,#2c1b13 0,#2c1b13 48%,#0b0605 48%,#0b0605 52%,#24150f 52%);color:#f8e7c9;font:700 calc(var(--lr-fw)*.74)/1 var(--lr-sans);overflow:hidden}
+.lr-flap i{display:block;font-style:normal;transform-origin:50% 50%}
+.lr-flaps--time .lr-flap{color:var(--accent)}
+.lr-flaps--svc{display:none}
+.lr-brow__led{grid-column:1/-1;font:700 10.5px/1.5 var(--lr-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-shadow:0 0 14px color-mix(in srgb,var(--accent) 55%,transparent)}
+@media (min-width:414px){.lr-board{--lr-fw:17px;--lr-fh:29px}}
+@media (min-width:768px){
+  .lr-board{--lr-fw:20px;--lr-fh:34px;--lr-cg:14px;--lr-cols:calc(5*(var(--lr-fw) + 1px)) calc(11*(var(--lr-fw) + 1px)) minmax(0,1fr);padding:18px 18px 8px}
+  .lr-board__head{display:grid}
+  .lr-board__bar{font-size:11px;letter-spacing:.16em}
+  .lr-board__head span:last-child{display:none}
+  .lr-flaps--svc{display:flex}
+  .lr-brow{padding:11px 4px}
+  .lr-brow__led{font-size:11.5px}
+}
+@media (min-width:1200px){
+  .lr-board{--lr-fw:24px;--lr-fh:40px;--lr-cg:28px;--lr-cols:calc(5*(var(--lr-fw) + 1px)) calc(11*(var(--lr-fw) + 1px)) calc(13*(var(--lr-fw) + 1px)) minmax(0,1fr);padding:22px 26px 10px}
+  .lr-board__head span:last-child{display:block}
+  .lr-brow__led{grid-column:auto;font-size:12.5px}
+}
+.lr-rows{margin-top:14px;border-radius:22px;border:1px solid #2e1d15;background:#120b09;overflow:hidden}
+.lr-lrow{border-top:1px solid rgba(255,220,180,.07)}
+.lr-lrow:first-child{border-top:0}
+.lr-lrow__t button,.lr-lrow__label{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:0 16px;border:0;background:none;text-align:left;font:700 11.5px/1.2 var(--lr-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--lr-text)}
+.lr-lrow__label{display:none}
+.lr-lrow__t button::before,.lr-lrow__label::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.lr-lrow__t svg{width:12px;height:8px;margin-left:auto;transition:transform .3s}
+.lr-lrow__t button[aria-expanded="true"] svg{transform:rotate(180deg)}
+.lr-lrow__links{display:grid;padding:0 16px 12px 34px}
+.lr-lrow__links a,.lr-lrow__links button,.lr-lrow__links span{display:flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--lr-soft);font:500 15px/1.3 var(--lr-sans);text-decoration:none;text-align:left}
+.lr-lrow__links a:hover,.lr-lrow__links button:hover{color:var(--accent)}
+@media (min-width:768px){
+  .lr-lrow{display:grid;grid-template-columns:200px minmax(0,1fr);align-items:center}
+  .lr-lrow__t button{display:none}
+  .lr-lrow__label{display:flex;padding-left:22px}
+  .lr-lrow__links{display:flex;flex-wrap:wrap;gap:0 28px;padding:6px 22px 6px 0}
+}
+@media (min-width:1200px){.lr-lrow{grid-template-columns:260px minmax(0,1fr)}.lr-lrow__label{padding-left:30px}}
+.lr-foot__end{display:flex;flex-wrap:wrap;align-items:center;gap:18px 32px;margin-top:34px;padding-bottom:34px}
+.lr-foot__end address{flex:1 1 280px;font-style:normal;font-size:14px;line-height:1.6;color:var(--lr-soft)}
+.lr-top{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--lr-line-2);color:var(--lr-text);margin-left:auto}
+.lr-top:hover{border-color:var(--accent);color:var(--accent)}
+.lr-top svg{width:16px;height:16px}
+.lr-ticker{display:flex;align-items:center;border-top:1px solid var(--lr-line);background:#080506}
+.lr-ticker__view{flex:1 1 auto;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.lr-ticker__track{display:flex;width:max-content;animation:lr-tick 90s linear infinite}
+.lr-ticker__track p{flex:none;padding:14px 0;font-size:12.5px;line-height:1.5;white-space:nowrap;color:var(--lr-mute)}
+.lr-ticker__track p span{margin:0 18px;color:#6f5f55}
+.lr-ticker__track a{color:var(--lr-soft)}
+.lr-ticker:hover .lr-ticker__track,.lr-ticker:focus-within .lr-ticker__track,.lr-ticker[data-lr-paused] .lr-ticker__track{animation-play-state:paused}
+.lr-ticker__btn{flex:none;display:grid;place-items:center;width:44px;height:44px;margin-right:6px;border:0;background:none;color:var(--lr-mute)}
+.lr-ticker__btn:hover{color:var(--accent)}
+.lr-ticker__btn svg{width:12px;height:12px}
+.lr-ticker__btn .lr-i-play{display:none}
+.lr-ticker[data-lr-paused] .lr-i-play{display:block}
+.lr-ticker[data-lr-paused] .lr-i-pause{display:none}
+@keyframes lr-tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .lr-ticker__view{-webkit-mask-image:none;mask-image:none}
+  .lr-ticker__track{display:block;width:auto;animation:none}
+  .lr-ticker__track p{white-space:normal;padding:14px var(--lr-gut)}
+  .lr-ticker__track p[aria-hidden="true"],.lr-ticker__btn{display:none}
+  .lr-ticker__track p span{margin:0 8px}
+}
+
+/* ---------- mobile dock, legal dialog ---------- */
+.lr-dock{position:fixed;inset:auto 0 0 0;z-index:50;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--lr-line-2);background:rgba(17,10,13,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transform:translateY(110%);visibility:hidden}
+.lr-dock.lr-is-on{transform:none;visibility:visible;transition:transform .3s ease}
+.lr-dock .lr-btn{min-height:48px;padding:0 12px}
+body[data-lr-menu="open"] .lr-dock{display:none}
+@media (min-width:768px){.lr-dock{display:none}}
+@media (prefers-reduced-motion:reduce){.lr-dock,.lr-dock.lr-is-on{transition:none}}
+.lr-legal{width:min(580px,calc(100vw - 32px));max-height:min(80vh,640px);padding:clamp(22px,4vw,34px);border:1px solid var(--lr-line-2);border-radius:24px;background:#1c1017;color:var(--lr-text);box-shadow:0 40px 120px -20px #000}
+.lr-legal::backdrop{background:rgba(8,4,6,.74)}
+.lr-legal h2{font:400 34px/1.05 var(--lr-serif);padding-right:52px}
+.lr-legal p{margin-top:12px;font-size:15px;line-height:1.62;color:var(--lr-soft)}
+.lr-legal__x{position:absolute;right:16px;top:16px;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--lr-line-2);background:none}
+.lr-legal__x:hover{border-color:var(--accent);color:var(--accent)}
+.lr-legal__x svg{width:14px;height:14px}
+/*LR:CSS*/
+</style>
+</head>
+<body>
+<a class="lr-skip" href="#lr-main">Skip to content</a>
+<header class="lr-head" id="lr-head" style="--accent:var(--lr-amber)">
+  <div class="lr-wrap lr-head__in">
+    <a class="lr-logo" href="#lr-top" aria-label="Lamplight Rooms, back to the top">
+      <svg viewBox="0 0 22 34" aria-hidden="true"><defs><radialGradient id="lr-lg" cx=".42" cy=".38" r=".7"><stop offset="0" stop-color="#fff0cf"/><stop offset=".6" stop-color="#f5a742"/><stop offset="1" stop-color="#c8691d"/></radialGradient></defs><path d="M11 0v13" stroke="#b98a4e" stroke-width="1"/><circle cx="11" cy="22.5" r="9.5" fill="url(#lr-lg)"/><path d="M11 22.5V16.6M11 22.5l4.2 2.6" stroke="#2a130b" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+      <span class="lr-logo__name">Lamplight <em>Rooms</em></span>
+    </a>
+    <nav class="lr-nav" aria-label="Main">
+      <a href="#lr-whats-on">What’s on</a>
+      <a href="#lr-booths">Booths</a>
+      <a href="#lr-rooms">The rooms</a>
+      <a href="#lr-door">Door policy</a>
+      <a href="#lr-welfare">Welfare</a>
+      <a href="#lr-getting">Getting home</a>
+    </nav>
+    <a class="lr-head__tel" href="tel:+441414960127">0141 496 0127</a>
+    <a class="lr-btn lr-btn--sm" href="#lr-tickets">Tickets</a>
+    <button class="lr-burger" id="lr-burger" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="lr-menu" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="lr-menu" id="lr-menu" role="dialog" aria-modal="true" aria-label="Menu" style="--accent:var(--lr-amber)" hidden>
+  <div class="lr-wrap lr-menu__top">
+    <a class="lr-logo" href="#lr-top" data-lr-close aria-label="Lamplight Rooms, back to the top">
+      <svg viewBox="0 0 22 34" aria-hidden="true"><path d="M11 0v13" stroke="#b98a4e" stroke-width="1"/><circle cx="11" cy="22.5" r="9.5" fill="url(#lr-lg)"/><path d="M11 22.5V16.6M11 22.5l4.2 2.6" stroke="#2a130b" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+      <span class="lr-logo__name">Lamplight <em>Rooms</em></span>
+    </a>
+    <button class="lr-menu__close" id="lr-menu-close" type="button" aria-label="Close menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="lr-wrap lr-menu__body">
+    <nav class="lr-menu__links" aria-label="Menu">
+      <a href="#lr-whats-on" data-lr-close>What’s on <span>Thu to Sat</span></a>
+      <a href="#lr-tickets" data-lr-close>Tickets <span>From £7</span></a>
+      <a href="#lr-booths" data-lr-close>Booths and guest list <span>Groups</span></a>
+      <a href="#lr-rooms" data-lr-close>The rooms <span>Three of them</span></a>
+      <a href="#lr-door" data-lr-close>Door policy <span>Over 18s</span></a>
+      <a href="#lr-welfare" data-lr-close>Safety and welfare <span>Access</span></a>
+      <a href="#lr-getting" data-lr-close>Getting here and home <span>G1</span></a>
+      <a href="#lr-faq" data-lr-close>Questions <span>FAQ</span></a>
+    </nav>
+    <div class="lr-menu__cta">
+      <a class="lr-btn" href="#lr-tickets" data-lr-close>Tickets</a>
+      <a class="lr-btn lr-btn--ghost" href="#lr-booths" data-lr-close>Book a booth</a>
+    </div>
+    <div class="lr-menu__meta">
+      <a href="tel:+441414960127">0141 496 0127</a>
+      <p>Thursday to Saturday, 23:00 to 03:00. Last entry 01:30.<br>Basement, 17 Wilson Street, Merchant City, Glasgow G1.</p>
+    </div>
+  </div>
+</div>
+
+<main id="lr-main">
+<section class="lr-hero" id="lr-top" style="--accent:var(--lr-amber)" aria-labelledby="lr-h1">
+  <div class="lr-hero__stage" aria-hidden="true"><canvas class="lr-hero__gl" id="lr-gl"></canvas></div>
+  <div class="lr-wrap lr-hero__in">
+    <div class="lr-hero__lamp">
+      <div class="lr-hero__dial" id="lr-dial" role="img" aria-label="A lamp-like clock showing the time in Glasgow, with doors at 23:00, last entry at 01:30 and close at 03:00 marked on the dial."></div>
+    </div>
+    <p class="lr-strap">Merchant City, Glasgow · <span class="lr-d">Thursday to Saturday</span><span class="lr-m">Thu to Sat</span></p>
+    <h1 id="lr-h1"><span>The lamp’s lit. </span><span><em>Come away down.</em></span></h1>
+    <p class="lr-hero__sub">Disco, funk, soul and house across three rooms under a Merchant City townhouse. Good records, a warm sound system and room to dance.</p>
+    <div class="lr-hero__cta">
+      <a class="lr-btn" href="#lr-tickets">Tickets</a>
+      <a class="lr-btn lr-btn--ghost" href="#lr-whats-on">What’s on</a>
+    </div>
+    <ul class="lr-facts" id="lr-facts" aria-label="Tonight at a glance">
+      <li><span class="lr-facts__k">Tonight</span><span class="lr-facts__v lr-facts__v--now" id="lr-fact-now">Thursday to Saturday</span></li>
+      <li><span class="lr-facts__k">Doors</span><span class="lr-facts__v">23:00</span></li>
+      <li><span class="lr-facts__k">Last entry</span><span class="lr-facts__v">01:30</span></li>
+      <li><span class="lr-facts__k"><span class="lr-d">Age</span><span class="lr-m">Challenge 25</span></span><span class="lr-facts__v">Over 18s<span class="lr-d"> · Challenge 25</span></span></li>
+    </ul>
+  </div>
+  <button class="lr-motion" id="lr-motion" type="button" aria-pressed="false" aria-label="Pause hero motion" title="Pause hero motion">
+    <svg class="lr-i-pause" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 2v10M10.5 2v10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <svg class="lr-i-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 1.8v10.4L12 7z" fill="currentColor"/></svg>
+  </button>
+</section>
+
+<!-- ============ WHAT'S ON ============ -->
+<section class="lr-sec lr-on" id="lr-whats-on" style="--accent:var(--lr-magenta)" aria-labelledby="lr-on-h">
+  <div class="lr-wrap">
+    <div class="lr-on__top">
+      <div class="lr-sec__head">
+        <p class="lr-strap">What’s on</p>
+        <h2 class="lr-h2" id="lr-on-h">Three nights a week, <em>none of them rushed.</em></h2>
+      </div>
+      <p class="lr-lede">Residents play long sets and guests are friends of the house. Thursdays are soul and boogie, Fridays lean disco, Saturdays go deeper. Every night is 23:00 to 03:00, over 18s only.</p>
+    </div>
+    <div class="lr-filters">
+      <div class="lr-filters__g">
+        <span class="lr-filters__l" id="lr-f-night">Night</span>
+        <div class="lr-chips" role="group" aria-labelledby="lr-f-night" data-lr-filter="night">
+          <button class="lr-chip" type="button" aria-pressed="true" data-lr-v="all">All nights</button>
+          <button class="lr-chip" type="button" aria-pressed="false" data-lr-v="Thu">Thursday</button>
+          <button class="lr-chip" type="button" aria-pressed="false" data-lr-v="Fri">Friday</button>
+          <button class="lr-chip" type="button" aria-pressed="false" data-lr-v="Sat">Saturday</button>
+        </div>
+      </div>
+      <div class="lr-filters__g">
+        <span class="lr-filters__l" id="lr-f-sound">Sound</span>
+        <div class="lr-chips" role="group" aria-labelledby="lr-f-sound" data-lr-filter="sound">
+          <button class="lr-chip" type="button" aria-pressed="true" data-lr-v="all">Everything</button>
+          <button class="lr-chip" type="button" aria-pressed="false" data-lr-v="disco">Disco</button>
+          <button class="lr-chip" type="button" aria-pressed="false" data-lr-v="soul">Funk and soul</button>
+          <button class="lr-chip" type="button" aria-pressed="false" data-lr-v="house">House</button>
+          <button class="lr-chip" type="button" aria-pressed="false" data-lr-v="bar">Listening bar</button>
+        </div>
+      </div>
+    </div>
+    <p class="lr-on__count" id="lr-on-count" aria-live="polite"></p>
+    <ol class="lr-nights" id="lr-nights"></ol>
+    <div class="lr-on__more"><button class="lr-btn lr-btn--ghost" type="button" id="lr-on-more">Show later dates</button></div>
+  </div>
+</section>
+
+<!-- ============ TICKETS ============ -->
+<section class="lr-sec lr-sec--plum lr-tickets" id="lr-tickets" style="--accent:var(--lr-amber)" aria-labelledby="lr-tix-h">
+  <div class="lr-wrap lr-two" data-lr-two>
+    <div>
+      <div class="lr-sec__head">
+        <p class="lr-strap">Tickets</p>
+        <h2 class="lr-h2" id="lr-tix-h">In the door for <em>the price it says.</em></h2>
+      </div>
+      <p class="lr-lede">Pick a night, pick a ticket, tell us where to send it. Every price you see already includes the booking fee, so the total never grows on the way to the till.</p>
+      <ul class="lr-points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2a2 2 0 000-4z"/><path d="M14 6v12" stroke-dasharray="2 3"/></svg><div><strong>E-tickets, straight to your inbox</strong>Show the code on your phone at the door. One code per person; the lead booker can forward the rest.</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><strong>A ticket holds your place until 01:30</strong>Early bird tickets are for arrival before midnight. Nobody is admitted after last entry, ticket or not.</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0113.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 01-13.7 5.6L4 15.500M4 20v-4.500h4.500"/></svg><div><strong>Can’t make it?</strong>Hand your ticket back for resale up to 18:00 on the day and we refund you when it sells. If we cancel a night, everyone is refunded in full.</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.500" r="2.300"/><path d="M3.500 19c.6-3.200 2.800-5 5.500-5s4.900 1.800 5.500 5M15.500 14.200c2.500 0 4.300 1.500 5 4.300"/></svg><div><strong>Bringing a personal assistant?</strong>Their ticket is free. Email <a class="lr-link" href="mailto:access@lamplightrooms.example">access@lamplightrooms.example</a> and we will add it to your booking.</div></li>
+      </ul>
+    </div>
+    <div class="lr-panel lr-tix" id="lr-tix" data-lr-widget>
+      <ol class="lr-tix__steps" id="lr-tix-steps" aria-label="Booking steps">
+        <li>1<span> · Night</span></li><li>2<span> · Ticket</span></li><li>3<span> · How many</span></li><li>4<span> · Your details</span></li><li>5<span> · Check</span></li>
+      </ol>
+      <div class="lr-alert" id="lr-tix-alert" role="alert" hidden></div>
+
+      <div class="lr-tix__panel" data-lr-step="0">
+        <h3 class="lr-tix__q" tabindex="-1">Which night?</h3>
+        <p class="lr-tix__hint">Doors 23:00, last entry 01:30, close 03:00.</p>
+        <div class="lr-opts lr-opts--2" id="lr-tix-nights" role="radiogroup" aria-label="Night"></div>
+        <button class="lr-tix__more" type="button" id="lr-tix-later">Show later dates</button>
+      </div>
+
+      <div class="lr-tix__panel" data-lr-step="1" hidden>
+        <h3 class="lr-tix__q" tabindex="-1">Which ticket?</h3>
+        <p class="lr-tix__hint" id="lr-tix-tierhint"></p>
+        <div class="lr-opts" id="lr-tix-tiers" role="radiogroup" aria-label="Ticket type"></div>
+        <p class="lr-note lr-tix__fee">Price includes booking fee. No extra charges are added later.</p>
+      </div>
+
+      <div class="lr-tix__panel" data-lr-step="2" hidden>
+        <h3 class="lr-tix__q" tabindex="-1">How many of you?</h3>
+        <p class="lr-tix__hint">Up to six tickets per booking. For eight or more, the guest list is better value.</p>
+        <div class="lr-qty">
+          <button type="button" id="lr-qty-dn" aria-label="One ticket fewer">−</button>
+          <output id="lr-qty-n" aria-live="polite" aria-label="Number of tickets">2</output>
+          <button type="button" id="lr-qty-up" aria-label="One ticket more">+</button>
+        </div>
+      </div>
+
+      <div class="lr-tix__panel" data-lr-step="3" hidden>
+        <h3 class="lr-tix__q" tabindex="-1">Where do we send them?</h3>
+        <p class="lr-tix__hint">We only use these details to send your tickets and tell you if anything about the night changes.</p>
+        <div class="lr-form" style="margin-top:22px">
+          <div class="lr-field">
+            <label for="lr-tix-name">Full name</label>
+            <input class="lr-input" id="lr-tix-name" name="name" type="text" autocomplete="name" aria-describedby="lr-tix-name-e">
+            <p class="lr-err" id="lr-tix-name-e"></p>
+          </div>
+          <div class="lr-field">
+            <label for="lr-tix-email">Email</label>
+            <input class="lr-input" id="lr-tix-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="lr-tix-email-e">
+            <p class="lr-err" id="lr-tix-email-e"></p>
+          </div>
+          <label class="lr-check lr-full"><input type="checkbox" id="lr-tix-news"><span>Send me the Lamplight letter too: one email a fortnight with new dates. Optional, and you can unsubscribe any time.</span></label>
+        </div>
+      </div>
+
+      <div class="lr-tix__panel" data-lr-step="4" hidden>
+        <h3 class="lr-tix__q" tabindex="-1">Does this look right?</h3>
+        <dl class="lr-tix__sum" id="lr-tix-sum"></dl>
+        <p class="lr-note lr-tix__fee">Price includes booking fee. Over 18s only: bring photo ID, Challenge 25 applies.</p>
+      </div>
+
+      <div class="lr-tix__panel lr-done" data-lr-step="5" tabindex="-1" hidden>
+        <span class="lr-done__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></span>
+        <h3 class="lr-tix__q">That’s the booking ready.</h3>
+        <p><strong>You would now go to our secure payment page. Nothing has been charged.</strong></p>
+        <p id="lr-tix-done-line"></p>
+        <button class="lr-btn lr-btn--ghost" type="button" id="lr-tix-again">Book another night</button>
+      </div>
+
+      <div class="lr-tix__bar" id="lr-tix-bar">
+        <p class="lr-tix__line" id="lr-tix-line" aria-live="polite"></p>
+        <div class="lr-tix__nav">
+          <button class="lr-btn lr-btn--ghost" type="button" id="lr-tix-back">Back</button>
+          <button class="lr-btn" type="button" id="lr-tix-next">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOTHS AND GUEST LIST ============ -->
+<section class="lr-sec lr-booths" id="lr-booths" style="--accent:var(--lr-teal)" aria-labelledby="lr-booths-h">
+  <div class="lr-wrap lr-two lr-two--even" data-lr-two>
+    <div>
+      <div class="lr-sec__head">
+        <p class="lr-strap">Booths and guest list</p>
+        <h2 class="lr-h2" id="lr-booths-h">A corner of the basement <em>with your name on it.</em></h2>
+      </div>
+      <p class="lr-lede">Six booths, all within earshot of the dancefloor. A minimum spend is what your group agrees to spend at the bar over the night. It is not a fee on top, and entry for everyone seated is included.</p>
+      <table class="lr-spend">
+        <caption>Minimum spend, per booth, per night</caption>
+        <thead><tr><th scope="col">Option</th><th scope="col">Seats</th><th scope="col">Thursday</th><th scope="col">Friday, Saturday</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Scullery snug<small>Tucked beside the funk room bar</small></th><td data-lr-l="Seats">Up to 6</td><td data-lr-l="Thursday"><b>£150</b></td><td data-lr-l="Friday, Saturday"><b>£220</b></td></tr>
+          <tr><th scope="row">Parlour booth<small>Raised, facing the dancefloor</small></th><td data-lr-l="Seats">Up to 10</td><td data-lr-l="Thursday"><b>£280</b></td><td data-lr-l="Friday, Saturday"><b>£400</b></td></tr>
+          <tr><th scope="row">Guest list<small>No seats held, no minimum spend</small></th><td data-lr-l="Group size">8 to 20</td><td data-lr-l="Thursday"><b>£7</b> a head</td><td data-lr-l="Friday, Saturday"><b>£10</b> a head</td></tr>
+        </tbody>
+      </table>
+      <p class="lr-note" style="margin-top:16px">Anything unspent on the night is not refunded. Bar prices are the same in a booth as at the bar, and under Scottish licensing rules we do not sell drinks packages built to be drunk quickly. Guest list prices include the booking fee and are for arrival before midnight.</p>
+      <figure class="lr-booths__pic">
+        <img src="https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&w=960&h=540&q=70" srcset="https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&w=640&h=360&q=70 640w, https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&w=960&h=540&q=70 960w, https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&w=1400&h=788&q=70 1400w" sizes="(min-width:1200px) 640px, (min-width:768px) 92vw, 100vw" width="960" height="540" loading="lazy" decoding="async" alt="A buttoned leather booth under a small brass wall lamp, with a low table set for a group.">
+        <figcaption>A Scullery snug, before anyone has sat in it.</figcaption>
+      </figure>
+    </div>
+    <div class="lr-panel" data-lr-widget>
+      <form class="lr-form" id="lr-enq" novalidate>
+        <div class="lr-full">
+          <h3 class="lr-h3">Ask about a booth or the guest list</h3>
+          <p class="lr-note" style="margin-top:8px">We reply by 18:00 the next working day. No payment is taken on this form.</p>
+        </div>
+        <div class="lr-alert lr-full" id="lr-enq-alert" role="alert" tabindex="-1" hidden></div>
+        <div class="lr-field">
+          <label for="lr-enq-name">Full name</label>
+          <input class="lr-input" id="lr-enq-name" name="name" type="text" autocomplete="name" required aria-describedby="lr-enq-name-e">
+          <p class="lr-err" id="lr-enq-name-e"></p>
+        </div>
+        <div class="lr-field">
+          <label for="lr-enq-email">Email</label>
+          <input class="lr-input" id="lr-enq-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required aria-describedby="lr-enq-email-e">
+          <p class="lr-err" id="lr-enq-email-e"></p>
+        </div>
+        <div class="lr-field">
+          <label for="lr-enq-tel">Phone <span class="lr-opt">(optional)</span></label>
+          <input class="lr-input" id="lr-enq-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="lr-enq-tel-e">
+          <p class="lr-err" id="lr-enq-tel-e"></p>
+        </div>
+        <div class="lr-field">
+          <label for="lr-enq-night">Which night?</label>
+          <select class="lr-input" id="lr-enq-night" name="night" required aria-describedby="lr-enq-night-e"><option value="">Choose a night</option></select>
+          <p class="lr-err" id="lr-enq-night-e"></p>
+        </div>
+        <div class="lr-field">
+          <label for="lr-enq-kind">What are you after?</label>
+          <select class="lr-input" id="lr-enq-kind" name="kind" required aria-describedby="lr-enq-kind-e">
+            <option value="">Choose one</option>
+            <option value="snug">Scullery snug (up to 6)</option>
+            <option value="booth">Parlour booth (up to 10)</option>
+            <option value="list">Guest list (8 to 20)</option>
+          </select>
+          <p class="lr-err" id="lr-enq-kind-e"></p>
+        </div>
+        <div class="lr-field">
+          <label for="lr-enq-size">How many of you?</label>
+          <input class="lr-input" id="lr-enq-size" name="size" type="number" min="2" max="20" inputmode="numeric" required aria-describedby="lr-enq-size-e">
+          <p class="lr-err" id="lr-enq-size-e"></p>
+        </div>
+        <div class="lr-field lr-full">
+          <label for="lr-enq-note">Anything we should know? <span class="lr-opt">(optional)</span></label>
+          <textarea class="lr-input" id="lr-enq-note" name="note" rows="3" placeholder="A birthday, an access need, a favourite corner"></textarea>
+        </div>
+        <div class="lr-field lr-full">
+          <label class="lr-check"><input type="checkbox" id="lr-enq-ok" name="consent" required aria-describedby="lr-enq-ok-e"><span>I agree to Lamplight Rooms using these details to answer this enquiry. See our <a class="lr-link" href="#lr-privacy">privacy notice</a>. (Required)</span></label>
+          <p class="lr-err" id="lr-enq-ok-e"></p>
+        </div>
+        <label class="lr-check lr-full"><input type="checkbox" id="lr-enq-news" name="marketing"><span>Also send me the Lamplight letter, one email a fortnight. Optional, and you can unsubscribe any time.</span></label>
+        <div class="lr-form__foot lr-full">
+          <button class="lr-btn" type="submit">Send enquiry</button>
+          <p class="lr-note">Over 18s only. Everyone in the group needs valid photo ID.</p>
+        </div>
+      </form>
+      <div class="lr-done" id="lr-enq-done" tabindex="-1" hidden>
+        <span class="lr-done__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></span>
+        <h3 class="lr-h3">Thanks, that’s with us.</h3>
+        <p id="lr-enq-done-line"></p>
+        <p class="lr-note">This is a demonstration form, so nothing has actually been sent or stored.</p>
+        <button class="lr-btn lr-btn--ghost" type="button" id="lr-enq-again">Send another enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE ROOMS ============ -->
+<section class="lr-sec lr-sec--umber lr-rooms" id="lr-rooms" style="--accent:var(--lr-amber)" aria-labelledby="lr-rooms-h">
+  <div class="lr-wrap">
+    <div class="lr-split">
+      <div class="lr-sec__head">
+        <p class="lr-strap">The rooms</p>
+        <h2 class="lr-h2" id="lr-rooms-h">Fourteen steps down, <em>three rooms across.</em></h2>
+      </div>
+      <p class="lr-lede">The basement of a Merchant City townhouse, knocked through just enough. Four hundred and eighty of you at most, and a sound system tuned to be warm before it is loud, so you can talk at the bar and still feel the kick on the floor.</p>
+    </div>
+    <div class="lr-trio" id="lr-trio">
+      <article class="lr-room lr-is-open">
+        <img src="https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=900&h=1000&q=70" srcset="https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=540&h=600&q=70 540w, https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=900&h=1000&q=70 900w, https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=1350&h=1500&q=70 1350w" sizes="(min-width:768px) 56vw, 100vw" width="900" height="1000" loading="lazy" decoding="async" alt="A mirror ball throwing amber and violet light over a busy dancefloor.">
+        <div class="lr-room__body">
+          <p class="lr-room__cap">Up to 260 · every night</p>
+          <h3 class="lr-room__name"><button type="button" aria-expanded="true" aria-controls="lr-room-1">The Parlour</button></h3>
+          <div class="lr-room__more" id="lr-room-1"><div>
+            <p>The big room, though big is relative. A sprung oak floor, a mirror ball the size of a tractor tyre and the main stack. Disco and house, mostly, and the residents’ long sets.</p>
+            <ul><li class="lr-pill">Four-way stack, built in the East End</li><li class="lr-pill">Rotary mixer, three turntables</li><li class="lr-pill">Sprung oak floor</li></ul>
+          </div></div>
+        </div>
+      </article>
+      <article class="lr-room">
+        <img src="https://images.unsplash.com/photo-1553190842-24c3f93ba116?auto=format&fit=crop&w=900&h=1000&q=70" srcset="https://images.unsplash.com/photo-1553190842-24c3f93ba116?auto=format&fit=crop&w=540&h=600&q=70 540w, https://images.unsplash.com/photo-1553190842-24c3f93ba116?auto=format&fit=crop&w=900&h=1000&q=70 900w, https://images.unsplash.com/photo-1553190842-24c3f93ba116?auto=format&fit=crop&w=1350&h=1500&q=70 1350w" sizes="(min-width:768px) 56vw, 100vw" width="900" height="1000" loading="lazy" decoding="async" alt="A selector’s hands on a turntable, lit orange from one side and teal from the other.">
+        <div class="lr-room__body">
+          <p class="lr-room__cap">Up to 140 · every night</p>
+          <h3 class="lr-room__name"><button type="button" aria-expanded="false" aria-controls="lr-room-2">The Scullery</button></h3>
+          <div class="lr-room__more" id="lr-room-2"><div>
+            <p>The old kitchen, brick-vaulted and close. Funk, soul and boogie, much of it on seven-inch singles, with the snugs along one wall. On Fridays it opens early as the listening bar.</p>
+            <ul><li class="lr-pill">Valve amplifiers, horn speakers</li><li class="lr-pill">Strobe-free room</li><li class="lr-pill">Four snugs</li></ul>
+          </div></div>
+        </div>
+      </article>
+      <article class="lr-room">
+        <img src="https://images.unsplash.com/photo-1720623784273-f9388b9aa535?auto=format&fit=crop&w=900&h=1000&q=70" srcset="https://images.unsplash.com/photo-1720623784273-f9388b9aa535?auto=format&fit=crop&w=540&h=600&q=70 540w, https://images.unsplash.com/photo-1720623784273-f9388b9aa535?auto=format&fit=crop&w=900&h=1000&q=70 900w, https://images.unsplash.com/photo-1720623784273-f9388b9aa535?auto=format&fit=crop&w=1350&h=1500&q=70 1350w" sizes="(min-width:768px) 56vw, 100vw" width="900" height="1000" loading="lazy" decoding="async" alt="Dancers with their hands up, silhouetted in deep red haze.">
+        <div class="lr-room__body">
+          <p class="lr-room__cap">Up to 80 · Saturdays</p>
+          <h3 class="lr-room__name"><button type="button" aria-expanded="false" aria-controls="lr-room-3">The Coal Cellar</button></h3>
+          <div class="lr-room__more" id="lr-room-3"><div>
+            <p>Two arches where the coal used to come in. Low ceiling, red light, and one long house record after another. It holds eighty, and it feels like eighty.</p>
+            <ul><li class="lr-pill">Point-source system, no fuss</li><li class="lr-pill">Haze, never strobes</li><li class="lr-pill">Mind your head</li></ul>
+          </div></div>
+        </div>
+      </article>
+    </div>
+    <ul class="lr-specs" aria-label="The venue in numbers">
+      <li><b>480</b><span>people at full capacity, counted in and out at the door</span></li>
+      <li><b>3</b><span>rooms on one level once you are down the stairs or the lift</span></li>
+      <li><b>4-way</b><span>sound in the Parlour, with free earplugs at every bar</span></li>
+      <li><b>03:00</b><span>close, Thursday to Saturday. Last entry is 01:30</span></li>
+    </ul>
+    <div class="lr-listen" id="lr-listen">
+      <figure class="lr-listen__pic">
+        <img src="https://images.unsplash.com/photo-1781078687115-115e4247216e?auto=format&fit=crop&w=1080&h=720&q=70" srcset="https://images.unsplash.com/photo-1781078687115-115e4247216e?auto=format&fit=crop&w=640&h=427&q=70 640w, https://images.unsplash.com/photo-1781078687115-115e4247216e?auto=format&fit=crop&w=1080&h=720&q=70 1080w, https://images.unsplash.com/photo-1781078687115-115e4247216e?auto=format&fit=crop&w=1500&h=1000&q=70 1500w" sizes="(min-width:1024px) 52vw, 100vw" width="1080" height="720" loading="lazy" decoding="async" alt="A small table lamp glowing in front of a wall of record sleeves, with low chairs and tables in the dark.">
+      </figure>
+      <div>
+        <p class="lr-listen__when">Fridays, 20:00 to 23:00</p>
+        <h3>Before the club, <em>the listening bar.</em></h3>
+        <p>For three hours the Scullery is a bar for sitting down. One album played start to finish on the valve system, then whatever the selector brought from home. Table service, low talk, lamps on.</p>
+        <ul><li class="lr-pill">No ticket needed</li><li class="lr-pill">60 seats, first come</li><li class="lr-pill">Over 18s · Challenge 25</li><li class="lr-pill">Stay on with a club ticket</li></ul>
+        <a class="lr-btn lr-btn--ghost" href="#lr-whats-on">See Friday dates</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOOR POLICY ============ -->
+<section class="lr-sec lr-door" id="lr-door" style="--accent:var(--lr-magenta)" aria-labelledby="lr-door-h">
+  <div class="lr-wrap lr-two" data-lr-two>
+    <div>
+      <div class="lr-sec__head">
+        <p class="lr-strap">Door policy and house rules</p>
+        <h2 class="lr-h2" id="lr-door-h">A wee word <em>at the door.</em></h2>
+      </div>
+      <p class="lr-lede">Nothing here is unusual, but it saves a disappointed walk back up Wilson Street. If you are unsure about anything, phone us on <a class="lr-link" href="tel:+441414960127">0141 496 0127</a> before you set off.</p>
+      <div class="lr-bring">
+        <h3>In your pocket</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M6 15.500c.6-1.300 1.700-2 3-2s2.400.7 3 2M14.500 10h3.500M14.500 13.500h3.500"/></svg><span><b>Real photo ID.</b> The card or passport itself, in date.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2a2 2 0 000-4z"/><path d="M14 6v12" stroke-dasharray="2 3"/></svg><span><b>Your e-ticket.</b> On your phone is fine, brightness up.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12.500" rx="2.500"/><path d="M3 10.500h18M7 15h3"/></svg><span><b>A card or phone to pay with.</b> The bars and cloakroom are cashless.</span></li>
+        </ul>
+      </div>
+    </div>
+    <dl class="lr-rules">
+      <div><dt>Over 18s only</dt><dd>Every night, in every room, private hires included. There are no under-18 events at Lamplight Rooms.</dd></div>
+      <div><dt>Challenge 25</dt><dd>If you look under 25 you will be asked for ID. It is a mandatory condition of every premises licence in Scotland under the Licensing (Scotland) Act 2005, so please don’t take it personally.</dd></div>
+      <div><dt>ID we accept</dt><dd>A <strong>passport</strong>, a <strong>photocard driving licence</strong>, or a card carrying the <strong>PASS hologram</strong> (a Young Scot card, for example). It has to be the original and in date. No photos, screenshots or photocopies of ID.</dd></div>
+      <div><dt>The door team</dt><dd>Our door staff are SIA-licensed and wear their licences where you can see them. They are there to keep the night kind as well as safe.</dd></div>
+      <div><dt>Searches</dt><dd>Agreeing to a search of pockets and bags is a condition of entry. You can ask for it to be done by someone of the same gender, and away from the queue.</dd></div>
+      <div><dt>Right of admission</dt><dd>We reserve it. If you have had too much before you arrive, the answer will be a polite no: we are not allowed to admit or serve anyone who is drunk.</dd></div>
+      <div><dt>Last entry 01:30</dt><dd>Ticket or not, nobody comes in after 01:30. Music stops at 03:00 and the building is clear shortly after.</dd></div>
+      <div><dt>Re-entry</dt><dd>Before 01:30, get a stamp from the door team and you can come back. After 01:30 there is no re-entry. The smoking courtyard is inside the venue, so you do not need to leave for it.</dd></div>
+      <div><dt>What to wear</dt><dd>Whatever you can dance in. There is no dress code, with two exceptions that Glasgow will recognise: no football colours, and nothing with a slogan that picks a fight.</dd></div>
+      <div><dt>Zero tolerance</dt><dd>Drugs, harassment and discrimination of any kind get you removed and barred, and we involve the police where we need to. If someone is bothering you, tell any member of staff.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ SAFETY AND WELFARE ============ -->
+<section class="lr-sec lr-sec--plum lr-welfare" id="lr-welfare" style="--accent:var(--lr-teal)" aria-labelledby="lr-welfare-h">
+  <div class="lr-wrap">
+    <div class="lr-split">
+      <div class="lr-sec__head">
+        <p class="lr-strap">Safety and welfare</p>
+        <h2 class="lr-h2" id="lr-welfare-h">Looked after, <em>start to finish.</em></h2>
+      </div>
+      <p class="lr-lede">A good night is one everybody gets home from happy. Two trained welfare staff work every shift alongside the door team and the bar, and any of them will stop what they are doing to help.</p>
+    </div>
+    <ul class="lr-care">
+      <li>
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8.500A3.500 3.500 0 019.500 5h13A3.500 3.500 0 0126 8.500v9a3.500 3.500 0 01-3.500 3.500H15l-6 5v-5.100A3.500 3.500 0 016 17.500z"/><path d="M12 11.500h8M12 15h5"/></svg>
+        <h3>Ask for Angela</h3>
+        <p>If you feel unsafe, or a date is not going the way you hoped, ask any member of staff for “Angela”. They will take you somewhere quiet and help you get home or get help, with no fuss made at the bar.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26s-9-5.300-9-12a5 5 0 019-3 5 5 0 019 3c0 6.700-9 12-9 12z"/></svg>
+        <h3>The welfare team and the Quiet Room</h3>
+        <p>Look for the lanyards marked Welfare. The Quiet Room is off the cloakroom corridor: low light, soft seats, water, phone chargers, and someone to sit with you for as long as you need.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5h14l-1.500 12a5.500 5.500 0 01-11 0zM16 22.500V27M11.500 27h9"/><path d="M16 9v4M16 16v.200"/></svg>
+        <h3>If you think a drink has been spiked</h3>
+        <p>Tell the nearest member of staff straight away, for yourself or for a friend. We will stay with you and keep the drink. In an emergency we call <strong>999</strong>. You can report it to the police afterwards on <strong>101</strong>, and we will back you up.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4.500c4 5 7 8.600 7 12.500a7 7 0 01-14 0c0-3.900 3-7.500 7-12.500z"/><path d="M12.500 18a3.500 3.500 0 003.500 3.500"/></svg>
+        <h3>Free tap water, always</h3>
+        <p>At every bar, all night, with no need to buy anything. Help yourself from the jugs or ask whoever is serving.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20.500c-2-1.500-3-3.800-3-6.500a8 8 0 0116 0c0 3-2 4.300-3.500 5.800S19 23 19 24.500a3.500 3.500 0 01-7 0"/><path d="M12.500 14a3.500 3.500 0 017 0c0 2-2.500 2.500-2.500 4.500"/></svg>
+        <h3>Earplugs, haze and strobes</h3>
+        <p>Free earplugs at every bar and the cloakroom. We use theatrical haze in all rooms and occasional strobe lighting in the Parlour. The Scullery and the Coal Cellar are strobe-free.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15l11-9 11 9M8.500 13v12.500h15V13"/><path d="M13.500 25.500v-6.500h5v6.500"/></svg>
+        <h3>Home in one piece</h3>
+        <p>On your own at the end of the night? Tell the welfare team. We will wait with you inside until your booked taxi is at the door, and we can call one for you.</p>
+      </li>
+    </ul>
+    <div class="lr-access" id="lr-access">
+      <div>
+        <h3>Down to the basement, <em>without the stairs.</em></h3>
+        <p class="lr-access__how">Tell us what you need and we will have it ready. Email <a class="lr-link" href="mailto:access@lamplightrooms.example">access@lamplightrooms.example</a> or phone <a class="lr-link" href="tel:+441414960142">0141 496 0142</a> by 18:00 on the day. If plans change late, ask at the door and we will sort it there.</p>
+        <div class="lr-access__cta"><a class="lr-btn" href="mailto:access@lamplightrooms.example?subject=Access%20request">Arrange access</a></div>
+      </div>
+      <dl>
+        <div><dt>Step-free route</dt><dd>The Wilson Street door has fourteen steps. The step-free entrance is on Brunswick Lane, with a platform lift down to the basement. All three rooms are level from there.</dd></div>
+        <div><dt>Accessible toilets</dt><dd>Two, beside the cloakroom, kept unlocked. There is a gender-neutral toilet block next to the Scullery.</dd></div>
+        <div><dt>Free personal-assistant ticket</dt><dd>If you need someone with you, their ticket is free. We don’t ask for paperwork at the door.</dd></div>
+        <div><dt>Seats, queues and quiet</dt><dd>We can hold a seat near the dancefloor, bring you in ahead of the queue, and the Quiet Room is yours whenever you want a break.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING HERE AND HOME ============ -->
+<section class="lr-sec lr-getting" id="lr-getting" style="--accent:var(--lr-amber)" aria-labelledby="lr-getting-h">
+  <div class="lr-wrap lr-two lr-two--even" data-lr-two>
+    <div>
+      <div class="lr-sec__head">
+        <p class="lr-strap">Getting here and home</p>
+        <h2 class="lr-h2" id="lr-getting-h">Find the lamp <em>on Wilson Street.</em></h2>
+      </div>
+      <p class="lr-lede">Basement, 17 Wilson Street, Merchant City, Glasgow G1. Look for the single lamp over a black door, halfway between Candleriggs and Glassford Street.</p>
+      <figure class="lr-map">
+        <svg viewBox="0 0 640 520" role="img" aria-label="Walking times from Lamplight Rooms: Trongate bus stop 3 minutes, Glassford Street bus stop 4, Argyle Street station 5, High Street station 7, St Enoch subway 8, Queen Street station 9, Buchanan Street subway 10 and Central station 12.">
+          <defs><radialGradient id="lr-mg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff0cf"/><stop offset=".35" stop-color="#f5a742"/><stop offset="1" stop-color="#f5a742" stop-opacity="0"/></radialGradient></defs>
+          <g fill="none" stroke="rgba(255,224,196,.2)" stroke-width="1"><circle cx="350" cy="262" r="90" stroke-dasharray="2 6"/><circle cx="350" cy="262" r="180" stroke-dasharray="2 6"/></g>
+          <g font-family="Manrope,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#ab9a8e"><text x="350" y="166" text-anchor="middle">5 MIN</text><text x="350" y="76" text-anchor="middle">10 MIN</text><text x="596" y="40" text-anchor="middle">N</text></g>
+          <path d="M596 78V50M590 58l6-8 6 8" fill="none" stroke="#ab9a8e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <g stroke="#f5a742" stroke-opacity=".38" stroke-width="1.2" stroke-dasharray="1 5" stroke-linecap="round" fill="none">
+            <path d="M350 262L355 316M350 262L279 252M350 262L290 329M350 262L473 236M350 262L222 327M350 262L250 134M350 262L191 177M350 262L136 292"/>
+          </g>
+          <circle cx="350" cy="262" r="44" fill="url(#lr-mg)" opacity=".55"/>
+          <circle cx="350" cy="262" r="11" fill="#ffe2a8"/><circle cx="350" cy="262" r="11" fill="none" stroke="#8a5a24" stroke-width="2"/>
+          <g fill="#f5a742"><circle cx="290" cy="329" r="6"/><circle cx="473" cy="236" r="6"/><circle cx="250" cy="134" r="6"/><circle cx="136" cy="292" r="6"/></g>
+          <g fill="#110a0d" stroke="#f5a742" stroke-width="2.2"><circle cx="222" cy="327" r="5.500"/><circle cx="191" cy="177" r="5.500"/></g>
+          <g fill="#f6ebe1"><rect x="350.500" y="311.500" width="9" height="9" rx="2"/><rect x="274.500" y="247.500" width="9" height="9" rx="2"/></g>
+          <g font-family="Manrope,sans-serif" font-size="13" font-weight="600" fill="#f6ebe1">
+            <text x="350" y="212" text-anchor="middle" font-family="Instrument Serif,serif" font-size="21" font-weight="400">Lamplight Rooms</text>
+            <text x="370" y="321">Trongate stop <tspan fill="#ab9a8e">· 3 min</tspan></text>
+            <text x="268" y="243" text-anchor="end">Glassford St stop <tspan fill="#ab9a8e">· 4</tspan></text>
+            <text x="298" y="354" text-anchor="middle">Argyle Street <tspan fill="#ab9a8e">· 5 min</tspan></text>
+            <text x="486" y="232">High Street</text><text x="486" y="249" fill="#ab9a8e">7 min</text>
+            <text x="208" y="323" text-anchor="end">St Enoch</text><text x="208" y="340" text-anchor="end" fill="#ab9a8e">subway · 8 min</text>
+            <text x="250" y="112" text-anchor="middle">Queen Street <tspan fill="#ab9a8e">· 9 min</tspan></text>
+            <text x="178" y="173" text-anchor="end">Buchanan Street</text><text x="178" y="190" text-anchor="end" fill="#ab9a8e">subway · 10 min</text>
+            <text x="122" y="288" text-anchor="end">Central</text><text x="122" y="305" text-anchor="end" fill="#ab9a8e">12 min</text>
+          </g>
+          <g font-family="Manrope,sans-serif" font-size="11.500" font-weight="600" fill="#d2c2b6">
+            <circle cx="396" cy="470" r="5" fill="#f5a742"/><text x="408" y="474">Rail station</text>
+            <circle cx="396" cy="490" r="4.500" fill="#110a0d" stroke="#f5a742" stroke-width="2"/><text x="408" y="494">Subway</text>
+            <rect x="500.500" y="465.500" width="9" height="9" rx="2" fill="#f6ebe1"/><text x="518" y="474">Night bus stop</text>
+          </g>
+        </svg>
+        <figcaption>Walking times from the door. A sketch, not a map: distances and bearings are approximate.</figcaption>
+      </figure>
+    </div>
+    <div class="lr-way">
+      <h3 style="margin-top:0">On foot from the stations</h3>
+      <ul class="lr-walks">
+        <li style="--lr-min:5"><span>Argyle Street<small>Low-level trains, the nearest station</small></span><b>5 min</b><i></i></li>
+        <li style="--lr-min:7"><span>High Street<small>Trains towards the East End</small></span><b>7 min</b><i></i></li>
+        <li style="--lr-min:8"><span>St Enoch<small>Subway. It stops running before we close</small></span><b>8 min</b><i></i></li>
+        <li style="--lr-min:9"><span>Queen Street<small>Trains north and east</small></span><b>9 min</b><i></i></li>
+        <li style="--lr-min:12"><span>Central<small>Trains south and west</small></span><b>12 min</b><i></i></li>
+      </ul>
+      <h3>Night buses</h3>
+      <p class="lr-way__p">Night services leave from <strong>Trongate</strong> (3 minutes), <strong>Glassford Street</strong> (4 minutes) and <strong>High Street</strong> (6 minutes), mostly on Fridays and Saturdays. Routes and times change, so check with the operator on the day. There are example departures on <a class="lr-link" href="#lr-board">the board at the foot of this page</a>.</p>
+      <h3>Taxis</h3>
+      <p class="lr-way__p">Use a <strong>licensed taxi</strong> from a rank or one you have hailed, or a <strong>private hire car you have booked</strong> yourself. A private hire car that has not been booked is not insured to carry you, so never get into one that simply pulls up. The door team can phone a taxi for you and you are welcome to wait inside.</p>
+      <h3>Driving</h3>
+      <p class="lr-way__p">Please don’t. There is no parking at the venue and the Merchant City is busy at night. Blue Badge holders can be dropped at the Brunswick Lane entrance.</p>
+      <div class="lr-quiet">
+        <p>Please leave quietly. Our neighbours are asleep.</p>
+        <p>Folk live above us and across the lane. Keep voices down on Wilson Street, don’t hang about under windows, and take the party home with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRACTICAL ============ -->
+<section class="lr-sec lr-sec--umber lr-practical" id="lr-practical" style="--accent:var(--lr-magenta)" aria-labelledby="lr-practical-h">
+  <div class="lr-wrap">
+    <div class="lr-split">
+      <div class="lr-sec__head">
+        <p class="lr-strap">Good to know</p>
+        <h2 class="lr-h2" id="lr-practical-h">The small stuff, <em>settled now.</em></h2>
+      </div>
+      <p class="lr-lede">Four things people ask at the cloakroom hatch at one in the morning, answered while it is still quiet.</p>
+    </div>
+    <ul class="lr-prac">
+      <li><h3>Cloakroom</h3><p>At the foot of the stairs. £2 an item, £3 for a big bag or a helmet, paid by card. Keep your ticket: no ticket, no coat until the end of the night.</p><b>Open 23:00 to 03:15</b></li>
+      <li><h3>Lost property</h3><p>Anything handed in is kept for 28 days. Email <a class="lr-link" href="mailto:lost@lamplightrooms.example">lost@lamplightrooms.example</a> with a description and the night you were in. Bank cards are destroyed after 24 hours.</p><b>Collect Thursdays from 18:00</b></li>
+      <li><h3>Cashless bars</h3><p>Card and phone payments only, at every bar and the cloakroom. Tap water is free. Prices are on the menus and the same all night: we don’t run happy hours or drinks deals.</p><b>No cash machine on site</b></li>
+      <li><h3>Photography</h3><p>A house photographer works some nights and the pictures may be used on our site and posters. If you would rather not be in them, tell the photographer or any member of staff. Phones are fine, flashes are not.</p><b>Dancefloors are for dancing</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PRIVATE HIRE ============ -->
+<section class="lr-sec lr-hire-sec" id="lr-hire" style="--accent:var(--lr-teal)" aria-labelledby="lr-hire-h">
+  <div class="lr-wrap">
+    <div class="lr-hire">
+      <figure class="lr-hire__pic">
+        <img src="https://images.unsplash.com/photo-1699871404110-e085aaa562e6?auto=format&fit=crop&w=1080&h=810&q=70" srcset="https://images.unsplash.com/photo-1699871404110-e085aaa562e6?auto=format&fit=crop&w=640&h=480&q=70 640w, https://images.unsplash.com/photo-1699871404110-e085aaa562e6?auto=format&fit=crop&w=1080&h=810&q=70 1080w, https://images.unsplash.com/photo-1699871404110-e085aaa562e6?auto=format&fit=crop&w=1500&h=1125&q=70 1500w" sizes="(min-width:1024px) 46vw, 100vw" width="1080" height="810" loading="lazy" decoding="async" alt="Friends dancing close together in warm pink light, one with an arm in the air.">
+      </figure>
+      <div class="lr-hire__body">
+        <p class="lr-strap">Private hire and birthdays</p>
+        <h2 class="lr-h2" id="lr-hire-h">The whole basement, <em>to yourselves.</em></h2>
+        <p class="lr-lede">Sunday to Wednesday the rooms are yours: a fortieth in the Scullery, a works do in the Parlour, a wedding afters across all three. We supply the sound, the bar and the door team; you bring the people and, if you like, the records.</p>
+        <ul class="lr-hire__facts"><li class="lr-pill">40 to 480 guests</li><li class="lr-pill">One room or all three</li><li class="lr-pill">House selectors, or your own</li><li class="lr-pill">Over 18s only</li></ul>
+        <div class="lr-hire__cta">
+          <a class="lr-btn" href="mailto:hire@lamplightrooms.example?subject=Private%20hire%20enquiry">Ask about hire</a>
+          <a class="lr-btn lr-btn--ghost" href="tel:+441414960155">0141 496 0155</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUESTIONS ============ -->
+<section class="lr-sec lr-sec--ink lr-faq-sec" id="lr-faq" style="--accent:var(--lr-amber)" aria-labelledby="lr-faq-h">
+  <div class="lr-wrap lr-two" data-lr-two>
+    <div>
+      <div class="lr-sec__head">
+        <p class="lr-strap">Questions</p>
+        <h2 class="lr-h2" id="lr-faq-h">Asked on the stairs, <em>answered here.</em></h2>
+      </div>
+      <p class="lr-lede">Still not sure? Email <a class="lr-link" href="mailto:hello@lamplightrooms.example">hello@lamplightrooms.example</a> or phone <a class="lr-link" href="tel:+441414960127">0141 496 0127</a>, Thursday to Saturday from 17:00.</p>
+    </div>
+    <div class="lr-faq" id="lr-faq-list">
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="true" aria-controls="lr-fa-1" id="lr-fq-1">Do I need a ticket, or can I pay at the door?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-1" role="region" aria-labelledby="lr-fq-1"><p>Buy ahead if you can. We hold back a few door tickets each night at the final-release price, but Fridays and Saturdays usually sell out, and a ticket in advance is always the cheaper way in.</p></div></div>
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="false" aria-controls="lr-fa-2" id="lr-fq-2">What ID do you accept?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-2" role="region" aria-labelledby="lr-fq-2" hidden><p>A passport, a photocard driving licence, or a card with the PASS hologram such as a Young Scot card. It must be the original and in date. We cannot accept a photo or screenshot of your ID, and we operate Challenge 25.</p></div></div>
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="false" aria-controls="lr-fa-3" id="lr-fq-3">What time is last entry, and can I come back in?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-3" role="region" aria-labelledby="lr-fq-3" hidden><p>Last entry is 01:30. Until then you can step out and return with a stamp from the door team. After 01:30 there is no re-entry, and early bird tickets are for arrival before midnight.</p></div></div>
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="false" aria-controls="lr-fa-4" id="lr-fq-4">Is there a dress code?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-4" role="region" aria-labelledby="lr-fq-4" hidden><p>No. Wear what you can dance in for four hours. The only things we turn away are football colours and clothing with offensive slogans.</p></div></div>
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="false" aria-controls="lr-fa-5" id="lr-fq-5">It’s a basement. Can I get in without using stairs?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-5" role="region" aria-labelledby="lr-fq-5" hidden><p>Yes. The step-free entrance is on Brunswick Lane, with a platform lift to the basement, and all three rooms are level from there. There are two accessible toilets and personal-assistant tickets are free. See <a class="lr-link" href="#lr-access">access</a> for how to arrange it.</p></div></div>
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="false" aria-controls="lr-fa-6" id="lr-fq-6">Can I get a refund if I can’t come?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-6" role="region" aria-labelledby="lr-fq-6" hidden><p>Tickets are not refundable for a change of plans, but you can hand yours back for resale until 18:00 on the day and we refund you in full if it sells. If we cancel or move a night, you get all of your money back, booking fee included.</p></div></div>
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="false" aria-controls="lr-fa-7" id="lr-fq-7">Why are there no drinks deals?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-7" role="region" aria-labelledby="lr-fq-7" hidden><p>Scottish licensing law does not allow promotions that encourage people to drink more or faster, and prices have to stay put for at least 72 hours. So ours are the same from open to close, and they are on the menu.</p></div></div>
+      <div class="lr-faq__i"><h3 class="lr-faq__q"><button type="button" aria-expanded="false" aria-controls="lr-fa-8" id="lr-fq-8">Can I ask the DJ for a song?<span class="lr-faq__x" aria-hidden="true"></span></button></h3><div class="lr-faq__a" id="lr-fa-8" role="region" aria-labelledby="lr-fq-8" hidden><p>You can ask what something was, and they will happily tell you. Requests are another matter: our selectors plan a night the way a cook plans a menu. Trust them for an hour and see.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE LETTER ============ -->
+<section class="lr-sec lr-news-sec" id="lr-letter" style="--accent:var(--lr-magenta)" aria-labelledby="lr-news-h">
+  <div class="lr-wrap">
+    <div class="lr-news" data-lr-widget>
+      <div class="lr-news__body">
+        <p class="lr-strap">The Lamplight letter</p>
+        <h2 class="lr-h2" id="lr-news-h">New dates, <em>before the posters.</em></h2>
+        <p class="lr-lede">One email a fortnight: the next two weekends, first go at early bird tickets and a record the residents can’t stop playing. Nothing else, and we never pass your address on.</p>
+        <form class="lr-news__form" id="lr-news" novalidate>
+          <div class="lr-alert" id="lr-news-alert" role="alert" tabindex="-1" hidden></div>
+          <div class="lr-news__row">
+            <div class="lr-field">
+              <label for="lr-news-email">Email address</label>
+              <input class="lr-input" id="lr-news-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required aria-describedby="lr-news-email-e">
+              <p class="lr-err" id="lr-news-email-e"></p>
+            </div>
+            <button class="lr-btn" type="submit" style="align-self:start;margin-top:25px">Send me the letter</button>
+          </div>
+          <div class="lr-field">
+            <label class="lr-check"><input type="checkbox" id="lr-news-ok" name="consent" required aria-describedby="lr-news-ok-e"><span>Yes, email me the Lamplight letter. I can unsubscribe from any email. See our <a class="lr-link" href="#lr-privacy">privacy notice</a>.</span></label>
+            <p class="lr-err" id="lr-news-ok-e"></p>
+          </div>
+        </form>
+        <div class="lr-done" id="lr-news-done" tabindex="-1" style="margin-top:28px" hidden>
+          <span class="lr-done__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></span>
+          <h3 class="lr-h3">You’re on the list.</h3>
+          <p id="lr-news-done-line"></p>
+          <p class="lr-note">This is a demonstration form, so nothing has actually been sent or stored.</p>
+        </div>
+      </div>
+      <figure class="lr-news__pic">
+        <img src="https://images.unsplash.com/photo-1765662120818-26dd0d6e6230?auto=format&fit=crop&w=900&h=1000&q=70" srcset="https://images.unsplash.com/photo-1765662120818-26dd0d6e6230?auto=format&fit=crop&w=600&h=667&q=70 600w, https://images.unsplash.com/photo-1765662120818-26dd0d6e6230?auto=format&fit=crop&w=900&h=1000&q=70 900w, https://images.unsplash.com/photo-1765662120818-26dd0d6e6230?auto=format&fit=crop&w=1300&h=1444&q=70 1300w" sizes="(min-width:1024px) 40vw, 100vw" width="900" height="1000" loading="lazy" decoding="async" alt="A small lamp glowing on a dark bar beside a turntable, under shelves of bottles.">
+      </figure>
+    </div>
+  </div>
+</section>
+<!--LR:HTML-->
+</main>
+<!-- ============ FOOTER: YOUR WAY HOME ============ -->
+<footer class="lr-foot" id="lr-foot" style="--accent:var(--lr-amber)">
+  <div class="lr-wrap">
+    <div class="lr-foot__top">
+      <div class="lr-sec__head">
+        <p class="lr-strap">Your way home</p>
+        <h2 class="lr-foot__h">Last departures, <em>before the lamp goes out.</em></h2>
+      </div>
+      <p class="lr-foot__warn"><strong>Example times only.</strong> These are illustrations to help you plan, not a timetable. Last trains leave before we close and night buses change with the season, so check with the operator before you travel and keep enough battery to book a taxi.</p>
+    </div>
+    <div class="lr-board" id="lr-board">
+      <div class="lr-board__bar"><span>Departures · examples</span><span id="lr-board-clock">Glasgow time</span></div>
+      <div class="lr-board__head" aria-hidden="true"><span>Time</span><span>Service</span><span>Towards</span><span>From · walk from our door</span></div>
+      <ul id="lr-board-rows" aria-label="Example last trains and night buses"></ul>
+    </div>
+    <nav class="lr-rows" id="lr-rows" aria-label="Footer">
+      <div class="lr-lrow">
+        <h3 class="lr-lrow__t"><span class="lr-lrow__label">Tonight</span><button type="button" aria-expanded="false" aria-controls="lr-fg-1">Tonight<svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.500l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></h3>
+        <div class="lr-lrow__links" id="lr-fg-1"><a href="#lr-whats-on">What’s on</a><a href="#lr-tickets">Tickets</a><a href="#lr-booths">Booths and guest list</a><a href="#lr-listen">Listening bar</a><a href="#lr-hire">Private hire</a></div>
+      </div>
+      <div class="lr-lrow">
+        <h3 class="lr-lrow__t"><span class="lr-lrow__label">The house</span><button type="button" aria-expanded="false" aria-controls="lr-fg-2">The house<svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.500l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></h3>
+        <div class="lr-lrow__links" id="lr-fg-2"><a href="#lr-rooms">The rooms</a><a href="#lr-door">Door policy</a><a href="#lr-welfare">Safety and welfare</a><a href="#lr-access">Access</a><a href="#lr-getting">Getting here</a><a href="#lr-practical">Cloakroom and lost property</a><a href="#lr-faq">Questions</a></div>
+      </div>
+      <div class="lr-lrow">
+        <h3 class="lr-lrow__t"><span class="lr-lrow__label">Say hello</span><button type="button" aria-expanded="false" aria-controls="lr-fg-3">Say hello<svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.500l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></h3>
+        <div class="lr-lrow__links" id="lr-fg-3"><a href="tel:+441414960127">0141 496 0127</a><a href="mailto:hello@lamplightrooms.example">hello@lamplightrooms.example</a><a href="mailto:access@lamplightrooms.example">access@lamplightrooms.example</a><a href="mailto:hire@lamplightrooms.example">hire@lamplightrooms.example</a><a href="#lr-letter">The Lamplight letter</a></div>
+      </div>
+      <div class="lr-lrow">
+        <h3 class="lr-lrow__t"><span class="lr-lrow__label">Small print</span><button type="button" aria-expanded="false" aria-controls="lr-fg-4">Small print<svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.500l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></h3>
+        <div class="lr-lrow__links" id="lr-fg-4"><a href="#lr-privacy" data-lr-legal="privacy">Privacy</a><a href="#lr-cookies" data-lr-legal="cookies">Cookies</a><a href="#lr-terms" data-lr-legal="terms">Terms and ticket conditions</a><a href="#lr-a11y" data-lr-legal="a11y">Accessibility statement</a><a href="https://www.drinkaware.co.uk/" rel="noopener">Drinkaware</a></div>
+      </div>
+    </nav>
+    <div class="lr-foot__end">
+      <a class="lr-logo" href="#lr-top" aria-label="Lamplight Rooms, back to the top">
+        <svg viewBox="0 0 22 34" aria-hidden="true"><path d="M11 0v13" stroke="#b98a4e" stroke-width="1"/><circle cx="11" cy="22.500" r="9.500" fill="url(#lr-lg)"/><path d="M11 22.500V16.600M11 22.500l4.200 2.600" stroke="#2a130b" stroke-width="1.300" stroke-linecap="round" fill="none"/></svg>
+        <span class="lr-logo__name">Lamplight <em>Rooms</em></span>
+      </a>
+      <address>Basement, 17 Wilson Street, Merchant City, Glasgow G1<br>Thursday to Saturday, 23:00 to 03:00 · Last entry 01:30 · Over 18s only</address>
+      <a class="lr-top" href="#lr-top" aria-label="Back to top"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 14V2.500M3 7l5-5 5 5"/></svg></a>
+    </div>
+  </div>
+  <div class="lr-ticker" id="lr-ticker">
+    <div class="lr-ticker__view">
+      <div class="lr-ticker__track">
+        <p>© <span class="lr-year" style="margin:0;color:inherit">2026</span> Lamplight Rooms is a trading name of Candleriggs Cellar Company Ltd<span>·</span>Registered in Scotland, Company No. 00000000<span>·</span>Licensed under the Licensing (Scotland) Act 2005, premises licence no. GC/0000/P (placeholder)<span>·</span>Over 18s only, Challenge 25 applies<span>·</span>Please drink responsibly: <a href="https://www.drinkaware.co.uk/" rel="noopener">drinkaware.co.uk</a><span>·</span>Departure times shown are examples<span>·</span></p>
+        <p aria-hidden="true">© <span class="lr-year" style="margin:0;color:inherit">2026</span> Lamplight Rooms is a trading name of Candleriggs Cellar Company Ltd<span>·</span>Registered in Scotland, Company No. 00000000<span>·</span>Licensed under the Licensing (Scotland) Act 2005, premises licence no. GC/0000/P (placeholder)<span>·</span>Over 18s only, Challenge 25 applies<span>·</span>Please drink responsibly: drinkaware.co.uk<span>·</span>Departure times shown are examples<span>·</span></p>
+      </div>
+    </div>
+    <button class="lr-ticker__btn" id="lr-ticker-btn" type="button" aria-pressed="false" aria-label="Pause the scrolling legal line">
+      <svg class="lr-i-pause" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.500 2v10M10.500 2v10" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"/></svg>
+      <svg class="lr-i-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.500 1.800v10.400L12 7z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</footer>
+
+<div class="lr-dock" id="lr-dock" style="--accent:var(--lr-amber)">
+  <a class="lr-btn" href="#lr-tickets">Tickets</a>
+  <a class="lr-btn lr-btn--ghost" href="#lr-booths">Booths</a>
+</div>
+
+<dialog class="lr-legal" id="lr-legal" aria-labelledby="lr-legal-h" style="--accent:var(--lr-amber)">
+  <button class="lr-legal__x" type="button" id="lr-legal-x" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.500" stroke-linecap="round"/></svg></button>
+  <h2 id="lr-legal-h" tabindex="-1"></h2>
+  <div id="lr-legal-body"></div>
+</dialog>
+<script type="module">
+/* Lamplight Rooms. Everything lives in this module scope: nothing is put on window. */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const RM = matchMedia('(prefers-reduced-motion: reduce)');
+const pad2 = n => String(n).padStart(2, '0');
+
+/* ---------- venue time: always Europe/London, whatever the visitor's timezone ---------- */
+const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const fmtDay = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' });
+function venueNow() {
+  const now = new Date(), o = {};
+  for (const p of new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' }).formatToParts(now)) o[p.type] = p.value;
+  for (const p of fmtDay.formatToParts(now)) if (p.type !== 'literal') o[p.type] = p.value;
+  return { h: +o.hour % 24, m: +o.minute, s: +o.second, wd: o.weekday, y: +o.year, mo: +o.month, d: +o.day };
+}
+/* hands: 0 deg at 12 o'clock, clockwise */
+function handAngles(t) {
+  return { sec: t.s * 6, min: t.m * 6 + t.s * 0.1, hr: (t.h % 12) * 30 + t.m * 0.5 };
+}
+/* where are we in the club week? doors 23:00, last entry 01:30, close 03:00, Thursday to Saturday */
+const DOORS = 23 * 3600, LAST = 5400, CLOSE = 10800, CLUB = { Thu: 1, Fri: 1, Sat: 1 };
+function countdown(secs) {
+  const d = Math.floor(secs / 86400), h = Math.floor(secs % 86400 / 3600), m = Math.floor(secs % 3600 / 60), s = secs % 60;
+  return (d ? d + 'D ' : '') + pad2(h) + ':' + pad2(m) + ':' + pad2(s);
+}
+function nightState(t) {
+  const secs = t.h * 3600 + t.m * 60 + t.s, di = WD.indexOf(t.wd), yest = WD[(di + 6) % 7];
+  if (secs < CLOSE && CLUB[yest]) {
+    if (secs < LAST) return { key: 'open', now: 'Open now', tag: 'LAST ENTRY IN', count: countdown(LAST - secs) };
+    return { key: 'late', now: 'Open until 03:00', tag: 'CLOSE IN', count: countdown(CLOSE - secs) };
+  }
+  if (CLUB[t.wd]) {
+    if (secs >= DOORS) return { key: 'open', now: 'Open now', tag: 'LAST ENTRY IN', count: countdown(86400 + LAST - secs) };
+    if (t.wd === 'Fri' && secs >= 20 * 3600) return { key: 'bar', now: 'Listening bar open', tag: 'CLUB DOORS IN', count: countdown(DOORS - secs) };
+    return { key: 'tonight', now: 'Open tonight', tag: 'DOORS IN', count: countdown(DOORS - secs) };
+  }
+  const days = (4 - di + 7) % 7;
+  return { key: 'closed', now: 'Closed · back ' + (days === 1 ? 'tomorrow' : 'Thursday'), tag: 'DOORS IN', count: countdown(days * 86400 + DOORS - secs) };
+}
+
+/* ---------- header, menu ---------- */
+{
+  const head = $('#lr-head'), menu = $('#lr-menu'), burger = $('#lr-burger'), closeBtn = $('#lr-menu-close');
+  const solid = () => head.classList.toggle('lr-head--solid', scrollY > 24);
+  addEventListener('scroll', solid, { passive: true }); solid();
+  const focusables = () => $$('a[href],button:not([disabled])', menu).filter(el => el.offsetParent !== null);
+  function openMenu() {
+    menu.hidden = false; burger.setAttribute('aria-expanded', 'true');
+    document.documentElement.style.overflow = 'hidden'; document.body.dataset.lrMenu = 'open';
+    closeBtn.focus();
+  }
+  function closeMenu(refocus = true) {
+    if (menu.hidden) return;
+    menu.hidden = true; burger.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = ''; delete document.body.dataset.lrMenu;
+    if (refocus) burger.focus();
+  }
+  burger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', () => closeMenu());
+  menu.addEventListener('click', e => { if (e.target.closest('[data-lr-close]')) closeMenu(false); });
+  menu.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+    if (e.key !== 'Tab') return;
+    const f = focusables(), first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  matchMedia('(min-width:1200px)').addEventListener('change', e => { if (e.matches) closeMenu(false); });
+}
+
+/* ---------- the calendar: the next four weeks of Thursdays, Fridays and Saturdays, from today's date in Glasgow ---------- */
+const GBP = n => '£' + n;
+const TIERS = [
+  { key: 'early', name: 'Early bird', note: 'Arrive before midnight' },
+  { key: 'standard', name: 'Standard', note: 'Arrive any time before 01:30' },
+  { key: 'final', name: 'Final release', note: 'The last tickets held back for the week of the night' }
+];
+const PATTERN = {
+  Thu: {
+    name: 'Soft Focus', blurb: 'Soul, boogie and rare groove. The gentle way into the weekend.', tags: ['soul'], tagNames: ['Funk and soul'], prices: [7, 9, 11],
+    rooms: n => [['The Parlour', ['Hettie Lune, all night long', 'Calum Brae and Odessa Finch', 'Sister Marigold', 'Hettie Lune with Ruaridh Tanna'][n % 4]], ['The Scullery', 'Loose Change: funk 45s with Big Wendell']]
+  },
+  Fri: {
+    name: 'Velvet Hours', blurb: 'Disco and house in the Parlour, boogie in the Scullery. Start early in the listening bar.', tags: ['disco', 'house', 'bar'], tagNames: ['Disco', 'House'], prices: [9, 12, 15],
+    rooms: n => [['Listening bar', ['20:00 · Hettie plays one album, both sides', '20:00 · Paloma Quince, records from home', '20:00 · Calum Brae: soundtrack night', '20:00 · Odessa Finch, the B-sides'][n % 4]], ['The Parlour', ['Odessa Finch, then Deacon Pym', 'The Hi-Fi Aunties, four hours', 'Nell Okoro and Calum Brae', 'Paloma Quince, then Deacon Pym'][n % 4]], ['The Scullery', 'Backroom Boogie with Fergus Felt']]
+  },
+  Sat: {
+    name: 'Good Company', blurb: 'The whole basement open: house and disco in the Parlour, funk in the Scullery, deeper in the Coal Cellar.', tags: ['house', 'disco', 'soul'], tagNames: ['House', 'Disco', 'Funk and soul'], prices: [10, 13, 16],
+    rooms: n => [['The Parlour', ['Deacon Pym, open to close', 'Nell Okoro and Sister Marigold', 'Odessa Finch and friends', 'Ruaridh Tanna, then The Hi-Fi Aunties'][n % 4]], ['The Scullery', ['Big Wendell and Fergus Felt', 'Fergus Felt: boogie and funk', 'Big Wendell, 45s only', 'Sister Marigold: gospel to disco'][n % 4]], ['The Coal Cellar', 'Low Ceiling: deeper house with Isla Thrum']]
+  }
+};
+const EVENTS = [];
+{
+  const t = venueNow(), base = Date.UTC(t.y, t.mo - 1, t.d, 12);
+  const short = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', month: 'short' });
+  const long = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long' });
+  const dm = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'short' });
+  const seen = { Thu: 0, Fri: 0, Sat: 0 };
+  for (let i = 0; EVENTS.length < 12 && i < 40; i++) {
+    const dt = new Date(base + i * 864e5), wd = WD[dt.getUTCDay()];
+    if (!CLUB[wd]) continue;
+    const p = PATTERN[wd], n = seen[wd]++, soon = i <= 6;
+    const monday = new Date(dt.getTime() - ((dt.getUTCDay() + 6) % 7) * 864e5);
+    const tiers = TIERS.map((tr, k) => {
+      let state = 'on', label = 'On sale';
+      if (soon && k === 0) { state = 'gone'; label = 'Sold out'; }
+      else if (soon && k === 1) label = 'Selling fast';
+      else if (!soon && k === 2) { state = 'later'; label = 'On sale ' + dm.format(monday); }
+      return { ...tr, price: p.prices[k], state, label };
+    });
+    EVENTS.push({
+      id: dt.toISOString().slice(0, 10), wd, day: dt.getUTCDate(), mon: short.format(dt), long: long.format(dt), dm: dm.format(dt),
+      name: p.name, blurb: p.blurb, tags: p.tags, tagNames: p.tagNames, rooms: p.rooms(n), tiers,
+      from: Math.min(...tiers.filter(x => x.state === 'on').map(x => x.price))
+    });
+  }
+}
+
+/* ---------- what's on ---------- */
+let pickNight = () => {};
+{
+  const list = $('#lr-nights'), count = $('#lr-on-count'), more = $('#lr-on-more');
+  const filter = { night: 'all', sound: 'all' };
+  let showAll = false;
+  const row = ev => `<li class="lr-night">
+    <div class="lr-night__date"><span class="lr-night__dow">${ev.wd}</span><span class="lr-night__day">${ev.day}</span><span class="lr-night__mon">${ev.mon}</span></div>
+    <div class="lr-night__main">
+      <h3 class="lr-night__name">${ev.name}</h3>
+      <p class="lr-night__blurb">${ev.blurb}</p>
+      <ul class="lr-night__tags" aria-label="Sound">${ev.tagNames.map(x => `<li>${x}</li>`).join('')}${ev.tags.includes('bar') ? '<li class="lr-night__bar">Listening bar from 20:00</li>' : ''}</ul>
+    </div>
+    <dl class="lr-night__rooms">${ev.rooms.map(r => `<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl>
+    <div class="lr-night__buy">
+      <div><p class="lr-night__price">from <strong>${GBP(ev.from)}</strong><small>includes booking fee</small></p></div>
+      <a class="lr-btn lr-btn--sm" href="#lr-tickets" data-lr-pick="${ev.id}" aria-label="Tickets for ${ev.name}, ${ev.long}">Tickets</a>
+    </div>
+  </li>`;
+  function render() {
+    const hits = EVENTS.filter(ev => (filter.night === 'all' || ev.wd === filter.night) && (filter.sound === 'all' || ev.tags.includes(filter.sound)));
+    const shown = showAll ? hits : hits.slice(0, 6);
+    list.innerHTML = shown.length ? shown.map(row).join('') : `<li class="lr-on__empty">Nothing matches both of those. Thursdays are funk and soul, Fridays are disco and house, and the listening bar opens on Fridays only.<br><button class="lr-btn lr-btn--ghost lr-btn--sm" type="button" data-lr-reset>Clear the filters</button></li>`;
+    count.textContent = hits.length ? `Showing ${shown.length} of ${hits.length} ${hits.length === 1 ? 'night' : 'nights'} in the next four weeks.` : 'No nights match those filters.';
+    more.hidden = showAll || hits.length <= 6;
+  }
+  function setFilter(group, v) {
+    filter[group] = v; showAll = false;
+    $$(`[data-lr-filter="${group}"] .lr-chip`).forEach(c => c.setAttribute('aria-pressed', String(c.dataset.lrV === v)));
+    render();
+  }
+  $$('[data-lr-filter]').forEach(g => g.addEventListener('click', e => { const c = e.target.closest('.lr-chip'); if (c) setFilter(g.dataset.lrFilter, c.dataset.lrV); }));
+  more.addEventListener('click', () => { showAll = true; render(); const rows = $$('.lr-night', list); if (rows[6]) { const a = $('a', rows[6]); if (a) a.focus({ preventScroll: true }); } });
+  list.addEventListener('click', e => {
+    if (e.target.closest('[data-lr-reset]')) { setFilter('night', 'all'); setFilter('sound', 'all'); return; }
+    const a = e.target.closest('[data-lr-pick]'); if (a) pickNight(a.dataset.lrPick);
+  });
+  render();
+}
+
+/* ---------- tickets: a simulated booking, no payment details anywhere ---------- */
+{
+  const box = $('#lr-tix'), panels = $$('.lr-tix__panel', box), steps = $$('#lr-tix-steps li'), alertBox = $('#lr-tix-alert');
+  const nights = $('#lr-tix-nights'), tiersBox = $('#lr-tix-tiers'), later = $('#lr-tix-later'), line = $('#lr-tix-line'), bar = $('#lr-tix-bar');
+  const back = $('#lr-tix-back'), next = $('#lr-tix-next'), qtyN = $('#lr-qty-n'), nameI = $('#lr-tix-name'), emailI = $('#lr-tix-email');
+  const s = { step: 0, ev: null, tier: null, qty: 2, all: false };
+  const ev = () => EVENTS.find(e => e.id === s.ev), tier = () => { const e = ev(); return e && e.tiers.find(t => t.key === s.tier); };
+  const emailOK = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+  function drawNights() {
+    nights.innerHTML = EVENTS.slice(0, s.all ? 12 : 6).map(e => `<label class="lr-optc"><input type="radio" name="lr-tix-night" value="${e.id}"${e.id === s.ev ? ' checked' : ''}><span class="lr-optc__b"><span class="lr-optc__t">${e.dm}</span><span class="lr-optc__s">${e.name}</span><span class="lr-optc__p">${GBP(e.from)}<small>from</small></span></span></label>`).join('');
+    later.hidden = s.all;
+  }
+  function drawTiers() {
+    const e = ev(); if (!e) return;
+    $('#lr-tix-tierhint').textContent = e.name + ', ' + e.long + '.';
+    tiersBox.innerHTML = e.tiers.map(t => `<label class="lr-optc"><input type="radio" name="lr-tix-tier" value="${t.key}"${t.state !== 'on' ? ' disabled' : ''}${t.key === s.tier ? ' checked' : ''}><span class="lr-optc__b"><span class="lr-optc__t">${t.name}</span><span class="lr-optc__s">${t.note} · ${t.label}</span><span class="lr-optc__p">${GBP(t.price)}<small>all in</small></span></span></label>`).join('');
+  }
+  function drawLine() {
+    const e = ev(), t = tier();
+    if (!e) { line.innerHTML = 'Choose a night to begin.'; return; }
+    line.innerHTML = `<strong>${e.name} · ${e.dm}</strong>` + (t ? `${s.qty} × ${t.name} · ${GBP(t.price * s.qty)} in total, price includes booking fee` : 'Now choose a ticket');
+  }
+  function drawSum() {
+    const e = ev(), t = tier();
+    const rows = [['Night', e.name + ', ' + e.long], ['Doors', '23:00, last entry ' + (t.key === 'early' ? '00:00 on this ticket' : '01:30')], ['Tickets', s.qty + ' × ' + t.name + ' at ' + GBP(t.price)], ['Sent to', nameI.value.trim() + ', ' + emailI.value.trim()]];
+    $('#lr-tix-sum').innerHTML = rows.map(r => `<div><dt>${r[0]}</dt><dd></dd></div>`).join('') + `<div class="lr-tix__total"><dt>Total to pay</dt><dd>${GBP(t.price * s.qty)}</dd></div>`;
+    $$('#lr-tix-sum dd').slice(0, rows.length).forEach((dd, k) => { dd.textContent = rows[k][1]; });
+  }
+  function fieldErr(input, msg) {
+    const err = $('#' + input.id + '-e');
+    if (msg) { input.setAttribute('aria-invalid', 'true'); err.textContent = msg; } else { input.removeAttribute('aria-invalid'); err.textContent = ''; }
+    return msg;
+  }
+  function fail(msgs) {
+    alertBox.innerHTML = '<strong>One thing before you carry on</strong>' + msgs.map(m => `<div>${m}</div>`).join('');
+    alertBox.hidden = false;
+  }
+  function validate() {
+    alertBox.hidden = true;
+    if (s.step === 0 && !s.ev) { fail(['Choose a night.']); return false; }
+    if (s.step === 1 && !tier()) { fail(['Choose a ticket type.']); return false; }
+    if (s.step === 3) {
+      const m = [];
+      const a = fieldErr(nameI, nameI.value.trim().length < 2 ? 'Enter the name the tickets should be under.' : '');
+      const b = fieldErr(emailI, !emailOK(emailI.value) ? 'Enter an email address like name@example.com.' : '');
+      if (a) m.push(`<a href="#lr-tix-name">${a}</a>`); if (b) m.push(`<a href="#lr-tix-email">${b}</a>`);
+      if (m.length) { fail(m); (a ? nameI : emailI).focus(); return false; }
+    }
+    return true;
+  }
+  function go(step, focus = true) {
+    s.step = step; alertBox.hidden = true;
+    panels.forEach(p => { p.hidden = +p.dataset.lrStep !== step; });
+    steps.forEach((li, i) => { li.classList.toggle('lr-is-done', i < step); if (i === step) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current'); });
+    if (step === 1) drawTiers();
+    if (step === 4) drawSum();
+    bar.hidden = step === 5;
+    back.hidden = step === 0;
+    next.textContent = step === 4 ? 'Continue to payment' : 'Continue';
+    if (step === 5) {
+      const e = ev(), t = tier();
+      $('#lr-tix-done-line').textContent = `${s.qty} × ${t.name} for ${e.name} on ${e.long}, ${GBP(t.price * s.qty)} in total including the booking fee. On the real site your e-tickets would arrive at ${emailI.value.trim()} once payment went through.`;
+    }
+    drawLine();
+    if (focus) { const p = panels.find(x => +x.dataset.lrStep === step); (step === 5 ? p : $('.lr-tix__q', p)).focus({ preventScroll: true }); }
+  }
+  nights.addEventListener('change', e => { s.ev = e.target.value; s.tier = null; alertBox.hidden = true; drawLine(); });
+  tiersBox.addEventListener('change', e => { s.tier = e.target.value; alertBox.hidden = true; drawLine(); });
+  later.addEventListener('click', () => { s.all = true; drawNights(); const r = $$('input', nights)[6]; if (r) r.focus(); });
+  const setQty = q => { s.qty = Math.max(1, Math.min(6, q)); qtyN.textContent = s.qty; $('#lr-qty-dn').disabled = s.qty <= 1; $('#lr-qty-up').disabled = s.qty >= 6; drawLine(); };
+  $('#lr-qty-dn').addEventListener('click', () => setQty(s.qty - 1));
+  $('#lr-qty-up').addEventListener('click', () => setQty(s.qty + 1));
+  next.addEventListener('click', () => { if (validate()) go(s.step + 1); });
+  back.addEventListener('click', () => go(Math.max(0, s.step - 1)));
+  alertBox.addEventListener('click', e => { const a = e.target.closest('a'); if (a) { e.preventDefault(); const f = $(a.getAttribute('href')); if (f) f.focus(); } });
+  [nameI, emailI].forEach(i => i.addEventListener('input', () => { if (i.hasAttribute('aria-invalid')) fieldErr(i, ''); }));
+  $('#lr-tix-again').addEventListener('click', () => { s.ev = null; s.tier = null; nameI.value = ''; emailI.value = ''; $('#lr-tix-news').checked = false; setQty(2); drawNights(); go(0); });
+  pickNight = id => {
+    s.ev = id; s.tier = null; s.all = s.all || EVENTS.findIndex(e => e.id === id) > 5;
+    drawNights(); go(1, false);
+  };
+  drawNights(); setQty(2); go(0, false);
+}
+
+/* ---------- booth and guest-list enquiry ---------- */
+function wireForm(form, rules, onDone) {
+  const alertBox = $('.lr-alert', form);
+  const setErr = (input, msg) => {
+    const err = $('#' + input.id + '-e');
+    if (msg) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    if (err) err.textContent = msg || '';
+  };
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const bad = [];
+    for (const [id, test] of rules) { const input = $('#' + id), msg = test(input); setErr(input, msg); if (msg) bad.push([input, msg]); }
+    if (bad.length) {
+      alertBox.innerHTML = `<strong>${bad.length === 1 ? 'There is 1 thing to fix' : 'There are ' + bad.length + ' things to fix'}</strong><ul>` + bad.map(([i, m]) => `<li><a href="#${i.id}">${m}</a></li>`).join('') + '</ul>';
+      alertBox.hidden = false; alertBox.focus();
+      return;
+    }
+    alertBox.hidden = true; onDone();
+  });
+  alertBox.addEventListener('click', e => { const a = e.target.closest('a'); if (a) { e.preventDefault(); const f = $(a.getAttribute('href')); if (f) f.focus(); } });
+  for (const [id, test] of rules) { const input = $('#' + id); input.addEventListener(input.type === 'checkbox' || input.tagName === 'SELECT' ? 'change' : 'input', () => { if (input.hasAttribute('aria-invalid') && !test(input)) setErr(input, ''); }); }
+}
+const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+{
+  const form = $('#lr-enq'), done = $('#lr-enq-done'), night = $('#lr-enq-night');
+  night.insertAdjacentHTML('beforeend', EVENTS.map(e => `<option value="${e.id}">${e.dm} · ${e.name}</option>`).join(''));
+  wireForm(form, [
+    ['lr-enq-name', i => i.value.trim().length < 2 ? 'Enter your full name.' : ''],
+    ['lr-enq-email', i => !isEmail(i.value) ? 'Enter an email address like name@example.com.' : ''],
+    ['lr-enq-tel', i => i.value.trim() && !/^[0-9+() -]{9,18}$/.test(i.value.trim()) ? 'Check the phone number, or leave it blank.' : ''],
+    ['lr-enq-night', i => !i.value ? 'Choose a night.' : ''],
+    ['lr-enq-kind', i => !i.value ? 'Tell us whether you want a snug, a booth or the guest list.' : ''],
+    ['lr-enq-size', i => { const n = +i.value, k = $('#lr-enq-kind').value; if (!i.value || n < 2 || n > 20 || !Number.isInteger(n)) return 'Enter a group size between 2 and 20.'; if (k === 'snug' && n > 6) return 'A snug seats up to 6. Choose a Parlour booth for a bigger group.'; if (k === 'booth' && n > 10) return 'A Parlour booth seats up to 10. Choose the guest list for a bigger group.'; if (k === 'list' && n < 8) return 'The guest list is for groups of 8 or more.'; return ''; }],
+    ['lr-enq-ok', i => !i.checked ? 'Tick the box so we can use your details to reply.' : '']
+  ], () => {
+    const e = EVENTS.find(x => x.id === night.value), kind = { snug: 'a Scullery snug', booth: 'a Parlour booth', list: 'the guest list' }[$('#lr-enq-kind').value];
+    $('#lr-enq-done-line').textContent = `${$('#lr-enq-name').value.trim().split(/\s+/)[0]}, we have your enquiry about ${kind} for ${$('#lr-enq-size').value} on ${e.long}. We would reply to ${$('#lr-enq-email').value.trim()} by 18:00 the next working day.`;
+    form.hidden = true; done.hidden = false; done.focus();
+  });
+  $('#lr-enq-again').addEventListener('click', () => { form.reset(); done.hidden = true; form.hidden = false; $('#lr-enq-name').focus(); });
+}
+
+/* ---------- two-column sections: pin whichever column is shorter (desktop only, and only if it fits the viewport) ---------- */
+{
+  const wide = matchMedia('(min-width:1200px)');
+  function pin() {
+    for (const two of $$('[data-lr-two]')) {
+      const [a, b] = two.children;
+      a.classList.remove('lr-stick'); b.classList.remove('lr-stick');
+      if (!wide.matches) continue;
+      const ha = a.offsetHeight, hb = b.offsetHeight, short = ha <= hb ? a : b, room = innerHeight - $('#lr-head').offsetHeight - 56;
+      if (Math.abs(ha - hb) > 40 && Math.min(ha, hb) <= room) short.classList.add('lr-stick');
+    }
+  }
+  const ro = new ResizeObserver(pin);
+  $$('[data-lr-two]').forEach(two => { for (const c of two.children) ro.observe(c); });
+  addEventListener('resize', pin, { passive: true });
+  pin();
+}
+
+/* ---------- in-page links glide (unless reduced motion is on), then hand focus to the target ---------- */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#lr-"]'); if (!a || e.defaultPrevented) return;
+  const target = document.getElementById(a.getAttribute('href').slice(1)); if (!target) return;
+  e.preventDefault();
+  target.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'start' });
+  if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+  history.replaceState(null, '', a.getAttribute('href'));
+});
+
+/* ---------- the rooms: three panels, one open at a time on tablet and desktop ---------- */
+{
+  const rooms = $$('.lr-room'), wide = matchMedia('(min-width:768px)'), canHover = matchMedia('(hover:hover)');
+  const open = room => rooms.forEach(r => { const on = r === room; r.classList.toggle('lr-is-open', on); $('button', r).setAttribute('aria-expanded', String(on || !wide.matches)); });
+  rooms.forEach(r => {
+    const b = $('button', r);
+    r.addEventListener('mouseenter', () => { if (wide.matches && canHover.matches) open(r); });
+    b.addEventListener('click', () => open(r));
+    b.addEventListener('focus', () => { if (wide.matches) open(r); });
+  });
+  wide.addEventListener('change', () => open($('.lr-room.lr-is-open') || rooms[0]));
+  open(rooms[0]);
+}
+
+/* ---------- questions ---------- */
+$$('.lr-faq__q button').forEach(b => b.addEventListener('click', () => {
+  const openNow = b.getAttribute('aria-expanded') === 'true';
+  b.setAttribute('aria-expanded', String(!openNow));
+  $('#' + b.getAttribute('aria-controls')).hidden = openNow;
+}));
+
+/* ---------- the letter ---------- */
+{
+  const form = $('#lr-news'), done = $('#lr-news-done');
+  wireForm(form, [
+    ['lr-news-email', i => !isEmail(i.value) ? 'Enter an email address like name@example.com.' : ''],
+    ['lr-news-ok', i => !i.checked ? 'Tick the box to say you want the letter.' : '']
+  ], () => {
+    $('#lr-news-done-line').textContent = `The next letter would go to ${$('#lr-news-email').value.trim()}. Every email has an unsubscribe link at the bottom.`;
+    form.hidden = true; done.hidden = false; done.focus();
+  });
+}
+
+/* ---------- footer: split-flap board, link rows, ticker ---------- */
+{
+  const ROWS = [
+    ['23:38', 'LAST TRAIN', 'EDINBURGH', 'Queen Street station', '9 min walk'],
+    ['23:52', 'LAST TRAIN', 'PAISLEY', 'Central station', '12 min walk'],
+    ['00:20', 'NIGHT BUS A', 'PARTICK', 'Trongate stop', '3 min walk'],
+    ['01:20', 'NIGHT BUS B', 'SHAWLANDS', 'Glassford Street stop', '4 min walk'],
+    ['02:20', 'NIGHT BUS C', 'DENNISTOUN', 'High Street stop', '6 min walk'],
+    ['03:00', 'LAMPS OUT', 'HOME, QUIETLY', 'Our door on Wilson Street', 'neighbours asleep'],
+    ['03:20', 'NIGHT BUS A', 'PARTICK', 'Trongate stop', '3 min walk']
+  ];
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const board = $('#lr-board'), rowsEl = $('#lr-board-rows'), still = RM.matches;
+  const flaps = (txt, n, cls) => `<span class="lr-flaps ${cls}" aria-hidden="true">` + txt.padEnd(n).slice(0, n).split('').map(ch => `<span class="lr-flap" data-lr-c="${ch}"><i>${still && ch !== ' ' ? ch : '&nbsp;'}</i></span>`).join('') + '</span>';
+  rowsEl.innerHTML = ROWS.map(r => `<li class="lr-brow">
+    <span class="lr-vh">${r[0]}, ${r[1].toLowerCase()} towards ${r[2].toLowerCase()}, from ${r[3]}, ${r[4]}. Example only.</span>
+    ${flaps(r[0], 5, 'lr-flaps--time')}${flaps(r[1], 11, 'lr-flaps--svc')}${flaps(r[2], 13, 'lr-flaps--to')}
+    <span class="lr-brow__led" aria-hidden="true"><span class="lr-m">${r[1]} · </span>${r[3]} · ${r[4]}</span>
+  </li>`).join('');
+  function flip() {
+    $$('.lr-brow', rowsEl).forEach((row, ri) => $$('.lr-flap', row).forEach((f, ci) => {
+      const target = f.dataset.lrC, face = f.firstChild;
+      if (target === ' ') return;
+      const hops = 3 + ((ri * 7 + ci * 5) % 6);
+      let n = 0;
+      const turn = () => {
+        const last = n === hops;
+        face.textContent = last ? target : CHARS[(target.charCodeAt(0) + n * 7 + ci) % CHARS.length];
+        if (face.animate) face.animate([{ transform: 'rotateX(86deg)', opacity: .5 }, { transform: 'rotateX(0deg)', opacity: 1 }], { duration: 95, easing: 'ease-out' });
+        if (!last) { n++; setTimeout(turn, 62); }
+      };
+      setTimeout(turn, ri * 120 + ci * 22);
+    }));
+  }
+  if (!still) {
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); flip(); } }, { threshold: 0.3 });
+    io.observe(board);
+  }
+  const clock = $('#lr-board-clock');
+  const tickClock = () => { const t = venueNow(), s = 'Glasgow ' + pad2(t.h) + ':' + pad2(t.m); if (clock.textContent !== s) clock.textContent = s; };
+  tickClock(); setInterval(tickClock, 1000);
+  $$('.lr-year').forEach(el => { el.textContent = venueNow().y; });
+
+  /* link rows: plain rows on tablet and desktop, accordions on mobile */
+  const wide = matchMedia('(min-width:768px)'), groups = $$('.lr-lrow');
+  const sync = () => groups.forEach(g => { const b = $('button', g), p = $('.lr-lrow__links', g); p.hidden = !wide.matches && b.getAttribute('aria-expanded') !== 'true'; });
+  groups.forEach(g => $('button', g).addEventListener('click', e => { const b = e.currentTarget; b.setAttribute('aria-expanded', String(b.getAttribute('aria-expanded') !== 'true')); sync(); }));
+  wide.addEventListener('change', sync); sync();
+
+  const ticker = $('#lr-ticker'), tb = $('#lr-ticker-btn');
+  tb.addEventListener('click', () => {
+    const p = !ticker.hasAttribute('data-lr-paused');
+    ticker.toggleAttribute('data-lr-paused', p); tb.setAttribute('aria-pressed', String(p));
+    tb.setAttribute('aria-label', p ? 'Play the scrolling legal line' : 'Pause the scrolling legal line');
+  });
+}
+
+/* ---------- mobile dock: appears after the hero buttons, steps aside for the footer and the booking widgets ---------- */
+{
+  const dock = $('#lr-dock'), covering = new Set();
+  let past = false;
+  const update = () => dock.classList.toggle('lr-is-on', past && covering.size === 0);
+  new IntersectionObserver(es => { const e = es[0]; past = !e.isIntersecting && e.boundingClientRect.top < 0; update(); }).observe($('.lr-hero__cta'));
+  const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) covering.add(e.target); else covering.delete(e.target); }); update(); }, { rootMargin: '0px 0px -72px 0px' });
+  [$('#lr-foot'), ...$$('[data-lr-widget]')].forEach(el => io.observe(el));
+}
+
+/* ---------- small print: short summaries in a dialog (this template is a single page) ---------- */
+{
+  const dlg = $('#lr-legal'), h = $('#lr-legal-h'), body = $('#lr-legal-body');
+  const COPY = {
+    privacy: ['Privacy', ['Candleriggs Cellar Company Ltd, trading as Lamplight Rooms, is the data controller. We collect only what we need to sell you a ticket, answer an enquiry or send the letter you asked for, and we never sell or swap your details.', 'Enquiries are kept for 12 months and ticket records for six years for tax purposes. Door CCTV is kept for 31 days. You can ask for a copy of your data, a correction or deletion at any time: privacy@lamplightrooms.example.', 'If you are unhappy with how we have handled your data you can complain to the Information Commissioner’s Office.']],
+    cookies: ['Cookies', ['This site sets only the cookies it needs to work: one to remember your basket and one to remember your cookie choice.', 'We ask before setting anything for analytics, and saying no is as easy as saying yes. We do not use advertising cookies.']],
+    terms: ['Terms and ticket conditions', ['Tickets are for over 18s and are valid only with accepted photo ID. If you are refused entry for having no ID, or for being drunk, your ticket is not refunded.', 'Ticket prices include the booking fee. Tickets can be returned for resale until 18:00 on the day; tickets resold elsewhere for profit may be cancelled. If we cancel or reschedule a night you are refunded in full.', 'Entry is at the discretion of the management and subject to search. Last entry is 01:30.']],
+    a11y: ['Accessibility statement', ['We want everyone to be able to use this website. It is built to meet WCAG 2.2 at level AA: it works by keyboard, respects reduced-motion settings and has text alternatives for the hero clock and every image.', 'If something does not work for you, email access@lamplightrooms.example or phone 0141 496 0142 and we will reply within five working days.']]
+  };
+  const KEYS = { '#lr-privacy': 'privacy', '#lr-cookies': 'cookies', '#lr-terms': 'terms', '#lr-a11y': 'a11y' };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#lr-"]'); if (!a) return;
+    const key = KEYS[a.getAttribute('href')]; if (!key) return;
+    e.preventDefault();
+    h.textContent = COPY[key][0];
+    body.innerHTML = COPY[key][1].map(p => `<p>${p}</p>`).join('') + '<p class="lr-note">Summary for this demonstration page. The full policy would be published at lamplightrooms.example.</p>';
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    h.focus();
+  });
+  const shut = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); };
+  $('#lr-legal-x').addEventListener('click', shut);
+  dlg.addEventListener('click', e => { if (e.target === dlg) shut(); });
+}
+
+//LR:JS
+
+/* ==========================================================================
+   Hero: the lamp dial. Drawn on a 2D canvas once per second and used as a
+   THREE.CanvasTexture on a shallow glass dome that hangs inside shader haze.
+   ========================================================================== */
+const TAU = Math.PI * 2, rad = d => d * Math.PI / 180;
+function drawDial(c, t, a, st) {
+  const S = 1024, cx = 512, cy = 512, INK = '#2a120a', INK2 = 'rgba(42,18,10,.6)', PLUM = '#7d1248';
+  const pt = (deg, r) => [cx + r * Math.sin(rad(deg)), cy - r * Math.cos(rad(deg))];
+  c.setTransform(1, 0, 0, 1, 0, 0);
+  c.clearRect(0, 0, S, S);
+  /* lit glass */
+  c.fillStyle = '#cf7426'; c.fillRect(0, 0, S, S);
+  let g = c.createRadialGradient(cx - 30, cy - 70, 30, cx, cy, 520);
+  g.addColorStop(0, '#fff7e2'); g.addColorStop(.36, '#ffe3aa'); g.addColorStop(.7, '#fcbc62'); g.addColorStop(.92, '#f0983c'); g.addColorStop(1, '#cf7426');
+  c.fillStyle = g; c.beginPath(); c.arc(cx, cy, 512, 0, TAU); c.fill();
+  g = c.createRadialGradient(cx, cy, 340, cx, cy, 512);
+  g.addColorStop(0, 'rgba(120,46,8,0)'); g.addColorStop(1, 'rgba(112,40,6,.4)');
+  c.fillStyle = g; c.beginPath(); c.arc(cx, cy, 512, 0, TAU); c.fill();
+  /* minute ring */
+  c.lineCap = 'round';
+  for (let i = 0; i < 60; i++) {
+    const major = i % 5 === 0, p1 = pt(i * 6, major ? 452 : 466), p2 = pt(i * 6, 486);
+    c.strokeStyle = major ? INK : INK2; c.lineWidth = major ? 5.5 : 2.5;
+    c.beginPath(); c.moveTo(p1[0], p1[1]); c.lineTo(p2[0], p2[1]); c.stroke();
+  }
+  /* numerals in the club's serif */
+  c.fillStyle = INK; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.font = '400 88px "Instrument Serif", Georgia, serif';
+  for (let n = 1; n <= 12; n++) { const p = pt(n * 30, 388); c.fillText(String(n), p[0], p[1] + 5); }
+  /* the night on the hour track: doors 23:00 -> last entry 01:30 (solid), then to close 03:00 (dashed) */
+  c.lineCap = 'butt'; c.lineWidth = 15; c.strokeStyle = PLUM;
+  c.beginPath(); c.arc(cx, cy, 310, rad(240), rad(315)); c.stroke();
+  c.setLineDash([4, 9]); c.beginPath(); c.arc(cx, cy, 310, rad(-45), rad(0)); c.stroke(); c.setLineDash([]);
+  for (const deg of [330, 45, 90]) {
+    const p = pt(deg, 310);
+    c.fillStyle = PLUM; c.beginPath(); c.arc(p[0], p[1], 15, 0, TAU); c.fill();
+    c.fillStyle = '#ffe9bd'; c.beginPath(); c.arc(p[0], p[1], 6, 0, TAU); c.fill();
+  }
+  const tag = (deg, r, k, v) => {
+    const p = pt(deg, r);
+    c.fillStyle = INK; c.font = '800 25px Manrope, system-ui, sans-serif'; spaced(c, k, p[0], p[1] - 28, 3);
+    c.fillStyle = INK; c.font = '400 60px "Instrument Serif", Georgia, serif'; c.fillText(v, p[0], p[1] + 18);
+  };
+  tag(330, 214, 'DOORS', '23:00');
+  tag(45, 204, 'LAST ENTRY', '01:30');
+  tag(96, 196, 'CLOSE', '03:00');
+  /* readout: venue time and what happens next */
+  c.fillStyle = INK2; c.font = '800 21px Manrope, system-ui, sans-serif'; spaced(c, 'GLASGOW TIME', cx, cy + 122, 5);
+  c.fillStyle = INK; c.font = '800 70px Manrope, system-ui, sans-serif';
+  cells(c, pad2(t.h) + ':' + pad2(t.m) + ':' + pad2(t.s), cx, cy + 182, 44, 24);
+  c.fillStyle = PLUM; c.font = '800 25px Manrope, system-ui, sans-serif';
+  const w1 = spacedWidth(c, st.tag, 2.6), w2 = cellsWidth(st.count, 17.5, 9.5), x0 = cx - (w1 + 14 + w2) / 2;
+  spaced(c, st.tag, x0 + w1 / 2, cy + 246, 2.6);
+  cells(c, st.count, x0 + w1 + 14 + w2 / 2, cy + 246, 17.5, 9.5);
+  /* slender hands */
+  const hand = (deg, len, tail, w0, w1, fill) => {
+    c.save(); c.translate(cx, cy); c.rotate(rad(deg));
+    c.shadowColor = 'rgba(70,24,0,.4)'; c.shadowBlur = 12; c.shadowOffsetY = 6;
+    c.fillStyle = fill; c.beginPath();
+    c.moveTo(-w0 / 2, tail); c.lineTo(-w1 / 2, -len); c.arc(0, -len, w1 / 2, Math.PI, 0); c.lineTo(w0 / 2, tail); c.closePath(); c.fill();
+    c.restore();
+  };
+  hand(a.hr, 232, 44, 15, 6, INK);
+  hand(a.min, 366, 54, 10, 3.5, INK);
+  hand(a.sec, 408, 86, 4.5, 2, '#c2185f');
+  c.fillStyle = '#c2185f'; c.beginPath(); c.arc(cx, cy, 17, 0, TAU); c.fill();
+  g = c.createRadialGradient(cx - 3, cy - 3, 1, cx, cy, 10);
+  g.addColorStop(0, '#ffe9b8'); g.addColorStop(1, '#a66a22');
+  c.fillStyle = g; c.beginPath(); c.arc(cx, cy, 8.5, 0, TAU); c.fill();
+}
+/* letter-spaced text, centred on x */
+function spacedWidth(c, s, sp) { let w = 0; for (const ch of s) w += c.measureText(ch).width + sp; return w - sp; }
+function spaced(c, s, x, y, sp) {
+  let px = x - spacedWidth(c, s, sp) / 2; const al = c.textAlign; c.textAlign = 'left';
+  for (const ch of s) { c.fillText(ch, px, y); px += c.measureText(ch).width + sp; }
+  c.textAlign = al;
+}
+/* fixed-width cells so the digits never jitter as they change */
+function cellsWidth(s, cw, nw) { let w = 0; for (const ch of s) w += /\d|D/.test(ch) ? cw : nw; return w; }
+function cells(c, s, x, y, cw, nw) {
+  let px = x - cellsWidth(s, cw, nw) / 2;
+  for (const ch of s) { const w = /\d|D/.test(ch) ? cw : nw; c.fillText(ch, px + w / 2, y); px += w; }
+}
+
+const HAZE_VERT = `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`;
+const HAZE_FRAG = `
+precision highp float;
+varying vec2 vUv;
+uniform vec2 uRes; uniform vec2 uLamp; uniform vec2 uOrb; uniform vec3 uPtr; uniform vec2 uVel;
+uniform float uTime; uniform float uRad; uniform float uScale;
+float hash(vec2 p){ vec3 p3 = fract(vec3(p.xyx)*0.1031); p3 += dot(p3, p3.yzx+33.33); return fract((p3.x+p3.y)*p3.z); }
+float vnoise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f*f*(3.0-2.0*f);
+  return mix(mix(hash(i), hash(i+vec2(1.0,0.0)), u.x), mix(hash(i+vec2(0.0,1.0)), hash(i+vec2(1.0,1.0)), u.x), u.y); }
+float fbm(vec2 p){ float a = 0.5, s = 0.0; for(int i=0;i<5;i++){ s += a*vnoise(p); p = mat2(1.6,-1.2,1.2,1.6)*p + vec2(7.3,3.1); a *= 0.5; } return s/0.96875; }
+float fbm3(vec2 p){ float a = 0.5, s = 0.0; for(int i=0;i<3;i++){ s += a*vnoise(p); p = mat2(1.6,-1.2,1.2,1.6)*p + vec2(7.3,3.1); a *= 0.5; } return s/0.875; }
+float beam(vec2 p, vec2 src, float ang, float wid){
+  vec2 v = p - src; float d = (atan(v.x, -v.y) - ang)/wid; float len = length(v);
+  return (exp(-d*d) + 0.3*exp(-d*d/7.0)) * smoothstep(3.7, 0.7, len) * smoothstep(0.0, 0.6, len);
+}
+void main(){
+  vec2 frag = vUv*uRes;
+  vec2 p = (frag - uOrb)/uScale;
+  vec2 lp = (frag - uLamp)/uScale;
+  vec2 q = (frag - uPtr.xy)/uScale;
+  float pf = exp(-dot(q,q)*4.5)*uPtr.z;
+  vec2 ps = p + (vec2(-q.y, q.x)*0.5 + uVel*1.2)*pf;
+  float t = uTime;
+  vec2 w1 = vec2(fbm3(ps*1.1 + vec2(0.0, -t*0.030)), fbm3(ps*1.1 + vec2(5.2, 1.3) + vec2(t*0.021, -t*0.026)));
+  vec2 pw = ps + 0.85*(w1 - 0.5);
+  vec2 w2 = vec2(fbm(pw*1.55 + vec2(1.7, 9.2) + t*0.024), fbm(pw*1.55 + vec2(8.3, 2.8) - t*0.019));
+  float n = fbm(pw*1.35 + 2.5*w2 + vec2(0.0, -t*0.035));
+  float puff = smoothstep(0.16, 0.80, n);
+  float r = length(ps*vec2(0.72, 1.0));
+  float body = smoothstep(1.34, 0.04, r + (n - 0.5)*1.0 + (w2.x - 0.5)*0.5);
+  float dens = body*(0.10 + 1.25*puff);
+  float lr = length(lp + 0.12*(w1 - 0.5));
+  float lit = 1.0/(1.0 + 6.5*lr*lr);
+  float k = clamp(lr*0.92 + (w2.y - 0.5)*0.6, 0.0, 1.0);
+  vec3 cA = vec3(1.0, 0.60, 0.20), cM = vec3(0.95, 0.22, 0.58), cT = vec3(0.14, 0.72, 0.68);
+  vec3 tint = mix(cA, cM, smoothstep(0.20, 0.62, k));
+  tint = mix(tint, cT, smoothstep(0.60, 1.0, k));
+  vec3 col = tint*dens*(0.46 + 1.25*lit);
+  float b1 = beam(p, vec2(-1.55, 1.75), 0.72 + 0.26*sin(t*0.110), 0.060);
+  float b2 = beam(p, vec2(1.60, 1.85), -0.70 + 0.24*sin(t*0.087 + 1.9), 0.052);
+  float b3 = beam(p, vec2(0.15, 2.30), 0.05 + 0.34*sin(t*0.064 + 4.0), 0.045);
+  col += (cT*b1*1.45 + cM*b2*1.20 + cA*b3*0.95)*(0.24 + 0.9*dens)*(0.7 + 0.6*n);
+  float d = length(frag - uLamp);
+  float o = max(d - uRad*1.08, 0.0)/uRad;
+  col += cA*exp(-o*2.4)*(0.28 + 0.45*n) + vec3(1.0, 0.82, 0.55)*exp(-o*9.0)*0.32;
+  float inside = smoothstep(uRad*1.11, uRad*1.06, d);
+  float a = clamp(dens*0.62, 0.0, 0.85);
+  float ai = min(a*0.6, 0.36);
+  col = mix(col, vec3(1.0, 0.68, 0.32)*ai*0.9, inside); a = mix(a, ai, inside);
+  vec2 e = vUv - 0.5; col *= 1.0 - 0.9*dot(e, e);
+  col = 1.0 - exp(-col*1.25);
+  col += (hash(frag + fract(t)*61.0) - 0.5)/255.0*1.6;
+  gl_FragColor = vec4(max(col, 0.0), a);
+}`;
+
+(async function startHero() {
+  const hero = $('#lr-top'), glCanvas = $('#lr-gl'), slot = $('#lr-dial'), motionBtn = $('#lr-motion'), facts = $('#lr-facts'), factNow = $('#lr-fact-now');
+  const dialCanvas = document.createElement('canvas'); dialCanvas.width = dialCanvas.height = 1024;
+  const dctx = dialCanvas.getContext('2d');
+  let tex = null, afterTick = null, redraws = 0, frames = 0, lastMinute = -1;
+
+  /* one redraw per second, on the second; the texture is flagged for upload only here */
+  function redraw() {
+    const t = venueNow(), a = handAngles(t), st = nightState(t);
+    drawDial(dctx, t, a, st);
+    redraws++;
+    if (tex) tex.needsUpdate = true;
+    slot.dataset.lrRedraws = redraws; slot.dataset.lrTex = tex ? tex.version : 0; slot.dataset.lrFrames = frames;
+    slot.dataset.lrTime = pad2(t.h) + ':' + pad2(t.m) + ':' + pad2(t.s);
+    slot.dataset.lrAngles = [a.hr, a.min, a.sec].map(v => +v.toFixed(2)).join(',');
+    if (factNow.textContent !== st.now) { factNow.textContent = st.now; facts.dataset.lrState = st.key; }
+    if (t.m !== lastMinute) {
+      lastMinute = t.m;
+      slot.setAttribute('aria-label', 'A lamp-like clock showing ' + pad2(t.h) + ':' + pad2(t.m) + ' in Glasgow, with doors at 23:00, last entry at 01:30 and close at 03:00 marked on the dial.');
+    }
+    if (afterTick) afterTick();
+  }
+  function schedule() { setTimeout(() => { redraw(); schedule(); }, 1000 - (Date.now() % 1000) + 3); }
+  const fonts = (document.fonts && document.fonts.load) ? Promise.all([
+    document.fonts.load('400 88px "Instrument Serif"'), document.fonts.load('800 70px Manrope'), document.fonts.ready
+  ]).catch(() => {}) : Promise.resolve();
+  let fontsIn = false; fonts.then(() => { fontsIn = true; });
+  await Promise.race([fonts, new Promise(r => setTimeout(r, 1800))]);
+  redraw(); schedule();
+  if (!fontsIn) fonts.then(redraw);
+
+  function flat() {
+    hero.classList.add('lr-hero--flat');
+    slot.appendChild(dialCanvas);
+    motionBtn.hidden = true;
+  }
+  const hasGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+  let THREE = null;
+  if (hasGL) { try { THREE = await import('three'); } catch (e) { THREE = null; } }
+  if (!THREE) { flat(); return; }
+
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas: glCanvas, antialias: true, alpha: false, powerPreference: 'high-performance' }); }
+  catch (e) { flat(); return; }
+  renderer.setClearColor(0x110a0d, 1);
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 60); cam.position.set(0, 0, 10);
+
+  tex = new THREE.CanvasTexture(dialCanvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+
+  /* the lamp: a shallow glass dome whose emissive face is the clock, a brass bezel, a cord up into the dark */
+  const LP = 10;
+  const rig = new THREE.Group(), swing = new THREE.Group(), drop = new THREE.Group(), tilt = new THREE.Group();
+  scene.add(rig); rig.add(swing); swing.position.y = LP; swing.add(drop); drop.position.y = -LP; drop.add(tilt);
+  const faceGeo = new THREE.RingGeometry(0.0005, 1, 96, 18), fp = faceGeo.attributes.position;
+  for (let i = 0; i < fp.count; i++) { const x = fp.getX(i), y = fp.getY(i); fp.setZ(i, 0.2 * (1 - Math.min(1, x * x + y * y))); }
+  faceGeo.computeVertexNormals();
+  const face = new THREE.Mesh(faceGeo, new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 1, roughness: 0.3, metalness: 0 }));
+  const brass = new THREE.MeshStandardMaterial({ color: 0xb98238, emissive: 0x2a1505, metalness: 0.85, roughness: 0.32 });
+  const bezel = new THREE.Mesh(new THREE.TorusGeometry(1.035, 0.045, 20, 128), brass);
+  const ferrule = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.085, 0.2, 24), brass); ferrule.position.y = 1.16;
+  tilt.add(face, bezel, ferrule);
+  const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 14, 8), new THREE.MeshStandardMaterial({ color: 0x6b4a25, emissive: 0x1c0f06, metalness: 0.5, roughness: 0.5 }));
+  cord.position.y = 1.2 + 7; drop.add(cord);
+  scene.add(new THREE.AmbientLight(0xffe2c0, 0.4));
+  const key = new THREE.DirectionalLight(0xffe6c4, 1.5); key.position.set(-2.6, 4.6, 9); scene.add(key);
+  const lMag = new THREE.PointLight(0xf25fa6, 2.0, 0, 0), lTeal = new THREE.PointLight(0x4bd0be, 1.6, 0, 0);
+  scene.add(lMag, lTeal);
+
+  /* the haze: one full-screen pass drawn over the lamp, so the dial is seen through it */
+  const U = { uRes: { value: new THREE.Vector2(1, 1) }, uLamp: { value: new THREE.Vector2() }, uOrb: { value: new THREE.Vector2() }, uPtr: { value: new THREE.Vector3() }, uVel: { value: new THREE.Vector2() }, uTime: { value: 0 }, uRad: { value: 100 }, uScale: { value: 400 } };
+  const haze = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+    uniforms: U, vertexShader: HAZE_VERT, fragmentShader: HAZE_FRAG, transparent: true, depthTest: false, depthWrite: false,
+    blending: THREE.CustomBlending, blendEquation: THREE.AddEquation, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor
+  }));
+  haze.frustumCulled = false; haze.renderOrder = 10; scene.add(haze);
+
+  let W = 1, H = 1, T = RM.matches ? 21 : 6, last = 0, raf = 0, onScreen = true, paused = RM.matches;
+  const ptr = { x: 0, y: 0, tx: 0, ty: 0, nx: 0, ny: 0, k: 0, at: -1e9 }, v3 = new THREE.Vector3();
+  function layout() {
+    const r = hero.getBoundingClientRect(), s = slot.getBoundingClientRect();
+    W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+    renderer.setPixelRatio(Math.max(1, Math.min(window.devicePixelRatio || 1, 1.5, Math.sqrt(2.6e6 / (W * H)))));
+    renderer.setSize(W, H, false);
+    cam.aspect = W / H; cam.updateProjectionMatrix();
+    const u = 2 * cam.position.z * Math.tan(rad(cam.fov / 2)) / H, cx = s.left - r.left + s.width / 2, cy = s.top - r.top + s.height / 2, R = s.width / 2;
+    rig.position.set((cx - W / 2) * u, (H / 2 - cy) * u, 0); rig.scale.setScalar(R * u);
+    U.uRes.value.set(W, H); U.uRad.value = R; U.uScale.value = Math.min(0.55 * H, 0.92 * W);
+    U.uOrb.value.set(W / 2, H - (cy + R * 0.85));
+    if (!ptr.seen) { ptr.x = ptr.tx = cx; ptr.y = ptr.ty = cy; }
+  }
+  function step(dt) {
+    T += dt;
+    const e = Math.min(1, dt * 2.6);
+    ptr.x += (ptr.tx - ptr.x) * e; ptr.y += (ptr.ty - ptr.y) * e;
+    ptr.k += ((performance.now() - ptr.at < 1800 ? 1 : 0) - ptr.k) * Math.min(1, dt * 1.6);
+    tilt.rotation.y += (ptr.nx * 0.2 * ptr.k - tilt.rotation.y) * e;
+    tilt.rotation.x += (ptr.ny * 0.14 * ptr.k - tilt.rotation.x) * e;
+    swing.rotation.z = Math.sin(T * 0.55) * 0.010 + Math.sin(T * 0.23 + 1.3) * 0.006;
+    drop.position.y = -LP + Math.sin(T * 0.4) * 0.025;
+  }
+  function draw() {
+    lMag.position.set(Math.cos(T * 0.3) * 7, Math.sin(T * 0.3) * 4 + 1, 6);
+    lTeal.position.set(Math.cos(T * 0.22 + 2.6) * 7, Math.sin(T * 0.22 + 2.6) * 4 - 1, 6);
+    scene.updateMatrixWorld();
+    tilt.getWorldPosition(v3).project(cam);
+    U.uLamp.value.set((v3.x + 1) / 2 * W, (v3.y + 1) / 2 * H);
+    U.uPtr.value.set(ptr.x, H - ptr.y, ptr.k);
+    U.uVel.value.set((ptr.tx - ptr.x) / U.uScale.value, -(ptr.ty - ptr.y) / U.uScale.value);
+    U.uTime.value = T;
+    renderer.render(scene, cam); frames++;
+  }
+  const live = () => !paused && onScreen && !document.hidden;
+  function frame(now) {
+    raf = 0;
+    if (!live()) return;
+    step(Math.min(0.1, last ? (now - last) / 1000 : 0.016)); last = now;
+    draw();
+    raf = requestAnimationFrame(frame);
+  }
+  function wake() { if (live()) { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } } else if (onScreen && !document.hidden) draw(); }
+  /* when motion is off the clock still ticks: one still frame per second */
+  afterTick = () => { if (!live() && onScreen && !document.hidden) draw(); };
+
+  hero.addEventListener('pointermove', ev => {
+    const r = hero.getBoundingClientRect();
+    ptr.tx = ev.clientX - r.left; ptr.ty = ev.clientY - r.top; ptr.nx = (ptr.tx / r.width) * 2 - 1; ptr.ny = (ptr.ty / r.height) * 2 - 1;
+    ptr.at = performance.now(); ptr.seen = true;
+  }, { passive: true });
+  function setPaused(p) {
+    paused = p;
+    motionBtn.setAttribute('aria-pressed', String(p));
+    const label = p ? 'Play hero motion' : 'Pause hero motion';
+    motionBtn.setAttribute('aria-label', label); motionBtn.title = label;
+    if (p) { ptr.k = 0; tilt.rotation.set(0, 0, 0); }
+    wake();
+  }
+  motionBtn.addEventListener('click', () => setPaused(!paused));
+  new IntersectionObserver(es => { onScreen = es[0].isIntersecting; wake(); }, { threshold: 0 }).observe(hero);
+  document.addEventListener('visibilitychange', wake);
+  new ResizeObserver(() => { layout(); if (!live()) draw(); }).observe(hero);
+  glCanvas.addEventListener('webglcontextlost', ev => { ev.preventDefault(); if (raf) { cancelAnimationFrame(raf); raf = 0; } });
+  glCanvas.addEventListener('webglcontextrestored', () => { tex.needsUpdate = true; wake(); });
+  layout(); setPaused(paused);
+})();
+</script>
+</body>
+</html>

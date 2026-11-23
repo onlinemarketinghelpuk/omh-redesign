@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sablier | Late-night cocktail lounge and table-service club, Mayfair W1</title>
+<meta name="description" content="Sablier is a late-night cocktail lounge and table-service club beneath Mayfair, London W1. Open Wednesday to Saturday, 22:00 to 03:00. Guest list, table bookings and live sax on Thursdays.">
+<meta name="theme-color" content="#060505">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23060505'/%3E%3Cpath d='M9 6h14M9 26h14M11 6c0 6 5 7 5 10s-5 4-5 10M21 6c0 6-5 7-5 10s5 4 5 10' fill='none' stroke='%23d9bf8c' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300..600&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js">
+<style>
+/* ==========================================================================
+   Sablier, Mayfair W1. Single-file home page. Every class and id is sb- prefixed.
+   ========================================================================== */
+:root{
+  --sb-ink:#060505;--sb-coal:#0d0a09;--sb-char:#151110;
+  --sb-ox:#2b0c11;--sb-ox-deep:#1b080b;--sb-ox-lift:#3d131a;
+  --sb-green:#0c211b;--sb-green-deep:#081611;--sb-green-lift:#14352c;
+  --sb-gold:#d9bf8c;--sb-gold-pale:#ecdcb4;--sb-gold-rose:#e3c2a2;--sb-gold-antique:#cdab6b;
+  --sb-text:#f4ede1;--sb-muted:#bfb3a0;--sb-dim:#978b7a;
+  --sb-line:rgba(217,191,140,.2);--sb-line-soft:rgba(217,191,140,.11);
+  --sb-serif:"Bodoni Moda","Bodoni MT",Didot,"Times New Roman",serif;
+  --sb-sans:"Jost","Century Gothic",Futura,"Trebuchet MS",sans-serif;
+  --sb-gutter:20px;--sb-max:1440px;--sb-head:60px;
+  --accent:#d9bf8c;
+}
+@media (min-width:768px){:root{--sb-gutter:32px;--sb-head:72px}}
+@media (min-width:1200px){:root{--sb-gutter:48px;--sb-head:84px}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--sb-head) + 16px)}
+body{margin:0;background:var(--sb-ink);color:var(--sb-text);font:400 1.0625rem/1.65 var(--sb-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg,canvas{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+::selection{background:var(--sb-gold);color:#120c05}
+.sb-wrap{width:100%;max-width:var(--sb-max);margin-inline:auto;padding-inline:var(--sb-gutter)}
+.sb-vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.sb-skip{position:fixed;left:16px;top:-80px;z-index:300;padding:14px 20px;background:var(--sb-gold);color:#120c05;font:500 .875rem/1 var(--sb-sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:top .2s}
+.sb-skip:focus{top:12px}
+
+/* Strap + button: both read the single --accent set on their section */
+.sb-strap{display:flex;align-items:center;gap:.95em;margin-bottom:1.2rem;font:500 .75rem/1.3 var(--sb-sans);letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+.sb-strap::before{content:"";flex:none;width:9px;height:14px;background:currentColor;clip-path:polygon(0 0,100% 0,100% 8%,58% 50%,100% 92%,100% 100%,0 100%,0 92%,42% 50%,0 8%)}
+.sb-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.7em;min-height:52px;padding:0 1.9em;border:1px solid var(--accent);border-radius:2px;background:var(--accent);background-image:linear-gradient(118deg,color-mix(in srgb,var(--accent) 72%,#fff) 0%,var(--accent) 36%,color-mix(in srgb,var(--accent) 74%,#4a3512) 100%);color:#140d05;font:500 .8125rem/1 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;white-space:nowrap;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease,color .25s ease}
+.sb-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s ease;pointer-events:none}
+.sb-btn:hover::after,.sb-btn:focus-visible::after{transform:translateX(120%)}
+.sb-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -14px color-mix(in srgb,var(--accent) 80%,transparent)}
+.sb-btn:active{transform:translateY(0)}
+.sb-btn--ghost{background:transparent;background-image:none;color:var(--accent)}
+.sb-btn--ghost:hover{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.sb-btn--sm{min-height:44px;padding:0 1.3em;font-size:.75rem;letter-spacing:.17em}
+.sb-btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.sb-btn svg{width:16px;height:16px;flex:none}
+.sb-link{color:var(--accent);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.sb-link:hover{text-decoration-color:currentColor}
+
+/* Header */
+.sb-head{position:fixed;inset:0 0 auto 0;z-index:90;border-bottom:1px solid transparent;transition:background-color .35s ease,border-color .35s ease}
+.sb-head.sb-is-stuck{background:rgba(6,5,5,.86);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom-color:var(--sb-line)}
+.sb-head__bar{display:flex;align-items:center;gap:26px;height:var(--sb-head)}
+.sb-logo{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--sb-text);font:500 1.625rem/1 var(--sb-serif);letter-spacing:.05em;text-decoration:none}
+.sb-logo svg{width:17px;height:27px;color:var(--accent);flex:none}
+.sb-nav{display:flex;gap:clamp(16px,2.1vw,36px);margin-left:auto}
+.sb-nav a{position:relative;padding:14px 0;font:400 .8125rem/1 var(--sb-sans);letter-spacing:.17em;text-transform:uppercase;text-decoration:none;color:var(--sb-text);white-space:nowrap}
+.sb-nav a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.sb-nav a:hover::after,.sb-nav a:focus-visible::after{transform:scaleX(1)}
+.sb-head__tel{font:400 .875rem/1 var(--sb-sans);letter-spacing:.12em;text-decoration:none;white-space:nowrap;color:var(--sb-muted)}
+.sb-head__tel:hover{color:var(--sb-text)}
+.sb-head__cta{min-height:46px;padding:0 1.5em}
+.sb-cta-short{display:none}
+.sb-burger{display:none;flex:none;width:48px;height:48px;align-items:center;justify-content:center;border:1px solid var(--sb-line);border-radius:50%;background:rgba(6,5,5,.4)}
+.sb-burger span{position:relative;display:block;width:18px;height:1px;background:var(--sb-text)}
+.sb-burger span::before,.sb-burger span::after{content:"";position:absolute;left:0;width:18px;height:1px;background:var(--sb-text)}
+.sb-burger span::before{top:-6px}.sb-burger span::after{top:6px;width:11px}
+@media (max-width:1199px){
+  .sb-nav,.sb-head__tel{display:none}
+  .sb-burger{display:inline-flex}
+  .sb-head__cta{margin-left:auto}
+  .sb-head__bar{gap:14px}
+}
+@media (max-width:767px){
+  .sb-logo{font-size:1.375rem;gap:9px}
+  .sb-logo svg{width:14px;height:22px}
+  .sb-head__bar{gap:10px}
+  .sb-head__cta{min-height:44px;padding:0 1.15em;border-radius:999px;font-size:.6875rem;letter-spacing:.15em}
+  .sb-burger{width:44px;height:44px}
+}
+@media (max-width:359px){.sb-cta-full{display:none}.sb-cta-short{display:inline}}
+
+/* Full-screen menu (tablet + mobile) */
+.sb-menu{position:fixed;inset:0;z-index:120;display:flex;flex-direction:column;background:radial-gradient(120% 80% at 100% 0%,#2b0c11 0%,#0b0707 55%,#060505 100%);overflow-y:auto;overscroll-behavior:contain;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+.sb-menu.sb-is-open{opacity:1;visibility:visible}
+.sb-menu__top{display:flex;align-items:center;justify-content:space-between;height:var(--sb-head);flex:none}
+.sb-menu__close{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--sb-line);border-radius:50%;background:transparent}
+.sb-menu__close svg{width:16px;height:16px}
+.sb-menu__nav{flex:1;display:flex;flex-direction:column;justify-content:center;padding-block:24px}
+.sb-menu__nav a{display:flex;align-items:baseline;gap:18px;padding:13px 0;border-bottom:1px solid var(--sb-line-soft);font:400 clamp(1.75rem,6.2vw,2.75rem)/1.1 var(--sb-serif);text-decoration:none;color:var(--sb-text)}
+.sb-menu__nav a span{flex:none;width:2.6em;font:500 .6875rem/1 var(--sb-sans);letter-spacing:.24em;color:var(--accent)}
+.sb-menu__foot{flex:none;display:grid;gap:14px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-block:20px calc(24px + env(safe-area-inset-bottom))}
+.sb-menu__foot p{grid-column:1/-1;font-size:.9375rem;color:var(--sb-muted)}
+.sb-menu__foot p a{color:var(--sb-text);white-space:nowrap}
+@media (max-width:479px){.sb-menu__foot{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:1200px){.sb-menu{display:none}}
+
+/* Hero */
+.sb-hero{position:relative;display:flex;align-items:center;height:clamp(660px,100vh,1160px);height:clamp(660px,100svh,1160px);background:#060505;overflow:hidden;overflow:clip;isolation:isolate}
+.sb-hero__stage{position:absolute;inset:0;z-index:0;background:radial-gradient(70% 80% at 72% 78%,#3a0f17 0%,#170709 42%,#060505 78%)}
+.sb-hero__gl{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.4s ease}
+.sb-hero[data-stage="3d"] .sb-hero__gl{opacity:1}
+.sb-hero__flat{position:absolute;right:max(20px,3vw);bottom:-10%;width:min(56vw,88vh);aspect-ratio:1;padding:1.7%;border-radius:50%;background:conic-gradient(from 210deg,#f1e2bc,#8f7443 18%,#e3cb96 36%,#6f5a31 52%,#f1e2bc 68%,#a8884e 84%,#f1e2bc);box-shadow:0 40px 120px rgba(0,0,0,.75),inset 0 0 0 1px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .9s ease}
+.sb-hero__flat canvas{width:100%;height:100%;border-radius:50%;box-shadow:inset 0 0 0 2px #1a1108}
+.sb-hero[data-stage="flat"] .sb-hero__flat{opacity:1;visibility:visible}
+.sb-hero__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(6,5,5,.88) 0%,rgba(6,5,5,.62) 30%,rgba(6,5,5,0) 54%),linear-gradient(0deg,#060505 0%,rgba(6,5,5,0) 6%),linear-gradient(180deg,rgba(6,5,5,.7) 0%,rgba(6,5,5,0) 16%)}
+.sb-hero__inner{position:relative;z-index:2;padding-top:calc(var(--sb-head) + 12px);padding-bottom:40px}
+.sb-hero__copy{max-width:33rem}
+.sb-hero h1{margin-bottom:1.5rem;font:400 clamp(2.625rem,1.1rem + 5.1vw,5.75rem)/.95 var(--sb-serif);letter-spacing:-.022em;text-wrap:balance}
+.sb-hero h1 em{font-style:italic;color:var(--accent);background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 70%,#fff) 0%,var(--accent) 45%,color-mix(in srgb,var(--accent) 78%,#5a4218) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-right:.06em}
+.sb-hero__sub{max-width:29rem;margin-bottom:2.1rem;font-size:1.125rem;line-height:1.55;color:var(--sb-muted)}
+.sb-hero__ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:2.4rem}
+.sb-facts{display:grid;grid-template-columns:repeat(4,minmax(0,auto));justify-content:start;column-gap:28px;border-top:1px solid var(--sb-line);padding-top:18px}
+.sb-facts div{min-width:0}
+.sb-facts div+div{padding-left:28px;border-left:1px solid var(--sb-line)}
+.sb-facts dt{margin-bottom:6px;font:500 .6875rem/1.2 var(--sb-sans);letter-spacing:.24em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-facts dd{font:500 1.1875rem/1.2 var(--sb-serif);letter-spacing:.01em;white-space:nowrap}
+.sb-motion{position:absolute;right:var(--sb-gutter);bottom:22px;z-index:3;display:none;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 12px;border:1px solid var(--sb-line);border-radius:999px;background:rgba(6,5,5,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--sb-text);font:400 .6875rem/1 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase}
+.sb-hero[data-stage="3d"] .sb-motion{display:inline-flex}
+.sb-motion:hover{border-color:var(--accent)}
+.sb-motion svg{width:14px;height:14px;color:var(--accent)}
+.sb-motion .sb-ico-play{display:none}
+.sb-motion[aria-pressed="true"] .sb-ico-play{display:block}
+.sb-motion[aria-pressed="true"] .sb-ico-pause{display:none}
+/* Tablet landscape: narrower copy so the dial keeps its size */
+@media (min-width:900px) and (max-width:1199px) and (min-aspect-ratio:11/10){
+  .sb-hero__copy{max-width:25.5rem}
+  .sb-hero h1{font-size:clamp(3rem,5.8vw,4rem)}
+  .sb-hero__sub{font-size:1.0625rem}
+  .sb-hero__ctas{gap:10px}
+  .sb-hero__ctas .sb-btn{padding:0 1.25em;letter-spacing:.17em}
+  .sb-facts{grid-template-columns:repeat(2,minmax(0,auto));row-gap:16px}
+  .sb-facts div:nth-child(3){padding-left:0;border-left:0}
+}
+/* Stacked hero: tablet portrait and phones. Copy on top, dial rising beneath it */
+@media (max-width:899px),(max-aspect-ratio:11/10){
+  .sb-hero{align-items:flex-start;height:auto;min-height:max(100vh,700px);min-height:max(100svh,700px)}
+  .sb-hero__stage{background:radial-gradient(90% 60% at 50% 86%,#3a0f17 0%,#170709 45%,#060505 80%)}
+  .sb-hero__scrim{background:linear-gradient(180deg,rgba(6,5,5,.9) 0%,rgba(6,5,5,.6) 34%,rgba(6,5,5,0) 58%),linear-gradient(0deg,#060505 0%,rgba(6,5,5,0) 5%)}
+  .sb-hero__inner{padding-top:calc(var(--sb-head) + 36px);padding-bottom:clamp(250px,40vh,470px)}
+  .sb-hero__copy{max-width:40rem}
+  .sb-hero h1{font-size:clamp(2.5rem,1rem + 7.6vw,5rem)}
+  .sb-hero__flat{right:auto;left:50%;bottom:-7%;width:min(88vw,52vh);transform:translateX(-50%)}
+  .sb-motion{bottom:16px}
+}
+@media (max-width:767px){
+  .sb-hero__inner{padding-top:calc(var(--sb-head) + 22px)}
+  .sb-hero h1{margin-bottom:.9rem}
+  .sb-hero .sb-strap{margin-bottom:.9rem;font-size:.6875rem;letter-spacing:.24em}
+  .sb-hero__sub{margin-bottom:1.3rem;font-size:1rem;line-height:1.5}
+  .sb-hero__ctas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-bottom:1.4rem}
+  .sb-hero__ctas .sb-btn{min-height:50px;padding:0 .5em;font-size:.6875rem;letter-spacing:.13em}
+  .sb-facts{grid-template-columns:repeat(4,minmax(0,auto));justify-content:space-between;column-gap:0;padding-top:14px}
+  .sb-facts div+div{padding-left:12px}
+  .sb-facts dt{font-size:.5625rem;letter-spacing:.16em;margin-bottom:5px}
+  .sb-facts dd{font-size:.9375rem}
+  .sb-motion{padding:0;width:44px;justify-content:center}
+  .sb-motion span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+}
+@media (max-width:359px){
+  .sb-facts{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:12px}
+  .sb-facts div:nth-child(3){padding-left:0;border-left:0}
+}
+
+/* Sections: shared */
+.sb-sec{position:relative;padding-block:clamp(72px,9.5vw,148px)}
+.sb-sec--coal{background:var(--sb-coal)}
+.sb-sec--ox{background:linear-gradient(180deg,var(--sb-ox-deep) 0%,var(--sb-ox) 50%,var(--sb-ox-deep) 100%)}
+.sb-sec--green{background:linear-gradient(180deg,var(--sb-green-deep) 0%,var(--sb-green) 55%,var(--sb-green-deep) 100%)}
+.sb-sec--ox,.sb-sec--green{border-block:1px solid var(--sb-line-soft)}
+.sb-h2{font:400 clamp(2.125rem,1.1rem + 3.3vw,3.875rem)/1.03 var(--sb-serif);letter-spacing:-.018em;text-wrap:balance}
+.sb-h2 em{font-style:italic;color:var(--accent)}
+.sb-h3{font:500 1.5rem/1.15 var(--sb-serif);letter-spacing:-.005em}
+.sb-lede{margin-top:1.4rem;max-width:34rem;font-size:1.125rem;line-height:1.6;color:var(--sb-muted)}
+.sb-small{font-size:.9375rem;line-height:1.55;color:var(--sb-muted)}
+.sb-split{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(36px,5vw,96px)}
+.sb-split>*{min-width:0}
+@media (min-width:1200px){
+  .sb-split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}
+  .sb-split--wide-left{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+  .sb-split--even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .sb-pin{position:sticky;top:calc(var(--sb-head) + 28px)}
+}
+.sb-arch{position:relative;border-radius:999px 999px 0 0;overflow:hidden;background:var(--sb-char)}
+.sb-arch img{width:100%;height:100%;object-fit:cover}
+.sb-arch::after{content:"";position:absolute;inset:10px;border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);border-radius:999px 999px 0 0;pointer-events:none}
+
+/* Chips */
+.sb-chips{display:flex;flex-wrap:wrap;gap:10px}
+.sb-chip{flex:none;min-height:44px;padding:0 1.15em;border:1px solid var(--sb-line);border-radius:999px;background:transparent;color:var(--sb-text);font:400 .8125rem/1 var(--sb-sans);letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.sb-chip:hover{border-color:var(--accent)}
+.sb-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#140d05;font-weight:500}
+@media (max-width:767px){
+  .sb-chips{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:calc(var(--sb-gutter) * -1);padding-inline:var(--sb-gutter);scroll-padding-inline:var(--sb-gutter)}
+  .sb-chips::-webkit-scrollbar{display:none}
+  .sb-chip{scroll-snap-align:start}
+}
+
+/* What's on: the programme */
+.sb-on__chips{margin-top:2rem}
+.sb-on__count{margin-top:1rem;font-size:.875rem;color:var(--sb-dim);letter-spacing:.04em}
+.sb-prog{border-top:1px solid var(--sb-line)}
+.sb-night{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:8px 32px;align-items:center;padding:26px 0;border-bottom:1px solid var(--sb-line);transition:background-color .3s ease}
+.sb-night[hidden]{display:none}
+.sb-night__date{display:grid;justify-items:center;gap:2px;padding-right:32px;border-right:1px solid var(--sb-line);text-align:center}
+.sb-night__dow,.sb-night__mon{font:500 .6875rem/1.2 var(--sb-sans);letter-spacing:.26em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-night__day{font:400 2.75rem/1 var(--sb-serif);letter-spacing:-.02em}
+.sb-night__kicker{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-bottom:6px;font:500 .6875rem/1.3 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-night__flag{padding:3px 8px 2px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);letter-spacing:.16em}
+.sb-night__name{font:400 1.875rem/1.1 var(--sb-serif);letter-spacing:-.01em}
+.sb-night__line{margin-top:6px;color:var(--sb-muted);font-size:1rem;line-height:1.5}
+.sb-night__meta{margin-top:8px;font-size:.875rem;color:var(--sb-dim);letter-spacing:.03em}
+.sb-night__meta b{font-weight:500;color:var(--sb-text)}
+.sb-night__act{display:flex;gap:10px}
+.sb-prog__note{margin-top:18px;font-size:.875rem;color:var(--sb-dim)}
+@media (hover:hover){.sb-night:hover{background:linear-gradient(90deg,rgba(217,191,140,.05),rgba(217,191,140,0))}}
+@media (max-width:1199px) and (min-width:768px){.sb-night{grid-template-columns:92px minmax(0,1fr) auto}}
+@media (max-width:767px){
+  .sb-prog{border-top:0;display:grid;gap:14px}
+  .sb-night{grid-template-columns:minmax(0,1fr);gap:14px;padding:20px;border:1px solid var(--sb-line);border-radius:3px;background:rgba(255,255,255,.015)}
+  .sb-night__date{display:flex;align-items:baseline;justify-content:flex-start;gap:10px;padding:0 0 12px;border-right:0;border-bottom:1px solid var(--sb-line-soft);text-align:left}
+  .sb-night__day{font-size:2rem;order:-1}
+  .sb-night__name{font-size:1.625rem}
+  .sb-night__act{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+
+/* Thursdays, live */
+.sb-live__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(36px,5vw,96px);align-items:center}
+.sb-live__media{position:relative;max-width:520px;width:100%;margin-inline:auto}
+.sb-live__media .sb-arch{aspect-ratio:4/5}
+.sb-live__inset{position:absolute;right:-6%;bottom:-7%;width:42%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:1px solid color-mix(in srgb,var(--accent) 60%,transparent);box-shadow:0 0 0 8px var(--sb-green),0 30px 60px -20px rgba(0,0,0,.8)}
+.sb-live__inset img{width:100%;height:100%;object-fit:cover}
+.sb-sets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:2.4rem 0 2.4rem;border-top:1px solid var(--sb-line);border-bottom:1px solid var(--sb-line)}
+.sb-sets li{display:grid;justify-items:start;gap:10px;padding:20px 18px 20px 0;min-width:0}
+.sb-sets li+li{padding-left:18px;border-left:1px solid var(--sb-line)}
+.sb-sets svg{width:38px;height:38px;color:var(--accent)}
+.sb-sets b{display:block;font:500 1.375rem/1 var(--sb-serif)}
+.sb-sets span{font:500 .6875rem/1.35 var(--sb-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--sb-muted)}
+@media (min-width:1000px){.sb-live__grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+@media (max-width:999px){.sb-live__media{max-width:440px;margin-bottom:5%}}
+@media (max-width:767px){
+  .sb-live__inset{right:-2%}
+  .sb-sets{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sb-sets li:nth-child(3){padding-left:0;border-left:0}
+  .sb-sets li:nth-child(n+3){border-top:1px solid var(--sb-line)}
+}
+
+/* Forms: shared */
+.sb-field{display:grid;gap:7px;min-width:0;align-content:start}
+.sb-field label,.sb-legend{font:500 .6875rem/1.3 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-input{width:100%;min-height:50px;padding:11px 15px;border:1px solid rgba(217,191,140,.34);border-radius:2px;background:rgba(6,5,5,.5);color:var(--sb-text);font:400 1rem/1.4 var(--sb-sans);transition:border-color .2s ease,box-shadow .2s ease}
+.sb-input::placeholder{color:var(--sb-dim);opacity:1}
+.sb-input:hover{border-color:rgba(217,191,140,.6)}
+.sb-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
+select.sb-input{-webkit-appearance:none;appearance:none;padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23d9bf8c' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;background-size:12px 8px}
+select.sb-input option{background:#151110;color:#f4ede1}
+.sb-field__err{display:none;font-size:.875rem;line-height:1.35;color:#ffb9ad}
+.sb-field.sb-has-err .sb-input{border-color:#ff9d8f}
+.sb-field.sb-has-err .sb-field__err{display:block}
+.sb-check{display:grid;grid-template-columns:24px minmax(0,1fr);gap:14px;align-items:start;min-height:44px;font-size:.9375rem;line-height:1.5;color:var(--sb-muted);cursor:pointer}
+.sb-check input{-webkit-appearance:none;appearance:none;display:grid;place-content:center;width:24px;height:24px;margin:1px 0 0;border:1px solid rgba(217,191,140,.55);border-radius:2px;background:rgba(6,5,5,.5);cursor:pointer}
+.sb-check input::after{content:"";width:12px;height:7px;border-left:2px solid #140d05;border-bottom:2px solid #140d05;transform:rotate(-45deg) translate(1px,-1px) scale(0);transition:transform .15s ease}
+.sb-check input:checked{background:var(--accent);border-color:var(--accent)}
+.sb-check input:checked::after{transform:rotate(-45deg) translate(1px,-1px) scale(1)}
+.sb-check.sb-has-err input{border-color:#ff9d8f}
+.sb-check .sb-field__err{grid-column:2}
+.sb-check.sb-has-err .sb-field__err{display:block}
+.sb-errsum{display:none;padding:15px 18px;border:1px solid #ff9d8f;border-radius:2px;background:rgba(255,120,100,.08);color:#ffd3cb;font-size:.9375rem;line-height:1.5}
+.sb-errsum.sb-is-on{display:block}
+.sb-errsum:focus{outline:2px solid #ff9d8f;outline-offset:3px}
+.sb-errsum ul{margin-top:6px;padding-left:1.2em;list-style:disc}
+.sb-errsum a{color:#ffd3cb}
+.sb-card{border:1px solid var(--sb-line);border-radius:3px;background:rgba(6,5,5,.55);padding:clamp(20px,2.4vw,34px)}
+.sb-form{display:grid;gap:16px;margin-top:18px}
+.sb-form__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px 16px}
+@media (min-width:768px){.sb-form__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sb-form__grid .sb-span{grid-column:1/-1}}
+.sb-done{display:grid;gap:14px;justify-items:start}
+.sb-done[hidden]{display:none}
+.sb-done svg{width:26px;height:40px;color:var(--accent)}
+.sb-done:focus{outline:none}
+.sb-ticks{display:grid;gap:12px;margin-top:1.8rem;max-width:34rem}
+.sb-ticks li{position:relative;padding-left:26px;color:var(--sb-muted);font-size:1rem;line-height:1.55}
+.sb-ticks li::before{content:"";position:absolute;left:0;top:.42em;width:8px;height:12px;background:var(--accent);clip-path:polygon(0 0,100% 0,100% 8%,58% 50%,100% 92%,100% 100%,0 100%,0 92%,42% 50%,0 8%)}
+
+/* Guest list flow */
+.sb-flow{border:1px solid var(--sb-line);border-radius:3px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));padding:clamp(20px,3vw,40px)}
+.sb-flow__steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-bottom:30px}
+.sb-flow__steps li{min-width:0;padding-top:13px;border-top:2px solid var(--sb-line);font:500 .6875rem/1.3 var(--sb-sans);letter-spacing:.15em;text-transform:uppercase;color:var(--sb-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-flow__steps b{margin-right:.5em;font:italic 400 1rem/1 var(--sb-serif);letter-spacing:0}
+.sb-flow__steps li.sb-is-done{border-top-color:color-mix(in srgb,var(--accent) 50%,transparent);color:var(--sb-muted)}
+.sb-flow__steps li[aria-current="step"]{border-top-color:var(--accent);color:var(--sb-text)}
+.sb-step[hidden]{display:none}
+.sb-step__title{margin-bottom:6px;font:400 1.875rem/1.15 var(--sb-serif);letter-spacing:-.01em}
+.sb-step__title:focus{outline:none}
+.sb-step__hint{margin-bottom:20px;font-size:.9375rem;color:var(--sb-muted)}
+.sb-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0;padding:0;margin:0;min-width:0}
+.sb-opts--one{grid-template-columns:minmax(0,1fr)}
+.sb-opt{position:relative;display:block;min-width:0}
+.sb-opt input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.sb-opt__box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 16px;align-items:center;min-height:70px;padding:13px 18px;border:1px solid var(--sb-line);border-radius:2px;transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease}
+.sb-opt__name{font:500 1.1875rem/1.2 var(--sb-serif)}
+.sb-opt__sub{grid-column:1;font-size:.875rem;line-height:1.4;color:var(--sb-muted)}
+.sb-opt__price{grid-column:2;grid-row:1/span 2;text-align:right;font:500 1.375rem/1 var(--sb-serif);white-space:nowrap}
+.sb-opt__price small{display:block;margin-top:5px;font:400 .625rem/1.2 var(--sb-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-opt:hover .sb-opt__box{border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+.sb-opt input:checked+.sb-opt__box{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent);box-shadow:inset 3px 0 0 var(--accent)}
+.sb-opt input:focus-visible+.sb-opt__box{outline:2px solid var(--accent);outline-offset:3px}
+.sb-opt input:disabled{cursor:not-allowed}
+.sb-opt input:disabled+.sb-opt__box{opacity:.5}
+.sb-qty{display:inline-grid;grid-template-columns:58px 88px 58px;align-items:center;border:1px solid var(--sb-line);border-radius:2px}
+.sb-qty button{height:58px;border:0;background:transparent;color:var(--accent);font:400 1.625rem/1 var(--sb-sans)}
+.sb-qty button:hover:not(:disabled){background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.sb-qty button:disabled{opacity:.35;cursor:not-allowed}
+.sb-qty output{text-align:center;font:500 1.875rem/1 var(--sb-serif)}
+.sb-sum{margin-top:22px;border-top:1px solid var(--sb-line)}
+.sb-sum div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--sb-line-soft);font-size:.9375rem}
+.sb-sum dt{color:var(--sb-muted)}
+.sb-sum dd{text-align:right;font-weight:500;min-width:0;overflow-wrap:anywhere}
+.sb-sum .sb-sum__total dd{font:500 1.625rem/1 var(--sb-serif)}
+.sb-pay{margin-bottom:8px;padding:20px 22px;border:1px solid var(--accent);border-radius:2px;background:color-mix(in srgb,var(--accent) 8%,transparent);font:400 1.3125rem/1.4 var(--sb-serif)}
+.sb-flow__nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--sb-line)}
+.sb-flow__running{flex:1;min-width:0;text-align:right;font-size:.875rem;line-height:1.4;color:var(--sb-muted)}
+.sb-flow__running b{display:block;font:500 1.25rem/1.2 var(--sb-serif);color:var(--sb-text)}
+@media (max-width:767px){
+  .sb-opts{grid-template-columns:minmax(0,1fr)}
+  .sb-flow__steps li{font-size:.5625rem;letter-spacing:.1em}
+  .sb-flow__steps b{display:block;margin:0 0 4px}
+  .sb-flow__nav{flex-wrap:wrap}
+  .sb-flow__running{order:-1;flex:1 0 100%;text-align:left}
+  .sb-flow__nav .sb-btn{flex:1}
+}
+
+/* Tables */
+.sb-tb__photo{position:relative;margin-top:2.4rem;aspect-ratio:16/9;border-radius:3px;overflow:hidden;background:var(--sb-ox-deep)}
+.sb-tb__photo img{width:100%;height:100%;object-fit:cover}
+.sb-tb__photo figcaption{position:absolute;left:0;bottom:0;padding:9px 16px;background:rgba(6,5,5,.72);font:500 .6875rem/1.3 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-text)}
+.sb-carte{margin-top:2.2rem;border-top:1px solid var(--sb-line)}
+.sb-carte__row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;padding:24px 0;border-bottom:1px solid var(--sb-line)}
+.sb-carte__name{display:flex;align-items:baseline;gap:16px;min-width:0;font:400 1.875rem/1.1 var(--sb-serif);letter-spacing:-.01em}
+.sb-carte__name::after{content:"";flex:1;min-width:16px;border-bottom:1px dotted color-mix(in srgb,var(--accent) 60%,transparent);transform:translateY(-.22em)}
+.sb-carte__price{font:500 1.875rem/1.1 var(--sb-serif);white-space:nowrap}
+.sb-carte__price small{margin-right:.7em;font:500 .6875rem/1 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-carte__desc{grid-column:1/-1;max-width:46rem;color:var(--sb-muted);font-size:1rem;line-height:1.55}
+.sb-carte__desc b{font-weight:500;color:var(--sb-text)}
+.sb-tb__how{margin-top:2.8rem}
+.sb-dep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:1.2rem;border:1px solid var(--sb-line);border-radius:3px;background:rgba(6,5,5,.28)}
+.sb-dep li{min-width:0;padding:22px}
+.sb-dep li+li{border-left:1px solid var(--sb-line)}
+.sb-dep i{display:block;margin-bottom:10px;font:italic 400 1.5rem/1 var(--sb-serif);color:var(--accent)}
+.sb-dep b{display:block;margin-bottom:6px;font:500 1.0625rem/1.3 var(--sb-sans)}
+.sb-dep span{display:block;font-size:.9375rem;line-height:1.5;color:var(--sb-muted)}
+.sb-tb__note{margin-top:1.2rem;max-width:46rem}
+.sb-quote{margin:2px 0 0;padding:13px 16px;border-left:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 7%,transparent);font-size:.9375rem;line-height:1.5;color:var(--sb-text)}
+.sb-quote b{font-weight:500}
+@media (max-width:767px){
+  .sb-carte{border-top:0;display:grid;gap:12px}
+  .sb-carte__row{grid-template-columns:minmax(0,1fr);padding:20px;border:1px solid var(--sb-line);border-radius:3px;background:rgba(6,5,5,.28)}
+  .sb-carte__name::after{display:none}
+  .sb-carte__price{font-size:1.5rem}
+  .sb-dep{grid-template-columns:minmax(0,1fr)}
+  .sb-dep li+li{border-left:0;border-top:1px solid var(--sb-line)}
+}
+
+/* The venue */
+.sb-venue__head{display:grid;grid-template-columns:minmax(0,1fr);gap:20px 72px;align-items:end;margin-bottom:clamp(36px,5vw,72px)}
+.sb-venue__head .sb-lede{margin-top:0}
+.sb-rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.6vw,40px);align-items:start}
+.sb-room{min-width:0}
+.sb-room:nth-child(2){margin-top:clamp(0px,5.5vw,84px)}
+.sb-room .sb-arch{aspect-ratio:3/4}
+.sb-room .sb-arch img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.sb-room:hover .sb-arch img,.sb-room:focus-within .sb-arch img,.sb-room.sb-is-tapped .sb-arch img{transform:scale(1.045)}
+.sb-room__cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:20px;padding-bottom:12px;border-bottom:1px solid var(--sb-line)}
+.sb-room__cap h3{font:400 1.75rem/1.1 var(--sb-serif);letter-spacing:-.01em}
+.sb-room__cap span{flex:none;font:500 .6875rem/1 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-room p{margin-top:12px;color:var(--sb-muted);font-size:1rem;line-height:1.55}
+.sb-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(44px,6vw,92px);border-block:1px solid var(--sb-line)}
+.sb-stats div{display:flex;flex-direction:column-reverse;gap:10px;min-width:0;padding:28px 20px 26px 0}
+.sb-stats div+div{padding-left:clamp(16px,2.4vw,36px);border-left:1px solid var(--sb-line)}
+.sb-stats dt{font:500 .6875rem/1.35 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-stats dd{font:400 clamp(2.25rem,1.4rem + 2.6vw,3.75rem)/1 var(--sb-serif);letter-spacing:-.02em}
+.sb-sound{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,72px);align-items:center;margin-top:clamp(44px,6vw,92px)}
+.sb-sound__photo{aspect-ratio:3/2;border-radius:3px;overflow:hidden;background:var(--sb-char)}
+.sb-sound__photo img{width:100%;height:100%;object-fit:cover}
+.sb-sound dl{display:grid;gap:0;margin-top:1.6rem;border-top:1px solid var(--sb-line)}
+.sb-sound dl div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--sb-line)}
+.sb-sound dt{padding-top:3px;font:500 .6875rem/1.4 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-sound dd{color:var(--sb-text);font-size:1rem;line-height:1.5}
+@media (min-width:1000px){
+  .sb-venue__head{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+  .sb-sound{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+}
+@media (max-width:999px) and (min-width:768px){
+  .sb-rooms{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sb-room:nth-child(2){margin-top:0}
+  .sb-room:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2.6vw,40px);align-items:center}
+}
+@media (max-width:767px){
+  .sb-rooms{grid-template-columns:minmax(0,1fr);gap:36px}
+  .sb-room:nth-child(2){margin-top:0}
+  .sb-room .sb-arch{aspect-ratio:4/5}
+  .sb-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sb-stats div{padding:22px 12px 20px 0}
+  .sb-stats div:nth-child(3){padding-left:0;border-left:0}
+  .sb-stats div:nth-child(n+3){border-top:1px solid var(--sb-line)}
+  .sb-sound dl div{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+
+/* Door policy */
+.sb-door__aside{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center;margin-top:2.2rem;max-width:34rem}
+.sb-door__aside .sb-arch{aspect-ratio:3/4}
+.sb-door__aside .sb-arch::after{inset:6px}
+.sb-door__aside p{font:italic 400 1.25rem/1.4 var(--sb-serif);color:var(--sb-text)}
+.sb-door__aside small{display:block;margin-top:8px;font:500 .6875rem/1.4 var(--sb-sans);font-style:normal;letter-spacing:.18em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-rules{counter-reset:sb-r;border-top:1px solid var(--sb-line)}
+.sb-rule{display:grid;grid-template-columns:60px minmax(0,1fr);gap:6px 18px;padding:24px 0;border-bottom:1px solid var(--sb-line)}
+.sb-rule::before{counter-increment:sb-r;content:counter(sb-r,upper-roman) ".";grid-row:1/span 2;font:italic 400 1.5rem/1.25 var(--sb-serif);color:var(--accent)}
+.sb-rule h3{font:500 1.4375rem/1.2 var(--sb-serif)}
+.sb-rule p{grid-column:2;color:var(--sb-muted);line-height:1.6}
+.sb-rule p b{font-weight:500;color:var(--sb-text)}
+@media (max-width:767px){
+  .sb-rule{grid-template-columns:40px minmax(0,1fr);gap:6px 10px;padding:20px 0}
+  .sb-door__aside{grid-template-columns:110px minmax(0,1fr);gap:16px}
+}
+
+/* Safety and welfare */
+.sb-care{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:clamp(36px,5vw,64px);border:1px solid var(--sb-line);border-radius:3px;background:var(--sb-line)}
+.sb-care__item{min-width:0;padding:clamp(22px,2.6vw,38px);background:var(--sb-green-deep)}
+.sb-care__item:first-child{border-top-left-radius:2px}
+.sb-care__item svg{width:34px;height:34px;margin-bottom:18px;color:var(--accent)}
+.sb-care__item h3{margin-bottom:8px;font:500 1.4375rem/1.2 var(--sb-serif)}
+.sb-care__item p{color:var(--sb-muted);font-size:1rem;line-height:1.58}
+.sb-care__item b{font-weight:500;color:var(--sb-text)}
+.sb-access{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,64px);margin-top:clamp(28px,4vw,48px);padding:clamp(22px,3vw,44px);border:1px solid var(--sb-line);border-radius:3px;background:rgba(6,5,5,.35)}
+.sb-access__list{display:grid;gap:0;margin-top:1.2rem;border-top:1px solid var(--sb-line)}
+.sb-access__list li{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--sb-line)}
+.sb-access__list b{font:500 .6875rem/1.5 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted);padding-top:3px}
+.sb-access__list span{color:var(--sb-text);font-size:1rem;line-height:1.5}
+.sb-access__how{align-self:start;display:grid;gap:14px;justify-items:start}
+.sb-access__how p{color:var(--sb-muted)}
+.sb-access__how a:not(.sb-btn){color:var(--sb-text)}
+@media (min-width:1000px){.sb-access{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}}
+@media (max-width:999px){.sb-care{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){
+  .sb-care{grid-template-columns:minmax(0,1fr)}
+  .sb-access__list li{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+
+/* Getting here and home */
+.sb-addr{margin-top:1.6rem;font:400 1.375rem/1.4 var(--sb-serif);font-style:normal}
+.sb-route{display:grid;grid-template-columns:auto minmax(28px,1fr) auto minmax(28px,1fr) auto;align-items:center;gap:12px;margin:2rem 0 2rem;padding:34px 0 22px;border-block:1px solid var(--sb-line);max-width:36rem}
+.sb-route__stop{min-width:0}
+.sb-route__stop b{display:block;font:500 1.125rem/1.2 var(--sb-serif);white-space:nowrap}
+.sb-route__stop span{display:block;margin-top:5px;font:500 .625rem/1.4 var(--sb-sans);letter-spacing:.15em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-route__stop--end{text-align:right}
+.sb-route__us{display:grid;justify-items:center;gap:6px}
+.sb-route__us svg{width:14px;height:22px;color:var(--accent)}
+.sb-route__us b{font:500 .6875rem/1 var(--sb-sans);letter-spacing:.22em;text-transform:uppercase}
+.sb-route__leg{position:relative;height:1px;background:repeating-linear-gradient(90deg,var(--accent) 0 4px,transparent 4px 9px)}
+.sb-route__leg span{position:absolute;left:50%;top:-22px;transform:translateX(-50%);font:500 .625rem/1 var(--sb-sans);letter-spacing:.15em;text-transform:uppercase;color:var(--sb-muted);white-space:nowrap}
+.sb-ways{border-top:1px solid var(--sb-line)}
+.sb-ways li{display:grid;grid-template-columns:minmax(0,10.5rem) minmax(0,1fr);gap:8px 28px;padding:24px 0;border-bottom:1px solid var(--sb-line)}
+.sb-ways h3{font:500 1.4375rem/1.2 var(--sb-serif)}
+.sb-ways p{color:var(--sb-muted);line-height:1.6}
+.sb-ways p b{font-weight:500;color:var(--sb-text)}
+.sb-prac__title{margin:clamp(40px,5vw,64px) 0 1.2rem}
+.sb-prac{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;border:1px solid var(--sb-line);border-radius:3px;background:var(--sb-line)}
+.sb-prac li{min-width:0;padding:clamp(20px,2.2vw,30px);background:var(--sb-ink)}
+.sb-prac li:first-child{border-top-left-radius:2px}
+.sb-prac h4{margin-bottom:8px;font:500 1.25rem/1.2 var(--sb-serif)}
+.sb-prac p{font-size:.9375rem;line-height:1.55;color:var(--sb-muted)}
+.sb-copied{margin-left:14px;font-size:.875rem;color:var(--sb-muted)}
+@media (max-width:767px){
+  .sb-ways li{grid-template-columns:minmax(0,1fr);padding:20px 0}
+  .sb-prac{grid-template-columns:minmax(0,1fr)}
+  .sb-route{gap:8px}
+  .sb-route__stop b{font-size:1rem}
+  .sb-route__stop span{font-size:.5625rem;letter-spacing:.1em}
+}
+
+/* Private hire */
+.sb-hire{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,5vw,96px);align-items:center}
+.sb-hire__photo{position:relative;aspect-ratio:5/4;border-radius:3px;overflow:hidden;background:var(--sb-ox-deep)}
+.sb-hire__photo img{width:100%;height:100%;object-fit:cover}
+.sb-hire__photo::after{content:"";position:absolute;inset:12px;border:1px solid color-mix(in srgb,var(--accent) 50%,transparent);pointer-events:none}
+.sb-hire__facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:2rem 0 2.2rem;border-block:1px solid var(--sb-line)}
+.sb-hire__facts li{min-width:0;padding:18px 14px 18px 0}
+.sb-hire__facts li+li{padding-left:18px;border-left:1px solid var(--sb-line)}
+.sb-hire__facts b{display:block;font:500 1.375rem/1.15 var(--sb-serif)}
+.sb-hire__facts span{display:block;margin-top:6px;font:500 .6875rem/1.4 var(--sb-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-hire__ctas{display:flex;flex-wrap:wrap;gap:12px}
+@media (min-width:1000px){.sb-hire{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:599px){
+  .sb-hire__facts{grid-template-columns:minmax(0,1fr)}
+  .sb-hire__facts li+li{padding-left:0;border-left:0;border-top:1px solid var(--sb-line)}
+  .sb-hire__ctas .sb-btn{flex:1 1 100%}
+}
+
+/* FAQ accordion */
+.sb-faq{border-top:1px solid var(--sb-line)}
+.sb-acc{border-bottom:1px solid var(--sb-line)}
+.sb-acc h3{margin:0}
+.sb-acc__btn{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;gap:16px;width:100%;min-height:76px;padding:16px 0;border:0;background:transparent;text-align:left;font:400 clamp(1.25rem,1rem + .7vw,1.5625rem)/1.25 var(--sb-serif);color:var(--sb-text)}
+.sb-acc__btn i{position:relative;justify-self:end;width:44px;height:44px;border:1px solid var(--sb-line);border-radius:50%;transition:background-color .25s ease,border-color .25s ease}
+.sb-acc__btn i::before,.sb-acc__btn i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1px;background:var(--accent);transform:translate(-50%,-50%);transition:transform .3s ease}
+.sb-acc__btn i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.sb-acc__btn:hover i{border-color:var(--accent)}
+.sb-acc.sb-is-open .sb-acc__btn i::after{transform:translate(-50%,-50%) rotate(0deg)}
+.sb-acc__panel{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .35s ease,visibility .35s}
+.sb-acc__panel>div{min-height:0;overflow:hidden}
+.sb-acc__panel p{max-width:44rem;padding:0 60px 26px 0;color:var(--sb-muted);line-height:1.65}
+.sb-acc.sb-is-open .sb-acc__panel{grid-template-rows:1fr;visibility:visible}
+.sb-faq__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:2rem}
+@media (max-width:767px){.sb-acc__panel p{padding-right:0}}
+
+/* Newsletter */
+.sb-news{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,80px);align-items:center;padding:clamp(26px,5vw,76px);border:1px solid var(--sb-line);border-radius:3px;background:radial-gradient(110% 150% at 100% 0%,rgba(61,19,26,.85) 0%,rgba(21,17,16,.6) 55%,rgba(13,10,9,.6) 100%)}
+.sb-news__form{display:grid;gap:16px}
+.sb-news__row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end}
+.sb-news__ok{display:none;padding:16px 18px;border:1px solid var(--accent);border-radius:2px;background:color-mix(in srgb,var(--accent) 8%,transparent);font:400 1.1875rem/1.4 var(--sb-serif)}
+.sb-news__ok.sb-is-on{display:block}
+.sb-news__ok:focus{outline:none}
+@media (min-width:1000px){.sb-news{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:479px){.sb-news__row{grid-template-columns:minmax(0,1fr)}}
+
+/* Footer: the cloakroom. Velvet rope across the top, a brass door plaque, coat-check tags on a rail */
+.sb-foot{position:relative;padding:168px 0 calc(34px + env(safe-area-inset-bottom));background-color:#080606;background-image:linear-gradient(180deg,rgba(61,19,26,.42) 0,rgba(8,6,6,0) 360px),repeating-linear-gradient(90deg,rgba(217,191,140,.05) 0 1px,transparent 1px 240px);border-top:1px solid var(--sb-line);overflow:hidden;overflow:clip}
+.sb-rope{position:absolute;inset:0 0 auto 0;height:150px;pointer-events:none}
+.sb-rope__in{position:relative;height:100%;max-width:var(--sb-max);margin-inline:auto}
+.sb-post{position:absolute;top:0;width:36px;height:150px}
+.sb-post--l{left:calc(var(--sb-gutter) - 4px)}
+.sb-post--r{right:calc(var(--sb-gutter) - 4px)}
+.sb-rope__line{position:absolute;top:34px;left:calc(var(--sb-gutter) + 22px);right:calc(var(--sb-gutter) + 22px);width:auto;height:96px;overflow:visible}
+.sb-rope__line svg{width:100%;height:100%;overflow:visible}
+.sb-foot__scene{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:start}
+.sb-plaque{position:relative;max-width:460px;width:100%;padding:38px 34px 32px;border-radius:4px;text-align:center;color:#2a1c07;background-color:#bb9a59;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,rgba(255,255,255,0) 1px 3px),linear-gradient(155deg,#e6cf98 0%,#c6a463 24%,#a98848 50%,#d2b272 74%,#a17f42 100%);box-shadow:inset 0 0 0 1px rgba(255,240,200,.55),inset 0 0 0 6px rgba(120,92,40,.28),inset 0 0 0 7px rgba(255,240,200,.3),0 30px 60px -22px rgba(0,0,0,.9),0 2px 0 #5d4820;text-shadow:0 1px 0 rgba(255,238,196,.55)}
+.sb-plaque i{position:absolute;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f6e9c8,#b08f4e 55%,#6e5628);box-shadow:inset 0 0 0 1px rgba(60,40,10,.5)}
+.sb-plaque i::after{content:"";position:absolute;left:1px;right:1px;top:5px;height:1px;background:rgba(50,34,8,.75);transform:rotate(-28deg)}
+.sb-plaque i:nth-of-type(1){left:14px;top:14px}.sb-plaque i:nth-of-type(2){right:14px;top:14px}
+.sb-plaque i:nth-of-type(3){left:14px;bottom:14px}.sb-plaque i:nth-of-type(4){right:14px;bottom:14px}
+.sb-plaque__name{font:500 2.5rem/1 var(--sb-serif);letter-spacing:.2em;text-transform:uppercase;padding-left:.2em}
+.sb-plaque__sub{margin-top:10px;font:500 .6875rem/1.4 var(--sb-sans);letter-spacing:.3em;text-transform:uppercase}
+.sb-plaque address{margin:20px 0 0;padding-top:18px;border-top:1px solid rgba(60,42,12,.4);box-shadow:inset 0 1px 0 rgba(255,238,196,.45);font:500 1.125rem/1.45 var(--sb-serif);font-style:normal}
+.sb-plaque table{width:100%;margin-top:18px;border-collapse:collapse;font:500 .8125rem/1.35 var(--sb-sans);letter-spacing:.1em;text-transform:uppercase}
+.sb-plaque caption{padding-bottom:8px;font:italic 500 1.0625rem/1.2 var(--sb-serif);letter-spacing:.02em;text-transform:none}
+.sb-plaque th,.sb-plaque td{padding:8px 0;border-top:1px solid rgba(60,42,12,.4);box-shadow:inset 0 1px 0 rgba(255,238,196,.35)}
+.sb-plaque th{text-align:left;font-weight:500}
+.sb-plaque td{text-align:right;white-space:nowrap;font-weight:600}
+.sb-plaque__ring{margin-top:16px;font:500 .625rem/1.5 var(--sb-sans);letter-spacing:.26em;text-transform:uppercase}
+.sb-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:start}
+.sb-tag{position:relative;min-width:0;padding-top:var(--sb-drop,56px)}
+.sb-tag::before{content:"";position:absolute;top:0;left:-8px;right:-8px;height:9px;border-radius:1px;background:linear-gradient(180deg,#f1e0b4 0%,#c9a769 38%,#84682f 100%);box-shadow:0 6px 12px rgba(0,0,0,.55)}
+.sb-tag:first-child::before{left:-14px;border-radius:5px 0 0 5px}
+.sb-tag:last-child::before{right:-14px;border-radius:0 5px 5px 0}
+.sb-tag__hang{position:relative;transform-origin:50% calc(var(--sb-drop,56px) * -1 + 5px);transform:rotate(var(--sb-tilt,0deg))}
+.sb-tag__string{position:absolute;z-index:2;left:50%;bottom:100%;width:16px;height:calc(var(--sb-drop,56px) + 25px);margin:0 0 -22px -8px;pointer-events:none}
+.sb-tag__string::before{content:"";position:absolute;left:50%;top:0;width:15px;height:15px;margin-left:-7.5px;border:2px solid #c9a769;border-radius:50%;box-shadow:0 2px 3px rgba(0,0,0,.6)}
+.sb-tag__string::after{content:"";position:absolute;left:50%;top:13px;bottom:0;width:1.5px;margin-left:-.75px;background:linear-gradient(180deg,#d8c7a0,#a8946a)}
+.sb-tag__card{position:relative;padding:1px;background:linear-gradient(160deg,#ecdcb4,#8f7443 45%,#d9bf8c);clip-path:polygon(24px 0,calc(100% - 24px) 0,100% 24px,100% 100%,0 100%,0 24px);filter:drop-shadow(0 18px 22px rgba(0,0,0,.6))}
+.sb-tag__in{position:relative;padding:46px 18px 22px;background:linear-gradient(180deg,#123229 0%,#0c211b 60%,#0a1b16 100%);clip-path:polygon(23.500px 0,calc(100% - 23.500px) 0,100% 23.500px,100% 100%,0 100%,0 23.500px)}
+.sb-tag__in::before{content:"";position:absolute;left:50%;top:12px;width:13px;height:13px;margin-left:-6.500px;border-radius:50%;background:#080606;box-shadow:0 0 0 3px #c9a769,0 0 0 4px rgba(0,0,0,.5),inset 0 2px 2px #000}
+.sb-tag__head{margin:0}
+.sb-tag__toggle{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;width:100%;padding:0;border:0;background:transparent;text-align:center;color:var(--sb-text);cursor:default}
+.sb-tag__no{font:400 2.75rem/1 var(--sb-serif);letter-spacing:-.01em;color:var(--sb-gold-pale)}
+.sb-tag__no small{margin-right:.14em;font-size:.42em;letter-spacing:.06em;vertical-align:.7em}
+.sb-tag__hint{font:500 .5625rem/1.3 var(--sb-sans);letter-spacing:.28em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-tag__title{margin-top:12px;padding-top:14px;border-top:1px dashed rgba(217,191,140,.42);font:500 .75rem/1.3 var(--sb-sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.sb-tag__toggle:disabled{color:var(--sb-text);opacity:1}
+.sb-tag__chev{display:none}
+.sb-tag__links{display:grid;gap:0;margin-top:10px;text-align:center}
+.sb-tag__links a{display:block;padding:8px 0;font-size:.9375rem;line-height:1.35;text-decoration:none;color:var(--sb-text);overflow-wrap:anywhere}
+.sb-tag__links a:hover,.sb-tag__links a:focus-visible{color:var(--accent);text-decoration:underline}
+.sb-tag__links small{display:block;font:500 .5625rem/1.3 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+@keyframes sb-swing{0%,100%{transform:rotate(var(--sb-tilt,0deg))}18%{transform:rotate(calc(var(--sb-tilt,0deg) + 2.8deg))}42%{transform:rotate(calc(var(--sb-tilt,0deg) - 2.1deg))}64%{transform:rotate(calc(var(--sb-tilt,0deg) + 1.2deg))}84%{transform:rotate(calc(var(--sb-tilt,0deg) - .5deg))}}
+.sb-tag:hover .sb-tag__hang,.sb-tag:focus-within .sb-tag__hang,.sb-tag.sb-is-swing .sb-tag__hang{animation:sb-swing 1.9s ease-in-out}
+.sb-legal{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 28px;align-items:center;margin-top:clamp(48px,6vw,88px);padding:20px 44px;border-radius:3px;color:#2a1c07;background-color:#b89755;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,rgba(255,255,255,0) 1px 3px),linear-gradient(175deg,#dcc388 0%,#b99857 45%,#a58444 100%);box-shadow:inset 0 0 0 1px rgba(255,240,200,.5),0 14px 30px -14px rgba(0,0,0,.9),0 2px 0 #5d4820;text-shadow:0 1px 0 rgba(255,238,196,.5);font:500 .75rem/1.6 var(--sb-sans);letter-spacing:.11em;text-transform:uppercase}
+.sb-legal::before,.sb-legal::after{content:"";position:absolute;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f6e9c8,#b08f4e 55%,#6e5628);box-shadow:inset 0 0 0 1px rgba(60,40,10,.5)}
+.sb-legal::before{left:16px}.sb-legal::after{right:16px}
+.sb-legal p{min-width:0}
+.sb-legal a{color:inherit;font-weight:600}
+.sb-legal__links{display:flex;flex-wrap:wrap;gap:4px 22px;justify-content:flex-end}
+.sb-legal__links a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.sb-fine{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:start;margin-top:26px}
+.sb-fine__notes{display:grid;gap:0;min-width:0;border-top:1px solid var(--sb-line-soft)}
+.sb-fine details{border-bottom:1px solid var(--sb-line-soft)}
+.sb-fine summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;cursor:pointer;list-style:none;font:500 .75rem/1.3 var(--sb-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sb-muted)}
+.sb-fine summary::-webkit-details-marker{display:none}
+.sb-fine summary::after{content:"+";font:400 1.25rem/1 var(--sb-sans);color:var(--accent)}
+.sb-fine details[open] summary::after{content:"−"}
+.sb-fine details p{max-width:60rem;padding:0 0 18px;font-size:.9375rem;line-height:1.6;color:var(--sb-muted)}
+.sb-totop{position:relative;display:grid;place-items:center;width:58px;height:58px;margin:4px 8px 0 0;border:0;border-radius:50%;color:#2a1c07;background:radial-gradient(circle at 35% 28%,#f8eccd 0%,#d2b272 40%,#8f7443 100%);box-shadow:0 0 0 6px #17110d,0 0 0 7px rgba(217,191,140,.55),0 12px 24px rgba(0,0,0,.7);transition:transform .2s ease,box-shadow .2s ease}
+.sb-totop:hover{transform:translateY(-3px)}
+.sb-totop:active{transform:scale(.94)}
+.sb-totop svg{width:20px;height:20px}
+@media (min-width:1200px){.sb-foot__scene{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}}
+@media (max-width:1199px){.sb-plaque{margin-inline:auto}}
+@media (max-width:999px) and (min-width:768px){
+  .sb-tags{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 16px}
+  .sb-tag:nth-child(2)::before{right:-14px;border-radius:0 5px 5px 0}
+  .sb-tag:nth-child(3)::before{left:-14px;border-radius:5px 0 0 5px}
+}
+@media (max-width:999px){
+  .sb-legal{grid-template-columns:minmax(0,1fr);padding:18px 40px}
+  .sb-legal__links{justify-content:flex-start}
+}
+/* Phones: the tags come off the rail and stack as accordions */
+@media (max-width:767px){
+  .sb-foot{padding-top:132px}
+  .sb-rope{height:120px}
+  .sb-rope__line{top:30px;height:66px}
+  .sb-plaque{padding:34px 24px 28px}
+  .sb-plaque__name{font-size:2.125rem}
+  .sb-tags{grid-template-columns:minmax(0,1fr);gap:10px}
+  .sb-tag{padding-top:0}
+  .sb-tag::before,.sb-tag__string{display:none}
+  .sb-tag__hang{transform:none;animation:none!important}
+  .sb-tag__card{clip-path:polygon(18px 0,100% 0,100% 100%,0 100%,0 18px);filter:none}
+  .sb-tag__in{padding:0;clip-path:polygon(17.500px 0,100% 0,100% 100%,0 100%,0 17.500px)}
+  .sb-tag__in::before{left:24px;top:50%;margin-top:-6.500px}
+  .sb-tag__in.sb-is-open::before{top:31px;margin-top:0}
+  .sb-tag__toggle{grid-template-columns:64px minmax(0,1fr) 24px;align-items:center;gap:12px;min-height:64px;padding:8px 18px 8px 50px;text-align:left;cursor:pointer}
+  .sb-tag__no{font-size:1.75rem;text-align:left}
+  .sb-tag__hint{display:none}
+  .sb-tag__title{margin:0;padding:0;border:0;font-size:.8125rem}
+  .sb-tag__chev{display:block;width:14px;height:14px;color:var(--accent);transition:transform .3s ease}
+  .sb-tag__toggle[aria-expanded="true"] .sb-tag__chev{transform:rotate(180deg)}
+  .sb-tag__links{margin:0;padding:0 18px 12px 50px;text-align:left;border-top:1px dashed rgba(217,191,140,.35)}
+  .sb-tag__links[hidden]{display:none}
+  .sb-tag__links a{min-height:44px;display:flex;flex-direction:column;justify-content:center;padding:6px 0}
+  .sb-legal{padding:18px 20px;font-size:.6875rem;letter-spacing:.08em}
+  .sb-legal::before,.sb-legal::after{display:none}
+  .sb-fine{grid-template-columns:minmax(0,1fr)}
+  .sb-totop{justify-self:end;margin:0 8px 0 0}
+}
+
+/* Phone action bar */
+.sb-dock{display:none}
+@media (max-width:767px){
+  .sb-dock{position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px var(--sb-gutter) calc(10px + env(safe-area-inset-bottom));background:rgba(6,5,5,.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--sb-line);transition:transform .35s ease,visibility .35s}
+  .sb-dock .sb-btn{min-height:48px;padding:0 .6em;font-size:.6875rem;letter-spacing:.15em}
+  .sb-dock.sb-is-away{transform:translateY(105%);visibility:hidden}
+}
+/*SB-CSS-MORE*/
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<a class="sb-skip" href="#sb-main">Skip to content</a>
+
+<header class="sb-head" id="sb-head" style="--accent:#d9bf8c">
+  <div class="sb-wrap sb-head__bar">
+    <a class="sb-logo" href="#sb-top" aria-label="Sablier, back to top">
+      <svg viewBox="0 0 18 28" aria-hidden="true"><path d="M1 1h16M1 27h16M3 1c0 8 6 9 6 13s-6 5-6 13M15 1c0 8-6 9-6 13s6 5 6 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.2 24 9 20l2.8 4z" fill="currentColor"/></svg>
+      <span>Sablier</span>
+    </a>
+    <nav class="sb-nav" aria-label="Primary">
+      <a href="#sb-whats-on">What’s on</a>
+      <a href="#sb-guest-list">Guest list</a>
+      <a href="#sb-tables">Tables</a>
+      <a href="#sb-venue">The venue</a>
+      <a href="#sb-door">Your night</a>
+      <a href="#sb-hire">Private hire</a>
+    </nav>
+    <a class="sb-head__tel" href="tel:+442079460321">020 7946 0321</a>
+    <a class="sb-btn sb-head__cta" href="#sb-tables"><span class="sb-cta-full">Book a table</span><span class="sb-cta-short" aria-hidden="true">Tables</span></a>
+    <button class="sb-burger" id="sb-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sb-menu"><span></span></button>
+  </div>
+</header>
+
+<div class="sb-menu" id="sb-menu" role="dialog" aria-modal="true" aria-label="Site menu" style="--accent:#d9bf8c">
+  <div class="sb-wrap sb-menu__top">
+    <a class="sb-logo" href="#sb-top" data-sb-close aria-label="Sablier, back to top">
+      <svg viewBox="0 0 18 28" aria-hidden="true"><path d="M1 1h16M1 27h16M3 1c0 8 6 9 6 13s-6 5-6 13M15 1c0 8-6 9-6 13s6 5 6 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.2 24 9 20l2.8 4z" fill="currentColor"/></svg>
+      <span>Sablier</span>
+    </a>
+    <button class="sb-menu__close" id="sb-menu-close" type="button" aria-label="Close menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+  </div>
+  <nav class="sb-wrap sb-menu__nav" aria-label="Menu">
+    <a href="#sb-whats-on" data-sb-close><span>I</span>What’s on</a>
+    <a href="#sb-guest-list" data-sb-close><span>II</span>Guest list</a>
+    <a href="#sb-tables" data-sb-close><span>III</span>Tables</a>
+    <a href="#sb-venue" data-sb-close><span>IV</span>The venue</a>
+    <a href="#sb-door" data-sb-close><span>V</span>Door policy &amp; welfare</a>
+    <a href="#sb-travel" data-sb-close><span>VI</span>Getting here</a>
+    <a href="#sb-hire" data-sb-close><span>VII</span>Private hire</a>
+  </nav>
+  <div class="sb-wrap sb-menu__foot">
+    <a class="sb-btn" href="#sb-tables" data-sb-close>Book a table</a>
+    <a class="sb-btn sb-btn--ghost" href="#sb-guest-list" data-sb-close>Join the guest list</a>
+    <p>Reservations <a href="tel:+442079460347">020 7946 0347</a> · Wed to Sat, doors 22:00, last entry 01:00</p>
+  </div>
+</div>
+
+<main id="sb-main">
+
+<section class="sb-hero" id="sb-hero" style="--accent:#d9bf8c" aria-labelledby="sb-hero-title">
+  <span id="sb-top"></span>
+  <div class="sb-hero__stage" aria-hidden="true">
+    <canvas class="sb-hero__gl" id="sb-gl"></canvas>
+    <div class="sb-hero__flat"><canvas id="sb-dial" width="1024" height="1024"></canvas></div>
+  </div>
+  <div class="sb-hero__scrim" aria-hidden="true"></div>
+  <div class="sb-wrap sb-hero__inner">
+    <div class="sb-hero__copy" id="sb-hero-copy">
+      <p class="sb-strap">Mayfair, London W1</p>
+      <h1 id="sb-hero-title">Five hours, <em>beautifully</em> spent.</h1>
+      <p class="sb-hero__sub">Cocktails, table service and DJs in a candlelit basement off Mount Row, with live sax and percussion every Thursday.</p>
+      <div class="sb-hero__ctas">
+        <a class="sb-btn" href="#sb-tables">Book a table</a>
+        <a class="sb-btn sb-btn--ghost" href="#sb-guest-list">Join the guest list</a>
+      </div>
+      <dl class="sb-facts" aria-label="Tonight at Sablier">
+        <div><dt>Tonight</dt><dd id="sb-fact-status">Wed to Sat</dd></div>
+        <div><dt>Doors</dt><dd>22:00</dd></div>
+        <div><dt>Last entry</dt><dd>01:00</dd></div>
+        <div><dt>Entry</dt><dd>18+ with ID</dd></div>
+      </dl>
+    </div>
+  </div>
+  <p class="sb-vh" id="sb-clock-sr">The dial behind this heading is a live clock set to London time. Doors open at 22:00, last entry is 01:00 and we close at 03:00, Wednesday to Saturday.</p>
+  <button class="sb-motion" id="sb-motion" type="button" aria-pressed="false" aria-label="Pause hero motion">
+    <svg class="sb-ico-pause" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2h3v10H3zM8 2h3v10H8z" fill="currentColor"/></svg>
+    <svg class="sb-ico-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5l9 5.5-9 5.5z" fill="currentColor"/></svg>
+    <span id="sb-motion-label">Pause motion</span>
+  </button>
+</section>
+
+<section class="sb-sec" id="sb-whats-on" style="--accent:#d9bf8c" aria-labelledby="sb-on-title">
+  <div class="sb-wrap sb-split" data-sb-split>
+    <div class="sb-pin">
+      <p class="sb-strap">What’s on</p>
+      <h2 class="sb-h2" id="sb-on-title">Four nights a week, <em>each at its own tempo.</em></h2>
+      <p class="sb-lede">The week builds from a slow Wednesday of soul on vinyl to a full room on Saturday. Every night runs 22:00 to 03:00 in the Salon, with the Vault Bar open for a quieter drink.</p>
+      <div class="sb-chips sb-on__chips" role="group" aria-label="Filter the programme">
+        <button class="sb-chip" type="button" aria-pressed="true" data-sb-filter="all">All nights</button>
+        <button class="sb-chip" type="button" aria-pressed="false" data-sb-filter="live">Live music</button>
+        <button class="sb-chip" type="button" aria-pressed="false" data-sb-filter="house">House</button>
+        <button class="sb-chip" type="button" aria-pressed="false" data-sb-filter="soul">Soul &amp; disco</button>
+        <button class="sb-chip" type="button" aria-pressed="false" data-sb-filter="weekend">Fri &amp; Sat</button>
+      </div>
+      <p class="sb-on__count" id="sb-on-count" role="status">Showing the next eight nights.</p>
+    </div>
+    <div>
+      <ol class="sb-prog" id="sb-prog" aria-label="Upcoming nights">
+        <li class="sb-night"><div class="sb-night__date"><span class="sb-night__dow">Every</span><span class="sb-night__day">W</span><span class="sb-night__mon">Wed</span></div><div><p class="sb-night__kicker">Soul &amp; disco · The Salon</p><h3 class="sb-night__name">Half Measures</h3><p class="sb-night__line">Vinyl-only soul, boogie and slow disco with Odette Marlowe and Kit Ravel.</p></div><div class="sb-night__act"><a class="sb-btn sb-btn--sm" href="#sb-guest-list">Guest list</a></div></li>
+        <li class="sb-night"><div class="sb-night__date"><span class="sb-night__dow">Every</span><span class="sb-night__day">T</span><span class="sb-night__mon">Thu</span></div><div><p class="sb-night__kicker">Live sax &amp; percussion · The Salon</p><h3 class="sb-night__name">Brass &amp; Velvet</h3><p class="sb-night__line">Inès Calder on the decks, Leo Adeyemi on saxophone, Tomasz Bell on percussion.</p></div><div class="sb-night__act"><a class="sb-btn sb-btn--sm" href="#sb-guest-list">Guest list</a></div></li>
+        <li class="sb-night"><div class="sb-night__date"><span class="sb-night__dow">Every</span><span class="sb-night__day">F</span><span class="sb-night__mon">Fri</span></div><div><p class="sb-night__kicker">House · The Salon</p><h3 class="sb-night__name">Quartz</h3><p class="sb-night__line">Deep and vocal house with Marcus Vale and Sunni Okafor.</p></div><div class="sb-night__act"><a class="sb-btn sb-btn--sm" href="#sb-guest-list">Guest list</a></div></li>
+        <li class="sb-night"><div class="sb-night__date"><span class="sb-night__dow">Every</span><span class="sb-night__day">S</span><span class="sb-night__mon">Sat</span></div><div><p class="sb-night__kicker">House &amp; disco · The Salon</p><h3 class="sb-night__name">Grand Reserve</h3><p class="sb-night__line">House and disco edits with Delphine Roux and Harlan Pike.</p></div><div class="sb-night__act"><a class="sb-btn sb-btn--sm" href="#sb-guest-list">Guest list</a></div></li>
+      </ol>
+      <p class="sb-prog__note">Dates are generated from today’s date. Night names, DJs and musicians on this page are invented for the demonstration.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec sb-sec--green" id="sb-live" style="--accent:#ecdcb4" aria-labelledby="sb-live-title">
+  <div class="sb-wrap sb-live__grid">
+    <div class="sb-live__media">
+      <figure class="sb-arch">
+        <img src="https://images.unsplash.com/photo-1708689792969-9edab5fdfcaa?auto=format&fit=crop&ar=4:5&w=800&q=72" srcset="https://images.unsplash.com/photo-1708689792969-9edab5fdfcaa?auto=format&fit=crop&ar=4:5&w=480&q=70 480w, https://images.unsplash.com/photo-1708689792969-9edab5fdfcaa?auto=format&fit=crop&ar=4:5&w=800&q=72 800w, https://images.unsplash.com/photo-1708689792969-9edab5fdfcaa?auto=format&fit=crop&ar=4:5&w=1100&q=72 1100w" sizes="(min-width:1000px) 36vw, (min-width:520px) 440px, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="A saxophonist in a pale suit holding a brass saxophone at his side, lit from one side in a dark room">
+      </figure>
+      <div class="sb-live__inset">
+        <img src="https://images.unsplash.com/photo-1590920212394-a92a59d15f7f?auto=format&fit=crop&ar=1:1&crop=bottom&w=420&q=70" srcset="https://images.unsplash.com/photo-1590920212394-a92a59d15f7f?auto=format&fit=crop&ar=1:1&crop=bottom&w=240&q=70 240w, https://images.unsplash.com/photo-1590920212394-a92a59d15f7f?auto=format&fit=crop&ar=1:1&crop=bottom&w=420&q=70 420w" sizes="(min-width:1000px) 15vw, 180px" width="420" height="420" loading="lazy" decoding="async" alt="A DJ’s hand on a mixer in low light">
+      </div>
+    </div>
+    <div>
+      <p class="sb-strap">Thursdays, live</p>
+      <h2 class="sb-h2" id="sb-live-title">Brass &amp; Velvet: <em>a saxophone, two congas</em> and a DJ who leaves room for both.</h2>
+      <p class="sb-lede">On Thursdays the booth shares the room. Three short live sets are played from the floor, not a stage, so the sax might start at your table and finish by the bar.</p>
+      <ol class="sb-sets" aria-label="Thursday running order">
+        <li>
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="20" cy="20" r="18" stroke-width="1"/><path d="M20 4v3" stroke-width="1.6"/><path d="M20 20v-9" stroke-width="1.8" transform="rotate(300 20 20)"/><path d="M20 20V7" stroke-width="1.2"/></svg>
+          <div><b>22:00</b><span>Doors, DJ warm-up</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="20" cy="20" r="18" stroke-width="1"/><path d="M20 4v3" stroke-width="1.6"/><path d="M20 20v-9" stroke-width="1.8" transform="rotate(337.5 20 20)"/><path d="M20 20V7" stroke-width="1.2" transform="rotate(90 20 20)"/></svg>
+          <div><b>23:15</b><span>First live set</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="20" cy="20" r="18" stroke-width="1"/><path d="M20 4v3" stroke-width="1.6"/><path d="M20 20v-9" stroke-width="1.8" transform="rotate(15 20 20)"/><path d="M20 20V7" stroke-width="1.2" transform="rotate(180 20 20)"/></svg>
+          <div><b>00:30</b><span>Second set</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="20" cy="20" r="18" stroke-width="1"/><path d="M20 4v3" stroke-width="1.6"/><path d="M20 20v-9" stroke-width="1.8" transform="rotate(52.5 20 20)"/><path d="M20 20V7" stroke-width="1.2" transform="rotate(270 20 20)"/></svg>
+          <div><b>01:45</b><span>Last set, then DJ to close</span></div>
+        </li>
+      </ol>
+      <a class="sb-btn" href="#sb-guest-list" data-sb-night="4">Thursday guest list</a>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec sb-sec--coal" id="sb-guest-list" style="--accent:#d9bf8c" aria-labelledby="sb-gl-title">
+  <div class="sb-wrap sb-split" data-sb-split>
+    <div class="sb-pin">
+      <p class="sb-strap">Guest list</p>
+      <h2 class="sb-h2" id="sb-gl-title">Your name, <em>on the door.</em></h2>
+      <p class="sb-lede">Guest list places are sold per person in three releases. The price you see is the price you pay: every price includes the booking fee.</p>
+      <ul class="sb-ticks">
+        <li>Arrive before last entry at 01:00. Early release is valid until 23:30.</li>
+        <li>Bring photo ID that matches the name on the booking.</li>
+        <li>Full refund up to 48 hours before doors, and free name changes until 18:00 on the day.</li>
+        <li>More than eight of you? <a class="sb-link" href="#sb-tables">Book a table</a> instead.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="sb-flow" id="sb-flow" data-sb-dock-hide>
+        <ol class="sb-flow__steps" id="sb-flow-steps" aria-label="Guest list booking steps">
+          <li aria-current="step"><b>i</b>Night</li>
+          <li><b>ii</b>Entry</li>
+          <li><b>iii</b>Guests</li>
+          <li><b>iv</b>Details</li>
+          <li><b>v</b>Payment</li>
+        </ol>
+        <form id="sb-flow-form" novalidate>
+          <div class="sb-errsum" id="sb-flow-errs" role="alert" tabindex="-1"></div>
+
+          <div class="sb-step" data-step="1">
+            <h3 class="sb-step__title" tabindex="-1">Choose your night</h3>
+            <p class="sb-step__hint">The next eight nights. Doors 22:00, last entry 01:00.</p>
+            <fieldset class="sb-opts" id="sb-flow-nights"><legend class="sb-vh">Night</legend></fieldset>
+          </div>
+
+          <div class="sb-step" data-step="2" hidden>
+            <h3 class="sb-step__title" tabindex="-1">Choose your entry</h3>
+            <p class="sb-step__hint" id="sb-flow-tier-hint">Price per guest. Every price includes the booking fee.</p>
+            <fieldset class="sb-opts sb-opts--one" id="sb-flow-tiers"><legend class="sb-vh">Entry release</legend></fieldset>
+          </div>
+
+          <div class="sb-step" data-step="3" hidden>
+            <h3 class="sb-step__title" tabindex="-1">How many guests?</h3>
+            <p class="sb-step__hint">Up to eight on one booking. Everyone needs their own ID.</p>
+            <div class="sb-qty" role="group" aria-label="Number of guests">
+              <button type="button" id="sb-qty-minus" aria-label="One guest fewer">−</button>
+              <output id="sb-qty-out" aria-live="polite">2</output>
+              <button type="button" id="sb-qty-plus" aria-label="One guest more">+</button>
+            </div>
+          </div>
+
+          <div class="sb-step" data-step="4" hidden>
+            <h3 class="sb-step__title" tabindex="-1">Your details</h3>
+            <p class="sb-step__hint">We use these to send your confirmation and to check you in at the door. See our <a class="sb-link" href="#sb-privacy">privacy notice</a>.</p>
+            <div class="sb-form__grid">
+              <div class="sb-field"><label for="sb-gl-name">Full name</label><input class="sb-input" id="sb-gl-name" name="name" type="text" autocomplete="name" aria-describedby="sb-gl-name-err"><p class="sb-field__err" id="sb-gl-name-err"></p></div>
+              <div class="sb-field"><label for="sb-gl-email">Email</label><input class="sb-input" id="sb-gl-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="sb-gl-email-err"><p class="sb-field__err" id="sb-gl-email-err"></p></div>
+            </div>
+          </div>
+
+          <div class="sb-step" data-step="5" hidden>
+            <h3 class="sb-step__title" tabindex="-1">Next: payment</h3>
+            <p class="sb-pay">You would now go to our secure payment page. Nothing has been charged.</p>
+            <p class="sb-step__hint">This is a demonstration, so no booking has been made and no email has been sent.</p>
+          </div>
+
+          <dl class="sb-sum" id="sb-flow-sum" hidden></dl>
+
+          <div class="sb-flow__nav">
+            <button class="sb-btn sb-btn--ghost" type="button" id="sb-flow-back" hidden>Back</button>
+            <p class="sb-flow__running" id="sb-flow-running" aria-live="polite"></p>
+            <button class="sb-btn" type="submit" id="sb-flow-next">Continue</button>
+          </div>
+        </form>
+        <noscript><p class="sb-small">Booking needs JavaScript. You can also email <a class="sb-link" href="mailto:guestlist@sablier.example">guestlist@sablier.example</a>.</p></noscript>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec sb-sec--ox" id="sb-tables" style="--accent:#e3c2a2" aria-labelledby="sb-tb-title">
+  <div class="sb-wrap sb-split sb-split--wide-left" data-sb-split>
+    <div>
+      <p class="sb-strap">Tables</p>
+      <h2 class="sb-h2" id="sb-tb-title">A table is <em>the whole night,</em> looked after.</h2>
+      <p class="sb-lede">Your own host, a reserved table from the time you choose until close, and no queue: table guests use the side door on Quill Yard. Every table has a minimum spend, and we state it here before you ask.</p>
+      <figure class="sb-tb__photo">
+        <img src="https://images.unsplash.com/photo-1552850628-bdb2e1c0fe80?auto=format&fit=crop&ar=16:9&w=1100&q=72" srcset="https://images.unsplash.com/photo-1552850628-bdb2e1c0fe80?auto=format&fit=crop&ar=16:9&w=640&q=70 640w, https://images.unsplash.com/photo-1552850628-bdb2e1c0fe80?auto=format&fit=crop&ar=16:9&w=1100&q=72 1100w, https://images.unsplash.com/photo-1552850628-bdb2e1c0fe80?auto=format&fit=crop&ar=16:9&w=1600&q=72 1600w" sizes="(min-width:1200px) 54vw, 94vw" width="1100" height="619" loading="lazy" decoding="async" alt="A booth upholstered in deep red buttoned velvet with a small table laid with folded napkins">
+        <figcaption>An alcove on the east wall</figcaption>
+      </figure>
+      <div class="sb-carte" role="list" aria-label="Table types and minimum spend">
+        <div class="sb-carte__row" role="listitem">
+          <h3 class="sb-carte__name">The Alcove</h3>
+          <p class="sb-carte__price"><small>from</small>£750</p>
+          <p class="sb-carte__desc"><b>Up to 6 guests.</b> Curtained corner booths along the east wall, a little away from the floor. From £750 on Wednesday and Thursday, from £1,000 on Friday and Saturday.</p>
+        </div>
+        <div class="sb-carte__row" role="listitem">
+          <h3 class="sb-carte__name">The Banquette</h3>
+          <p class="sb-carte__price"><small>from</small>£1,500</p>
+          <p class="sb-carte__desc"><b>Up to 10 guests.</b> The long velvet run facing the booth, with the best view of the room. From £1,500 midweek, from £2,000 at the weekend.</p>
+        </div>
+        <div class="sb-carte__row" role="listitem">
+          <h3 class="sb-carte__name">Stage-side</h3>
+          <p class="sb-carte__price"><small>from</small>£3,000</p>
+          <p class="sb-carte__desc"><b>Up to 14 guests.</b> Two tables either side of the DJ booth, where the saxophone starts on Thursdays. From £3,000 midweek, from £4,000 at the weekend.</p>
+        </div>
+      </div>
+      <div class="sb-tb__how">
+        <h3 class="sb-h3">How minimum spend and deposits work</h3>
+        <ol class="sb-dep">
+          <li><i>i.</i><b>Minimum spend</b><span>The least your table agrees to spend on drinks across the night. It is not a fee on top: everything you order counts towards it.</span></li>
+          <li><i>ii.</i><b>Deposit</b><span>20% of the minimum spend holds the table. We take it by secure payment link after we have spoken to you, never on this page.</span></li>
+          <li><i>iii.</i><b>On the night</b><span>Your deposit comes off the bill. Cancel 48 hours or more before doors and it is refunded in full.</span></li>
+        </ol>
+        <p class="sb-small sb-tb__note">A discretionary 13.5% service charge is added to table bills and goes to the team in full. Parties larger than 14 are best as a <a class="sb-link" href="#sb-hire">private hire</a>.</p>
+      </div>
+    </div>
+    <div class="sb-pin">
+      <div class="sb-card" id="sb-table-card" data-sb-dock-hide>
+        <h3 class="sb-h3" id="sb-tb-form-title">Table enquiry</h3>
+        <p class="sb-small" style="margin-top:6px">No payment is taken on this page. We reply within one working day.</p>
+        <form class="sb-form" id="sb-table-form" novalidate aria-labelledby="sb-tb-form-title">
+          <div class="sb-errsum" id="sb-tb-errs" role="alert" tabindex="-1"></div>
+          <div class="sb-form__grid">
+            <div class="sb-field"><label for="sb-tb-night">Night</label><select class="sb-input" id="sb-tb-night" name="night" aria-describedby="sb-tb-night-err"><option value="">Choose a night</option></select><p class="sb-field__err" id="sb-tb-night-err"></p></div>
+            <div class="sb-field"><label for="sb-tb-table">Table</label><select class="sb-input" id="sb-tb-table" name="table" aria-describedby="sb-tb-table-err"><option value="">Choose a table</option><option value="alcove">The Alcove (up to 6)</option><option value="banquette">The Banquette (up to 10)</option><option value="stage">Stage-side (up to 14)</option></select><p class="sb-field__err" id="sb-tb-table-err"></p></div>
+            <div class="sb-field"><label for="sb-tb-guests">Guests</label><input class="sb-input" id="sb-tb-guests" name="guests" type="number" inputmode="numeric" min="2" max="14" step="1" placeholder="2 to 14" aria-describedby="sb-tb-guests-err"><p class="sb-field__err" id="sb-tb-guests-err"></p></div>
+            <div class="sb-field"><label for="sb-tb-arrive">Arrival time</label><select class="sb-input" id="sb-tb-arrive" name="arrive"><option>22:00</option><option>22:30</option><option selected>23:00</option><option>23:30</option><option>00:00</option><option>00:30</option></select></div>
+            <div class="sb-field"><label for="sb-tb-name">Full name</label><input class="sb-input" id="sb-tb-name" name="name" type="text" autocomplete="name" aria-describedby="sb-tb-name-err"><p class="sb-field__err" id="sb-tb-name-err"></p></div>
+            <div class="sb-field"><label for="sb-tb-phone">Phone</label><input class="sb-input" id="sb-tb-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="07700 900000" aria-describedby="sb-tb-phone-err"><p class="sb-field__err" id="sb-tb-phone-err"></p></div>
+            <div class="sb-field"><label for="sb-tb-email">Email</label><input class="sb-input" id="sb-tb-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="sb-tb-email-err"><p class="sb-field__err" id="sb-tb-email-err"></p></div>
+            <div class="sb-field"><label for="sb-tb-occasion">Occasion (optional)</label><select class="sb-input" id="sb-tb-occasion" name="occasion"><option value="">A night out</option><option>Birthday</option><option>Celebration</option><option>Entertaining clients</option><option>Something else</option></select></div>
+          </div>
+          <p class="sb-quote" id="sb-tb-quote" role="status">Choose a night and a table to see the minimum spend and deposit.</p>
+          <label class="sb-check" id="sb-tb-consent-wrap"><input type="checkbox" id="sb-tb-consent" name="consent" aria-describedby="sb-tb-consent-err"><span>I agree to Sablier using these details to reply to this enquiry. <a class="sb-link" href="#sb-privacy">Privacy notice</a>.</span><span class="sb-field__err" id="sb-tb-consent-err"></span></label>
+          <label class="sb-check"><input type="checkbox" id="sb-tb-news" name="news"><span>Email me about future nights. Optional, and you can unsubscribe at any time.</span></label>
+          <button class="sb-btn" type="submit">Send enquiry</button>
+        </form>
+        <div class="sb-done" id="sb-tb-done" tabindex="-1" hidden>
+          <svg viewBox="0 0 18 28" aria-hidden="true"><path d="M1 1h16M1 27h16M3 1c0 8 6 9 6 13s-6 5-6 13M15 1c0 8-6 9-6 13s6 5 6 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.2 24 9 20l2.8 4z" fill="currentColor"/></svg>
+          <h3 class="sb-h3" id="sb-tb-done-title">Thank you. Your enquiry is noted.</h3>
+          <p id="sb-tb-done-text"></p>
+          <p class="sb-small">This is a demonstration, so nothing was sent and no payment has been taken.</p>
+          <button class="sb-btn sb-btn--ghost" type="button" id="sb-tb-again">Make another enquiry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec" id="sb-venue" style="--accent:#cdab6b" aria-labelledby="sb-venue-title">
+  <div class="sb-wrap">
+    <div class="sb-venue__head">
+      <div>
+        <p class="sb-strap">The venue</p>
+        <h2 class="sb-h2" id="sb-venue-title">Three rooms under a Mayfair townhouse, <em>22 steps down.</em></h2>
+      </div>
+      <p class="sb-lede">Sablier holds 320 people across a main room, a vaulted bar and a private cellar. It was built for sitting down as much as for dancing, so every room has somewhere to land.</p>
+    </div>
+    <div class="sb-rooms">
+      <article class="sb-room">
+        <figure class="sb-arch">
+          <img src="https://images.unsplash.com/photo-1761208229358-3cd53fcfa70d?auto=format&fit=crop&ar=3:4&w=720&q=72" srcset="https://images.unsplash.com/photo-1761208229358-3cd53fcfa70d?auto=format&fit=crop&ar=3:4&w=420&q=70 420w, https://images.unsplash.com/photo-1761208229358-3cd53fcfa70d?auto=format&fit=crop&ar=3:4&w=720&q=72 720w, https://images.unsplash.com/photo-1761208229358-3cd53fcfa70d?auto=format&fit=crop&ar=3:4&w=1000&q=72 1000w" sizes="(min-width:1000px) 30vw, (min-width:768px) 46vw, 92vw" width="720" height="960" loading="lazy" decoding="async" alt="A curved banquette beneath a softly lit painted mural, with glasses set out on a low table">
+        </figure>
+        <div class="sb-room__cap"><h3>The Salon</h3><span>220 guests</span></div>
+        <p>The main room: the DJ booth, eleven tables on two levels and a painted mural that runs the length of the back wall.</p>
+      </article>
+      <article class="sb-room">
+        <figure class="sb-arch">
+          <img src="https://images.unsplash.com/photo-1578911489158-334e5cd2a051?auto=format&fit=crop&ar=3:4&w=720&q=72" srcset="https://images.unsplash.com/photo-1578911489158-334e5cd2a051?auto=format&fit=crop&ar=3:4&w=420&q=70 420w, https://images.unsplash.com/photo-1578911489158-334e5cd2a051?auto=format&fit=crop&ar=3:4&w=720&q=72 720w, https://images.unsplash.com/photo-1578911489158-334e5cd2a051?auto=format&fit=crop&ar=3:4&w=1000&q=72 1000w" sizes="(min-width:1000px) 30vw, (min-width:768px) 46vw, 92vw" width="720" height="960" loading="lazy" decoding="async" alt="Three people in silhouette at a softly lit bar beneath a mirror ball and strings of bulbs">
+        </figure>
+        <div class="sb-room__cap"><h3>The Vault Bar</h3><span>60 guests</span></div>
+        <p>The old wine vault, now a cocktail bar with twelve stools. The music is the same as next door, two notches quieter.</p>
+      </article>
+      <article class="sb-room">
+        <figure class="sb-arch">
+          <img src="https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&ar=3:4&w=720&q=72" srcset="https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&ar=3:4&w=420&q=70 420w, https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&ar=3:4&w=720&q=72 720w, https://images.unsplash.com/photo-1550520293-d34b3f2e116d?auto=format&fit=crop&ar=3:4&w=1000&q=72 1000w" sizes="(min-width:1000px) 30vw, (min-width:768px) 46vw, 92vw" width="720" height="960" loading="lazy" decoding="async" alt="Two buttoned leather banquettes facing each other across a small table under a single wall lamp">
+        </figure>
+        <div>
+          <div class="sb-room__cap"><h3>The Cellar</h3><span>40 guests</span></div>
+          <p>A private room with its own bar, host and door. Hire it on its own, or as the back room of a bigger party.</p>
+        </div>
+      </article>
+    </div>
+    <dl class="sb-stats">
+      <div><dt>Licensed capacity</dt><dd>320</dd></div>
+      <div><dt>Tables and booths</dt><dd>14</dd></div>
+      <div><dt>Steps down from the street</dt><dd>22</dd></div>
+      <div><dt>Last orders at the bar</dt><dd>02:40</dd></div>
+    </dl>
+    <div class="sb-sound">
+      <figure class="sb-sound__photo">
+        <img src="https://images.unsplash.com/photo-1739295194982-48c86939c1d8?auto=format&fit=crop&ar=3:2&w=1100&q=72" srcset="https://images.unsplash.com/photo-1739295194982-48c86939c1d8?auto=format&fit=crop&ar=3:2&w=640&q=70 640w, https://images.unsplash.com/photo-1739295194982-48c86939c1d8?auto=format&fit=crop&ar=3:2&w=1100&q=72 1100w, https://images.unsplash.com/photo-1739295194982-48c86939c1d8?auto=format&fit=crop&ar=3:2&w=1600&q=72 1600w" sizes="(min-width:1000px) 54vw, 94vw" width="1100" height="733" loading="lazy" decoding="async" alt="Guests seated in low armchairs facing a long bar with arched, back-lit shelves">
+      </figure>
+      <div>
+        <h3 class="sb-h3">Loud on the floor, easy at the table</h3>
+        <dl>
+          <div><dt>Sound</dt><dd>A four-point system tuned by ear to this room, with the bass built into the banquette plinths. It averages 96 dB on the floor and far less where you sit.</dd></div>
+          <div><dt>Light</dt><dd>Candles, picture lights and one mirror ball. Haze and moving light after midnight, in the Salon only.</dd></div>
+          <div><dt>Air</dt><dd>Full fresh-air ventilation and cooling in all three rooms, because it is a basement and we know it.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec sb-sec--coal" id="sb-door" style="--accent:#d9bf8c" aria-labelledby="sb-door-title">
+  <div class="sb-wrap sb-split" data-sb-split>
+    <div class="sb-pin">
+      <p class="sb-strap">Door policy &amp; house rules</p>
+      <h2 class="sb-h2" id="sb-door-title">A calm door makes <em>a better night.</em></h2>
+      <p class="sb-lede">Entry is by guest list or table booking. If there is room we welcome walk-ins too, at the door team’s discretion. These are the rules they work to, so nobody is surprised on the pavement.</p>
+      <div class="sb-door__aside">
+        <figure class="sb-arch">
+          <img src="https://images.unsplash.com/photo-1763656070600-b67cd4f2908a?auto=format&fit=crop&ar=3:4&w=320&q=70" srcset="https://images.unsplash.com/photo-1763656070600-b67cd4f2908a?auto=format&fit=crop&ar=3:4&w=320&q=70 320w, https://images.unsplash.com/photo-1763656070600-b67cd4f2908a?auto=format&fit=crop&ar=3:4&w=480&q=70 480w" sizes="150px" width="320" height="427" loading="lazy" decoding="async" alt="A dark stairwell with a single velvet chair at the foot of the stairs">
+        </figure>
+        <p>“Good evening. Guest list or table?”<small>What you will be asked at the door</small></p>
+      </div>
+    </div>
+    <ol class="sb-rules">
+      <li class="sb-rule"><h3>Over 18s only</h3><p>Sablier is strictly over 18, every night, including table guests and private parties.</p></li>
+      <li class="sb-rule"><h3>Challenge 25</h3><p>If you look under 25 you will be asked for ID. We accept <b>a passport, a photocard driving licence or a card with the PASS hologram</b>. Photos, screenshots and photocopies of ID are not accepted.</p></li>
+      <li class="sb-rule"><h3>The door team</h3><p>Our door team are SIA licensed. Searches are a condition of entry, and the management reserves the right of admission.</p></li>
+      <li class="sb-rule"><h3>Dress code: smart</h3><p>Dress for a night in Mayfair: tailoring, dresses, shirts, smart shoes or clean leather trainers. <b>No sportswear and no caps.</b> If you are unsure, ask us before you travel.</p></li>
+      <li class="sb-rule"><h3>Last entry and re-entry</h3><p>Last entry is <b>01:00</b> for everyone, guest list and tables included. There is no re-entry after 01:00. Before then, the smoking terrace on Quill Yard is inside our cordon, so you never leave the venue to use it.</p></li>
+      <li class="sb-rule"><h3>Zero tolerance</h3><p>No drugs, no harassment and no discrimination of any kind. Anyone involved is removed and refused future entry, and we involve the police where the law requires it.</p></li>
+      <li class="sb-rule"><h3>Service is our call</h3><p>We do not serve anyone who appears drunk, and we may suggest a glass of water and a seat. It is the law, and it is also good manners.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sb-sec sb-sec--green" id="sb-welfare" style="--accent:#ecdcb4" aria-labelledby="sb-welfare-title">
+  <div class="sb-wrap">
+    <p class="sb-strap">Safety &amp; welfare</p>
+    <h2 class="sb-h2" id="sb-welfare-title">Looked after, <em>from the stairs to the taxi.</em></h2>
+    <p class="sb-lede">Every member of staff is trained to help, and two of them do nothing else all night.</p>
+    <div class="sb-care">
+      <article class="sb-care__item">
+        <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M5 6h24v17H16l-7 6v-6H5z"/><path d="M13 19l4-9 4 9M14.5 16h5"/></svg>
+        <h3>Ask for Angela</h3>
+        <p>If you feel unsafe, uncomfortable or threatened, ask any member of staff for Angela. They will take you somewhere private and help you get home or get help, without a fuss.</p>
+      </article>
+      <article class="sb-care__item">
+        <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M17 29S5 21.5 5 13a6.5 6.5 0 0 1 12-3.4A6.5 6.5 0 0 1 29 13c0 8.500-12 16-12 16z"/><path d="M17 14v7M13.500 17.500h7"/></svg>
+        <h3>Welfare team and the quiet room</h3>
+        <p>Two trained welfare staff are on the floor every night, in champagne-coloured armbands. The quiet room beside the cloakroom has seating, water and phone chargers.</p>
+      </article>
+      <article class="sb-care__item">
+        <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M7 9h20c0 6-4 10-10 10S7 15 7 9zM17 19v9M11 28h12"/><path d="M5 5h24"/></svg>
+        <h3>If you think a drink was spiked</h3>
+        <p>Tell a member of staff straight away and stay with someone you trust. We keep the drink, get medical help and support you in reporting it. <b>In an emergency call 999. To report it afterwards, call 101.</b></p>
+      </article>
+      <article class="sb-care__item">
+        <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M17 4s9 10 9 16.500a9 9 0 0 1-18 0C8 14 17 4 17 4z"/><path d="M12.500 21a4.500 4.500 0 0 0 4 4"/></svg>
+        <h3>Free tap water</h3>
+        <p>Free tap water at every bar, at any time of night. You never need to buy a drink to ask for it.</p>
+      </article>
+      <article class="sb-care__item">
+        <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M5 14v6M10 10v14M15 6v22M20 11v12M25 14v6M30 16v2"/></svg>
+        <h3>Earplugs, strobe and haze</h3>
+        <p>Free earplugs at the cloakroom and both bars. We use haze, moving lights and occasional strobe lighting, mainly after midnight in the Salon.</p>
+      </article>
+      <article class="sb-care__item">
+        <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M4 8h26v18H4z"/><path d="M4 9l13 10L30 9"/></svg>
+        <h3>Tell us afterwards</h3>
+        <p>Something not right about your night? Email <a class="sb-link" href="mailto:welfare@sablier.example">welfare@sablier.example</a>. Every report is logged, read by the general manager and answered.</p>
+      </article>
+    </div>
+    <div class="sb-access" id="sb-access">
+      <div>
+        <h3 class="sb-h3">Accessibility</h3>
+        <ul class="sb-access__list">
+          <li><b>Step-free route</b><span>The side door on Quill Yard has a platform lift to basement level, then level access to the Salon, the Vault Bar and the cloakroom.</span></li>
+          <li><b>Toilets</b><span>A wheelchair-accessible toilet beside the lift, kept unlocked and checked every half hour.</span></li>
+          <li><b>Personal assistants</b><span>A free place for your personal assistant with any guest list or table booking.</span></li>
+          <li><b>Seating and dogs</b><span>We will hold a seat for anyone who cannot stand for long. Assistance dogs are welcome.</span></li>
+          <li><b>Good to know</b><span>The Cellar private room is down four further steps and is not step-free.</span></li>
+        </ul>
+      </div>
+      <div class="sb-access__how">
+        <h3 class="sb-h3">Arranging your visit</h3>
+        <p>Email or call the access team and we will add the assistant place, hold seating and have the lift attended when you arrive. A day’s notice helps, but it is not required.</p>
+        <a class="sb-btn" href="mailto:access@sablier.example?subject=Access%20arrangements">Email the access team</a>
+        <p>Or call <a href="tel:+442079460352">020 7946 0352</a>, Wednesday to Saturday, 14:00 to 21:00.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec" id="sb-travel" style="--accent:#d9bf8c" aria-labelledby="sb-travel-title">
+  <div class="sb-wrap sb-split" data-sb-split>
+    <div class="sb-pin">
+      <p class="sb-strap">Getting here &amp; home</p>
+      <h2 class="sb-h2" id="sb-travel-title">Find the brass plaque, <em>then the stairs.</em></h2>
+      <address class="sb-addr" id="sb-address">11 Quill Yard, off Mount Row<br>Mayfair, London W1K 9ZX</address>
+      <div class="sb-route" role="img" aria-label="Sablier is a 6 minute walk from Green Park station and an 8 minute walk from Bond Street station">
+        <div class="sb-route__stop"><b>Green Park</b><span>Jubilee · Piccadilly · Victoria</span></div>
+        <div class="sb-route__leg"><span>6 min</span></div>
+        <div class="sb-route__us"><svg viewBox="0 0 18 28" aria-hidden="true"><path d="M1 1h16M1 27h16M3 1c0 8 6 9 6 13s-6 5-6 13M15 1c0 8-6 9-6 13s6 5 6 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><b>Sablier</b></div>
+        <div class="sb-route__leg"><span>8 min</span></div>
+        <div class="sb-route__stop sb-route__stop--end"><b>Bond Street</b><span>Central · Jubilee · Elizabeth</span></div>
+      </div>
+      <button class="sb-btn sb-btn--ghost" type="button" id="sb-copy-addr">Copy the address</button><span class="sb-copied" id="sb-copied" role="status"></span>
+    </div>
+    <div>
+      <ul class="sb-ways">
+        <li><h3>By Tube</h3><p>Green Park is six minutes on foot and Bond Street is eight. On Friday and Saturday nights the <b>Night Tube</b> runs on the Central, Jubilee, Piccadilly and Victoria lines, so both stations are open when we close.</p></li>
+        <li><h3>Night buses</h3><p>The N9, N19, N22, N38 and N97 stop on Piccadilly by Green Park station. Check times with Transport for London before you set off.</p></li>
+        <li><h3>Taxis</h3><p><b>Use a licensed taxi or a private hire car you have booked.</b> Wait inside by the cloakroom and the door team will tell you when it arrives. Never get into a car that approaches you on the street.</p></li>
+        <li><h3>Leaving</h3><p><b>Please leave quietly, our neighbours are asleep.</b> Quill Yard is a residential mews and sound carries further than you would think.</p></li>
+      </ul>
+      <h3 class="sb-h3 sb-prac__title">Practical things</h3>
+      <ul class="sb-prac">
+        <li><h4>Cloakroom</h4><p>£3 per item, at the foot of the stairs. Coats, bags and umbrellas are fine; suitcases cannot be stored. Keep your numbered tag.</p></li>
+        <li><h4>Lost property</h4><p>Kept for 28 days. Email <a class="sb-link" href="mailto:lost@sablier.example">lost@sablier.example</a> with the date and a description. Collection is Wednesday to Saturday from 20:00.</p></li>
+        <li><h4>Cashless bars</h4><p>All three bars and the cloakroom take card and contactless only. We do not hold cash on the premises.</p></li>
+        <li><h4>Photography</h4><p>We photograph some nights for our own channels. Tell the photographer or any member of staff if you would rather not be in shot. No flash on the floor, please.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec sb-sec--ox" id="sb-hire" style="--accent:#e3c2a2" aria-labelledby="sb-hire-title">
+  <div class="sb-wrap sb-hire">
+    <figure class="sb-hire__photo">
+      <img src="https://images.unsplash.com/photo-1700143159663-1a464297e96d?auto=format&fit=crop&ar=5:4&w=1000&q=72" srcset="https://images.unsplash.com/photo-1700143159663-1a464297e96d?auto=format&fit=crop&ar=5:4&w=560&q=70 560w, https://images.unsplash.com/photo-1700143159663-1a464297e96d?auto=format&fit=crop&ar=5:4&w=1000&q=72 1000w, https://images.unsplash.com/photo-1700143159663-1a464297e96d?auto=format&fit=crop&ar=5:4&w=1400&q=72 1400w" sizes="(min-width:1000px) 46vw, 94vw" width="1000" height="800" loading="lazy" decoding="async" alt="Two hands touching glasses in a toast under deep red light">
+    </figure>
+    <div>
+      <p class="sb-strap">Private hire &amp; birthdays</p>
+      <h2 class="sb-h2" id="sb-hire-title">Take the Cellar, <em>or take the whole house.</em></h2>
+      <p class="sb-lede">The Cellar is yours on any night we are open. The whole club can be hired from Sunday to Tuesday, or for an early reception before the doors open. For birthdays, tell us when you book a table and the candle is on us.</p>
+      <ul class="sb-hire__facts">
+        <li><b>The Cellar</b><span>Up to 40 · from £2,500 minimum spend</span></li>
+        <li><b>The whole club</b><span>Up to 320 · Sunday to Tuesday</span></li>
+        <li><b>Early receptions</b><span>18:00 to 21:30 · up to 150</span></li>
+      </ul>
+      <div class="sb-hire__ctas">
+        <a class="sb-btn" href="mailto:hire@sablier.example?subject=Private%20hire%20enquiry">Enquire about hire</a>
+        <a class="sb-btn sb-btn--ghost" href="tel:+442079460347">Call 020 7946 0347</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec sb-sec--coal" id="sb-faq" style="--accent:#d9bf8c" aria-labelledby="sb-faq-title">
+  <div class="sb-wrap sb-split" data-sb-split>
+    <div class="sb-pin">
+      <p class="sb-strap">Questions</p>
+      <h2 class="sb-h2" id="sb-faq-title">Before you <em>come down.</em></h2>
+      <p class="sb-lede">The things people ask the door team most. If yours is not here, the office answers from 14:00, Wednesday to Saturday.</p>
+      <div class="sb-faq__cta">
+        <a class="sb-btn" href="mailto:hello@sablier.example">Email the office</a>
+        <a class="sb-btn sb-btn--ghost" href="tel:+442079460321">020 7946 0321</a>
+      </div>
+    </div>
+    <div class="sb-faq" id="sb-faq-list">
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q1" aria-expanded="false" aria-controls="sb-a1"><span>How do I get in?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a1" role="region" aria-labelledby="sb-q1"><div><p>Book a guest list place or a table. When the room has space we also admit walk-ins at the door team’s discretion, but on Friday and Saturday that is rare after 23:00. Either way you will need ID and to meet the dress code.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q2" aria-expanded="false" aria-controls="sb-a2"><span>What should I wear?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a2" role="region" aria-labelledby="sb-q2"><div><p>Smart. Tailoring, dresses, shirts, smart shoes or clean leather trainers are all fine. Sportswear, caps and beachwear are not. A jacket is welcome but never required.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q3" aria-expanded="false" aria-controls="sb-a3"><span>What ID do you accept?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a3" role="region" aria-labelledby="sb-q3"><div><p>A passport, a photocard driving licence or a card carrying the PASS hologram. It must be the original document. We cannot accept a photo or screenshot of your ID, or a photocopy.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q4" aria-expanded="false" aria-controls="sb-a4"><span>What does minimum spend mean, and when do I pay a deposit?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a4" role="region" aria-labelledby="sb-q4"><div><p>Minimum spend is the least your table agrees to spend on drinks during the night, starting at £750 for six guests. It is not an extra charge. Once we have confirmed your table by phone or email we send a secure link for a deposit of 20% of the minimum spend, which comes off your bill. No deposit is taken on this website.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q5" aria-expanded="false" aria-controls="sb-a5"><span>What time should I arrive?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a5" role="region" aria-labelledby="sb-q5"><div><p>Doors are at 22:00 and the room finds its feet at about 23:30. Last entry is 01:00 for everyone, including table guests, and early release guest list places must be used by 23:30.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q6" aria-expanded="false" aria-controls="sb-a6"><span>Can I pay with cash?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a6" role="region" aria-labelledby="sb-q6"><div><p>No. The bars, tables and cloakroom are card and contactless only.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q7" aria-expanded="false" aria-controls="sb-a7"><span>Is Sablier accessible?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a7" role="region" aria-labelledby="sb-q7"><div><p>The main entrance has 22 steps. There is a step-free route through the Quill Yard side door, with a platform lift, level access to the Salon and the Vault Bar, and an accessible toilet. Personal assistants come free. See <a class="sb-link" href="#sb-access">accessibility</a> for how to arrange it.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q8" aria-expanded="false" aria-controls="sb-a8"><span>Can I cancel, or change the name on a guest list place?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a8" role="region" aria-labelledby="sb-q8"><div><p>Yes. Guest list places are refunded in full, booking fee included, up to 48 hours before doors. Name changes are free until 18:00 on the day: email <a class="sb-link" href="mailto:guestlist@sablier.example">guestlist@sablier.example</a>.</p></div></div></div>
+      <div class="sb-acc"><h3><button class="sb-acc__btn" type="button" id="sb-q9" aria-expanded="false" aria-controls="sb-a9"><span>Is there a cloakroom, and what can I bring?</span><i aria-hidden="true"></i></button></h3><div class="sb-acc__panel" id="sb-a9" role="region" aria-labelledby="sb-q9"><div><p>Yes, at the foot of the stairs, £3 per item. Small bags are searched on entry. Please do not bring suitcases, large rucksacks, your own drinks or professional cameras.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sb-sec" id="sb-list" style="--accent:#ecdcb4" aria-labelledby="sb-list-title">
+  <div class="sb-wrap">
+    <div class="sb-news">
+      <div>
+        <p class="sb-strap">The list</p>
+        <h2 class="sb-h2" id="sb-list-title">First to hear, <em>never pestered.</em></h2>
+        <p class="sb-lede">One short email on a Monday: who is playing, which tables are left and the occasional early release.</p>
+      </div>
+      <form class="sb-news__form" id="sb-news-form" novalidate>
+        <div class="sb-news__row">
+          <div class="sb-field" id="sb-news-field"><label for="sb-news-email">Email address</label><input class="sb-input" id="sb-news-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="sb-news-email-err"><p class="sb-field__err" id="sb-news-email-err"></p></div>
+          <button class="sb-btn" type="submit">Subscribe</button>
+        </div>
+        <label class="sb-check" id="sb-news-consent-wrap"><input type="checkbox" id="sb-news-consent" name="consent" aria-describedby="sb-news-consent-err"><span>Yes, email me Sablier news and offers. I can unsubscribe at any time. <a class="sb-link" href="#sb-privacy">Privacy notice</a>.</span><span class="sb-field__err" id="sb-news-consent-err"></span></label>
+        <p class="sb-news__ok" id="sb-news-ok" role="status" tabindex="-1"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!--SB-MORE-->
+</main>
+
+<footer class="sb-foot" id="sb-foot" style="--accent:#d9bf8c">
+  <div class="sb-rope" aria-hidden="true">
+    <div class="sb-rope__in">
+      <svg class="sb-post sb-post--l" viewBox="0 0 36 150"><defs><linearGradient id="sb-brass" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#7d6436"/><stop offset=".35" stop-color="#f3e5c1"/><stop offset=".6" stop-color="#c9a769"/><stop offset="1" stop-color="#6e5628"/></linearGradient><linearGradient id="sb-fade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="sb-postmask"><rect width="36" height="150" fill="url(#sb-fade)"/></mask></defs><g mask="url(#sb-postmask)"><rect x="13" y="30" width="10" height="120" fill="url(#sb-brass)"/><rect x="9" y="26" width="18" height="6" rx="2" fill="url(#sb-brass)"/><rect x="10" y="46" width="16" height="5" rx="2" fill="url(#sb-brass)"/><circle cx="18" cy="14" r="12" fill="url(#sb-brass)"/><circle cx="14" cy="10" r="3.500" fill="#fff8e4" opacity=".7"/></g></svg>
+      <svg class="sb-post sb-post--r" viewBox="0 0 36 150"><g mask="url(#sb-postmask)"><rect x="13" y="30" width="10" height="120" fill="url(#sb-brass)"/><rect x="9" y="26" width="18" height="6" rx="2" fill="url(#sb-brass)"/><rect x="10" y="46" width="16" height="5" rx="2" fill="url(#sb-brass)"/><circle cx="18" cy="14" r="12" fill="url(#sb-brass)"/><circle cx="14" cy="10" r="3.500" fill="#fff8e4" opacity=".7"/></g></svg>
+      <div class="sb-rope__line">
+        <svg viewBox="0 0 1000 100" preserveAspectRatio="none" fill="none" stroke-linecap="round">
+          <path d="M4 8 C 250 118, 750 118, 996 8" stroke="#1a0508" stroke-width="20" vector-effect="non-scaling-stroke" opacity=".55" transform="translate(0 7)"/>
+          <path d="M4 8 C 250 118, 750 118, 996 8" stroke="#5a101b" stroke-width="15" vector-effect="non-scaling-stroke"/>
+          <path d="M4 8 C 250 118, 750 118, 996 8" stroke="#3b0a12" stroke-width="15" stroke-dasharray="3 12" stroke-linecap="butt" vector-effect="non-scaling-stroke"/>
+          <path d="M4 8 C 250 118, 750 118, 996 8" stroke="#a02a3b" stroke-width="4" vector-effect="non-scaling-stroke" opacity=".7" transform="translate(0 -3.500)"/>
+          <path d="M4 8 C 14 12.400, 24 16.700, 34 20.800" stroke="url(#sb-brass)" stroke-width="18" stroke-linecap="butt" vector-effect="non-scaling-stroke"/>
+          <path d="M996 8 C 986 12.400, 976 16.700, 966 20.800" stroke="url(#sb-brass)" stroke-width="18" stroke-linecap="butt" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-wrap sb-foot__scene">
+    <div class="sb-plaque">
+      <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+      <p class="sb-plaque__name">Sablier</p>
+      <p class="sb-plaque__sub">Cocktail lounge · Table service</p>
+      <address>11 Quill Yard, off Mount Row<br>Mayfair, London W1K 9ZX</address>
+      <table>
+        <caption>Opening hours</caption>
+        <tbody>
+          <tr><th scope="row">Wednesday to Saturday</th><td>22:00 to 03:00</td></tr>
+          <tr><th scope="row">Last entry</th><td>01:00</td></tr>
+          <tr><th scope="row">Sunday to Tuesday</th><td>Private hire</td></tr>
+        </tbody>
+      </table>
+      <p class="sb-plaque__ring">Over 18s only · Please ring for the door team</p>
+    </div>
+
+    <nav class="sb-tags" aria-label="Footer">
+      <div class="sb-tag" style="--sb-drop:52px;--sb-tilt:-1deg">
+        <div class="sb-tag__hang">
+          <span class="sb-tag__string" aria-hidden="true"></span>
+          <div class="sb-tag__card"><div class="sb-tag__in">
+            <h2 class="sb-tag__head"><button class="sb-tag__toggle" type="button" aria-expanded="true" aria-controls="sb-tag-1"><span class="sb-tag__no"><small>№</small>22</span><span class="sb-tag__hint">Doors</span><span class="sb-tag__title">The club</span><svg class="sb-tag__chev" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></h2>
+            <ul class="sb-tag__links" id="sb-tag-1">
+              <li><a href="#sb-whats-on">What’s on</a></li>
+              <li><a href="#sb-guest-list">Guest list</a></li>
+              <li><a href="#sb-tables">Book a table</a></li>
+              <li><a href="#sb-venue">The venue</a></li>
+              <li><a href="#sb-hire">Private hire</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+      <div class="sb-tag" style="--sb-drop:78px;--sb-tilt:.8deg">
+        <div class="sb-tag__hang">
+          <span class="sb-tag__string" aria-hidden="true"></span>
+          <div class="sb-tag__card"><div class="sb-tag__in">
+            <h2 class="sb-tag__head"><button class="sb-tag__toggle" type="button" aria-expanded="true" aria-controls="sb-tag-2"><span class="sb-tag__no"><small>№</small>01</span><span class="sb-tag__hint">Last entry</span><span class="sb-tag__title">Your night</span><svg class="sb-tag__chev" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></h2>
+            <ul class="sb-tag__links" id="sb-tag-2">
+              <li><a href="#sb-door">Door policy</a></li>
+              <li><a href="#sb-welfare">Safety &amp; welfare</a></li>
+              <li><a href="#sb-access">Accessibility</a></li>
+              <li><a href="#sb-travel">Getting here</a></li>
+              <li><a href="#sb-faq">Questions</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+      <div class="sb-tag" style="--sb-drop:44px;--sb-tilt:-.6deg">
+        <div class="sb-tag__hang">
+          <span class="sb-tag__string" aria-hidden="true"></span>
+          <div class="sb-tag__card"><div class="sb-tag__in">
+            <h2 class="sb-tag__head"><button class="sb-tag__toggle" type="button" aria-expanded="true" aria-controls="sb-tag-3"><span class="sb-tag__no"><small>№</small>03</span><span class="sb-tag__hint">Close</span><span class="sb-tag__title">Say hello</span><svg class="sb-tag__chev" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></h2>
+            <ul class="sb-tag__links" id="sb-tag-3">
+              <li><a href="tel:+442079460347"><small>Reservations</small>020 7946 0347</a></li>
+              <li><a href="tel:+442079460321"><small>Office</small>020 7946 0321</a></li>
+              <li><a href="mailto:tables@sablier.example"><small>Tables</small>tables@sablier.example</a></li>
+              <li><a href="mailto:hello@sablier.example"><small>Everything else</small>hello@sablier.example</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+      <div class="sb-tag" style="--sb-drop:66px;--sb-tilt:1.1deg">
+        <div class="sb-tag__hang">
+          <span class="sb-tag__string" aria-hidden="true"></span>
+          <div class="sb-tag__card"><div class="sb-tag__in">
+            <h2 class="sb-tag__head"><button class="sb-tag__toggle" type="button" aria-expanded="true" aria-controls="sb-tag-4"><span class="sb-tag__no"><small>№</small>18</span><span class="sb-tag__hint">And over</span><span class="sb-tag__title">Small print</span><svg class="sb-tag__chev" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></h2>
+            <ul class="sb-tag__links" id="sb-tag-4">
+              <li><a href="#sb-privacy">Privacy notice</a></li>
+              <li><a href="#sb-cookies">Cookies</a></li>
+              <li><a href="#sb-terms">Terms of entry</a></li>
+              <li><a href="#sb-access">Accessibility</a></li>
+              <li><a href="mailto:press@sablier.example">Press</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="sb-wrap">
+    <div class="sb-legal">
+      <div>
+        <p>© 2026 Sablier Mayfair Ltd · Company No. 00000000 · Registered in England &amp; Wales</p>
+        <p>Licensed under the Licensing Act 2003 · Premises licence No. 00/00000/LIPN (placeholder)</p>
+        <p>Please drink responsibly · <a href="https://www.drinkaware.co.uk/" rel="noopener">drinkaware.co.uk</a></p>
+      </div>
+      <ul class="sb-legal__links">
+        <li><a href="#sb-privacy">Privacy</a></li>
+        <li><a href="#sb-cookies">Cookies</a></li>
+        <li><a href="#sb-terms">Terms</a></li>
+        <li><a href="#sb-access">Accessibility</a></li>
+      </ul>
+    </div>
+    <div class="sb-fine">
+      <div class="sb-fine__notes">
+        <details id="sb-privacy"><summary>Privacy notice, in short</summary><p>Sablier Mayfair Ltd is the data controller. We use the details you give us to manage bookings and answer enquiries, keep them for 24 months, and never sell them. Marketing emails are only sent if you opt in, and every one has an unsubscribe link. To see, correct or delete your data, write to <a class="sb-link" href="mailto:privacy@sablier.example">privacy@sablier.example</a>.</p></details>
+        <details id="sb-cookies"><summary>Cookies</summary><p>This page sets no advertising or analytics cookies. Fonts, photographs and the 3D library are loaded from third-party hosts, which will see your IP address when the page loads.</p></details>
+        <details id="sb-terms"><summary>Terms of entry</summary><p>Entry is subject to the door policy on this page, to capacity and to the conditions of our premises licence. Guest list places are refundable up to 48 hours before doors. Table deposits are refundable up to 48 hours before doors and are deducted from your bill on the night. Sablier is a fictional venue created for a design portfolio: no bookings are taken.</p></details>
+      </div>
+      <button class="sb-totop" type="button" id="sb-totop" aria-label="Back to top"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M4.500 9.500 10 4l5.500 5.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</footer>
+
+<div class="sb-dock sb-is-away" id="sb-dock" role="region" aria-label="Quick booking" style="--accent:#d9bf8c">
+  <a class="sb-btn sb-btn--ghost" href="#sb-guest-list">Guest list</a>
+  <a class="sb-btn" href="#sb-tables">Book a table</a>
+</div>
+<!--SB-FOOT-->
+
+<script>
+/* Dial: drawn on a 1024 canvas with the 2D API, redrawn once a second (aligned to the second),
+   then handed to three.js as a CanvasTexture. It is also the 2D fallback when WebGL is missing. */
+(function () {
+  'use strict';
+  var cv = document.getElementById('sb-dial');
+  var hero = document.getElementById('sb-hero');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  if (!ctx) return;
+
+  var S = 1024, C = 512, TAU = Math.PI * 2, RAD = Math.PI / 180, WEEK = 604800;
+  var SERIF = '"Bodoni Moda","Bodoni MT",Didot,Georgia,serif';
+  var SANS = 'Jost,"Century Gothic",Futura,Arial,sans-serif';
+  var GOLD = '#d9bf8c', PALE = '#f3e5c1', MUTED = 'rgba(243,229,193,.66)';
+  var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var OPEN_DAYS = [3, 4, 5, 6];            /* doors 22:00 Wed to Sat, close 03:00 the next morning */
+  var layer = document.createElement('canvas');
+  layer.width = layer.height = S;
+  var g = layer.getContext('2d');
+  var statusEl = document.getElementById('sb-fact-status');
+  var srEl = document.getElementById('sb-clock-sr');
+  var draws = 0, lastMinute = -1, lastLabel = '';
+
+  var timeFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' });
+  var dayFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short' });
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function london() {
+    var now = new Date(), o = { h: 0, m: 0, s: 0, d: 0 };
+    timeFmt.formatToParts(now).forEach(function (p) {
+      if (p.type === 'hour') o.h = (+p.value) % 24;
+      else if (p.type === 'minute') o.m = +p.value;
+      else if (p.type === 'second') o.s = +p.value;
+    });
+    o.d = Math.max(0, DAYS.indexOf(dayFmt.format(now).slice(0, 3)));
+    return o;
+  }
+  function night(t) {
+    var sow = t.d * 86400 + t.h * 3600 + t.m * 60 + t.s, best = null, i, start, since, until;
+    for (i = 0; i < OPEN_DAYS.length; i++) {
+      start = OPEN_DAYS[i] * 86400 + 22 * 3600;
+      since = ((sow - start) % WEEK + WEEK) % WEEK;
+      if (since < 5 * 3600) {
+        return since < 3 * 3600
+          ? { state: 'open', label: 'OPEN NOW', text: 'Open now', cap: 'LAST ENTRY IN', left: 3 * 3600 - since }
+          : { state: 'open', label: 'OPEN NOW', text: 'Open now', cap: 'CLOSES IN', left: 5 * 3600 - since };
+      }
+      until = ((start - sow) % WEEK + WEEK) % WEEK;
+      if (!best || until < best.left) best = { left: until, day: OPEN_DAYS[i] };
+    }
+    if (best.day === t.d) return { state: 'tonight', label: 'OPEN TONIGHT', text: 'Open tonight', cap: 'DOORS IN', left: best.left };
+    return { state: 'later', label: 'OPENS ' + DAYS[best.day].toUpperCase(), text: 'Opens ' + DAYS[best.day], cap: 'DOORS IN', left: best.left };
+  }
+  function countdown(sec) {
+    var d = Math.floor(sec / 86400), h = Math.floor(sec % 86400 / 3600), m = Math.floor(sec % 3600 / 60), s = sec % 60;
+    return (d ? d + 'D ' : '') + pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+  function spoken(sec) {
+    var d = Math.floor(sec / 86400), h = Math.floor(sec % 86400 / 3600), m = Math.floor(sec % 3600 / 60), out = [];
+    if (d) out.push(d + (d === 1 ? ' day' : ' days'));
+    if (h) out.push(h + (h === 1 ? ' hour' : ' hours'));
+    if (!d) out.push(m + (m === 1 ? ' minute' : ' minutes'));
+    return out.join(' ');
+  }
+
+  /* ---- drawing helpers ---- */
+  function prng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function at(deg, r) { var a = (deg - 90) * RAD; return [C + Math.cos(a) * r, C + Math.sin(a) * r]; }
+  function ring(c, r, w, style) { c.beginPath(); c.arc(C, C, r, 0, TAU); c.lineWidth = w; c.strokeStyle = style; c.stroke(); }
+  function rrect(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
+  function spaced(c, str, x, y, sp) {
+    var i, w = 0, ws = [];
+    for (i = 0; i < str.length; i++) { ws[i] = c.measureText(str[i]).width; w += ws[i] + (i ? sp : 0); }
+    var cx = x - w / 2;
+    c.textAlign = 'left';
+    for (i = 0; i < str.length; i++) { c.fillText(str[i], cx, y); cx += ws[i] + sp; }
+  }
+  function arcText(c, str, deg, r, sp) {
+    var i, w = 0, ws = [];
+    for (i = 0; i < str.length; i++) { ws[i] = c.measureText(str[i]).width; w += ws[i] + (i ? sp : 0); }
+    var a = deg * RAD - (w / 2) / r;
+    c.textAlign = 'center';
+    for (i = 0; i < str.length; i++) {
+      c.save(); c.translate(C, C); c.rotate(a + (ws[i] / 2) / r); c.fillText(str[i], 0, -r); c.restore();
+      a += (ws[i] + sp) / r;
+    }
+  }
+  function cells(c, str, x, y, cw) {
+    var i, w = 0, ws = [], ch;
+    for (i = 0; i < str.length; i++) { ch = str[i]; ws[i] = /\d/.test(ch) ? cw : (ch === ':' || ch === ' ') ? cw * 0.5 : c.measureText(ch).width + 3; w += ws[i]; }
+    var cx = x - w / 2;
+    c.textAlign = 'center';
+    for (i = 0; i < str.length; i++) { c.fillText(str[i], cx + ws[i] / 2, y); cx += ws[i]; }
+  }
+  function baton(c, x, w, r0, r1, alpha) {
+    var lg = c.createLinearGradient(x, 0, x + w, 0);
+    lg.addColorStop(0, '#f8eccd'); lg.addColorStop(0.5, '#e3cb93'); lg.addColorStop(0.5, '#b8985c'); lg.addColorStop(1, '#8f7443');
+    c.globalAlpha = alpha; c.fillStyle = lg; c.fillRect(x, -r1, w, r1 - r0); c.globalAlpha = 1;
+  }
+
+  /* ---- static face: drawn once (and again when the web fonts arrive) ---- */
+  function drawStatic() {
+    var i, a, p, q, rnd = prng(11);
+    g.setTransform(1, 0, 0, 1, 0, 0);
+    g.clearRect(0, 0, S, S);
+    g.textBaseline = 'alphabetic';
+    var base = g.createRadialGradient(C, C - 150, 30, C, C, 540);
+    base.addColorStop(0, '#241614'); base.addColorStop(0.5, '#130c0b'); base.addColorStop(1, '#070505');
+    g.fillStyle = base; g.fillRect(0, 0, S, S);
+    if (g.createConicGradient) {
+      var cg = g.createConicGradient(-0.9, C, C);
+      for (i = 0; i <= 8; i++) cg.addColorStop(i / 8, i % 2 ? 'rgba(255,214,170,.09)' : 'rgba(255,214,170,0)');
+      g.fillStyle = cg; g.beginPath(); g.arc(C, C, 446, 0, TAU); g.fill();
+    }
+    g.lineWidth = 1;
+    for (i = 0; i < 560; i++) {
+      a = rnd() * TAU;
+      g.strokeStyle = 'rgba(255,226,196,' + (0.012 + rnd() * 0.04).toFixed(3) + ')';
+      g.beginPath(); g.moveTo(C + Math.cos(a) * 36, C + Math.sin(a) * 36); g.lineTo(C + Math.cos(a) * 446, C + Math.sin(a) * 446); g.stroke();
+    }
+    /* chapter ring and minute track */
+    ring(g, 479, 66, '#080505');
+    ring(g, 446, 1.5, 'rgba(217,191,140,.6)');
+    ring(g, 503, 1.2, 'rgba(217,191,140,.4)');
+    for (i = 0; i < 60; i++) {
+      var five = i % 5 === 0;
+      p = at(i * 6, five ? 468 : 476); q = at(i * 6, 493);
+      g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]);
+      g.lineWidth = five ? 3 : 1.4; g.strokeStyle = five ? PALE : 'rgba(243,229,193,.6)'; g.stroke();
+    }
+    /* opening hours on the ring: solid from doors (22:00) to last entry (01:00), dashed on to close (03:00) */
+    var gold = g.createLinearGradient(80, 60, 944, 600);
+    gold.addColorStop(0, '#f3e5c1'); gold.addColorStop(0.5, '#c9a769'); gold.addColorStop(1, '#f3e5c1');
+    g.lineCap = 'butt'; g.lineWidth = 7; g.strokeStyle = gold;
+    g.beginPath(); g.arc(C, C, 456, (300 - 90) * RAD, (390 - 90) * RAD); g.stroke();
+    g.setLineDash([3, 6]);
+    g.beginPath(); g.arc(C, C, 456, (30 - 90) * RAD, 0); g.stroke();
+    g.setLineDash([]);
+    [300, 30, 90].forEach(function (deg) {
+      var e = at(deg, 456);
+      g.beginPath(); g.arc(e[0], e[1], 8.5, 0, TAU); g.fillStyle = PALE; g.fill();
+      g.lineWidth = 2.5; g.strokeStyle = '#080505'; g.stroke();
+    });
+    /* slim baton markers: bright through the hours we are open, quiet for the rest */
+    for (i = 0; i < 12; i++) {
+      var on = i >= 10 || i <= 3;
+      g.save(); g.translate(C, C); g.rotate(i * 30 * RAD);
+      g.shadowColor = 'rgba(0,0,0,.65)'; g.shadowBlur = 6; g.shadowOffsetX = 2; g.shadowOffsetY = 4;
+      if (i === 0) { baton(g, -14, 11, 366, 438, 1); baton(g, 3, 11, 366, 438, 1); }
+      else if (on) baton(g, -6.5, 13, 366, 438, 1);
+      else baton(g, -3.5, 7, 394, 438, 0.5);
+      g.restore();
+    }
+    g.fillStyle = 'rgba(243,229,193,.8)'; g.font = '500 16px ' + SANS;
+    arcText(g, 'DOORS', 315, 419, 4.5); arcText(g, 'LAST ENTRY', 45, 419, 4.5); arcText(g, 'CLOSE', 75, 419, 4.5);
+    g.fillStyle = PALE; g.font = '500 31px ' + SERIF;
+    arcText(g, '22:00', 315, 382, 2); arcText(g, '01:00', 45, 382, 2); arcText(g, '03:00', 75, 382, 2);
+    /* emblem + wordmark */
+    g.save(); g.translate(C, 196); g.strokeStyle = GOLD; g.lineWidth = 2.2; g.lineCap = 'round'; g.lineJoin = 'round';
+    g.beginPath(); g.moveTo(-15, -22); g.lineTo(15, -22); g.moveTo(-15, 22); g.lineTo(15, 22);
+    g.moveTo(-11, -22); g.bezierCurveTo(-11, -6, -2, -5, -2, 0); g.bezierCurveTo(-2, 5, -11, 6, -11, 22);
+    g.moveTo(11, -22); g.bezierCurveTo(11, -6, 2, -5, 2, 0); g.bezierCurveTo(2, 5, 11, 6, 11, 22); g.stroke();
+    g.fillStyle = GOLD; g.beginPath(); g.moveTo(-7, 20); g.lineTo(0, 10); g.lineTo(7, 20); g.closePath(); g.fill();
+    g.restore();
+    g.fillStyle = PALE; g.font = '500 50px ' + SERIF; spaced(g, 'SABLIER', C, 282, 11);
+    g.fillStyle = MUTED; g.font = '400 14px ' + SANS; spaced(g, 'MAYFAIR · LONDON W1', C, 312, 5.5);
+    g.textAlign = 'center'; g.fillStyle = PALE; g.font = 'italic 400 28px ' + SERIF; g.fillText('ten till three', C, 672);
+    g.fillStyle = MUTED; g.font = '400 13px ' + SANS; spaced(g, 'WEDNESDAY TO SATURDAY', C, 702, 5);
+    /* date-style window at three o'clock: frame only, the status is drawn every second */
+    var frame = g.createLinearGradient(0, 478, 0, 546);
+    frame.addColorStop(0, '#f3e5c1'); frame.addColorStop(0.5, '#a8884e'); frame.addColorStop(1, '#e3cb96');
+    g.save(); g.shadowColor = 'rgba(0,0,0,.7)'; g.shadowBlur = 10; g.shadowOffsetY = 4;
+    rrect(g, 604, 479, 208, 66, 8); g.fillStyle = frame; g.fill(); g.restore();
+    rrect(g, 609, 484, 198, 56, 4); g.fillStyle = '#030202'; g.fill();
+    var inset = g.createLinearGradient(0, 484, 0, 504);
+    inset.addColorStop(0, 'rgba(0,0,0,.9)'); inset.addColorStop(1, 'rgba(0,0,0,0)');
+    rrect(g, 609, 484, 198, 20, 4); g.fillStyle = inset; g.fill();
+  }
+
+  function hand(c, deg, len, tail, w) {
+    c.save(); c.translate(C, C); c.rotate(deg * RAD);
+    c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 12; c.shadowOffsetX = 5; c.shadowOffsetY = 9;
+    c.beginPath(); c.moveTo(0, -len); c.lineTo(-w / 2, 0); c.lineTo(-w * 0.28, tail); c.lineTo(w * 0.28, tail); c.lineTo(w / 2, 0); c.closePath();
+    c.fillStyle = '#b3935a'; c.fill();
+    c.shadowColor = 'transparent';
+    c.beginPath(); c.moveTo(0, -len); c.lineTo(-w / 2, 0); c.lineTo(-w * 0.28, tail); c.lineTo(0, tail); c.closePath();
+    c.fillStyle = '#f6e9c9'; c.fill();
+    c.beginPath(); c.moveTo(0, -len + 6); c.lineTo(0, tail - 2); c.lineWidth = 1; c.strokeStyle = 'rgba(60,40,10,.45)'; c.stroke();
+    c.restore();
+  }
+
+  /* ---- once-a-second redraw ---- */
+  function draw() {
+    var t = london(), n = night(t);
+    /* 0 degrees at 12 o'clock, clockwise */
+    var sa = t.s * 6;
+    var ma = t.m * 6 + t.s * 0.1;
+    var ha = (t.h % 12) * 30 + t.m * 0.5;
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(layer, 0, 0);
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = MUTED; ctx.font = '500 11px ' + SANS; spaced(ctx, n.state === 'later' ? 'NEXT NIGHT' : 'TONIGHT', 708, 468, 4.5);
+    ctx.fillStyle = PALE; ctx.font = '500 19px ' + SANS; spaced(ctx, n.label, 708, 519, 3);
+    ctx.fillStyle = MUTED; ctx.font = '500 13px ' + SANS; spaced(ctx, n.cap, C, 374, 5);
+    ctx.fillStyle = PALE; ctx.font = '400 38px ' + SERIF; cells(ctx, countdown(n.left), C, 416, 21);
+
+    hand(ctx, ha, 262, 46, 34);
+    hand(ctx, ma, 408, 56, 26);
+    ctx.save(); ctx.translate(C, C); ctx.rotate(sa * RAD);
+    ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = 10; ctx.shadowOffsetX = 5; ctx.shadowOffsetY = 9;
+    ctx.strokeStyle = '#fbf1d9'; ctx.lineCap = 'round'; ctx.lineWidth = 2.6;
+    ctx.beginPath(); ctx.moveTo(0, 66); ctx.lineTo(0, -440); ctx.stroke();
+    ctx.lineWidth = 2.4; ctx.beginPath(); ctx.arc(0, 80, 13, 0, TAU); ctx.stroke();
+    ctx.restore();
+    var hub = ctx.createRadialGradient(C - 5, C - 6, 2, C, C, 18);
+    hub.addColorStop(0, '#fbf1d9'); hub.addColorStop(0.6, '#c9a769'); hub.addColorStop(1, '#7d6436');
+    ctx.beginPath(); ctx.arc(C, C, 17, 0, TAU); ctx.fillStyle = hub; ctx.fill();
+    ctx.beginPath(); ctx.arc(C, C, 5, 0, TAU); ctx.fillStyle = '#120b06'; ctx.fill();
+
+    draws++;
+    cv.dataset.draws = String(draws);
+    cv.dataset.time = pad(t.h) + ':' + pad(t.m) + ':' + pad(t.s);
+    cv.dataset.angles = ha + ',' + Math.round(ma * 10) / 10 + ',' + sa;
+    if (statusEl && n.text !== lastLabel) { statusEl.textContent = n.text; lastLabel = n.text; }
+    if (srEl && t.m !== lastMinute) {
+      lastMinute = t.m;
+      srEl.textContent = 'The dial behind this heading is a live clock. It is ' + pad(t.h) + ':' + pad(t.m) + ' in London. ' +
+        (n.state === 'open' ? 'Sablier is open now. ' + (n.cap === 'CLOSES IN' ? 'We close in ' : 'Last entry is in ') + spoken(n.left) + '.'
+          : n.text + ', doors in ' + spoken(n.left) + '.') + ' Doors 22:00, last entry 01:00, close 03:00, Wednesday to Saturday.';
+    }
+    cv.dispatchEvent(new CustomEvent('sb:tick'));
+  }
+
+  var started = false;
+  function tick() { draw(); setTimeout(tick, 1000 - (Date.now() % 1000) + 6); }
+  function start() { if (started) { drawStatic(); return; } started = true; drawStatic(); tick(); }
+
+  /* Load the faces the dial uses before the first draw; start anyway if they are slow. */
+  if (document.fonts && document.fonts.load) {
+    Promise.all([
+      document.fonts.load('500 50px "Bodoni Moda"'), document.fonts.load('italic 400 28px "Bodoni Moda"'),
+      document.fonts.load('500 16px Jost'), document.fonts.load('400 14px Jost')
+    ]).then(function () { return document.fonts.ready; }).then(start, start);
+    setTimeout(function () { if (!started) start(); }, 1600);
+  } else { start(); }
+
+  /* If three.js or WebGL never arrives, show this same canvas as a flat dial. */
+  setTimeout(function () { if (hero && !hero.dataset.stage) hero.dataset.stage = 'flat'; }, 9000);
+})();
+</script>
+
+<script type="module">
+/* Hero scene: the dial canvas becomes a THREE.CanvasTexture inside a polished bezel, rising behind a
+   lathe-turned coupe. The texture is only re-uploaded when the once-a-second redraw fires "sb:tick". */
+(async function () {
+  const hero = document.getElementById('sb-hero');
+  const glc = document.getElementById('sb-gl');
+  const dial = document.getElementById('sb-dial');
+  const copy = document.getElementById('sb-hero-copy');
+  const btn = document.getElementById('sb-motion');
+  const btnLabel = document.getElementById('sb-motion-label');
+  if (!hero || !glc || !dial || !copy || !btn) return;
+  const flat = () => { if (hero.dataset.stage !== '3d') hero.dataset.stage = 'flat'; };
+  let gl2 = false;
+  try { gl2 = !!document.createElement('canvas').getContext('webgl2'); } catch (e) { gl2 = false; }
+  if (!gl2) { flat(); return; }
+  let T;
+  try { T = await import('three'); } catch (e) { flat(); return; }
+  try { build(); } catch (e) { /*DEV*/console.error(e); flat(); }
+
+  function build() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sideMQ = window.matchMedia('(min-width:900px) and (min-aspect-ratio:11/10)');
+    const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    const renderer = new T.WebGLRenderer({ canvas: glc, antialias: true, alpha: false, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+    renderer.outputColorSpace = T.SRGBColorSpace;
+    renderer.toneMapping = T.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+    renderer.localClippingEnabled = true;
+    renderer.setClearColor(0x050404, 1);
+
+    const scene = new T.Scene();
+    const camera = new T.PerspectiveCamera(30, 1, 100, 9000);
+    let W = 2, H = 2, D = 1000, E = 0, R = 300;
+    const L = { dx: 0, dy: 0, dz: 0, gx: 0, by: 0, gz: 0, gs: 1, bx: 0 };
+
+    /* Studio environment for the metal and glass: warm soft boxes in a dark room, baked once with PMREM */
+    const pm = new T.PMREMGenerator(renderer);
+    const room = new T.Scene();
+    room.add(new T.Mesh(new T.BoxGeometry(30, 18, 30), new T.MeshBasicMaterial({ color: 0x0b0707, side: T.BackSide })));
+    const lamp = (w, h, hex, k, x, y, z) => {
+      const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: new T.Color(hex).multiplyScalar(k), side: T.DoubleSide }));
+      m.position.set(x, y, z); m.lookAt(0, 0, 0); room.add(m);
+    };
+    lamp(9, 2.4, 0xfff0da, 13, 0, 7.5, 4);
+    lamp(1.4, 9, 0xffe3bd, 9, -11, 1, 5);
+    lamp(1.1, 7, 0xffd8ae, 5, 11, 0, 6);
+    lamp(7, 4, 0x8a1626, 1.1, 7, -1, -12);
+    lamp(5, 0.6, 0xffffff, 10, -4, 3, 12);
+    scene.environment = pm.fromScene(room, 0.03).texture;
+    pm.dispose();
+
+    /* Textures */
+    const faceTex = new T.CanvasTexture(dial);
+    faceTex.colorSpace = T.SRGBColorSpace;
+    faceTex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    const paint = (size, fn) => {
+      const c = document.createElement('canvas'); c.width = c.height = size; fn(c.getContext('2d'), size);
+      const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; return t;
+    };
+    const backTex = paint(1024, (g, s) => {            /* oxblood velvet curtain caught by one soft spot */
+      for (let x = 0; x < s; x++) {
+        const v = Math.sin(x * 0.058) * 0.5 + Math.sin(x * 0.171 + 1.3) * 0.3 + Math.sin(x * 0.023 + 0.6) * 0.2;
+        const l = Math.max(0, v * 0.5 + 0.5);
+        g.fillStyle = 'rgb(' + Math.round(30 + 74 * l) + ',' + Math.round(5 + 13 * l) + ',' + Math.round(10 + 18 * l) + ')';
+        g.fillRect(x, 0, 1, s);
+      }
+      g.globalCompositeOperation = 'destination-in';
+      const m = g.createRadialGradient(s / 2, s / 2, s * 0.02, s / 2, s / 2, s * 0.5);
+      m.addColorStop(0, 'rgba(0,0,0,.95)'); m.addColorStop(0.4, 'rgba(0,0,0,.5)'); m.addColorStop(0.75, 'rgba(0,0,0,.12)'); m.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = m; g.fillRect(0, 0, s, s);
+      g.globalCompositeOperation = 'destination-over';
+      g.fillStyle = '#050404'; g.fillRect(0, 0, s, s);
+    });
+    const bokehTex = paint(128, (g, s) => {            /* out-of-focus candle light */
+      const r = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+      r.addColorStop(0, 'rgba(255,208,140,.5)'); r.addColorStop(0.72, 'rgba(255,198,126,.42)'); r.addColorStop(0.88, 'rgba(255,190,118,.55)'); r.addColorStop(1, 'rgba(255,190,118,0)');
+      g.fillStyle = r; g.fillRect(0, 0, s, s);
+    });
+    const poolTex = paint(256, (g, s) => {
+      const r = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+      r.addColorStop(0, 'rgba(255,198,104,.9)'); r.addColorStop(0.35, 'rgba(214,122,44,.32)'); r.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = r; g.fillRect(0, 0, s, s);
+    });
+
+    /* Materials */
+    const goldMat = new T.MeshStandardMaterial({ color: 0xdcbd7e, metalness: 1, roughness: 0.16, envMapIntensity: 1.2, side: T.DoubleSide });
+    const fluteMat = new T.MeshStandardMaterial({ color: 0xcfae6c, metalness: 1, roughness: 0.3, envMapIntensity: 1.1, flatShading: true });
+    const faceMat = new T.MeshStandardMaterial({ map: faceTex, emissiveMap: faceTex, emissive: 0xffffff, emissiveIntensity: 0.6, metalness: 0.1, roughness: 0.55, envMapIntensity: 0.25 });
+    const domeMat = new T.MeshPhysicalMaterial({ color: 0x000000, metalness: 0, roughness: 0.03, envMapIntensity: 0.55, transparent: true, blending: T.AdditiveBlending, depthWrite: false });
+    const glassMat = new T.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0, roughness: 0.02, transmission: 1, thickness: 0.04, ior: 1.46, envMapIntensity: 1.15, depthWrite: false });
+    const sheenMat = new T.MeshPhysicalMaterial({ color: 0x000000, metalness: 0, roughness: 0.04, envMapIntensity: 1.7, transparent: true, blending: T.AdditiveBlending, depthWrite: false });
+    const liquidMat = new T.MeshPhysicalMaterial({ color: 0xd8992c, emissive: 0x7a3f06, emissiveIntensity: 0.6, metalness: 0, roughness: 0.1, envMapIntensity: 0.9, transparent: true, opacity: 0.84, depthWrite: false });
+    const cherryMat = new T.MeshPhysicalMaterial({ color: 0x4d0914, metalness: 0, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.08, envMapIntensity: 1.2 });
+    const barMat = new T.MeshStandardMaterial({ color: 0x070505, metalness: 0.35, roughness: 0.3, envMapIntensity: 0.55 });
+    const clipBelow = new T.Plane(new T.Vector3(0, -1, 0), 0);
+    const ghost = (mat, opacity) => {                  /* faint mirror image seen in the polished bar top */
+      const m = mat.clone(); m.transparent = true; m.opacity = opacity; m.depthTest = false; m.depthWrite = false; m.clippingPlanes = [clipBelow]; return m;
+    };
+
+    /* Geometry: everything is built at unit size and scaled into place by layout() */
+    const V = (a) => a.map((p) => new T.Vector2(p[0], p[1]));
+    const spline = (a, n) => new T.SplineCurve(V(a)).getPoints(n).map((v) => { v.x = Math.max(v.x, 0.0005); return v; });
+    const faceGeo = new T.CircleGeometry(1, 96);
+    const bezelPts = spline([[0.972, 0], [0.974, 0.04], [0.992, 0.072], [1.03, 0.094], [1.07, 0.09], [1.1, 0.066], [1.113, 0.03]], 26)
+      .concat(V([[1.115, -0.02], [1.115, -0.1], [1.0, -0.1]]));
+    const bezelGeo = new T.LatheGeometry(bezelPts, 144); bezelGeo.rotateX(Math.PI / 2);
+    const fluteGeo = new T.CylinderGeometry(1.121, 1.121, 0.07, 240, 1, true);
+    {
+      const p = fluteGeo.attributes.position;
+      for (let i = 0; i < p.count; i++) { const k = (i % 241) % 2 ? 1.004 : 1; p.setX(i, p.getX(i) * k); p.setZ(i, p.getZ(i) * k); }
+      fluteGeo.rotateX(Math.PI / 2); fluteGeo.translate(0, 0, -0.045); fluteGeo.computeVertexNormals();
+    }
+    const crownGeo = new T.CylinderGeometry(0.052, 0.052, 0.085, 22, 1); crownGeo.rotateZ(Math.PI / 2);
+    const capA = Math.asin(0.972 / 6);
+    const domeGeo = new T.SphereGeometry(6, 64, 10, 0, Math.PI * 2, 0, capA);
+    domeGeo.rotateX(Math.PI / 2); domeGeo.translate(0, 0, 0.045 - 6 * Math.cos(capA));
+
+    const outer = spline([[0.0005, 0.004], [0.13, 0.004], [0.252, 0.005], [0.262, 0.012], [0.24, 0.021], [0.13, 0.031], [0.05, 0.047], [0.024, 0.09], [0.018, 0.2], [0.017, 0.38], [0.021, 0.52], [0.042, 0.578], [0.105, 0.618], [0.195, 0.668], [0.272, 0.737], [0.319, 0.816], [0.334, 0.9], [0.329, 0.962]], 110);
+    const inner = spline([[0.325, 0.967], [0.319, 0.96], [0.323, 0.9], [0.307, 0.819], [0.259, 0.743], [0.182, 0.677], [0.094, 0.629], [0.0005, 0.612]], 56);
+    const glassGeo = new T.LatheGeometry(outer.concat(inner), 96);
+    const liquidLine = spline([[0.0005, 0.616], [0.092, 0.633], [0.179, 0.681], [0.255, 0.746], [0.302, 0.821], [0.3175, 0.893]], 40);
+    const liquidGeo = new T.LatheGeometry(liquidLine.concat(V([[0.3175, 0.9], [0.0005, 0.9]])), 72);
+    const bowlR = (y) => {                              /* inner radius of the bowl at height y, for the bubbles */
+      for (let i = 1; i < liquidLine.length; i++) {
+        if (liquidLine[i].y >= y) { const a = liquidLine[i - 1], b = liquidLine[i], k = (y - a.y) / Math.max(1e-5, b.y - a.y); return a.x + (b.x - a.x) * k; }
+      }
+      return 0.31;
+    };
+
+    function buildDial(isMirror) {
+      const grp = new T.Group();
+      const face = new T.Mesh(faceGeo, isMirror ? ghost(faceMat, 0.2) : faceMat);
+      const bezel = new T.Mesh(bezelGeo, isMirror ? ghost(goldMat, 0.26) : goldMat);
+      const flute = new T.Mesh(fluteGeo, isMirror ? ghost(fluteMat, 0.26) : fluteMat);
+      const crown = new T.Mesh(crownGeo, isMirror ? ghost(fluteMat, 0.26) : fluteMat);
+      crown.position.set(1.18, 0, -0.045);
+      grp.add(face, bezel, flute, crown);
+      if (isMirror) [face, bezel, flute, crown].forEach((o, i) => { o.renderOrder = 20 + i; });
+      else { const dome = new T.Mesh(domeGeo, domeMat); dome.renderOrder = -5; grp.add(dome); }
+      return grp;
+    }
+
+    const N = 26, seeds = [];
+    const bubbles = new T.InstancedMesh(new T.SphereGeometry(1, 8, 6), new T.MeshBasicMaterial({ color: 0xffefc4, transparent: true, opacity: 0.7, depthWrite: false }), N);
+    bubbles.renderOrder = 2;
+    const dummy = new T.Object3D();
+    let seed = 41;
+    const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    for (let i = 0; i < N; i++) seeds.push({ y: 0.63 + rnd() * 0.26, a: rnd() * 6.283, f: 0.15 + rnd() * 0.75, v: 0.035 + rnd() * 0.05, s: 0.0035 + rnd() * 0.004, w: 0.6 + rnd() * 1.4 });
+    function placeBubbles(time) {
+      for (let i = 0; i < N; i++) {
+        const b = seeds[i], r = bowlR(b.y) * b.f * 0.9, a = b.a + Math.sin(time * b.w + i) * 0.25;
+        dummy.position.set(Math.cos(a) * r, b.y, Math.sin(a) * r);
+        dummy.scale.setScalar(b.s * (0.7 + (b.y - 0.62) * 2));
+        dummy.updateMatrix(); bubbles.setMatrixAt(i, dummy.matrix);
+      }
+      bubbles.instanceMatrix.needsUpdate = true;
+    }
+    placeBubbles(0);
+
+    function buildGlass(isMirror) {
+      const grp = new T.Group();
+      if (isMirror) { const m = ghost(sheenMat, 1); m.envMapIntensity = 0.45; const s = new T.Mesh(glassGeo, m); s.renderOrder = 30; grp.add(s); return grp; }
+      const body = new T.Mesh(glassGeo, glassMat);
+      const liquid = new T.Mesh(liquidGeo, liquidMat); liquid.renderOrder = 1;
+      const sheen = new T.Mesh(glassGeo, sheenMat); sheen.renderOrder = 3;
+      const garnish = new T.Group();
+      const pick = new T.Mesh(new T.CylinderGeometry(0.0048, 0.0048, 0.8, 8), goldMat); pick.rotation.z = Math.PI / 2;
+      const bead = new T.Mesh(new T.SphereGeometry(0.016, 14, 10), goldMat); bead.position.x = 0.4;
+      const c1 = new T.Mesh(new T.SphereGeometry(0.044, 24, 18), cherryMat); c1.position.x = -0.052;
+      const c2 = new T.Mesh(c1.geometry, cherryMat); c2.position.x = 0.04; c2.scale.setScalar(0.93);
+      garnish.add(pick, bead, c1, c2); garnish.position.set(0.03, 0.973, 0); garnish.rotation.y = 0.55;
+      grp.add(body, liquid, bubbles, sheen, garnish);
+      return grp;
+    }
+
+    const back = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: backTex, toneMapped: false }));
+    const bar = new T.Mesh(new T.PlaneGeometry(1, 1), barMat); bar.rotation.x = -Math.PI / 2;
+    const pool = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: poolTex, transparent: true, opacity: 0.5, blending: T.AdditiveBlending, depthWrite: false, toneMapped: false }));
+    pool.rotation.x = -Math.PI / 2; pool.renderOrder = -4;
+    const lights = [];
+    for (let i = 0; i < 13; i++) {
+      const sp = new T.Sprite(new T.SpriteMaterial({ map: bokehTex, transparent: true, opacity: 0.05 + rnd() * 0.13, blending: T.AdditiveBlending, depthWrite: false, toneMapped: false }));
+      sp.userData = { u: rnd(), v: rnd(), s: 0.035 + rnd() * 0.075, w: 0.1 + rnd() * 0.25, p: rnd() * 6.283 };
+      sp.renderOrder = -8; lights.push(sp); scene.add(sp);
+    }
+    const dialG = buildDial(false), glassG = buildGlass(false);
+    const mirror = new T.Group(); mirror.scale.y = -1;
+    const dialM = buildDial(true), glassM = buildGlass(true);
+    mirror.add(dialM, glassM);
+    const key = new T.DirectionalLight(0xfff0dc, 2.4);
+    const rim = new T.DirectionalLight(0xb5202f, 1.6);
+    const sweep = new T.PointLight(0xfff3df, 0, 0, 0);
+    scene.add(back, bar, pool, dialG, glassG, mirror, key, key.target, rim, rim.target, sweep);
+
+    /* Layout in CSS pixels: one world unit is one pixel on the z = 0 plane. The camera sits above the
+       centre line with a shifted frustum (like a shift lens), so the glass stays upright and we look
+       slightly down onto the bar top. Sizes come from the hero box and the measured copy block. */
+    function layout() {
+      const hr = hero.getBoundingClientRect(), cr = copy.getBoundingClientRect();
+      W = Math.max(2, Math.round(hr.width)); H = Math.max(2, Math.round(hr.height));
+      renderer.setSize(W, H, false);
+      const side = sideMQ.matches;
+      const headH = W < 768 ? 60 : W < 1200 ? 72 : 84;
+      const cRight = cr.right - hr.left, cBottom = cr.bottom - hr.top;
+      const sBar = H - Math.max(side ? 108 : 70, H * (side ? 0.16 : 0.1));
+      let cx, cy, gxs, gh;
+      if (side) {
+        const free = W - cRight - 40 - 44;
+        R = Math.max(170, Math.min(free / 2.23, (sBar - headH - 20) * 0.62, 560));
+        cx = cRight + 40 + 1.115 * R + Math.max(0, free - 2.23 * R) * 0.5;
+        cy = sBar - 0.36 * R; gh = 1.02 * R; gxs = cx - 0.98 * R;
+      } else {
+        R = Math.max(118, Math.min((W - 28) / 2.23, (sBar - cBottom - 16) / 1.475, 400));
+        cx = W / 2 + 0.06 * R; cy = sBar - 0.36 * R; gh = 0.9 * R; gxs = cx - 0.84 * R;
+      }
+      D = (H / 2) / Math.tan(13 * Math.PI / 180);
+      E = H * 0.3;
+      const fullH = H + 2 * E;
+      camera.fov = 2 * Math.atan(fullH / 2 / D) * 180 / Math.PI;
+      camera.aspect = W / fullH; camera.near = D * 0.2; camera.far = D * 4;
+      camera.setViewOffset(W, fullH, 0, 2 * E, W, H);
+      camera.position.set(0, E, D);
+      const zd = -0.42 * R, zg = 0.34 * R, zb = -3.2 * R;
+      const kd = (D - zd) / D, kg = (D - zg) / D, kb = (D - zb) / D;
+      const wy = (sy, k) => E + (H / 2 - sy - E) * k;
+      const yBar = wy(sBar, kd);
+      L.dx = (cx - W / 2) * kd; L.dy = wy(cy, kd); L.dz = zd; dialG.scale.setScalar(R * kd);
+      L.gx = (gxs - W / 2) * kg; L.by = yBar; L.gz = zg; L.gs = gh * kg; glassG.scale.setScalar(L.gs);
+      mirror.position.y = 2 * yBar; clipBelow.constant = yBar;
+      const zBack = zd - 0.6 * R;
+      bar.scale.set(W * 8, D - zBack + 200, 1); bar.position.set(0, yBar, (zBack + D + 200) / 2);
+      pool.scale.set(L.gs, L.gs * 0.62, 1); pool.position.set(L.gx + L.gs * 0.1, yBar + 0.6, zg - L.gs * 0.08);
+      const bs = Math.max(W, H) * 2.5 * kb;
+      back.scale.set(bs, bs, 1); L.bx = (cx - W / 2) * kb; back.position.set(L.bx, wy(cy - 0.25 * R, kb), zb);
+      L.side = side; L.zl = zb * 0.82; L.kl = (D - L.zl) / D;
+      placeLights(t);
+      key.position.set(L.dx - 1.6 * R, L.dy + 2.4 * R, D * 0.55); key.target.position.set(L.dx, L.dy, zd);
+      rim.position.set(L.dx + 2.2 * R, L.dy + 0.6 * R, zd + 0.4 * R); rim.target.position.set(L.dx, L.dy, zd);
+    }
+
+    function placeLights(time) {
+      for (let i = 0; i < lights.length; i++) {
+        const sp = lights[i], d = sp.userData;
+        const u = (L.side ? 0.4 + d.u * 0.6 : d.u) + Math.sin(time * d.w + d.p) * 0.012;
+        const v = (L.side ? 0.1 + d.v * 0.5 : 0.36 + d.v * 0.4) + Math.cos(time * d.w * 0.8 + d.p) * 0.015;
+        sp.position.set((u * W - W / 2) * L.kl, E + (H / 2 - v * H - E) * L.kl, L.zl);
+        const sc = d.s * Math.min(W, H) * L.kl; sp.scale.set(sc, sc, 1);
+      }
+    }
+
+    /* Motion state */
+    let motion = !reduce.matches, inView = true, shown = !document.hidden, raf = 0, rq = 0, last = 0, t = 0;
+    let rise = motion ? 1 : 0, px = 0, py = 0, tx = 0, ty = 0, ax = 0, ay = 0, ready = false, uploads = 0;
+    const running = () => motion && inView && shown;
+
+    function step(dt) {
+      const e = Math.min(1, dt * 2.4);
+      px += (tx - px) * e; py += (ty - py) * e;
+      ax = px + Math.sin(t * 0.23) * (fine ? 0.22 : 0.6);
+      ay = py + Math.sin(t * 0.31 + 1.2) * 0.3;
+      if (ready) { rise += (0 - rise) * Math.min(1, dt * 1.9); if (rise < 0.001) rise = 0; }
+      const ph = ((t + 7.2) % 9) / 9;                   /* every nine seconds a light sweeps across the bezel */
+      if (ph < 0.21) {
+        const u = ph / 0.21, k = Math.sin(Math.PI * u);
+        sweep.intensity = k * k * 9;
+        sweep.position.set(L.dx + (u * 2 - 1) * 1.8 * R, L.dy + R, L.dz + 1.1 * R);
+      } else sweep.intensity = 0;
+      for (let i = 0; i < N; i++) {
+        const b = seeds[i]; b.y += b.v * dt;
+        if (b.y > 0.892) { b.y = 0.625 + rnd() * 0.02; b.a = rnd() * 6.283; b.f = 0.15 + rnd() * 0.75; }
+      }
+      placeBubbles(t);
+      placeLights(t);
+    }
+    function pose() {
+      dialG.position.set(L.dx + ax * R * 0.02, L.dy - rise * R * 0.95, L.dz);
+      dialG.rotation.set(-0.04 - ay * 0.05, -0.2 + ax * 0.1, 0);
+      glassG.position.set(L.gx - ax * R * 0.05, L.by, L.gz);
+      glassG.rotation.y = ax * 0.5;
+      back.position.x = L.bx + ax * R * 0.08;
+      dialM.position.copy(dialG.position); dialM.rotation.copy(dialG.rotation); dialM.scale.copy(dialG.scale);
+      glassM.position.copy(glassG.position); glassM.rotation.copy(glassG.rotation); glassM.scale.copy(glassG.scale);
+    }
+    function paintFrame() {
+      pose();
+      renderer.render(scene, camera);
+      if (!ready && dial.dataset.draws) { ready = true; hero.dataset.stage = '3d'; }
+    }
+    function frame(now) {
+      raf = 0;
+      const dt = Math.min(0.05, Math.max(0.001, (now - last) / 1000)); last = now;
+      t += dt; step(dt); paintFrame();
+      if (running()) raf = requestAnimationFrame(frame);
+    }
+    function play() { if (!raf && running()) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+    function still() { if (!raf) paintFrame(); }
+    function wake() { if (running()) play(); else if (inView && shown) still(); }
+
+    function setMotion(on) {
+      motion = on;
+      btn.setAttribute('aria-pressed', on ? 'false' : 'true');
+      btn.setAttribute('aria-label', on ? 'Pause hero motion' : 'Play hero motion');
+      if (btnLabel) btnLabel.textContent = on ? 'Pause motion' : 'Play motion';
+      if (!on) {
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
+        tx = ty = px = py = ax = ay = 0; rise = 0; sweep.intensity = 0;
+      }
+      wake();
+    }
+
+    /* The dial redraws once a second; only then is the texture flagged for upload. */
+    dial.addEventListener('sb:tick', () => {
+      faceTex.needsUpdate = true;
+      uploads++; dial.dataset.uploads = String(uploads);
+      if (!running() && inView && shown) still();
+    });
+    hero.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch') return;
+      const r = hero.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - 0.5) * 2; ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; });
+    btn.addEventListener('click', () => setMotion(!motion));
+    if (reduce.addEventListener) reduce.addEventListener('change', () => setMotion(!reduce.matches));
+    new IntersectionObserver((en) => { inView = en[en.length - 1].isIntersecting; wake(); }, { threshold: 0.02 }).observe(hero);
+    document.addEventListener('visibilitychange', () => { shown = !document.hidden; wake(); });
+    const ro = new ResizeObserver(() => { if (!rq) rq = requestAnimationFrame(() => { rq = 0; layout(); if (!running()) still(); }); });
+    ro.observe(hero); ro.observe(copy);
+
+    layout();
+    setMotion(motion);
+  }
+})();
+</script>
+
+<script>
+/* Page behaviour: menu, programme, guest list flow, table enquiry, accordions, sticky columns, footer tags. */
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var wide = window.matchMedia('(min-width:1200px)');
+  var phone = window.matchMedia('(max-width:767px)');
+  var head = $('#sb-head');
+  function h(tag, attrs, kids) {
+    var el = document.createElement(tag), k;
+    if (attrs) for (k in attrs) if (attrs[k] != null) el.setAttribute(k, attrs[k]);
+    if (kids != null) (Array.isArray(kids) ? kids : [kids]).forEach(function (c) {
+      if (c != null) el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return el;
+  }
+  function money(n, pence) { return '£' + (pence ? n.toFixed(2) : n.toLocaleString('en-GB')); }
+  function onChange(mq, fn) { if (mq.addEventListener) mq.addEventListener('change', fn); else if (mq.addListener) mq.addListener(fn); }
+
+  /* ---- header ---- */
+  function onScroll() { head.classList.toggle('sb-is-stuck', window.scrollY > 24); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- full-screen menu with focus trap ---- */
+  var menu = $('#sb-menu'), burger = $('#sb-burger'), menuClose = $('#sb-menu-close');
+  var updateDock = function () {};
+  function menuIsOpen() { return menu.classList.contains('sb-is-open'); }
+  function setMenu(open, refocus) {
+    if (open === menuIsOpen()) return;
+    menu.classList.toggle('sb-is-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (open) { var tries = 0; (function intoMenu() { if (!menuIsOpen()) return; menuClose.focus(); if (document.activeElement !== menuClose && tries++ < 14) window.setTimeout(intoMenu, 60); })(); }
+    else if (refocus !== false) burger.focus();
+    updateDock();
+  }
+  burger.addEventListener('click', function () { setMenu(!menuIsOpen()); });
+  menuClose.addEventListener('click', function () { setMenu(false); });
+  $$('[data-sb-close]', menu).forEach(function (a) { a.addEventListener('click', function () { setMenu(false, false); }); });
+  menu.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); setMenu(false); return; }
+    if (e.key !== 'Tab') return;
+    var f = $$('a[href],button:not([disabled])', menu), first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuIsOpen() && !menu.contains(e.target)) { e.preventDefault(); setMenu(false); } });
+  onChange(wide, function () { if (wide.matches) setMenu(false, false); });
+
+  /* ---- the week: every date is generated from today in London, so it is always in the future ---- */
+  var NIGHTS = {
+    3: { name: 'Half Measures', kicker: 'Soul & disco', room: 'The Salon', tags: ['soul'], gl: [12, 15, 20], min: { alcove: 750, banquette: 1500, stage: 3000 },
+      line: 'Vinyl-only soul, boogie and slow disco with Odette Marlowe and Kit Ravel. The easiest night for a table.' },
+    4: { name: 'Brass & Velvet', kicker: 'Live sax & percussion', room: 'The Salon', tags: ['live', 'house'], gl: [15, 20, 25], min: { alcove: 750, banquette: 1500, stage: 3000 },
+      line: 'Inès Calder on the decks, Leo Adeyemi on saxophone and Tomasz Bell on percussion. Three live sets from the floor.' },
+    5: { name: 'Quartz', kicker: 'House', room: 'The Salon', tags: ['house', 'weekend'], gl: [20, 25, 30], min: { alcove: 1000, banquette: 2000, stage: 4000 },
+      line: 'Deep and vocal house with Marcus Vale and Sunni Okafor, building slowly towards one o’clock.' },
+    6: { name: 'Grand Reserve', kicker: 'House & disco', room: 'The Salon', tags: ['house', 'soul', 'weekend'], gl: [20, 25, 30], min: { alcove: 1000, banquette: 2000, stage: 4000 },
+      line: 'House and disco edits with Delphine Roux and Harlan Pike. The fullest room of the week.' }
+  };
+  var fmt = function (o) { o.timeZone = 'UTC'; return new Intl.DateTimeFormat('en-GB', o); };
+  var fDow = fmt({ weekday: 'short' }), fMon = fmt({ month: 'short' }), fShort = fmt({ weekday: 'short', day: 'numeric', month: 'short' }), fLong = fmt({ weekday: 'long', day: 'numeric', month: 'long' }), fDay = fmt({ weekday: 'long' });
+  function upcoming(n) {
+    var p = {}, out = [], i = 0, d, dow;
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(new Date()).forEach(function (x) { p[x.type] = +x.value; });
+    var base = Date.UTC(p.year, p.month - 1, p.day);
+    while (out.length < n && i < 60) {
+      d = new Date(base + i * 86400000); dow = d.getUTCDay();
+      if (NIGHTS[dow]) out.push({ date: d, dow: dow, iso: d.toISOString().slice(0, 10), today: i === 0, soon: i < 3, info: NIGHTS[dow] });
+      i++;
+    }
+    return out;
+  }
+  var EVENTS = upcoming(8);
+  function eventBy(iso) { for (var i = 0; i < EVENTS.length; i++) if (EVENTS[i].iso === iso) return EVENTS[i]; return null; }
+
+  /* ---- what's on ---- */
+  var prog = $('#sb-prog'), countEl = $('#sb-on-count');
+  if (prog) {
+    prog.textContent = '';
+    EVENTS.forEach(function (ev) {
+      var meta = h('p', { 'class': 'sb-night__meta' }, ['22:00 to 03:00 · Guest list from ', h('b', null, money(ev.info.gl[0])), ' · Tables from ', h('b', null, money(ev.info.min.alcove))]);
+      var kicker = h('p', { 'class': 'sb-night__kicker' }, [ev.today ? h('span', { 'class': 'sb-night__flag' }, 'Tonight') : null, ev.info.kicker + ' · ' + ev.info.room]);
+      prog.appendChild(h('li', { 'class': 'sb-night', 'data-tags': ev.info.tags.join(' ') }, [
+        h('div', { 'class': 'sb-night__date' }, [h('span', { 'class': 'sb-night__dow' }, fDow.format(ev.date)), h('span', { 'class': 'sb-night__day' }, String(ev.date.getUTCDate())), h('span', { 'class': 'sb-night__mon' }, fMon.format(ev.date))]),
+        h('div', null, [kicker, h('h3', { 'class': 'sb-night__name' }, ev.info.name), h('p', { 'class': 'sb-night__line' }, ev.info.line), meta]),
+        h('div', { 'class': 'sb-night__act' }, [
+          h('a', { 'class': 'sb-btn sb-btn--sm', href: '#sb-guest-list', 'data-sb-pick': ev.iso, 'aria-label': 'Guest list for ' + ev.info.name + ', ' + fLong.format(ev.date) }, 'Guest list'),
+          h('a', { 'class': 'sb-btn sb-btn--ghost sb-btn--sm', href: '#sb-tables', 'data-sb-table': ev.iso, 'aria-label': 'Book a table for ' + ev.info.name + ', ' + fLong.format(ev.date) }, 'Table')
+        ])
+      ]));
+    });
+    var LABELS = { all: 'the next eight nights', live: 'live music nights', house: 'house nights', soul: 'soul and disco nights', weekend: 'Friday and Saturday nights' };
+    $$('[data-sb-filter]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-sb-filter'), shown = 0;
+        $$('[data-sb-filter]').forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        $$('.sb-night', prog).forEach(function (row) {
+          var on = f === 'all' || (' ' + row.getAttribute('data-tags') + ' ').indexOf(' ' + f + ' ') > -1;
+          row.hidden = !on; if (on) shown++;
+        });
+        countEl.textContent = f === 'all' ? 'Showing the next eight nights.' : 'Showing ' + shown + ' ' + LABELS[f] + '.';
+      });
+    });
+  }
+
+  /* ---- guest list: night, entry, guests, details, then the hand-off to payment (simulated) ---- */
+  var flow = $('#sb-flow'), fForm = $('#sb-flow-form');
+  var st = { step: 1, night: EVENTS[0].iso, tier: 1, qty: 2 };
+  var TIERS = [
+    { name: 'Early release', sub: 'Limited. Valid for entry until 23:30.' },
+    { name: 'Standard', sub: 'Entry any time before last entry at 01:00.' },
+    { name: 'Final release', sub: 'The last places for each night. Entry before 01:00.' }
+  ];
+  var nightsBox = $('#sb-flow-nights'), tiersBox = $('#sb-flow-tiers'), qtyOut = $('#sb-qty-out');
+  var backBtn = $('#sb-flow-back'), nextBtn = $('#sb-flow-next'), running = $('#sb-flow-running'), sum = $('#sb-flow-sum'), flowErrs = $('#sb-flow-errs');
+  function option(group, value, checked, disabled, name, sub, price, small) {
+    var input = h('input', { type: 'radio', name: group, value: value });
+    input.checked = checked; input.disabled = disabled;
+    return h('label', { 'class': 'sb-opt' }, [input, h('span', { 'class': 'sb-opt__box' }, [
+      h('span', { 'class': 'sb-opt__name' }, name), h('span', { 'class': 'sb-opt__sub' }, sub),
+      h('span', { 'class': 'sb-opt__price' }, [price, h('small', null, small)])
+    ])]);
+  }
+  function renderNights() {
+    $$('.sb-opt', nightsBox).forEach(function (n) { n.remove(); });
+    EVENTS.forEach(function (ev) {
+      nightsBox.appendChild(option('sb-night', ev.iso, ev.iso === st.night, false, fShort.format(ev.date) + (ev.today ? ' · tonight' : ''), ev.info.name + ' · ' + ev.info.kicker.toLowerCase(), 'from ' + money(ev.info.gl[0]), 'per guest'));
+    });
+  }
+  function renderTiers() {
+    var ev = eventBy(st.night);
+    if (ev.soon && st.tier === 0) st.tier = 1;
+    $$('.sb-opt', tiersBox).forEach(function (n) { n.remove(); });
+    TIERS.forEach(function (t, i) {
+      var gone = i === 0 && ev.soon;
+      tiersBox.appendChild(option('sb-tier', String(i), i === st.tier, gone, t.name + (gone ? ' · sold out' : ''), gone ? 'Early release has gone for this night (illustrative).' : t.sub, money(ev.info.gl[i], true), 'incl. booking fee'));
+    });
+  }
+  function renderRunning() {
+    var ev = eventBy(st.night), total = ev.info.gl[st.tier] * st.qty;
+    running.textContent = '';
+    if (st.step === 1 || st.step === 5) return;
+    running.appendChild(h('b', null, money(total, true)));
+    running.appendChild(document.createTextNode(st.qty + ' × ' + TIERS[st.tier].name + ' · ' + fShort.format(ev.date) + ' · price includes booking fee'));
+  }
+  function renderSum() {
+    var ev = eventBy(st.night), each = ev.info.gl[st.tier], rows;
+    sum.hidden = st.step < 5;
+    if (st.step < 5) return;
+    rows = [['Night', ev.info.name + ', ' + fLong.format(ev.date)], ['Entry', TIERS[st.tier].name + ', ' + money(each, true) + ' each'], ['Guests', String(st.qty)], ['Name', $('#sb-gl-name').value.trim()], ['Confirmation to', $('#sb-gl-email').value.trim()]];
+    sum.textContent = '';
+    rows.forEach(function (r) { sum.appendChild(h('div', null, [h('dt', null, r[0]), h('dd', null, r[1])])); });
+    sum.appendChild(h('div', { 'class': 'sb-sum__total' }, [h('dt', null, 'Total to pay, price includes booking fee'), h('dd', null, money(each * st.qty, true))]));
+  }
+  function setErr(field, msg) {
+    var wrap = field.closest('.sb-field') || field.closest('.sb-check'), err = wrap && $('.sb-field__err', wrap);
+    if (!wrap) return;
+    wrap.classList.toggle('sb-has-err', !!msg);
+    if (err) err.textContent = msg || '';
+    if (msg) field.setAttribute('aria-invalid', 'true'); else field.removeAttribute('aria-invalid');
+  }
+  function showSummary(box, list) {
+    box.textContent = '';
+    if (!list.length) { box.classList.remove('sb-is-on'); return; }
+    box.appendChild(h('strong', null, list.length === 1 ? 'Please check one thing:' : 'Please check ' + list.length + ' things:'));
+    box.appendChild(h('ul', null, list.map(function (e) { return h('li', null, h('a', { href: '#' + e.id }, e.msg)); })));
+    box.classList.add('sb-is-on');
+    box.focus();
+  }
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function go(step, focus) {
+    st.step = step;
+    $$('.sb-step', flow).forEach(function (p) { p.hidden = +p.getAttribute('data-step') !== step; });
+    $$('li', $('#sb-flow-steps')).forEach(function (li, i) {
+      li.classList.toggle('sb-is-done', i + 1 < step);
+      if (i + 1 === step) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+    });
+    backBtn.hidden = step === 1;
+    nextBtn.textContent = step === 4 ? 'Continue to payment' : step === 5 ? 'Start again' : 'Continue';
+    showSummary(flowErrs, []);
+    if (step === 2) renderTiers();
+    renderRunning(); renderSum();
+    if (focus) {
+      var title = $('.sb-step:not([hidden]) .sb-step__title', flow);
+      if (title) title.focus({ preventScroll: true });
+      if (flow.getBoundingClientRect().top < head.offsetHeight) flow.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' });
+    }
+  }
+  if (flow && fForm) {
+    renderNights(); renderTiers(); go(1, false);
+    nightsBox.addEventListener('change', function (e) { if (e.target.name === 'sb-night') { st.night = e.target.value; renderTiers(); renderRunning(); } });
+    tiersBox.addEventListener('change', function (e) { if (e.target.name === 'sb-tier') { st.tier = +e.target.value; renderRunning(); } });
+    var setQty = function (n) {
+      st.qty = Math.max(1, Math.min(8, n)); qtyOut.textContent = String(st.qty);
+      $('#sb-qty-minus').disabled = st.qty <= 1; $('#sb-qty-plus').disabled = st.qty >= 8; renderRunning();
+    };
+    $('#sb-qty-minus').addEventListener('click', function () { setQty(st.qty - 1); });
+    $('#sb-qty-plus').addEventListener('click', function () { setQty(st.qty + 1); });
+    setQty(2);
+    backBtn.addEventListener('click', function () { if (st.step > 1) go(st.step - 1, true); });
+    fForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (st.step === 5) { st.tier = 1; fForm.reset(); setQty(2); st.night = EVENTS[0].iso; renderNights(); go(1, true); return; }
+      if (st.step === 4) {
+        var name = $('#sb-gl-name'), email = $('#sb-gl-email'), errs = [];
+        if (name.value.trim().length < 2) errs.push({ id: name.id, msg: 'Enter the name that is on your ID' });
+        setErr(name, name.value.trim().length < 2 ? 'Enter the name that is on your ID.' : '');
+        if (!EMAIL.test(email.value.trim())) errs.push({ id: email.id, msg: 'Enter an email address, like name@example.com' });
+        setErr(email, EMAIL.test(email.value.trim()) ? '' : 'Enter an email address, like name@example.com.');
+        if (errs.length) { showSummary(flowErrs, errs); return; }
+      }
+      go(st.step + 1, true);
+    });
+  }
+  function pickNight(iso) {
+    if (!eventBy(iso) || !flow) return;
+    st.night = iso; renderNights(); go(2, false);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[data-sb-pick],a[data-sb-table],a[data-sb-night]') : null, i;
+    if (!a) return;
+    if (a.hasAttribute('data-sb-pick')) pickNight(a.getAttribute('data-sb-pick'));
+    else if (a.hasAttribute('data-sb-night')) { for (i = 0; i < EVENTS.length; i++) if (EVENTS[i].dow === +a.getAttribute('data-sb-night')) { pickNight(EVENTS[i].iso); break; } }
+    else { var sel = $('#sb-tb-night'); if (sel) { sel.value = a.getAttribute('data-sb-table'); quote(); } }
+  });
+
+  /* ---- table enquiry (simulated): validation, minimum spend quote, success state ---- */
+  var tForm = $('#sb-table-form'), tDone = $('#sb-tb-done'), tErrs = $('#sb-tb-errs'), tried = false;
+  var TABLES = { alcove: { name: 'The Alcove', seats: 6 }, banquette: { name: 'The Banquette', seats: 10 }, stage: { name: 'Stage-side', seats: 14 } };
+  function quote() {
+    var ev = eventBy($('#sb-tb-night').value), tb = $('#sb-tb-table').value, q = $('#sb-tb-quote'), min;
+    if (!q) return;
+    q.textContent = '';
+    if (!ev || !TABLES[tb]) { q.textContent = 'Choose a night and a table to see the minimum spend and deposit.'; return; }
+    min = ev.info.min[tb];
+    q.appendChild(h('b', null, TABLES[tb].name + ', ' + fDay.format(ev.date) + ': minimum spend from ' + money(min) + '. '));
+    q.appendChild(document.createTextNode('The ' + money(Math.round(min * 0.2)) + ' deposit is taken later by secure link and comes off your bill.'));
+  }
+  function checkTable() {
+    var f = { night: $('#sb-tb-night'), table: $('#sb-tb-table'), guests: $('#sb-tb-guests'), name: $('#sb-tb-name'), phone: $('#sb-tb-phone'), email: $('#sb-tb-email'), consent: $('#sb-tb-consent') };
+    var errs = [], g = parseInt(f.guests.value, 10), tb = TABLES[f.table.value], digits = f.phone.value.replace(/[\s()+\-.]/g, '');
+    var rule = function (field, bad, msg) { setErr(field, bad ? msg : ''); if (bad) errs.push({ id: field.id, msg: msg.replace(/\.$/, '') }); };
+    rule(f.night, !eventBy(f.night.value), 'Choose a night.');
+    rule(f.table, !tb, 'Choose a table.');
+    rule(f.guests, !(g >= 2 && g <= 14) || String(g) !== f.guests.value.trim(), 'Enter a number of guests from 2 to 14.');
+    if (tb && g >= 2 && g <= 14 && g > tb.seats) rule(f.guests, true, tb.name + ' seats up to ' + tb.seats + '. Choose a larger table or fewer guests.');
+    rule(f.name, f.name.value.trim().length < 2, 'Enter your full name.');
+    rule(f.phone, !/^\d{10,13}$/.test(digits), 'Enter a phone number we can call, like 07700 900000.');
+    rule(f.email, !EMAIL.test(f.email.value.trim()), 'Enter an email address, like name@example.com.');
+    rule(f.consent, !f.consent.checked, 'Tick the box so we can reply to you.');
+    return { errs: errs, f: f, guests: g, table: tb };
+  }
+  if (tForm) {
+    var nightSel = $('#sb-tb-night');
+    EVENTS.forEach(function (ev) { nightSel.appendChild(h('option', { value: ev.iso }, fShort.format(ev.date) + ' · ' + ev.info.name)); });
+    ['#sb-tb-night', '#sb-tb-table'].forEach(function (s) { $(s).addEventListener('change', quote); });
+    tForm.addEventListener('input', function () { if (tried) checkTable(); });
+    tForm.addEventListener('change', function () { if (tried) checkTable(); });
+    tForm.addEventListener('submit', function (e) {
+      e.preventDefault(); tried = true;
+      var r = checkTable(), ev, min;
+      showSummary(tErrs, r.errs);
+      if (r.errs.length) return;
+      ev = eventBy(r.f.night.value); min = ev.info.min[r.f.table.value];
+      $('#sb-tb-done-title').textContent = 'Thank you, ' + r.f.name.value.trim().split(/\s+/)[0] + '. Your enquiry is noted.';
+      $('#sb-tb-done-text').textContent = r.table.name + ' for ' + r.guests + ' on ' + fLong.format(ev.date) + ', arriving ' + $('#sb-tb-arrive').value + '. On the live site we would call or email within one working day to confirm, then send a secure link for the ' + money(Math.round(min * 0.2)) + ' deposit against a minimum spend from ' + money(min) + '.';
+      tForm.hidden = true; tDone.hidden = false; tDone.focus();
+    });
+    $('#sb-tb-again').addEventListener('click', function () {
+      tForm.reset(); tried = false; $$('.sb-has-err', tForm).forEach(function (n) { n.classList.remove('sb-has-err'); });
+      $$('[aria-invalid]', tForm).forEach(function (n) { n.removeAttribute('aria-invalid'); });
+      showSummary(tErrs, []); quote(); tDone.hidden = true; tForm.hidden = false; $('#sb-tb-night').focus();
+    });
+  }
+
+  /* ---- newsletter ---- */
+  var nForm = $('#sb-news-form');
+  if (nForm) nForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = $('#sb-news-email'), ok = $('#sb-news-consent'), out = $('#sb-news-ok'), bad = !EMAIL.test(email.value.trim());
+    setErr(email, bad ? 'Enter an email address, like name@example.com.' : '');
+    setErr(ok, ok.checked ? '' : 'Tick the box to confirm you want our emails.');
+    out.classList.remove('sb-is-on');
+    if (bad) { email.focus(); return; }
+    if (!ok.checked) { ok.focus(); return; }
+    out.textContent = 'Thank you. On the live site a confirmation email would now be on its way to ' + email.value.trim() + '. This is a demonstration, so nothing was sent.';
+    out.classList.add('sb-is-on'); nForm.reset(); out.focus();
+  });
+
+  /* ---- FAQ accordion ---- */
+  $$('.sb-acc__btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.closest('.sb-acc').classList.toggle('sb-is-open', open);
+    });
+  });
+
+  /* ---- sticky columns: on desktop pin whichever column is shorter, if it fits in the viewport ---- */
+  var splits = $$('[data-sb-split]'), pinQueued = 0;
+  function pinSplits() {
+    pinQueued = 0;
+    splits.forEach(function (sp) {
+      var cols = $$(':scope > *', sp), a, b, room;
+      cols.forEach(function (c) { c.classList.remove('sb-pin'); });
+      if (!wide.matches || cols.length !== 2) return;
+      a = cols[0].offsetHeight; b = cols[1].offsetHeight;
+      room = window.innerHeight - head.offsetHeight - 52;
+      if (Math.abs(a - b) > 48 && Math.min(a, b) <= room) (a < b ? cols[0] : cols[1]).classList.add('sb-pin');
+    });
+  }
+  function queuePin() { if (!pinQueued) pinQueued = window.requestAnimationFrame(pinSplits); }
+  if (window.ResizeObserver) {
+    var pinRO = new ResizeObserver(queuePin);
+    splits.forEach(function (sp) { $$(':scope > *', sp).forEach(function (c) { pinRO.observe(c); }); });
+  }
+  window.addEventListener('resize', queuePin);
+  pinSplits();
+
+  /* ---- footer: coat-check tags are accordions on phones, and swing when tapped on touch screens ---- */
+  function setTags() {
+    $$('.sb-tag__toggle').forEach(function (b) {
+      var panel = document.getElementById(b.getAttribute('data-panel') || b.getAttribute('aria-controls')), open = b.getAttribute('data-open') === '1';
+      b.setAttribute('data-panel', panel.id);
+      if (phone.matches) {
+        b.disabled = false; b.setAttribute('aria-controls', panel.id); b.setAttribute('aria-expanded', open ? 'true' : 'false');
+        panel.hidden = !open; b.closest('.sb-tag__in').classList.toggle('sb-is-open', open);
+      } else {
+        b.disabled = true; b.removeAttribute('aria-expanded'); b.removeAttribute('aria-controls');
+        panel.hidden = false; b.closest('.sb-tag__in').classList.remove('sb-is-open');
+      }
+    });
+  }
+  $$('.sb-tag__toggle').forEach(function (b) {
+    b.addEventListener('click', function () { b.setAttribute('data-open', b.getAttribute('data-open') === '1' ? '0' : '1'); setTags(); });
+  });
+  $$('.sb-tag').forEach(function (tag) {
+    tag.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse' && !phone.matches) tag.classList.add('sb-is-swing'); });
+    tag.addEventListener('animationend', function () { tag.classList.remove('sb-is-swing'); });
+  });
+  onChange(phone, setTags);
+  setTags();
+  $$('.sb-room').forEach(function (room) {
+    room.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') room.classList.toggle('sb-is-tapped'); });
+  });
+
+  /* ---- small print: links open the matching note ---- */
+  function openNote(hash) {
+    var d = hash && /^#sb-(privacy|cookies|terms)$/.test(hash) ? $(hash) : null;
+    if (d) d.open = true;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#sb-"]') : null;
+    if (a) openNote(a.getAttribute('href'));
+  });
+  openNote(window.location.hash);
+
+  /* ---- copy address, back to top ---- */
+  var copyBtn = $('#sb-copy-addr');
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var text = '11 Quill Yard, off Mount Row, Mayfair, London W1K 9ZX', note = $('#sb-copied');
+    var done = function (ok) { note.textContent = ok ? 'Copied.' : text; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+    else done(false);
+  });
+  var toTop = $('#sb-totop');
+  if (toTop) toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' });
+    var logo = $('.sb-logo', head); if (logo) logo.focus({ preventScroll: true });
+  });
+
+  /* ---- phone action bar: hidden over the hero buttons, the booking widgets, the footer and the open menu ---- */
+  var dock = $('#sb-dock');
+  if (dock && window.IntersectionObserver) {
+    var covering = [], targets = $$('.sb-hero__ctas,[data-sb-dock-hide],#sb-foot');
+    updateDock = function () { dock.classList.toggle('sb-is-away', menuIsOpen() || covering.length > 0); };
+    var dockIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var i = covering.indexOf(en.target);
+        if (en.isIntersecting && i < 0) covering.push(en.target);
+        if (!en.isIntersecting && i > -1) covering.splice(i, 1);
+      });
+      updateDock();
+    }, { threshold: 0 });
+    targets.forEach(function (t) { dockIO.observe(t); });
+  }
+})();
+</script>
+
+<!--SB-SCRIPTS-->
+</body>
+</html>

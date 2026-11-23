@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Glitter Exchange | LGBTQ+ disco and cabaret bar, Kemptown, Brighton</title>
+<meta name="description" content="The Glitter Exchange is an LGBTQ+ disco club and cabaret bar in Kemptown, Brighton. Drag cabaret upstairs at 21:00 and 23:00, a 450-capacity disco downstairs. Open Thursday to Sunday from 20:00.">
+<meta name="theme-color" content="#0d0716">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --gx-ink:#0b0514;
+  --gx-night:#140a22;
+  --gx-plum:#1c0e2f;
+  --gx-plum2:#27143f;
+  --gx-plum3:#351b55;
+  --gx-line:rgba(226,206,255,.14);
+  --gx-line2:rgba(226,206,255,.26);
+  --gx-text:#f5eefb;
+  --gx-soft:#d2c3e2;
+  --gx-mute:#a898bd;
+  --gx-pink:#ff4fa3;
+  --gx-violet:#b08cff;
+  --gx-gold:#ffc94d;
+  --gx-turq:#35e0cf;
+  --gx-accent:var(--gx-pink);
+  --gx-on-accent:#170a26;
+  --gx-gutter:20px;
+  --gx-head:60px;
+  --gx-display:"Gloock","Times New Roman",serif;
+  --gx-sans:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gx-ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (min-width:768px){:root{--gx-gutter:32px;--gx-head:70px}}
+@media (min-width:1200px){:root{--gx-gutter:48px;--gx-head:76px}}
+[data-gx-accent="pink"]{--gx-accent:var(--gx-pink)}
+[data-gx-accent="violet"]{--gx-accent:var(--gx-violet)}
+[data-gx-accent="gold"]{--gx-accent:var(--gx-gold)}
+[data-gx-accent="turq"]{--gx-accent:var(--gx-turq)}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--gx-head) + 16px)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--gx-night);color:var(--gx-text);font:400 1.0625rem/1.62 var(--gx-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+img,svg,canvas{display:block;max-width:100%}
+img{height:auto}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure,fieldset,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+fieldset{border:0;min-width:0}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--gx-accent);outline-offset:3px;border-radius:6px}
+::selection{background:var(--gx-pink);color:#170a26}
+[hidden]{display:none!important}
+.gx-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.gx-skip{position:fixed;left:16px;top:-80px;z-index:200;background:var(--gx-gold);color:#170a26;padding:12px 18px;border-radius:10px;font-weight:600;text-decoration:none;transition:top .2s}
+.gx-skip:focus{top:12px}
+.gx-wrap{width:100%;max-width:1440px;margin-inline:auto;padding-inline:var(--gx-gutter)}
+.gx-ico{width:1.25em;height:1.25em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- type ---------- */
+.gx-display,.gx-h2,.gx-h3{font-family:var(--gx-display);font-weight:400;letter-spacing:-.012em;line-height:1.02;text-wrap:balance}
+.gx-h2{font-size:clamp(2.1rem,1.2rem + 3.3vw,4rem)}
+.gx-h3{font-size:clamp(1.45rem,1.2rem + .9vw,2rem);line-height:1.1}
+.gx-h2 em,.gx-display em{font-style:normal;color:var(--gx-accent)}
+.gx-lede{font-size:clamp(1.06rem,1rem + .35vw,1.25rem);line-height:1.6;color:var(--gx-soft);font-weight:300;max-width:38em;text-wrap:pretty}
+.gx-strap{display:inline-flex;align-items:center;gap:.8em;font:600 .78rem/1.3 var(--gx-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gx-accent)}
+.gx-strap::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:currentColor;margin-right:26px;
+  box-shadow:13px 0 0 color-mix(in srgb,currentColor 55%,transparent),26px 0 0 color-mix(in srgb,currentColor 24%,transparent)}
+.gx-link{color:var(--gx-text);text-decoration:underline;text-decoration-color:var(--gx-accent);text-decoration-thickness:2px;text-underline-offset:.22em;transition:color .2s}
+.gx-link:hover{color:var(--gx-accent)}
+
+/* ---------- buttons (strap + button share the section accent) ---------- */
+.gx-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:54px;padding:.8em 1.7em;border-radius:999px;border:1.5px solid var(--gx-accent);background:var(--gx-accent);color:var(--gx-on-accent);font:600 1rem/1.1 var(--gx-sans);letter-spacing:.01em;text-decoration:none;white-space:nowrap;transition:transform .25s var(--gx-ease),box-shadow .3s,background .25s,color .25s}
+.gx-btn .gx-ico{transition:transform .3s var(--gx-ease)}
+.gx-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px color-mix(in srgb,var(--gx-accent) 80%,transparent)}
+.gx-btn:hover .gx-ico{transform:translateX(3px)}
+.gx-btn:active{transform:translateY(0)}
+.gx-btn--ghost{background:color-mix(in srgb,var(--gx-ink) 55%,transparent);color:var(--gx-text);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.gx-btn--ghost:hover{background:color-mix(in srgb,var(--gx-accent) 18%,var(--gx-ink))}
+.gx-btn--sm{min-height:44px;padding:.55em 1.2em;font-size:.94rem}
+.gx-btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ---------- header ---------- */
+.gx-header{position:fixed;inset:0 0 auto 0;z-index:80;transition:background .35s,box-shadow .35s}
+.gx-header.gx-is-stuck{background:rgba(13,7,22,.84);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);box-shadow:0 1px 0 var(--gx-line)}
+.gx-header__bar{display:flex;align-items:center;gap:12px;height:var(--gx-head)}
+.gx-logo{display:inline-flex;align-items:center;gap:.55em;text-decoration:none;font:400 1.14rem/1 var(--gx-display);letter-spacing:-.005em;white-space:nowrap;min-height:44px;margin-right:auto;min-width:0}
+.gx-logo__ball{width:32px;height:32px;flex:none;color:var(--gx-accent)}
+.gx-logo small{display:none;font:500 .56rem/1 var(--gx-sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gx-mute);margin-top:5px}
+.gx-nav{display:none}
+.gx-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .78em;font-size:.95rem;font-weight:400;color:var(--gx-soft);text-decoration:none;border-radius:999px;transition:color .2s,background .2s}
+.gx-nav a:hover{color:var(--gx-text);background:rgba(255,255,255,.07)}
+.gx-header__tel{display:none;align-items:center;gap:.5em;min-height:44px;font-weight:500;font-size:.95rem;text-decoration:none;color:var(--gx-text);white-space:nowrap}
+.gx-header__tel .gx-ico{color:var(--gx-accent)}
+.gx-burger{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-width:46px;height:46px;padding:0 11px;border-radius:999px;border:1.5px solid var(--gx-line2);background:rgba(13,7,22,.5);font-weight:500;font-size:.95rem;flex:none}
+.gx-burger span{display:none}
+.gx-header .gx-btn--sm{padding-inline:1em}
+@media (max-width:479px){.gx-header .gx-btn--sm .gx-ico{display:none}.gx-header .gx-logo{font-size:1.06rem;line-height:.98}.gx-logo__ball{width:30px;height:30px}}
+@media (min-width:768px){.gx-burger span{display:inline}.gx-burger{padding:0 18px 0 14px}.gx-logo{font-size:1.4rem}.gx-logo__ball{width:40px;height:40px}.gx-logo small{display:block}.gx-header__bar{gap:16px}}
+@media (min-width:1200px){
+  .gx-nav{display:flex;align-items:center;gap:2px;margin-right:10px}
+  .gx-burger{display:none}
+}
+@media (min-width:1400px){.gx-header__tel{display:inline-flex;margin-right:6px}}
+
+/* ---------- full-screen menu ---------- */
+.gx-menu{position:fixed;inset:0;z-index:120;background:radial-gradient(90% 60% at 100% 0%,rgba(255,79,163,.22),transparent 60%),radial-gradient(80% 60% at 0% 100%,rgba(176,140,255,.2),transparent 60%),#0f0719;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+.gx-menu.gx-is-open{opacity:1;visibility:visible;transition:opacity .3s}
+.gx-menu__top{display:flex;align-items:center;justify-content:space-between;height:var(--gx-head);flex:none}
+.gx-menu__body{flex:1;display:grid;align-content:center;gap:28px;padding-block:20px 28px}
+.gx-menu__nav a{display:flex;align-items:baseline;gap:.7em;padding:.24em 0;font:400 clamp(1.8rem,6.4vw,3.2rem)/1.12 var(--gx-display);text-decoration:none;color:var(--gx-text);transition:color .2s,transform .3s var(--gx-ease)}
+.gx-menu__nav a small{font:500 .72rem/1 var(--gx-sans);letter-spacing:.2em;color:var(--gx-accent);min-width:2.2em}
+.gx-menu__nav a:hover,.gx-menu__nav a:focus-visible{color:var(--gx-accent);transform:translateX(8px)}
+.gx-menu__foot{display:grid;gap:14px;padding-top:22px;border-top:1px solid var(--gx-line)}
+.gx-menu__cta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gx-menu__tel{display:inline-flex;align-items:center;gap:.6em;min-height:48px;font-size:1.25rem;font-weight:500;text-decoration:none}
+.gx-menu__tel .gx-ico{color:var(--gx-accent)}
+.gx-menu__hours{color:var(--gx-mute);font-size:.95rem}
+@media (min-width:768px){.gx-menu__nav a{font-size:clamp(2.2rem,4.9vw,3.2rem)}.gx-menu__body{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:end;gap:40px}.gx-menu__foot{border-top:0;border-left:1px solid var(--gx-line);padding:0 0 8px 40px}.gx-menu__cta{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.gx-menu__cta{grid-template-columns:minmax(0,1fr)}}
+html.gx-lock{overflow:hidden}
+
+/* ---------- hero ---------- */
+.gx-hero{position:relative;isolation:isolate;display:flex;min-height:max(700px,100svh);overflow:clip;
+  background:radial-gradient(50% 55% at 74% 46%,#3a1a5e 0%,#1c0d31 46%,#0b0514 100%)}
+.gx-hero__scene{position:absolute;inset:0;z-index:-2}
+.gx-hero__canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity 1s ease}
+.gx-hero.gx-is-live .gx-hero__canvas{opacity:1}
+.gx-hero__scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(11,5,20,.95) 0%,rgba(11,5,20,.82) 28%,rgba(11,5,20,.32) 50%,rgba(11,5,20,0) 62%),
+  linear-gradient(180deg,rgba(11,5,20,.6) 0,rgba(11,5,20,0) 15%,rgba(11,5,20,0) 80%,var(--gx-night) 100%)}
+.gx-hero__grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1fr);grid-template-areas:"copy stage" "facts stage";align-content:center;column-gap:40px;row-gap:34px;padding-top:calc(var(--gx-head) + 20px);padding-bottom:46px}
+.gx-hero__copy{grid-area:copy;min-width:0}
+.gx-hero__title{font:400 clamp(3rem,1rem + 5vw,5.6rem)/.98 var(--gx-display);letter-spacing:-.018em;margin:22px 0 22px;text-wrap:balance}
+.gx-hero__title em{font-style:normal;color:var(--gx-accent)}
+.gx-hero__sub{font-size:clamp(1.05rem,.95rem + .45vw,1.3rem);line-height:1.55;color:var(--gx-soft);font-weight:300;max-width:28.5em;text-wrap:pretty}
+.gx-hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.gx-hero__stage{grid-area:stage;min-width:0;min-height:420px;position:relative;display:grid;place-items:center}
+.gx-facts{grid-area:facts;display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,.8fr) minmax(0,1.3fr) minmax(0,.95fr) minmax(0,.85fr);max-width:700px;border:1px solid var(--gx-line2);border-radius:18px;background:rgba(13,7,22,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.gx-facts li{min-width:0;padding:14px 16px 15px;border-left:1.5px dashed var(--gx-line2)}
+.gx-facts li:first-child{border-left:0}
+.gx-facts span{display:block;font:600 .64rem/1.3 var(--gx-sans);letter-spacing:.17em;text-transform:uppercase;color:var(--gx-mute);white-space:nowrap}
+.gx-facts strong{display:block;margin-top:5px;font:500 1.02rem/1.25 var(--gx-sans);color:var(--gx-text);white-space:nowrap}
+.gx-facts__live strong{display:flex;align-items:center;gap:.5em;color:var(--gx-accent);font-weight:600}
+.gx-facts__live strong::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:currentColor;animation:gx-pulse 2s infinite}
+@keyframes gx-pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,currentColor 70%,transparent)}70%,100%{box-shadow:0 0 0 9px transparent}}
+.gx-motion{position:absolute;right:var(--gx-gutter);bottom:22px;z-index:3;display:inline-flex;align-items:center;gap:.5em;min-height:44px;padding:0 16px 0 12px;border-radius:999px;border:1px solid var(--gx-line2);background:rgba(13,7,22,.6);color:var(--gx-soft);font-size:.84rem;font-weight:500;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .2s,border-color .2s}
+.gx-motion:hover{color:var(--gx-text);border-color:var(--gx-accent)}
+.gx-motion[hidden]{display:none}
+.gx-dial2d{width:min(86%,440px);height:auto;aspect-ratio:1;border-radius:50%;box-shadow:0 0 0 12px #6d1049,0 0 0 15px var(--gx-gold),0 40px 90px rgba(0,0,0,.6);outline:9px dotted #ffe9b6;outline-offset:-1px}
+
+/* tablet: copy left, clock right, facts as a full-width ticket strip */
+@media (min-width:900px) and (max-width:1199px){
+  .gx-hero{min-height:max(640px,100svh)}
+  .gx-hero__grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:"copy stage" "facts facts";column-gap:24px;row-gap:30px}
+  .gx-hero__title{font-size:clamp(2.8rem,6vw,3.9rem)}
+  .gx-hero__stage{min-height:360px}
+  .gx-facts{max-width:none}
+  .gx-facts li{padding:14px 20px}
+  .gx-motion{bottom:auto;top:calc(var(--gx-head) + 10px)}
+}
+/* portrait tablet + mobile: clock on top, copy beneath */
+@media (max-width:899px){
+  .gx-hero{min-height:0;background:radial-gradient(70% 34% at 50% 22%,#3a1a5e 0%,#1c0d31 55%,#0b0514 100%)}
+  .gx-hero__scrim{background:linear-gradient(180deg,rgba(11,5,20,.5) 0,rgba(11,5,20,0) 12%,rgba(11,5,20,0) 34%,rgba(11,5,20,.9) 52%,var(--gx-night) 100%)}
+  .gx-hero__grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"stage" "copy" "facts";row-gap:0;padding-top:var(--gx-head);padding-bottom:40px;align-content:start}
+  .gx-hero__stage{min-height:0;height:min(44svh,440px)}
+  .gx-hero__copy{text-align:center;display:grid;justify-items:center}
+  .gx-hero__title{font-size:clamp(2.9rem,8.4vw,4.2rem);margin:18px 0 16px}
+  .gx-hero__cta{justify-content:center;margin-top:26px}
+  .gx-facts{margin:34px auto 0;width:100%;max-width:700px}
+  .gx-motion{bottom:auto;top:calc(var(--gx-head) + 8px);padding:0;width:44px;justify-content:center}
+  .gx-motion span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+}
+@media (max-width:767px){
+  .gx-hero__stage{height:clamp(200px,31svh,270px)}
+  .gx-hero__scrim{background:linear-gradient(180deg,rgba(11,5,20,.5) 0,rgba(11,5,20,0) 10%,rgba(11,5,20,0) 30%,rgba(11,5,20,.92) 44%,var(--gx-night) 100%)}
+  .gx-hero__grid{padding-bottom:26px}
+  .gx-hero__copy .gx-strap{font-size:.66rem;letter-spacing:.16em}
+  .gx-hero__title{font-size:clamp(2.2rem,10.4vw,2.9rem);margin:10px 0 10px}
+  .gx-hero__sub{font-size:.98rem;line-height:1.5}
+  .gx-hero__cta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;margin-top:16px}
+  .gx-hero__cta .gx-btn{min-height:50px;padding:.6em .5em;font-size:.95rem}
+  .gx-hero__cta .gx-ico{display:none}
+  .gx-facts{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:16px;border-radius:16px;text-align:left}
+  .gx-facts li{padding:8px 14px 9px;border-left:0;border-top:1.5px dashed var(--gx-line2)}
+  .gx-facts li:first-child{grid-column:1/-1;border-top:0;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .gx-facts li:nth-child(3),.gx-facts li:nth-child(5){border-left:1.5px dashed var(--gx-line2)}
+  .gx-facts strong{margin-top:1px;font-size:.96rem}
+  .gx-facts li:first-child strong{margin-top:0}
+}
+@media (max-width:767px){.gx-hide-s{display:none}}
+.gx-br-s{display:none}
+@media (max-width:479px){.gx-br-s{display:inline}}
+
+/* ---------- sections: shared ---------- */
+.gx-sec{position:relative;padding-block:clamp(72px,8.4vw,136px);background:
+  radial-gradient(46% 38% at var(--gx-glow-x,88%) 0%,color-mix(in srgb,var(--gx-accent) 13%,transparent),transparent 72%),var(--gx-sec-bg,var(--gx-night))}
+.gx-sec--alt{--gx-sec-bg:var(--gx-plum);--gx-glow-x:8%}
+.gx-sec__head{display:grid;gap:20px;margin-bottom:clamp(34px,4.4vw,60px)}
+.gx-sec__head--row{align-items:end}
+@media (min-width:1000px){.gx-sec__head--row{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:56px}.gx-sec__head--row .gx-strap{grid-column:1/-1}}
+.gx-note{font-size:.9rem;color:var(--gx-mute);line-height:1.55}
+.gx-bulbline{height:8px;margin-bottom:26px;background:radial-gradient(circle at 4px 4px,var(--gx-accent) 0 3px,transparent 3.6px) 0 0/22px 8px repeat-x;opacity:.55;max-width:176px}
+
+/* two-column splits: the shorter column is pinned on desktop (class set by script after measuring) */
+.gx-split{display:grid;gap:44px}
+.gx-split>*{min-width:0}
+@media (min-width:1200px){
+  .gx-split{grid-template-columns:minmax(0,5fr) minmax(0,6.4fr);column-gap:clamp(48px,6vw,104px);align-items:start}
+  .gx-split--even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .gx-split .gx-is-pinned{position:sticky;top:calc(var(--gx-head) + 28px)}
+}
+.gx-aside{display:grid;gap:22px;align-content:start}
+.gx-ticks{display:grid;gap:12px;margin-top:6px}
+.gx-ticks li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;color:var(--gx-soft)}
+.gx-ticks .gx-ico{color:var(--gx-accent);margin-top:.22em}
+.gx-ticks strong{color:var(--gx-text);font-weight:500}
+
+/* ---------- chips ---------- */
+.gx-filters{display:grid;gap:12px;margin-bottom:30px}
+@media (min-width:1000px){.gx-filters{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 40px}}
+.gx-chips{display:flex;align-items:center;gap:8px;min-width:0}
+.gx-chips__label{font:600 .68rem/1 var(--gx-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gx-mute);margin-right:6px;flex:none}
+.gx-chip{flex:none;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--gx-line2);background:transparent;color:var(--gx-soft);font-size:.95rem;font-weight:500;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.gx-chip:hover{border-color:var(--gx-accent);color:var(--gx-text)}
+.gx-chip[aria-pressed="true"]{background:var(--gx-accent);border-color:var(--gx-accent);color:var(--gx-on-accent)}
+@media (max-width:767px){
+  .gx-chips{overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin-inline:calc(var(--gx-gutter) * -1);padding-inline:var(--gx-gutter);scroll-padding-inline:var(--gx-gutter)}
+  .gx-chips::-webkit-scrollbar{display:none}
+  .gx-chip{scroll-snap-align:start}
+}
+
+/* ---------- what's on: the bill ---------- */
+.gx-bill{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:768px){.gx-bill{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+@media (min-width:1200px){.gx-bill{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.gx-gig{min-width:0}
+.gx-gig[hidden]{display:none}
+.gx-gig article{position:relative;height:100%;display:grid;grid-template-columns:86px minmax(0,1fr);border-radius:20px;background:linear-gradient(140deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid var(--gx-line);transition:transform .35s var(--gx-ease),border-color .3s,background .3s}
+.gx-gig article::before,.gx-gig article::after{content:"";position:absolute;left:78px;width:16px;height:16px;border-radius:50%;background:var(--gx-sec-bg,var(--gx-night));border:1px solid var(--gx-line)}
+.gx-gig article::before{top:-9px;clip-path:inset(50% 0 0 0)}
+.gx-gig article::after{bottom:-9px;clip-path:inset(0 0 50% 0)}
+.gx-gig article:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--gx-accent) 60%,transparent);background:linear-gradient(140deg,color-mix(in srgb,var(--gx-accent) 13%,transparent),rgba(255,255,255,.03))}
+.gx-gig__date{display:grid;align-content:center;justify-items:center;gap:2px;padding:18px 0;border-right:1.5px dashed var(--gx-line2);text-align:center}
+.gx-gig__date span{font:600 .7rem/1 var(--gx-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gx-mute)}
+.gx-gig__date strong{font:400 2.5rem/1 var(--gx-display);color:var(--gx-accent)}
+.gx-gig__body{min-width:0;display:grid;gap:5px;align-content:start;padding:20px 20px 18px}
+.gx-gig__room{display:flex;align-items:center;gap:.5em;font:600 .68rem/1.3 var(--gx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gx-mute)}
+.gx-gig__room .gx-ico{width:1.4em;height:1.4em;color:var(--gx-accent)}
+.gx-gig__tonight{margin-left:auto;padding:4px 9px;border-radius:999px;background:var(--gx-accent);color:var(--gx-on-accent);letter-spacing:.1em}
+.gx-gig__name{font:400 1.6rem/1.08 var(--gx-display);margin-top:5px}
+.gx-gig__tag{color:var(--gx-soft);font-size:.97rem;line-height:1.4}
+.gx-gig__who{font-size:.92rem;color:var(--gx-mute);line-height:1.4}
+.gx-gig__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 12px;margin-top:12px;padding-top:14px;border-top:1px solid var(--gx-line)}
+.gx-gig__meta{font-size:.9rem;color:var(--gx-soft);line-height:1.35}
+.gx-gig__meta b{display:block;font-weight:600;color:var(--gx-text)}
+.gx-on__more{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:34px}
+.gx-on__empty{padding:30px;border:1.5px dashed var(--gx-line2);border-radius:20px;color:var(--gx-soft);text-align:center}
+
+/* ---------- forms ---------- */
+.gx-card{border-radius:26px;border:1px solid var(--gx-line);background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.028));padding:clamp(22px,3vw,40px)}
+.gx-fields{display:grid;gap:18px}
+@media (min-width:768px){.gx-fields{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}.gx-fields .gx-field--full{grid-column:1/-1}}
+.gx-field{display:grid;gap:7px;min-width:0;align-content:start}
+.gx-field>label,.gx-legend{font-weight:500;font-size:.96rem;color:var(--gx-text)}
+.gx-field small,.gx-legend small{font-weight:400;color:var(--gx-mute);font-size:.86rem}
+.gx-input{width:100%;min-height:52px;padding:.68em 1em;border-radius:14px;border:1.5px solid var(--gx-line2);background:rgba(11,5,20,.6);color:var(--gx-text);transition:border-color .2s,box-shadow .2s}
+.gx-input::placeholder{color:#8d7ea3}
+textarea.gx-input{min-height:108px;resize:vertical;line-height:1.5}
+select.gx-input{appearance:none;-webkit-appearance:none;padding-right:2.6em;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d2c3e2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9em center;background-size:1.1em}
+select.gx-input option{background:#1c0e2f;color:#f5eefb}
+.gx-input:focus{outline:none;border-color:var(--gx-accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--gx-accent) 24%,transparent)}
+.gx-input[aria-invalid="true"]{border-color:#ff9c9c}
+.gx-err{font-size:.88rem;color:#ffb9b9;line-height:1.35}
+.gx-err:empty{display:none}
+.gx-summary{padding:14px 18px;border-radius:14px;border:1.5px solid #ff9c9c;background:rgba(255,120,120,.09);color:#ffd2d2;font-size:.94rem;margin-bottom:20px}
+.gx-summary[hidden]{display:none}
+.gx-summary ul{margin-top:6px;display:grid;gap:3px}
+.gx-summary a{color:inherit}
+.gx-check{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;font-size:.94rem;line-height:1.5;color:var(--gx-soft);cursor:pointer;min-height:44px;padding-block:6px}
+.gx-check input{appearance:none;-webkit-appearance:none;width:24px;height:24px;margin:0;border-radius:7px;border:1.5px solid var(--gx-line2);background:rgba(11,5,20,.6);display:grid;place-items:center;transition:background .2s,border-color .2s;cursor:pointer}
+.gx-check input::after{content:"";width:12px;height:7px;border-left:2.5px solid var(--gx-on-accent);border-bottom:2.5px solid var(--gx-on-accent);transform:rotate(-45deg) translate(1px,-1px) scale(0);transition:transform .2s var(--gx-ease)}
+.gx-check input:checked{background:var(--gx-accent);border-color:var(--gx-accent)}
+.gx-check input:checked::after{transform:rotate(-45deg) translate(1px,-1px) scale(1)}
+.gx-check input[aria-invalid="true"]{border-color:#ff9c9c}
+.gx-done{display:grid;gap:16px;justify-items:start}
+.gx-done[hidden]{display:none}
+.gx-done__badge{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--gx-accent);color:var(--gx-on-accent)}
+.gx-done__badge .gx-ico{width:30px;height:30px;stroke-width:2.2}
+.gx-done dl{display:grid;gap:0;width:100%;border-top:1px solid var(--gx-line)}
+.gx-done dl div{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid var(--gx-line);font-size:.97rem}
+.gx-done dt{color:var(--gx-mute)}
+.gx-done dd{text-align:right;font-weight:500}
+
+/* ---------- tickets flow ---------- */
+.gx-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:28px;counter-reset:gxstep}
+.gx-steps li{counter-increment:gxstep;display:grid;gap:9px;font:600 .7rem/1.2 var(--gx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gx-mute)}
+.gx-steps li::before{content:"";height:5px;border-radius:99px;background:var(--gx-line2);transition:background .3s}
+.gx-steps li.gx-is-done::before,.gx-steps li[aria-current="step"]::before{background:var(--gx-accent)}
+.gx-steps li[aria-current="step"]{color:var(--gx-text)}
+.gx-steps li span::before{content:counter(gxstep) ". "}
+.gx-flow fieldset[hidden],.gx-flow__nav[hidden]{display:none}
+.gx-flow legend{font:400 clamp(1.5rem,1.3rem + .8vw,2rem)/1.1 var(--gx-display);margin-bottom:18px;padding:0}
+.gx-flow legend:focus{outline:none}
+.gx-picks{display:grid;gap:10px}
+@media (min-width:640px){.gx-picks--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gx-pick{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 14px;align-items:center;min-height:68px;padding:12px 16px;border-radius:16px;border:1.5px solid var(--gx-line2);background:rgba(11,5,20,.45);cursor:pointer;transition:border-color .2s,background .2s}
+.gx-pick input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.gx-pick__dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--gx-line2);display:grid;place-items:center;transition:border-color .2s}
+.gx-pick__dot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--gx-accent);transform:scale(0);transition:transform .2s var(--gx-ease)}
+.gx-pick__main{min-width:0;display:grid;gap:1px}
+.gx-pick__main b{font-weight:500;line-height:1.3}
+.gx-pick__main small{color:var(--gx-mute);font-size:.86rem;line-height:1.35}
+.gx-pick__side{text-align:right;font-weight:600;white-space:nowrap}
+.gx-pick__side small{display:block;font-weight:400;font-size:.78rem;color:var(--gx-mute)}
+.gx-pick:hover{border-color:color-mix(in srgb,var(--gx-accent) 60%,transparent)}
+.gx-pick:has(input:checked){border-color:var(--gx-accent);background:color-mix(in srgb,var(--gx-accent) 12%,rgba(11,5,20,.5))}
+.gx-pick:has(input:checked) .gx-pick__dot{border-color:var(--gx-accent)}
+.gx-pick:has(input:checked) .gx-pick__dot::after{transform:scale(1)}
+.gx-pick:has(input:focus-visible){outline:3px solid var(--gx-accent);outline-offset:3px}
+.gx-pick--off{opacity:.5;cursor:not-allowed}
+.gx-pick--off input{cursor:not-allowed}
+.gx-qty{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding-top:22px;border-top:1px solid var(--gx-line)}
+.gx-stepper{display:inline-flex;align-items:center;border:1.5px solid var(--gx-line2);border-radius:999px;background:rgba(11,5,20,.5)}
+.gx-stepper button{width:48px;height:48px;border:0;background:transparent;border-radius:50%;font-size:1.4rem;line-height:1;color:var(--gx-text)}
+.gx-stepper button:hover:not([disabled]){color:var(--gx-accent)}
+.gx-stepper button[disabled]{opacity:.35;cursor:not-allowed}
+.gx-stepper output{min-width:2.2em;text-align:center;font-weight:600;font-size:1.15rem}
+.gx-total{margin-top:20px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;padding:16px 20px;border-radius:16px;background:rgba(11,5,20,.55);border:1px dashed var(--gx-line2)}
+.gx-total b{font:400 2rem/1 var(--gx-display);color:var(--gx-accent)}
+.gx-total small{flex-basis:100%;color:var(--gx-mute);font-size:.86rem}
+.gx-flow__nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:28px}
+.gx-flow__nav .gx-btn:last-child{margin-left:auto}
+.gx-pay{padding:18px 20px;border-radius:16px;border:1.5px solid var(--gx-accent);background:color-mix(in srgb,var(--gx-accent) 10%,transparent);font-size:1.06rem;line-height:1.5}
+.gx-pay strong{display:block;font-weight:600}
+
+/* ---------- cabaret ---------- */
+.gx-snaps{position:relative;margin:8px 0 6px;padding-bottom:9%}
+.gx-snaps img{border-radius:20px;object-fit:cover;width:100%;height:100%}
+.gx-snaps__a{width:86%;aspect-ratio:7/5;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.gx-snaps__b{position:absolute;right:0;bottom:0;width:36%;aspect-ratio:3/4;border-radius:999px 999px 18px 18px;overflow:hidden;border:6px solid var(--gx-sec-bg,var(--gx-night));transform:rotate(3deg)}
+.gx-snaps__b img{border-radius:0}
+.gx-table{width:100%;border-collapse:collapse;font-size:.96rem}
+.gx-table caption{text-align:left;font:600 .7rem/1.3 var(--gx-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gx-mute);padding-bottom:10px}
+.gx-table th,.gx-table td{text-align:left;padding:13px 14px 13px 0;border-top:1px solid var(--gx-line);vertical-align:top;line-height:1.4}
+.gx-table thead th{font:600 .68rem/1.3 var(--gx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gx-mute);border-top:0;padding-top:0}
+.gx-table tbody th{font-weight:500;color:var(--gx-text);white-space:nowrap}
+.gx-table td{color:var(--gx-soft)}
+.gx-table td:last-child{padding-right:0}
+.gx-table b{color:var(--gx-accent);font-weight:600}
+@media (max-width:767px){
+  .gx-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .gx-table,.gx-table caption,.gx-table tbody,.gx-table tr,.gx-table th,.gx-table td{display:block}
+  .gx-table caption{width:100%}
+  .gx-table tr{padding:14px 16px;border:1px solid var(--gx-line);border-radius:16px;margin-bottom:10px;background:rgba(255,255,255,.035)}
+  .gx-table th,.gx-table td{border:0;padding:0}
+  .gx-table tbody th{font-size:1.08rem;margin-bottom:6px;white-space:normal}
+  .gx-table td{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:10px;padding-block:3px}
+  .gx-table td::before{content:attr(data-th);font:600 .66rem/1.9 var(--gx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gx-mute)}
+}
+.gx-radios{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gx-radios .gx-pick{min-height:56px;grid-template-columns:auto minmax(0,1fr)}
+
+/* ---------- the venue ---------- */
+.gx-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--gx-line2);border-radius:22px;margin-bottom:clamp(36px,4.4vw,64px)}
+.gx-stats li{padding:20px 22px 22px;border-top:1.5px dashed var(--gx-line2);border-left:1.5px dashed var(--gx-line2);min-width:0}
+.gx-stats li:nth-child(-n+2){border-top:0}
+.gx-stats li:nth-child(odd){border-left:0}
+.gx-stats strong{display:block;font:400 clamp(2.3rem,1.5rem + 2.6vw,3.8rem)/1 var(--gx-display);color:var(--gx-accent)}
+.gx-stats span{display:block;margin-top:8px;color:var(--gx-soft);font-size:.95rem;line-height:1.4}
+@media (min-width:900px){.gx-stats{grid-template-columns:repeat(4,minmax(0,1fr))}.gx-stats li{border-top:0;padding:26px 30px 28px}.gx-stats li:nth-child(odd){border-left:1.5px dashed var(--gx-line2)}.gx-stats li:first-child{border-left:0}}
+.gx-levels{display:grid;gap:44px}
+.gx-level{min-width:0;display:grid;gap:0;align-content:start}
+.gx-level__img{position:relative;aspect-ratio:4/4.7;border-radius:999px 999px 24px 24px;overflow:hidden;background:var(--gx-plum2)}
+.gx-level__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--gx-ease)}
+.gx-level:hover .gx-level__img img{transform:scale(1.045)}
+.gx-level__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,5,20,.7));pointer-events:none}
+.gx-level__no{position:relative;z-index:1;display:flex;align-items:center;gap:14px;margin:-34px 0 0 20px}
+.gx-level__no b{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;font:400 1.9rem/1 var(--gx-display);background:var(--gx-night);border:2px solid var(--gx-accent);color:var(--gx-accent);flex:none}
+.gx-level__no span{font:600 .7rem/1.2 var(--gx-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gx-text);transform:translateY(-12px);text-shadow:0 1px 10px rgba(0,0,0,.8)}
+.gx-level__body{display:grid;gap:10px;padding:18px 6px 0 20px}
+.gx-level__body p{color:var(--gx-soft)}
+.gx-level__body ul{display:grid;gap:6px;margin-top:6px;font-size:.95rem;color:var(--gx-soft)}
+.gx-level__body li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px}
+.gx-level__body li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gx-accent);margin-top:.62em}
+@media (min-width:768px){
+  .gx-levels{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 28px}
+  .gx-level:last-child{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px;align-items:center}
+  .gx-level:last-child .gx-level__img{grid-row:1/3}
+  .gx-level:last-child .gx-level__no{margin:0 0 0 6px;align-self:end}
+  .gx-level:last-child .gx-level__no span{transform:none}
+  .gx-level:last-child .gx-level__body{align-self:start;padding-left:6px}
+}
+@media (min-width:1200px){
+  .gx-levels{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+  .gx-level:nth-child(2){margin-top:64px}
+  .gx-level:last-child{grid-column:auto;grid-template-columns:minmax(0,1fr);align-items:start}
+  .gx-level:last-child .gx-level__img{grid-row:auto}
+  .gx-level:last-child .gx-level__no{margin:-34px 0 0 20px}
+  .gx-level:last-child .gx-level__no span{transform:translateY(-12px)}
+  .gx-level:last-child .gx-level__body{padding-left:20px}
+}
+.gx-kit{display:grid;gap:28px;margin-top:clamp(44px,5vw,76px);padding-top:clamp(34px,4vw,52px);border-top:1px solid var(--gx-line)}
+.gx-kit dl{display:grid;gap:22px 36px}
+.gx-kit dt{font:600 .7rem/1.3 var(--gx-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gx-accent);margin-bottom:6px}
+.gx-kit dd{color:var(--gx-soft);font-size:.99rem}
+.gx-kit__pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.gx-kit__pics img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:22px}
+.gx-kit__pics img:last-child{border-radius:50%}
+@media (min-width:768px){.gx-kit dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.gx-kit{grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);column-gap:72px;align-items:center}}
+
+/* ---------- house rules ---------- */
+.gx-pledge{border-radius:24px;padding:26px 28px 28px;border:1.5px solid color-mix(in srgb,var(--gx-accent) 55%,transparent);background:color-mix(in srgb,var(--gx-accent) 8%,transparent);display:grid;gap:14px}
+.gx-pledge p{font:400 clamp(1.3rem,1.1rem + .7vw,1.7rem)/1.28 var(--gx-display);text-wrap:pretty}
+.gx-pledge small{font-size:.92rem;color:var(--gx-soft);line-height:1.5}
+.gx-rules{counter-reset:gxrule;display:grid}
+.gx-rule{counter-increment:gxrule;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:22px;row-gap:6px;padding:24px 0;border-top:1px solid var(--gx-line)}
+.gx-rule:last-child{border-bottom:1px solid var(--gx-line)}
+.gx-rule::before{content:counter(gxrule,decimal-leading-zero);grid-row:1/3;font:400 1.6rem/1.15 var(--gx-display);color:var(--gx-accent);min-width:1.6em}
+.gx-rule h3{font:500 1.2rem/1.3 var(--gx-sans)}
+.gx-rule p{grid-column:2;color:var(--gx-soft);font-size:.99rem}
+.gx-rule strong{color:var(--gx-text);font-weight:500}
+
+/* ---------- welfare ---------- */
+.gx-care{display:grid;gap:14px}
+.gx-care li{min-width:0;padding:24px 24px 26px;border-radius:22px;border:1px solid var(--gx-line);background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.02));display:grid;gap:10px;align-content:start;transition:border-color .3s,transform .35s var(--gx-ease)}
+.gx-care li:hover{border-color:color-mix(in srgb,var(--gx-accent) 55%,transparent);transform:translateY(-3px)}
+.gx-care__ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--gx-accent) 15%,transparent);color:var(--gx-accent);margin-bottom:6px}
+.gx-care__ico .gx-ico{width:26px;height:26px}
+.gx-care h3{font:500 1.2rem/1.3 var(--gx-sans)}
+.gx-care p{color:var(--gx-soft);font-size:.98rem}
+.gx-care strong{color:var(--gx-text);font-weight:500}
+@media (min-width:768px){.gx-care{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media (min-width:1200px){.gx-care{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}}
+.gx-sos{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:20px;padding:18px 24px;border-radius:18px;border:1.5px dashed color-mix(in srgb,var(--gx-accent) 60%,transparent);color:var(--gx-soft)}
+.gx-sos strong{color:var(--gx-text);font-weight:600}
+.gx-sos .gx-ico{color:var(--gx-accent);width:1.6em;height:1.6em}
+.gx-access{margin-top:clamp(40px,5vw,72px);display:grid;gap:30px;border-radius:28px;padding:clamp(24px,3.6vw,52px);background:var(--gx-plum2);border:1px solid var(--gx-line)}
+.gx-access__lead{display:grid;gap:16px;align-content:start;justify-items:start}
+.gx-access dl{display:grid;gap:20px 34px}
+.gx-access dt{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--gx-text);margin-bottom:4px}
+.gx-access dt .gx-ico{color:var(--gx-accent)}
+.gx-access dd{color:var(--gx-soft);font-size:.97rem}
+@media (min-width:768px){.gx-access dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.gx-access{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);column-gap:72px}}
+
+/* ---------- getting here ---------- */
+.gx-map{border-radius:26px;overflow:hidden;border:1px solid var(--gx-line);background:#170b29}
+.gx-map>svg{width:100%;height:auto}
+@media (max-width:599px){.gx-map>svg{aspect-ratio:1/.92}}
+.gx-map__foot{display:grid;gap:14px;padding:22px 24px 24px;border-top:1px solid var(--gx-line)}
+.gx-map__foot address{font-style:normal;line-height:1.5}
+.gx-map__foot address strong{display:block;font:400 1.5rem/1.2 var(--gx-display);margin-bottom:4px}
+.gx-map__foot p{color:var(--gx-soft);font-size:.95rem}
+@media (min-width:640px){.gx-map__foot{grid-template-columns:minmax(0,1fr) auto;align-items:end}}
+.gx-ways{display:grid}
+.gx-way{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 20px;padding:22px 0;border-top:1px solid var(--gx-line)}
+.gx-way:first-child{border-top:0;padding-top:0}
+.gx-way__ico{grid-row:1/3;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;border:1.5px solid color-mix(in srgb,var(--gx-accent) 60%,transparent);color:var(--gx-accent)}
+.gx-way h3{font:500 1.18rem/1.3 var(--gx-sans);align-self:end}
+.gx-way p{grid-column:2;color:var(--gx-soft);font-size:.99rem}
+.gx-way strong{color:var(--gx-text);font-weight:500}
+.gx-hush{margin-top:8px;padding:22px 24px;border-radius:20px;background:color-mix(in srgb,var(--gx-accent) 10%,transparent);border:1px solid color-mix(in srgb,var(--gx-accent) 40%,transparent);display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.gx-hush .gx-ico{width:30px;height:30px;color:var(--gx-accent)}
+.gx-hush p{font:400 1.25rem/1.3 var(--gx-display)}
+
+/* ---------- good to know + private hire ---------- */
+.gx-know{display:grid;gap:14px}
+.gx-know li{min-width:0;display:grid;gap:8px;align-content:start;padding:24px;border-radius:22px;border:1px solid var(--gx-line);background:rgba(255,255,255,.035)}
+.gx-know .gx-ico{width:28px;height:28px;color:var(--gx-accent);margin-bottom:8px}
+.gx-know h3{font:500 1.15rem/1.3 var(--gx-sans)}
+.gx-know p{color:var(--gx-soft);font-size:.96rem}
+@media (min-width:768px){.gx-know{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media (min-width:1200px){.gx-know{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.gx-hire{margin-top:clamp(40px,5vw,72px);display:grid;border-radius:30px;border:1px solid var(--gx-line);background:linear-gradient(120deg,color-mix(in srgb,var(--gx-accent) 16%,var(--gx-plum)),var(--gx-plum) 60%);scroll-margin-top:calc(var(--gx-head) + 16px)}
+.gx-hire__img{min-height:280px;position:relative}
+.gx-hire__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;border-radius:29px 29px 0 0}
+.gx-hire__body{display:grid;gap:18px;align-content:center;justify-items:start;padding:clamp(26px,4.4vw,64px)}
+.gx-hire__opts{display:grid;gap:10px;width:100%}
+.gx-hire__opts li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 18px;padding:12px 0;border-top:1px solid var(--gx-line);color:var(--gx-soft)}
+.gx-hire__opts b{color:var(--gx-text);font-weight:500}
+.gx-hire__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+@media (min-width:900px){.gx-hire{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}.gx-hire__img{min-height:460px}.gx-hire__img img{border-radius:29px 0 0 29px}}
+
+/* ---------- FAQ ---------- */
+.gx-faq{display:grid}
+.gx-faq__item{border-top:1px solid var(--gx-line)}
+.gx-faq__item:last-child{border-bottom:1px solid var(--gx-line)}
+.gx-faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;padding:18px 0;background:none;border:0;text-align:left;font:500 1.14rem/1.35 var(--gx-sans);color:var(--gx-text)}
+.gx-faq__q:hover{color:var(--gx-accent)}
+.gx-faq__q span:last-child{flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--gx-line2);display:grid;place-items:center;color:var(--gx-accent);transition:transform .35s var(--gx-ease),background .25s,color .25s,border-color .25s}
+.gx-faq__q[aria-expanded="true"] span:last-child{transform:rotate(180deg);background:var(--gx-accent);border-color:var(--gx-accent);color:var(--gx-on-accent)}
+.gx-faq__a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .38s var(--gx-ease),visibility 0s .38s}
+.gx-faq__a.gx-is-open{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .38s var(--gx-ease),visibility 0s}
+.gx-faq__a>div{min-height:0;overflow:hidden}
+.gx-faq__a p{padding:0 54px 24px 0;color:var(--gx-soft);max-width:46em}
+.gx-contact{display:grid;gap:12px;padding:24px;border-radius:22px;border:1px solid var(--gx-line);background:rgba(255,255,255,.04)}
+.gx-contact a{display:flex;align-items:center;gap:12px;min-height:44px;text-decoration:none;font-weight:500;overflow-wrap:anywhere}
+.gx-contact a:hover{color:var(--gx-accent)}
+.gx-contact .gx-ico{color:var(--gx-accent)}
+
+/* ---------- footer: the light-up dance floor ---------- */
+.gx-footer{position:relative;--gx-sec-bg:#0d0618;background:radial-gradient(60% 46% at 50% 38%,color-mix(in srgb,var(--gx-accent) 9%,transparent),transparent 70%),#0d0618;padding-top:clamp(64px,7.4vw,116px)}
+.gx-footer .gx-strap,.gx-footer .gx-btn,.gx-footer em{transition:color .8s,background-color .8s,border-color .8s}
+.gx-footer__top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;margin-bottom:clamp(26px,3vw,40px)}
+.gx-footer__top>div{display:grid;gap:16px;min-width:0}
+.gx-lights{display:inline-flex;align-items:center;gap:.5em;min-height:44px;padding:0 16px 0 12px;border-radius:999px;border:1px solid var(--gx-line2);background:transparent;color:var(--gx-soft);font-size:.86rem;font-weight:500}
+.gx-lights:hover{color:var(--gx-text);border-color:var(--gx-accent)}
+.gx-floor{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:10px;border-radius:26px;background:#06030c;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 50px 90px -40px color-mix(in srgb,var(--gx-accent) 45%,transparent)}
+.gx-floor__group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0}
+.gx-floor__links{display:contents}
+.gx-floor__toggle{display:none}
+.gx-tile{position:relative;aspect-ratio:1;min-width:0;border-radius:14px;overflow:hidden;isolation:isolate;margin:0;
+  background:linear-gradient(150deg,#1d1030,#120922);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gx-accent) 22%,rgba(255,255,255,.05))}
+.gx-tile::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity 1.2s ease;
+  background:radial-gradient(115% 115% at 50% 38%,color-mix(in srgb,var(--gx-accent) 92%,#fff),color-mix(in srgb,var(--gx-accent) 74%,#12081f) 62%,color-mix(in srgb,var(--gx-accent) 46%,#12081f))}
+.gx-tile::after{content:"";position:absolute;inset:7px;border-radius:9px;border:1px solid rgba(255,255,255,.07);pointer-events:none;background:linear-gradient(160deg,rgba(255,255,255,.07),transparent 42%)}
+.gx-tile{transition:box-shadow 1.2s ease}
+.gx-tile.gx-is-lit{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gx-accent) 70%,transparent),0 0 30px -4px color-mix(in srgb,var(--gx-accent) 60%,transparent)}
+.gx-tile.gx-is-lit::before{opacity:.6}
+.gx-tile--head::before{opacity:.16}
+.gx-tile--head.gx-is-lit::before{opacity:.6}
+.gx-tile:has(a:hover)::before,.gx-tile:has(a:focus-visible)::before{opacity:1;transition-duration:.18s}
+.gx-tile a{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 15px;text-decoration:none;font-weight:500;font-size:1.1rem;line-height:1.2;color:var(--gx-text);transition:color .18s}
+.gx-tile a .gx-ico{align-self:flex-end;opacity:.45;transition:transform .3s var(--gx-ease),opacity .2s}
+.gx-tile a:hover,.gx-tile a:focus-visible{color:#170a26}
+.gx-tile a:hover .gx-ico,.gx-tile a:focus-visible .gx-ico{opacity:1;transform:translate(3px,-3px)}
+.gx-tile a:focus-visible{outline:3px solid #fff;outline-offset:-5px;border-radius:14px}
+.gx-tile--head{display:flex;flex-direction:column;justify-content:space-between;padding:16px}
+.gx-tile--head small{font:600 .68rem/1 var(--gx-sans);letter-spacing:.2em;color:var(--gx-accent);transition:color .8s}
+.gx-floor__title{font:400 clamp(1.25rem,.9rem + 1vw,1.7rem)/1.05 var(--gx-display);color:var(--gx-text)}
+.gx-tile--blank{display:grid;place-items:center;color:color-mix(in srgb,var(--gx-accent) 70%,transparent);transition:color .8s}
+.gx-tile--blank .gx-ico{width:34%;height:34%;stroke-width:1.1}
+@media (min-width:768px) and (max-width:1199px){.gx-floor{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){
+  .gx-floor{grid-template-columns:minmax(0,1fr);gap:8px;padding:8px;border-radius:22px}
+  .gx-floor__group{grid-template-columns:minmax(0,1fr);gap:8px}
+  .gx-tile{aspect-ratio:auto}
+  .gx-tile--head{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:64px;padding:0 60px 0 18px}
+  .gx-floor__title{font-size:1.4rem}
+  .gx-floor__toggle{display:grid;place-items:center end;position:absolute;inset:0;width:100%;padding:0 18px;border:0;background:transparent;color:var(--gx-text);border-radius:14px;z-index:2}
+  .gx-floor__toggle .gx-ico{transition:transform .3s var(--gx-ease)}
+  .gx-floor__toggle[aria-expanded="true"] .gx-ico{transform:rotate(180deg)}
+  .gx-floor__toggle:focus-visible{outline:3px solid #fff;outline-offset:-5px}
+  .gx-floor__links{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .gx-floor__group.gx-is-open .gx-floor__links{display:grid}
+  .gx-floor__links .gx-tile{min-height:76px}
+  .gx-tile--blank{display:none}
+  .gx-tile a{padding:12px 14px;font-size:.98rem}
+}
+/* the darker edge of the floor */
+.gx-edge{margin-top:clamp(40px,5vw,72px);background:#07030d;border-top:3px solid color-mix(in srgb,var(--gx-accent) 55%,#2a1a3f);transition:border-color .8s;position:relative}
+.gx-edge::before{content:"";position:absolute;inset:0 0 auto 0;height:10px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.1) 0 2px,transparent 2px 12px);opacity:.5}
+.gx-edge__grid{display:grid;gap:36px;padding-block:clamp(40px,4.6vw,64px)}
+.gx-edge h2{font:600 .7rem/1.3 var(--gx-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gx-mute);margin-bottom:14px}
+.gx-edge address{font-style:normal}
+.gx-edge__contact{display:grid;gap:4px;align-content:start}
+.gx-edge__contact a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;overflow-wrap:anywhere}
+.gx-edge__contact a:hover{color:var(--gx-accent)}
+.gx-edge__contact .gx-ico{color:var(--gx-accent);transition:color .8s}
+.gx-edge__contact p{color:var(--gx-soft);font-size:1.05rem;line-height:1.5;margin-bottom:6px}
+.gx-hours{display:grid;gap:0}
+.gx-hours div{display:flex;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px dashed var(--gx-line2)}
+.gx-hours dt{color:var(--gx-soft)}
+.gx-hours dd{font-weight:500;white-space:nowrap}
+.gx-news p{color:var(--gx-soft);font-size:.98rem}
+.gx-news__row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin:16px 0 6px}
+.gx-news__ok{margin-top:12px;padding:14px 16px;border-radius:14px;border:1.5px solid var(--gx-accent);color:var(--gx-text)!important}
+@media (max-width:479px){.gx-news__row{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:768px){.gx-edge__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 48px}.gx-news{grid-column:1/-1}}
+@media (min-width:1200px){.gx-edge__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.5fr);column-gap:80px}.gx-news{grid-column:auto}}
+.gx-legal{display:grid;gap:14px;padding-block:24px calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--gx-line);font-size:.86rem;color:var(--gx-mute);line-height:1.6}
+.gx-legal a{color:var(--gx-soft)}
+.gx-legal a:hover{color:var(--gx-text)}
+.gx-legal ul{display:flex;flex-wrap:wrap;gap:2px 22px}
+.gx-legal ul a{display:inline-flex;align-items:center;min-height:44px}
+.gx-totop{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--gx-accent);color:var(--gx-text);transition:background .25s,color .25s,transform .3s var(--gx-ease),border-color .8s}
+.gx-totop:hover{background:var(--gx-accent);color:#170a26!important;transform:translateY(-3px)}
+@media (min-width:1000px){.gx-legal{grid-template-columns:minmax(0,1fr) auto auto;align-items:center;column-gap:36px}}
+@media (max-width:999px){.gx-totop{justify-self:end;grid-row:1}}
+
+/* ---------- small-print dialog ---------- */
+.gx-dialog{width:min(680px,calc(100vw - 32px));max-height:min(84vh,760px);padding:0;border:1px solid var(--gx-line2);border-radius:24px;background:#170b29;color:var(--gx-text);overflow:auto}
+.gx-dialog::backdrop{background:rgba(6,2,12,.78);backdrop-filter:blur(4px)}
+.gx-dialog__head{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;background:#170b29;border-bottom:1px solid var(--gx-line);z-index:1}
+.gx-dialog__body{display:grid;gap:26px;padding:24px 22px 30px}
+.gx-dialog__body section{display:grid;gap:8px;scroll-margin-top:90px}
+.gx-dialog__body h3{font:400 1.5rem/1.2 var(--gx-display)}
+.gx-dialog__body p{color:var(--gx-soft);font-size:.98rem}
+.gx-dialog__body h3:focus{outline:none;color:var(--gx-accent)}
+
+/* ---------- mobile action bar ---------- */
+.gx-dock{display:none}
+@media (max-width:767px){
+  .gx-dock{position:fixed;inset:auto 0 0 0;z-index:70;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(13,7,22,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--gx-line2);transition:transform .35s var(--gx-ease),visibility 0s}
+  .gx-dock.gx-is-away{transform:translateY(110%);visibility:hidden;transition:transform .35s var(--gx-ease),visibility 0s .35s}
+  .gx-dock .gx-btn{min-height:48px;padding:.5em .6em;font-size:.95rem}
+}
+/*GX:CSS*/
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="gx-skip" href="#gx-main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="gx-i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="gx-i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="gx-i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="gx-i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+    <symbol id="gx-i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+    <symbol id="gx-i-play" viewBox="0 0 24 24"><path d="M8 5.5v13L18.5 12z"/></symbol>
+    <symbol id="gx-i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="gx-i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="gx-i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="gx-i-spark" viewBox="0 0 24 24"><path d="M11 3c.6 4.600 2.400 6.400 7 7-4.600.6-6.400 2.400-7 7-.6-4.600-2.400-6.400-7-7 4.600-.6 6.400-2.400 7-7zM19 16v4M17 18h4"/></symbol>
+    <symbol id="gx-i-ticket" viewBox="0 0 24 24"><path d="M3.5 8.5v-2a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v2a3.500 3.500 0 0 0 0 7v2a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-2a3.500 3.500 0 0 0 0-7zM14.500 6v2.500M14.500 11v2M14.500 15.500V18"/></symbol>
+    <symbol id="gx-i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.500-4.600-7.500-10.200A4.300 4.300 0 0 1 12 7.300a4.300 4.300 0 0 1 7.500 2.500C19.500 15.400 12 20 12 20z"/></symbol>
+    <symbol id="gx-i-shield" viewBox="0 0 24 24"><path d="M12 3.500l7 2.500v5.500c0 4.500-3 7.700-7 9-4-1.300-7-4.500-7-9V6zM9 12l2.200 2.200L15.200 10"/></symbol>
+    <symbol id="gx-i-id" viewBox="0 0 24 24"><rect x="3" y="5.500" width="18" height="13" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 15.500c.6-1.400 1.700-2 3-2s2.400.6 3 2M14.500 10h3.500M14.500 13.500h3.500"/></symbol>
+    <symbol id="gx-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500"/><path d="M12 7.500V12l3 2"/></symbol>
+    <symbol id="gx-i-drop" viewBox="0 0 24 24"><path d="M12 3.500c3 3.700 5.500 6.500 5.500 9.800a5.500 5.500 0 0 1-11 0c0-3.300 2.500-6.100 5.500-9.800z"/></symbol>
+    <symbol id="gx-i-ear" viewBox="0 0 24 24"><path d="M7 9.500a5 5 0 0 1 10 0c0 3-2.500 3.500-3 6a3 3 0 0 1-5.800 1M10 10a2 2 0 0 1 4 0c0 1-.8 1.500-1.500 2"/></symbol>
+    <symbol id="gx-i-flash" viewBox="0 0 24 24"><path d="M13 3L5.500 13.500H11L10 21l8-11h-5.500z"/></symbol>
+    <symbol id="gx-i-access" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.700"/><path d="M9 9.500h6M12 9.500V14l3.500 5M12 14l-3.500 5M7 12.500a6 6 0 1 0 10 0"/></symbol>
+    <symbol id="gx-i-chat" viewBox="0 0 24 24"><path d="M4.500 6.500a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H11l-4.500 3.500v-3.500a2 2 0 0 1-2-2z"/><path d="M9 9.500h6M9 12.500h3.500"/></symbol>
+    <symbol id="gx-i-sofa" viewBox="0 0 24 24"><path d="M5 11V8.500a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2V11M3.500 13a1.800 1.800 0 0 1 3.500 0v2h10v-2a1.800 1.800 0 0 1 3.500 0v4.500h-17zM6 17.500V19M18 17.500V19"/></symbol>
+    <symbol id="gx-i-train" viewBox="0 0 24 24"><rect x="6" y="3.500" width="12" height="13" rx="3"/><path d="M6 11h12M9.500 14h.01M14.500 14h.01M8.500 16.500L6.500 20M15.500 16.500l2 3.500"/></symbol>
+    <symbol id="gx-i-bus" viewBox="0 0 24 24"><rect x="4.500" y="4" width="15" height="13" rx="2.500"/><path d="M4.500 11h15M8 14.200h.01M16 14.200h.01M7 17v2.500M17 17v2.500"/></symbol>
+    <symbol id="gx-i-taxi" viewBox="0 0 24 24"><path d="M4 16.500v-3l2-5a1.500 1.500 0 0 1 1.400-1h9.200a1.500 1.500 0 0 1 1.400 1l2 5v3zM4 13.500h16M9.500 7.500l.5-2.500h4l.5 2.500M6.500 16.500V19M17.500 16.500V19"/></symbol>
+    <symbol id="gx-i-moon" viewBox="0 0 24 24"><path d="M19.500 14A8 8 0 0 1 10 4.500 8 8 0 1 0 19.500 14z"/></symbol>
+    <symbol id="gx-i-coat" viewBox="0 0 24 24"><path d="M12 6.500a2 2 0 1 0-2-2M12 6.500v2l8 5.500a1.200 1.200 0 0 1-.7 2.200H4.700A1.200 1.200 0 0 1 4 14l8-5.500"/></symbol>
+    <symbol id="gx-i-card" viewBox="0 0 24 24"><path d="M5 9.500a7 7 0 0 1 0 5M9 7a11 11 0 0 1 0 10M13 4.500a15 15 0 0 1 0 15"/></symbol>
+    <symbol id="gx-i-camera" viewBox="0 0 24 24"><path d="M4 8.500A1.500 1.500 0 0 1 5.500 7H8l1.500-2h5L16 7h2.500A1.500 1.500 0 0 1 20 8.500v9a1.500 1.500 0 0 1-1.500 1.500h-13A1.500 1.500 0 0 1 4 17.500z"/><circle cx="12" cy="13" r="3.300"/></symbol>
+    <symbol id="gx-i-box" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4zM4 8l8 4 8-4M12 12v8"/></symbol>
+    <symbol id="gx-i-mail" viewBox="0 0 24 24"><rect x="3.500" y="5.500" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></symbol>
+    <symbol id="gx-i-pin" viewBox="0 0 24 24"><path d="M12 21s6.500-6 6.500-11a6.500 6.500 0 0 0-13 0c0 5 6.500 11 6.500 11z"/><circle cx="12" cy="10" r="2.300"/></symbol>
+    <symbol id="gx-i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.500" r="3"/><path d="M3.500 19c.5-3.200 2.700-5 5.500-5s5 1.800 5.500 5M15.500 5.800a3 3 0 0 1 0 5.400M17 14.300c1.900.6 3.200 2.200 3.500 4.700"/></symbol>
+    <symbol id="gx-i-ball" viewBox="0 0 40 40"><circle cx="20" cy="22" r="13.500"/><path d="M20 3v5.500M6.800 19h26.400M7.600 26.500h24.800M20 8.500c-5 3.500-5 23.500 0 27M20 8.500c5 3.500 5 23.500 0 27M12.500 11c-3.500 6-3.500 16.500 0 22M27.500 11c3.500 6 3.500 16.500 0 22"/></symbol>
+  </defs>
+</svg>
+
+<header class="gx-header" id="gx-header" data-gx-accent="pink">
+  <div class="gx-wrap gx-header__bar">
+    <a class="gx-logo" href="#gx-top" aria-label="The Glitter Exchange, home">
+      <svg class="gx-logo__ball" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><use href="#gx-i-ball"/></svg>
+      <span>The Glitter <br class="gx-br-s">Exchange<small>Disco &amp; cabaret · Kemptown</small></span>
+    </a>
+    <nav class="gx-nav" aria-label="Main">
+      <a href="#gx-whatson">What’s on</a>
+      <a href="#gx-cabaret">Cabaret</a>
+      <a href="#gx-venue">The venue</a>
+      <a href="#gx-rules">House rules</a>
+      <a href="#gx-welfare">Welfare</a>
+      <a href="#gx-travel">Visit</a>
+      <a href="#gx-faq">FAQ</a>
+    </nav>
+    <a class="gx-header__tel" href="tel:+441632960147"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-phone"/></svg>01632 960 147</a>
+    <a class="gx-btn gx-btn--sm" href="#gx-tickets"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-ticket"/></svg>Tickets</a>
+    <button class="gx-burger" id="gx-burger" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gx-menu" aria-label="Open menu"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-menu"/></svg><span>Menu</span></button>
+  </div>
+</header>
+
+<div class="gx-menu" id="gx-menu" role="dialog" aria-modal="true" aria-label="Site menu" data-gx-accent="pink">
+  <div class="gx-wrap gx-menu__top">
+    <a class="gx-logo" href="#gx-top" data-gx-close>
+      <svg class="gx-logo__ball" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><use href="#gx-i-ball"/></svg>
+      <span>The Glitter Exchange</span>
+    </a>
+    <button class="gx-burger" id="gx-menu-close" type="button" aria-label="Close menu"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-close"/></svg><span>Close</span></button>
+  </div>
+  <div class="gx-wrap gx-menu__body">
+    <nav class="gx-menu__nav" aria-label="Menu">
+      <a href="#gx-whatson" data-gx-close><small>01</small>What’s on</a>
+      <a href="#gx-tickets" data-gx-close><small>02</small>Disco tickets</a>
+      <a href="#gx-cabaret" data-gx-close><small>03</small>Cabaret tables</a>
+      <a href="#gx-venue" data-gx-close><small>04</small>The venue</a>
+      <a href="#gx-rules" data-gx-close><small>05</small>House rules</a>
+      <a href="#gx-welfare" data-gx-close><small>06</small>Welfare &amp; access</a>
+      <a href="#gx-travel" data-gx-close><small>07</small>Getting here</a>
+      <a href="#gx-faq" data-gx-close><small>08</small>FAQ</a>
+    </nav>
+    <div class="gx-menu__foot">
+      <a class="gx-menu__tel" href="tel:+441632960147"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-phone"/></svg>01632 960 147</a>
+      <p class="gx-menu__hours">Thursday to Saturday 20:00–03:00<br>Sunday 20:00–01:00<br>18 Madeira Mews, Kemptown, Brighton</p>
+      <div class="gx-menu__cta">
+        <a class="gx-btn" href="#gx-cabaret" data-gx-close>Book for cabaret</a>
+        <a class="gx-btn gx-btn--ghost" href="#gx-tickets" data-gx-close>Disco tickets</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="gx-main">
+<span id="gx-top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="gx-hero" id="gx-hero" data-gx-accent="pink" aria-labelledby="gx-hero-title">
+  <div class="gx-hero__scene" id="gx-scene" aria-hidden="true"></div>
+  <div class="gx-hero__scrim" aria-hidden="true"></div>
+  <div class="gx-wrap gx-hero__grid">
+    <div class="gx-hero__copy">
+      <p class="gx-strap"><span>LGBTQ+ disco &amp; cabaret · Kemptown<span class="gx-hide-s">, Brighton</span></span></p>
+      <h1 class="gx-hero__title" id="gx-hero-title">Darling, you’re right on&nbsp;<em>time.</em></h1>
+      <p class="gx-hero__sub">Drag cabaret upstairs at 21:00 and 23:00, four hundred and fifty of you on the dance floor downstairs. Come as you are; leave covered in glitter.</p>
+      <div class="gx-hero__cta">
+        <a class="gx-btn" href="#gx-cabaret">Book for cabaret<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a>
+        <a class="gx-btn gx-btn--ghost" href="#gx-tickets">Disco tickets<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-ticket"/></svg></a>
+      </div>
+    </div>
+    <div class="gx-hero__stage" id="gx-stage"></div>
+    <ul class="gx-facts" id="gx-facts" aria-label="Tonight at The Glitter Exchange">
+      <li class="gx-facts__live"><span>Tonight</span><strong id="gx-fact-status">Thu to Sun</strong></li>
+      <li><span>Doors</span><strong>20:00</strong></li>
+      <li><span>Cabaret</span><strong>21:00 &amp; 23:00</strong></li>
+      <li><span>Last entry</span><strong id="gx-fact-last">01:30</strong></li>
+      <li><span>Entry</span><strong>18+ · ID</strong></li>
+    </ul>
+  </div>
+  <button class="gx-motion" id="gx-motion" type="button" hidden><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-pause"/></svg><span>Pause motion</span></button>
+  <p class="gx-sr" id="gx-clock-sr"></p>
+</section>
+
+<!-- ============ WHAT'S ON ============ -->
+<section class="gx-sec" id="gx-whatson" data-gx-accent="gold" aria-labelledby="gx-on-title">
+  <div class="gx-wrap">
+    <header class="gx-sec__head gx-sec__head--row">
+      <p class="gx-strap">What’s on</p>
+      <h2 class="gx-h2" id="gx-on-title">Four nights a week, two floors, <em>no two the same.</em></h2>
+      <p class="gx-lede">Cabaret upstairs at 21:00 and 23:00, disco downstairs from 22:00. A cabaret seat includes the dance floor afterwards, so nobody has to choose.</p>
+    </header>
+    <div class="gx-filters">
+      <div class="gx-chips" role="group" aria-label="Filter by room" data-gx-filter="room">
+        <span class="gx-chips__label" aria-hidden="true">Room</span>
+        <button class="gx-chip" type="button" aria-pressed="true" data-v="all">Both floors</button>
+        <button class="gx-chip" type="button" aria-pressed="false" data-v="cabaret">Cabaret bar</button>
+        <button class="gx-chip" type="button" aria-pressed="false" data-v="disco">The disco</button>
+      </div>
+      <div class="gx-chips" role="group" aria-label="Filter by night" data-gx-filter="day">
+        <span class="gx-chips__label" aria-hidden="true">Night</span>
+        <button class="gx-chip" type="button" aria-pressed="true" data-v="all">Any night</button>
+        <button class="gx-chip" type="button" aria-pressed="false" data-v="4">Thursday</button>
+        <button class="gx-chip" type="button" aria-pressed="false" data-v="5">Friday</button>
+        <button class="gx-chip" type="button" aria-pressed="false" data-v="6">Saturday</button>
+        <button class="gx-chip" type="button" aria-pressed="false" data-v="0">Sunday</button>
+      </div>
+    </div>
+    <p class="gx-sr" id="gx-on-count" role="status"></p>
+    <ul class="gx-bill" id="gx-bill">
+      <li class="gx-on__empty">We’re open every Thursday, Friday, Saturday and Sunday from 20:00. Listings load here.</li>
+    </ul>
+    <div class="gx-on__more">
+      <button class="gx-btn gx-btn--ghost" type="button" id="gx-on-more">Show two more weeks<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-chev"/></svg></button>
+      <p class="gx-note">Line-ups can change. If a show is cancelled we refund every ticket in full, automatically.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKETS ============ -->
+<section class="gx-sec gx-sec--alt" id="gx-tickets" data-gx-accent="turq" aria-labelledby="gx-tix-title">
+  <div class="gx-wrap gx-split">
+    <div class="gx-aside">
+      <p class="gx-strap">Disco tickets</p>
+      <h2 class="gx-h2" id="gx-tix-title">The price you see is <em>the price you pay.</em></h2>
+      <p class="gx-lede">Every price below already includes the booking fee. No extras at the last step, no surprises at the door.</p>
+      <ul class="gx-ticks">
+        <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg><span><strong>E-tickets by email.</strong> Show the code on your phone, plus photo ID if you look under 25.</span></li>
+        <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg><span><strong>Up to eight per booking.</strong> Bigger gang? <a class="gx-link" href="#gx-hire">Talk to us about a booth</a>.</span></li>
+        <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg><span><strong>Free name changes</strong> until 18:00 on the day, and a full refund if we cancel.</span></li>
+        <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg><span><strong>Personal assistants come free.</strong> Email <a class="gx-link" href="mailto:access@glitterexchange.example">access@glitterexchange.example</a> and we’ll add the ticket.</span></li>
+      </ul>
+      <p class="gx-note">Paying on the door? If we aren’t sold out, the door price is the final-release price. Card and contactless only.</p>
+    </div>
+    <div class="gx-card gx-flow" id="gx-flow" data-gx-widget>
+      <ol class="gx-steps" aria-label="Booking steps">
+        <li aria-current="step"><span>Night</span></li>
+        <li><span>Ticket</span></li>
+        <li><span>Details</span></li>
+        <li><span>Payment</span></li>
+      </ol>
+      <form id="gx-tix-form" novalidate>
+        <fieldset data-gx-step="1">
+          <legend tabindex="-1">Pick your night</legend>
+          <div class="gx-picks gx-picks--2" id="gx-tix-nights"></div>
+        </fieldset>
+        <fieldset data-gx-step="2" hidden>
+          <legend tabindex="-1">Pick your ticket</legend>
+          <div class="gx-picks" id="gx-tix-tiers"></div>
+          <div class="gx-qty">
+            <span class="gx-legend" id="gx-qty-label">How many? <small>Up to 8</small></span>
+            <div class="gx-stepper" role="group" aria-labelledby="gx-qty-label">
+              <button type="button" id="gx-qty-minus" aria-label="One fewer ticket">−</button>
+              <output id="gx-qty-out" aria-live="polite">2</output>
+              <button type="button" id="gx-qty-plus" aria-label="One more ticket">+</button>
+            </div>
+          </div>
+          <p class="gx-total"><span id="gx-total-line">2 × Standard</span><b id="gx-total-sum">£20.00</b><small>Price includes booking fee. Nothing more is added at payment.</small></p>
+        </fieldset>
+        <fieldset data-gx-step="3" hidden>
+          <legend tabindex="-1">Your details</legend>
+          <div class="gx-summary" id="gx-tix-summary" role="alert" tabindex="-1" hidden></div>
+          <div class="gx-fields">
+            <div class="gx-field">
+              <label for="gx-tix-name">Name on the booking</label>
+              <input class="gx-input" id="gx-tix-name" name="name" type="text" autocomplete="name" required aria-describedby="gx-tix-name-err">
+              <p class="gx-err" id="gx-tix-name-err"></p>
+            </div>
+            <div class="gx-field">
+              <label for="gx-tix-email">Email for your e-tickets</label>
+              <input class="gx-input" id="gx-tix-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required aria-describedby="gx-tix-email-err">
+              <p class="gx-err" id="gx-tix-email-err"></p>
+            </div>
+          </div>
+          <p class="gx-note" style="margin-top:16px">We use these details only to send your tickets and tell you about changes to this event. <a class="gx-link" href="#gx-legal-privacy" data-gx-legal="privacy">Privacy notice</a>.</p>
+        </fieldset>
+        <div class="gx-done" data-gx-step="4" id="gx-tix-done" tabindex="-1" hidden>
+          <span class="gx-done__badge"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg></span>
+          <h3 class="gx-h3">Lovely. That’s everything we need.</h3>
+          <p class="gx-pay"><strong>You would now go to our secure payment page.</strong> Nothing has been charged.</p>
+          <dl id="gx-tix-recap"></dl>
+          <p class="gx-note">This is a demonstration booking flow, so no tickets have been reserved and no details have been sent anywhere.</p>
+          <button class="gx-btn gx-btn--ghost" type="button" id="gx-tix-reset">Start again</button>
+        </div>
+        <div class="gx-flow__nav" id="gx-tix-nav">
+          <button class="gx-btn gx-btn--ghost" type="button" id="gx-tix-back" hidden>Back</button>
+          <button class="gx-btn" type="submit" id="gx-tix-next">Continue<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CABARET TABLES ============ -->
+<section class="gx-sec" id="gx-cabaret" data-gx-accent="violet" aria-labelledby="gx-cab-title">
+  <div class="gx-wrap gx-split gx-split--even">
+    <div class="gx-aside">
+      <p class="gx-strap">Book for cabaret</p>
+      <h2 class="gx-h2" id="gx-cab-title">The best seats in the house. <em>They all are.</em></h2>
+      <p class="gx-lede">The Cabaret Bar seats 110 at candlelit tables, with table service through the show. Two performances a night: the 21:00 early show and the 23:00 late show, which is a touch ruder.</p>
+      <div class="gx-snaps">
+        <div class="gx-snaps__a"><img src="https://images.unsplash.com/photo-1743905030872-22d2970831af?auto=format&fit=crop&w=900&q=72" srcset="https://images.unsplash.com/photo-1743905030872-22d2970831af?auto=format&fit=crop&w=520&q=70 520w, https://images.unsplash.com/photo-1743905030872-22d2970831af?auto=format&fit=crop&w=900&q=72 900w, https://images.unsplash.com/photo-1743905030872-22d2970831af?auto=format&fit=crop&w=1300&q=72 1300w" sizes="(min-width:1200px) 40vw, 82vw" width="900" height="643" loading="lazy" decoding="async" alt="A drag performer with neon green hair snaps open a holographic fan backstage"></div>
+        <div class="gx-snaps__b"><img src="https://images.unsplash.com/photo-1770413689243-bc9d9bff5fca?auto=format&fit=crop&w=420&q=72" srcset="https://images.unsplash.com/photo-1770413689243-bc9d9bff5fca?auto=format&fit=crop&w=300&q=70 300w, https://images.unsplash.com/photo-1770413689243-bc9d9bff5fca?auto=format&fit=crop&w=420&q=72 420w, https://images.unsplash.com/photo-1770413689243-bc9d9bff5fca?auto=format&fit=crop&w=700&q=72 700w" sizes="(min-width:1200px) 16vw, 34vw" width="420" height="560" loading="lazy" decoding="async" alt="A singer in a sequinned gown and headdress performs under a warm spotlight"></div>
+      </div>
+      <table class="gx-table">
+        <caption>Seating, group sizes and minimum spend</caption>
+        <thead><tr><th scope="col">Seating</th><th scope="col">Group size</th><th scope="col">What you pay</th><th scope="col">Minimum spend</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Bar stools</th><td data-th="Group size"><span>1 to 2</span></td><td data-th="You pay"><span>Show seat, <b>from £9</b> each</span></td><td data-th="Min. spend"><span>None</span></td></tr>
+          <tr><th scope="row">Cabaret table</th><td data-th="Group size"><span>2 to 6</span></td><td data-th="You pay"><span>Show seat, <b>from £9</b> each</span></td><td data-th="Min. spend"><span>None</span></td></tr>
+          <tr><th scope="row">Velvet booth</th><td data-th="Group size"><span>6 to 10</span></td><td data-th="You pay"><span>Seats included in the spend</span></td><td data-th="Min. spend"><span><b>£150</b> Thu and Sun, <b>£220</b> Fri and Sat</span></td></tr>
+        </tbody>
+      </table>
+      <p class="gx-note">Seat prices include the booking fee and entry to the disco after the show. Tables are held for 15 minutes after show time, then released to the standby queue.</p>
+    </div>
+    <div class="gx-card" id="gx-cab-card" data-gx-widget>
+      <form id="gx-cab-form" novalidate>
+        <h3 class="gx-h3" style="margin-bottom:8px">Table enquiry</h3>
+        <p class="gx-note" style="margin-bottom:22px">Tell us the night and the size of your party. The box office replies within one working day; nothing is booked until we confirm.</p>
+        <div class="gx-summary" id="gx-cab-summary" role="alert" tabindex="-1" hidden></div>
+        <div class="gx-fields">
+          <div class="gx-field">
+            <label for="gx-cab-name">Full name</label>
+            <input class="gx-input" id="gx-cab-name" name="name" type="text" autocomplete="name" required aria-describedby="gx-cab-name-err">
+            <p class="gx-err" id="gx-cab-name-err"></p>
+          </div>
+          <div class="gx-field">
+            <label for="gx-cab-email">Email</label>
+            <input class="gx-input" id="gx-cab-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required aria-describedby="gx-cab-email-err">
+            <p class="gx-err" id="gx-cab-email-err"></p>
+          </div>
+          <div class="gx-field">
+            <label for="gx-cab-phone">Phone <small>(optional)</small></label>
+            <input class="gx-input" id="gx-cab-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="gx-cab-phone-err">
+            <p class="gx-err" id="gx-cab-phone-err"></p>
+          </div>
+          <div class="gx-field">
+            <label for="gx-cab-night">Which night?</label>
+            <select class="gx-input" id="gx-cab-night" name="night" required aria-describedby="gx-cab-night-err"><option value="">Choose a night</option></select>
+            <p class="gx-err" id="gx-cab-night-err"></p>
+          </div>
+          <fieldset class="gx-field gx-field--full">
+            <legend class="gx-legend" style="margin-bottom:7px">Which show?</legend>
+            <div class="gx-radios">
+              <label class="gx-pick"><input type="radio" name="show" value="21:00" checked><span class="gx-pick__dot" aria-hidden="true"></span><span class="gx-pick__main"><b>21:00 early show</b><small>Seated by 20:45</small></span></label>
+              <label class="gx-pick"><input type="radio" name="show" value="23:00"><span class="gx-pick__dot" aria-hidden="true"></span><span class="gx-pick__main"><b>23:00 late show</b><small>Seated by 22:45</small></span></label>
+            </div>
+          </fieldset>
+          <div class="gx-field">
+            <label for="gx-cab-seat">Seating</label>
+            <select class="gx-input" id="gx-cab-seat" name="seat" required>
+              <option value="table">Cabaret table (2 to 6)</option>
+              <option value="booth">Velvet booth (6 to 10)</option>
+              <option value="stools">Bar stools (1 to 2)</option>
+            </select>
+          </div>
+          <div class="gx-field">
+            <label for="gx-cab-size">How many of you?</label>
+            <input class="gx-input" id="gx-cab-size" name="size" type="number" inputmode="numeric" min="1" max="10" value="2" required aria-describedby="gx-cab-size-err">
+            <p class="gx-err" id="gx-cab-size-err"></p>
+          </div>
+          <div class="gx-field gx-field--full">
+            <label for="gx-cab-notes">Anything we should know? <small>(optional: access needs, birthdays, a seat away from the front)</small></label>
+            <textarea class="gx-input" id="gx-cab-notes" name="notes" rows="3"></textarea>
+          </div>
+          <div class="gx-field gx-field--full">
+            <label class="gx-check"><input type="checkbox" id="gx-cab-consent" name="consent" required aria-describedby="gx-cab-consent-err"><span>I agree to The Glitter Exchange using these details to answer my enquiry. <a class="gx-link" href="#gx-legal-privacy" data-gx-legal="privacy">Privacy notice</a>.</span></label>
+            <p class="gx-err" id="gx-cab-consent-err"></p>
+            <label class="gx-check"><input type="checkbox" id="gx-cab-news" name="marketing"><span>Send me the monthly line-up by email as well. Optional, and you can unsubscribe at any time.</span></label>
+          </div>
+        </div>
+        <button class="gx-btn" type="submit" style="margin-top:22px;width:100%">Send table enquiry<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></button>
+      </form>
+      <div class="gx-done" id="gx-cab-done" tabindex="-1" hidden>
+        <span class="gx-done__badge"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg></span>
+        <h3 class="gx-h3" id="gx-cab-done-title">Enquiry received.</h3>
+        <p id="gx-cab-done-text" class="gx-lede"></p>
+        <dl id="gx-cab-recap"></dl>
+        <p class="gx-note">This is a demonstration form, so nothing has been sent and no table is being held.</p>
+        <button class="gx-btn gx-btn--ghost" type="button" id="gx-cab-reset">Make another enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE VENUE ============ -->
+<section class="gx-sec gx-sec--alt" id="gx-venue" data-gx-accent="pink" aria-labelledby="gx-venue-title">
+  <div class="gx-wrap">
+    <header class="gx-sec__head gx-sec__head--row">
+      <p class="gx-strap">The venue</p>
+      <h2 class="gx-h2" id="gx-venue-title">Three floors and <em>one very shiny staircase.</em></h2>
+      <p class="gx-lede">A Victorian banking hall turned glitter palace. The old counters are the bar now, and the vault is where we keep the spare sequins.</p>
+    </header>
+    <ul class="gx-stats">
+      <li><strong>450</strong><span>on the disco floor</span></li>
+      <li><strong>110</strong><span>cabaret seats, all with a view</span></li>
+      <li><strong>14</strong><span>mirror balls, one of them called Brenda</span></li>
+      <li><strong>2</strong><span>shows a night, at 21:00 and 23:00</span></li>
+    </ul>
+    <div class="gx-levels">
+      <article class="gx-level">
+        <div class="gx-level__img"><img src="https://images.unsplash.com/photo-1770413186279-cddf39ca13c5?auto=format&fit=crop&w=800&q=72" srcset="https://images.unsplash.com/photo-1770413186279-cddf39ca13c5?auto=format&fit=crop&w=520&q=70 520w, https://images.unsplash.com/photo-1770413186279-cddf39ca13c5?auto=format&fit=crop&w=800&q=72 800w, https://images.unsplash.com/photo-1770413186279-cddf39ca13c5?auto=format&fit=crop&w=1300&q=72 1300w" sizes="(min-width:1200px) 30vw, (min-width:768px) 46vw, 92vw" width="800" height="600" loading="lazy" decoding="async" style="object-position:72% 50%" alt="A drag performer in a pink gown on a small stage in front of a shimmering pink curtain"></div>
+        <p class="gx-level__no"><b>1</b><span>Upstairs</span></p>
+        <div class="gx-level__body">
+          <h3 class="gx-h3">The Cabaret Bar</h3>
+          <p>A proper little theatre with a bar in it: pink velvet curtain, candlelit tables, and a stage close enough to catch an eyelash.</p>
+          <ul><li>110 seats with table service</li><li>Shows at 21:00 and 23:00, about 50 minutes each</li><li>Bar open from 20:00; strobe-free</li></ul>
+        </div>
+      </article>
+      <article class="gx-level">
+        <div class="gx-level__img"><img src="https://images.unsplash.com/photo-1682071607969-697c6c8a17a1?auto=format&fit=crop&w=800&q=72" srcset="https://images.unsplash.com/photo-1682071607969-697c6c8a17a1?auto=format&fit=crop&w=520&q=70 520w, https://images.unsplash.com/photo-1682071607969-697c6c8a17a1?auto=format&fit=crop&w=800&q=72 800w, https://images.unsplash.com/photo-1682071607969-697c6c8a17a1?auto=format&fit=crop&w=1300&q=72 1300w" sizes="(min-width:1200px) 30vw, (min-width:768px) 46vw, 92vw" width="800" height="1200" loading="lazy" decoding="async" style="object-position:50% 70%" alt="A dimly lit room with a mustard buttoned banquette, a small table and a low pendant lamp"></div>
+        <p class="gx-level__no"><b>G</b><span>Street level</span></p>
+        <div class="gx-level__body">
+          <h3 class="gx-h3">Foyer &amp; the Quiet Room</h3>
+          <p>Box office, cloakroom and, through the second door on the left, the Quiet Room: low light, soft seats, no music, and a welfare host within earshot.</p>
+          <ul><li>Step-free from Madeira Mews</li><li>Water, phone chargers and earplugs</li><li>Open all night, to everyone</li></ul>
+        </div>
+      </article>
+      <article class="gx-level">
+        <div class="gx-level__img"><img src="https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=800&q=72" srcset="https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=520&q=70 520w, https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=800&q=72 800w, https://images.unsplash.com/photo-1766336086222-3a3b8c45eea2?auto=format&fit=crop&w=1300&q=72 1300w" sizes="(min-width:1200px) 30vw, (min-width:768px) 46vw, 92vw" width="800" height="1105" loading="lazy" decoding="async" style="object-position:50% 12%" alt="A large mirror ball throwing orange and violet light over a crowded dance floor"></div>
+        <p class="gx-level__no"><b>−1</b><span>Downstairs</span></p>
+        <div class="gx-level__body">
+          <h3 class="gx-h3">The Disco</h3>
+          <p>Four hundred and fifty people, a sprung floor and fourteen mirror balls. The biggest, Brenda, is 1.2 metres across and older than most of the staff.</p>
+          <ul><li>Disco from 22:00 until close</li><li>Seats and a rail beside the floor</li><li>Strobe lighting and haze in use</li></ul>
+        </div>
+      </article>
+    </div>
+    <div class="gx-kit">
+      <dl>
+        <div><dt>Sound</dt><dd>A four-stack system tuned for disco: warm, wide and kind to a conversation at the bar. We hold the dance floor at about 98 dB(A).</dd></div>
+        <div><dt>Light</dt><dd>Fourteen mirror balls, pin spots and a dance floor that lights up under your feet. The Cabaret Bar is always strobe-free.</dd></div>
+        <div><dt>Bars</dt><dd>Two bars, both cashless. Cocktails from £9.50, a proper alcohol-free list from £4, and free tap water without asking twice.</dd></div>
+        <div><dt>Toilets</dt><dd>Gender-neutral toilets with full-height cubicles on every floor. Accessible toilets at street level and downstairs.</dd></div>
+      </dl>
+      <div class="gx-kit__pics">
+        <img src="https://images.unsplash.com/photo-1713450605268-5f8ba67f5b55?auto=format&fit=crop&w=420&h=420&q=72" srcset="https://images.unsplash.com/photo-1713450605268-5f8ba67f5b55?auto=format&fit=crop&w=300&h=300&q=70 300w, https://images.unsplash.com/photo-1713450605268-5f8ba67f5b55?auto=format&fit=crop&w=420&h=420&q=72 420w, https://images.unsplash.com/photo-1713450605268-5f8ba67f5b55?auto=format&fit=crop&w=700&h=700&q=72 700w" sizes="(min-width:1200px) 15vw, 44vw" width="420" height="420" loading="lazy" decoding="async" alt="Friends dancing under teal light, blurred with movement">
+        <img src="https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?auto=format&fit=crop&w=420&h=420&q=72" srcset="https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?auto=format&fit=crop&w=300&h=300&q=70 300w, https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?auto=format&fit=crop&w=420&h=420&q=72 420w, https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?auto=format&fit=crop&w=700&h=700&q=72 700w" sizes="(min-width:1200px) 15vw, 44vw" width="420" height="420" loading="lazy" decoding="async" alt="A berry-pink cocktail in a coupe glass, garnished with mint and a blackberry">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOUSE RULES ============ -->
+<section class="gx-sec" id="gx-rules" data-gx-accent="gold" aria-labelledby="gx-rules-title">
+  <div class="gx-wrap gx-split">
+    <div class="gx-aside">
+      <p class="gx-strap">Door policy &amp; house rules</p>
+      <h2 class="gx-h2" id="gx-rules-title">Everyone’s welcome. <em>Bigotry isn’t.</em></h2>
+      <p class="gx-lede">We are an LGBTQ+ venue, run by and for our community, and friends are welcome as guests in our house. The rules are short, and they are the same for everybody.</p>
+      <div class="gx-pledge">
+        <p>Zero tolerance of homophobia, transphobia, biphobia, racism, ableism and harassment of any kind.</p>
+        <small>If anyone makes you uncomfortable, tell any member of staff. We will believe you, and we will act. People who break this rule are asked to leave and may be barred.</small>
+      </div>
+      <a class="gx-btn gx-btn--ghost" href="#gx-welfare" style="justify-self:start">How we look after you<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a>
+    </div>
+    <ol class="gx-rules">
+      <li class="gx-rule"><h3>Over 18s only</h3><p>Every night, on every floor, with no exceptions.</p></li>
+      <li class="gx-rule"><h3>Challenge 25</h3><p>If you look under 25, expect to be asked for ID. We accept a <strong>passport</strong>, a <strong>photocard driving licence</strong> or a card with the <strong>PASS hologram</strong>. Photos and screenshots of ID are not accepted. Your ID doesn’t need to match the name you use or how you present: we check your age and nothing else.</p></li>
+      <li class="gx-rule"><h3>Our door team</h3><p>Our door supervisors are <strong>SIA-licensed</strong> and wear their licences where you can see them. Bag and pocket searches are a condition of entry. You can ask to be searched by a team member of the gender you are most comfortable with.</p></li>
+      <li class="gx-rule"><h3>Right of admission</h3><p>Management reserves the right to refuse entry. If you’ve had too much before you arrive, we will ask you to come back another night. It is never about what you are wearing or who you are with.</p></li>
+      <li class="gx-rule"><h3>Last entry and re-entry</h3><p>Last entry is <strong>01:30</strong> Thursday to Saturday and <strong>midnight</strong> on Sunday. There is no re-entry after 00:30. The smoking terrace is inside the venue, so you won’t need to leave.</p></li>
+      <li class="gx-rule"><h3>Dress code</h3><p>There isn’t one. Sequins, trainers, a ballgown, your work fleece: all correct. We only ask for shoes on the dance floor and nothing that carries a hateful message.</p></li>
+      <li class="gx-rule"><h3>Zero tolerance of drugs</h3><p>Anyone found with illegal drugs will be refused entry or asked to leave, and we may call the police. If you or a friend feel unwell, tell us straight away: asking for help will never get you into trouble.</p></li>
+      <li class="gx-rule"><h3>Ask first</h3><p>Ask before you touch, ask before you photograph, and take no for an answer the first time. Performers are at work: applaud loudly, tip generously and keep your hands to yourself.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SAFETY & WELFARE ============ -->
+<section class="gx-sec gx-sec--alt" id="gx-welfare" data-gx-accent="turq" aria-labelledby="gx-welfare-title">
+  <div class="gx-wrap">
+    <header class="gx-sec__head gx-sec__head--row">
+      <p class="gx-strap">Safety &amp; welfare</p>
+      <h2 class="gx-h2" id="gx-welfare-title">Looked after, from first drink <em>to last dance.</em></h2>
+      <p class="gx-lede">There is a welfare host on every shift, in a gold sash so you can find them across a dark room. They aren’t security. They are there to help.</p>
+    </header>
+    <ul class="gx-care">
+      <li><span class="gx-care__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-chat"/></svg></span><h3>Ask for Angela</h3><p>If you feel unsafe, on a date that is going wrong, or being bothered, ask any member of staff for <strong>Angela</strong>. They will take you somewhere private and help you get home or back to your friends.</p></li>
+      <li><span class="gx-care__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-heart"/></svg></span><h3>A welfare host on every shift</h3><p>Trained in first aid, vulnerability, and drug and alcohol awareness. Look for the gold sash, or ask at either bar and they will come to you.</p></li>
+      <li><span class="gx-care__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-sofa"/></svg></span><h3>The Quiet Room</h3><p>Low light, soft seats and no music, just off the foyer. Stay for five minutes or an hour. Water, phone chargers and earplugs are on the side.</p></li>
+      <li><span class="gx-care__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-shield"/></svg></span><h3>If you think a drink was spiked</h3><p><strong>Tell staff straight away</strong> and stay with someone you trust. We will look after you and keep the drink. In an emergency call <strong>999</strong>; to report it afterwards, call <strong>101</strong>.</p></li>
+      <li><span class="gx-care__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-drop"/></svg></span><h3>Free tap water at every bar</h3><p>In a proper glass, without buying anything first. After midnight there are self-serve jugs at the end of both bars.</p></li>
+      <li><span class="gx-care__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-ear"/></svg></span><h3>Earplugs, strobes and haze</h3><p>Free earplugs at both bars and the cloakroom. The disco uses <strong>strobe lighting and haze</strong>; the Cabaret Bar and the Quiet Room never do.</p></li>
+    </ul>
+    <p class="gx-sos"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-phone"/></svg><span><strong>Emergency: call 999.</strong> To report something after the night, call 101, or write to us at <a class="gx-link" href="mailto:welfare@glitterexchange.example">welfare@glitterexchange.example</a>.</span></p>
+
+    <div class="gx-access" id="gx-access">
+      <div class="gx-access__lead">
+        <span class="gx-care__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-access"/></svg></span>
+        <h3 class="gx-h3">Access, sorted before you arrive</h3>
+        <p class="gx-note" style="font-size:1rem;color:var(--gx-soft)">Tell us what you need and it will be ready: a seat, a quieter way in, a table at the front or nowhere near it.</p>
+        <a class="gx-btn" href="mailto:access@glitterexchange.example?subject=Access%20for%20my%20visit">Arrange access<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-mail"/></svg></a>
+        <p class="gx-note">Or call the access line on <a class="gx-link" href="tel:+441632960152">01632 960 152</a>, Tuesday to Sunday, 12:00 to 18:00.</p>
+      </div>
+      <dl>
+        <div><dt><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg>Step-free route</dt><dd>Level entrance on Madeira Mews, ten metres left of the main doors. A platform lift serves all three floors.</dd></div>
+        <div><dt><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg>Accessible toilets</dt><dd>At street level and downstairs, unlocked all night, with emergency cords that are checked before doors.</dd></div>
+        <div><dt><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg>Free personal-assistant ticket</dt><dd>If you need someone with you, their ticket or seat is free for any night. Email us before you book and we will add it.</dd></div>
+        <div><dt><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg>Seats and wheelchair spaces</dt><dd>Reserved seats beside the dance floor, and wheelchair spaces at cabaret tables with a clear view of the stage.</dd></div>
+        <div><dt><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg>Assistance dogs</dt><dd>Welcome on every floor. We will bring a water bowl, and the Quiet Room is the calmest place to settle.</dd></div>
+        <div><dt><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-check"/></svg>A calmer arrival</dt><dd>Doors open at 20:00 and it stays gentle until about 21:30. We can also meet you at the side entrance, away from the queue.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING HERE & HOME ============ -->
+<section class="gx-sec" id="gx-travel" data-gx-accent="violet" aria-labelledby="gx-travel-title">
+  <div class="gx-wrap">
+    <header class="gx-sec__head">
+      <p class="gx-strap">Getting here &amp; home</p>
+      <h2 class="gx-h2" id="gx-travel-title">Five minutes from the sea, <em>two from the bus.</em></h2>
+    </header>
+    <div class="gx-split gx-split--even">
+      <div class="gx-map">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMaxYMid slice" role="img" aria-labelledby="gx-map-title" font-family="Outfit, sans-serif">
+          <title id="gx-map-title">Sketch map: The Glitter Exchange sits on Madeira Mews in Kemptown, between St James’s Street to the north and Marine Parade and the sea to the south, east of Old Steine.</title>
+          <rect width="640" height="400" fill="#170b29"/>
+          <path d="M0 322 L640 304 L640 400 L0 400z" fill="#1d0f38"/>
+          <g fill="none" stroke="#b08cff" stroke-opacity=".22" stroke-width="2" stroke-linecap="round"><path d="M150 352q14-8 28 0t28 0 28 0"/><path d="M330 368q14-8 28 0t28 0 28 0"/><path d="M480 346q14-8 28 0t28 0 28 0"/><path d="M40 380q14-8 28 0t28 0"/></g>
+          <g stroke="#2f1b52" stroke-linecap="round" fill="none">
+            <path d="M0 296 L640 278" stroke-width="18"/>
+            <path d="M110 150 L640 118" stroke-width="15"/>
+            <path d="M86 20 L92 300" stroke-width="15"/>
+            <path d="M210 146 L216 290M310 140 L316 287M410 134 L415 284M520 127 L524 281" stroke-width="7"/>
+            <path d="M316 214 L524 204" stroke-width="7"/>
+            <path d="M0 96 L84 92M110 60 L640 34" stroke-width="7"/>
+          </g>
+          <ellipse cx="90" cy="216" rx="24" ry="52" fill="#23143f" stroke="#3a2360" stroke-width="2"/>
+          <path d="M66 312 L66 392" stroke="#3a2360" stroke-width="9" stroke-linecap="round"/><rect x="52" y="372" width="28" height="22" rx="4" fill="#3a2360"/>
+          <g fill="#a898bd" font-size="12.5" letter-spacing=".6">
+            <text x="352" y="126" transform="rotate(-3.4 352 126)">St James’s Street</text>
+            <text x="356" y="282" transform="rotate(-1.6 356 282)">Marine Parade</text>
+            <text x="110" y="238" transform="rotate(-88 110 238)">Old Steine</text>
+            <text x="330" y="206" font-size="11.5" transform="rotate(-2.7 330 206)">Madeira Mews</text>
+            <text x="250" y="350" fill="#8a78a6" font-style="italic" font-size="14">the sea</text>
+            <text x="84" y="388" font-size="11.5">the pier</text>
+          </g>
+          <g fill="#170b29" stroke="#a898bd" stroke-width="1.6"><circle cx="262" cy="141" r="9"/><circle cx="90" cy="126" r="9"/></g>
+          <g fill="#d2c3e2" font-size="10.5" font-weight="700" text-anchor="middle"><text x="262" y="145">B</text><text x="90" y="130">B</text></g>
+          <g fill="#d2c3e2" font-size="12.5"><path d="M34 62 L16 40M16 40v12M16 40h12" fill="none" stroke="#d2c3e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="14" y="82">Station</text><text x="14" y="97" fill="#a898bd" font-size="11">20 min walk</text></g>
+          <g fill="none" stroke="#a898bd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M606 372V348M600 356l6-8 6 8"/></g><text x="606" y="388" fill="#a898bd" font-size="11" text-anchor="middle">N</text>
+          <circle cx="446" cy="208" r="34" fill="#b08cff" fill-opacity=".14"/><circle cx="446" cy="208" r="20" fill="#b08cff" fill-opacity=".22"/>
+          <path d="M446 216c-9-11-13-17-13-23a13 13 0 0 1 26 0c0 6-4 12-13 23z" fill="#b08cff"/><circle cx="446" cy="193" r="4.6" fill="#170b29"/>
+          <g><rect x="466" y="222" width="150" height="30" rx="15" fill="#f5eefb"/><text x="541" y="241.500" font-size="12.5" font-weight="600" fill="#170b29" text-anchor="middle">The Glitter Exchange</text></g>
+        </svg>
+        <div class="gx-map__foot">
+          <address><strong>The Glitter Exchange</strong>18 Madeira Mews, Kemptown, Brighton BN2 1GX</address>
+          <button class="gx-btn gx-btn--ghost gx-btn--sm" type="button" id="gx-copy" data-gx-copy="The Glitter Exchange, 18 Madeira Mews, Kemptown, Brighton BN2 1GX"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-pin"/></svg><span>Copy address</span></button>
+          <p style="grid-column:1/-1">Sketch map, not to scale. Main doors are on Madeira Mews; the step-free entrance is ten metres to the left.</p>
+        </div>
+      </div>
+      <div class="gx-ways">
+        <article class="gx-way"><span class="gx-way__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-train"/></svg></span><h3>By train</h3><p><strong>Brighton station</strong> is about 20 minutes on foot, mostly downhill, or 8 minutes by bus. Last trains towards London leave around midnight on most nights, so check before you travel.</p></article>
+        <article class="gx-way"><span class="gx-way__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-bus"/></svg></span><h3>By bus and night bus</h3><p>Buses stop on <strong>St James’s Street</strong>, two minutes away, and at <strong>Old Steine</strong>, five minutes away. Night buses leave from Old Steine on Fridays and Saturdays; check the operator’s timetable for tonight.</p></article>
+        <article class="gx-way"><span class="gx-way__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-taxi"/></svg></span><h3>By taxi</h3><p>Use a <strong>licensed taxi, or private hire you have booked</strong>. Never get into a car that simply offers you a lift. The nearest rank is by Old Steine, and our door team will happily wait with you until yours arrives.</p></article>
+        <article class="gx-way"><span class="gx-way__ico"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-pin"/></svg></span><h3>On foot, by bike or by car</h3><p>Ten minutes from the pier along Marine Parade. Cycle stands are right outside on Madeira Mews. There is no parking at the venue; Blue Badge holders can be dropped at the step-free entrance.</p></article>
+        <div class="gx-hush"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-moon"/></svg><p>Please leave quietly. Our neighbours are asleep, and we would like to keep them as neighbours.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOOD TO KNOW + PRIVATE HIRE ============ -->
+<section class="gx-sec gx-sec--alt" id="gx-practical" data-gx-accent="pink" aria-labelledby="gx-know-title">
+  <div class="gx-wrap">
+    <header class="gx-sec__head">
+      <p class="gx-strap">Good to know</p>
+      <h2 class="gx-h2" id="gx-know-title">Coats, cards, cameras <em>and lost sequins.</em></h2>
+    </header>
+    <ul class="gx-know">
+      <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-coat"/></svg><h3>Cloakroom</h3><p>£2.50 an item, by the box office, open until close. Nothing bigger than a weekend bag, please: we have sequins to store.</p></li>
+      <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-box"/></svg><h3>Lost property</h3><p>We keep finds for 28 days. Email <a class="gx-link" href="mailto:lost@glitterexchange.example">lost@glitterexchange.example</a> with a description and the night you were in.</p></li>
+      <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-card"/></svg><h3>Cashless bars</h3><p>Both bars, the cloakroom and the box office take card and contactless only. There is no cash machine in the building.</p></li>
+      <li><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-camera"/></svg><h3>Photography</h3><p>Our photographer wears a gold lanyard and always asks first. No photos in the toilets or the Quiet Room. Want a picture taken down? Email us and it goes.</p></li>
+    </ul>
+    <div class="gx-hire" id="gx-hire">
+      <div class="gx-hire__img"><img src="https://images.unsplash.com/photo-1772615071677-6441340349fd?auto=format&fit=crop&w=800&q=72" srcset="https://images.unsplash.com/photo-1772615071677-6441340349fd?auto=format&fit=crop&w=520&q=70 520w, https://images.unsplash.com/photo-1772615071677-6441340349fd?auto=format&fit=crop&w=800&q=72 800w, https://images.unsplash.com/photo-1772615071677-6441340349fd?auto=format&fit=crop&w=1300&q=72 1300w" sizes="(min-width:900px) 38vw, 92vw" width="800" height="1198" loading="lazy" decoding="async" alt="A guest in a sequinned dress and sunglasses dancing with a glass of fizz beside gold balloons"></div>
+      <div class="gx-hire__body">
+        <p class="gx-strap">Private hire &amp; birthdays</p>
+        <h3 class="gx-h2" style="font-size:clamp(1.9rem,1.3rem + 2.2vw,3rem)">Your name in lights. <em>Well, bulbs.</em></h3>
+        <p class="gx-lede">Birthdays, big announcements, the office party people actually turn up to. Take a booth, the Cabaret Bar or the whole building.</p>
+        <ul class="gx-hire__opts">
+          <li><b>Birthday booth</b><span>up to 10 · minimum spend from £150, shout-out from the stage included</span></li>
+          <li><b>The Cabaret Bar</b><span>up to 110 seated · Sunday to Thursday</span></li>
+          <li><b>The whole Exchange</b><span>up to 560 · Monday to Wednesday</span></li>
+        </ul>
+        <div class="gx-hire__cta">
+          <a class="gx-btn" href="mailto:parties@glitterexchange.example?subject=Private%20hire%20enquiry">Plan a party<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a>
+          <a class="gx-btn gx-btn--ghost" href="tel:+441632960163"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-phone"/></svg>01632 960 163</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="gx-sec" id="gx-faq" data-gx-accent="gold" aria-labelledby="gx-faq-title">
+  <div class="gx-wrap gx-split">
+    <div class="gx-aside">
+      <p class="gx-strap">Questions</p>
+      <h2 class="gx-h2" id="gx-faq-title">Things people ask <em>at the door.</em></h2>
+      <p class="gx-lede">Not here? The box office answers the phone and the inbox from 12:00 to 18:00, Tuesday to Sunday.</p>
+      <div class="gx-contact">
+        <a href="tel:+441632960147"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-phone"/></svg>01632 960 147</a>
+        <a href="mailto:hello@glitterexchange.example"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-mail"/></svg>hello@glitterexchange.example</a>
+      </div>
+    </div>
+    <div class="gx-faq" id="gx-faq-list">
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="true" aria-controls="gx-faq-a1" id="gx-faq-q1"><span>Do I need a ticket, or can I pay on the door?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a gx-is-open" id="gx-faq-a1" role="region" aria-labelledby="gx-faq-q1"><div><p>Fridays and Saturdays usually sell out, so book ahead if you can. If there are tickets left we sell them on the door at the final-release price, by card or contactless. Cabaret seats almost always go in advance.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a2" id="gx-faq-q2"><span>I’m not LGBTQ+. Am I welcome?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a2" role="region" aria-labelledby="gx-faq-q2"><div><p>Yes, as a guest. This is a queer space first, and it stays that way because everyone in the room respects it. Come with an open heart, don’t treat people as the entertainment, and you will have a wonderful night.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a3" id="gx-faq-q3"><span>What ID do you accept?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a3" role="region" aria-labelledby="gx-faq-q3"><div><p>A passport, a photocard driving licence, or a card with the PASS hologram. It has to be the physical document: we can’t accept photos or screenshots. If you look under 25, you will be asked.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a4" id="gx-faq-q4"><span>I’m coming on my own. Is that all right?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a4" role="region" aria-labelledby="gx-faq-q4"><div><p>More than all right; plenty of people do. Book a bar stool for the cabaret and we can seat you with other solo guests if you’d like company. The welfare host is always happy to say hello.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a5" id="gx-faq-q5"><span>Will the drag queens pick on me?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a5" role="region" aria-labelledby="gx-faq-q5"><div><p>Only if you sit at the front and look as though you’d enjoy it. Ask for a table “away from the front” when you book and you’ll be left in peace. Nobody is ever brought on stage without saying yes.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a6" id="gx-faq-q6"><span>Is the building step-free?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a6" role="region" aria-labelledby="gx-faq-q6"><div><p>Yes. There is a level entrance on Madeira Mews and a platform lift to all three floors, with accessible toilets at street level and downstairs. Email access@glitterexchange.example and we’ll plan the night with you.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a7" id="gx-faq-q7"><span>Can I get a refund, or change the name on my ticket?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a7" role="region" aria-labelledby="gx-faq-q7"><div><p>Name changes are free until 18:00 on the day. We refund in full if we cancel or move a night. Otherwise tickets are non-refundable, but you can pass yours to a friend with a name change.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a8" id="gx-faq-q8"><span>When should I arrive, and when is last entry?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a8" role="region" aria-labelledby="gx-faq-q8"><div><p>Doors open at 20:00. For cabaret, be seated 15 minutes before your show. The disco fills up from about 23:00. Last entry is 01:30 Thursday to Saturday and midnight on Sunday.</p></div></div></div>
+      <div class="gx-faq__item"><h3><button class="gx-faq__q" type="button" aria-expanded="false" aria-controls="gx-faq-a9" id="gx-faq-q9"><span>Do you take cash?</span><span aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-chev"/></svg></span></button></h3><div class="gx-faq__a" id="gx-faq-a9" role="region" aria-labelledby="gx-faq-q9"><div><p>No. The bars, cloakroom and box office are card and contactless only, which keeps the queues short and the tills safe.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!--GX:SECTIONS-->
+</main>
+
+<!-- ============ FOOTER: the light-up dance floor ============ -->
+<footer class="gx-footer" id="gx-footer" data-gx-accent="turq">
+  <div class="gx-wrap">
+    <div class="gx-footer__top">
+      <div>
+        <p class="gx-strap">Last dance</p>
+        <p class="gx-h2">Pick a tile. <em>Any tile.</em></p>
+      </div>
+      <button class="gx-lights" type="button" id="gx-lights"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-pause"/></svg><span>Pause floor lights</span></button>
+    </div>
+    <nav class="gx-floor" id="gx-floor" aria-label="Footer">
+      <div class="gx-floor__group">
+        <h2 class="gx-tile gx-tile--head"><small>01</small><span class="gx-floor__title" id="gx-fg1">On the bill</span><button class="gx-floor__toggle" type="button" aria-expanded="false" aria-controls="gx-fl1" aria-labelledby="gx-fg1"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-chev"/></svg></button></h2>
+        <ul class="gx-floor__links" id="gx-fl1" role="list" aria-labelledby="gx-fg1">
+          <li class="gx-tile"><a href="#gx-whatson">What’s on<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="#gx-tickets">Disco tickets<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile gx-tile--blank" aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-spark"/></svg></li>
+          <li class="gx-tile"><a href="#gx-cabaret">Cabaret tables<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="#gx-hire">Private hire<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="gx-floor__group">
+        <h2 class="gx-tile gx-tile--head"><small>02</small><span class="gx-floor__title" id="gx-fg2">The house</span><button class="gx-floor__toggle" type="button" aria-expanded="false" aria-controls="gx-fl2" aria-labelledby="gx-fg2"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-chev"/></svg></button></h2>
+        <ul class="gx-floor__links" id="gx-fl2" role="list" aria-labelledby="gx-fg2">
+          <li class="gx-tile"><a href="#gx-venue">The venue<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="#gx-rules">House rules<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="#gx-welfare">Safety &amp; welfare<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="#gx-access">Accessibility<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile gx-tile--blank" aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-heart"/></svg></li>
+        </ul>
+      </div>
+      <div class="gx-floor__group">
+        <h2 class="gx-tile gx-tile--head"><small>03</small><span class="gx-floor__title" id="gx-fg3">Your night</span><button class="gx-floor__toggle" type="button" aria-expanded="false" aria-controls="gx-fl3" aria-labelledby="gx-fg3"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-chev"/></svg></button></h2>
+        <ul class="gx-floor__links" id="gx-fl3" role="list" aria-labelledby="gx-fg3">
+          <li class="gx-tile gx-tile--blank" aria-hidden="true"><svg class="gx-ico" viewBox="0 0 40 40"><use href="#gx-i-ball"/></svg></li>
+          <li class="gx-tile"><a href="#gx-travel">Getting here<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="#gx-practical">Good to know<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="#gx-faq">FAQ<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="mailto:lost@glitterexchange.example">Lost property<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="gx-floor__group">
+        <h2 class="gx-tile gx-tile--head"><small>04</small><span class="gx-floor__title" id="gx-fg4">Backstage</span><button class="gx-floor__toggle" type="button" aria-expanded="false" aria-controls="gx-fl4" aria-labelledby="gx-fg4"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-chev"/></svg></button></h2>
+        <ul class="gx-floor__links" id="gx-fl4" role="list" aria-labelledby="gx-fg4">
+          <li class="gx-tile"><a href="mailto:stage@glitterexchange.example?subject=I%20have%20an%20act">Perform here<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="mailto:jobs@glitterexchange.example">Work with us<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile"><a href="mailto:press@glitterexchange.example">Press<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+          <li class="gx-tile gx-tile--blank" aria-hidden="true"><svg class="gx-ico"><use href="#gx-i-spark"/></svg></li>
+          <li class="gx-tile"><a href="#gx-contact">Contact<svg class="gx-ico" aria-hidden="true"><use href="#gx-i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="gx-edge">
+    <div class="gx-wrap gx-edge__grid">
+      <div class="gx-edge__contact" id="gx-contact">
+        <h2>Find us</h2>
+        <address><p>The Glitter Exchange<br>18 Madeira Mews, Kemptown<br>Brighton BN2 1GX</p></address>
+        <a href="tel:+441632960147"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-phone"/></svg>01632 960 147</a>
+        <a href="mailto:hello@glitterexchange.example"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-mail"/></svg>hello@glitterexchange.example</a>
+      </div>
+      <div>
+        <h2>Opening hours</h2>
+        <dl class="gx-hours">
+          <div><dt>Thursday to Saturday</dt><dd>20:00–03:00</dd></div>
+          <div><dt>Sunday</dt><dd>20:00–01:00</dd></div>
+          <div><dt>Last entry</dt><dd>01:30 · Sun 00:00</dd></div>
+          <div><dt>Monday to Wednesday</dt><dd>Private hire</dd></div>
+        </dl>
+      </div>
+      <form class="gx-news" id="gx-news-form" novalidate>
+        <h2>The monthly line-up</h2>
+        <p>One email a month: who is on, what is new, and when the early birds land.</p>
+        <div class="gx-news__row">
+          <label class="gx-sr" for="gx-news-email">Email address</label>
+          <input class="gx-input" id="gx-news-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required aria-describedby="gx-news-email-err">
+          <button class="gx-btn" type="submit">Sign me up</button>
+        </div>
+        <p class="gx-err" id="gx-news-email-err"></p>
+        <label class="gx-check"><input type="checkbox" id="gx-news-consent" name="consent" aria-describedby="gx-news-consent-err"><span>Yes, email me the monthly line-up. I can unsubscribe at any time. <a class="gx-link" href="#gx-legal-privacy" data-gx-legal="privacy">Privacy notice</a>.</span></label>
+        <p class="gx-err" id="gx-news-consent-err"></p>
+        <p class="gx-news__ok" id="gx-news-ok" role="status" hidden></p>
+      </form>
+    </div>
+    <div class="gx-wrap gx-legal">
+      <div>
+        <p>© <span id="gx-year">2026</span> Glitter Exchange Leisure Ltd · Company No. 00000000 · Registered in England and Wales.</p>
+        <p>Licensed under the Licensing Act 2003 · Premises licence no. 00/00000/LAPRE (placeholder) · Over 18s only · Please drink responsibly: <a href="https://www.drinkaware.co.uk/" rel="noopener">drinkaware.co.uk</a></p>
+      </div>
+      <ul>
+        <li><a href="#gx-legal-privacy" data-gx-legal="privacy">Privacy</a></li>
+        <li><a href="#gx-legal-cookies" data-gx-legal="cookies">Cookies</a></li>
+        <li><a href="#gx-legal-terms" data-gx-legal="terms">Terms</a></li>
+        <li><a href="#gx-legal-access" data-gx-legal="access">Accessibility</a></li>
+      </ul>
+      <a class="gx-totop" href="#gx-top" aria-label="Back to top"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-up"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<dialog class="gx-dialog" id="gx-legal" aria-labelledby="gx-legal-title" data-gx-accent="turq">
+  <div class="gx-dialog__head">
+    <h2 class="gx-h3" id="gx-legal-title">The small print</h2>
+    <button class="gx-burger" type="button" id="gx-legal-close" aria-label="Close the small print"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-close"/></svg></button>
+  </div>
+  <div class="gx-dialog__body">
+    <section id="gx-legal-privacy"><h3 tabindex="-1">Privacy</h3><p>We collect only what we need to sell you a ticket, answer an enquiry or send the newsletter you asked for. We never sell or swap your details. Booking records are kept for 24 months, enquiry emails for 12. You can ask for a copy of your data, or for it to be deleted, at privacy@glitterexchange.example, and you have the right to complain to the Information Commissioner’s Office.</p></section>
+    <section id="gx-legal-cookies"><h3 tabindex="-1">Cookies</h3><p>This site uses only the cookies it needs to work, such as remembering what is in your booking. We do not use advertising cookies. If we ever add analytics, we will ask you first and “no” will be as easy to choose as “yes”.</p></section>
+    <section id="gx-legal-terms"><h3 tabindex="-1">Terms</h3><p>Tickets are sold to over-18s and are non-refundable unless we cancel or move a night. Every price shown includes the booking fee. Entry is always subject to our door policy and house rules. Full terms are sent with each booking confirmation.</p></section>
+    <section id="gx-legal-access"><h3 tabindex="-1">Accessibility statement</h3><p>We want everyone to be able to use this site. It works with a keyboard and with screen readers, at 200% zoom, and it respects your reduced-motion setting; moving elements can be paused. If something does not work for you, tell us at access@glitterexchange.example and we will put it right.</p></section>
+  </div>
+</dialog>
+
+<div class="gx-dock gx-is-away" id="gx-dock" data-gx-accent="pink" role="region" aria-label="Quick booking">
+  <a class="gx-btn" href="#gx-tickets">Disco tickets</a>
+  <a class="gx-btn gx-btn--ghost" href="#gx-cabaret">Book cabaret</a>
+</div>
+<!--GX:FOOTER-->
+
+<script type="module">
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const RM = matchMedia('(prefers-reduced-motion: reduce)');
+const PI = Math.PI, TAU = PI * 2, D2R = PI / 180;
+const pad = n => String(n).padStart(2, '0');
+
+/* ================= venue time: always Europe/London ================= */
+const TZ = 'Europe/London';
+const fmtHMS = new Intl.DateTimeFormat('en-GB', {timeZone: TZ, hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23'});
+const fmtDate = new Intl.DateTimeFormat('en-GB', {timeZone: TZ, weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric'});
+const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const WDL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+function londonNow(){
+  const now = new Date(), o = {};
+  for (const p of fmtHMS.formatToParts(now)) if (p.type !== 'literal') o[p.type] = +p.value;
+  for (const p of fmtDate.formatToParts(now)){
+    if (p.type === 'weekday') o.wd = WD.indexOf(p.value);
+    else if (p.type !== 'literal') o[p.type] = +p.value;
+  }
+  return {h: o.hour, m: o.minute, s: o.second, wd: o.wd, y: o.year, mo: o.month, d: o.day};
+}
+
+/* opening pattern: Thu, Fri, Sat 20:00-03:00 (last entry 01:30); Sun 20:00-01:00 (last entry 00:00) */
+const HR = 3600;
+const SESS = {4: {last: 25.5 * HR, close: 27 * HR}, 5: {last: 25.5 * HR, close: 27 * HR}, 6: {last: 25.5 * HR, close: 27 * HR}, 0: {last: 24 * HR, close: 25 * HR}};
+const DOORS = 20 * HR, SHOW1 = 21 * HR, SHOW2 = 23 * HR;
+function inSession(day, st){
+  const s = SESS[day];
+  if (st < SHOW1) return {key: 'a' + day, day, open: true, label: 'First show in', secs: SHOW1 - st};
+  if (st < SHOW2) return {key: 'b' + day, day, open: true, label: 'Late show in', secs: SHOW2 - st};
+  if (st < s.last) return {key: 'c' + day, day, open: true, label: 'Last entry in', secs: s.last - st};
+  return {key: 'd' + day, day, open: true, lastGone: true, label: 'Closing in', secs: s.close - st};
+}
+function nightState(n){
+  const t = n.h * HR + n.m * 60 + n.s, prev = (n.wd + 6) % 7;
+  if (SESS[prev] && t + 24 * HR < SESS[prev].close) return inSession(prev, t + 24 * HR);
+  if (SESS[n.wd] && t >= DOORS) return inSession(n.wd, t);
+  if (SESS[n.wd]) return {key: 'p' + n.wd, day: n.wd, open: false, tonight: true, label: 'Doors in', secs: DOORS - t};
+  for (let d = 1; d < 7; d++){
+    const w = (n.wd + d) % 7;
+    if (SESS[w]) return {key: 'x' + w, day: w, open: false, tonight: false, label: 'Doors ' + WD[w] + ' in', secs: d * 24 * HR - t + DOORS};
+  }
+  return {key: 'x', day: 4, open: false, tonight: false, label: 'Doors in', secs: 0};
+}
+const countdown = s => pad(Math.floor(s / HR)) + ':' + pad(Math.floor(s % HR / 60)) + ':' + pad(Math.floor(s % 60));
+
+/* ================= the showtime dial: 2D canvas, redrawn once a second ================= */
+const heroEl = $('#gx-hero'), stageEl = $('#gx-stage'), sceneBox = $('#gx-scene'), motionBtn = $('#gx-motion');
+const DIAL = document.createElement('canvas');
+DIAL.width = DIAL.height = 1024;
+const dg = DIAL.getContext('2d');
+const C = 512, INK = '#f5eefb', PINK = '#ff4fa3', LILAC = '#cbb9e0', DEEP = '#130821';
+const polar = (deg, r) => [C + r * Math.sin(deg * D2R), C - r * Math.cos(deg * D2R)];
+const spacing = (g, px) => { if ('letterSpacing' in g) g.letterSpacing = px + 'px'; };
+let face = null, faceKey = '';
+
+function arcText(g, str, deg, r, size){
+  g.font = '700 ' + size + 'px Outfit, sans-serif';
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  const flip = deg > 95 && deg < 275, dir = flip ? -1 : 1, gap = size * .16, ch = [...str];
+  const w = ch.map(c => g.measureText(c).width + gap);
+  let a = deg * D2R - dir * ((w.reduce((x, y) => x + y, 0) - gap) / 2) / r;
+  ch.forEach((c, i) => {
+    const mid = a + dir * ((w[i] - gap) / 2) / r;
+    g.save(); g.translate(C + r * Math.sin(mid), C - r * Math.cos(mid)); g.rotate(mid + (flip ? PI : 0)); g.fillText(c, 0, 0); g.restore();
+    a += dir * w[i] / r;
+  });
+}
+function starAt(g, deg, r, size){
+  const [x, y] = polar(deg, r);
+  g.beginPath();
+  for (let i = 0; i < 10; i++){ const q = i * 36 * D2R - PI / 2, k = i % 2 ? size * .44 : size; g.lineTo(x + Math.cos(q) * k, y + Math.sin(q) * k); }
+  g.closePath(); g.fillStyle = INK; g.fill(); g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = DEEP; g.stroke();
+}
+function buildFace(day){
+  const c = document.createElement('canvas'); c.width = c.height = 1024;
+  const g = c.getContext('2d'), s = SESS[day], A = d => (d - 90) * D2R;
+  const lastDeg = (s.last / HR % 12) * 30, closeDeg = (s.close / HR % 12) * 30;
+  const gr = g.createRadialGradient(C, C - 90, 30, C, C, 512);
+  gr.addColorStop(0, '#4a2372'); gr.addColorStop(.52, '#281140'); gr.addColorStop(1, DEEP);
+  g.fillStyle = gr; g.beginPath(); g.arc(C, C, 512, 0, TAU); g.fill();
+  g.fillStyle = 'rgba(255,255,255,.032)';
+  for (let i = 0; i < 24; i += 2){ g.beginPath(); g.moveTo(C, C); g.arc(C, C, 372, A(i * 15 - 7.5), A(i * 15 + 7.5)); g.closePath(); g.fill(); }
+  /* tick band */
+  g.beginPath(); g.arc(C, C, 484, 0, TAU); g.lineWidth = 56; g.strokeStyle = '#0d0618'; g.stroke();
+  g.beginPath(); g.arc(C, C, 456, 0, TAU); g.lineWidth = 2.5; g.strokeStyle = 'rgba(255,201,77,.8)'; g.stroke();
+  g.lineCap = 'round';
+  for (let i = 0; i < 60; i++){
+    const big = i % 5 === 0, [x1, y1] = polar(i * 6, big ? 467 : 473), [x2, y2] = polar(i * 6, big ? 501 : 491);
+    g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.lineWidth = big ? 8 : 3; g.strokeStyle = big ? INK : 'rgba(203,185,224,.62)'; g.stroke();
+  }
+  /* the night on the ring: doors to last entry solid, last entry to close dashed */
+  g.lineCap = 'butt';
+  g.beginPath(); g.arc(C, C, 430, 0, TAU); g.lineWidth = 2; g.strokeStyle = 'rgba(255,255,255,.13)'; g.stroke();
+  g.beginPath(); g.arc(C, C, 430, A(240), A(lastDeg + 360)); g.lineWidth = 16; g.strokeStyle = PINK; g.stroke();
+  g.setLineDash([5, 9]); g.beginPath(); g.arc(C, C, 430, A(lastDeg + 360), A(closeDeg + 360)); g.strokeStyle = 'rgba(255,79,163,.8)'; g.stroke(); g.setLineDash([]);
+  const dot = (deg, r, fill, stroke) => { const [x, y] = polar(deg, 430); g.beginPath(); g.arc(x, y, r, 0, TAU); g.fillStyle = fill; g.fill(); if (stroke){ g.lineWidth = 5; g.strokeStyle = stroke; g.stroke(); } };
+  dot(240, 12, DEEP, INK); starAt(g, 270, 430, 21); starAt(g, 330, 430, 21); dot(lastDeg, 13, INK, DEEP); dot(closeDeg, 9, DEEP, INK);
+  g.fillStyle = INK;
+  arcText(g, 'DOORS', 240, 391, 27); arcText(g, 'SHOW', 270, 391, 27); arcText(g, 'SHOW', 330, 391, 27);
+  arcText(g, 'LAST IN', lastDeg, 391, 27); arcText(g, 'CLOSE', closeDeg, 391, 27);
+  /* numerals: service hours bright, the rest of the dial dimmed */
+  const lit = new Set(); for (let k = 20; k <= s.close / HR; k++) lit.add(k % 12 || 12);
+  g.font = '400 64px Gloock, serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  for (let h = 1; h <= 12; h++){ const [x, y] = polar(h * 30, 320); g.fillStyle = lit.has(h) ? INK : 'rgba(245,238,251,.3)'; g.fillText(String(h), x, y + 3); }
+  g.fillStyle = INK; g.font = '400 42px Gloock, serif'; g.fillText('The Glitter Exchange', C, C - 152);
+  g.fillStyle = LILAC; g.font = '600 17px Outfit, sans-serif'; spacing(g, 6); g.fillText('KEMPTOWN · BRIGHTON', C + 3, C - 110); spacing(g, 0);
+  return c;
+}
+function roundBox(g, x, y, w, h, r){
+  g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath();
+}
+function hand(deg, len, tail, w0, w1, fill){
+  dg.save(); dg.translate(C, C); dg.rotate(deg * D2R);
+  dg.shadowColor = 'rgba(0,0,0,.55)'; dg.shadowBlur = 14; dg.shadowOffsetY = 6;
+  dg.beginPath(); dg.moveTo(-w0 / 2, tail); dg.lineTo(-w1 / 2, -len + w1); dg.quadraticCurveTo(0, -len - w1 * .7, w1 / 2, -len + w1); dg.lineTo(w0 / 2, tail); dg.closePath();
+  dg.fillStyle = fill; dg.fill(); dg.restore();
+}
+function drawDial(n, st){
+  if (!face || faceKey !== 'd' + st.day){ face = buildFace(st.day); faceKey = 'd' + st.day; }
+  dg.clearRect(0, 0, 1024, 1024); dg.drawImage(face, 0, 0);
+  /* centre readout: what happens next, counted down */
+  roundBox(dg, C - 160, C + 88, 320, 124, 26);
+  dg.fillStyle = 'rgba(11,5,20,.8)'; dg.fill(); dg.lineWidth = 2; dg.strokeStyle = 'rgba(255,255,255,.17)'; dg.stroke();
+  dg.textAlign = 'center'; dg.textBaseline = 'middle';
+  const days = Math.floor(st.secs / (24 * HR));
+  dg.fillStyle = PINK; dg.font = '700 21px Outfit, sans-serif'; spacing(dg, 4); dg.fillText(st.label.toUpperCase() + (days ? ' ' + days + 'D' : ''), C + 2, C + 119); spacing(dg, 0);
+  dg.fillStyle = INK; dg.font = '600 58px Outfit, sans-serif';
+  const txt = countdown(st.secs % (24 * HR)), cw = ch => ch === ':' ? 20 : 37;
+  let x = C - [...txt].reduce((a, ch) => a + cw(ch), 0) / 2;
+  for (const ch of txt){ const w = cw(ch); dg.fillText(ch, x + w / 2, C + 167 - (ch === ':' ? 4 : 0)); x += w; }
+  /* hands: 0deg at 12, clockwise */
+  const secA = n.s * 6, minA = n.m * 6 + n.s * .1, hrA = (n.h % 12) * 30 + n.m * .5;
+  hand(hrA, 208, 36, 24, 11, INK);
+  hand(minA, 316, 44, 16, 6, INK);
+  dg.save(); dg.translate(C, C); dg.rotate(secA * D2R);
+  dg.shadowColor = 'rgba(0,0,0,.5)'; dg.shadowBlur = 10; dg.shadowOffsetY = 5;
+  dg.strokeStyle = PINK; dg.lineCap = 'round'; dg.lineWidth = 5; dg.beginPath(); dg.moveTo(0, 78); dg.lineTo(0, -378); dg.stroke();
+  dg.fillStyle = PINK; dg.beginPath(); dg.arc(0, 78, 11, 0, TAU); dg.fill();
+  dg.restore();
+  dg.beginPath(); dg.arc(C, C, 19, 0, TAU); dg.fillStyle = '#ffc94d'; dg.fill();
+  dg.beginPath(); dg.arc(C, C, 7, 0, TAU); dg.fillStyle = DEEP; dg.fill();
+  return [secA, minA, hrA];
+}
+
+const onTick = [];
+let redraws = 0, dialVersion = () => 0;
+function tick(){
+  const n = londonNow(), st = nightState(n);
+  const ang = drawDial(n, st); redraws++;
+  for (const f of onTick) f(n, st);
+  heroEl.dataset.gxClock = [pad(n.h) + ':' + pad(n.m) + ':' + pad(n.s), ...ang, redraws, dialVersion()].join('|');
+  setTimeout(tick, 1000 - (Date.now() % 1000) + 3);
+}
+/* tonight's facts + a once-a-minute text alternative for the clock */
+{
+  const statusEl = $('#gx-fact-status'), lastEl = $('#gx-fact-last'), srEl = $('#gx-clock-sr');
+  let key = '', minute = -1;
+  onTick.push((n, st) => {
+    if (st.key !== key){
+      key = st.key;
+      statusEl.textContent = st.open ? (st.lastGone ? 'Open till ' + (st.day === 0 ? '01:00' : '03:00') : 'Open now') : st.tonight ? 'Open tonight' : 'Back ' + WDL[st.day];
+      lastEl.textContent = st.day === 0 ? '00:00' : '01:30';
+    }
+    if (n.m !== minute){
+      minute = n.m;
+      const h = Math.floor(st.secs / HR), m = Math.floor(st.secs % HR / 60);
+      srEl.textContent = 'Brighton time ' + pad(n.h) + ':' + pad(n.m) + '. ' + st.label + ' ' + (h ? h + (h === 1 ? ' hour ' : ' hours ') : '') + m + (m === 1 ? ' minute.' : ' minutes.');
+    }
+  });
+}
+const fontsIn = Promise.race([
+  Promise.all([document.fonts.load('64px Gloock'), document.fonts.load('700 27px Outfit'), document.fonts.load('600 58px Outfit')]),
+  new Promise(r => setTimeout(r, 2500))
+]).catch(() => {});
+const clockStarted = fontsIn.then(() => { tick(); });
+document.fonts.ready.then(() => { face = null; });
+
+/* ================= the hero scene (three.js) ================= */
+function rng(seed){
+  return () => { seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+const RC = 1.31; /* clock keep-out radius, in clock radii */
+function placeHomes(rect, radii, seed){
+  const R = rng(seed), out = [], a0 = R() * TAU;
+  radii.forEach((r, i) => {
+    const dmin = RC + r + .05;
+    let pick = null;
+    for (let t = 0; t < 180 && !pick; t++){
+      const a = a0 + i * 2.39996 + (R() - .5) * (.4 + t * .09), dx = Math.cos(a), dy = Math.sin(a);
+      const bx = Math.abs(dx) < 1e-5 ? 1e9 : (dx > 0 ? rect.x1 - r * .5 : rect.x0 + r * .5) / dx;
+      const by = Math.abs(dy) < 1e-5 ? 1e9 : (dy > 0 ? rect.y1 - r * 1.08 : rect.y0 + r * 1.02) / dy; /* whole ball stays below the header and above the copy */
+      const dmax = Math.min(bx, by);
+      if (dmax < dmin) continue;
+      const d = dmin + Math.pow(R(), 1.4) * (Math.min(dmax, dmin + (i < 6 ? .55 : 2.1)) - dmin);
+      const c = {x: dx * d, y: dy * d, z: R() * 1.3 - .55, r};
+      if (out.every(o => Math.hypot(c.x - o.x, c.y - o.y, c.z - o.z) > (r + o.r) * .96)) pick = c;
+    }
+    if (!pick){ const side = rect.x1 > -rect.x0 ? 1 : -1; pick = {x: side * (dmin + R() * .5), y: (R() - .5) * 1.6, z: R() - .4, r}; }
+    out.push(pick);
+  });
+  return out;
+}
+
+async function initScene(){
+  if (new URLSearchParams(location.search).get('dial') === '2d') return false;
+  const probe = document.createElement('canvas');
+  if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) return false;
+  let THREE, renderer;
+  try {
+    THREE = await import('three');
+    renderer = new THREE.WebGLRenderer({antialias: true, powerPreference: 'high-performance'});
+  } catch (e){ return false; }
+  await clockStarted;
+
+  const DPR = Math.min(window.devicePixelRatio || 1, 1.75), CAMZ = 12, TANH = Math.tan(15 * D2R);
+  renderer.setPixelRatio(DPR);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+  const cv = renderer.domElement; cv.className = 'gx-hero__canvas'; sceneBox.appendChild(cv);
+  const scene = new THREE.Scene(); scene.background = new THREE.Color(0x0b0514);
+  const camera = new THREE.PerspectiveCamera(30, 1, .1, 80); camera.position.set(0, 0, CAMZ);
+  const rnd = rng(4107);
+  const canvasTex = (w, h, paint) => { const c = document.createElement('canvas'); c.width = w; c.height = h; paint(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; };
+
+  /* environment the mirror tiles reflect: dark room, coloured lamps, hot white pin spots */
+  {
+    const env = canvasTex(1024, 512, (g, w, h) => {
+      g.fillStyle = '#07030e'; g.fillRect(0, 0, w, h);
+      const blob = (u, v, r, col, a) => { for (const ox of [-w, 0, w]){ const gr = g.createRadialGradient(u + ox, v, 0, u + ox, v, r); gr.addColorStop(0, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.globalAlpha = a; g.fillStyle = gr; g.fillRect(u + ox - r, v - r, r * 2, r * 2); } };
+      blob(140, 150, 230, '#ff4fa3', .95); blob(420, 330, 210, '#8f5bff', .9); blob(690, 130, 220, '#35e0cf', .8); blob(900, 320, 210, '#ffc94d', .85);
+      blob(540, 60, 260, '#f2e6ff', .55); blob(260, 420, 150, '#ff4fa3', .5); blob(800, 470, 160, '#8f5bff', .5);
+      for (let i = 0; i < 70; i++) blob(rnd() * w, 30 + rnd() * (h - 60), 7 + rnd() * 17, '#ffffff', 1);
+      g.globalAlpha = 1;
+    });
+    env.mapping = THREE.EquirectangularReflectionMapping;
+    const pm = new THREE.PMREMGenerator(renderer);
+    scene.environment = pm.fromEquirectangular(env).texture;
+    env.dispose(); pm.dispose();
+  }
+
+  /* back wall: velvet curtain that the sweeping spots land on */
+  const curtain = canvasTex(1024, 64, (g, w, h) => {
+    for (let x = 0; x < w; x++){
+      const v = Math.pow(.5 + .5 * Math.sin(x * .098 + Math.sin(x * .0245) * 2.3), 1.7);
+      g.fillStyle = 'rgb(' + Math.round(26 + v * 62) + ',' + Math.round(12 + v * 30) + ',' + Math.round(44 + v * 88) + ')';
+      g.fillRect(x, 0, 1, h);
+    }
+  });
+  curtain.wrapS = THREE.RepeatWrapping; curtain.repeat.set(2.5, 1);
+  const WALLZ = -4.5;
+  const wall = new THREE.Mesh(new THREE.PlaneGeometry(52, 30), new THREE.MeshStandardMaterial({map: curtain, roughness: .95, metalness: 0, envMapIntensity: .12}));
+  wall.position.z = WALLZ; scene.add(wall);
+
+  scene.add(new THREE.AmbientLight(0x6a4aa8, .5));
+  const key = new THREE.DirectionalLight(0xfff1e2, 1.6); key.position.set(-4, 6, 10); scene.add(key);
+  const spots = [
+    {c: 0xff4fa3, x: -9, y: 8, ox: 2.6, oy: .6, ax: 5.2, ay: 2.2, fx: .13, fy: .19, p: .4},
+    {c: 0x8f5bff, x: 9, y: 9, ox: -1.5, oy: -.4, ax: 6, ay: 2.6, fx: .1, fy: .15, p: 2.2},
+    {c: 0x35e0cf, x: -2, y: -9, ox: 3.4, oy: -1, ax: 4.6, ay: 2, fx: .16, fy: .11, p: 4.1},
+    {c: 0xffc94d, x: 5, y: 10, ox: -3.2, oy: 1.2, ax: 4.2, ay: 1.8, fx: .08, fy: .17, p: 5.6}
+  ].map(s => {
+    const l = new THREE.SpotLight(s.c, 15, 0, .2, .9, 0);
+    l.position.set(s.x, s.y, 9); scene.add(l); scene.add(l.target);
+    return Object.assign(s, {l});
+  });
+
+  /* light flecks thrown on the wall by the mirror balls */
+  const softDot = canvasTex(64, 64, (g) => { const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.35, 'rgba(255,255,255,.55)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); });
+  const flecks = new THREE.Group(); flecks.position.z = WALLZ + .06; scene.add(flecks);
+  {
+    const N = 150, p = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++){ const a = rnd() * TAU, r = 1.5 + Math.sqrt(rnd()) * 13; p[i * 3] = Math.cos(a) * r; p[i * 3 + 1] = Math.sin(a) * r * .8; }
+    const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(p, 3));
+    flecks.add(new THREE.Points(geo, new THREE.PointsMaterial({map: softDot, size: .34, transparent: true, opacity: .34, color: 0xe9dcff, blending: THREE.AdditiveBlending, depthWrite: false})));
+  }
+
+  /* everything around the clock lives in "clock radius" units */
+  const world = new THREE.Group(); scene.add(world);
+  const clock = new THREE.Group(); world.add(clock);
+
+  /* --- the marquee clock --- */
+  const dialTex = new THREE.CanvasTexture(DIAL);
+  dialTex.colorSpace = THREE.SRGBColorSpace;
+  dialTex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  dialVersion = () => dialTex.version;
+  const lacquer = new THREE.MeshStandardMaterial({color: 0x8a1257, metalness: .5, roughness: .26, envMapIntensity: 1.3});
+  const gold = new THREE.MeshStandardMaterial({color: 0xffc56a, metalness: 1, roughness: .2, envMapIntensity: 1.5});
+  const plate = new THREE.Mesh(new THREE.CylinderGeometry(1.29, 1.34, .26, 96), lacquer); plate.rotation.x = PI / 2; plate.position.z = -.15; clock.add(plate);
+  const rimOut = new THREE.Mesh(new THREE.TorusGeometry(1.29, .04, 14, 120), gold); rimOut.position.z = -.02; clock.add(rimOut);
+  const rimIn = new THREE.Mesh(new THREE.TorusGeometry(1.025, .035, 14, 120), gold); rimIn.position.z = 0; clock.add(rimIn);
+  const dial = new THREE.Mesh(new THREE.CircleGeometry(1, 96), new THREE.MeshBasicMaterial({map: dialTex, toneMapped: false})); dial.position.z = -.005; clock.add(dial);
+  const halo = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 6.4), new THREE.MeshBasicMaterial({map: softDot, color: 0xff4fa3, transparent: true, opacity: .42, blending: THREE.AdditiveBlending, depthWrite: false}));
+  halo.position.z = -.7; world.add(halo);
+
+  /* shared sparkle shader: bulb halos, tile glints, drifting glitter */
+  const sparkMat = new THREE.ShaderMaterial({
+    uniforms: {uScale: {value: 1}},
+    vertexShader: 'attribute float aSize;attribute float aAlpha;attribute float aStar;attribute vec3 aTint;uniform float uScale;varying float vA;varying float vS;varying vec3 vT;void main(){vA=aAlpha;vS=aStar;vT=aTint;vec4 mv=modelViewMatrix*vec4(position,1.0);gl_Position=projectionMatrix*mv;gl_PointSize=aAlpha>0.004?aSize*uScale/-mv.z:0.0;}',
+    fragmentShader: 'varying float vA;varying float vS;varying vec3 vT;void main(){vec2 p=gl_PointCoord*2.0-1.0;float d=length(p);float glow=pow(max(0.0,1.0-d),2.4);float ray=max((1.0-abs(p.x))*smoothstep(0.075,0.0,abs(p.y)),(1.0-abs(p.y))*smoothstep(0.075,0.0,abs(p.x)));float a=(glow*mix(1.0,0.8,vS)+pow(ray,1.7)*vS)*vA;gl_FragColor=vec4(vT,a);}',
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  });
+  const sparkGeo = (n) => {
+    const g = new THREE.BufferGeometry(), mk = (k) => new THREE.BufferAttribute(new Float32Array(n * k), k);
+    g.setAttribute('position', mk(3)); g.setAttribute('aSize', mk(1)); g.setAttribute('aAlpha', mk(1)); g.setAttribute('aStar', mk(1)); g.setAttribute('aTint', mk(3));
+    return g;
+  };
+
+  /* marquee bulbs */
+  const NB = 40, BR = 1.158;
+  const bulbs = new THREE.InstancedMesh(new THREE.SphereGeometry(.05, 14, 10), new THREE.MeshBasicMaterial({toneMapped: false}), NB);
+  const haloGeo = sparkGeo(NB), m4 = new THREE.Matrix4(), col = new THREE.Color();
+  for (let i = 0; i < NB; i++){
+    const a = i / NB * TAU, x = Math.sin(a) * BR, y = Math.cos(a) * BR;
+    bulbs.setMatrixAt(i, m4.makeTranslation(x, y, .02));
+    haloGeo.attributes.position.setXYZ(i, x, y, .07); haloGeo.attributes.aSize.setX(i, .5); haloGeo.attributes.aTint.setXYZ(i, 1, .82, .5);
+  }
+  clock.add(bulbs);
+  const bulbHalos = new THREE.Points(haloGeo, sparkMat); bulbHalos.frustumCulled = false; clock.add(bulbHalos);
+  function paintBulbs(step){
+    for (let i = 0; i < NB; i++){
+      let lv;
+      if (step < 0) lv = i % 2 ? .22 : 1;
+      else { const k = ((i - step) % 5 + 5) % 5; lv = k === 0 ? 1 : k === 4 ? .5 : k === 1 ? .3 : .1; }
+      bulbs.setColorAt(i, col.setRGB(.3 + lv * .9, .15 + lv * .85, .05 + lv * .68));
+      haloGeo.attributes.aAlpha.setX(i, lv * .85);
+    }
+    bulbs.instanceColor.needsUpdate = true; haloGeo.attributes.aAlpha.needsUpdate = true;
+  }
+
+  /* --- mirror balls and glitter spheres --- */
+  const SW = 30, SH = 19;
+  const grout = canvasTex(96, 96, (g) => { g.fillStyle = '#f4f0fb'; g.fillRect(0, 0, 96, 96); g.strokeStyle = '#0b0714'; g.lineWidth = 11; g.strokeRect(0, 0, 96, 96); });
+  grout.wrapS = grout.wrapT = THREE.RepeatWrapping; grout.repeat.set(SW, SH); grout.anisotropy = 4;
+  const noiseNormals = (w, h, amt) => {
+    const d = new Uint8Array(w * h * 4);
+    for (let i = 0; i < w * h; i++){ const x = (rnd() - .5) * amt, y = (rnd() - .5) * amt, z = Math.sqrt(Math.max(.05, 1 - x * x - y * y)); d[i * 4] = (x * .5 + .5) * 255; d[i * 4 + 1] = (y * .5 + .5) * 255; d[i * 4 + 2] = (z * .5 + .5) * 255; d[i * 4 + 3] = 255; }
+    const t = new THREE.DataTexture(d, w, h, THREE.RGBAFormat); t.needsUpdate = true; return t;
+  };
+  const tilt = noiseNormals(SW, SH, .55); tilt.magFilter = tilt.minFilter = THREE.NearestFilter;
+  const grit = noiseNormals(256, 256, 1.5); grit.wrapS = grit.wrapT = THREE.RepeatWrapping; grit.repeat.set(5, 3); grit.magFilter = THREE.NearestFilter; grit.minFilter = THREE.LinearMipmapLinearFilter; grit.generateMipmaps = true;
+  const mirrorGeo = new THREE.SphereGeometry(1, SW, SH), smoothGeo = new THREE.SphereGeometry(1, 44, 30);
+  const mirrorMat = c => new THREE.MeshStandardMaterial({color: c, metalness: 1, roughness: .08, flatShading: true, map: grout, normalMap: tilt, normalScale: new THREE.Vector2(1, 1), envMapIntensity: 2.9});
+  const glitterMat = c => new THREE.MeshStandardMaterial({color: c, metalness: 1, roughness: .34, normalMap: grit, normalScale: new THREE.Vector2(.9, .9), envMapIntensity: 2});
+  const MIRRORS = [0xffffff, 0xffe3f1, 0xfff0d2, 0xe9defF].map(mirrorMat), GLITTERS = [0xff4fa3, 0xffc94d, 0x9a6bff, 0x35e0cf].map(glitterMat);
+  const RADII = [.56, .43, .4, .36, .33, .3, .27, .25, .23, .21, .19, .17, .16, .14, .13, .12];
+  const KINDS = 'mgmmgmgmmgmgmmgm';
+  let mi = 0, gi = 0;
+  const balls = RADII.map((r, i) => {
+    const mirror = KINDS[i] === 'm';
+    const mesh = new THREE.Mesh(mirror ? mirrorGeo : smoothGeo, mirror ? MIRRORS[mi++ % 4] : GLITTERS[gi++ % 4]);
+    mesh.rotation.set((rnd() - .5) * .5, rnd() * TAU, (rnd() - .5) * .3);
+    world.add(mesh);
+    const normals = [];
+    for (let k = 0, K = mirror ? 22 : 10; k < K; k++){ const u = rnd() * 2 - 1, a = rnd() * TAU, q = Math.sqrt(1 - u * u); normals.push(new THREE.Vector3(q * Math.cos(a), u, q * Math.sin(a))); }
+    return {mesh, mirror, base: r, r, on: true, x: 0, y: 0, z: 0, vx: 0, vy: 0, vz: 0, hx: 0, hy: 0, hz: 0, spin: (.16 + rnd() * .3) * (rnd() < .5 ? -1 : 1) * (mirror ? 1 : .6),
+      f1: .17 + rnd() * .22, f2: .15 + rnd() * .24, f3: .11 + rnd() * .2, p1: rnd() * TAU, p2: rnd() * TAU, p3: rnd() * TAU, normals};
+  });
+  const NG = balls.reduce((a, b) => a + b.normals.length, 0), ND = 120;
+  const fxGeo = sparkGeo(NG + ND), fxP = fxGeo.attributes.position, fxS = fxGeo.attributes.aSize, fxA = fxGeo.attributes.aAlpha, fxT = fxGeo.attributes.aTint;
+  for (let i = 0; i < NG; i++) fxGeo.attributes.aStar.setX(i, 1);
+  const TINTS = [[1, .55, .8], [.82, .7, 1], [1, .86, .5], [.55, 1, .94], [1, 1, 1], [1, 1, 1]];
+  const dust = [];
+  for (let i = 0; i < ND; i++){
+    const t = TINTS[Math.floor(rnd() * TINTS.length)];
+    dust.push({x: (rnd() - .5) * 11, y: (rnd() - .5) * 7, z: rnd() * 2.6 - 1, f: .5 + rnd() * 1.6, p: rnd() * TAU, fall: .03 + rnd() * .08, sway: rnd() * TAU, a: .35 + rnd() * .65});
+    fxGeo.attributes.aStar.setX(NG + i, rnd() < .35 ? 1 : 0); fxS.setX(NG + i, .07 + rnd() * .12); fxT.setXYZ(NG + i, t[0], t[1], t[2]);
+  }
+  const fx = new THREE.Points(fxGeo, sparkMat); fx.frustumCulled = false; fx.renderOrder = 5; world.add(fx);
+  const glintLights = [{p: key.position, t: [1, .97, .9]}, {p: new THREE.Vector3(6, 2, 10), t: [1, 1, 1]}, {p: new THREE.Vector3(0, -5, 10), t: [1, .9, .97]}]
+    .concat(spots.map(s => ({p: s.l.position, t: [((s.c >> 16) & 255) / 255 * .5 + .5, ((s.c >> 8) & 255) / 255 * .5 + .5, (s.c & 255) / 255 * .5 + .5]})));
+
+  /* --- layout: the clock sits on the DOM stage box, the balls fill the space around it --- */
+  let Wpx = 0, Hpx = 0, wpp = 1, Rw = 1, cxw = 0, cyw = 0, T = 3.7, lastStep = -9;
+  const ptr = {x: 0, y: 0, nx: 0, ny: 0, on: false, touch: false, at: 0}, ease = {x: 0, y: 0};
+  function layout(force){
+    const hb = heroEl.getBoundingClientRect(), sb = stageEl.getBoundingClientRect();
+    const w = Math.max(1, Math.round(hb.width)), h = Math.max(1, Math.round(hb.height));
+    if (!force && w === Wpx && h === Hpx) return false;
+    Wpx = w; Hpx = h;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    wpp = 2 * CAMZ * TANH / h;
+    const stacked = w < 900, small = w < 768;
+    const Rpx = Math.min(sb.width * .31, stacked ? sb.height * .34 : (h - 76) * .27, 236);
+    const ccx = sb.left - hb.left + sb.width / 2, ccy = sb.top - hb.top + sb.height / 2 + (stacked ? 4 : 0);
+    cxw = (ccx - w / 2) * wpp; cyw = -(ccy - h / 2) * wpp; Rw = Rpx * wpp;
+    world.position.set(cxw, cyw, 0); world.scale.setScalar(Rw);
+    sparkMat.uniforms.uScale.value = h * DPR / (2 * TANH) * Rw;
+    const pl = stacked ? 0 : sb.left - hb.left - (w < 1200 ? -6 : 20), pt = stacked ? 74 : 92, pb = stacked ? sb.bottom - hb.top + 6 : w < 1200 ? sb.bottom - hb.top + 14 : h - 26;
+    const rect = {x0: (pl - ccx) / Rpx, x1: (w - ccx) / Rpx, y0: -(pb - ccy) / Rpx, y1: -(pt - ccy) / Rpx};
+    const n = w >= 1200 ? 16 : small ? 9 : 13, k = small ? .74 : stacked ? .86 : 1;
+    balls.forEach((b, i) => { b.on = i < n; b.mesh.visible = b.on; b.r = b.base * k; b.mesh.scale.setScalar(b.r); });
+    const homes = placeHomes(rect, balls.filter(b => b.on).map(b => b.r), small ? 31 : stacked ? 12 : 7);
+    balls.forEach((b, i) => { if (!b.on) return; const hm = homes[i]; b.hx = b.x = hm.x; b.hy = b.y = hm.y; b.hz = b.z = hm.z; b.vx = b.vy = b.vz = 0; });
+    return true;
+  }
+
+  /* --- simple physics: soft spring home, pointer push, sphere/sphere and sphere/clock collisions --- */
+  function physics(dt){
+    const push = ptr.on, drag = Math.exp(-1.7 * dt);
+    for (const b of balls){
+      if (!b.on) continue;
+      const tx = b.hx + Math.sin(T * b.f1 + b.p1) * .2, ty = b.hy + Math.cos(T * b.f2 + b.p2) * .2, tz = b.hz + Math.sin(T * b.f3 + b.p3) * .14;
+      let ax = (tx - b.x) * 1.5, ay = (ty - b.y) * 1.5, az = (tz - b.z) * 1.5;
+      if (push){
+        const dx = b.x - ptr.x, dy = b.y - ptr.y, d = Math.hypot(dx, dy) + 1e-4, reach = 1.05 + b.r;
+        if (d < reach){ const f = 30 * Math.pow(1 - d / reach, 2); ax += dx / d * f; ay += dy / d * f; az += (b.z > .1 ? 1 : -1) * f * .12; }
+      }
+      b.vx = (b.vx + ax * dt) * drag; b.vy = (b.vy + ay * dt) * drag; b.vz = (b.vz + az * dt) * drag;
+      b.x += b.vx * dt; b.y += b.vy * dt; b.z += b.vz * dt;
+    }
+    for (let i = 0; i < balls.length; i++){
+      const a = balls[i]; if (!a.on) continue;
+      for (let j = i + 1; j < balls.length; j++){
+        const b = balls[j]; if (!b.on) continue;
+        const dx = b.x - a.x, dy = b.y - a.y, dz = b.z - a.z, min = a.r + b.r, d2 = dx * dx + dy * dy + dz * dz;
+        if (d2 >= min * min || d2 < 1e-8) continue;
+        const d = Math.sqrt(d2), nx = dx / d, ny = dy / d, nz = dz / d, ma = a.r * a.r * a.r, mb = b.r * b.r * b.r, inv = 1 / (ma + mb), over = min - d;
+        a.x -= nx * over * mb * inv; a.y -= ny * over * mb * inv; a.z -= nz * over * mb * inv;
+        b.x += nx * over * ma * inv; b.y += ny * over * ma * inv; b.z += nz * over * ma * inv;
+        const vn = (b.vx - a.vx) * nx + (b.vy - a.vy) * ny + (b.vz - a.vz) * nz;
+        if (vn < 0){ const jv = -1.6 * vn * ma * mb * inv; a.vx -= jv / ma * nx; a.vy -= jv / ma * ny; a.vz -= jv / ma * nz; b.vx += jv / mb * nx; b.vy += jv / mb * ny; b.vz += jv / mb * nz; }
+      }
+      const d = Math.hypot(a.x, a.y), min = RC + a.r;
+      if (d < min && d > 1e-5){ const nx = a.x / d, ny = a.y / d; a.x = nx * min; a.y = ny * min; const vn = a.vx * nx + a.vy * ny; if (vn < 0){ a.vx -= 1.5 * vn * nx; a.vy -= 1.5 * vn * ny; } }
+    }
+  }
+
+  const vN = new THREE.Vector3(), vV = new THREE.Vector3(), vL = new THREE.Vector3(), vP = new THREE.Vector3();
+  function sparkles(dt){
+    let k = 0;
+    for (const b of balls){
+      for (const nrm of b.normals){
+        let I = 0, r = 0, g = 0, bl = 0;
+        if (b.on){
+          vN.copy(nrm).applyQuaternion(b.mesh.quaternion);
+          vP.set(cxw + b.x * Rw, cyw + b.y * Rw, b.z * Rw);
+          vV.copy(camera.position).sub(vP).normalize();
+          if (vN.dot(vV) > .2){
+            for (const L of glintLights){
+              vL.copy(L.p).sub(vP).normalize().add(vV).normalize();
+              const d = vN.dot(vL);
+              if (d > .955){ const w = Math.pow(d, 150); I += w; r += L.t[0] * w; g += L.t[1] * w; bl += L.t[2] * w; }
+            }
+          }
+          fxP.setXYZ(k, b.x + vN.x * b.r * 1.02, b.y + vN.y * b.r * 1.02, b.z + vN.z * b.r * 1.02);
+        }
+        if (I > .02){ fxA.setX(k, Math.min(1, I * 1.5)); fxS.setX(k, (b.mirror ? .5 : .3) * (.6 + b.r) * (.6 + Math.min(1, I))); fxT.setXYZ(k, r / I, g / I, bl / I); }
+        else fxA.setX(k, 0);
+        k++;
+      }
+    }
+    for (let i = 0; i < ND; i++){
+      const d = dust[i];
+      d.y -= d.fall * dt; if (d.y < -3.6) d.y = 3.6;
+      fxP.setXYZ(NG + i, d.x + Math.sin(T * .3 + d.sway) * .25, d.y, d.z);
+      fxA.setX(NG + i, d.a * Math.pow(.5 + .5 * Math.sin(T * d.f + d.p), 5));
+    }
+    fxP.needsUpdate = fxA.needsUpdate = fxS.needsUpdate = fxT.needsUpdate = true;
+  }
+
+  let userOn = !RM.matches, inView = true, running = false, raf = 0, last = 0;
+  function update(dt){
+    T += dt;
+    for (const s of spots) s.l.target.position.set(s.ox + s.ax * Math.sin(T * s.fx + s.p), s.oy + s.ay * Math.sin(T * s.fy + s.p * 1.7), WALLZ);
+    flecks.rotation.z = T * .022;
+    if (ptr.touch && performance.now() - ptr.at > 700) ptr.on = false;
+    const k = Math.min(1, dt * 2.6), gx = ptr.on ? ptr.nx : 0, gy = ptr.on ? ptr.ny : 0;
+    ease.x += (gx - ease.x) * k; ease.y += (gy - ease.y) * k;
+    clock.rotation.y = ease.x * .17 + Math.sin(T * .5) * .035;
+    clock.rotation.x = ease.y * .11 + Math.sin(T * .37) * .022;
+    clock.position.y = Math.sin(T * .7) * .028;
+    camera.position.set(ease.x * .34, -ease.y * .2, CAMZ); camera.lookAt(0, 0, 0);
+    const step = userOn ? Math.floor(T * 7) : -1;
+    if (step !== lastStep){ lastStep = step; paintBulbs(step); }
+    if (dt > 0) physics(dt);
+    for (const b of balls){ if (!b.on) continue; b.mesh.position.set(b.x, b.y, b.z); b.mesh.rotation.y += b.spin * dt; }
+    sparkles(dt);
+  }
+  const still = () => { update(0); renderer.render(scene, camera); };
+  function frame(now){
+    if (!running) return;
+    raf = requestAnimationFrame(frame);
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    update(dt); renderer.render(scene, camera);
+  }
+  function sync(){
+    const want = userOn && inView && !document.hidden;
+    if (want && !running){ running = true; last = performance.now(); raf = requestAnimationFrame(frame); }
+    else if (!want && running){ running = false; cancelAnimationFrame(raf); still(); }
+  }
+
+  /* the dial texture is re-uploaded only after the once-a-second redraw */
+  onTick.push(() => { dialTex.needsUpdate = true; if (!running && inView && !document.hidden) still(); });
+
+  const setPtr = e => {
+    const b = cv.getBoundingClientRect(), px = e.clientX - b.left, py = e.clientY - b.top;
+    ptr.x = ((px - Wpx / 2) * wpp - cxw) / Rw; ptr.y = (-(py - Hpx / 2) * wpp - cyw) / Rw;
+    ptr.nx = px / Wpx * 2 - 1; ptr.ny = py / Hpx * 2 - 1; ptr.on = true; ptr.touch = e.pointerType !== 'mouse'; ptr.at = performance.now();
+  };
+  heroEl.addEventListener('pointermove', setPtr, {passive: true});
+  heroEl.addEventListener('pointerdown', setPtr, {passive: true});
+  heroEl.addEventListener('pointerleave', () => { ptr.on = false; });
+
+  const setBtn = () => {
+    motionBtn.querySelector('use').setAttribute('href', userOn ? '#gx-i-pause' : '#gx-i-play');
+    motionBtn.querySelector('span').textContent = userOn ? 'Pause motion' : 'Play motion';
+    motionBtn.setAttribute('aria-label', userOn ? 'Pause hero motion' : 'Play hero motion');
+  };
+  motionBtn.hidden = false; setBtn();
+  motionBtn.addEventListener('click', () => { userOn = !userOn; lastStep = -9; setBtn(); sync(); if (!userOn) still(); });
+  new IntersectionObserver(es => { inView = es[0].isIntersecting; sync(); }, {threshold: 0}).observe(heroEl);
+  document.addEventListener('visibilitychange', sync);
+  new ResizeObserver(() => { if (layout(false) && !running) still(); }).observe(heroEl);
+
+  layout(true); still();
+  heroEl.classList.add('gx-is-live');
+  sync();
+  return true;
+}
+initScene().then(ok => {
+  if (ok) return;
+  /* no WebGL / three.js: show the very same dial canvas as a flat element */
+  DIAL.className = 'gx-dial2d'; DIAL.setAttribute('aria-hidden', 'true');
+  stageEl.appendChild(DIAL);
+});
+
+/* ================= header + full-screen menu ================= */
+{
+  const header = $('#gx-header'), menu = $('#gx-menu'), burger = $('#gx-burger'), closeBtn = $('#gx-menu-close');
+  const onScroll = () => header.classList.toggle('gx-is-stuck', scrollY > 24);
+  addEventListener('scroll', onScroll, {passive: true}); onScroll();
+  const outside = () => [header, $('#gx-main'), $('#gx-footer'), $('#gx-dock')].filter(Boolean);
+  const setMenu = open => {
+    menu.classList.toggle('gx-is-open', open);
+    document.documentElement.classList.toggle('gx-lock', open);
+    burger.setAttribute('aria-expanded', String(open));
+    for (const el of outside()) el.inert = open;
+    menu.inert = !open;
+    if (open) closeBtn.focus(); else burger.focus();
+    document.dispatchEvent(new CustomEvent('gx:menu', {detail: open}));
+  };
+  menu.inert = true;
+  burger.addEventListener('click', () => setMenu(true));
+  closeBtn.addEventListener('click', () => setMenu(false));
+  menu.addEventListener('click', e => { if (e.target.closest('[data-gx-close]')) setMenu(false); });
+  menu.addEventListener('keydown', e => {
+    if (e.key === 'Escape'){ e.preventDefault(); setMenu(false); return; }
+    if (e.key !== 'Tab') return;
+    const f = $$('a[href],button:not([disabled])', menu), first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+  matchMedia('(min-width:1200px)').addEventListener('change', e => { if (e.matches && menu.classList.contains('gx-is-open')) setMenu(false); });
+}
+
+/* ================= listings: generated from today's London date, so they are always ahead of us ================= */
+const NIGHTS = {
+  4: {disco: {name: 'Loose Change', tag: 'Pop, disco and guilty pleasures', who: 'DJs Tinselworth and Juno Pemberley', price: [5, 7, 9]},
+      cab: {name: 'The Try-Out', tag: 'Open-stage cabaret for brand-new acts', who: 'Hosted by Marina Groyne', price: [9, 11, 13]}},
+  5: {disco: {name: 'Mirrorball Mass', tag: 'Disco, Italo and house', who: 'DJs Cass Marlowe and Mx Honeycomb', price: [8, 10, 13]},
+      cab: {name: 'Friday Follies', tag: 'Drag revue with live vocals', who: 'Hattie Shingle and Kemp Towne', price: [14, 17, 20]}},
+  6: {disco: {name: 'The Big Exchange', tag: 'Disco classics, hi-NRG and big vocals', who: 'DJs Rafi Delacroix and Cass Marlowe', price: [10, 13, 16]},
+      cab: {name: 'Saturday Spectacular', tag: 'The full company, feathers and all', who: 'Hattie Shingle, Gloria Promenade and guests', price: [17, 20, 24]}},
+  0: {disco: {name: 'Tea & Tiaras', tag: 'Sunday social: soul, disco and singalongs', who: 'DJ Juno Pemberley', price: [5, 6, 8]},
+      cab: {name: 'Bingo Royale', tag: 'Drag bingo with truly terrible prizes', who: 'Called by Roxy Rockpool', price: [9, 11, 13]}}
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const money = n => '£' + (Number.isInteger(n) ? n : n.toFixed(2));
+const nights = [];
+{
+  const t = londonNow(), base = Date.UTC(t.y, t.mo - 1, t.d);
+  const fShort = new Intl.DateTimeFormat('en-GB', {timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'short'});
+  const fLong = new Intl.DateTimeFormat('en-GB', {timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long'});
+  const fMon = new Intl.DateTimeFormat('en-GB', {timeZone: 'UTC', month: 'short'});
+  for (let i = 0; nights.length < 14; i++){
+    const dt = new Date(base + i * 864e5), wd = dt.getUTCDay();
+    if (!NIGHTS[wd]) continue;
+    nights.push({i, wd, iso: dt.toISOString().slice(0, 10), day: dt.getUTCDate(), mon: fMon.format(dt), short: fShort.format(dt).replace(',', ''), long: fLong.format(dt).replace(',', ''), ...NIGHTS[wd]});
+  }
+}
+{
+  const bill = $('#gx-bill'), more = $('#gx-on-more'), count = $('#gx-on-count');
+  const state = {room: 'all', day: 'all', shown: 6};
+  bill.innerHTML = nights.map((n, k) => ['cab', 'disco'].map(room => {
+    const e = n[room], cab = room === 'cab', closes = n.wd === 0 ? '01:00' : '03:00';
+    return '<li class="gx-gig" data-room="' + (cab ? 'cabaret' : 'disco') + '" data-day="' + n.wd + '" data-k="' + k + '"><article>' +
+      '<div class="gx-gig__date"><span>' + WD[n.wd] + '</span><strong>' + n.day + '</strong><span>' + n.mon + '</span></div>' +
+      '<div class="gx-gig__body"><p class="gx-gig__room"><svg class="gx-ico" aria-hidden="true"><use href="#gx-i-' + (cab ? 'spark' : 'ball') + '"/></svg>' + (cab ? 'Upstairs · Cabaret bar' : 'Downstairs · The disco') + (n.i === 0 ? '<span class="gx-gig__tonight">Tonight</span>' : '') + '</p>' +
+      '<h3 class="gx-gig__name">' + esc(e.name) + '</h3><p class="gx-gig__tag">' + esc(e.tag) + '</p><p class="gx-gig__who">' + esc(e.who) + '</p>' +
+      '<div class="gx-gig__foot"><p class="gx-gig__meta"><b>' + (cab ? '21:00 &amp; 23:00' : '22:00–' + closes) + '</b>' + (cab ? 'Seats' : 'Tickets') + ' from ' + money(e.price[0]) + '</p>' +
+      '<a class="gx-btn gx-btn--sm" href="#gx-' + (cab ? 'cabaret' : 'tickets') + '" data-gx-' + (cab ? 'cab' : 'tix') + '="' + n.iso + '" aria-label="' + (cab ? 'Book a table for ' : 'Tickets for ') + esc(e.name) + ', ' + n.long + '">' + (cab ? 'Book a table' : 'Tickets') + '</a></div></div></article></li>';
+  }).join('')).join('');
+  const gigs = $$('.gx-gig', bill);
+  const apply = () => {
+    let n = 0;
+    for (const g of gigs){
+      const ok = +g.dataset.k < state.shown && (state.room === 'all' || g.dataset.room === state.room) && (state.day === 'all' || g.dataset.day === state.day);
+      g.hidden = !ok; if (ok) n++;
+    }
+    count.textContent = n + (n === 1 ? ' listing shown' : ' listings shown');
+    more.hidden = state.shown >= nights.length;
+  };
+  for (const group of $$('[data-gx-filter]')){
+    group.addEventListener('click', e => {
+      const chip = e.target.closest('.gx-chip'); if (!chip) return;
+      for (const c of $$('.gx-chip', group)) c.setAttribute('aria-pressed', String(c === chip));
+      state[group.dataset.gxFilter] = chip.dataset.v; apply();
+    });
+  }
+  more.addEventListener('click', () => {
+    const first = gigs.find(g => +g.dataset.k >= state.shown);
+    state.shown = nights.length; apply();
+    const link = first && !first.hidden ? first.querySelector('a') : null; if (link) link.focus({preventScroll: true});
+  });
+  apply();
+}
+
+/* ================= shared form helpers ================= */
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+function fieldError(id, msg){
+  const el = document.getElementById(id), err = document.getElementById(id + '-err');
+  if (msg) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+  if (err) err.textContent = msg || '';
+  return msg ? {id, msg} : null;
+}
+function showSummary(box, errs){
+  if (!errs.length){ box.hidden = true; box.innerHTML = ''; return; }
+  box.innerHTML = '<strong>' + (errs.length === 1 ? 'One thing needs fixing:' : errs.length + ' things need fixing:') + '</strong><ul>' + errs.map(e => '<li><a href="#' + e.id + '">' + esc(e.msg) + '</a></li>').join('') + '</ul>';
+  box.hidden = false; box.focus();
+}
+const recap = rows => rows.map(r => '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>').join('');
+
+/* ================= disco tickets: simulated flow, no payment fields anywhere ================= */
+{
+  const form = $('#gx-tix-form'), list = $('#gx-tix-nights'), tiersBox = $('#gx-tix-tiers'), steps = $$('.gx-steps li'), nav = $('#gx-tix-nav');
+  const back = $('#gx-tix-back'), next = $('#gx-tix-next'), out = $('#gx-qty-out'), minus = $('#gx-qty-minus'), plus = $('#gx-qty-plus'), summary = $('#gx-tix-summary');
+  const st = {step: 1, iso: nights[0].iso, tier: '', qty: 2};
+  const night = () => nights.find(n => n.iso === st.iso);
+  const tiersFor = n => {
+    const p = n.disco.price;
+    return [
+      {id: 'early', name: 'Early bird', note: 'Entry before 22:30', price: p[0], off: n.i <= 6 ? 'Sold out' : ''},
+      {id: 'standard', name: 'Standard', note: 'Entry any time before last entry', price: p[1], off: n.i <= 1 ? 'Sold out' : ''},
+      {id: 'final', name: 'Final release', note: 'The last tickets for this night', price: p[2], off: n.i > 1 ? 'Not on sale yet' : ''}
+    ];
+  };
+  list.innerHTML = nights.slice(0, 8).map(n => '<label class="gx-pick"><input type="radio" name="night" value="' + n.iso + '"' + (n.iso === st.iso ? ' checked' : '') + '><span class="gx-pick__dot" aria-hidden="true"></span><span class="gx-pick__main"><b>' + n.short + (n.i === 0 ? ' · tonight' : '') + '</b><small>' + esc(n.disco.name) + '</small></span><span class="gx-pick__side">' + money(n.disco.price[0]) + '<small>from</small></span></label>').join('');
+  const drawTiers = () => {
+    const ts = tiersFor(night());
+    if (!ts.some(t => t.id === st.tier && !t.off)) st.tier = ts.find(t => !t.off).id;
+    tiersBox.innerHTML = ts.map(t => '<label class="gx-pick' + (t.off ? ' gx-pick--off' : '') + '"><input type="radio" name="tier" value="' + t.id + '"' + (t.off ? ' disabled' : '') + (t.id === st.tier ? ' checked' : '') + '><span class="gx-pick__dot" aria-hidden="true"></span><span class="gx-pick__main"><b>' + t.name + '</b><small>' + (t.off || t.note) + '</small></span><span class="gx-pick__side">' + money(t.price) + '<small>each, fee included</small></span></label>').join('');
+    drawTotal();
+  };
+  const drawTotal = () => {
+    const t = tiersFor(night()).find(x => x.id === st.tier);
+    out.textContent = st.qty; minus.disabled = st.qty <= 1; plus.disabled = st.qty >= 8;
+    $('#gx-total-line').textContent = st.qty + ' × ' + t.name + ' · ' + night().disco.name;
+    $('#gx-total-sum').textContent = '£' + (t.price * st.qty).toFixed(2);
+    return t;
+  };
+  const go = (step, focus = true) => {
+    st.step = step;
+    for (const el of $$('[data-gx-step]', form)) el.hidden = +el.dataset.gxStep !== step;
+    steps.forEach((li, i) => { li.classList.toggle('gx-is-done', i + 1 < step); if (i + 1 === step) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current'); });
+    back.hidden = step === 1; nav.hidden = step === 4;
+    next.firstChild.textContent = step === 3 ? 'Continue to payment' : 'Continue';
+    if (step === 2) drawTiers();
+    if (focus){ const target = step === 4 ? $('#gx-tix-done') : $('[data-gx-step="' + step + '"] legend', form); target.focus({preventScroll: true}); $('#gx-flow').scrollIntoView({block: 'nearest'}); }
+  };
+  list.addEventListener('change', e => { st.iso = e.target.value; });
+  tiersBox.addEventListener('change', e => { st.tier = e.target.value; drawTotal(); });
+  minus.addEventListener('click', () => { st.qty = Math.max(1, st.qty - 1); drawTotal(); });
+  plus.addEventListener('click', () => { st.qty = Math.min(8, st.qty + 1); drawTotal(); });
+  back.addEventListener('click', () => go(st.step - 1));
+  const checkName = () => fieldError('gx-tix-name', $('#gx-tix-name').value.trim().length < 2 ? 'Enter the name for the booking.' : '');
+  const checkEmail = () => fieldError('gx-tix-email', !EMAIL.test($('#gx-tix-email').value.trim()) ? 'Enter an email address like name@example.com.' : '');
+  $('#gx-tix-name').addEventListener('blur', checkName); $('#gx-tix-email').addEventListener('blur', checkEmail);
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (st.step < 3){ go(st.step + 1); return; }
+    const errs = [checkName(), checkEmail()].filter(Boolean);
+    showSummary(summary, errs);
+    if (errs.length) return;
+    const t = drawTotal(), n = night();
+    $('#gx-tix-recap').innerHTML = recap([['Night', n.long + ' · ' + n.disco.name], ['Tickets', st.qty + ' × ' + t.name + ' at ' + money(t.price)], ['Total, booking fee included', '£' + (t.price * st.qty).toFixed(2)], ['E-tickets to', $('#gx-tix-email').value.trim()]]);
+    go(4);
+  });
+  $('#gx-tix-reset').addEventListener('click', () => { form.reset(); st.iso = nights[0].iso; st.qty = 2; st.tier = ''; list.querySelector('input').checked = true; fieldError('gx-tix-name', ''); fieldError('gx-tix-email', ''); showSummary(summary, []); go(1); });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-gx-tix]'); if (!a) return;
+    const input = list.querySelector('input[value="' + a.dataset.gxTix + '"]');
+    if (input){ input.checked = true; st.iso = input.value; if (st.step !== 1) go(st.step === 4 ? 1 : 2, false); }
+  });
+  go(1, false);
+}
+
+/* ================= cabaret table enquiry: simulated, validated ================= */
+{
+  const form = $('#gx-cab-form'), done = $('#gx-cab-done'), summary = $('#gx-cab-summary'), sel = $('#gx-cab-night');
+  sel.insertAdjacentHTML('beforeend', nights.slice(0, 12).map(n => '<option value="' + n.iso + '">' + n.short + ' · ' + esc(n.cab.name) + '</option>').join(''));
+  const v = id => $('#' + id).value.trim();
+  const SEATS = {table: [2, 6, 'A cabaret table seats 2 to 6.'], booth: [6, 10, 'A velvet booth seats 6 to 10.'], stools: [1, 2, 'Bar stools are for 1 or 2.']};
+  const checks = {
+    'gx-cab-name': () => v('gx-cab-name').length < 2 ? 'Enter your full name.' : '',
+    'gx-cab-email': () => !EMAIL.test(v('gx-cab-email')) ? 'Enter an email address like name@example.com.' : '',
+    'gx-cab-phone': () => v('gx-cab-phone') && !/^[0-9 +()-]{9,}$/.test(v('gx-cab-phone')) ? 'Enter a phone number using digits and spaces, or leave it blank.' : '',
+    'gx-cab-night': () => !v('gx-cab-night') ? 'Choose the night you would like.' : '',
+    'gx-cab-size': () => {
+      const n = Number(v('gx-cab-size')), s = SEATS[v('gx-cab-seat')];
+      if (!Number.isInteger(n) || n < 1) return 'Tell us how many of you are coming.';
+      if (n > 10) return 'Tables seat up to 10. For bigger parties, see private hire.';
+      return n < s[0] || n > s[1] ? s[2] + ' Change the seating or the number.' : '';
+    },
+    'gx-cab-consent': () => !$('#gx-cab-consent').checked ? 'Tick the box so we can use your details to reply.' : ''
+  };
+  for (const id of Object.keys(checks)){
+    const el = $('#' + id);
+    el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'blur', () => fieldError(id, checks[id]()));
+  }
+  $('#gx-cab-seat').addEventListener('change', () => { if ($('#gx-cab-size').hasAttribute('aria-invalid')) fieldError('gx-cab-size', checks['gx-cab-size']()); });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const errs = Object.keys(checks).map(id => fieldError(id, checks[id]())).filter(Boolean);
+    showSummary(summary, errs);
+    if (errs.length) return;
+    const n = nights.find(x => x.iso === v('gx-cab-night')), seat = $('#gx-cab-seat').selectedOptions[0].textContent.replace(/\s*\(.*/, '');
+    $('#gx-cab-done-title').textContent = 'Thank you, ' + v('gx-cab-name').split(/\s+/)[0] + '. Enquiry received.';
+    $('#gx-cab-done-text').textContent = 'On the live site the box office would now email ' + v('gx-cab-email') + ' within one working day to confirm your table.';
+    $('#gx-cab-recap').innerHTML = recap([['Night', n.long + ' · ' + n.cab.name], ['Show', form.elements.show.value], ['Seating', seat + ' for ' + v('gx-cab-size')], ['Monthly line-up email', $('#gx-cab-news').checked ? 'Yes please' : 'No thanks']]);
+    form.hidden = true; done.hidden = false; done.focus({preventScroll: true}); $('#gx-cab-card').scrollIntoView({block: 'nearest'});
+  });
+  $('#gx-cab-reset').addEventListener('click', () => { form.reset(); for (const id of Object.keys(checks)) fieldError(id, ''); showSummary(summary, []); done.hidden = true; form.hidden = false; $('#gx-cab-name').focus(); });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-gx-cab]'); if (!a) return;
+    if (form.hidden){ done.hidden = true; form.hidden = false; }
+    sel.value = a.dataset.gxCab; fieldError('gx-cab-night', '');
+  });
+}
+
+/* ================= two-column sections: pin whichever column is shorter (desktop only) ================= */
+{
+  const splits = $$('.gx-split');
+  let queued = false;
+  const pin = () => {
+    queued = false;
+    const desk = innerWidth >= 1200, room = innerHeight - 124;
+    for (const sp of splits){
+      const [a, b] = sp.children, ha = a.offsetHeight, hb = b.offsetHeight, short = ha <= hb ? a : b, tall = short === a ? b : a;
+      tall.classList.remove('gx-is-pinned');
+      short.classList.toggle('gx-is-pinned', desk && Math.abs(ha - hb) > 48 && Math.min(ha, hb) <= room);
+    }
+  };
+  const ask = () => { if (!queued){ queued = true; requestAnimationFrame(pin); } };
+  const ro = new ResizeObserver(ask);
+  for (const sp of splits) for (const c of sp.children) ro.observe(c);
+  addEventListener('resize', ask); ask();
+}
+
+/* ================= FAQ accordion ================= */
+for (const q of $$('.gx-faq__q')){
+  q.addEventListener('click', () => {
+    const open = q.getAttribute('aria-expanded') !== 'true';
+    q.setAttribute('aria-expanded', String(open));
+    document.getElementById(q.getAttribute('aria-controls')).classList.toggle('gx-is-open', open);
+  });
+}
+
+/* ================= copy the address ================= */
+{
+  const btn = $('#gx-copy'), label = btn.querySelector('span');
+  btn.addEventListener('click', async () => {
+    let ok = false;
+    try { await navigator.clipboard.writeText(btn.dataset.gxCopy); ok = true; } catch (e){ ok = false; }
+    label.textContent = ok ? 'Address copied' : '18 Madeira Mews, BN2 1GX';
+    setTimeout(() => { label.textContent = 'Copy address'; }, 2600);
+  });
+}
+
+/* ================= footer: the light-up dance floor ================= */
+{
+  const footer = $('#gx-footer'), floor = $('#gx-floor'), groups = $$('.gx-floor__group', floor), btn = $('#gx-lights');
+  const tiles = [];
+  groups.forEach((g, gi) => $$('.gx-tile', g).forEach((t, i) => tiles.push({el: t, g: gi, i})));
+  const ACCENTS = ['turq', 'pink', 'gold', 'violet'];
+  let step = 0, song = 0, timer = 0, seen = false, on = !RM.matches;
+  const cell = t => {
+    const w = innerWidth;
+    if (w >= 1200) return [t.g * 2 + t.i % 2, Math.floor(t.i / 2)];
+    if (w >= 768) return [(t.g % 2) * 2 + t.i % 2, Math.floor(t.g / 2) * 3 + Math.floor(t.i / 2)];
+    return [t.i % 2, t.g * 3 + Math.floor(t.i / 2)];
+  };
+  const PATTERNS = [
+    (c, r, s) => ((c + r - s) % 5 + 5) % 5 === 0,
+    (c, r, s) => (c + r + s) % 2 === 0 && (c + s) % 3 !== 0,
+    (c, r, s) => ((c - s) % 8 + 8) % 8 < 2,
+    (c, r, s) => ((c * 3 + r * 5 + s * 7) % 11) < 3
+  ];
+  const paint = (dark) => { for (const t of tiles){ const [c, r] = cell(t); t.el.classList.toggle('gx-is-lit', !dark && PATTERNS[song % PATTERNS.length](c, r, step)); } };
+  const beat = () => {
+    step++;
+    if (step % 16 === 15){ paint(true); return; }               /* blackout beat before the colour change */
+    if (step % 16 === 0){ song++; footer.dataset.gxAccent = ACCENTS[song % ACCENTS.length]; }
+    paint(false);
+  };
+  const sync = () => {
+    const run = on && seen && !document.hidden;
+    if (run && !timer) timer = setInterval(beat, 900);
+    else if (!run && timer){ clearInterval(timer); timer = 0; }
+  };
+  const setBtn = () => {
+    btn.querySelector('use').setAttribute('href', on ? '#gx-i-pause' : '#gx-i-play');
+    btn.querySelector('span').textContent = on ? 'Pause floor lights' : 'Play floor lights';
+  };
+  btn.addEventListener('click', () => { on = !on; setBtn(); sync(); });
+  new IntersectionObserver(es => { seen = es[0].isIntersecting; sync(); }, {threshold: .05}).observe(floor);
+  document.addEventListener('visibilitychange', sync);
+  setBtn(); paint(false);
+
+  /* on mobile the tile groups fold into accordions */
+  for (const g of groups){
+    const t = g.querySelector('.gx-floor__toggle');
+    t.addEventListener('click', () => { const open = t.getAttribute('aria-expanded') !== 'true'; t.setAttribute('aria-expanded', String(open)); g.classList.toggle('gx-is-open', open); });
+  }
+  $('#gx-year').textContent = londonNow().y;
+}
+
+/* ================= newsletter ================= */
+{
+  const form = $('#gx-news-form'), ok = $('#gx-news-ok');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = $('#gx-news-email').value.trim();
+    const errs = [fieldError('gx-news-email', !EMAIL.test(email) ? 'Enter an email address like name@example.com.' : ''), fieldError('gx-news-consent', !$('#gx-news-consent').checked ? 'Tick the box to say you want the monthly email.' : '')].filter(Boolean);
+    if (errs.length){ ok.hidden = true; document.getElementById(errs[0].id).focus(); return; }
+    ok.textContent = 'You’re on the list, ' + email + '. This is a demonstration form, so nothing has actually been sent or stored.';
+    ok.hidden = false; form.reset();
+  });
+}
+
+/* ================= small-print dialog ================= */
+{
+  const dlg = $('#gx-legal');
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-gx-legal]'); if (!a) return;
+    e.preventDefault();
+    if (typeof dlg.showModal !== 'function') return;
+    if (!dlg.open) dlg.showModal();
+    const h = $('#gx-legal-' + a.dataset.gxLegal + ' h3'); h.scrollIntoView({block: 'start'}); h.focus({preventScroll: true});
+  });
+  $('#gx-legal-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+}
+
+/* ================= mobile action bar: steps aside for the hero buttons, the booking widgets, the footer and the menu ================= */
+{
+  const dock = $('#gx-dock'), busy = new Set();
+  let menuOpen = false;
+  const sync = () => dock.classList.toggle('gx-is-away', menuOpen || busy.size > 0);
+  const io = new IntersectionObserver(es => { for (const e of es){ if (e.isIntersecting) busy.add(e.target); else busy.delete(e.target); } sync(); }, {threshold: 0, rootMargin: '0px 0px -60px 0px'});
+  for (const el of [$('.gx-hero__cta'), $('#gx-footer'), ...$$('[data-gx-widget]')]) io.observe(el);
+  document.addEventListener('gx:menu', e => { menuOpen = e.detail; sync(); });
+}
+/*GX:JS*/
+</script>
+</body>
+</html>

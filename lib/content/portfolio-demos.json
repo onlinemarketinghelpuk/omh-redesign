@@ -433,6 +433,54 @@
     ]
   },
   {
+    "slug": "nightclub",
+    "title": "Nightclub Designs",
+    "items": [
+      {
+        "demo": "/portfolio/nightclub/1-small-hours-warehouse-manchester.html",
+        "shot": "/portfolio/nightclub/1-small-hours-warehouse-manchester.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Small Hours nightclub website design: House & techno warehouse club, Ancoats, Manchester"
+      },
+      {
+        "demo": "/portfolio/nightclub/2-sablier-mayfair-london.html",
+        "shot": "/portfolio/nightclub/2-sablier-mayfair-london.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Sablier nightclub website design: Late-night cocktail lounge and table-service club, Mayfair W1"
+      },
+      {
+        "demo": "/portfolio/nightclub/3-snooze-button-newcastle.html",
+        "shot": "/portfolio/nightclub/3-snooze-button-newcastle.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Snooze Button nightclub website design: Newcastle's student club. Three floors, four nights a week"
+      },
+      {
+        "demo": "/portfolio/nightclub/4-glitter-exchange-brighton.html",
+        "shot": "/portfolio/nightclub/4-glitter-exchange-brighton.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "The Glitter Exchange nightclub website design: LGBTQ+ disco and cabaret bar, Kemptown, Brighton"
+      },
+      {
+        "demo": "/portfolio/nightclub/5-culvert-bristol.html",
+        "shot": "/portfolio/nightclub/5-culvert-bristol.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Culvert nightclub website design: Drum & bass, jungle and dub soundsystem club, Bristol"
+      },
+      {
+        "demo": "/portfolio/nightclub/6-lamplight-rooms-glasgow.html",
+        "shot": "/portfolio/nightclub/6-lamplight-rooms-glasgow.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Lamplight Rooms nightclub website design: Disco, funk, soul and house in a Merchant City basement, Glasgow"
+      }
+    ]
+  },
+  {
     "slug": "non-profit",
     "title": "Non Profit Designs",
     "items": [

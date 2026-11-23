@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Culvert | Drum &amp; bass, jungle and dub soundsystem club, Bristol</title>
+<meta name="description" content="Culvert is a 600-capacity soundsystem club in two railway arches by Bristol Temple Meads. Drum &amp; bass, jungle and dub on a hand-built rig. Fridays and Saturdays 22:00 to 05:00.">
+<meta name="theme-color" content="#060607">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=1100&q=60" imagesrcset="https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=700&q=60 700w, https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=1100&q=60 1100w, https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=1600&q=60 1600w" imagesizes="(min-width:1200px) 68vw, 100vw">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<style>
+/* ============ Culvert · tokens ============ */
+:root{
+  --cv-black:#060607;--cv-ink:#0b0b0d;--cv-coal:#121215;--cv-slab:#1a1a1e;--cv-steel:#26262b;
+  --cv-line:rgba(255,255,255,.14);--cv-line2:rgba(255,255,255,.07);
+  --cv-white:#f5f5f2;--cv-fog:#c9c9cf;--cv-grey:#9c9ca5;
+  --cv-orange:#ff5a1f;--cv-blue:#3d8bff;--cv-yellow:#ffd21f;--cv-inkblue:#0a37c9;
+  --cv-fd:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --cv-ft:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --cv-fs:"Saira Stencil One","Barlow Condensed",Impact,sans-serif;
+  --cv-g:20px;--cv-sec:76px;--cv-hh:60px;
+  --cv-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (min-width:768px){:root{--cv-g:32px;--cv-sec:104px;--cv-hh:68px}}
+@media (min-width:1200px){:root{--cv-g:48px;--cv-sec:136px;--cv-hh:76px}}
+
+/* ============ base ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--cv-hh) + 12px);background:#060607}
+.cv-body{margin:0;background:var(--cv-black);color:var(--cv-fog);font:400 17px/1.6 var(--cv-ft);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.cv-body img{max-width:100%;height:auto;display:block}
+:where(.cv-body) a{color:inherit}
+:where(.cv-body) :focus-visible{outline:3px solid #fff;outline-offset:3px}
+:where(.cv-body) p{margin:0 0 1em}
+:where(.cv-body) ul,:where(.cv-body) ol{margin:0;padding:0;list-style:none}
+:where(.cv-body) button{font:inherit;color:inherit}
+.cv-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.cv-skip{position:fixed;left:12px;top:-90px;z-index:120;background:#fff;color:#000;padding:12px 18px;font-weight:700;text-decoration:none}
+.cv-skip:focus{top:12px}
+.cv-wrap{width:100%;max-width:1440px;margin-inline:auto;padding-inline:var(--cv-g)}
+.cv-sec{position:relative;padding-block:var(--cv-sec);background:var(--cv-ink);--accent:var(--cv-blue)}
+.cv-sec--coal{background:var(--cv-coal)}
+.cv-sec--black{background:var(--cv-black)}
+.cv-sec--slab{background:var(--cv-slab)}
+.cv-grain::before{content:"";position:absolute;inset:0;background-image:var(--cv-noise);opacity:.09;pointer-events:none;mix-blend-mode:screen}
+.cv-sec>.cv-wrap{position:relative}
+.cv-h2{margin:0 0 22px;font:italic 900 clamp(46px,7.2vw,112px)/.86 var(--cv-fd);letter-spacing:-.005em;text-transform:uppercase;color:var(--cv-white);text-wrap:balance}
+.cv-h2 em{font-style:inherit;color:var(--accent)}
+.cv-h3{margin:0 0 10px;font:italic 800 clamp(26px,2.5vw,36px)/1 var(--cv-fd);letter-spacing:.01em;text-transform:uppercase;color:var(--cv-white)}
+.cv-lead{max-width:58ch;margin:0 0 28px;font-size:clamp(17px,1.35vw,20px);line-height:1.55;color:var(--cv-fog)}
+.cv-small{font-size:14.5px;line-height:1.5;color:var(--cv-grey)}
+.cv-strap{display:flex;align-items:center;gap:12px;margin:0 0 18px;font:italic 700 15px/1.1 var(--cv-fd);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.cv-strap::before{content:"";flex:none;width:30px;height:11px;background:repeating-linear-gradient(110deg,var(--accent) 0 5px,transparent 5px 10px)}
+.cv-link{color:var(--cv-white);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
+.cv-link:hover{color:var(--accent)}
+
+/* buttons: slanted to match the italic caps */
+.cv-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 30px 0 28px;border:0;background:none;color:#08080a;font:italic 800 20px/1 var(--cv-fd);letter-spacing:.07em;text-transform:uppercase;text-decoration:none;white-space:nowrap;cursor:pointer;transition:color .2s,transform .2s}
+.cv-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:background .2s}
+.cv-btn svg{width:20px;height:20px;flex:none;transition:transform .2s}
+.cv-btn:hover::before{background:#fff}
+.cv-btn:hover svg{transform:translateX(4px)}
+.cv-btn:active{transform:translateY(1px)}
+.cv-btn--ghost{color:var(--cv-white)}
+.cv-btn--ghost::before{clip-path:polygon(evenodd,12px 0,100% 0,calc(100% - 12px) 100%,0 100%,12px 0,13.7px 2px,2.5px calc(100% - 2px),calc(100% - 13.7px) calc(100% - 2px),calc(100% - 2.5px) 2px,13.7px 2px)}
+.cv-btn--ghost:hover{color:#08080a}
+.cv-btn--ghost:hover::before{background:var(--accent);clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.cv-btn--sm{min-height:44px;padding:0 22px 0 20px;font-size:17px}
+.cv-btn--full{width:100%}
+.cv-btn[disabled]{opacity:.45;cursor:not-allowed}
+.cv-btn[disabled]:hover::before{background:var(--accent)}
+
+/* chips */
+.cv-chips{display:flex;gap:8px;flex-wrap:wrap}
+.cv-chip{min-height:44px;padding:0 18px;border:2px solid var(--cv-line);background:transparent;color:var(--cv-fog);font:italic 700 16px/1 var(--cv-fd);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transform:skewX(-9deg);transition:border-color .2s,background .2s,color .2s}
+.cv-chip>span{display:block;transform:skewX(9deg);white-space:nowrap}
+.cv-chip:hover{border-color:var(--accent);color:#fff}
+.cv-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#08080a}
+
+/* reveal */
+.cv-js .cv-rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.cv-js .cv-rv.cv-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cv-js .cv-rv{opacity:1;transform:none;transition:none}}
+
+/* two-column split with pinned shorter column */
+.cv-split{display:grid;gap:40px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:1200px){
+  .cv-split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
+  .cv-split--rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+  .cv-split--even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .cv-sticky{position:sticky;top:calc(var(--cv-hh) + 28px)}
+  .cv-sticky.cv-unstick{position:static}
+  .cv-split .cv-h2{font-size:clamp(60px,5.6vw,88px)}
+}
+
+/* ============ header ============ */
+.cv-header{position:fixed;inset:0 0 auto 0;z-index:60;height:var(--cv-hh);transition:background .3s,box-shadow .3s}
+.cv-header--solid{background:rgba(6,6,7,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--cv-line)}
+.cv-header__in{display:flex;align-items:center;gap:14px;height:100%}
+.cv-logo{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;color:var(--cv-white);font:italic 900 28px/1 var(--cv-fd);letter-spacing:.03em;text-transform:uppercase;text-decoration:none}
+.cv-logo svg{width:36px;height:26px;color:var(--cv-orange);flex:none}
+.cv-nav{display:none;gap:28px;margin-right:12px}
+.cv-nav a{position:relative;padding:12px 0;color:var(--cv-fog);font:italic 700 17px/1 var(--cv-fd);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:color .2s}
+.cv-nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:3px;background:var(--cv-orange);transform:scaleX(0) skewX(-20deg);transform-origin:left;transition:transform .25s}
+.cv-nav a:hover{color:#fff}
+.cv-nav a:hover::after{transform:scaleX(1) skewX(-20deg)}
+.cv-header__tel{display:none;align-items:center;gap:8px;min-height:44px;color:var(--cv-white);font:600 15px/1 var(--cv-ft);text-decoration:none;white-space:nowrap}
+.cv-header__tel svg{width:16px;height:16px;color:var(--cv-orange)}
+.cv-header .cv-btn{--accent:var(--cv-orange)}
+.cv-burger{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:48px;height:48px;margin-right:-8px;border:0;background:none;cursor:pointer}
+.cv-burger span{width:26px;height:3px;background:#fff;transform:skewX(-20deg)}
+.cv-burger span:nth-child(2){width:18px;margin-left:8px;background:var(--cv-orange)}
+@media (min-width:1200px){.cv-nav{display:flex}.cv-header__tel{display:inline-flex;margin-right:6px}.cv-burger{display:none}}
+
+/* full-screen menu */
+.cv-menu{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;background:#060607;overflow-y:auto;overscroll-behavior:contain;--accent:var(--cv-orange)}
+.cv-menu[hidden]{display:none}
+.cv-menu::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 100% 0,rgba(255,90,31,.2),transparent 60%);pointer-events:none}
+.cv-menu__top{position:relative;display:flex;align-items:center;justify-content:space-between;height:var(--cv-hh);padding-inline:var(--cv-g);flex:none}
+.cv-menu__close{width:48px;height:48px;margin-right:-8px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.cv-menu__close svg{width:28px;height:28px}
+.cv-menu__body{position:relative;flex:1;display:grid;gap:28px;align-content:start;padding:18px var(--cv-g) calc(28px + env(safe-area-inset-bottom))}
+.cv-menu__links a{display:flex;align-items:baseline;gap:14px;padding:7px 0;border-bottom:1px solid var(--cv-line2);color:var(--cv-white);font:italic 900 clamp(38px,9vw,64px)/1 var(--cv-fd);text-transform:uppercase;text-decoration:none}
+.cv-menu__links a small{font:italic 700 14px/1 var(--cv-fd);letter-spacing:.16em;color:var(--cv-orange)}
+.cv-menu__side{display:grid;gap:22px}
+.cv-menu__cta{display:flex;flex-wrap:wrap;gap:12px}
+.cv-menu__cta .cv-btn{flex:1 1 180px}
+.cv-menu__info{display:grid;gap:6px;color:var(--cv-grey);font-size:15px}
+.cv-menu__info p{margin:0}
+.cv-menu__tel{display:inline-flex;align-items:center;min-height:44px;color:#fff;font:italic 800 30px/1 var(--cv-fd);letter-spacing:.03em;text-decoration:none}
+@media (min-width:768px){.cv-menu__body{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:start;padding-top:36px}}
+
+/* ============ hero ============ */
+.cv-hero{position:relative;isolation:isolate;display:flex;min-height:max(100svh,640px);background:#040405;overflow:clip;--accent:var(--cv-orange)}
+.cv-hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.cv-hero__bg img{position:absolute;right:0;top:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%;opacity:.42;filter:saturate(.9) contrast(1.05)}
+.cv-hero__bg::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(60% 34% at 60% 26%,rgba(255,90,31,.2),transparent 70%),linear-gradient(180deg,rgba(4,4,5,.8) 0,rgba(4,4,5,.3) 22%,rgba(4,4,5,.86) 52%,#040405 78%)}
+.cv-hero__bg::after{content:"";position:absolute;inset:0;z-index:2;background-image:var(--cv-noise);opacity:.1;mix-blend-mode:screen}
+.cv-hero__gl{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .9s}
+.cv-hero--gl .cv-hero__gl{opacity:1}
+.cv-hero__in{position:relative;display:flex;flex-direction:column;justify-content:center;width:100%;padding-top:calc(var(--cv-hh) + 6px);padding-bottom:14px;--st:min(80vw,36svh)}
+.cv-hero__stage{position:relative;z-index:0;flex:none;aspect-ratio:1;width:var(--st);margin:0 1% 0 auto}
+.cv-hero__copy{display:contents}
+.cv-hero__copy>*{position:relative;z-index:3}
+.cv-hero__copy>.cv-hero__h{position:static;z-index:auto}
+.cv-hero .cv-strap{order:-1;margin:0 56px 6px 0;font-size:12px;letter-spacing:.14em;min-height:30px}
+.cv-hero__h{margin:calc(var(--st) * -.2) 0 0;font:italic 900 min(20.2vw,9.4svh)/.84 var(--cv-fd);letter-spacing:-.012em;text-transform:uppercase;color:var(--cv-white)}
+.cv-hero__l{position:relative;display:block;width:max-content;white-space:nowrap;z-index:3;text-shadow:0 2px 0 rgba(0,0,0,.35)}
+.cv-hero__l--2{z-index:1;color:var(--cv-orange);text-shadow:none}
+.cv-hero__sub{max-width:34ch;margin:10px 0 14px;font-size:15px;line-height:1.42;color:#e3e3e6;text-shadow:0 1px 12px #000}
+.cv-hero__cta{display:flex;gap:10px;margin-bottom:14px}
+.cv-hero__cta .cv-btn{flex:1 1 0;min-height:50px;padding-inline:14px;font-size:18px}
+.cv-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--cv-line);background:rgba(4,4,5,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.cv-facts li{padding:9px 12px 8px;border-bottom:1px solid var(--cv-line);min-width:0}
+.cv-facts li:nth-child(odd){border-right:1px solid var(--cv-line)}
+.cv-facts__k{display:block;font:italic 700 11.5px/1 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey)}
+.cv-facts__v{display:flex;align-items:center;gap:8px;margin-top:5px;font:italic 800 22px/1 var(--cv-fd);letter-spacing:.02em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.cv-led{flex:none;width:9px;height:9px;border-radius:50%;background:#55555c}
+.cv-led--on{background:var(--cv-orange);box-shadow:0 0 0 4px rgba(255,90,31,.22),0 0 14px var(--cv-orange)}
+.cv-motion{position:absolute;z-index:4;right:var(--cv-g);top:calc(var(--cv-hh) + 8px);display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;border:1px solid var(--cv-line);background:rgba(4,4,5,.6);color:var(--cv-fog);font:italic 700 13px/1 var(--cv-fd);letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.cv-motion svg{width:14px;height:14px}
+.cv-motion:hover{border-color:var(--cv-orange);color:#fff}
+.cv-motion [data-cv-play]{display:none}
+.cv-motion[aria-pressed="true"] [data-cv-play]{display:block}
+.cv-motion[aria-pressed="true"] [data-cv-pause]{display:none}
+.cv-motion[hidden]{display:none}
+.cv-hero__mark{display:none}
+/* 2D speaker shown at first paint and when WebGL is not available */
+.cv-fb{position:absolute;inset:3%;border-radius:50%;background:radial-gradient(circle closest-side,#0b0b0c 0 80%,#050506 80% 81%,#1b1b1e 81% 86%,#0c0c0d 86% 92%,#050506 92% 93%,#34353a 93% 96%,#1c1d20 96% 100%);box-shadow:0 30px 80px rgba(0,0,0,.75),0 0 0 1px #3d3e44;transition:opacity .7s,visibility .7s}
+.cv-fb canvas{position:absolute;left:9.75%;top:9.75%;width:80.5%;height:80.5%;border-radius:50%}
+.cv-hero--gl .cv-fb{opacity:0;visibility:hidden}
+
+@media (max-width:767px){.cv-motion span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.cv-motion{width:44px;justify-content:center;padding:0}}
+@media (min-width:768px){
+  .cv-hero .cv-strap{font-size:15px;letter-spacing:.18em;margin:0 170px 4px 0}
+  .cv-hero__in{--st:min(66vw,41svh)}
+  .cv-hero__stage{margin-right:6%}
+  .cv-hero__h{font-size:min(16vw,11.6svh)}
+  .cv-hero__sub{max-width:46ch;margin:14px 0 20px;font-size:18px}
+  .cv-hero__cta{gap:14px;margin-bottom:22px}
+  .cv-hero__cta .cv-btn{flex:none;min-height:54px;padding-inline:30px;font-size:20px}
+  .cv-facts{grid-template-columns:repeat(4,minmax(0,1fr));max-width:820px}
+  .cv-facts li{padding:12px 16px 11px;border-right:1px solid var(--cv-line)}
+  .cv-facts li:last-child{border-right:0}
+  .cv-facts__v{font-size:26px}
+  .cv-hero__in{padding-bottom:26px}
+}
+/* landscape tablets and desktop: type left, driver right */
+@media (min-width:768px) and (min-aspect-ratio:1/1){
+  .cv-hero__bg img{width:72%;opacity:.62;object-position:50% 40%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 50%);mask-image:linear-gradient(90deg,transparent 0,#000 50%)}
+  .cv-hero__bg::before{background:radial-gradient(40% 56% at 76% 50%,rgba(255,90,31,.22),transparent 70%),linear-gradient(180deg,rgba(4,4,5,.8) 0,rgba(4,4,5,.18) 26%,rgba(4,4,5,.3) 70%,#040405 100%),linear-gradient(90deg,#040405 26%,rgba(4,4,5,.1) 72%,rgba(4,4,5,.4) 100%)}
+  .cv-hero__in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46%);align-items:center}
+  .cv-hero__stage{grid-column:2;grid-row:1;width:min(112%,80svh);margin:0 -12% 0 0;justify-self:end}
+  .cv-hero__copy{display:block;min-width:0;grid-column:1;grid-row:1}
+  .cv-hero .cv-strap{margin:0 0 12px;min-height:0}
+  .cv-hero__h{margin:0;font-size:min(12.6vw,18.2svh)}
+  .cv-hero__sub{max-width:40ch}
+  .cv-facts{max-width:none;width:min(140%,760px)}
+  .cv-motion{top:auto;bottom:22px}
+}
+@media (min-width:1200px){
+  .cv-hero{min-height:max(100svh,700px)}
+  .cv-hero__in{grid-template-columns:minmax(0,1fr) minmax(0,47%);padding-bottom:30px}
+  .cv-hero__stage{width:min(100%,76svh);margin:0;justify-self:center}
+  .cv-hero__h{font-size:min(12.4vw,19.4svh)}
+  .cv-hero__sub{margin:18px 0 24px;font-size:19px;max-width:44ch}
+  .cv-hero__cta{margin-bottom:28px}
+  .cv-facts{width:min(128%,780px)}
+  .cv-hero__mark{position:absolute;z-index:3;display:block;right:var(--cv-g);top:calc(var(--cv-hh) + 14px);margin:0;font:italic 600 12px/1.5 var(--cv-fd);letter-spacing:.2em;text-transform:uppercase;color:var(--cv-grey);text-align:right}
+  .cv-hero__mark b{color:var(--cv-orange);font-weight:700}
+}
+
+/* hazard tape */
+.cv-tape{position:relative;z-index:5;overflow:hidden;background:var(--cv-orange);color:#08080a;border-block:3px solid #08080a}
+.cv-tape__track{display:flex;width:max-content;animation:cv-tape 40s linear infinite}
+.cv-tape__set{display:flex;flex:none;align-items:center;gap:26px;padding:10px 13px;margin:0;font:italic 800 19px/1 var(--cv-fd);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.cv-tape__set i{flex:none;width:34px;height:13px;background:repeating-linear-gradient(110deg,#08080a 0 6px,transparent 6px 12px)}
+@keyframes cv-tape{to{transform:translateX(-50%)}}
+.cv-paused .cv-tape__track{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.cv-tape__track{animation:none}}
+
+/* ============ what's on ============ */
+.cv-on__photo{position:relative;margin:0;overflow:hidden;background:#111}
+.cv-on__photo img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.cv-on .cv-chips{margin-bottom:22px}
+.cv-on__photo figcaption{position:absolute;left:0;bottom:0;padding:8px 14px;background:#060607;color:var(--cv-fog);font:italic 700 13px/1.2 var(--cv-fd);letter-spacing:.14em;text-transform:uppercase}
+.cv-evs{border-top:3px solid var(--cv-white)}
+.cv-ev{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:20px 0;border-bottom:1px solid var(--cv-line)}
+.cv-ev[hidden]{display:none}
+.cv-ev>*{position:relative;min-width:0}
+.cv-ev__date{display:flex;align-items:baseline;gap:8px;font:italic 800 20px/1 var(--cv-fd);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.cv-ev__day{font-size:44px;font-weight:900;color:var(--cv-white);letter-spacing:0}
+.cv-ev__tonight{margin-left:auto;padding:5px 9px;background:var(--accent);color:#08080a;font-size:13px;letter-spacing:.14em}
+.cv-ev__tag{margin:0 0 4px;font:italic 700 13.5px/1.2 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey)}
+.cv-ev__name{margin:0 0 8px;font:italic 900 clamp(38px,4.6vw,60px)/.88 var(--cv-fd);text-transform:uppercase;color:var(--cv-white)}
+.cv-ev__line{margin:0;font-size:16px;line-height:1.45;color:var(--cv-fog)}
+.cv-ev__meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0;font-size:14.5px}
+.cv-ev__meta dt{font:italic 700 12px/1 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey);margin-bottom:4px}
+.cv-ev__meta dd{margin:0;color:var(--cv-white);font-weight:600;white-space:nowrap}
+.cv-ev__buy{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.cv-ev__price{margin:0;font-size:14px;color:var(--cv-grey);line-height:1.2}
+.cv-ev__price b{display:block;font:italic 800 28px/1 var(--cv-fd);color:var(--cv-white)}
+.cv-on__more{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.cv-on__more p{margin:0}
+.cv-on__empty{padding:28px 0;color:var(--cv-fog)}
+.cv-on__empty[hidden]{display:none}
+@media (max-width:767px){
+  .cv-on .cv-chips{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--cv-g) * -1);padding:4px calc(var(--cv-g) + 4px) 10px;scroll-padding-inline:calc(var(--cv-g) + 4px);scrollbar-width:none}
+  .cv-on .cv-chips::-webkit-scrollbar{display:none}
+  .cv-on .cv-chip{flex:none;scroll-snap-align:start}
+  .cv-evs{border-top:0;display:grid;gap:14px}
+  .cv-ev{padding:18px;border:1px solid var(--cv-line);border-top:3px solid var(--cv-white);background:var(--cv-coal)}
+}
+@media (min-width:768px){
+  .cv-ev{grid-template-columns:104px minmax(0,1fr) auto;gap:10px 26px;align-items:center;padding:24px 0}
+  .cv-ev::before{content:"";position:absolute;inset:0 -18px;background:linear-gradient(90deg,rgba(61,139,255,.14),transparent 70%);opacity:0;transition:opacity .25s;pointer-events:none}
+  .cv-ev:hover::before,.cv-ev:focus-within::before{opacity:1}
+  .cv-ev__date{grid-row:1 / span 2;flex-direction:column;align-items:flex-start;gap:2px}
+  .cv-ev__day{font-size:64px;line-height:.85}
+  .cv-ev__tonight{margin:8px 0 0}
+  .cv-ev__main{grid-column:2;grid-row:1}
+  .cv-ev__meta{grid-column:2;grid-row:2}
+  .cv-ev__buy{grid-column:3;grid-row:1 / span 2;flex-direction:column;align-items:flex-end;justify-content:center;text-align:right}
+}
+
+/* ============ tickets ============ */
+.cv-tix{position:relative;border:1px solid var(--cv-line);background:var(--cv-black)}
+.cv-tix__steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--cv-line)}
+.cv-tix__steps li{display:flex;align-items:center;gap:8px;padding:14px 12px;border-right:1px solid var(--cv-line);font:italic 700 14px/1 var(--cv-fd);letter-spacing:.14em;text-transform:uppercase;color:var(--cv-grey);min-width:0}
+.cv-tix__steps li:last-child{border-right:0}
+.cv-tix__steps b{flex:none;display:grid;place-items:center;width:26px;height:26px;background:var(--cv-steel);color:var(--cv-fog);font:italic 800 16px/1 var(--cv-fd);transform:skewX(-10deg)}
+.cv-tix__steps span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cv-tix__steps li[aria-current="step"]{color:#fff}
+.cv-tix__steps li[aria-current="step"] b,.cv-tix__steps li.cv-done b{background:var(--accent);color:#08080a}
+.cv-tix__panel{margin:0;padding:24px 18px;border:0;min-width:0}
+.cv-tix__panel[hidden]{display:none}
+.cv-tix__q{float:left;width:100%;padding:0;margin:0 0 18px;font:italic 900 clamp(30px,3.4vw,44px)/.95 var(--cv-fd);text-transform:uppercase;color:var(--cv-white)}
+.cv-tix__q:focus{outline:none}
+.cv-opts{display:grid;gap:10px;clear:both}
+.cv-opt{position:relative;display:block}
+.cv-opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.cv-opt__box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:center;min-height:64px;padding:12px 16px 12px 18px;border:2px solid var(--cv-line);background:var(--cv-coal);transition:border-color .2s,background .2s}
+.cv-opt__t{font:italic 800 24px/1 var(--cv-fd);letter-spacing:.02em;text-transform:uppercase;color:var(--cv-white)}
+.cv-opt__s{grid-column:1;font-size:14px;line-height:1.35;color:var(--cv-grey)}
+.cv-opt__p{grid-column:2;grid-row:1 / span 2;font:italic 800 26px/1 var(--cv-fd);color:var(--cv-white);text-align:right;white-space:nowrap}
+.cv-opt__p small{display:block;margin-top:4px;font:500 12px/1.2 var(--cv-ft);color:var(--cv-grey)}
+.cv-opt input:hover+.cv-opt__box{border-color:rgba(255,255,255,.4)}
+.cv-opt input:checked+.cv-opt__box{border-color:var(--accent);background:#1a100b;box-shadow:inset 6px 0 0 var(--accent)}
+.cv-opt input:focus-visible+.cv-opt__box{outline:3px solid #fff;outline-offset:3px}
+.cv-opt input:disabled{cursor:not-allowed}
+.cv-opt input:disabled+.cv-opt__box{opacity:.5;border-style:dashed}
+.cv-qty{display:flex;align-items:center;clear:both;width:max-content;border:2px solid var(--cv-line)}
+.cv-qty button{width:60px;height:60px;border:0;background:var(--cv-coal);font:800 30px/1 var(--cv-fd);color:#fff;cursor:pointer}
+.cv-qty button:hover{background:var(--accent);color:#08080a}
+.cv-qty output{min-width:84px;text-align:center;font:italic 900 44px/1 var(--cv-fd);color:#fff}
+.cv-tix__note{clear:both;margin:16px 0 0;font-size:14.5px;color:var(--cv-grey)}
+.cv-tix__fields{clear:both}
+.cv-tix__nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-top:1px solid var(--cv-line);background:var(--cv-ink)}
+.cv-tix__nav .cv-btn{margin-left:auto}
+.cv-tix__back{min-height:48px;padding:0 14px 0 0;border:0;background:none;color:var(--cv-fog);font:italic 700 17px/1 var(--cv-fd);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:underline;text-underline-offset:5px}
+.cv-tix__back[hidden]{display:none}
+.cv-tix__back:hover{color:#fff}
+.cv-tix__done{clear:both;padding:22px;border:2px solid var(--accent);background:#1a100b}
+.cv-tix__done strong{display:block;margin-bottom:8px;font:italic 800 28px/1.05 var(--cv-fd);text-transform:uppercase;color:#fff}
+.cv-tix__done p:last-child{margin:0}
+/* ticket stub */
+.cv-stub{position:relative;background:#e4e4e1;color:#0b0b0d}
+.cv-stub__top{padding:22px 24px 20px}
+.cv-stub__k{display:block;font:italic 700 12.5px/1 var(--cv-fd);letter-spacing:.18em;text-transform:uppercase;color:#4a4a52}
+.cv-stub__night{margin:6px 0 2px;font:italic 900 clamp(44px,4.6vw,64px)/.86 var(--cv-fd);text-transform:uppercase;color:#0b0b0d}
+.cv-stub__date{margin:0 0 16px;font:italic 800 22px/1.1 var(--cv-fd);letter-spacing:.04em;text-transform:uppercase;color:#a32f00}
+.cv-stub__rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;margin:0}
+.cv-stub__rows dd{margin:4px 0 0;font:700 16px/1.25 var(--cv-ft);color:#0b0b0d}
+.cv-stub__tear{position:relative;height:0;border-top:3px dashed rgba(11,11,13,.5);margin:0 22px}
+.cv-stub__tear::before,.cv-stub__tear::after{content:"";position:absolute;top:-16px;width:28px;height:28px;border-radius:50%;background:var(--cv-coal)}
+.cv-stub__tear::before{left:-36px}
+.cv-stub__tear::after{right:-36px}
+.cv-stub__bot{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:18px 24px 22px}
+.cv-stub__total{display:block;margin-top:4px;font:italic 900 56px/.9 var(--cv-fd);color:#0b0b0d}
+.cv-stub__fee{margin:6px 0 0;font-size:13.5px;line-height:1.35;color:#33333a;max-width:26ch}
+.cv-stub__bars{flex:none;width:92px;height:62px;background:repeating-linear-gradient(90deg,#0b0b0d 0 3px,transparent 3px 5px,#0b0b0d 5px 6px,transparent 6px 10px,#0b0b0d 10px 14px,transparent 14px 16px)}
+.cv-tix__aside-note{margin:18px 0 0}
+@media (min-width:768px){.cv-tix__panel{padding:32px 30px}.cv-tix__nav{padding:18px 30px}.cv-tix__steps li{padding:16px 18px}}
+@media (max-width:479px){.cv-tix__steps span{display:none}.cv-tix__steps li{justify-content:center}}
+
+/* ============ forms ============ */
+.cv-form{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+.cv-field{display:grid;gap:7px;min-width:0;align-content:start}
+.cv-field label{font:italic 700 15px/1.2 var(--cv-fd);letter-spacing:.14em;text-transform:uppercase;color:var(--cv-white)}
+.cv-field label small{font:400 13px/1 var(--cv-ft);letter-spacing:0;text-transform:none;color:var(--cv-grey)}
+.cv-input{width:100%;min-height:54px;padding:12px 14px;border:2px solid #4a4a52;border-radius:0;background:#0b0b0d;color:#fff;font:500 17px/1.3 var(--cv-ft);-webkit-appearance:none;appearance:none}
+select.cv-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 5l6 6 6-6' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:42px}
+textarea.cv-input{min-height:120px;resize:vertical}
+.cv-input::placeholder{color:#8a8a93}
+.cv-input:hover{border-color:#8a8a93}
+.cv-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent)}
+.cv-input[aria-invalid="true"]{border-color:#ff7a70}
+.cv-err{margin:0;font-size:14.5px;font-weight:600;color:#ff9a92}
+.cv-err:empty{display:none}
+.cv-hint{margin:0;font-size:14px;color:var(--cv-grey)}
+.cv-check{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;min-height:44px;padding-block:6px;font-size:15px;line-height:1.45;color:var(--cv-fog);cursor:pointer}
+.cv-check input{width:28px;height:28px;margin:0;-webkit-appearance:none;appearance:none;border:2px solid #6a6a73;border-radius:0;background:#0b0b0d;cursor:pointer;display:grid;place-items:center}
+.cv-check input::after{content:"";width:14px;height:8px;border:solid #08080a;border-width:0 0 3px 3px;transform:rotate(-45deg) translate(1px,-2px);opacity:0}
+.cv-check input:checked{background:var(--accent);border-color:var(--accent)}
+.cv-check input:checked::after{opacity:1}
+.cv-check input[aria-invalid="true"]{border-color:#ff7a70}
+.cv-check .cv-err{grid-column:2}
+.cv-sum{padding:16px 18px;border:2px solid #ff7a70;background:#220d0b;color:#ffd9d5}
+.cv-sum[hidden]{display:none}
+.cv-sum:focus{outline:none}
+.cv-sum h3{margin:0 0 8px;font:italic 800 22px/1 var(--cv-fd);text-transform:uppercase;color:#fff}
+.cv-sum li{margin:4px 0}
+.cv-sum a{color:#fff}
+.cv-ok{padding:28px 24px;border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,#0b0b0d)}
+.cv-ok[hidden]{display:none}
+.cv-ok:focus{outline:none}
+.cv-ok h3{margin:0 0 10px;font:italic 900 clamp(34px,4vw,52px)/.9 var(--cv-fd);text-transform:uppercase;color:#fff}
+.cv-ok p:last-child{margin:0}
+.cv-form__foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.cv-form__foot p{margin:0}
+@media (min-width:768px){.cv-form{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 22px}.cv-field--full,.cv-form>.cv-check,.cv-form>.cv-sum,.cv-form>.cv-form__foot{grid-column:1 / -1}}
+
+/* ============ the rig ============ */
+.cv-rig__head{margin-bottom:44px}
+.cv-rig__photo{position:relative;margin:0;overflow:hidden;background:#111}
+.cv-rig__photo img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.cv-plate{position:absolute;left:14px;bottom:14px;padding:9px 13px 8px;background:#060607;border:1px solid var(--cv-line);color:var(--cv-fog);font:italic 700 13px/1.25 var(--cv-fd);letter-spacing:.14em;text-transform:uppercase}
+.cv-plate b{display:block;color:var(--accent);font-weight:700}
+.cv-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin-top:1px;background:var(--cv-line);border:1px solid var(--cv-line)}
+.cv-stat{padding:18px 18px 16px;background:var(--cv-black)}
+.cv-stat b{display:block;font:italic 900 clamp(48px,5vw,72px)/.82 var(--cv-fd);color:var(--cv-white)}
+.cv-stat b small{font-size:.5em;color:var(--accent)}
+.cv-stat span{display:block;margin-top:8px;font:italic 700 13px/1.2 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey)}
+.cv-archs{display:grid;gap:22px}
+.cv-arch{display:grid;grid-template-columns:minmax(0,1fr);border:1px solid var(--cv-line);background:var(--cv-coal)}
+.cv-arch__img{position:relative;overflow:hidden;background:#111;min-height:220px}
+.cv-arch__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.cv-arch:hover .cv-arch__img img{transform:scale(1.05)}
+.cv-arch__no{position:absolute;left:14px;top:12px;font:400 30px/1 var(--cv-fs);letter-spacing:.04em;color:rgba(255,255,255,.92);text-shadow:0 2px 14px #000;transform:rotate(-2deg)}
+.cv-arch__body{padding:22px 20px 20px;min-width:0}
+.cv-arch__cap{display:inline-block;margin-bottom:10px;padding:5px 10px;background:var(--accent);color:#08080a;font:italic 800 14px/1 var(--cv-fd);letter-spacing:.14em;text-transform:uppercase}
+.cv-arch__body p{font-size:16px;color:var(--cv-fog)}
+.cv-spec li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:9px 0;border-top:1px solid var(--cv-line2);font-size:15px;color:var(--cv-fog)}
+.cv-spec b{flex:none;font:italic 800 22px/1 var(--cv-fd);color:var(--cv-white);letter-spacing:.02em}
+.cv-path{margin-top:6px;border:1px solid var(--cv-line);background:var(--cv-black)}
+.cv-path__cap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;padding:16px 20px;border-bottom:1px solid var(--cv-line)}
+.cv-path__cap h3{margin:0}
+.cv-path__cap p{margin:0}
+.cv-path table{width:100%;border-collapse:collapse;font-size:15.5px}
+.cv-path th{padding:12px 20px;text-align:left;font:italic 700 13px/1 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey);border-bottom:1px solid var(--cv-line)}
+.cv-path td{padding:14px 20px;border-bottom:1px solid var(--cv-line2);color:var(--cv-fog);vertical-align:middle}
+.cv-path tr:last-child td{border-bottom:0}
+.cv-path td:first-child{font:italic 800 24px/1 var(--cv-fd);text-transform:uppercase;color:var(--cv-white);white-space:nowrap}
+.cv-band{display:block;height:10px;min-width:60px;background:repeating-linear-gradient(90deg,var(--accent) 0 5px,transparent 5px 8px);width:var(--w,50%)}
+@media (max-width:767px){
+  .cv-path thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .cv-path table,.cv-path tbody,.cv-path tr,.cv-path td{display:block}
+  .cv-path tr{padding:14px 18px;border-bottom:1px solid var(--cv-line)}
+  .cv-path tr:last-child{border-bottom:0}
+  .cv-path td{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;padding:5px 0;border:0}
+  .cv-path td::before{content:attr(data-l);font:italic 700 12px/1.6 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey)}
+  .cv-path td:first-child{display:block;margin-bottom:6px}
+  .cv-path td:first-child::before{content:none}
+}
+@media (min-width:768px){.cv-arch{grid-template-columns:minmax(0,42%) minmax(0,1fr)}.cv-arch__body{padding:28px 28px 24px}.cv-arch:nth-child(even) .cv-arch__img{order:2}}
+
+/* ============ ears ============ */
+.cv-ears{--accent:var(--cv-yellow);background:#0a0a0b;border-block:14px solid transparent;border-image:repeating-linear-gradient(110deg,var(--cv-yellow) 0 22px,#0a0a0b 22px 44px) 14}
+.cv-ears .cv-h2{font-size:clamp(52px,8.6vw,136px)}
+.cv-ears__cta{display:flex;flex-wrap:wrap;gap:14px}
+.cv-db{border:1px solid var(--cv-line);background:var(--cv-coal)}
+.cv-db__head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--cv-line);font:italic 700 13px/1.2 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey)}
+.cv-db__row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:4px 16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--cv-line2)}
+.cv-db__row:last-of-type{border-bottom:0}
+.cv-db__n{grid-row:1 / span 2;font:italic 900 52px/.85 var(--cv-fd);color:var(--cv-white)}
+.cv-db__n small{display:block;margin-top:4px;font:italic 700 12px/1 var(--cv-fd);letter-spacing:.16em;color:var(--cv-grey)}
+.cv-db__bar{height:14px;background:#1e1e22;overflow:hidden}
+.cv-db__bar i{display:block;height:100%;width:var(--w);background:repeating-linear-gradient(90deg,var(--c,var(--cv-yellow)) 0 7px,transparent 7px 10px);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.cv-js .cv-db:not(.cv-in) .cv-db__bar i{transform:scaleX(0)}
+.cv-db__t{font-size:15px;line-height:1.4;color:var(--cv-fog)}
+.cv-db__t b{color:var(--cv-white)}
+.cv-db__row--us{background:rgba(255,210,31,.07)}
+.cv-db__foot{margin:0;padding:12px 20px;border-top:1px solid var(--cv-line);font-size:13.5px;color:var(--cv-grey)}
+.cv-plugs{display:grid;gap:1px;margin-top:22px;background:var(--cv-line);border:1px solid var(--cv-line)}
+.cv-plugs li{padding:16px 20px;background:#0a0a0b;font-size:15.5px;color:var(--cv-fog)}
+.cv-plugs b{display:block;margin-bottom:3px;font:italic 800 22px/1.05 var(--cv-fd);text-transform:uppercase;color:var(--cv-white)}
+@media (min-width:768px){.cv-plugs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.cv-db__bar i{transition:none}}
+
+/* ============ crew list ============ */
+.cv-steps3{display:grid;gap:0;margin:0 0 26px;counter-reset:cvs}
+.cv-steps3 li{position:relative;padding:14px 0 14px 58px;border-top:1px solid var(--cv-line);color:var(--cv-fog);font-size:16px;counter-increment:cvs}
+.cv-steps3 li::before{content:counter(cvs,decimal-leading-zero);position:absolute;left:0;top:12px;font:italic 900 34px/1 var(--cv-fd);color:var(--accent)}
+.cv-steps3 b{color:var(--cv-white)}
+.cv-crew__photo{margin:0;position:relative;overflow:hidden;background:#111}
+.cv-crew__photo img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.cv-panel{padding:22px 18px;border:1px solid var(--cv-line);background:var(--cv-black)}
+@media (min-width:768px){.cv-panel{padding:34px 32px}}
+
+/* ============ door policy (raw concrete) ============ */
+.cv-door{--accent:var(--cv-inkblue);background:#c6c7c9;color:#1a1a1e}
+.cv-door.cv-grain::before{opacity:.26;mix-blend-mode:multiply;filter:invert(1)}
+.cv-door .cv-h2,.cv-door .cv-h3{color:#08080a}
+.cv-door .cv-lead{color:#1a1a1e}
+.cv-door .cv-btn{color:#fff}
+.cv-door .cv-btn:hover::before{background:#08080a}
+.cv-door :focus-visible{outline-color:#08080a}
+.cv-door .cv-link{color:#08080a}
+.cv-door__id{display:grid;gap:10px;margin:0 0 28px}
+.cv-door__id li{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#08080a;color:#f5f5f2;font:italic 800 21px/1.05 var(--cv-fd);letter-spacing:.03em;text-transform:uppercase}
+.cv-door__id svg{flex:none;width:24px;height:24px;color:#7fb0ff}
+.cv-rules{border-top:4px solid #08080a;counter-reset:cvr}
+.cv-rule{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:22px 0;border-bottom:2px solid rgba(8,8,10,.22);counter-increment:cvr}
+.cv-rule::before{content:counter(cvr,decimal-leading-zero);font:400 40px/1 var(--cv-fs);color:var(--cv-inkblue)}
+.cv-rule h3{margin:0 0 6px;font:italic 900 clamp(30px,3.2vw,44px)/.92 var(--cv-fd);text-transform:uppercase;color:#08080a}
+.cv-rule p{margin:0;max-width:62ch;font-size:16.5px;color:#131316}
+@media (min-width:768px){.cv-rule{grid-template-columns:92px minmax(0,1fr);gap:20px}.cv-rule::before{font-size:52px}}
+
+/* ============ welfare ============ */
+.cv-wel{--accent:var(--cv-orange)}
+.cv-wel__head{display:grid;gap:26px;margin-bottom:40px}
+.cv-wel__photo{margin:0;overflow:hidden;background:#111}
+.cv-wel__photo img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.cv-999{display:grid;gap:10px 28px;margin-bottom:22px;padding:18px 20px;background:var(--cv-orange);color:#08080a}
+.cv-999 p{margin:0;font-size:16px;font-weight:600}
+.cv-999 strong{font:italic 900 30px/1 var(--cv-fd);text-transform:uppercase}
+.cv-999 a{color:#08080a;font-weight:700}
+.cv-cards{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.cv-card{position:relative;padding:24px 22px 22px;border:1px solid var(--cv-line);background:var(--cv-coal);min-width:0;transition:border-color .25s,transform .25s}
+.cv-card:hover{border-color:var(--accent)}
+.cv-card svg.cv-ico{width:38px;height:38px;margin-bottom:16px;color:var(--accent)}
+.cv-card p{font-size:16px;color:var(--cv-fog)}
+.cv-card p:last-child{margin-bottom:0}
+.cv-card ul.cv-ticks{display:grid;gap:8px;margin:0 0 18px}
+.cv-ticks li{position:relative;padding-left:26px;font-size:16px;color:var(--cv-fog)}
+.cv-ticks li::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:6px;background:var(--accent);transform:skewX(-20deg)}
+@media (min-width:768px){
+  .cv-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cv-wel__head{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:end;gap:48px}
+  .cv-999{grid-template-columns:auto minmax(0,1fr);align-items:center}
+  .cv-card--wide{grid-column:1 / -1}
+}
+@media (min-width:768px){.cv-card:nth-child(5){grid-column:1 / -1}.cv-card--wide .cv-card__cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}}
+@media (min-width:1200px){.cv-cards{grid-template-columns:repeat(6,minmax(0,1fr))}.cv-card{grid-column:span 2}.cv-card:nth-child(4),.cv-card:nth-child(5){grid-column:span 3}.cv-card.cv-card--wide{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:28px 40px;padding:32px 28px}.cv-card--wide .cv-card__cols{gap:40px}}
+
+/* ============ find us ============ */
+.cv-map{position:relative;border:1px solid var(--cv-line);background:#0d0e11;overflow:hidden}
+.cv-map svg{display:block;width:100%;height:auto}
+.cv-map__note{position:absolute;right:10px;bottom:8px;margin:0;font-size:12px;color:var(--cv-grey)}
+.cv-addr{display:grid;gap:14px;padding:20px;border:1px solid var(--cv-line);border-top:0;background:var(--cv-black)}
+.cv-addr address{font-style:normal;font-size:17px;line-height:1.5;color:var(--cv-white)}
+.cv-addr address b{display:block;font:italic 900 30px/1 var(--cv-fd);text-transform:uppercase;margin-bottom:4px}
+.cv-addr__row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.cv-addr__row p{margin:0}
+.cv-ways{border-top:3px solid var(--cv-white);margin-bottom:28px}
+.cv-way{display:grid;grid-template-columns:52px minmax(0,1fr);gap:4px 16px;padding:18px 0;border-bottom:1px solid var(--cv-line)}
+.cv-way svg{grid-row:1 / span 2;width:36px;height:36px;color:var(--accent)}
+.cv-way h3{margin:0;font:italic 800 26px/1 var(--cv-fd);text-transform:uppercase;color:var(--cv-white)}
+.cv-way p{margin:0;font-size:16px;color:var(--cv-fog)}
+.cv-home{padding:22px 22px 20px;border-left:6px solid var(--accent);background:var(--cv-black)}
+.cv-home p{font-size:16px}
+.cv-home p:last-child{margin:0}
+@media (min-width:768px){.cv-addr{grid-template-columns:minmax(0,1fr) auto;align-items:end}}
+
+/* ============ practical ============ */
+.cv-prac{--accent:var(--cv-orange);padding-top:0}
+.cv-prac__grid{display:grid;gap:1px;grid-template-columns:minmax(0,1fr);background:var(--cv-line);border:1px solid var(--cv-line)}
+.cv-prac__item{padding:24px 22px;background:var(--cv-coal);min-width:0}
+.cv-prac__item .cv-strap{margin-bottom:12px}
+.cv-prac__item p{margin:0;font-size:15.5px;color:var(--cv-fog)}
+.cv-prac__item b.cv-big{display:block;margin-bottom:8px;font:italic 900 clamp(32px,3vw,44px)/.9 var(--cv-fd);text-transform:uppercase;color:var(--cv-white)}
+@media (min-width:768px){.cv-prac__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.cv-prac__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* ============ hire ============ */
+.cv-hire{--accent:var(--cv-orange);background:#060607;overflow:clip}
+.cv-hire__bg{position:absolute;inset:0}
+.cv-hire__bg img{width:100%;height:100%;object-fit:cover;opacity:.62}
+.cv-hire__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#060607 8%,rgba(6,6,7,.72) 48%,rgba(6,6,7,.25) 100%),linear-gradient(180deg,#060607 0,transparent 22%,transparent 78%,#060607 100%)}
+.cv-hire__in{max-width:760px}
+.cv-hire__facts{display:grid;gap:1px;margin:0 0 30px;background:var(--cv-line);border:1px solid var(--cv-line)}
+.cv-hire__facts li{padding:14px 18px;background:rgba(6,6,7,.82);font-size:15.5px;color:var(--cv-fog)}
+.cv-hire__facts b{display:block;font:italic 800 24px/1.05 var(--cv-fd);text-transform:uppercase;color:var(--cv-white)}
+@media (min-width:768px){.cv-hire__facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ============ faq ============ */
+.cv-acc{border-top:3px solid var(--cv-white)}
+.cv-acc__item{border-bottom:1px solid var(--cv-line)}
+.cv-acc__h{margin:0}
+.cv-acc__btn{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;min-height:64px;padding:18px 0;border:0;background:none;text-align:left;font:italic 800 clamp(23px,2.2vw,31px)/1.05 var(--cv-fd);letter-spacing:.01em;text-transform:uppercase;color:var(--cv-white);cursor:pointer}
+.cv-acc__btn:hover{color:var(--accent)}
+.cv-acc__ico{position:relative;flex:none;width:34px;height:34px;background:var(--cv-steel);transform:skewX(-10deg);transition:background .2s}
+.cv-acc__ico::before,.cv-acc__ico::after{content:"";position:absolute;left:9px;right:9px;top:50%;height:3px;margin-top:-1.5px;background:#fff;transition:transform .25s}
+.cv-acc__ico::after{transform:rotate(90deg)}
+.cv-acc__btn[aria-expanded="true"] .cv-acc__ico{background:var(--accent)}
+.cv-acc__btn[aria-expanded="true"] .cv-acc__ico::before,.cv-acc__btn[aria-expanded="true"] .cv-acc__ico::after{background:#08080a}
+.cv-acc__btn[aria-expanded="true"] .cv-acc__ico::after{transform:rotate(0)}
+.cv-acc__panel{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .32s ease,visibility 0s .32s}
+.cv-acc__item.cv-open .cv-acc__panel{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .32s ease,visibility 0s}
+.cv-acc__panel>div{overflow:hidden;min-height:0}
+.cv-acc__panel p{max-width:66ch;margin:0;padding:0 0 22px;font-size:16.5px;color:var(--cv-fog)}
+.cv-faq__contact{display:grid;gap:4px;margin:0 0 24px;font-size:16px}
+.cv-faq__contact a{display:inline-flex;align-items:center;min-height:44px;width:max-content;max-width:100%;color:#fff;font-weight:600}
+@media (prefers-reduced-motion:reduce){.cv-acc__panel,.cv-acc__ico::before,.cv-acc__ico::after{transition:none!important}}
+
+/* ============ newsletter ============ */
+.cv-news{--accent:#08080a;background:var(--cv-blue);color:#08080a;padding-block:clamp(56px,7vw,96px)}
+.cv-news .cv-h2{color:#08080a;margin-bottom:14px}
+.cv-news .cv-lead{color:#08080a;font-weight:500;margin-bottom:0}
+.cv-news :focus-visible{outline-color:#08080a}
+.cv-news .cv-btn{color:#fff}
+.cv-news .cv-btn:hover{color:#08080a}
+.cv-news__grid{display:grid;gap:28px;grid-template-columns:minmax(0,1fr)}
+.cv-news__row{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+.cv-news .cv-field label{color:#08080a}
+.cv-news .cv-input{background:#fff;color:#08080a;border-color:#08080a}
+.cv-news .cv-input::placeholder{color:#5a5a62}
+.cv-news .cv-input:focus{box-shadow:0 0 0 3px rgba(8,8,10,.35)}
+.cv-news .cv-check{color:#08080a;font-weight:500}
+.cv-news .cv-check input{background:#fff;border-color:#08080a}
+.cv-news .cv-check input:checked{background:#08080a}
+.cv-news .cv-check input::after{border-color:#fff}
+.cv-news .cv-err{color:#5c0900;font-weight:700}
+.cv-news .cv-input[aria-invalid="true"],.cv-news .cv-check input[aria-invalid="true"]{border-color:#8f1100;box-shadow:0 0 0 2px #8f1100}
+.cv-news .cv-ok{border-color:#08080a;background:#08080a;color:#e8e8ea}
+.cv-news .cv-link{color:#08080a}
+@media (min-width:768px){.cv-news__row{grid-template-columns:minmax(0,1fr) auto;align-items:end}}
+@media (min-width:1200px){.cv-news__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}}
+
+/* ============ footer: the stack ============ */
+.cv-foot{position:relative;background:#040405;--accent:var(--cv-orange);overflow:clip}
+.cv-wave{position:relative;height:76px;background:#08080a;border-bottom:1px solid var(--cv-line)}
+.cv-wave canvas{display:block;width:100%;height:100%}
+.cv-wave__tag{position:absolute;left:var(--cv-g);top:8px;margin:0;font:italic 700 11.5px/1 var(--cv-fd);letter-spacing:.2em;text-transform:uppercase;color:var(--cv-grey);pointer-events:none}
+.cv-foot__in{padding-block:40px 26px}
+.cv-foot__intro{display:grid;gap:12px;margin-bottom:8px}
+.cv-foot__intro p{margin:0;max-width:44ch;font-size:15.5px;color:var(--cv-grey)}
+.cv-foot .cv-logo{margin:0;font-size:34px}
+.cv-stackgrid{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+.cv-stack{display:grid;gap:5px;align-content:end;min-width:0}
+.cv-cab{position:relative;padding:14px 16px 16px;border:2px solid #2d2d32;border-radius:5px;background:linear-gradient(180deg,#19191c,#0f0f11);box-shadow:inset 0 0 0 1px #000,inset 0 3px 0 rgba(255,255,255,.04),0 10px 30px rgba(0,0,0,.5)}
+.cv-cab::before{content:"";position:absolute;inset:0;background-image:var(--cv-noise);opacity:.14;mix-blend-mode:screen;pointer-events:none;border-radius:3px}
+.cv-cab__c{position:absolute;z-index:1;width:28px;height:28px;background:linear-gradient(135deg,#d5d6d9,#73747a 55%,#35363b);clip-path:polygon(0 0,100% 0,100% 40%,40% 40%,40% 100%,0 100%);border-radius:7px 0 0 0;pointer-events:none}
+.cv-cab__c--tl{left:-4px;top:-4px}
+.cv-cab__c--tr{right:-4px;top:-4px;transform:scaleX(-1)}
+.cv-cab__c--bl{left:-4px;bottom:-4px;transform:scaleY(-1)}
+.cv-cab__c--br{right:-4px;bottom:-4px;transform:scale(-1)}
+.cv-cab__h{position:relative;margin:0}
+.cv-cab__btn{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:0 6px;border:0;background:none;text-align:left;cursor:pointer}
+.cv-cab__id{flex:none;padding:5px 8px 4px;border:1px solid rgba(255,255,255,.3);font:italic 700 12px/1 var(--cv-fd);letter-spacing:.16em;color:var(--cv-grey)}
+.cv-cab__name{flex:1;min-width:0;font:400 23px/1 var(--cv-fs);letter-spacing:.05em;text-transform:uppercase;color:rgba(245,245,242,.93);transform:rotate(-.8deg);transform-origin:left}
+.cv-cab__spec{display:none;flex:none;font:400 13px/1 var(--cv-fs);letter-spacing:.08em;color:rgba(245,245,242,.42)}
+.cv-cab__chev{flex:none;width:18px;height:18px;color:var(--cv-orange);transition:transform .25s}
+.cv-cab__btn[aria-expanded="true"] .cv-cab__chev{transform:rotate(180deg)}
+.cv-cab__body{position:relative;display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .3s ease,visibility 0s .3s}
+.cv-cab.cv-open .cv-cab__body{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .3s ease,visibility 0s}
+.cv-cab__face{overflow:hidden;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.cv-cab__grille{display:none;border:2px solid #000;box-shadow:0 0 0 1px #3c3d42,0 0 0 6px #121214,0 0 0 7px #2c2d31,inset 0 0 22px #000;margin:7px}
+.cv-cab__grille--driver{border-radius:50%;aspect-ratio:1;background:radial-gradient(circle,#050506 1.25px,transparent 1.6px) 0 0/6px 6px,radial-gradient(circle,#050506 1.25px,transparent 1.6px) 3px 3px/6px 6px,radial-gradient(circle closest-side,#6b6d73 0 14%,#161618 16% 20%,#3b3c42 22% 64%,#0a0a0b 66% 80%,#4a4b51 83% 100%)}
+.cv-cab__grille--horn{border-radius:8px;aspect-ratio:2.1;background:radial-gradient(circle,#050506 1.25px,transparent 1.6px) 0 0/6px 6px,radial-gradient(circle,#050506 1.25px,transparent 1.6px) 3px 3px/6px 6px,radial-gradient(ellipse closest-side,#000 0 12%,#1a1a1d 32%,#55565c 84%,#232326 100%)}
+.cv-cab__links{padding:6px 6px 4px}
+.cv-cab__links a{display:flex;align-items:center;gap:10px;min-height:44px;color:var(--cv-fog);font:500 16px/1.25 var(--cv-ft);text-decoration:none;border-top:1px solid var(--cv-line2);transition:color .2s,padding .2s}
+.cv-cab__links li:first-child a{border-top:0}
+.cv-cab__links a::before{content:"";flex:none;width:10px;height:5px;background:var(--cv-orange);transform:skewX(-20deg);opacity:.55;transition:opacity .2s,width .2s}
+.cv-cab__links a:hover{color:#fff}
+.cv-cab__links a:hover::before{opacity:1;width:18px}
+/* rack */
+.cv-rack{display:grid;gap:5px;align-content:end;min-width:0}
+.cv-rack__u{position:relative;padding:16px 44px;border:1px solid #37383d;background:linear-gradient(180deg,#1e1e22,#131316);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.cv-rack__u::before,.cv-rack__u::after{content:"";position:absolute;top:0;bottom:0;width:30px;background:radial-gradient(circle,#0a0a0b 3.2px,#55565c 3.6px 5px,transparent 5.4px) center 9px/100% 22px no-repeat,radial-gradient(circle,#0a0a0b 3.2px,#55565c 3.6px 5px,transparent 5.4px) center calc(100% - 9px)/100% 22px no-repeat,linear-gradient(90deg,#26262a,#1a1a1d)}
+.cv-rack__u::before{left:0;border-right:1px solid #37383d}
+.cv-rack__u::after{right:0;border-left:1px solid #37383d}
+.cv-rack__k{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:italic 700 12px/1 var(--cv-fd);letter-spacing:.2em;text-transform:uppercase;color:var(--cv-grey)}
+.cv-rack__u address{font-style:normal;font-size:15.5px;line-height:1.5;color:var(--cv-fog)}
+.cv-rack__u a{color:#fff;text-decoration:none}
+.cv-rack__u a:hover{color:var(--cv-orange);text-decoration:underline}
+.cv-rack__lines{display:grid;gap:0}
+.cv-rack__lines a,.cv-rack__lines span{display:inline-flex;align-items:center;min-height:36px;font-size:16px;font-weight:600}
+.cv-hours{display:grid;gap:6px;margin:0;font-size:15px}
+.cv-hours div{display:flex;justify-content:space-between;gap:16px;color:var(--cv-fog)}
+.cv-hours dt{font-weight:600;color:#fff}
+.cv-hours dd{margin:0;text-align:right}
+.cv-rack__u--grow{display:flex;flex-direction:column}
+.cv-rack__note{margin:12px 0 0;font-size:13.5px;line-height:1.45;color:var(--cv-grey)}
+.cv-rack__vu{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 10px;align-items:center;margin-top:auto;padding-top:16px;font:italic 700 11px/1 var(--cv-fd);letter-spacing:.1em;color:var(--cv-grey)}
+.cv-rack__vu i{height:8px;background:repeating-linear-gradient(90deg,#5d5e64 0 6px,transparent 6px 9px);-webkit-mask-image:linear-gradient(90deg,#000 var(--lv,62%),rgba(0,0,0,.22) var(--lv,62%));mask-image:linear-gradient(90deg,#000 var(--lv,62%),rgba(0,0,0,.22) var(--lv,62%))}
+.cv-rack__vu i:last-child{--lv:54%}
+.cv-rack__u--ears{padding:0;border:0;background:none;box-shadow:none}
+.cv-rack__u--ears::before,.cv-rack__u--ears::after{content:none}
+.cv-earplate{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;padding:16px 20px;background:var(--cv-orange);color:#08080a;border:3px solid #08080a;outline:1px solid var(--cv-orange);box-shadow:inset 0 0 0 2px rgba(8,8,10,.25)}
+.cv-earplate::before,.cv-earplate::after{content:"";position:absolute;top:7px;width:7px;height:7px;border-radius:50%;background:#08080a;box-shadow:0 calc(var(--h,0px)) 0 #08080a}
+.cv-earplate::before{left:7px}
+.cv-earplate::after{right:7px}
+.cv-earplate svg{width:46px;height:46px}
+.cv-earplate strong{display:block;font:400 22px/1 var(--cv-fs);letter-spacing:.04em;text-transform:uppercase}
+.cv-earplate p{margin:5px 0 0;font-size:14.5px;line-height:1.4;font-weight:600}
+.cv-rack__u--top{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.cv-rack__u--top p{margin:0;font:italic 700 13px/1.3 var(--cv-fd);letter-spacing:.16em;text-transform:uppercase;color:var(--cv-grey)}
+.cv-rack__u--top b{color:#fff;font-weight:700}
+.cv-top{display:grid;place-items:center;width:48px;height:48px;border:2px solid var(--cv-orange);background:none;color:var(--cv-orange);cursor:pointer;transition:background .2s,color .2s}
+.cv-top:hover{background:var(--cv-orange);color:#08080a}
+.cv-top svg{width:22px;height:22px}
+/* flight-case legal panel */
+.cv-case{position:relative;margin-top:26px;padding:26px 22px 20px;border:6px solid;border-image:linear-gradient(180deg,#dcdde0,#84858a 38%,#c9cacd 62%,#55565b) 6;background:repeating-linear-gradient(90deg,#121214 0 2px,#17171a 2px 5px)}
+.cv-case__c{position:absolute;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f1f1f3,#8b8c91 50%,#34353a)}
+.cv-case__c--tl{left:-13px;top:-13px}.cv-case__c--tr{right:-13px;top:-13px}.cv-case__c--bl{left:-13px;bottom:-13px}.cv-case__c--br{right:-13px;bottom:-13px}
+.cv-case__latch{position:absolute;top:-6px;left:50%;width:74px;height:22px;margin-left:-37px;background:linear-gradient(180deg,#cfd0d3,#6f7075);clip-path:polygon(0 0,100% 0,88% 100%,12% 100%)}
+.cv-case__legal{margin:0 0 14px;font:400 15px/1.75 var(--cv-fs);letter-spacing:.06em;text-transform:uppercase;color:rgba(245,245,242,.86)}
+.cv-case__legal a{color:var(--cv-orange)}
+.cv-case__row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.2)}
+.cv-case__links{display:flex;flex-wrap:wrap;gap:0 22px}
+.cv-case__links a{display:inline-flex;align-items:center;min-height:44px;font-size:14.5px;color:var(--cv-fog);text-decoration:none}
+.cv-case__links a:hover{color:#fff;text-decoration:underline}
+.cv-case__row p{margin:0;font-size:13.5px;color:var(--cv-grey)}
+@media (min-width:768px){
+  .cv-stackgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .cv-foot__intro{grid-column:1 / -1;grid-template-columns:auto minmax(0,44ch);justify-content:space-between;align-items:end}
+  .cv-rack{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+  .cv-cab{padding:16px 18px 18px}
+  .cv-cab__btn{cursor:default;min-height:40px;margin-bottom:10px}
+  .cv-cab__chev{display:none}
+  .cv-cab__spec{display:block}
+  .cv-cab__body{grid-template-rows:1fr!important;visibility:visible!important}
+  .cv-cab__face{grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+  .cv-cab__grille{display:block}
+  .cv-cab__grille--driver{width:132px}
+  .cv-cab__grille--horn{width:132px}
+  .cv-cab--sub{padding-bottom:22px}
+  .cv-cab--sub .cv-cab__grille--driver{width:168px}
+  .cv-cab__links a{min-height:38px}
+  .cv-case{padding:30px 34px 22px}
+}
+@media (min-width:1200px){
+  .cv-stackgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.95fr);grid-template-rows:auto 1fr;gap:26px;align-items:end}
+  .cv-foot__intro{grid-column:1 / span 2;grid-row:1;grid-template-columns:minmax(0,1fr);justify-content:start;align-self:start;margin-bottom:14px}
+  .cv-stack{grid-row:2}
+  .cv-rack{grid-column:3;grid-row:1 / span 2;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto auto;align-self:stretch}
+  .cv-cab__grille--driver{width:150px}
+  .cv-cab--sub .cv-cab__grille--driver{width:190px}
+  .cv-cab__grille--horn{width:170px}
+}
+@media (prefers-reduced-motion:reduce){.cv-cab__body{transition:none}}
+
+/* mobile action bar */
+.cv-bar{position:fixed;inset:auto 0 0 0;z-index:55;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(6,6,7,.94);border-top:1px solid var(--cv-line);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility 0s .3s;--accent:var(--cv-orange)}
+.cv-bar--on{transform:none;visibility:visible;transition:transform .3s,visibility 0s}
+.cv-bar .cv-btn{min-height:48px;padding-inline:10px;font-size:18px}
+@media (min-width:768px){.cv-bar{display:none}}
+@media (prefers-reduced-motion:reduce){.cv-bar{transition:none}}
+
+</style>
+</head>
+<body class="cv-body">
+<a class="cv-skip" href="#cv-main">Skip to content</a>
+
+<header class="cv-header" id="cv-header">
+  <div class="cv-wrap cv-header__in">
+    <a class="cv-logo" href="#cv-top" aria-label="Culvert, back to top">
+      <svg viewBox="0 0 44 30" aria-hidden="true"><path d="M3 29V15a8.5 8.5 0 0 1 17 0v14M24 29V15a8.5 8.5 0 0 1 17 0v14" fill="none" stroke="currentColor" stroke-width="5.5"/></svg>
+      <span>Culvert</span>
+    </a>
+    <nav class="cv-nav" aria-label="Main">
+      <a href="#cv-whatson">What's on</a>
+      <a href="#cv-rig">The rig</a>
+      <a href="#cv-door">Door policy</a>
+      <a href="#cv-welfare">Welfare</a>
+      <a href="#cv-find">Find us</a>
+      <a href="#cv-faq">FAQ</a>
+    </nav>
+    <a class="cv-header__tel" href="tel:+441174960142"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1h3l1.5 4-2 1.2a8 8 0 0 0 4.3 4.3l1.2-2 4 1.5v3a1.5 1.5 0 0 1-1.6 1.5A13 13 0 0 1 1.5 2.600A1.5 1.5 0 0 1 3 1z" fill="currentColor"/></svg>0117 496 0142</a>
+    <a class="cv-btn cv-btn--sm" href="#cv-tickets">Tickets</a>
+    <button class="cv-burger" id="cv-burger" type="button" aria-expanded="false" aria-controls="cv-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="cv-menu" id="cv-menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+  <div class="cv-menu__top">
+    <a class="cv-logo" href="#cv-top" data-cv-close aria-label="Culvert, back to top">
+      <svg viewBox="0 0 44 30" aria-hidden="true"><path d="M3 29V15a8.500 8.500 0 0 1 17 0v14M24 29V15a8.500 8.500 0 0 1 17 0v14" fill="none" stroke="currentColor" stroke-width="5.5"/></svg>
+      <span>Culvert</span>
+    </a>
+    <button class="cv-menu__close" id="cv-menu-close" type="button" aria-label="Close menu"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M5 5l18 18M23 5L5 23" fill="none" stroke="#fff" stroke-width="3"/></svg></button>
+  </div>
+  <div class="cv-menu__body">
+    <ul class="cv-menu__links">
+      <li><a href="#cv-whatson" data-cv-close><small>01</small>What's on</a></li>
+      <li><a href="#cv-tickets" data-cv-close><small>02</small>Tickets</a></li>
+      <li><a href="#cv-rig" data-cv-close><small>03</small>The rig</a></li>
+      <li><a href="#cv-door" data-cv-close><small>04</small>Door policy</a></li>
+      <li><a href="#cv-welfare" data-cv-close><small>05</small>Welfare</a></li>
+      <li><a href="#cv-find" data-cv-close><small>06</small>Find us</a></li>
+      <li><a href="#cv-faq" data-cv-close><small>07</small>FAQ</a></li>
+    </ul>
+    <div class="cv-menu__side">
+      <div class="cv-menu__cta">
+        <a class="cv-btn" href="#cv-tickets" data-cv-close>Tickets</a>
+        <a class="cv-btn cv-btn--ghost" href="#cv-crew" data-cv-close>Crew list</a>
+      </div>
+      <div class="cv-menu__info">
+        <a class="cv-menu__tel" href="tel:+441174960142">0117 496 0142</a>
+        <p>Office line, Tuesday to Friday, 11:00 to 17:00</p>
+        <p>Arches 7 &amp; 8, Sidings Lane, St Philip's, Bristol BS2 0ZZ</p>
+        <p>Fridays and Saturdays 22:00 to 05:00 · last entry 02:00 · first Sunday of the month 16:00 to 23:00</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="cv-main">
+
+<!-- ================= HERO ================= -->
+<section class="cv-hero" id="cv-top" aria-labelledby="cv-h1">
+  <div class="cv-hero__bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=1100&q=60" srcset="https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=700&q=60 700w, https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=1100&q=60 1100w, https://images.unsplash.com/photo-1786381228092-31f5013c5984?auto=format&fit=crop&w=1600&q=60 1600w" sizes="(min-width:1200px) 68vw, 100vw" width="1100" height="733" alt="" fetchpriority="high" decoding="async">
+  </div>
+  <canvas class="cv-hero__gl" id="cv-gl" aria-hidden="true"></canvas>
+  <p class="cv-hero__mark" aria-hidden="true">51.4491° N · 2.5813° W<br><b>Arches 7 &amp; 8</b> · under the main line</p>
+  <div class="cv-wrap cv-hero__in">
+    <div class="cv-hero__stage" id="cv-stage"><div class="cv-fb" id="cv-fb" aria-hidden="true"></div></div>
+    <div class="cv-hero__copy">
+      <p class="cv-strap">Bristol soundsystem club · D&amp;B / jungle / dub</p>
+      <h1 class="cv-hero__h" id="cv-h1"><span class="cv-hero__l cv-hero__l--1">Low end</span> <span class="cv-hero__l cv-hero__l--2">under</span> <span class="cv-hero__l cv-hero__l--3">the line.</span></h1>
+      <p class="cv-hero__sub">Drum &amp; bass, jungle and dub on a hand-built sound system, in two railway arches behind Temple Meads.</p>
+      <div class="cv-hero__cta" id="cv-hero-cta">
+        <a class="cv-btn" href="#cv-tickets">Tickets <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
+        <a class="cv-btn cv-btn--ghost" href="#cv-whatson">What's on</a>
+      </div>
+      <ul class="cv-facts" aria-label="Opening facts">
+        <li><span class="cv-facts__k" id="cv-f-k">Next open</span><span class="cv-facts__v"><i class="cv-led" id="cv-f-led" aria-hidden="true"></i><span id="cv-f-v">This Friday</span></span></li>
+        <li><span class="cv-facts__k">Doors</span><span class="cv-facts__v" id="cv-f-doors">22:00</span></li>
+        <li><span class="cv-facts__k">Last entry</span><span class="cv-facts__v" id="cv-f-last">02:00</span></li>
+        <li><span class="cv-facts__k">Entry</span><span class="cv-facts__v">18+ · ID</span></li>
+      </ul>
+    </div>
+  </div>
+  <button class="cv-motion" id="cv-motion" type="button" aria-pressed="false" aria-label="Pause hero motion">
+    <svg viewBox="0 0 14 14" aria-hidden="true" data-cv-pause><path d="M2 1h3.500v12H2zM8.500 1H12v12H8.500z" fill="currentColor"/></svg>
+    <svg viewBox="0 0 14 14" aria-hidden="true" data-cv-play><path d="M2 1l11 6-11 6z" fill="currentColor"/></svg>
+    <span id="cv-motion-t">Pause motion</span>
+  </button>
+  <p class="cv-sr" id="cv-clock-sr"></p>
+</section>
+
+<div class="cv-tape" aria-label="Free earplugs at both bars. Over 18s only. Challenge 25. Last entry 02:00. Cashless bars. Please leave quietly." role="note">
+  <div class="cv-tape__track" aria-hidden="true">
+    <p class="cv-tape__set">Free earplugs at both bars <i></i> Over 18s only <i></i> Challenge 25 <i></i> Last entry 02:00 <i></i> Cashless bars <i></i> Eighteen 18-inch subs <i></i> Leave quietly, Bristol's asleep <i></i></p>
+    <p class="cv-tape__set">Free earplugs at both bars <i></i> Over 18s only <i></i> Challenge 25 <i></i> Last entry 02:00 <i></i> Cashless bars <i></i> Eighteen 18-inch subs <i></i> Leave quietly, Bristol's asleep <i></i></p>
+    <p class="cv-tape__set">Free earplugs at both bars <i></i> Over 18s only <i></i> Challenge 25 <i></i> Last entry 02:00 <i></i> Cashless bars <i></i> Eighteen 18-inch subs <i></i> Leave quietly, Bristol's asleep <i></i></p>
+    <p class="cv-tape__set">Free earplugs at both bars <i></i> Over 18s only <i></i> Challenge 25 <i></i> Last entry 02:00 <i></i> Cashless bars <i></i> Eighteen 18-inch subs <i></i> Leave quietly, Bristol's asleep <i></i></p>
+  </div>
+</div>
+
+<!-- ================= WHAT'S ON ================= -->
+<section class="cv-sec cv-on cv-grain" id="cv-whatson" aria-labelledby="cv-on-h" style="--accent:var(--cv-blue)">
+  <div class="cv-wrap cv-split">
+    <div class="cv-sticky cv-rv" data-cv-col>
+      <p class="cv-strap">What's on</p>
+      <h2 class="cv-h2" id="cv-on-h">Every weekend, under the <em>tracks.</em></h2>
+      <p class="cv-lead">Fridays are jungle. Saturdays are drum &amp; bass. The first Sunday of the month is Sunday Weight: seven hours of dub that starts at four in the afternoon and has you home for the news.</p>
+      <figure class="cv-on__photo">
+        <img src="https://images.unsplash.com/photo-1643102842184-3be251fec986?auto=format&fit=crop&w=900&q=70" srcset="https://images.unsplash.com/photo-1643102842184-3be251fec986?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1643102842184-3be251fec986?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1643102842184-3be251fec986?auto=format&fit=crop&w=1400&q=70 1400w" sizes="(min-width:1200px) 38vw, 100vw" width="900" height="675" loading="lazy" decoding="async" alt="A packed dance floor seen from the back, with white light beams crossing above the crowd">
+        <figcaption>Arch One · 01:40</figcaption>
+      </figure>
+    </div>
+    <div class="cv-rv" data-cv-col>
+      <div class="cv-chips" role="group" aria-label="Filter nights">
+        <button class="cv-chip" type="button" data-cv-filter="all" aria-pressed="true"><span>All nights</span></button>
+        <button class="cv-chip" type="button" data-cv-filter="jungle" aria-pressed="false"><span>Jungle</span></button>
+        <button class="cv-chip" type="button" data-cv-filter="dnb" aria-pressed="false"><span>Drum &amp; bass</span></button>
+        <button class="cv-chip" type="button" data-cv-filter="dub" aria-pressed="false"><span>Dub</span></button>
+        <button class="cv-chip" type="button" data-cv-filter="both" aria-pressed="false"><span>Both arches</span></button>
+      </div>
+      <ul class="cv-evs" id="cv-evs"></ul>
+      <noscript><p class="cv-on__empty">Listings need JavaScript. We are open every Friday and Saturday from 22:00, and the first Sunday of each month from 16:00.</p></noscript>
+      <p class="cv-on__empty" id="cv-ev-empty" hidden>Nothing matches that filter in the next few weeks. Try another one.</p>
+      <div class="cv-on__more">
+        <button class="cv-btn cv-btn--ghost" id="cv-ev-more" type="button">Show more dates</button>
+        <p class="cv-small" id="cv-ev-count" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKETS ================= -->
+<section class="cv-sec cv-sec--coal cv-tk" id="cv-tickets" aria-labelledby="cv-tk-h" style="--accent:var(--cv-orange)">
+  <div class="cv-wrap">
+    <div class="cv-rv" style="margin-bottom:40px">
+      <p class="cv-strap">Tickets</p>
+      <h2 class="cv-h2" id="cv-tk-h">One price. <em>Nothing added.</em></h2>
+      <p class="cv-lead">Every price here already includes the booking fee, so the number you see is the number you pay. Pick a night, pick a release, tell us who is coming.</p>
+    </div>
+    <div class="cv-split cv-split--rev">
+      <div class="cv-tix cv-rv" id="cv-tix" data-cv-hidebar data-cv-col>
+        <ol class="cv-tix__steps" id="cv-tix-steps" aria-label="Booking steps">
+          <li aria-current="step"><b>1</b><span>Night</span></li>
+          <li><b>2</b><span>Release</span></li>
+          <li><b>3</b><span>How many</span></li>
+          <li><b>4</b><span>Your details</span></li>
+        </ol>
+        <form id="cv-tix-form" novalidate>
+          <fieldset class="cv-tix__panel" data-cv-step="1">
+            <legend class="cv-tix__q" tabindex="-1">Which night?</legend>
+            <div class="cv-opts" id="cv-tix-events"></div>
+            <p class="cv-tix__note">Showing the next six nights. Later dates go on sale eight weeks ahead.</p>
+          </fieldset>
+          <fieldset class="cv-tix__panel" data-cv-step="2" hidden>
+            <legend class="cv-tix__q" tabindex="-1">Which release?</legend>
+            <div class="cv-opts" id="cv-tix-tiers"></div>
+            <p class="cv-tix__note">Price includes booking fee. Same ticket, same queue, whichever release you buy.</p>
+          </fieldset>
+          <fieldset class="cv-tix__panel" data-cv-step="3" hidden>
+            <legend class="cv-tix__q" tabindex="-1">How many?</legend>
+            <div class="cv-qty">
+              <button type="button" id="cv-q-minus" aria-label="One fewer ticket">&minus;</button>
+              <output id="cv-q" aria-live="polite" aria-label="Number of tickets">2</output>
+              <button type="button" id="cv-q-plus" aria-label="One more ticket">+</button>
+            </div>
+            <p class="cv-tix__note">Up to six per order. Bringing eight or more? The <a class="cv-link" href="#cv-crew">crew list</a> is cheaper.</p>
+          </fieldset>
+          <fieldset class="cv-tix__panel" data-cv-step="4" hidden>
+            <legend class="cv-tix__q" tabindex="-1">Who is it for?</legend>
+            <div class="cv-form cv-tix__fields">
+              <div class="cv-sum" id="cv-tix-sum" role="alert" tabindex="-1" hidden></div>
+              <div class="cv-field">
+                <label for="cv-tix-name">Full name</label>
+                <input class="cv-input" id="cv-tix-name" name="name" type="text" autocomplete="name" aria-describedby="cv-tix-name-e" required>
+                <p class="cv-err" id="cv-tix-name-e"></p>
+              </div>
+              <div class="cv-field">
+                <label for="cv-tix-email">Email</label>
+                <input class="cv-input" id="cv-tix-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="cv-tix-email-e" required>
+                <p class="cv-err" id="cv-tix-email-e"></p>
+              </div>
+            </div>
+            <p class="cv-tix__note">The name must match the ID you bring. We use these details only to send your tickets and tell you about changes to this event.</p>
+          </fieldset>
+          <div class="cv-tix__panel" data-cv-step="5" hidden>
+            <h3 class="cv-tix__q" tabindex="-1" id="cv-tix-done-h">Held for ten minutes.</h3>
+            <div class="cv-tix__done">
+              <strong>You would now go to our secure payment page. Nothing has been charged.</strong>
+              <p id="cv-tix-recap"></p>
+              <p class="cv-small">This is a demonstration booking flow. No order has been placed and no details have been sent anywhere.</p>
+            </div>
+          </div>
+          <div class="cv-tix__nav">
+            <button type="button" class="cv-tix__back" id="cv-tix-back" hidden>Back</button>
+            <button type="submit" class="cv-btn" id="cv-tix-next"><span id="cv-tix-next-t">Continue</span> <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></button>
+          </div>
+        </form>
+      </div>
+      <aside class="cv-sticky cv-rv" aria-label="Your order" data-cv-col>
+        <div class="cv-stub">
+          <div class="cv-stub__top">
+            <span class="cv-stub__k">Culvert · admit <span id="cv-s-qty">2</span></span>
+            <p class="cv-stub__night" id="cv-s-night">Undertow</p>
+            <p class="cv-stub__date" id="cv-s-date">Friday · doors 22:00</p>
+            <dl class="cv-stub__rows">
+              <div><dt class="cv-stub__k">Release</dt><dd id="cv-s-tier">Standard</dd></div>
+              <div><dt class="cv-stub__k">Each</dt><dd id="cv-s-each">£13.50</dd></div>
+              <div><dt class="cv-stub__k">Room</dt><dd id="cv-s-room">Both arches</dd></div>
+              <div><dt class="cv-stub__k">Last entry</dt><dd id="cv-s-last">02:00</dd></div>
+            </dl>
+          </div>
+          <div class="cv-stub__tear" aria-hidden="true"></div>
+          <div class="cv-stub__bot">
+            <div>
+              <span class="cv-stub__k">Total to pay</span>
+              <span class="cv-stub__total" id="cv-s-total" aria-live="polite">£27.00</span>
+              <p class="cv-stub__fee">Price includes booking fee. Nothing is added at checkout.</p>
+            </div>
+            <div class="cv-stub__bars" aria-hidden="true"></div>
+          </div>
+        </div>
+        <p class="cv-small cv-tix__aside-note">Over 18s only, ID checked on the door. Tickets are name-checked; you can change the name for free until 18:00 on the day. Prices shown are illustrative.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE RIG ================= -->
+<section class="cv-sec cv-sec--black cv-rig" id="cv-rig" aria-labelledby="cv-rig-h" style="--accent:var(--cv-blue)">
+  <div class="cv-wrap">
+    <div class="cv-rig__head cv-rv">
+      <p class="cv-strap">The rig &amp; the arches</p>
+      <h2 class="cv-h2" id="cv-rig-h">Eighteen <em>eighteens.</em></h2>
+      <p class="cv-lead">Culvert was built around its sound system, not the other way round. Every cabinet was cut, glued and tuned by hand in a lock-up off Feeder Road, then voiced in the arches over two winters. No off-the-shelf boxes, no badges on the grilles. Just birch ply, eighteen 18-inch subs and a lot of patience.</p>
+    </div>
+    <div class="cv-split">
+      <div class="cv-sticky cv-rv" data-cv-col>
+        <figure class="cv-rig__photo">
+          <img src="https://images.unsplash.com/photo-1645536729159-78eccc72f156?auto=format&fit=crop&w=900&q=70" srcset="https://images.unsplash.com/photo-1645536729159-78eccc72f156?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1645536729159-78eccc72f156?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1645536729159-78eccc72f156?auto=format&fit=crop&w=1400&q=70 1400w" sizes="(min-width:1200px) 38vw, 100vw" width="900" height="720" loading="lazy" decoding="async" alt="A wall covered in loudspeaker drivers of every size, cones facing out">
+          <figcaption class="cv-plate"><b>The workshop wall</b>Every driver we have retired since 2019</figcaption>
+        </figure>
+        <div class="cv-stats">
+          <p class="cv-stat"><b>600</b><span>Capacity across two arches</span></p>
+          <p class="cv-stat"><b>18<small>×18"</small></b><span>Subs, all hand-built</span></p>
+          <p class="cv-stat"><b>4<small>-way</small></b><span>Active, measured all night</span></p>
+          <p class="cv-stat"><b>0</b><span>Brand names on the boxes</span></p>
+        </div>
+      </div>
+      <div class="cv-archs cv-rv" data-cv-col>
+        <article class="cv-arch">
+          <div class="cv-arch__img">
+            <img src="https://images.unsplash.com/photo-1785191422553-74039818d6c8?auto=format&fit=crop&w=800&q=70" srcset="https://images.unsplash.com/photo-1785191422553-74039818d6c8?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1785191422553-74039818d6c8?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1785191422553-74039818d6c8?auto=format&fit=crop&w=1200&q=70 1200w" sizes="(min-width:1200px) 24vw, (min-width:768px) 40vw, 100vw" width="800" height="1000" loading="lazy" decoding="async" alt="A long, dimly lit brick-vaulted tunnel with a warm lamp on the wall">
+            <span class="cv-arch__no" aria-hidden="true">Arch 7</span>
+          </div>
+          <div class="cv-arch__body">
+            <span class="cv-arch__cap">Arch One · 400 capacity</span>
+            <h3 class="cv-h3">The main arch</h3>
+            <p>Thirty metres of Victorian brick with a stack in each corner, facing in. You dance inside the sound instead of in front of it, and the DJ is on the floor with you, not on a stage.</p>
+            <ul class="cv-spec">
+              <li><span>18-inch scoop subs</span><b>12</b></li>
+              <li><span>15-inch kick bins</span><b>8</b></li>
+              <li><span>10-inch mid horns</span><b>8</b></li>
+              <li><span>Tweeter arrays</span><b>4</b></li>
+            </ul>
+          </div>
+        </article>
+        <article class="cv-arch">
+          <div class="cv-arch__img">
+            <img src="https://images.unsplash.com/photo-1597183739841-5ca26ab0a604?auto=format&fit=crop&w=800&q=70" srcset="https://images.unsplash.com/photo-1597183739841-5ca26ab0a604?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1597183739841-5ca26ab0a604?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1597183739841-5ca26ab0a604?auto=format&fit=crop&w=1200&q=70 1200w" sizes="(min-width:1200px) 24vw, (min-width:768px) 40vw, 100vw" width="800" height="1000" loading="lazy" decoding="async" alt="Close-up of a woven loudspeaker cone and dust cap in warm light">
+            <span class="cv-arch__no" aria-hidden="true">Arch 8</span>
+          </div>
+          <div class="cv-arch__body">
+            <span class="cv-arch__cap">Arch Two · 200 capacity</span>
+            <h3 class="cv-h3">The dub arch</h3>
+            <p>One wall of sound at the far end, a valve preamp and a single turntable on a concrete plinth. Steppers and dubwise on club nights, the whole room on Sunday Weight. No strobes in here, ever.</p>
+            <ul class="cv-spec">
+              <li><span>18-inch subs</span><b>6</b></li>
+              <li><span>12-inch mids</span><b>4</b></li>
+              <li><span>Horn tops</span><b>2</b></li>
+              <li><span>Valve preamp, built in-house</span><b>1</b></li>
+            </ul>
+          </div>
+        </article>
+        <div class="cv-path">
+          <div class="cv-path__cap">
+            <h3 class="cv-h3">Signal path, Arch One</h3>
+            <p class="cv-small">Tuned for weight, not volume</p>
+          </div>
+          <table>
+            <thead><tr><th scope="col">Band</th><th scope="col">Boxes</th><th scope="col">Range</th><th scope="col"><span class="cv-sr">Share of the spectrum</span></th></tr></thead>
+            <tbody>
+              <tr><td>Sub</td><td data-l="Boxes">12 × 18" scoops</td><td data-l="Range">30 to 80 Hz</td><td data-l="Spectrum"><span class="cv-band" style="--w:22%"></span></td></tr>
+              <tr><td>Kick</td><td data-l="Boxes">8 × 15" bins</td><td data-l="Range">80 to 250 Hz</td><td data-l="Spectrum"><span class="cv-band" style="--w:38%"></span></td></tr>
+              <tr><td>Mid</td><td data-l="Boxes">8 × 10" horns</td><td data-l="Range">250 Hz to 2.5 kHz</td><td data-l="Spectrum"><span class="cv-band" style="--w:70%"></span></td></tr>
+              <tr><td>Top</td><td data-l="Boxes">4 tweeter arrays</td><td data-l="Range">2.5 kHz and up</td><td data-l="Spectrum"><span class="cv-band" style="--w:100%"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EARS ================= -->
+<section class="cv-sec cv-ears" id="cv-ears" aria-labelledby="cv-ears-h" style="--accent:var(--cv-yellow)">
+  <div class="cv-wrap">
+    <div class="cv-split cv-split--even">
+      <div class="cv-rv" data-cv-col>
+        <p class="cv-strap">Protect your ears</p>
+        <h2 class="cv-h2" id="cv-ears-h">Ringing is not a <em>souvenir.</em></h2>
+        <p class="cv-lead">We built this system to be felt in your chest. That is exactly why we want you in earplugs. A good pair takes the edge off the top end and leaves the bass where it belongs. If your ears ring on the way home, that was damage, and it adds up.</p>
+        <div class="cv-ears__cta">
+          <a class="cv-btn" href="#cv-welfare">Welfare on the night <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
+        </div>
+      </div>
+      <div class="cv-sticky cv-rv" data-cv-col>
+        <div class="cv-db" id="cv-db">
+          <p class="cv-db__head" style="margin:0"><span>How loud, for how long</span><span>dB(A)</span></p>
+          <div class="cv-db__row"><span class="cv-db__n">60<small>dB</small></span><div class="cv-db__bar"><i style="--w:36%"></i></div><p class="cv-db__t" style="margin:0"><b>Talking at the bar.</b> Fine all night.</p></div>
+          <div class="cv-db__row"><span class="cv-db__n">85<small>dB</small></span><div class="cv-db__bar"><i style="--w:62%"></i></div><p class="cv-db__t" style="margin:0"><b>The yard at peak.</b> Risk starts after about eight hours.</p></div>
+          <div class="cv-db__row cv-db__row--us"><span class="cv-db__n">100<small>dB</small></span><div class="cv-db__bar"><i style="--w:83%"></i></div><p class="cv-db__t" style="margin:0"><b>Our dance floor, on average.</b> About 15 minutes without protection.</p></div>
+          <div class="cv-db__row"><span class="cv-db__n">110<small>dB</small></span><div class="cv-db__bar"><i style="--w:97%"></i></div><p class="cv-db__t" style="margin:0"><b>Head in the scoop.</b> Under two minutes. Please don't.</p></div>
+          <p class="cv-db__foot">Times follow widely used workplace noise guidance and are a guide, not medical advice. We log levels at the desk all night.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="cv-plugs cv-rv">
+      <li><b>Free foam plugs</b>At both bars, the cloakroom and the Dry Room. Ask, take two, no questions.</li>
+      <li><b>Filtered plugs, £4</b>Reusable, flatter sound, sold at cost from the cloakroom. Illustrative price.</li>
+      <li><b>Take ten</b>The yard and the Dry Room are quiet. Ten minutes off the floor every hour helps.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CREW LIST ================= -->
+<section class="cv-sec cv-sec--slab cv-crew cv-grain" id="cv-crew" aria-labelledby="cv-crew-h" style="--accent:var(--cv-blue)">
+  <div class="cv-wrap cv-split">
+    <div class="cv-rv" data-cv-col>
+      <p class="cv-strap">Crew list &amp; birthdays</p>
+      <h2 class="cv-h2" id="cv-crew-h">Eight or more? Come as a <em>crew.</em></h2>
+      <p class="cv-lead">The crew list is our group rate for club nights, for groups of 8 to 30. One name on the door, a wristband each, and everyone saves £3 on the standard ticket. There is no minimum spend, no booths and no bottle service. We are a dance floor.</p>
+      <ol class="cv-steps3">
+        <li><b>Send the form</b> at least 48 hours before the night.</li>
+        <li><b>We reply within one working day</b> with the price and a payment link for the lead booker.</li>
+        <li><b>Arrive together before 00:30</b> with ID. Tell us if it is a birthday and we will sort a shout from the MC.</li>
+      </ol>
+      <figure class="cv-crew__photo">
+        <img src="https://images.unsplash.com/photo-1764510377343-e5b12385791b?auto=format&fit=crop&w=900&q=70" srcset="https://images.unsplash.com/photo-1764510377343-e5b12385791b?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1764510377343-e5b12385791b?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1764510377343-e5b12385791b?auto=format&fit=crop&w=1400&q=70 1400w" sizes="(min-width:1200px) 38vw, 100vw" width="900" height="506" loading="lazy" decoding="async" alt="A full, low-ceilinged club room seen from the back of the crowd">
+      </figure>
+    </div>
+    <div class="cv-panel cv-sticky cv-rv" data-cv-hidebar data-cv-col>
+      <form class="cv-form" id="cv-crew-form" novalidate>
+        <div class="cv-sum" id="cv-crew-sum" role="alert" tabindex="-1" hidden></div>
+        <div class="cv-field">
+          <label for="cv-cr-type">What is it for?</label>
+          <select class="cv-input" id="cv-cr-type" name="type">
+            <option value="crew">Crew list (8 to 30 people)</option>
+            <option value="birthday">Birthday (8 to 30 people)</option>
+            <option value="hire">Private hire (60 to 600 people)</option>
+          </select>
+        </div>
+        <div class="cv-field">
+          <label for="cv-cr-night">Which night?</label>
+          <select class="cv-input" id="cv-cr-night" name="night" aria-describedby="cv-cr-night-e">
+            <option value="">Choose a night</option>
+          </select>
+          <p class="cv-err" id="cv-cr-night-e"></p>
+        </div>
+        <div class="cv-field">
+          <label for="cv-cr-name">Your name</label>
+          <input class="cv-input" id="cv-cr-name" name="name" type="text" autocomplete="name" aria-describedby="cv-cr-name-e" required>
+          <p class="cv-err" id="cv-cr-name-e"></p>
+        </div>
+        <div class="cv-field">
+          <label for="cv-cr-email">Email</label>
+          <input class="cv-input" id="cv-cr-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="cv-cr-email-e" required>
+          <p class="cv-err" id="cv-cr-email-e"></p>
+        </div>
+        <div class="cv-field">
+          <label for="cv-cr-phone">Phone <small>(optional)</small></label>
+          <input class="cv-input" id="cv-cr-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="cv-cr-phone-e">
+          <p class="cv-err" id="cv-cr-phone-e"></p>
+        </div>
+        <div class="cv-field">
+          <label for="cv-cr-size">How many of you?</label>
+          <input class="cv-input" id="cv-cr-size" name="size" type="number" inputmode="numeric" min="8" max="30" step="1" aria-describedby="cv-cr-size-h cv-cr-size-e" required>
+          <p class="cv-hint" id="cv-cr-size-h">Crew list and birthdays: 8 to 30.</p>
+          <p class="cv-err" id="cv-cr-size-e"></p>
+        </div>
+        <div class="cv-field cv-field--full">
+          <label for="cv-cr-msg">Anything we should know? <small>(optional)</small></label>
+          <textarea class="cv-input" id="cv-cr-msg" name="message" rows="4"></textarea>
+        </div>
+        <label class="cv-check" for="cv-cr-consent">
+          <input type="checkbox" id="cv-cr-consent" name="consent" aria-describedby="cv-cr-consent-e" required>
+          <span>I agree to Culvert using these details to reply to this enquiry, as set out in the <a class="cv-link" href="#cv-privacy">privacy notice</a>. (Required)</span>
+          <span class="cv-err" id="cv-cr-consent-e"></span>
+        </label>
+        <label class="cv-check" for="cv-cr-mkt">
+          <input type="checkbox" id="cv-cr-mkt" name="marketing">
+          <span>Also email me line-ups and early-bird releases. Optional, and you can unsubscribe at any time.</span>
+        </label>
+        <div class="cv-form__foot">
+          <button class="cv-btn" type="submit">Send enquiry <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></button>
+          <p class="cv-small">Or call the office on <a class="cv-link" href="tel:+441174960142">0117 496 0142</a></p>
+        </div>
+      </form>
+      <div class="cv-ok" id="cv-crew-ok" tabindex="-1" hidden>
+        <h3>Got it. Speak soon.</h3>
+        <p id="cv-crew-ok-t"></p>
+        <p class="cv-small">This is a demonstration form, so nothing has actually been sent or stored.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOOR POLICY ================= -->
+<section class="cv-sec cv-door cv-grain" id="cv-door" aria-labelledby="cv-door-h" style="--accent:var(--cv-inkblue)">
+  <div class="cv-wrap cv-split">
+    <div class="cv-sticky cv-rv" data-cv-col>
+      <p class="cv-strap">Door policy &amp; house rules</p>
+      <h2 class="cv-h2" id="cv-door-h">Read this before you queue.</h2>
+      <p class="cv-lead">Eight rules, written plainly. They are the same for everyone, including our mates, the DJs' mates and you.</p>
+      <ul class="cv-door__id" aria-label="Accepted ID">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="3.2"/></svg>Passport</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="3.2"/></svg>Photocard driving licence</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="3.2"/></svg>PASS-hologram card</li>
+      </ul>
+      <a class="cv-btn" href="#cv-faq">Still unsure? Read the FAQ</a>
+    </div>
+    <ol class="cv-rules cv-rv" data-cv-col>
+      <li class="cv-rule"><div><h3>Over 18s only</h3><p>No exceptions, and that includes under-18s who arrive with an adult. If we cannot confirm your age you will not be coming in, and the ticket will not be refunded.</p></div></li>
+      <li class="cv-rule"><div><h3>Challenge 25</h3><p>If you look under 25, expect to be asked for ID. We accept a passport, a photocard driving licence or a card carrying the PASS hologram. Originals only: no photos, photocopies or screenshots of ID.</p></div></li>
+      <li class="cv-rule"><div><h3>Searches on entry</h3><p>Our door team are SIA-licensed. Everyone is searched as a condition of entry, bags included, and we use metal-detecting wands. You can always ask to be searched by someone of the same gender.</p></div></li>
+      <li class="cv-rule"><div><h3>Right of admission</h3><p>The management reserves the right of admission and the door supervisor's decision is final. If you are too drunk to look after yourself we will turn you away, find you some water and help you get home.</p></div></li>
+      <li class="cv-rule"><div><h3>Last entry 02:00</h3><p>Doors 22:00, last entry 02:00, music off at 05:00. On Sunday Weight it is doors 16:00, last entry 21:00, finish 23:00. A ticket does not override last entry.</p></div></li>
+      <li class="cv-rule"><div><h3>No re-entry</h3><p>Once you are in, you are in. The smoking yard is inside the venue, so you will not need to leave. If you have a medical or access reason to step out, speak to the door supervisor first.</p></div></li>
+      <li class="cv-rule"><div><h3>No dress code</h3><p>Wear what you can dance in. The floor is concrete, so closed shoes are sensible. No bags bigger than A4, no glass, no outside drinks, and no professional cameras without accreditation.</p></div></li>
+      <li class="cv-rule"><div><h3>Zero tolerance</h3><p>Drugs: anyone found with them is refused entry or removed, and dealing is reported to the police. Harassment and discrimination of any kind, including racism, sexism, homophobia, transphobia, ableism and unwanted touching: you are out, and you are not coming back.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= WELFARE ================= -->
+<section class="cv-sec cv-sec--black cv-wel" id="cv-welfare" aria-labelledby="cv-wel-h" style="--accent:var(--cv-orange)">
+  <div class="cv-wrap">
+    <div class="cv-wel__head cv-rv">
+      <div>
+        <p class="cv-strap">Safety &amp; welfare</p>
+        <h2 class="cv-h2" id="cv-wel-h">Look after <em>each other.</em></h2>
+        <p class="cv-lead" style="margin-bottom:0">A good night is one everybody gets home from. Two trained welfare staff in orange lanyards work every session, and every member of the team, from the bar to the booth, knows what to do if you need help.</p>
+      </div>
+      <figure class="cv-wel__photo">
+        <img src="https://images.unsplash.com/photo-1765738042644-a290f0a4a29f?auto=format&fit=crop&w=900&q=70" srcset="https://images.unsplash.com/photo-1765738042644-a290f0a4a29f?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1765738042644-a290f0a4a29f?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1765738042644-a290f0a4a29f?auto=format&fit=crop&w=1400&q=70 1400w" sizes="(min-width:768px) 44vw, 100vw" width="900" height="563" loading="lazy" decoding="async" alt="Dancers in silhouette under a single beam of light on a dark dance floor">
+      </figure>
+    </div>
+    <div class="cv-999 cv-rv">
+      <strong>Something wrong?</strong>
+      <p>Tell any member of staff, at any time. In an emergency call <a href="tel:999">999</a>. To report something afterwards, call <a href="tel:101">101</a>.</p>
+    </div>
+    <div class="cv-cards">
+      <article class="cv-card cv-rv">
+        <svg class="cv-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 7h30v20H19l-8 7v-7H5z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M13 17h14" stroke="currentColor" stroke-width="3"/></svg>
+        <h3 class="cv-h3">Ask for Angela</h3>
+        <p>If you feel unsafe, uncomfortable, or a date is not going the way you hoped, go to any bar or any member of staff and ask for Angela. They will take you somewhere quiet and help you get sorted. No explanation needed.</p>
+      </article>
+      <article class="cv-card cv-rv">
+        <svg class="cv-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l13 5v10c0 8-5 14-13 17C12 33 7 27 7 19V9z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M20 13v12M14 19h12" stroke="currentColor" stroke-width="3"/></svg>
+        <h3 class="cv-h3">Welfare team &amp; the Dry Room</h3>
+        <p>The Dry Room, beside the cloakroom, is our safe space: low light, seats, water, phone chargers and someone to talk to. Come for five minutes or the rest of the night. Nobody will ask why.</p>
+      </article>
+      <article class="cv-card cv-rv">
+        <svg class="cv-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 12h20l-3 23H13z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M7 7h26" stroke="currentColor" stroke-width="3"/><path d="M12 22h16" stroke="currentColor" stroke-width="3"/></svg>
+        <h3 class="cv-h3">Drink spiking</h3>
+        <p>If you think you or a friend has been spiked, tell the nearest member of staff straight away and do not leave alone. We will stay with you, keep the drink and get help. Call 999 in an emergency, and report it on 101.</p>
+      </article>
+      <article class="cv-card cv-rv">
+        <svg class="cv-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4c7 9 11 14 11 20a11 11 0 0 1-22 0c0-6 4-11 11-20z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 25a5 5 0 0 0 5 5" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+        <h3 class="cv-h3">Free tap water</h3>
+        <p>Free tap water at every bar, always, with no need to buy anything. There is also a self-serve tap beside the Arch Two bar, so you never have to queue for it.</p>
+      </article>
+      <article class="cv-card cv-rv">
+        <svg class="cv-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M22 3L9 22h9l-2 15 15-21h-10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+        <h3 class="cv-h3">Earplugs, strobes &amp; haze</h3>
+        <p>Free earplugs at both bars, the cloakroom and the Dry Room. We use strobe lighting, lasers and theatrical haze at club nights. Arch Two never uses strobes, and Sunday Weight is strobe-free throughout.</p>
+      </article>
+      <article class="cv-card cv-card--wide cv-rv">
+        <div><svg class="cv-ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="7" r="4" fill="currentColor"/><path d="M17 13v11h10l4 10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 30a9 9 0 1 1-11-11" fill="none" stroke="currentColor" stroke-width="3"/><path d="M17 18h9" stroke="currentColor" stroke-width="3"/></svg>
+        <h3 class="cv-h3">Accessibility</h3><p class="cv-small">Tell us what you need and we will have it ready.</p></div>
+        <div class="cv-card__cols">
+          <ul class="cv-ticks">
+            <li>Step-free route from Sidings Lane, through the yard, into both arches</li>
+            <li>Accessible toilet beside the Arch One bar</li>
+            <li>Free personal-assistant ticket with any ticket</li>
+            <li>Seated rest area with a clear view in Arch One</li>
+            <li>No need to queue if standing is difficult</li>
+          </ul>
+          <div>
+            <p>To arrange any of this, email <a class="cv-link" href="mailto:access@culvert.example">access@culvert.example</a> or call <a class="cv-link" href="tel:+441174960155">0117 496 0155</a> at least 48 hours before the night. You will not be asked to prove anything on the door.</p>
+            <a class="cv-btn cv-btn--sm" href="mailto:access@culvert.example?subject=Access%20booking">Arrange access</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIND US ================= -->
+<section class="cv-sec cv-sec--coal cv-find" id="cv-find" aria-labelledby="cv-find-h" style="--accent:var(--cv-blue)">
+  <div class="cv-wrap cv-split cv-split--even">
+    <div class="cv-sticky cv-rv" data-cv-col>
+      <div class="cv-map">
+        <svg viewBox="0 0 640 470" role="img" aria-labelledby="cv-map-t cv-map-d" font-family="'Barlow Condensed',Arial Narrow,sans-serif" font-style="italic" font-weight="700">
+          <title id="cv-map-t">Map of the walk from Bristol Temple Meads to Culvert</title>
+          <desc id="cv-map-d">Leave the station by the main exit, walk down to Temple Gate, turn left along Cattle Market Road, then left into Sidings Lane. Culvert is in arches 7 and 8 of the viaduct.</desc>
+          <rect width="640" height="470" fill="#0d0e11"/>
+          <g stroke="#15161a" stroke-width="1"><path d="M0 94h640M0 188h640M0 282h640M0 376h640M128 0v470M256 0v470M384 0v470M512 0v470"/></g>
+          <path d="M-10 420C110 372 210 450 330 418S560 356 650 392V480H-10z" fill="#101a29"/>
+          <text x="52" y="448" font-size="14" letter-spacing="3" fill="#4b6385">RIVER AVON</text>
+          <g fill="none" stroke="#24252b" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 286l130 14 320 23 180 14" stroke-width="17"/>
+            <path d="M150 146v154" stroke-width="15"/>
+            <path d="M470 323l22-91 124 34" stroke-width="10"/>
+            <path d="M300 311l-22 120" stroke-width="10"/>
+          </g>
+          <g font-size="13" letter-spacing="2.4" fill="#8e8e98">
+            <text x="216" y="298" transform="rotate(4 216 298)">CATTLE MARKET ROAD</text>
+            <text transform="translate(139 268) rotate(-90)">TEMPLE GATE</text>
+            <text x="534" y="278" transform="rotate(15 534 278)">SIDINGS LANE</text>
+          </g>
+          <path d="M240 102L660 215" stroke="#5b5c63" stroke-width="20" fill="none"/>
+          <path d="M240 102L660 215" stroke="#0d0e11" stroke-width="13" stroke-dasharray="2 9" fill="none"/>
+          <path d="M240 102L660 215" stroke="#8c8d95" stroke-width="2" fill="none"/>
+          <g transform="translate(400 145.300) rotate(15)" fill="#1b1c21" stroke="#5b5c63" stroke-width="2">
+            <path d="M0 30V17a8 8 0 0 1 16 0v13M22 30V17a8 8 0 0 1 16 0v13M44 30V17a8 8 0 0 1 16 0v13M66 30V17a8 8 0 0 1 16 0v13M88 30V17a8 8 0 0 1 16 0v13M110 30V17a8 8 0 0 1 16 0v13M176 30V17a8 8 0 0 1 16 0v13M198 30V17a8 8 0 0 1 16 0v13"/>
+            <path d="M132 30V17a8 8 0 0 1 16 0v13M154 30V17a8 8 0 0 1 16 0v13" fill="#3d8bff" stroke="#3d8bff"/>
+          </g>
+          <g>
+            <rect x="72" y="58" width="172" height="88" fill="#1b1c21" stroke="#44454c" stroke-width="2"/>
+            <path d="M84 76h148M84 92h148M84 108h148" stroke="#2c2d33" stroke-width="5"/>
+            <text x="158" y="134" text-anchor="middle" font-size="17" letter-spacing="2.5" fill="#f5f5f2" font-weight="800">TEMPLE MEADS</text>
+          </g>
+          <path d="M150 150V300L470 323l22-88 40-2" fill="none" stroke="#3d8bff" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/>
+          <g transform="translate(300 334)"><rect x="-44" y="-13" width="88" height="26" fill="#3d8bff"/><text y="5" text-anchor="middle" font-size="15" letter-spacing="2" fill="#08080a" font-weight="800">6 MIN WALK</text></g>
+          <g transform="translate(150 232)"><circle r="13" fill="#0d0e11" stroke="#f5f5f2" stroke-width="2.5"/><text y="5.500" text-anchor="middle" font-size="15" fill="#f5f5f2" font-weight="800">N</text><text x="22" y="5" font-size="13" letter-spacing="2" fill="#c9c9cf">NIGHT BUSES</text></g>
+          <g transform="translate(470 323)"><circle r="13" fill="#0d0e11" stroke="#f5f5f2" stroke-width="2.5"/><text y="5.500" text-anchor="middle" font-size="15" fill="#f5f5f2" font-weight="800">T</text><text x="-2" y="34" text-anchor="middle" font-size="13" letter-spacing="2" fill="#c9c9cf">TAXI PICK-UP</text></g>
+          <g transform="translate(540 196)">
+            <circle r="26" fill="none" stroke="#3d8bff" stroke-width="2" opacity=".55"/>
+            <circle r="40" fill="none" stroke="#3d8bff" stroke-width="1.500" opacity=".28"/>
+            <path d="M0 -92V-34" stroke="#3d8bff" stroke-width="2"/>
+            <rect x="-62" y="-136" width="124" height="46" fill="#3d8bff"/>
+            <text y="-116" text-anchor="middle" font-size="21" letter-spacing="2" fill="#08080a" font-weight="900">CULVERT</text>
+            <text y="-99" text-anchor="middle" font-size="12" letter-spacing="2" fill="#08080a">ARCHES 7 &amp; 8</text>
+          </g>
+          <g transform="translate(606 392)" fill="none" stroke="#8e8e98" stroke-width="2"><path d="M0 16V-16M-7 -7L0 -16L7 -7"/><text y="-24" text-anchor="middle" font-size="13" fill="#8e8e98" stroke="none">N</text></g>
+        </svg>
+        <p class="cv-map__note">Illustrative map, not to scale</p>
+      </div>
+      <div class="cv-addr">
+        <address><b>Culvert</b>Arches 7 &amp; 8, Sidings Lane<br>St Philip's, Bristol BS2 0ZZ</address>
+        <div class="cv-addr__row">
+          <button class="cv-btn cv-btn--sm" type="button" id="cv-copy" data-cv-text="Culvert, Arches 7 &amp; 8, Sidings Lane, St Philip's, Bristol BS2 0ZZ">Copy address</button>
+          <p class="cv-small" id="cv-copy-s" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+    <div class="cv-rv" data-cv-col>
+      <p class="cv-strap">Getting here &amp; home</p>
+      <h2 class="cv-h2" id="cv-find-h">Six minutes from <em>platform 3.</em></h2>
+      <p class="cv-lead">We are under the main line just east of Temple Meads. Look for the two arches with the orange lamp over the door, and listen.</p>
+      <ul class="cv-ways">
+        <li class="cv-way">
+          <svg viewBox="0 0 36 36" aria-hidden="true"><rect x="8" y="4" width="20" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><path d="M8 16h20M12 32l4-6M24 32l-4-6" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+          <h3>By train</h3>
+          <p>Bristol Temple Meads is a six-minute walk: main exit, down to Temple Gate, left along Cattle Market Road, left into Sidings Lane. Lawrence Hill station is 15 minutes on foot.</p>
+        </li>
+        <li class="cv-way">
+          <svg viewBox="0 0 36 36" aria-hidden="true"><rect x="5" y="6" width="26" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 17h26" stroke="currentColor" stroke-width="3"/><circle cx="11" cy="30" r="3" fill="currentColor"/><circle cx="25" cy="30" r="3" fill="currentColor"/></svg>
+          <h3>By bus</h3>
+          <p>Most city services stop at Temple Gate. Night buses leave from Temple Gate and Old Market through the small hours; check times with the operator before you travel.</p>
+        </li>
+        <li class="cv-way">
+          <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="8" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="28" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M8 24l7-12h8l5 12M15 12l5 12" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+          <h3>By bike</h3>
+          <p>Forty covered stands in the yard, lit and on camera, inside the door team's line of sight. Bring your own lock.</p>
+        </li>
+        <li class="cv-way">
+          <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 26v-7l4-9h20l4 9v7z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M4 19h28" stroke="currentColor" stroke-width="3"/><circle cx="10" cy="28" r="3" fill="currentColor"/><circle cx="26" cy="28" r="3" fill="currentColor"/></svg>
+          <h3>By car or taxi</h3>
+          <p>There is no parking at the arches and Sidings Lane is closed to traffic on club nights. Drop-offs and pick-ups are from the marked bay on Cattle Market Road.</p>
+        </li>
+      </ul>
+      <div class="cv-home" id="cv-home">
+        <h3 class="cv-h3">Getting home</h3>
+        <p>Use a licensed taxi or a private hire car you have booked yourself. Never get into a car that approaches you. If your phone has died, the door team will call one for you and you can wait inside.</p>
+        <p><strong style="color:#fff">Please leave quietly. Our neighbours are asleep.</strong> Keep the singing for the dance floor and take your rubbish with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRACTICAL ================= -->
+<section class="cv-sec cv-sec--coal cv-prac" id="cv-practical" aria-labelledby="cv-prac-h" style="--accent:var(--cv-orange)">
+  <div class="cv-wrap">
+    <h2 class="cv-sr" id="cv-prac-h">Practical information</h2>
+    <div class="cv-prac__grid cv-rv">
+      <div class="cv-prac__item"><p class="cv-strap">Cloakroom</p><b class="cv-big">£2.50 an item</b><p>Inside the yard door, open all night. Card only. Keep your ticket: no ticket, no coat until the end of the night. Illustrative price.</p></div>
+      <div class="cv-prac__item"><p class="cv-strap">Lost property</p><b class="cv-big">Kept 28 days</b><p>Email <a class="cv-link" href="mailto:lost@culvert.example">lost@culvert.example</a> with a description and the night you were in. Collection is from the office, Tuesday to Friday.</p></div>
+      <div class="cv-prac__item"><p class="cv-strap">Bars</p><b class="cv-big">Cashless</b><p>Card and contactless only at both bars and the cloakroom. There is no cash machine on site. Last orders 04:30, tap water always free.</p></div>
+      <div class="cv-prac__item"><p class="cv-strap">Photography</p><b class="cv-big">No flash</b><p>Our photographer shoots most nights and pictures may be used online. Do not want to be in them? Tell the photographer, or email <a class="cv-link" href="mailto:photos@culvert.example">photos@culvert.example</a> and we will take them down.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HIRE ================= -->
+<section class="cv-sec cv-hire" id="cv-hire" aria-labelledby="cv-hire-h" style="--accent:var(--cv-orange)">
+  <div class="cv-hire__bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1766589177087-8dc96faf136d?auto=format&fit=crop&w=1400&q=65" srcset="https://images.unsplash.com/photo-1766589177087-8dc96faf136d?auto=format&fit=crop&w=700&q=65 700w, https://images.unsplash.com/photo-1766589177087-8dc96faf136d?auto=format&fit=crop&w=1400&q=65 1400w, https://images.unsplash.com/photo-1766589177087-8dc96faf136d?auto=format&fit=crop&w=2000&q=65 2000w" sizes="100vw" width="1400" height="933" loading="lazy" decoding="async" alt="">
+  </div>
+  <div class="cv-wrap">
+    <div class="cv-hire__in cv-rv">
+      <p class="cv-strap">Private hire &amp; birthdays</p>
+      <h2 class="cv-h2" id="cv-hire-h">Sunday to Thursday, the arches are <em>yours.</em></h2>
+      <p class="cv-lead">Launches, wrap parties, label nights, big birthdays. Hire Arch Two on its own or take the whole place. The rig and an engineer who knows it come as standard.</p>
+      <ul class="cv-hire__facts">
+        <li><b>60 to 200</b>Arch Two on its own</li>
+        <li><b>Up to 600</b>Both arches and the yard</li>
+        <li><b>Until 01:00</b>Sunday to Thursday licence</li>
+      </ul>
+      <a class="cv-btn" href="#cv-crew" data-cv-type="hire">Ask about hire <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="cv-sec cv-faq cv-grain" id="cv-faq" aria-labelledby="cv-faq-h" style="--accent:var(--cv-blue)">
+  <div class="cv-wrap cv-split">
+    <div class="cv-sticky cv-rv" data-cv-col>
+      <p class="cv-strap">FAQ</p>
+      <h2 class="cv-h2" id="cv-faq-h">Asked at the <em>door.</em></h2>
+      <p class="cv-lead">If yours is not here, the office is open Tuesday to Friday, 11:00 to 17:00.</p>
+      <p class="cv-faq__contact">
+        <a href="mailto:hello@culvert.example">hello@culvert.example</a>
+        <a href="tel:+441174960142">0117 496 0142</a>
+      </p>
+      <a class="cv-btn cv-btn--ghost" href="mailto:hello@culvert.example">Email the office</a>
+    </div>
+    <div class="cv-acc cv-rv" id="cv-acc" data-cv-col>
+      <div class="cv-acc__item cv-open"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="true" aria-controls="cv-faq-1" id="cv-faq-b1"><span>What time should I get there?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-1" role="region" aria-labelledby="cv-faq-b1"><div><p>Doors are at 22:00 and last entry is 02:00. The queue is longest between 23:30 and 00:30, so come before or after if you can. Headline sets usually start around 01:00, and set times go up by the cloakroom on the night.</p></div></div></div>
+      <div class="cv-acc__item"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="false" aria-controls="cv-faq-2" id="cv-faq-b2"><span>What ID do you accept?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-2" role="region" aria-labelledby="cv-faq-b2"><div><p>A passport, a photocard driving licence or a card with the PASS hologram. It has to be the original and it has to be in date. We cannot accept photos, photocopies or screenshots, however clear they are.</p></div></div></div>
+      <div class="cv-acc__item"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="false" aria-controls="cv-faq-3" id="cv-faq-b3"><span>Can I pay on the door?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-3" role="region" aria-labelledby="cv-faq-b3"><div><p>If the night has not sold out, yes, by card at the final-release price. We hold back about fifty door tickets for most nights. When they are gone, they are gone, and we post it on the door by midnight.</p></div></div></div>
+      <div class="cv-acc__item"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="false" aria-controls="cv-faq-4" id="cv-faq-b4"><span>Is there re-entry?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-4" role="region" aria-labelledby="cv-faq-b4"><div><p>No. The smoking yard is inside the venue, with heaters and a roof over half of it, so there is no need to leave. If you have a medical or access reason to step outside, talk to the door supervisor and they will sort it.</p></div></div></div>
+      <div class="cv-acc__item"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="false" aria-controls="cv-faq-5" id="cv-faq-b5"><span>How loud is it, honestly?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-5" role="region" aria-labelledby="cv-faq-b5"><div><p>Loud. The dance floor in Arch One averages around 100 dB(A), which is enough to damage unprotected ears in about a quarter of an hour. Earplugs are free at both bars. The bass is the bit you came for, and plugs do not take that away.</p></div></div></div>
+      <div class="cv-acc__item"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="false" aria-controls="cv-faq-6" id="cv-faq-b6"><span>Is the venue accessible?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-6" role="region" aria-labelledby="cv-faq-b6"><div><p>Both arches, the yard, the bars and the Dry Room are step-free, and there is an accessible toilet beside the Arch One bar. Personal-assistant tickets are free. Email access@culvert.example at least 48 hours ahead and we will have everything ready.</p></div></div></div>
+      <div class="cv-acc__item"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="false" aria-controls="cv-faq-7" id="cv-faq-b7"><span>Can I get a refund or pass my ticket on?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-7" role="region" aria-labelledby="cv-faq-b7"><div><p>If we cancel or move a night, you get a full refund including the booking fee. Otherwise tickets are non-refundable, but you can change the name on a ticket for free until 18:00 on the day by replying to your confirmation email.</p></div></div></div>
+      <div class="cv-acc__item"><h3 class="cv-acc__h"><button class="cv-acc__btn" type="button" aria-expanded="false" aria-controls="cv-faq-8" id="cv-faq-b8"><span>What can I not bring in?</span><i class="cv-acc__ico" aria-hidden="true"></i></button></h3><div class="cv-acc__panel" id="cv-faq-8" role="region" aria-labelledby="cv-faq-b8"><div><p>Glass, outside drinks, bags bigger than A4, professional cameras, whistles and air horns (the MC has it covered), and anything illegal. Sealed medication and medical equipment are always fine: tell the search team and they will be discreet.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="cv-sec cv-news" id="cv-news" aria-labelledby="cv-news-h" style="--accent:#08080a">
+  <div class="cv-wrap cv-news__grid">
+    <div class="cv-rv">
+      <p class="cv-strap">The list</p>
+      <h2 class="cv-h2" id="cv-news-h">Line-ups before the posters.</h2>
+      <p class="cv-lead">One email a month: who is playing, the early-bird link and the next Sunday Weight date. We never pass your address on.</p>
+    </div>
+    <div class="cv-rv" data-cv-hidebar>
+      <form id="cv-news-form" novalidate>
+        <div class="cv-news__row">
+          <div class="cv-field">
+            <label for="cv-nw-email">Email address</label>
+            <input class="cv-input" id="cv-nw-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="cv-nw-email-e" required>
+          </div>
+          <button class="cv-btn" type="submit">Join the list</button>
+        </div>
+        <p class="cv-err" id="cv-nw-email-e" role="alert"></p>
+        <label class="cv-check" for="cv-nw-consent" style="margin-top:10px">
+          <input type="checkbox" id="cv-nw-consent" name="consent" aria-describedby="cv-nw-consent-e" required>
+          <span>Yes, send me Culvert's monthly email. I can unsubscribe at any time. See the <a class="cv-link" href="#cv-privacy">privacy notice</a>.</span>
+          <span class="cv-err" id="cv-nw-consent-e" role="alert"></span>
+        </label>
+      </form>
+      <div class="cv-ok" id="cv-news-ok" tabindex="-1" hidden>
+        <h3 style="color:#fff">You are on the list.</h3>
+        <p>Next email lands on the first of the month. This is a demonstration form, so nothing has actually been stored.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER: THE STACK ================= -->
+<footer class="cv-foot" id="cv-foot" data-cv-hidebar>
+  <div class="cv-wave" id="cv-wave">
+    <canvas id="cv-wave-c" aria-hidden="true"></canvas>
+    <p class="cv-wave__tag" aria-hidden="true">Output L+R · 174 BPM</p>
+  </div>
+  <div class="cv-wrap cv-foot__in">
+    <div class="cv-stackgrid">
+      <div class="cv-foot__intro">
+        <a class="cv-logo" href="#cv-top" aria-label="Culvert, back to top">
+          <svg viewBox="0 0 44 30" aria-hidden="true"><path d="M3 29V15a8.500 8.500 0 0 1 17 0v14M24 29V15a8.500 8.500 0 0 1 17 0v14" fill="none" stroke="currentColor" stroke-width="5.5"/></svg>
+          <span>Culvert</span>
+        </a>
+        <p>Drum &amp; bass, jungle and dub in two railway arches behind Temple Meads. Hand-built sound. Free earplugs. Leave quietly.</p>
+      </div>
+      <nav class="cv-stack" aria-label="Footer: the club and nights">
+        <div class="cv-cab cv-cab--top">
+          <i class="cv-cab__c cv-cab__c--tl"></i><i class="cv-cab__c cv-cab__c--tr"></i><i class="cv-cab__c cv-cab__c--bl"></i><i class="cv-cab__c cv-cab__c--br"></i>
+          <h2 class="cv-cab__h"><button class="cv-cab__btn" type="button" id="cv-cab-h1" aria-expanded="false" aria-controls="cv-cab-b1"><span class="cv-cab__id">TOP·L</span><span class="cv-cab__name">The club</span><span class="cv-cab__spec" aria-hidden="true">2x12 + HF</span><svg class="cv-cab__chev" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 6l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></button></h2>
+          <div class="cv-cab__body" id="cv-cab-b1"><div class="cv-cab__face">
+            <div class="cv-cab__grille cv-cab__grille--horn" aria-hidden="true"></div>
+            <ul class="cv-cab__links">
+              <li><a href="#cv-rig">The rig</a></li>
+              <li><a href="#cv-rig">The two arches</a></li>
+              <li><a href="#cv-hire">Private hire</a></li>
+              <li><a href="#cv-crew">Crew list &amp; birthdays</a></li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="cv-cab cv-cab--sub">
+          <i class="cv-cab__c cv-cab__c--tl"></i><i class="cv-cab__c cv-cab__c--tr"></i><i class="cv-cab__c cv-cab__c--bl"></i><i class="cv-cab__c cv-cab__c--br"></i>
+          <h2 class="cv-cab__h"><button class="cv-cab__btn" type="button" id="cv-cab-h2" aria-expanded="false" aria-controls="cv-cab-b2"><span class="cv-cab__id">SUB·L</span><span class="cv-cab__name">Nights</span><span class="cv-cab__spec" aria-hidden="true">1x18 SCOOP</span><svg class="cv-cab__chev" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 6l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></button></h2>
+          <div class="cv-cab__body" id="cv-cab-b2"><div class="cv-cab__face">
+            <div class="cv-cab__grille cv-cab__grille--driver" aria-hidden="true"></div>
+            <ul class="cv-cab__links">
+              <li><a href="#cv-whatson">What's on</a></li>
+              <li><a href="#cv-tickets">Tickets</a></li>
+              <li><a href="#cv-whatson">Sunday Weight</a></li>
+              <li><a href="#cv-news">Join the list</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </nav>
+      <nav class="cv-stack" aria-label="Footer: on the night and getting about">
+        <div class="cv-cab cv-cab--top">
+          <i class="cv-cab__c cv-cab__c--tl"></i><i class="cv-cab__c cv-cab__c--tr"></i><i class="cv-cab__c cv-cab__c--bl"></i><i class="cv-cab__c cv-cab__c--br"></i>
+          <h2 class="cv-cab__h"><button class="cv-cab__btn" type="button" id="cv-cab-h3" aria-expanded="false" aria-controls="cv-cab-b3"><span class="cv-cab__id">TOP·R</span><span class="cv-cab__name">On the night</span><span class="cv-cab__spec" aria-hidden="true">2x12 + HF</span><svg class="cv-cab__chev" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 6l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></button></h2>
+          <div class="cv-cab__body" id="cv-cab-b3"><div class="cv-cab__face">
+            <div class="cv-cab__grille cv-cab__grille--horn" aria-hidden="true"></div>
+            <ul class="cv-cab__links">
+              <li><a href="#cv-door">Door policy</a></li>
+              <li><a href="#cv-welfare">Safety &amp; welfare</a></li>
+              <li><a href="#cv-ears">Protect your ears</a></li>
+              <li><a href="#cv-welfare">Accessibility</a></li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="cv-cab cv-cab--sub">
+          <i class="cv-cab__c cv-cab__c--tl"></i><i class="cv-cab__c cv-cab__c--tr"></i><i class="cv-cab__c cv-cab__c--bl"></i><i class="cv-cab__c cv-cab__c--br"></i>
+          <h2 class="cv-cab__h"><button class="cv-cab__btn" type="button" id="cv-cab-h4" aria-expanded="false" aria-controls="cv-cab-b4"><span class="cv-cab__id">SUB·R</span><span class="cv-cab__name">Getting about</span><span class="cv-cab__spec" aria-hidden="true">1x18 SCOOP</span><svg class="cv-cab__chev" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 6l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></button></h2>
+          <div class="cv-cab__body" id="cv-cab-b4"><div class="cv-cab__face">
+            <div class="cv-cab__grille cv-cab__grille--driver" aria-hidden="true"></div>
+            <ul class="cv-cab__links">
+              <li><a href="#cv-find">Find us</a></li>
+              <li><a href="#cv-home">Getting home</a></li>
+              <li><a href="#cv-practical">Cloakroom &amp; lost property</a></li>
+              <li><a href="#cv-faq">FAQ</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </nav>
+      <div class="cv-rack">
+        <div class="cv-rack__u">
+          <p class="cv-rack__k"><i class="cv-led cv-led--on" aria-hidden="true"></i>Contact</p>
+          <address>Arches 7 &amp; 8, Sidings Lane, St Philip's, Bristol BS2 0ZZ</address>
+          <p class="cv-rack__lines" style="margin:6px 0 0"><a href="tel:+441174960142">0117 496 0142</a><a href="mailto:hello@culvert.example">hello@culvert.example</a></p>
+        </div>
+        <div class="cv-rack__u cv-rack__u--grow">
+          <p class="cv-rack__k"><i class="cv-led cv-led--on" aria-hidden="true"></i>Open</p>
+          <dl class="cv-hours">
+            <div><dt>Friday</dt><dd>22:00 to 05:00</dd></div>
+            <div><dt>Saturday</dt><dd>22:00 to 05:00</dd></div>
+            <div><dt>First Sunday</dt><dd>16:00 to 23:00</dd></div>
+            <div><dt>Office</dt><dd>Tue to Fri, 11:00 to 17:00</dd></div>
+          </dl>
+          <p class="cv-rack__note">Last entry 02:00 on club nights, 21:00 on Sundays. Over 18s only, ID required.</p>
+          <div class="cv-rack__vu" aria-hidden="true"><span>L</span><i></i><span>R</span><i></i></div>
+        </div>
+        <div class="cv-rack__u cv-rack__u--ears">
+          <div class="cv-earplate">
+            <svg viewBox="0 0 46 46" aria-hidden="true"><path d="M14 20a10 10 0 0 1 20 0c0 7-6 8-6 14a6 6 0 0 1-11 3" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M19 21a5 5 0 0 1 10 0c0 3-3 4-4 7" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M5 5l36 36" stroke="currentColor" stroke-width="3.4"/></svg>
+            <div>
+              <strong>Protect your ears</strong>
+              <p>Free earplugs at both bars, the cloakroom and the Dry Room. Ringing on the way home is damage, not a souvenir.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cv-rack__u cv-rack__u--top">
+          <p>Bristol time <b id="cv-foot-time">--:--</b><br><span id="cv-foot-state">Fridays and Saturdays</span></p>
+          <button class="cv-top" id="cv-totop" type="button" aria-label="Back to top"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 19V4M4 11l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.8"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="cv-case">
+      <i class="cv-case__c cv-case__c--tl"></i><i class="cv-case__c cv-case__c--tr"></i><i class="cv-case__c cv-case__c--bl"></i><i class="cv-case__c cv-case__c--br"></i><i class="cv-case__latch"></i>
+      <p class="cv-case__legal">Culvert Sound Ltd · Company No. 00000000 · Registered in England &amp; Wales · Licensed under the Licensing Act 2003 · Premises licence no. 00/00000/PREM · Placeholder numbers · Over 18s only · Please drink responsibly: <a href="https://www.drinkaware.co.uk" rel="noopener" target="_blank">drinkaware.co.uk<span class="cv-sr"> (opens in a new tab)</span></a></p>
+      <div class="cv-case__row">
+        <ul class="cv-case__links">
+          <li><a href="#cv-privacy" id="cv-privacy">Privacy</a></li>
+          <li><a href="#cv-cookies" id="cv-cookies">Cookies</a></li>
+          <li><a href="#cv-terms" id="cv-terms">Terms</a></li>
+          <li><a href="#cv-access" id="cv-access">Accessibility statement</a></li>
+        </ul>
+        <p>© <span id="cv-year">2026</span> Culvert Sound Ltd. Culvert is a fictional venue made for demonstration.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cv-bar" id="cv-bar">
+  <a class="cv-btn" href="#cv-tickets">Tickets</a>
+  <a class="cv-btn cv-btn--ghost" href="#cv-whatson">What's on</a>
+</div>
+
+<script type="module">
+/* Culvert · page behaviour. One module, no globals. */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+document.documentElement.classList.add('cv-js');
+const RM = matchMedia('(prefers-reduced-motion: reduce)');
+const pad = n => String(n).padStart(2, '0');
+const money = n => '£' + n.toFixed(2);
+
+/* ---------- venue time: always Europe/London ---------- */
+const tFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' });
+const dFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: 'numeric', day: 'numeric' });
+function londonNow() {
+  const d = new Date(), o = {};
+  for (const p of tFmt.formatToParts(d)) if (p.type !== 'literal') o[p.type] = +p.value;
+  for (const p of dFmt.formatToParts(d)) if (p.type !== 'literal') o[p.type] = +p.value;
+  o.hour %= 24;
+  /* London wall-clock time held as a UTC timestamp, so date maths ignores the visitor's own timezone */
+  o.ms = Date.UTC(o.year, o.month - 1, o.day, o.hour, o.minute, o.second);
+  return o;
+}
+const DAY = 864e5, HR = 36e5;
+const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const DOWL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const dayStart = ms => Math.floor(ms / DAY) * DAY;
+function sessionOn(day) {
+  const d = new Date(day), dow = d.getUTCDay();
+  if (dow === 5 || dow === 6) return { day, kind: dow === 5 ? 'fri' : 'sat', doors: day + 22 * HR, last: day + 26 * HR, close: day + 29 * HR, t: ['22:00', '02:00', '05:00'] };
+  if (dow === 0 && d.getUTCDate() <= 7) return { day, kind: 'sun', doors: day + 16 * HR, last: day + 21 * HR, close: day + 23 * HR, t: ['16:00', '21:00', '23:00'] };
+  return null;
+}
+function venueState(now) {
+  const today = dayStart(now.ms);
+  for (let i = -1; i < 16; i++) {
+    const s = sessionOn(today + i * DAY);
+    if (s && now.ms < s.close) return { s, open: now.ms >= s.doors, today: s.day === today };
+  }
+  return null;
+}
+const dateLabel = day => { const d = new Date(day); return `${DOW[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]}`; };
+
+/* ---------- nights (all names invented) ---------- */
+const NIGHTS = {
+  undertow: { name: 'Undertow', genre: 'jungle', both: true, tag: 'Jungle · breaks · hardcore', room: 'Both arches', prices: [9.5, 13.5, 16.5],
+    lineups: ['Quoin · Sister Marrow b2b Ockley · Petra Null · hosted by MC Ballast', 'Voussoir · Halden Vex · Nettlebed · hosted by MC Plumbline', 'Lintel b2b Corbel · Auntie Subs · Cinderpath · hosted by MC Ballast'] },
+  brickdust: { name: 'Brickdust', genre: 'jungle', both: false, tag: 'Ragga jungle · 94 pressure', room: 'Arch One', prices: [9.5, 13.5, 16.5],
+    lineups: ['Auntie Subs · Quoin · Mortar Sound · hosted by MC Tannoy', 'Sister Marrow · Cinderpath · Lowbridge Crew · hosted by MC Ballast', 'Halden Vex · Nettlebed · Mortar Sound · hosted by MC Plumbline'] },
+  spillway: { name: 'Spillway', genre: 'dnb', both: true, tag: 'Drum & bass · rollers · liquid', room: 'Both arches', prices: [11, 15, 18],
+    lineups: ['Petra Null · Ockley · Voussoir · hosted by MC Plumbline', 'Halden Vex b2b Quoin · Lintel · Nettlebed · hosted by MC Tannoy', 'Cinderpath · Corbel · Sister Marrow · hosted by MC Ballast'] },
+  archrivals: { name: 'Arch Rivals', genre: 'dnb', both: true, tag: 'Crew v crew · one in each arch', room: 'Both arches', prices: [11, 15, 18],
+    lineups: ['Lowbridge Crew v Mortar Sound · refereed by MC Tannoy', 'Greywater Hi-Fi v Lowbridge Crew · refereed by MC Ballast', 'Mortar Sound v Feeder Canal Dub Club · refereed by MC Plumbline'] },
+  weight: { name: 'Sunday Weight', genre: 'dub', both: false, tag: 'Dub · roots · steppers', room: 'Arch Two', prices: [6, 8, 10],
+    lineups: ['Greywater Hi-Fi · Feeder Canal Dub Club · Auntie Subs', 'Feeder Canal Dub Club · Nettlebed (dub set) · Greywater Hi-Fi', 'Greywater Hi-Fi all day long · guests on the mic'] }
+};
+const now0 = londonNow(), today0 = dayStart(now0.ms);
+function buildEvents(n) {
+  const out = [];
+  for (let i = 0; out.length < n && i < 150; i++) {
+    const s = sessionOn(today0 + i * DAY);
+    if (!s || now0.ms >= s.last) continue;
+    const wk = Math.floor(s.day / (7 * DAY));
+    const key = s.kind === 'sun' ? 'weight' : s.kind === 'fri' ? (wk % 2 ? 'brickdust' : 'undertow') : (wk % 2 ? 'archrivals' : 'spillway');
+    const nt = NIGHTS[key], away = Math.round((s.day - today0) / DAY);
+    const live = away >= 14 ? 0 : away >= 7 ? 1 : 2;
+    out.push({ id: new Date(s.day).toISOString().slice(0, 10), s, n: nt, away, live, lineup: nt.lineups[wk % 3], label: dateLabel(s.day) });
+  }
+  return out;
+}
+const EVENTS = buildEvents(14);
+const TIER = ['Early bird', 'Standard', 'Final release'];
+const tierNote = (ev, i) => i === ev.live ? 'On sale now' : i < ev.live ? 'Sold out' : i === 1 ? 'On sale when early birds have gone' : 'Released the week of the night';
+
+/* ---------- header, menu, action bar ---------- */
+const header = $('#cv-header'), menu = $('#cv-menu'), burger = $('#cv-burger'), bar = $('#cv-bar');
+let menuOpen = false;
+const onScroll = () => { header.classList.toggle('cv-header--solid', scrollY > 12); updateBar(); };
+addEventListener('scroll', onScroll, { passive: true });
+const hideSet = new Set();
+function updateBar() { bar.classList.toggle('cv-bar--on', !hideSet.size && !menuOpen && scrollY > 240); }
+if ('IntersectionObserver' in window) {
+  const barIO = new IntersectionObserver(es => { for (const e of es) e.isIntersecting ? hideSet.add(e.target) : hideSet.delete(e.target); updateBar(); });
+  [$('#cv-hero-cta'), ...$$('[data-cv-hidebar]')].forEach(el => barIO.observe(el));
+}
+const behind = [header, $('#cv-main'), $('#cv-foot'), bar];
+function setMenu(open, refocus = true) {
+  menuOpen = open;
+  menu.hidden = !open;
+  burger.setAttribute('aria-expanded', String(open));
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  document.body.style.overflow = open ? 'hidden' : '';
+  behind.forEach(el => { el.inert = open; });
+  if (open) $('#cv-menu-close').focus(); else if (refocus) burger.focus();
+  updateBar();
+}
+burger.addEventListener('click', () => setMenu(true));
+$('#cv-menu-close').addEventListener('click', () => setMenu(false));
+menu.addEventListener('click', e => { if (e.target.closest('[data-cv-close]')) setMenu(false, false); });
+menu.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { e.preventDefault(); setMenu(false); return; }
+  if (e.key !== 'Tab') return;
+  const f = $$('a[href],button:not([disabled])', menu).filter(el => el.offsetParent !== null);
+  const first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+matchMedia('(min-width:1200px)').addEventListener('change', e => { if (e.matches && menuOpen) setMenu(false, false); });
+onScroll();
+
+/* ---------- reveal ---------- */
+const rv = $$('.cv-rv, .cv-db');
+if ('IntersectionObserver' in window && !RM.matches) {
+  const io = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { e.target.classList.add('cv-in'); io.unobserve(e.target); } }, { threshold: .08, rootMargin: '0px 0px -6% 0px' });
+  rv.forEach(el => io.observe(el));
+} else rv.forEach(el => el.classList.add('cv-in'));
+
+/* ---------- what's on ---------- */
+const evList = $('#cv-evs'), evEmpty = $('#cv-ev-empty'), evMore = $('#cv-ev-more'), evCount = $('#cv-ev-count');
+let evFilter = 'all', evLimit = 6;
+const arrow = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
+evList.innerHTML = EVENTS.map(ev => {
+  const d = new Date(ev.s.day);
+  return `<li class="cv-ev">
+    <div class="cv-ev__date"><span>${DOW[d.getUTCDay()]}</span><span class="cv-ev__day">${pad(d.getUTCDate())}</span><span>${MON[d.getUTCMonth()]}</span>${ev.away === 0 ? `<span class="cv-ev__tonight">${ev.s.kind === 'sun' ? 'Today' : 'Tonight'}</span>` : ''}</div>
+    <div class="cv-ev__main"><p class="cv-ev__tag">${ev.n.tag}</p><h3 class="cv-ev__name">${ev.n.name}</h3><p class="cv-ev__line">${ev.lineup}</p></div>
+    <dl class="cv-ev__meta"><div><dt>Doors</dt><dd>${ev.s.t[0]} to ${ev.s.t[2]}</dd></div><div><dt>Last entry</dt><dd>${ev.s.t[1]}</dd></div><div><dt>Room</dt><dd>${ev.n.room}</dd></div></dl>
+    <div class="cv-ev__buy"><p class="cv-ev__price"><b>${money(ev.n.prices[ev.live])}</b>${TIER[ev.live]}, fee included</p><a class="cv-btn cv-btn--sm" href="#cv-tickets" data-cv-pick="${ev.id}" aria-label="Tickets for ${ev.n.name}, ${ev.label}">Tickets ${arrow}</a></div>
+  </li>`;
+}).join('');
+const evMatch = ev => evFilter === 'all' || ev.n.genre === evFilter || (evFilter === 'both' && ev.n.both);
+function paintEvents() {
+  let shown = 0, total = 0;
+  $$('.cv-ev', evList).forEach((li, i) => {
+    const ok = evMatch(EVENTS[i]);
+    if (ok) total++;
+    const vis = ok && shown < evLimit;
+    if (vis) shown++;
+    li.hidden = !vis;
+  });
+  evEmpty.hidden = total > 0;
+  evMore.hidden = shown >= total;
+  evCount.textContent = total ? `Showing ${shown} of ${total} nights. Line-ups are illustrative.` : '';
+}
+$$('[data-cv-filter]').forEach(chip => chip.addEventListener('click', () => {
+  evFilter = chip.dataset.cvFilter; evLimit = 6;
+  $$('[data-cv-filter]').forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+  paintEvents();
+}));
+evMore.addEventListener('click', () => { evLimit += 6; paintEvents(); });
+paintEvents();
+
+/* ---------- forms: shared helpers ---------- */
+const emailOK = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+function setErr(input, msg) {
+  const e = document.getElementById(input.id + '-e');
+  if (msg) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+  if (e) e.textContent = msg || '';
+  return msg ? [input.id, msg] : null;
+}
+function showSummary(box, errs) {
+  if (!errs.length) { box.hidden = true; box.innerHTML = ''; return true; }
+  box.innerHTML = `<h3>${errs.length === 1 ? 'One thing to fix' : errs.length + ' things to fix'}</h3><ul>${errs.map(([id, m]) => `<li><a href="#${id}">${m}</a></li>`).join('')}</ul>`;
+  box.hidden = false; box.focus();
+  return false;
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('.cv-sum a');
+  if (a) { e.preventDefault(); document.getElementById(a.hash.slice(1))?.focus(); }
+});
+
+/* ---------- tickets (simulated: nothing is sent or charged) ---------- */
+const tix = { step: 1, ev: EVENTS[0], qty: 2 };
+const tixForm = $('#cv-tix-form'), tixEv = $('#cv-tix-events'), tixTiers = $('#cv-tix-tiers');
+const tixBack = $('#cv-tix-back'), tixNextT = $('#cv-tix-next-t'), tixSum = $('#cv-tix-sum');
+const tixName = $('#cv-tix-name'), tixEmail = $('#cv-tix-email');
+function paintTixEvents() {
+  const list = [...new Set([tix.ev, ...EVENTS])].slice(0, 6).sort((a, b) => a.s.day - b.s.day);
+  tixEv.innerHTML = list.map(ev => `<label class="cv-opt"><input type="radio" name="cv-ev" value="${ev.id}"${ev === tix.ev ? ' checked' : ''}><span class="cv-opt__box"><span class="cv-opt__t">${ev.n.name}</span><span class="cv-opt__s">${ev.label} · ${ev.n.tag.split(' · ')[0]} · doors ${ev.s.t[0]}</span><span class="cv-opt__p">${money(ev.n.prices[ev.live])}<small>fee included</small></span></span></label>`).join('');
+}
+function paintTiers() {
+  const ev = tix.ev;
+  tixTiers.innerHTML = TIER.map((name, i) => `<label class="cv-opt"><input type="radio" name="cv-tier" value="${i}"${i === ev.live ? ' checked' : ' disabled'}><span class="cv-opt__box"><span class="cv-opt__t">${name}</span><span class="cv-opt__s">${tierNote(ev, i)}</span><span class="cv-opt__p">${money(ev.n.prices[i])}<small>price includes booking fee</small></span></span></label>`).join('');
+}
+function paintStub() {
+  const ev = tix.ev, each = ev.n.prices[ev.live];
+  $('#cv-s-qty').textContent = tix.qty;
+  $('#cv-s-night').textContent = ev.n.name;
+  $('#cv-s-date').textContent = `${ev.label} · doors ${ev.s.t[0]}`;
+  $('#cv-s-tier').textContent = TIER[ev.live];
+  $('#cv-s-each').textContent = money(each);
+  $('#cv-s-room').textContent = ev.n.room;
+  $('#cv-s-last').textContent = ev.s.t[1];
+  $('#cv-s-total').textContent = money(each * tix.qty);
+  $('#cv-q').textContent = tix.qty;
+}
+function goStep(n, focus = true) {
+  tix.step = n;
+  $$('[data-cv-step]', tixForm).forEach(p => { p.hidden = +p.dataset.cvStep !== n; });
+  $$('#cv-tix-steps li').forEach((li, i) => {
+    li.classList.toggle('cv-done', i + 1 < n);
+    if (i + 1 === Math.min(n, 4)) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+  });
+  tixBack.hidden = n === 1;
+  tixNextT.textContent = n === 4 ? 'Go to payment' : n === 5 ? 'Start again' : 'Continue';
+  if (n === 2) paintTiers();
+  if (n === 5) {
+    const ev = tix.ev;
+    $('#cv-tix-recap').textContent = `${tix.qty} × ${TIER[ev.live]} for ${ev.n.name}, ${ev.label}: ${money(ev.n.prices[ev.live] * tix.qty)} in total, booking fee included. Tickets would be emailed to ${tixEmail.value.trim()}.`;
+  }
+  if (focus) $(`[data-cv-step="${n}"] .cv-tix__q`, tixForm)?.focus({ preventScroll: true });
+}
+tixEv.addEventListener('change', e => { tix.ev = EVENTS.find(ev => ev.id === e.target.value) || tix.ev; paintStub(); });
+$('#cv-q-minus').addEventListener('click', () => { tix.qty = Math.max(1, tix.qty - 1); paintStub(); });
+$('#cv-q-plus').addEventListener('click', () => { tix.qty = Math.min(6, tix.qty + 1); paintStub(); });
+tixBack.addEventListener('click', () => goStep(Math.max(1, tix.step - 1)));
+tixForm.addEventListener('submit', e => {
+  e.preventDefault();
+  if (tix.step === 4) {
+    const errs = [
+      setErr(tixName, tixName.value.trim().length < 2 ? 'Enter the name on your ID' : ''),
+      setErr(tixEmail, !emailOK(tixEmail.value) ? 'Enter an email address, like name@example.com' : '')
+    ].filter(Boolean);
+    if (!showSummary(tixSum, errs)) return;
+  }
+  if (tix.step === 5) { tixName.value = ''; tixEmail.value = ''; tix.qty = 2; paintStub(); goStep(1); return; }
+  goStep(tix.step + 1);
+});
+document.addEventListener('click', e => {
+  const pick = e.target.closest('[data-cv-pick]');
+  if (!pick) return;
+  tix.ev = EVENTS.find(ev => ev.id === pick.dataset.cvPick) || tix.ev;
+  paintTixEvents(); paintStub(); goStep(1, false);
+});
+if (EVENTS.length) { paintTixEvents(); paintStub(); }
+
+/* ---------- crew list enquiry (simulated) ---------- */
+const crewForm = $('#cv-crew-form'), crType = $('#cv-cr-type'), crNight = $('#cv-cr-night'), crSize = $('#cv-cr-size');
+crNight.insertAdjacentHTML('beforeend', EVENTS.slice(0, 10).map(ev => `<option value="${ev.id}">${ev.label} · ${ev.n.name}</option>`).join('') + '<option value="other">Another date (tell us below)</option>');
+function crewLimits() {
+  const hire = crType.value === 'hire';
+  crSize.min = hire ? 60 : 8; crSize.max = hire ? 600 : 30;
+  $('#cv-cr-size-h').textContent = hire ? 'Private hire: 60 to 600 guests.' : 'Crew list and birthdays: 8 to 30.';
+  return [+crSize.min, +crSize.max];
+}
+crType.addEventListener('change', crewLimits);
+crewForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const [mn, mx] = crewLimits(), f = crewForm.elements, n = Number(crSize.value);
+  const phone = f.phone.value.trim();
+  const errs = [
+    setErr(crNight, crNight.value ? '' : 'Choose a night, or pick "Another date"'),
+    setErr(f.name, f.name.value.trim().length < 2 ? 'Enter your name' : ''),
+    setErr(f.email, !emailOK(f.email.value) ? 'Enter an email address, like name@example.com' : ''),
+    setErr(f.phone, phone && !/^[0-9+() -]{9,}$/.test(phone) ? 'Enter a phone number, or leave it blank' : ''),
+    setErr(crSize, !crSize.value || !Number.isInteger(n) || n < mn || n > mx ? `Enter a group size between ${mn} and ${mx}` : ''),
+    setErr(f.consent, f.consent.checked ? '' : 'Tick the box so we can reply to you')
+  ].filter(Boolean);
+  if (!showSummary($('#cv-crew-sum'), errs)) return;
+  const night = crNight.selectedOptions[0].textContent, ref = 'CV-' + String(1000 + Math.floor(Math.random() * 9000));
+  $('#cv-crew-ok-t').textContent = `Thanks, ${f.name.value.trim().split(' ')[0]}. We have ${n} of you down for ${crNight.value === 'other' ? 'a date to be agreed' : night}. We will reply to ${f.email.value.trim()} within one working day. Your reference is ${ref}.`;
+  crewForm.hidden = true;
+  const ok = $('#cv-crew-ok'); ok.hidden = false; ok.focus();
+});
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-cv-type]');
+  if (t) { crType.value = t.dataset.cvType; crewLimits(); }
+});
+
+/* ---------- newsletter (simulated) ---------- */
+const newsForm = $('#cv-news-form');
+newsForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const em = $('#cv-nw-email'), cs = $('#cv-nw-consent');
+  const errs = [setErr(em, !emailOK(em.value) ? 'Enter an email address, like name@example.com' : ''), setErr(cs, cs.checked ? '' : 'Tick the box to join the list')].filter(Boolean);
+  if (errs.length) { document.getElementById(errs[0][0]).focus(); return; }
+  newsForm.hidden = true;
+  const ok = $('#cv-news-ok'); ok.hidden = false; ok.focus();
+});
+
+/* ---------- accordions ---------- */
+$$('.cv-acc__btn').forEach(b => b.addEventListener('click', () => {
+  const open = b.getAttribute('aria-expanded') !== 'true';
+  b.setAttribute('aria-expanded', String(open));
+  b.closest('.cv-acc__item').classList.toggle('cv-open', open);
+}));
+const cabBtns = $$('.cv-cab__btn'), mqMobile = matchMedia('(max-width:767px)');
+function cabMode() {
+  cabBtns.forEach(b => {
+    if (mqMobile.matches) { b.removeAttribute('aria-disabled'); b.removeAttribute('tabindex'); b.setAttribute('aria-expanded', b.dataset.cvOpen === '1' ? 'true' : 'false'); }
+    else { b.setAttribute('aria-disabled', 'true'); b.setAttribute('tabindex', '-1'); b.removeAttribute('aria-expanded'); }
+  });
+}
+cabBtns.forEach(b => b.addEventListener('click', () => {
+  if (!mqMobile.matches) return;
+  b.dataset.cvOpen = b.dataset.cvOpen === '1' ? '0' : '1';
+  b.setAttribute('aria-expanded', b.dataset.cvOpen === '1' ? 'true' : 'false');
+  b.closest('.cv-cab').classList.toggle('cv-open', b.dataset.cvOpen === '1');
+}));
+mqMobile.addEventListener('change', cabMode); cabMode();
+
+/* ---------- pinned columns: only the shorter one, and only if it fits the screen ---------- */
+const pins = $$('.cv-sticky'), mqPin = matchMedia('(min-width:1200px)');
+function pinGuard() {
+  for (const el of pins) {
+    const others = [...el.parentElement.children].filter(c => c !== el);
+    const h = el.offsetHeight, room = innerHeight - header.offsetHeight - 48;
+    el.classList.toggle('cv-unstick', !mqPin.matches || h > room || others.every(o => o.offsetHeight < h));
+  }
+}
+if ('ResizeObserver' in window) { const ro = new ResizeObserver(pinGuard); $$('[data-cv-col]').forEach(c => ro.observe(c)); }
+addEventListener('resize', pinGuard); pinGuard();
+
+/* ---------- small things ---------- */
+$('#cv-year').textContent = now0.year;
+$('#cv-totop').addEventListener('click', () => { scrollTo({ top: 0, behavior: RM.matches ? 'auto' : 'smooth' }); $('.cv-logo').focus({ preventScroll: true }); });
+$('#cv-copy').addEventListener('click', async e => {
+  const out = $('#cv-copy-s'), text = e.currentTarget.dataset.cvText;
+  try { await navigator.clipboard.writeText(text); out.textContent = 'Address copied.'; }
+  catch { out.textContent = 'Copying is blocked here. The address is above.'; }
+});
+
+/* ---------- footer waveform: lifts gently under the pointer ---------- */
+const waveBox = $('#cv-wave'), wc = $('#cv-wave-c'), wx = wc.getContext('2d');
+let wW = 0, wH = 0, wBase = [], wLift = new Float32Array(0), wRaf = 0, wPtr = -1, motionPaused = false;
+function waveSize() {
+  const r = waveBox.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+  wW = r.width; wH = r.height; wc.width = Math.round(wW * dpr); wc.height = Math.round(wH * dpr);
+  wx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const n = Math.max(8, Math.floor(wW / 5));
+  let seed = 41; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  wBase = Array.from({ length: n }, (_, i) => {
+    const beat = 1 - ((i % 22) / 22);                       /* a decaying hit every 22 bars of the strip */
+    return .07 + .5 * Math.pow(beat, 2.2) * (.55 + .45 * rnd()) + .1 * Math.abs(Math.sin(i * .31)) * rnd();
+  });
+  wLift = new Float32Array(n);
+  waveDraw();
+}
+function waveDraw() {
+  wx.clearRect(0, 0, wW, wH);
+  const mid = wH / 2 + 4;
+  for (let i = 0; i < wBase.length; i++) {
+    const l = wLift[i], h = Math.min(.46, wBase[i] * .62 + l) * wH;
+    wx.fillStyle = l > .015 ? `rgba(255,90,31,${Math.min(1, .45 + l * 2.4)})` : (i % 22 === 0 ? '#8d8d96' : '#3b3b42');
+    wx.fillRect(i * 5 + 1, mid - h, 3, h * 2);
+  }
+}
+function waveLoop() {
+  let live = false;
+  for (let i = 0; i < wLift.length; i++) {
+    const d = (i * 5 - wPtr) / 80, tgt = wPtr < 0 ? 0 : .26 * Math.exp(-d * d);
+    wLift[i] += (tgt - wLift[i]) * .12;
+    if (Math.abs(tgt - wLift[i]) > .003) live = true;
+  }
+  waveDraw();
+  wRaf = live ? requestAnimationFrame(waveLoop) : 0;
+}
+const wavePoint = e => { if (RM.matches || motionPaused) return; wPtr = e.clientX - waveBox.getBoundingClientRect().left; if (!wRaf) wRaf = requestAnimationFrame(waveLoop); };
+waveBox.addEventListener('pointermove', wavePoint);
+waveBox.addEventListener('pointerdown', wavePoint);
+const waveOut = () => { wPtr = -1; if (!wRaf && !RM.matches) wRaf = requestAnimationFrame(waveLoop); };
+waveBox.addEventListener('pointerleave', waveOut);
+waveBox.addEventListener('pointercancel', waveOut);
+waveBox.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') setTimeout(waveOut, 700); });
+new ResizeObserver(waveSize).observe(waveBox);
+
+/* =====================================================================
+   HERO · the driver is the clock
+   The dial is drawn with the 2D canvas API, used as a THREE.CanvasTexture,
+   redrawn once a second on the second boundary, then needsUpdate = true.
+   ===================================================================== */
+const hero = $('#cv-top'), stage = $('#cv-stage'), motionBtn = $('#cv-motion');
+const DS = 1024, C = DS / 2, ORANGE = '#ff5a1f', WHITE = '#f5f5f2';
+const FD = '"Barlow Condensed","Arial Narrow",sans-serif';
+const dial = document.createElement('canvas'); dial.width = dial.height = DS;
+const dx = dial.getContext('2d');
+const dialBase = document.createElement('canvas'); dialBase.width = dialBase.height = DS;
+$('#cv-fb').appendChild(dial);
+const rad = deg => (deg - 90) * Math.PI / 180;            /* 0° at 12 o'clock, clockwise */
+
+function arcText(c, str, r, mid, size, color) {
+  c.save();
+  c.font = `italic 700 ${size}px ${FD}`; c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle';
+  const chars = [...str], ws = chars.map(ch => c.measureText(ch).width + 2.2), total = ws.reduce((a, b) => a + b, 0);
+  const flip = mid > 90 && mid < 270, dir = flip ? -1 : 1;
+  let a = mid * Math.PI / 180 - dir * total / 2 / r;
+  chars.forEach((ch, i) => {
+    a += dir * ws[i] / 2 / r;
+    c.save(); c.rotate(a); c.translate(0, -r); if (flip) c.rotate(Math.PI); c.fillText(ch, 0, 0); c.restore();
+    a += dir * ws[i] / 2 / r;
+  });
+  c.restore();
+}
+function drawDialBase() {
+  const c = dialBase.getContext('2d');
+  c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, DS, DS); c.translate(C, C);
+  /* pressed-paper cone */
+  let g = c.createRadialGradient(0, 0, 150, 0, 0, C);
+  g.addColorStop(0, '#222226'); g.addColorStop(.5, '#17171a'); g.addColorStop(1, '#0b0b0d');
+  c.fillStyle = g; c.fillRect(-C, -C, DS, DS);
+  for (let r = 214, i = 0; r < 508; r += 13, i++) { c.beginPath(); c.arc(0, 0, r, 0, 7); c.strokeStyle = i % 2 ? 'rgba(255,255,255,.04)' : 'rgba(0,0,0,.3)'; c.lineWidth = 2; c.stroke(); }
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 1500; i++) {
+    const a = rnd() * 6.2832, r = 200 + rnd() * 306, l = 6 + rnd() * 24;
+    c.beginPath(); c.moveTo(Math.cos(a) * r, Math.sin(a) * r); c.lineTo(Math.cos(a + .012) * (r + l), Math.sin(a + .012) * (r + l));
+    c.strokeStyle = `rgba(255,255,255,${.02 + rnd() * .04})`; c.lineWidth = 1; c.stroke();
+  }
+  /* tick ring */
+  for (let i = 0; i < 60; i++) {
+    const a = rad(i * 6), major = i % 5 === 0, r1 = major ? 458 : 476;
+    c.beginPath(); c.moveTo(Math.cos(a) * r1, Math.sin(a) * r1); c.lineTo(Math.cos(a) * 500, Math.sin(a) * 500);
+    c.strokeStyle = major ? WHITE : 'rgba(245,245,242,.55)'; c.lineWidth = major ? 7 : 2.5; c.stroke();
+  }
+  /* the night: doors 22:00 to last entry 02:00 solid, then to close 05:00 hatched */
+  c.strokeStyle = ORANGE; c.lineWidth = 18;
+  c.beginPath(); c.arc(0, 0, 374, rad(300), rad(420)); c.stroke();
+  c.setLineDash([7, 9]); c.beginPath(); c.arc(0, 0, 374, rad(60), rad(150)); c.stroke(); c.setLineDash([]);
+  for (const deg of [300, 60, 150]) {
+    const a = rad(deg); c.beginPath(); c.moveTo(Math.cos(a) * 356, Math.sin(a) * 356); c.lineTo(Math.cos(a) * 394, Math.sin(a) * 394);
+    c.strokeStyle = WHITE; c.lineWidth = 6; c.stroke();
+  }
+  arcText(c, 'DOORS 22:00', 340, 319, 25, WHITE);
+  arcText(c, 'LAST ENTRY 02:00', 340, 39, 25, WHITE);
+  arcText(c, 'CLOSE 05:00', 340, 131, 25, WHITE);
+  /* numerals */
+  c.font = `italic 800 58px ${FD}`; c.textAlign = 'center'; c.textBaseline = 'middle';
+  for (let n = 1; n <= 12; n++) { const a = rad(n * 30); c.fillStyle = n === 10 || n === 2 || n === 5 ? ORANGE : WHITE; c.fillText(String(n), Math.cos(a) * 424, Math.sin(a) * 424 + 3); }
+  /* dust cap print */
+  g = c.createRadialGradient(-40, -50, 10, 0, 0, 197);
+  g.addColorStop(0, '#2c2c31'); g.addColorStop(1, '#131316');
+  c.beginPath(); c.arc(0, 0, 197, 0, 7); c.fillStyle = g; c.fill();
+  c.strokeStyle = 'rgba(245,245,242,.2)'; c.lineWidth = 2; c.stroke();
+  c.fillStyle = WHITE; c.font = `italic 900 62px ${FD}`; c.fillText('CULVERT', -2, -96);
+  c.fillStyle = 'rgba(245,245,242,.62)'; c.font = `italic 700 19px ${FD}`; c.fillText('B R I S T O L', 0, -54);
+  c.strokeStyle = ORANGE; c.lineWidth = 3; c.strokeRect(-78, 76, 156, 46);
+  c.fillStyle = ORANGE; c.font = `italic 800 34px ${FD}`; c.fillText('174 BPM', 14, 101);
+  /* readout window on the cone */
+  c.fillStyle = '#040405'; c.fillRect(-124, 222, 248, 98);
+  c.strokeStyle = 'rgba(245,245,242,.3)'; c.lineWidth = 2; c.strokeRect(-124, 222, 248, 98);
+  c.fillStyle = 'rgba(245,245,242,.55)'; c.font = `italic 700 15px ${FD}`; c.fillText('V E N U E   T I M E', 0, 237);
+}
+function mono(c, str, y, size, cell, color) {
+  c.font = `italic 800 ${size}px ${FD}`; c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle';
+  const ws = [...str].map(ch => /\d/.test(ch) ? cell : ch === ' ' ? cell * .5 : /[:·]/.test(ch) ? cell * .46 : c.measureText(ch).width + 1.5);
+  let x = -ws.reduce((a, b) => a + b, 0) / 2;
+  [...str].forEach((ch, i) => { c.fillText(ch, x + ws[i] / 2, y); x += ws[i]; });
+}
+function hand(c, deg, len, w, tail, fill) {
+  c.save(); c.rotate(deg * Math.PI / 180);
+  c.beginPath(); c.moveTo(-w / 2, tail); c.lineTo(-w * .32, -len); c.lineTo(w * .32, -len); c.lineTo(w / 2, tail); c.closePath();
+  c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 10; c.shadowOffsetY = 4;
+  c.fillStyle = fill; c.fill(); c.shadowColor = 'transparent';
+  c.strokeStyle = '#050506'; c.lineWidth = 2; c.stroke();
+  c.restore();
+}
+const span = ms => { const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400); return (d ? d + 'D ' : '') + `${pad(Math.floor(s % 86400 / 3600))}:${pad(Math.floor(s % 3600 / 60))}:${pad(s % 60)}`; };
+let dialTex = null, onSecond = null, redraws = 0, lastMinute = -1;
+function drawDial() {
+  const now = londonNow(), st = venueState(now);
+  const aS = now.second * 6, aM = now.minute * 6 + now.second * 0.1, aH = (now.hour % 12) * 30 + now.minute * 0.5;
+  dx.setTransform(1, 0, 0, 1, 0, 0); dx.drawImage(dialBase, 0, 0); dx.translate(C, C);
+  mono(dx, `${pad(now.hour)}:${pad(now.minute)}:${pad(now.second)}`, 268, 46, 25, WHITE);
+  const status = !st ? '' : !st.open ? 'DOORS IN ' + span(st.s.doors - now.ms) : now.ms < st.s.last ? 'LAST ENTRY IN ' + span(st.s.last - now.ms) : 'CLOSES IN ' + span(st.s.close - now.ms);
+  mono(dx, status, 301, 20, 10.5, ORANGE);
+  dx.beginPath(); dx.arc(-56, 99, 7, 0, 7); dx.fillStyle = now.second % 2 ? ORANGE : '#5a2410'; dx.fill();
+  hand(dx, aH, 236, 28, 44, WHITE);
+  hand(dx, aM, 388, 18, 56, WHITE);
+  dx.save(); dx.rotate(aS * Math.PI / 180);
+  dx.fillStyle = ORANGE; dx.fillRect(-3, -446, 6, 530); dx.fillRect(-8, 50, 16, 46);
+  dx.restore();
+  dx.beginPath(); dx.arc(0, 0, 17, 0, 7); dx.fillStyle = ORANGE; dx.fill();
+  dx.beginPath(); dx.arc(0, 0, 6, 0, 7); dx.fillStyle = '#050506'; dx.fill();
+  redraws++;
+  Object.assign(dial.dataset, { h: aH, m: aM, s: aS, redraws, time: `${pad(now.hour)}:${pad(now.minute)}:${pad(now.second)}` });
+  if (dialTex) dialTex.needsUpdate = true;                 /* one texture upload per redraw */
+  if (now.minute !== lastMinute) { lastMinute = now.minute; paintFacts(now, st); }
+  if (onSecond) onSecond();
+}
+function paintFacts(now, st) {
+  const hhmm = `${pad(now.hour)}:${pad(now.minute)}`;
+  $('#cv-foot-time').textContent = hhmm;
+  if (!st) return;
+  const ev = EVENTS.find(e => e.s.day === st.s.day), name = ev ? ev.n.name : 'Culvert';
+  const k = st.open ? 'Open now' : st.today ? (st.s.kind === 'sun' ? 'Open today' : 'Open tonight') : 'Next open';
+  const v = st.open ? `Until ${st.s.t[2]}` : st.today ? name : dateLabel(st.s.day);
+  $('#cv-f-k').textContent = k; $('#cv-f-v').textContent = v;
+  $('#cv-f-led').classList.toggle('cv-led--on', st.open || st.today);
+  $('#cv-f-doors').textContent = st.s.t[0]; $('#cv-f-last').textContent = st.s.t[1];
+  $('#cv-foot-state').textContent = st.open ? `Open now, until ${st.s.t[2]}` : `Next doors: ${dateLabel(st.s.day)}, ${st.s.t[0]}`;
+  $('#cv-clock-sr').textContent = `Venue time in Bristol is ${hhmm}. ${k}: ${v}. Doors ${st.s.t[0]}, last entry ${st.s.t[1]}, close ${st.s.t[2]}.`;
+}
+function everySecond() { setTimeout(() => { drawDial(); everySecond(); }, 1000 - (Date.now() % 1000) + 3); }
+drawDialBase(); drawDial(); everySecond();
+Promise.all(['italic 700 20px', 'italic 800 20px', 'italic 900 20px'].map(f => document.fonts.load(`${f} "Barlow Condensed"`)))
+  .then(() => document.fonts.ready).then(() => { drawDialBase(); drawDial(); }).catch(() => {});
+
+/* ---------- motion switch ---------- */
+let glApi = null;
+function setPaused(p) {
+  motionPaused = p;
+  document.body.classList.toggle('cv-paused', p);
+  motionBtn.setAttribute('aria-pressed', String(p));
+  motionBtn.setAttribute('aria-label', p ? 'Play hero motion' : 'Pause hero motion');
+  $('#cv-motion-t').textContent = p ? 'Play motion' : 'Pause motion';
+  if (glApi) glApi.sync();
+}
+motionBtn.addEventListener('click', () => setPaused(!motionPaused));
+if (RM.matches) motionBtn.hidden = true;
+RM.addEventListener('change', () => { motionBtn.hidden = RM.matches; if (glApi) glApi.sync(); });
+
+/* ---------- three.js scene ---------- */
+async function initGL() {
+  const probe = document.createElement('canvas');
+  const pgl = probe.getContext('webgl2') || probe.getContext('webgl');
+  if (!pgl) return null;
+  pgl.getExtension('WEBGL_lose_context')?.loseContext();
+  const THREE = await import('three');
+  const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+
+  const renderer = new THREE.WebGLRenderer({ canvas: $('#cv-gl'), alpha: true, antialias: true, powerPreference: 'high-performance' });
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.08;
+  const maxAniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  const scene = new THREE.Scene();
+  const pm = new THREE.PMREMGenerator(renderer);
+  scene.environment = pm.fromScene(new RoomEnvironment(), .035).texture; pm.dispose();
+  const FOV = 26, cam = new THREE.PerspectiveCamera(FOV, 1, 10, 9000);
+  const rig = new THREE.Group(); scene.add(rig);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x1c1412, .3));
+  const key = new THREE.DirectionalLight(0xfff1e0, 2.3); key.position.set(-.55, .85, 1); scene.add(key);
+  const rimLight = new THREE.DirectionalLight(0xff5a1f, 2.6); rimLight.position.set(1, -.7, .15); scene.add(rimLight);
+  const fill = new THREE.DirectionalLight(0x9db9ff, .45); fill.position.set(.9, .4, .7); scene.add(fill);
+
+  /* --- the dial texture --- */
+  dialTex = new THREE.CanvasTexture(dial);
+  dialTex.colorSpace = THREE.SRGBColorSpace; dialTex.anisotropy = maxAniso;
+
+  /* --- bass driver, unit radius, scaled to the stage box --- */
+  const speaker = new THREE.Group(); rig.add(speaker);
+  const RC = .78, RCAP = .3, DEPTH = .27;
+  const planarUV = geo => {
+    const p = geo.attributes.position, uv = geo.attributes.uv;
+    for (let i = 0; i < p.count; i++) uv.setXY(i, .5 + p.getX(i) / (2 * RC), .5 + p.getY(i) / (2 * RC));
+    uv.needsUpdate = true; return geo;
+  };
+  const std = o => new THREE.MeshStandardMaterial(o);
+  const metal = std({ color: 0x6c6e74, metalness: .78, roughness: .46 });
+  const metalDark = std({ color: 0x141416, metalness: .8, roughness: .55, side: THREE.DoubleSide });
+  const rubber = std({ color: 0x0b0b0c, metalness: 0, roughness: .44 });
+  const chrome = std({ color: 0xcfd2d6, metalness: 1, roughness: .18 });
+  const anodised = std({ color: 0xff5a1f, metalness: .75, roughness: .32, emissive: 0x3a1000 });
+
+  const moving = new THREE.Group(); speaker.add(moving);
+  const prof = [];
+  for (let i = 0; i <= 30; i++) { const t = i / 30; prof.push(new THREE.Vector2(RCAP + (RC - RCAP) * t, -DEPTH * Math.pow(1 - t, 1.5))); }
+  const coneGeo = planarUV(new THREE.LatheGeometry(prof, 128).rotateX(Math.PI / 2));
+  coneGeo.computeVertexNormals();
+  const coneMat = std({ map: dialTex, roughness: .86, metalness: 0, emissive: 0xffffff, emissiveMap: dialTex, emissiveIntensity: .2, side: THREE.DoubleSide });
+  moving.add(new THREE.Mesh(coneGeo, coneMat));
+  const capH = .082, capA = RCAP + .006, capR = (capA * capA + capH * capH) / (2 * capH);
+  const capGeo = new THREE.SphereGeometry(capR, 72, 20, 0, Math.PI * 2, 0, Math.asin(capA / capR)).rotateX(Math.PI / 2).translate(0, 0, -DEPTH + capH - capR);
+  moving.add(new THREE.Mesh(planarUV(capGeo), std({ map: dialTex, roughness: .6, metalness: 0, emissive: 0xffffff, emissiveMap: dialTex, emissiveIntensity: .2 })));
+  const glue = new THREE.Mesh(new THREE.TorusGeometry(capA, .009, 10, 96), rubber); glue.position.z = -DEPTH + .004; moving.add(glue);
+
+  const surround = new THREE.Mesh(new THREE.TorusGeometry(.842, .064, 26, 150), rubber); surround.scale.z = .85; speaker.add(surround);
+  const rimProf = [[.895, -.03], [.904, .03], [.918, .05], [1.022, .05], [1.04, .032], [1.04, -.19], [.95, -.25]].map(p => new THREE.Vector2(p[0], p[1]));
+  speaker.add(new THREE.Mesh(new THREE.LatheGeometry(rimProf, 128).rotateX(Math.PI / 2), metal));
+  const gasket = new THREE.Mesh(new THREE.RingGeometry(.906, .934, 128), std({ color: 0x08080a, roughness: .95, metalness: 0 })); gasket.position.z = .051; speaker.add(gasket);
+  const boltGeo = new THREE.CylinderGeometry(.024, .024, .022, 6).rotateX(Math.PI / 2);
+  for (let i = 0; i < 8; i++) { const a = (i + .5) / 8 * Math.PI * 2, b = new THREE.Mesh(boltGeo, chrome); b.position.set(Math.cos(a) * .982, Math.sin(a) * .982, .056); speaker.add(b); }
+  const basket = new THREE.Mesh(new THREE.CylinderGeometry(.96, .56, .46, 72, 1, true).rotateX(Math.PI / 2), metalDark); basket.position.z = -.48; speaker.add(basket);
+  const magnet = new THREE.Mesh(new THREE.CylinderGeometry(.5, .5, .22, 64).rotateX(Math.PI / 2), metal); magnet.position.z = -.82; speaker.add(magnet);
+
+  /* --- the plug: socket on the basket, locking collar, body, boot --- */
+  const plug = new THREE.Group(); speaker.add(plug);
+  const seg = (r1, r2, x0, len, mat) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r2, r1, len, 40).rotateZ(-Math.PI / 2), mat); m.position.x = x0 + len / 2; plug.add(m); return m; };
+  seg(.07, .07, -.04, .09, metal);            /* socket block bolted to the basket */
+  seg(.05, .05, .05, .028, chrome);            /* plug nose */
+  seg(.07, .07, .078, .058, anodised);         /* locking collar */
+  seg(.06, .06, .136, .17, std({ color: 0x1a1b1e, metalness: .85, roughness: .34 }));
+  seg(.062, .05, .306, .15, rubber);           /* strain-relief boot */
+  for (let i = 0; i < 4; i++) { const t = new THREE.Mesh(new THREE.TorusGeometry(.061 - i * .0036, .006, 8, 40).rotateY(Math.PI / 2), rubber); t.position.x = .325 + i * .03; plug.add(t); }
+  for (let i = 0; i < 3; i++) { const t = new THREE.Mesh(new THREE.TorusGeometry(.0615, .0035, 6, 40).rotateY(Math.PI / 2), chrome); t.position.x = .16 + i * .05; plug.add(t); }
+
+  /* --- pressure rings --- */
+  const ringGeo = new THREE.RingGeometry(1.03, 1.045, 160);
+  const rings = [0, 1, 2].map(() => {
+    const m = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color: 0xff7a3c, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending }));
+    m.position.z = .06; m.userData.born = -9; speaker.add(m); return m;
+  });
+
+  /* --- braided cable --- */
+  function braidCanvas() {
+    const s = 128, cv = document.createElement('canvas'); cv.width = cv.height = s;
+    const c = cv.getContext('2d'); c.fillStyle = '#17181b'; c.fillRect(0, 0, s, s);
+    const strand = (x0, dir, body, hi, dash, off) => {
+      c.setLineDash(dash || []); c.lineDashOffset = off || 0;
+      c.beginPath(); c.moveTo(x0, -16); c.lineTo(x0 + dir * (s + 32), s + 16);
+      c.lineWidth = 17; c.strokeStyle = '#0a0a0c'; c.stroke();
+      c.lineWidth = 13; c.strokeStyle = body; c.stroke();
+      c.lineWidth = 3.5; c.strokeStyle = hi; c.stroke();
+    };
+    for (let i = -6; i <= 6; i++) strand(i * 32, 1, ((i % 4) + 4) % 4 === 0 ? '#d9521f' : '#7d8087', ((i % 4) + 4) % 4 === 0 ? '#ffb38f' : '#e6e8ec');
+    const d = 32 / Math.SQRT2;
+    for (let i = -2; i <= 10; i++) strand(i * 32, -1, '#8b8e95', '#f2f3f5', [d, d], (i % 2) * d + d / 2);
+    c.setLineDash([]);
+    return cv;
+  }
+  const braidMap = new THREE.CanvasTexture(braidCanvas());
+  braidMap.colorSpace = THREE.SRGBColorSpace; braidMap.wrapS = braidMap.wrapT = THREE.RepeatWrapping; braidMap.anisotropy = maxAniso;
+  const braidBump = new THREE.CanvasTexture(braidMap.image); braidBump.wrapS = braidBump.wrapT = THREE.RepeatWrapping;
+  const cableMat = std({ map: braidMap, bumpMap: braidBump, bumpScale: 2.2, metalness: .88, roughness: .36 });
+  const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: .42, depthWrite: false });
+  const cable = new THREE.Mesh(new THREE.BufferGeometry(), cableMat), cableShadow = new THREE.Mesh(cable.geometry, shadowMat);
+  cableShadow.renderOrder = -1; rig.add(cableShadow, cable);
+
+  const lines = $$('.cv-hero__l', hero), mqSide = matchMedia('(min-width:768px) and (min-aspect-ratio:1/1)');
+  let W = 1, H = 1, R = 100;
+  function layout() {
+    const hr = hero.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+    W = Math.max(1, hr.width); H = Math.max(1, hr.height);
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, W > 1600 ? 1.5 : 1.75));
+    renderer.setSize(W, H, false);
+    cam.aspect = W / H; cam.position.set(0, 0, (H / 2) / Math.tan(FOV * Math.PI / 360));
+    cam.near = cam.position.z * .2; cam.far = cam.position.z * 3; cam.updateProjectionMatrix();
+    const side = mqSide.matches;
+    R = sr.width / 2 * .94;
+    speaker.position.set(sr.left - hr.left + sr.width / 2 - W / 2, H / 2 - (sr.top - hr.top + sr.height / 2), 0);
+    speaker.scale.setScalar(R);
+    speaker.rotation.set(side ? .06 : .1, side ? -.3 : -.16, 0);
+    const k = Math.max(1, 6.2 / (R * .046)), phi = (side ? 187 : 216) * Math.PI / 180;
+    plug.scale.setScalar(k); plug.rotation.z = phi; plug.position.set(Math.cos(phi) * 1.03, Math.sin(phi) * 1.03, -.085);
+    speaker.updateMatrix(); plug.updateMatrix();
+    const fromPlug = x => new THREE.Vector3(x, 0, 0).applyMatrix4(plug.matrix).applyMatrix4(speaker.matrix);
+    const box = el => { const r = el.getBoundingClientRect(); return { l: r.left - hr.left - W / 2, r: r.right - hr.left - W / 2, t: H / 2 - (r.top - hr.top), b: H / 2 - (r.bottom - hr.top), w: r.width, h: r.height, cy: H / 2 - ((r.top + r.bottom) / 2 - hr.top) }; };
+    const [L1, L2, L3] = lines.map(box), V = (x, y, z) => new THREE.Vector3(x, y, z);
+    const cr = R * .046 * k;
+    const pts = side ? [
+      V(-W / 2 - 140, L1.cy + L1.h * .3, 10),
+      V(L1.l + L1.w * .16, L1.cy + L1.h * .12, 24),
+      V(L1.l + L1.w * .5, L1.b + L1.h * .08, 44),
+      V(L2.l + L2.w * .8, L2.cy, 62),
+      V(L2.l + L2.w * .96, L2.b - L2.h * .08, 44),
+      V((L2.r + fromPlug(.8).x) / 2 + L2.h * .1, L3.cy + L3.h * .06, 16)
+    ] : [
+      V(W / 2 + 120, L3.cy - L3.h * .35, 10),
+      V(L3.r + (W / 2 - L3.r) * .4, L3.cy - L3.h * .1, 16),
+      V(L3.l + L3.w * .52, L3.cy + L3.h * .08, 26),
+      V(L2.l + L2.w * .54, L2.b - L2.h * .02, 48),
+      V(L2.l + L2.w * .37, L2.cy + L2.h * .1, 56),
+      V(L1.l + L1.w * .12, L1.b + L1.h * .1, 36),
+      V(L1.l - L1.h * .2, L1.cy + L1.h * .1, 20)
+    ];
+    pts.push(fromPlug(.8), fromPlug(.6), fromPlug(.44), fromPlug(.2));
+    const curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal'), len = curve.getLength();
+    cable.geometry.dispose();
+    cable.geometry = cableShadow.geometry = new THREE.TubeGeometry(curve, Math.min(640, Math.max(160, Math.round(len / 7))), cr, 16, false);
+    const rep = len / (Math.PI * cr);
+    braidMap.repeat.set(rep, 2); braidBump.repeat.set(rep, 2);
+    cableShadow.position.set(cr * .55, -cr * .95, -cr * 2.2);
+  }
+
+  /* --- motion: 174 BPM two-step, eased; pointer parallax --- */
+  const BEAT = 60 / 174, BAR = BEAT * 4, KICKS = [0, 2.5];
+  let raf = 0, inView = true, t0 = performance.now(), lastKick = -1, px = 0, py = 0, rx = 0, ry = 0;
+  const live = () => inView && !document.hidden && !motionPaused && !RM.matches;
+  function pose(t) {
+    let e = 0;
+    if (t >= 0) {
+      const bt = (t % BAR) / BEAT;
+      for (const kb of KICKS) { let d = bt - kb; if (d < 0) d += 4; const s = d * BEAT; e += s < .045 ? Math.sin(s / .045 * Math.PI / 2) : Math.exp(-(s - .045) / .19); }
+      const kick = Math.floor(t / BAR) * 2 + (bt >= 2.5 ? 1 : 0);
+      if (kick !== lastKick) { lastKick = kick; rings[kick % 3].userData.born = t; }
+      rx += (-py * .045 - rx) * .05; ry += (px * .07 - ry) * .05;
+      rig.rotation.set(rx + Math.sin(t * .5) * .006, ry + Math.sin(t * .37) * .012, 0);
+    } else { rig.rotation.set(0, 0, 0); }
+    moving.position.z = Math.min(e, 1.15) * .034 - .006;
+    surround.scale.z = .85 + Math.min(e, 1.15) * .1;
+    for (const r of rings) {
+      const age = t >= 0 ? t - r.userData.born : 9;
+      if (age < 0 || age > 1.25) { r.material.opacity = 0; continue; }
+      const u = age / 1.25; r.scale.setScalar(1.02 + u * .5); r.material.opacity = .34 * (1 - u) * (1 - u);
+    }
+  }
+  function frame(ms) {
+    raf = 0;
+    if (!live()) return;
+    pose((ms - t0) / 1000); renderer.render(scene, cam);
+    raf = requestAnimationFrame(frame);
+  }
+  const still = () => { pose(-1); renderer.render(scene, cam); };
+  const sync = () => { if (live()) { if (!raf) raf = requestAnimationFrame(frame); } else { cancelAnimationFrame(raf); raf = 0; if (inView) still(); } };
+  onSecond = () => { if (!live() && inView && !document.hidden) still(); };
+  hero.addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; const r = hero.getBoundingClientRect(); px = (e.clientX - r.left) / r.width * 2 - 1; py = (e.clientY - r.top) / r.height * 2 - 1; });
+  hero.addEventListener('pointerleave', () => { px = 0; py = 0; });
+  new IntersectionObserver(es => { inView = es[0].isIntersecting; sync(); }).observe(hero);
+  document.addEventListener('visibilitychange', sync);
+  let rt = 0;
+  new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(() => { layout(); if (!live()) still(); }, 140); }).observe(hero);
+  layout(); still();
+  hero.classList.add('cv-hero--gl');
+  document.fonts.ready.then(() => { layout(); if (!live()) still(); });
+  sync();
+  return { sync };
+}
+initGL().then(api => { glApi = api; }).catch(err => { hero.dataset.cvGl = 'off: ' + (err && err.message || err); /* WebGL or the CDN is unavailable: the 2D dial stays */ });
+</script>
+</body>
+</html>

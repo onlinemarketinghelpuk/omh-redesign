@@ -1,6 +1,6 @@
 // Portfolio demos (client, 18 Nov 2026): HTML designs dropped into public/portfolio/<category>/ appear on
 // /website-designs as cards that scroll on hover and open the live design in a popup.
-// Run after adding, changing or removing a file:   node scripts/portfolio-shots.mjs
+// Run after adding, changing or removing a file:   node scripts/portfolio-shots.mjs   (or just one folder: ... nightclub)
 // For every <category>/<n>-<name>.html (ordered by the number) it saves a full-page screenshot next to it
 // (<n>-<name>.jpg, 990px wide, desktop layout) and rewrites lib/content/portfolio-demos.json, which the page reads.
 // Dev only: headless Chrome through the DevTools protocol, a tiny static server, no dependencies.
@@ -23,6 +23,10 @@ const order = (f) => parseInt(f, 10) || 999;
 
 const categories = readdirSync(DIR).filter((d) => statSync(join(DIR, d)).isDirectory()).sort();
 if (!categories.length) { console.log("no folders in public/portfolio"); process.exit(0); }
+// Optional folder names (node scripts/portfolio-shots.mjs nightclub): shoot only those; every other folder keeps
+// its existing manifest entry, so adding one category doesn't re-shoot (and churn) all the others.
+const only = process.argv.slice(2);
+const kept = only.length && existsSync(OUT) ? JSON.parse(readFileSync(OUT, "utf8")) : [];
 
 // Static server for public/ (the demos load their scripts as modules, which need http, not file://).
 const types = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".mjs": "text/javascript", ".css": "text/css", ".jpg": "image/jpeg", ".png": "image/png", ".svg": "image/svg+xml", ".webp": "image/webp", ".json": "application/json" };
@@ -62,6 +66,7 @@ await send("Emulation.setDeviceMetricsOverride", { width: VIEW_W, height: 900, d
 
 const manifest = [];
 for (const slug of categories) {
+  if (only.length && !only.includes(slug)) { const old = kept.find((c) => c.slug === slug); if (old) manifest.push(old); continue; }
   const files = readdirSync(join(DIR, slug)).filter((f) => f.endsWith(".html")).sort((a, b) => order(a) - order(b) || a.localeCompare(b));
   const items = [];
   for (const file of files) {
@@ -98,7 +103,7 @@ for (const slug of categories) {
     const { data } = await send("Page.captureScreenshot", { format: "jpeg", quality: 78, captureBeyondViewport: true, clip: { x: 0, y: 0, width: VIEW_W, height, scale } });
     const shot = path.replace(/\.html$/, ".jpg");
     writeFileSync(join(ROOT, shot), Buffer.from(data, "base64"));
-    const [name, ...rest] = title.split(" | ");
+    const [name, ...rest] = title.split(/ [|·] /); // Lamplight Rooms uses "·"
     items.push({ demo: path, shot, width: SHOT_W, height: Math.round(height * scale), alt: `${name.trim()} ${slug.replace(/-/g, " ")} website design${rest.length ? `: ${rest.join(" | ").trim()}` : ""}` });
     console.log(`${shot}  ${SHOT_W}x${Math.round(height * scale)}  ${name.trim()}${pinned ? `  (${pinned} pinned scene shrunk)` : ""}`);
   }
