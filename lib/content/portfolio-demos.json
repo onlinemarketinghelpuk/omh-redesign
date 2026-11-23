@@ -55,6 +55,54 @@
     ]
   },
   {
+    "slug": "cleaning",
+    "title": "Cleaning Designs",
+    "items": [
+      {
+        "demo": "/portfolio/cleaning/1-brightwell-home-cleaning-cheltenham.html",
+        "shot": "/portfolio/cleaning/1-brightwell-home-cleaning-cheltenham.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Brightwell Home Cleaning cleaning website design: Weekly and fortnightly house cleaning in Cheltenham"
+      },
+      {
+        "demo": "/portfolio/cleaning/2-clearview-window-cleaning-bristol.html",
+        "shot": "/portfolio/cleaning/2-clearview-window-cleaning-bristol.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Clearview Window Cleaning cleaning website design: Pure-water window cleaning in north and central Bristol"
+      },
+      {
+        "demo": "/portfolio/cleaning/3-handback-end-of-tenancy-leeds.html",
+        "shot": "/portfolio/cleaning/3-handback-end-of-tenancy-leeds.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Handback cleaning website design: End of tenancy cleaning in Leeds, fixed prices and a 72-hour re-clean guarantee"
+      },
+      {
+        "demo": "/portfolio/cleaning/4-halcyon-commercial-cleaning-london.html",
+        "shot": "/portfolio/cleaning/4-halcyon-commercial-cleaning-london.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Halcyon Commercial Cleaning cleaning website design: Office, retail, healthcare and school cleaning in London"
+      },
+      {
+        "demo": "/portfolio/cleaning/5-fern-and-fable-eco-cleaning-brighton.html",
+        "shot": "/portfolio/cleaning/5-fern-and-fable-eco-cleaning-brighton.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Fern & Fable cleaning website design: Eco-friendly home cleaning and holiday-let changeovers in Brighton & Hove"
+      },
+      {
+        "demo": "/portfolio/cleaning/6-rinse-and-restore-carpet-care-edinburgh.html",
+        "shot": "/portfolio/cleaning/6-rinse-and-restore-carpet-care-edinburgh.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Rinse & Restore Carpet Care cleaning website design: Carpet, rug and upholstery cleaning in Edinburgh"
+      }
+    ]
+  },
+  {
     "slug": "construction",
     "title": "Construction Designs",
     "items": [
@@ -182,6 +230,54 @@
         "width": 990,
         "height": 4912,
         "alt": "Second Charge ecommerce website design: Refurbished Laptops, Phones & Tablets with 18-Month Warranty"
+      }
+    ]
+  },
+  {
+    "slug": "fitness",
+    "title": "Fitness Designs",
+    "items": [
+      {
+        "demo": "/portfolio/fitness/1-ironclad-strength-sheffield.html",
+        "shot": "/portfolio/fitness/1-ironclad-strength-sheffield.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Ironclad Strength Club fitness website design: 24/7 powerlifting and strongman gym, Kelham Island, Sheffield"
+      },
+      {
+        "demo": "/portfolio/fitness/2-lumen-reformer-pilates-bristol.html",
+        "shot": "/portfolio/fitness/2-lumen-reformer-pilates-bristol.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Lumen Reformer Studio fitness website design: Reformer Pilates classes in Clifton, Bristol"
+      },
+      {
+        "demo": "/portfolio/fitness/3-pulse-boxing-shoreditch.html",
+        "shot": "/portfolio/fitness/3-pulse-boxing-shoreditch.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Pulse Boxing & HIIT fitness website design: Boxing and HIIT classes in Shoreditch, London"
+      },
+      {
+        "demo": "/portfolio/fitness/4-fellrunner-coaching-keswick.html",
+        "shot": "/portfolio/fitness/4-fellrunner-coaching-keswick.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Fellrunner Coaching fitness website design: Trail and fell running coaching in Keswick, Lake District"
+      },
+      {
+        "demo": "/portfolio/fitness/5-haven-heat-and-ice-harrogate.html",
+        "shot": "/portfolio/fitness/5-haven-heat-and-ice-harrogate.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Haven Heat & Ice fitness website design: Sauna, cold plunge and contrast therapy in Harrogate"
+      },
+      {
+        "demo": "/portfolio/fitness/6-northside-gyms-manchester.html",
+        "shot": "/portfolio/fitness/6-northside-gyms-manchester.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Northside Gyms fitness website design: No-contract gyms in Ancoats, Chorlton, Salford Quays and Didsbury"
       }
     ]
   },
@@ -395,6 +491,54 @@
         "width": 990,
         "height": 4950,
         "alt": "Open Table Hull non profit website design: Food Bank and Community Pantry in Hull"
+      }
+    ]
+  },
+  {
+    "slug": "real-estate",
+    "title": "Real Estate Designs",
+    "items": [
+      {
+        "demo": "/portfolio/real-estate/1-ashcombe-and-vane-chelsea-london.html",
+        "shot": "/portfolio/real-estate/1-ashcombe-and-vane-chelsea-london.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Ashcombe & Vane real estate website design: Prime homes for sale in Chelsea, South Kensington, Belgravia and Notting Hill"
+      },
+      {
+        "demo": "/portfolio/real-estate/2-keyline-lettings-manchester.html",
+        "shot": "/portfolio/real-estate/2-keyline-lettings-manchester.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Keyline Lettings real estate website design: Letting agents and property management in Manchester and Salford"
+      },
+      {
+        "demo": "/portfolio/real-estate/3-lacemakers-yard-new-homes-nottingham.html",
+        "shot": "/portfolio/real-estate/3-lacemakers-yard-new-homes-nottingham.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Lacemakers Yard real estate website design: Canal-side new homes by the Lace Market, Nottingham"
+      },
+      {
+        "demo": "/portfolio/real-estate/4-fenwick-hart-country-homes-cotswolds.html",
+        "shot": "/portfolio/real-estate/4-fenwick-hart-country-homes-cotswolds.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Fenwick Hart real estate website design: Country homes, farms and land for sale across the Cotswolds"
+      },
+      {
+        "demo": "/portfolio/real-estate/5-doorstep-fixed-fee-estate-agents-birmingham.html",
+        "shot": "/portfolio/real-estate/5-doorstep-fixed-fee-estate-agents-birmingham.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Doorstep real estate website design: Fixed-fee estate agents in Birmingham, £1,499 inc VAT"
+      },
+      {
+        "demo": "/portfolio/real-estate/6-kelvin-and-close-glasgow-west-end.html",
+        "shot": "/portfolio/real-estate/6-kelvin-and-close-glasgow-west-end.jpg",
+        "width": 990,
+        "height": 4950,
+        "alt": "Kelvin & Close real estate website design: Solicitor-led estate agents for Glasgow's West End and Southside"
       }
     ]
   }
