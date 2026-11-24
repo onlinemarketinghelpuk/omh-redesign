@@ -1,6 +1,5 @@
 import { ArrowRightLeft, Blocks, Palette, Plug, Puzzle, Wrench } from "lucide-react";
 import { CapabilityShowcase, StorefrontMock } from "@/components/services/CapabilityShowcase";
-import { ServiceHeroArt } from "@/components/services/ServiceHeroArt";
 import { Pointer } from "@/components/Pointer";
 import { Reveal } from "@/components/Reveal";
 import { ServiceFaqSection } from "@/components/services/ServiceFaqSection";
@@ -43,7 +42,7 @@ export function ShopifyHero() {
       media={
         <Pointer>
           <div className="pointer-parallax">
-            <ServiceHeroArt variant="shopify" />
+            <MediaFrame kind="image" theme="shopify" ratio="16/11" title="Shopify development" note="" source="/images/Services/shopify-development-hero.png" alt="A monitor showing an online store admin with a product image uploader beside a laptop displaying the customer-facing storefront with product cards and prices." />
           </div>
         </Pointer>
       }

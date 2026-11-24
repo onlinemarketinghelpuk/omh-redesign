@@ -36,8 +36,8 @@ const pages = {
   facebook: {
     content: facebookLanding,
     platform: "Facebook",
-    heroImage: "/images/Services/social media marketing 1(1).jpg",
-    heroAlt: "A social media team reviewing campaign charts on tablets, with Facebook, Twitter and LinkedIn icons on the table.",
+    heroImage: "/images/Services/facebook-marketing-hero.png",
+    heroAlt: "A laptop showing a social media page management dashboard with rising engagement beside a smartphone displaying a business page on a social feed with posts and reviews.",
     proofHeading: "Facebook marketing backed by verified client trust",
     related: facebookLanding.solutions.links,
     cta: { body: facebookLanding.consultation.body, secondary: { label: "Send a Campaign Brief", href: "/contact-us" } },
@@ -45,8 +45,8 @@ const pages = {
   instagram: {
     content: instagramLanding,
     platform: "Instagram",
-    heroImage: "/images/Services/social media marketing 1(2).jpg",
-    heroAlt: "A phone's social media folder with the Instagram app beside X, TikTok, LinkedIn and YouTube, and Instagram open on a screen behind.",
+    heroImage: "/images/Services/instagram-marketing-hero.png",
+    heroAlt: "A smartphone showing a business profile with a grid of lifestyle images beside a laptop displaying a content performance dashboard with reach and engagement.",
     proofHeading: "Instagram marketing backed by verified client trust",
     related: instagramLanding.solutions.links,
     cta: { body: instagramLanding.standfirst, secondary: { label: "Request an Instagram Ads Quote", href: "/contact-us" } },

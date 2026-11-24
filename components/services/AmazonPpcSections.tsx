@@ -54,7 +54,7 @@ export function AmazonPpcHero() {
       }
       stats={[["Packages from", "£750"], ["Required ad spend from", "£500"], ["Published set-up time", "14 days"]]}
       statsStyle="divided"
-      media={<Pointer><div className="pointer-parallax"><MediaFrame kind="screen" theme="amazon" ratio="16/11" title="Amazon advertising account view" note="Replace with an approved, anonymised account showing date range, spend and attributed sales." source="/images/Services/Amazon PPC 1 (1).png" alt="Amazon PPC agency reviewing an account diagnosis on a laptop beside printed performance charts" /></div></Pointer>}
+      media={<Pointer><div className="pointer-parallax"><MediaFrame kind="screen" theme="amazon" ratio="16/11" title="Amazon advertising account view" note="Replace with an approved, anonymised account showing date range, spend and attributed sales." source="/images/Services/amazon-ppc-hero.png" alt="A laptop showing a marketplace advertising dashboard with rising ad sales beside a smartphone displaying a sponsored product listing with review stars." /></div></Pointer>}
       proof={<ReviewProof serviceId="amazon" heading="Amazon PPC with verified client trust" />}
     />
   );

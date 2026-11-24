@@ -1,7 +1,7 @@
 import { Activity, Database, Gauge, Puzzle, RefreshCw, ShieldCheck } from "lucide-react";
 import { CapabilityShowcase, MonitorMock } from "@/components/services/CapabilityShowcase";
-import { ServiceHeroArt } from "@/components/services/ServiceHeroArt";
 import { Pointer } from "@/components/Pointer";
+import { MediaFrame } from "@/components/ServiceMedia";
 import { Reveal } from "@/components/Reveal";
 import { ServiceFaqSection } from "@/components/services/ServiceFaqSection";
 import { ServiceFitSection as SharedServiceFitSection } from "@/components/services/ServiceFitSection";
@@ -48,7 +48,7 @@ export function MaintenanceHero() {
       media={
         <Pointer>
           <div className="pointer-parallax">
-            <ServiceHeroArt variant="maintenance" />
+            <MediaFrame kind="image" theme="wordpress" ratio="16/11" title="Website maintenance" note="" source="/images/Services/website-maintenance-hero.png" alt="A monitor showing a website health dashboard with green status indicators for uptime, security and backups beside a laptop displaying a performance report with improving page load times." />
           </div>
         </Pointer>
       }

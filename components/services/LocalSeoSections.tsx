@@ -61,8 +61,8 @@ export function LocalSeoHero() {
               ratio="16/11"
               title="Local search visibility view"
               note="Replace with an approved local rank, Google Business Profile or location-performance screen with dates and metric definitions visible."
-              source="/images/Services/SEO 3.jpg"
-              alt="Someone running a Google search on a phone, the moment a nearby business needs to appear."
+              source="/images/Services/local-seo-hero.png"
+              alt="A smartphone showing a map with location pins and a business listing beside a tablet displaying a local performance dashboard with calls and direction requests."
             />
           </div>
         </Pointer>

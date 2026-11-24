@@ -41,7 +41,7 @@ export function SeoHero() {
         </>
       }
       stats={stats}
-      media={<Pointer><div className="pointer-parallax"><MediaFrame kind="image" theme="seo" ratio="16/11" title="Searching for a service" note="" source="/images/Services/SEO 2.jpg" alt="Hands holding a tablet showing a search engine results page." /></div></Pointer>}
+      media={<Pointer><div className="pointer-parallax"><MediaFrame kind="image" theme="seo" ratio="16/11" title="Searching for a service" note="" source="/images/Services/seo-services-hero.png" alt="A laptop showing a search analytics dashboard with rising organic traffic beside a smartphone displaying search results with a local listing and review stars." /></div></Pointer>}
       proof={<ReviewProof serviceId="seo" heading="SEO work backed by verified client trust" />}
       after={
         <ul className="mt-10 grid grid-cols-5 gap-y-4 max-lg:grid-cols-2 max-sm:grid-cols-1">

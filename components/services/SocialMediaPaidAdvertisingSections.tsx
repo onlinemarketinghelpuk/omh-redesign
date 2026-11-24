@@ -1,3 +1,5 @@
+import { Pointer } from "@/components/Pointer";
+import { MediaFrame } from "@/components/ServiceMedia";
 import { Reveal } from "@/components/Reveal";
 import { ServiceBand, type ServiceBandTone } from "@/components/services/ServiceBand";
 import { HighlightedText } from "@/components/services/ServicePrimitives";
@@ -91,7 +93,7 @@ export function PaidSocialHero() {
         ["Published term", "3 months"],
       ]}
       statsStyle="divided"
-      media={<PaidCampaignVisual />}
+      media={<Pointer><div className="pointer-parallax"><MediaFrame kind="image" theme="seo" ratio="16/11" title="Paid social advertising" note="" source="/images/Services/paid-social-hero.png" alt="A laptop showing a paid social advertising dashboard with rising leads beside a smartphone displaying a sponsored post in a social feed with a call-to-action button." /></div></Pointer>}
       proof={<ReviewProof serviceId="paid-social" heading="Paid social backed by verified client trust" />}
     />
   );

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { BarChart3, FileSearch, Link2, PackageSearch, type LucideIcon } from "lucide-react";
 import { Pointer } from "@/components/Pointer";
+import { MediaFrame } from "@/components/ServiceMedia";
 import { Reveal } from "@/components/Reveal";
 import { CaseStudyVisual } from "@/components/case-studies/CaseStudyVisual";
 import { CapabilityShowcase } from "@/components/services/CapabilityShowcase";
 import { ServiceBand as Band } from "@/components/services/ServiceBand";
 import { ServiceFaqSection } from "@/components/services/ServiceFaqSection";
 import { ServiceFitSection } from "@/components/services/ServiceFitSection";
-import { ServiceHeroArt } from "@/components/services/ServiceHeroArt";
 import { ServiceNextStepsCTA } from "@/components/services/ServiceNextStepsCTA";
 import { ServiceProcessTimeline } from "@/components/services/ServiceProcessTimeline";
 import { ServiceReasonGrid } from "@/components/services/ServiceReasonGrid";
@@ -53,7 +53,7 @@ export function EcommerceSeoHero() {
       media={
         <Pointer>
           <div className="pointer-parallax" role="img" aria-label={h.visualLabel}>
-            <ServiceHeroArt variant="ecommerce-seo" />
+            <MediaFrame kind="image" theme="seo" ratio="16/11" title="Ecommerce SEO services" note="" source="/images/Services/ecommerce-seo-hero.png" alt="A laptop showing an online store analytics dashboard with rising organic revenue beside a smartphone displaying product search results with star ratings and prices." />
           </div>
         </Pointer>
       }

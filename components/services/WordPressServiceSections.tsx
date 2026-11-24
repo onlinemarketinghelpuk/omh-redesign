@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Megaphone, Puzzle, RefreshCw, ShieldCheck, Zap } from "lucide-react";
 import { CaseStudyVisual } from "@/components/case-studies/CaseStudyVisual";
 import { CapabilityShowcase } from "@/components/services/CapabilityShowcase";
-import { ServiceHeroArt } from "@/components/services/ServiceHeroArt";
 import { caseStudies } from "@/lib/content/case-studies";
 import { Pointer } from "@/components/Pointer";
+import { MediaFrame } from "@/components/ServiceMedia";
 import { Reveal } from "@/components/Reveal";
 import { ServiceFaqSection } from "@/components/services/ServiceFaqSection";
 import { ServiceFitSection as SharedServiceFitSection } from "@/components/services/ServiceFitSection";
@@ -59,7 +59,7 @@ export function ServiceHero() {
       media={
         <Pointer>
           <div className="pointer-parallax">
-            <ServiceHeroArt variant="wordpress" />
+            <MediaFrame kind="image" theme="wordpress" ratio="16/11" title="WordPress development" note="" source="/images/Services/wordpress-development-hero.png" alt="A monitor showing a visual page builder with draggable content blocks beside a laptop displaying the live preview of a professional business website." />
           </div>
         </Pointer>
       }

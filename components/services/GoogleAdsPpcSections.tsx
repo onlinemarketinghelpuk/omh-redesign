@@ -35,7 +35,7 @@ export function PpcHero() {
         </>
       }
       stats={[["Published packages from", "£750"], ["Required ad spend from", "£500"], ["Published set-up time", "14 days"]]}
-      media={<Pointer><div className="pointer-parallax"><MediaFrame kind="screen" theme="ppc" ratio="16/11" title="Google Ads campaign view" note="Replace with a real, anonymised account view with spend, date range and conversion definition visible." source="/images/Services/Images on the pages/Account baseline Before.png" alt="Illustrative Google Ads account overview used by OMH, a Google Ads agency for UK businesses, showing clicks, impressions, average CPC, cost and conversions" /></div></Pointer>}
+      media={<Pointer><div className="pointer-parallax"><MediaFrame kind="screen" theme="ppc" ratio="16/11" title="Google Ads campaign view" note="Replace with a real, anonymised account view with spend, date range and conversion definition visible." source="/images/Services/google-ads-hero.png" alt="A laptop showing a search advertising dashboard with rising conversions beside a smartphone displaying text ads with call buttons on a search results page." /></div></Pointer>}
       proof={<ReviewProof serviceId="google-ads" heading="Google Ads experience with verified client trust" />}
     />
   );

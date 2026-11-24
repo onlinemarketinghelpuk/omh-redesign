@@ -25,13 +25,15 @@ import { RelatedServices } from "@/components/RelatedServices";
 import { SiteTestimonials } from "@/components/Testimonials";
 import { ServiceBand } from "@/components/services/ServiceBand";
 import { ServiceFaqSection } from "@/components/services/ServiceFaqSection";
-import { ServiceHeroArt } from "@/components/services/ServiceHeroArt";
-import { AccentTitle, CheckIcon } from "@/components/services/ServicePrimitives";
+import { Pointer } from "@/components/Pointer";
+import { PageHero } from "@/components/ui/PageHero";
+import { MediaFrame } from "@/components/ServiceMedia";
+import {  HighlightedText, AccentTitle, CheckIcon } from "@/components/services/ServicePrimitives";
 import { ArrowRight, Button, TextLink } from "@/components/ui/Button";
 import { FinalCta } from "@/components/ui/FinalCta";
 import { ShowMore } from "@/components/ui/ShowMore";
 import { Split } from "@/components/ui/Split";
-import { Eyebrow } from "@/components/ui/Proof";
+import { Eyebrow, ReviewProof } from "@/components/ui/Proof";
 import { caseStudies } from "@/lib/content/case-studies";
 import { company } from "@/lib/content/nav";
 import { websiteDesigns as page } from "@/lib/content/website-designs";
@@ -115,34 +117,33 @@ export function WebsiteDesignsPage() {
 
   return (
     <main>
-      <ServiceBand label={page.title} tone="warm" accent={ACCENT} labelStyle="plain" className="hero-grid">
-        {/* CSS-only entrance, not <Reveal>: the hero paints before hydration. */}
-        <Split ratio="6/6" from="lg" align="center">
-          <div className="hero-in">
-            <h1 className="font-sans text-display font-semibold text-balance"><AccentTitle text={page.heading} /></h1>
-            <p className="mt-5 font-sans text-h3 font-semibold text-amber-deep text-balance">
-              {page.standfirst}
-            </p>
-            <p className="mt-5 text-lead leading-relaxed text-ink/75">{page.lead}</p>
-            <div className="mt-9 flex flex-wrap gap-3.5 max-sm:flex-col max-sm:items-stretch">
-              <Button href="/book-a-consultation" data-event="website_designs_consultation_click">
-                {page.ctas.consultation}
-              </Button>
-              <Button href="/contact-us" variant="secondary" data-event="website_designs_contact_click">
-                {page.ctas.contact}
-              </Button>
+      <PageHero
+        eyebrow="Website design for UK businesses"
+        title={<HighlightedText text={page.heading} highlight="UK businesses" />}
+        body={page.lead}
+        actions={
+          <>
+            <Button href="/book-a-consultation" data-event="website_designs_consultation_click">
+              {page.ctas.consultation}
+            </Button>
+            <Button href="/contact-us" variant="secondary" data-event="website_designs_contact_click">
+              {page.ctas.contact}
+            </Button>
+          </>
+        }
+        media={
+          <Pointer>
+            <div className="pointer-parallax">
+              <MediaFrame kind="image" theme="wordpress" ratio="16/11" title="Website design" note="" source="/images/Services/website-designs-hero.png" alt="A monitor showing a website design in progress with a homepage layout beside a laptop displaying wireframe components and a smartphone showing the mobile version." />
             </div>
-          </div>
-          <div className="hero-in hero-in-2">
-            <ServiceHeroArt variant="designs" />
-          </div>
-        </Split>
+          </Pointer>
+        }
+        proof={<ReviewProof serviceId="wordpress" heading="Website design backed by verified client trust" />}
+      />
 
-        <Split ratio="5/6" className="mt-14">
-          <div>
-            <Eyebrow>{page.statEyebrow}</Eyebrow>
-            <h2 className="mt-5 font-sans text-h3 font-semibold text-balance">{page.statHeading}</h2>
-          </div>
+      <ServiceBand label={page.statEyebrow} tone="white" accent={ACCENT} labelStyle={LABEL}>
+        <Split ratio="5/7" from="lg" align="center">
+          <h2 className="font-sans text-h2 font-semibold text-balance">{page.statHeading}</h2>
           <div>
             {page.intro.map((paragraph) => (
               <p key={paragraph} className="mt-5 text-body leading-relaxed text-ink/75 first:mt-0">

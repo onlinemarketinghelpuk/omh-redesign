@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { MediaFrame } from "@/components/ServiceMedia";
 import { Reveal } from "@/components/Reveal";
 import { FinalCta, type CtaAction } from "@/components/ui/FinalCta";
 import { ServiceFaqSection } from "@/components/services/ServiceFaqSection";
@@ -91,7 +92,7 @@ export function SocialHero({
   primary = { label: "Discuss Social Media Marketing Services", event: "social_hero_cta_click" },
   secondary = { label: "View Social Media Packages", event: "social_packages_click" },
   stats = [["Social media marketing services packages from", "£450"], ...socialHeroStats.slice(1)],
-  visual = <SocialDashboard />,
+  visual = <Pointer><div className="pointer-parallax"><MediaFrame kind="image" theme="seo" ratio="16/11" title="Social media management" note="" source="/images/Services/social-media-management-hero.png" alt="A laptop showing a social media scheduling dashboard with a weekly content calendar beside a tablet with a visual content planner and a smartphone displaying a business post." /></div></Pointer>,
   proofId = "social-media",
   proofHeading = "Social media work backed by verified client trust",
 }: {
