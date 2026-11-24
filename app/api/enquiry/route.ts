@@ -26,7 +26,15 @@ import { NextResponse } from "next/server";
 
 import { createClient } from "next-sanity";
 import { clean, cleanFields, guard, readJson } from "@/lib/api-guard";
-import { customerAddress, firstName, mayThank, renderEnquiryEmail, renderThankYouEmail } from "@/lib/enquiry-email";
+import {
+  CAR_WASH_FORM,
+  customerAddress,
+  firstName,
+  mayThank,
+  renderCarWashThankYou,
+  renderEnquiryEmail,
+  renderThankYouEmail,
+} from "@/lib/enquiry-email";
 import nodemailer from "nodemailer";
 /* The same file the tests assert, so the mapping that decides which label
    is the person and which is the company cannot drift from what is proven. */
@@ -169,7 +177,9 @@ export async function POST(request: Request) {
   // and never shown to the visitor: the team already has the enquiry.
   if (email && mayThank(email)) {
     try {
-      await transport.sendMail({ from: FROM ?? user, to: email, replyTo: TO, ...renderThankYouEmail({ name: firstName(entries) }) });
+      const name = firstName(entries);
+      const thanks = formName === CAR_WASH_FORM ? renderCarWashThankYou({ name }) : renderThankYouEmail({ name });
+      await transport.sendMail({ from: FROM ?? user, to: email, replyTo: TO, ...thanks });
     } catch (error) {
       console.error("Thank-you email not sent:", error);
     }

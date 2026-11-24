@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
+import { ContactPhone } from "@/components/layout/ContactPhone";
 import { SiteSearch } from "@/components/layout/SiteSearch";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { Button } from "@/components/ui/Button";
 import type { SearchEntry } from "@/lib/content/search-index";
-import { primaryNav, company, columnLinks, type NavItem, type NavLink } from "@/lib/content/nav";
+import { primaryNav, columnLinks, type NavItem, type NavLink } from "@/lib/content/nav";
 
 function Chevron({ className = "" }: { className?: string }) {
   return (
@@ -306,13 +307,7 @@ export function Header({ searchEntries }: { searchEntries: SearchEntry[] }) {
               <Button href="/book-a-consultation" onClick={() => setOpen(false)}>
                 Book a Growth Consultation
               </Button>
-              <a
-                href={company.phoneHref}
-                onClick={() => setOpen(false)}
-                className="text-center text-body text-muted"
-              >
-                {company.phoneDisplay}
-              </a>
+              <ContactPhone onClick={() => setOpen(false)} className="text-center text-body text-muted" />
             </div>
           </div>
         </div>

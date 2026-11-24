@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Field } from "@/components/ui/Field";
-import { company } from "@/lib/content/nav";
+import { whatsapp } from "@/lib/content/whatsapp";
 import { Honeypot, sendEnquiry } from "@/lib/send-enquiry";
 
 const cardCls = "rounded-card border border-line bg-surface p-8 shadow-[0_36px_90px_-42px_rgb(0_0_0/0.48)] max-sm:p-6";
@@ -20,10 +19,10 @@ export function GrowthReviewForm() {
         <h2 className="font-sans text-h3 font-semibold">Thanks, that&apos;s with us.</h2>
         <p className="mt-3 text-body leading-relaxed text-ink/75">
           A real person will review your current activity and come back with the clearest next step. If it&apos;s
-          urgent, call us on{" "}
-          <Link href={company.phoneHref} className="font-semibold text-ink hover:text-amber-deep">
-            {company.phoneDisplay}
-          </Link>
+          urgent, message us on WhatsApp:{" "}
+          <a href={whatsapp.href} target="_blank" rel="noopener" data-event="get_more_leads_whatsapp_click" className="font-semibold text-ink hover:text-amber-deep">
+            {whatsapp.display}
+          </a>
           .
         </p>
       </div>
@@ -41,7 +40,7 @@ export function GrowthReviewForm() {
         const result = await sendEnquiry(form, "Free growth review");
         setSending(false);
         // On failure the answers stay on screen, so nothing typed is lost.
-        if (!result.ok) return setError(result.message);
+        if (!result.ok) return setError(`That didn't go through. Please try again, or message us on WhatsApp: ${whatsapp.display}.`);
         setSent(true);
       }}
       className={cardCls}

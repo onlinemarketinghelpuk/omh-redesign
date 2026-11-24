@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Download } from "lucide-react";
 import { Pointer } from "@/components/Pointer";
+import { ContactPhone } from "@/components/layout/ContactPhone";
 import { ArrowRight } from "@/components/ui/Button";
 import { company, footerCols, legalLinks } from "@/lib/content/nav";
 
@@ -88,12 +89,7 @@ export function Footer() {
             <p className="font-sans text-[14px] font-semibold uppercase tracking-[0.16em] text-amber">
               Start a conversation
             </p>
-            <a
-              href={company.phoneHref}
-              className="mt-3 block font-sans text-[clamp(28px,22px+1.4vw,40px)] font-semibold leading-none transition-colors hover:text-amber max-lg:-my-2 max-lg:py-2"
-            >
-              {company.phoneDisplay}
-            </a>
+            <ContactPhone className="mt-3 block font-sans text-[clamp(28px,22px+1.4vw,40px)] font-semibold leading-none transition-colors hover:text-amber max-lg:-my-2 max-lg:py-2" />
           </div>
           <div className="md:justify-self-end md:text-right">
             <p className="font-sans text-[14px] font-semibold uppercase tracking-[0.16em] text-oninverse/50">
