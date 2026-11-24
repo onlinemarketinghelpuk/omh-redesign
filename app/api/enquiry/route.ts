@@ -25,7 +25,8 @@ import { NextResponse } from "next/server";
 */
 
 import { createClient } from "next-sanity";
-import { renderEnquiryEmail } from "@/lib/enquiry-email";
+import { clean, cleanFields, guard, readJson } from "@/lib/api-guard";
+import { customerAddress, firstName, mayThank, renderEnquiryEmail, renderThankYouEmail } from "@/lib/enquiry-email";
 import nodemailer from "nodemailer";
 /* The same file the tests assert, so the mapping that decides which label
    is the person and which is the company cannot drift from what is proven. */
@@ -41,12 +42,16 @@ const FROM = process.env.ENQUIRY_FROM || undefined;
 type Payload = { form?: string; page?: string; fields?: Record<string, string | string[]>; hp?: string };
 
 export async function POST(request: Request) {
-  let body: Payload;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
-  }
+  const blocked = guard(request);
+  if (blocked) return blocked;
+  const raw = await readJson(request);
+  if (raw instanceof NextResponse) return raw;
+  const body: Payload = {
+    form: raw.form ? clean(raw.form, 120) : undefined,
+    page: raw.page ? clean(raw.page, 2000) : undefined, // the query string carries gclid and utm_ values
+    fields: cleanFields(raw.fields),
+    hp: raw.hp ? "1" : undefined,
+  };
 
   // Honeypot: a field no human sees, filled by bots. It is a flag, never a
   // bin — browser autofill kept filling it and real enquiries vanished twice.
@@ -64,7 +69,7 @@ export async function POST(request: Request) {
   const formName = body.form?.slice(0, 120) ?? "Website form";
 
   const reply = entries.find(([label]) => /e-?mail/i.test(label))?.[1];
-  const email = typeof reply === "string" && reply.includes("@") ? reply : undefined;
+  const email = typeof reply === "string" ? customerAddress(reply) : undefined;
 
   // Stored before it is emailed, so an SMTP outage cannot lose a lead and the
   // Studio doubles as the submissions dashboard. Without a token (local dev)
@@ -159,6 +164,17 @@ export async function POST(request: Request) {
   }
 
   console.log("Enquiry emailed:", formName, "->", TO);
+
+  // The visitor's thank-you. Replies go to the team inbox, not the sending mailbox. A failure here is logged
+  // and never shown to the visitor: the team already has the enquiry.
+  if (email && mayThank(email)) {
+    try {
+      await transport.sendMail({ from: FROM ?? user, to: email, replyTo: TO, ...renderThankYouEmail({ name: firstName(entries) }) });
+    } catch (error) {
+      console.error("Thank-you email not sent:", error);
+    }
+  }
+
   return NextResponse.json({ ok: true });
 }
 

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { demoTimes } from "@/lib/book-demo";
 import { freeSlots } from "@/widget/gates/availability.js";
 import { bookingScript } from "@/lib/booking-script";
+import { guard, readJson } from "@/lib/api-guard";
 
 /*
   Puts a demo request in OMH's Google Calendar at the slot the visitor picked in
@@ -106,12 +107,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Calendar is not configured." }, { status: 503 });
   }
 
-  let body: Record<string, unknown>;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
-  }
+  const blocked = guard(request);
+  if (blocked) return blocked;
+  const body = await readJson(request);
+  if (body instanceof NextResponse) return body;
   // Honeypot filled: the enquiry route keeps it as spam; nothing goes in the calendar.
   if (body.hp) return NextResponse.json({ ok: true });
 
