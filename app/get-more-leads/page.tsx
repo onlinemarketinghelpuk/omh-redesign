@@ -5,7 +5,6 @@ import { GrowthReviewForm } from "@/components/forms/GrowthReviewForm";
 import { Reveal } from "@/components/Reveal";
 import { ServiceBand } from "@/components/services/ServiceBand";
 import { ArrowRight } from "@/components/ui/Button";
-import { BookDemo } from "@/components/BookDemo";
 import { FinalCta } from "@/components/ui/FinalCta";
 import Image from "@/components/ui/SiteImage";
 import { caseStudies } from "@/lib/content/case-studies";
@@ -172,7 +171,6 @@ export default function GetMoreLeadsPage() {
         steps={["Review your current activity", "Find the clearest next step", "Build a connected growth plan"]}
         contactEvents={{ phone: "get_more_leads_phone_click", email: "get_more_leads_email_click" }}
       />
-      <BookDemo />
     </>
   );
 }
