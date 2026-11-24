@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Pointer } from "@/components/Pointer";
 import { MediaFrame } from "@/components/ServiceMedia";
 import { Reveal } from "@/components/Reveal";
 import { FinalCta, type CtaAction } from "@/components/ui/FinalCta";
