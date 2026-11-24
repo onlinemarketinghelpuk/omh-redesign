@@ -92,7 +92,6 @@ function InstagramCreative() {
   return (
     <Band label="Creative" tone="navy">
       <Reveal>
-        {/* The portrait frame stays phone-sized while the row is stacked (it used to run the full width: 1,600px tall). */}
         <Split ratio="4/8" from="lg" align="center">
           <div className="max-lg:max-w-xs">
             <MediaFrame kind="image" theme="amazon" ratio="9/16" title="Vertical creative in the feed" note="Add a Reel or Story cut from a real campaign." source="/images/Services/social media marketing 1(2).jpg" alt="Instagram and social media apps on a phone" />

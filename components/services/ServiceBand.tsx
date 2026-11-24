@@ -59,7 +59,7 @@ export function ServiceBand({
   const accentText = dark ? "text-oninverse/70" : "text-amber-deep";
 
   return (
-    <section id={id} className={[toneClass[tone], className].filter(Boolean).join(" ") || undefined}>
+    <section id={id} className={[toneClass[tone], className].filter(Boolean).join(" ") || undefined} suppressHydrationWarning>
       <div className="container-omh section-md">
         <div className={labelStyle === "none" ? undefined : "mb-label"}>
           {labelStyle === "rule" && (

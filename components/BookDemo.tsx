@@ -324,7 +324,7 @@ export function BookDemo({ id, eyebrow, heading, thingsToTry = defaultThingsToTr
     `grid size-7 place-items-center rounded-full ${on ? "bg-amber text-white" : "border-[1.5px] border-line"}`;
 
   return (
-    <section id={id} aria-label="Book a demo" className="scroll-mt-[85px] bg-inverse text-oninverse">
+    <section id={id} aria-label="Book a demo" className="scroll-mt-[85px] bg-inverse text-oninverse" suppressHydrationWarning>
       <div className="container-omh">
         <div className="section-sm">
           {/* The gold part of a heading always starts its own line, so the heading reads as two even lines instead of
